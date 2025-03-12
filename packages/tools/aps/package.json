@@ -1,0 +1,19 @@
+{
+  "name": "@lynxpo/tools-aps",
+  "version": "1.0.0",
+  "description": "Andoird/apple permissions scrapper",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.13.10",
+    "playwright": "^1.51.0",
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "@elcoosp-configs/rslib": "2.1",
+    "@types/turndown": "^5.0.5"
+  }
+}

@@ -1,0 +1,824 @@
+[
+  {
+    "id": "bluetoothalways",
+    "name": "NSBluetoothAlways Usage",
+    "description": "A message that tells the user why the app needs access to Bluetooth.",
+    "deprecated": true,
+    "replacement": null,
+    "categories": [
+      "bluetooth"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSBluetoothAlwaysUsageDescription",
+        "privacyDescription": "This key is required if your app uses the device’s Bluetooth interface.\n\nImportant\n\nIf your app has a deployment target earlier than iOS 13, add the [`NSBluetoothPeripheralUsageDescription`](/documentation/bundleresources/information-property-list/nsbluetoothperipheralusagedescription) key to your app’s [`Information Property List`](/documentation/bundleresources/information-property-list) file in addition to this key.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "13.0"
+      }
+    },
+    "deprecationInfo": {
+      "deprecatedSince": "",
+      "platforms": {
+        "ios": {
+          "sinceVersion": "",
+          "removalVersion": ""
+        }
+      }
+    }
+  },
+  {
+    "id": "calendarsfullaccess",
+    "name": "NSCalendarsFullAccess Usage",
+    "description": "",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "calendar"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSCalendarsFullAccessUsageDescription",
+        "privacyDescription": "If your app needs to create calendar events but doesn’t need to read them, use [`NSCalendarsWriteOnlyAccessUsageDescription`](/documentation/bundleresources/information-property-list/nscalendarswriteonlyaccessusagedescription). If your app runs on iOS 17 or later and presents an [`EKEventEditViewController`](/documentation/EventKitUI/EKEventEditViewController) to allow people to create calendar events, you don’t need to request calendar access.\n\nImportant\n\nThis key is required if your app uses APIs that read and write the person’s calendar data.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "17.0"
+      }
+    }
+  },
+  {
+    "id": "calendarswriteonlyaccess",
+    "name": "NSCalendarsWriteOnlyAccess Usage",
+    "description": "",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "calendar"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSCalendarsWriteOnlyAccessUsageDescription",
+        "privacyDescription": "If your app needs to read calendar events in addition to creating them, use [`NSCalendarsFullAccessUsageDescription`](/documentation/bundleresources/information-property-list/nscalendarsfullaccessusagedescription). If your app runs on iOS 17 or later and presents an [`EKEventEditViewController`](/documentation/EventKitUI/EKEventEditViewController) to allow people to create calendar events, you don’t need to request calendar access.\n\nImportant\n\nThis key is required if your app uses APIs that write to the person’s calendar data.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "17.0"
+      }
+    }
+  },
+  {
+    "id": "remindersfullaccess",
+    "name": "NSRemindersFullAccess Usage",
+    "description": "",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsremindersfullaccessusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSRemindersFullAccessUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access the person’s reminder data.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "17.0"
+      }
+    }
+  },
+  {
+    "id": "camera",
+    "name": "NSCamera Usage",
+    "description": "A message that tells the user why the app is requesting access to the device’s camera.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "camera"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSCameraUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access the device’s camera.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "microphone",
+    "name": "NSMicrophone Usage",
+    "description": "A message that tells the user why the app is requesting access to the device’s microphone.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "microphone"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSMicrophoneUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access the device’s microphone.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "contacts",
+    "name": "NSContacts Usage",
+    "description": "A message that tells the user why the app is requesting access to the user’s contacts.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "contacts"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSContactsUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access the user’s contacts.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "6.0"
+      }
+    }
+  },
+  {
+    "id": "faceid",
+    "name": "NSFaceID Usage",
+    "description": "A message that tells the user why the app is requesting the ability to authenticate with Face ID.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "face"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSFaceIDUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access Face ID. Also note that App Clips can’t use Face ID. For more information about functionality that’s unavailable to App Clips, see [Choosing the right functionality for your App Clip](/documentation/AppClip/choosing-the-right-functionality-for-your-app-clip).",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "11.0"
+      }
+    }
+  },
+  {
+    "id": "desktopfolder",
+    "name": "NSDesktopFolder Usage",
+    "description": "A message that tells the user why the app needs access to the user’s Desktop folder.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsdesktopfolderusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSDesktopFolderUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [
+          "tccutil"
+        ],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "documentsfolder",
+    "name": "NSDocumentsFolder Usage",
+    "description": "A message that tells the user why the app needs access to the user’s Documents folder.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsdocumentsfolderusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSDocumentsFolderUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [
+          "tccutil"
+        ],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "downloadsfolder",
+    "name": "NSDownloadsFolder Usage",
+    "description": "A message that tells the user why the app needs access to the user’s Downloads folder.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsdownloadsfolderusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSDownloadsFolderUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [
+          "tccutil"
+        ],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "networkvolumes",
+    "name": "NSNetworkVolumes Usage",
+    "description": "A message that tells the user why the app needs access to files on a network volume.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsnetworkvolumesusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSNetworkVolumesUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [
+          "tccutil"
+        ],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "removablevolumes",
+    "name": "NSRemovableVolumes Usage",
+    "description": "A message that tells the user why the app needs access to files on a removable volume.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsremovablevolumesusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSRemovableVolumesUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [
+          "tccutil"
+        ],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "fileproviderdomain",
+    "name": "NSFileProviderDomain Usage",
+    "description": "A message that tells the user why the app needs access to files managed by a file provider.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsfileproviderdomainusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSFileProviderDomainUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [
+          "tccutil"
+        ],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "gkfriendlist",
+    "name": "NSGKFriendList Usage",
+    "description": "A message that tells the user why the app needs access to their Game Center friends list.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsgkfriendlistusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSGKFriendListUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "14.5"
+      }
+    }
+  },
+  {
+    "id": "healthclinicalhealthrecordsshare",
+    "name": "NSHealthClinicalHealthRecordsShare Usage",
+    "description": "",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "health"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSHealthClinicalHealthRecordsShareUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access the user’s clinical records.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "12.0"
+      }
+    }
+  },
+  {
+    "id": "healthshare",
+    "name": "NSHealthShare Usage",
+    "description": "",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "health"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSHealthShareUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access the user’s heath data.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "8.0"
+      }
+    }
+  },
+  {
+    "id": "healthupdate",
+    "name": "NSHealthUpdate Usage",
+    "description": "",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "health"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSHealthUpdateUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that update the user’s health data.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "8.0"
+      }
+    }
+  },
+  {
+    "id": "homekit",
+    "name": "NSHomeKit Usage",
+    "description": "A message that tells the user why the app is requesting access to the user’s HomeKit configuration data.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nshomekitusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSHomeKitUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access the user’s HomeKit configuration data.\n\nFor more information about using HomeKit in your app, see [Enabling HomeKit in your app](/documentation/HomeKit/enabling-homekit-in-your-app).",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "8.0"
+      }
+    }
+  },
+  {
+    "id": "locationalwaysandwheninuse",
+    "name": "NSLocationAlwaysAndWhenInUse Usage",
+    "description": "A message that tells the user why the app is requesting access to the user’s location information at all times.",
+    "deprecated": true,
+    "replacement": null,
+    "categories": [
+      "location"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSLocationAlwaysAndWhenInUseUsageDescription",
+        "privacyDescription": "Use this key if your iOS app accesses location information while running in the background. If your app only needs location information when in the foreground, use [`NSLocationWhenInUseUsageDescription`](/documentation/bundleresources/information-property-list/nslocationwheninuseusagedescription) instead. For more information, see [Choosing the Location Services Authorization to Request](/documentation/bundleresources/choosing-the-location-services-authorization-to-request).\n\nIf you need location information in a macOS app, use [`NSLocationUsageDescription`](/documentation/bundleresources/information-property-list/nslocationusagedescription) instead. If your iOS app deploys to versions earlier than iOS 11, see [`NSLocationAlwaysUsageDescription`](/documentation/bundleresources/information-property-list/nslocationalwaysusagedescription).\n\nImportant\n\nThis key is required if your iOS app uses APIs that access the user’s location information at all times.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "11.0"
+      }
+    },
+    "deprecationInfo": {
+      "deprecatedSince": "",
+      "platforms": {
+        "ios": {
+          "sinceVersion": "",
+          "removalVersion": ""
+        }
+      }
+    }
+  },
+  {
+    "id": "location",
+    "name": "NSLocation Usage",
+    "description": "A message that tells the user why the app is requesting access to the user’s location information.",
+    "deprecated": true,
+    "replacement": null,
+    "categories": [
+      "location"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSLocationUsageDescription",
+        "privacyDescription": "Use this key in a macOS app that accesses the user’s location information. In an iOS app, use [`NSLocationWhenInUseUsageDescription`](/documentation/bundleresources/information-property-list/nslocationwheninuseusagedescription) or [`NSLocationAlwaysAndWhenInUseUsageDescription`](/documentation/bundleresources/information-property-list/nslocationalwaysandwheninuseusagedescription) instead.\n\nImportant\n\nThis key is required if your macOS app uses APIs that access the user’s location information.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "6.0"
+      }
+    },
+    "deprecationInfo": {
+      "deprecatedSince": "",
+      "platforms": {
+        "ios": {
+          "sinceVersion": "",
+          "removalVersion": ""
+        }
+      }
+    }
+  },
+  {
+    "id": "locationwheninuse",
+    "name": "NSLocationWhenInUse Usage",
+    "description": "A message that tells the user why the app is requesting access to the user’s location information while the app is running in the foreground.",
+    "deprecated": true,
+    "replacement": null,
+    "categories": [
+      "location"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSLocationWhenInUseUsageDescription",
+        "privacyDescription": "Use this key if your iOS app accesses location information only when running in the foreground. If your app needs location information when in the background, use [`NSLocationAlwaysAndWhenInUseUsageDescription`](/documentation/bundleresources/information-property-list/nslocationalwaysandwheninuseusagedescription) instead. For more information, see [Choosing the Location Services Authorization to Request](/documentation/bundleresources/choosing-the-location-services-authorization-to-request).\n\nIf you need location information in a macOS app, use [`NSLocationUsageDescription`](/documentation/bundleresources/information-property-list/nslocationusagedescription) instead.\n\nImportant\n\nThis key is required if your iOS app uses APIs that access the user’s location information while the app is in use.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "11.0"
+      }
+    },
+    "deprecationInfo": {
+      "deprecatedSince": "",
+      "platforms": {
+        "ios": {
+          "sinceVersion": "",
+          "removalVersion": ""
+        }
+      }
+    }
+  },
+  {
+    "id": "applemusic",
+    "name": "NSAppleMusic Usage",
+    "description": "A message that tells the user why the app is requesting access to the user’s media library.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsapplemusicusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSAppleMusicUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "2.0"
+      }
+    }
+  },
+  {
+    "id": "motion",
+    "name": "NSMotion Usage",
+    "description": "A message that tells the user why the app is requesting access to the device’s motion data.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsmotionusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSMotionUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access the device’s motion data, including [`CMSensorRecorder`](/documentation/CoreMotion/CMSensorRecorder), [`CMPedometer`](/documentation/CoreMotion/CMPedometer), [`CMMotionActivityManager`](/documentation/CoreMotion/CMMotionActivityManager), and [`CMMovementDisorderManager`](/documentation/CoreMotion/CMMovementDisorderManager). If you don’t include this key, your app will crash when it attempts to access motion data.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "falldetection",
+    "name": "NSFallDetection Usage",
+    "description": "A message that tells the user why the app is requesting access to the device’s motion data.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsfalldetectionusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSFallDetectionUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "14.2"
+      }
+    }
+  },
+  {
+    "id": "localnetwork",
+    "name": "NSLocalNetwork Usage",
+    "description": "A message that tells the user why the app is requesting access to the local network.",
+    "deprecated": true,
+    "replacement": null,
+    "categories": [
+      "nslocalnetworkusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSLocalNetworkUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "14.0"
+      }
+    },
+    "deprecationInfo": {
+      "deprecatedSince": "",
+      "platforms": {
+        "ios": {
+          "sinceVersion": "",
+          "removalVersion": ""
+        }
+      }
+    }
+  },
+  {
+    "id": "nearbyinteraction",
+    "name": "NSNearbyInteraction Usage",
+    "description": "A message that tells the user why the app is requesting access to the local network.",
+    "deprecated": true,
+    "replacement": null,
+    "categories": [
+      "nsnearbyinteractionusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSNearbyInteractionUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "15.0"
+      }
+    },
+    "deprecationInfo": {
+      "deprecatedSince": "",
+      "platforms": {
+        "ios": {
+          "sinceVersion": "",
+          "removalVersion": ""
+        }
+      }
+    }
+  },
+  {
+    "id": "nfcreader",
+    "name": "NFCReader Usage",
+    "description": "A message that tells the user why the app is requesting access to the device’s NFC hardware.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nfcreaderusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NFCReaderUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "11.0"
+      }
+    }
+  },
+  {
+    "id": "photolibraryadd",
+    "name": "NSPhotoLibraryAdd Usage",
+    "description": "A message that tells the user why the app is requesting add-only access to the user’s photo library.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "photos"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSPhotoLibraryAddUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that have write access to the user’s photo library.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "11.0"
+      }
+    }
+  },
+  {
+    "id": "photolibrary",
+    "name": "NSPhotoLibrary Usage",
+    "description": "A message that tells the user why the app is requesting access to the user’s photo library.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "photos"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSPhotoLibraryUsageDescription",
+        "privacyDescription": "If your app only adds assets to the photo library and does not read assets, use the [`NSPhotoLibraryAddUsageDescription`](/documentation/bundleresources/information-property-list/nsphotolibraryaddusagedescription) key instead.\n\nImportant\n\nThis key is required if your app uses APIs that have read or write access to the user’s photo library.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "6.0"
+      }
+    }
+  },
+  {
+    "id": "appdata",
+    "name": "NSAppData Usage",
+    "description": "A message that tells the user why the app needs to access files in other apps’ sandbox containers.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsappdatausagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSAppDataUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "usertracking",
+    "name": "NSUserTracking Usage",
+    "description": "A message that tells the user why the app needs to access files in other apps’ sandbox containers.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "tracking"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSUserTrackingUsageDescription",
+        "privacyDescription": "If your app calls the App Tracking Transparency API, you must provide custom text, known as a _usage-description string_, which displays as a system-permission alert request. The usage-description string tells the user why the app is requesting permission to use data for tracking the user or the device. The user has the option to grant or deny the authorization request. If you don’t include a usage-description string, your app may crash when a user first launches it.\n\nMake sure your app requests permission to track sometime before tracking occurs. This could be at first launch or when using certain features in your app. For example, when signing on with a third-party SSO. For more information on asking permission to track, see [User privacy and data use](https://developer.apple.com/app-store/user-privacy-and-data-use/).\n\nSet the [`NSUserTrackingUsageDescription`](/documentation/bundleresources/information-property-list/nsusertrackingusagedescription) key in the [`Information Property List`](/documentation/bundleresources/information-property-list) (`Info.plist`):\n\n1.  Select your project’s `Info.plist` file in Xcode Project navigator.\n    \n2.  Modify the file using the Xcode Property List Editor: Privacy - Tracking Usage Description.\n    \n\n*   Use sentence-style capitalization and appropriate ending punctuation. Keep the text short and specific. You don’t need to include your app name because the system already identifies your app.\n    \n*   If the title is a sentence fragment, don’t add ending punctuation.\n    \n\nSee [Apple’s Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessing-user-data/) for example usage descriptions.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "14.0"
+      }
+    }
+  },
+  {
+    "id": "appleevents",
+    "name": "NSAppleEvents Usage",
+    "description": "A message that tells the user why the app is requesting the ability to send Apple events.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsappleeventsusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSAppleEventsUsageDescription",
+        "privacyDescription": "An app using Apple events to control another app might be able to gain access to sensitive user data. For example, the Mail app stores a lot of personal information in its local database that other apps can’t access directly. But because Mail can be automated with Apple events, other apps can use Mail to gain access to the data indirectly.\n\nImportant\n\nThis key is required if your app uses APIs that send Apple events.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "systemadministration",
+    "name": "NSSystemAdministration Usage",
+    "description": "A message that tells the user why the app needs to access files in other apps’ sandbox containers.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nssystemadministrationusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSSystemAdministrationUsageDescription",
+        "privacyDescription": "Use this key if your app uses certain APIs that manipulate system configuration, like [`ODRecordSetValue(_:_:_:_:)`](/documentation/OpenDirectory/ODRecordSetValue\\(_:_:_:_:\\)).\n\nImportant\n\nThis key is required if your app uses APIs that manipulate the system configuration.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "sensorkit",
+    "name": "NSSensorKit Usage",
+    "description": "",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nssensorkitusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSSensorKitUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "14.0"
+      }
+    }
+  },
+  {
+    "id": "siri",
+    "name": "NSSiri Usage",
+    "description": "A message that tells the user why the app is requesting to send user data to Siri.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "siri"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSSiriUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that send user data to Siri.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "10.0"
+      }
+    }
+  },
+  {
+    "id": "speechrecognition",
+    "name": "NSSpeechRecognition Usage",
+    "description": "A message that tells the user why the app is requesting to send user data to Apple’s speech recognition servers.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsspeechrecognitionusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSSpeechRecognitionUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that send user data to Apple’s speech recognition servers.",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "10.0"
+      }
+    }
+  },
+  {
+    "id": "videosubscriberaccount",
+    "name": "NSVideoSubscriberAccount Usage",
+    "description": "A message that tells the user why the app is requesting access to the user’s TV provider account.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsvideosubscriberaccountusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSVideoSubscriberAccountUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "worldsensing",
+    "name": "NSWorldSensing Usage",
+    "description": "A message that tells the user why the app is requesting access to image tracking, plane detection, or scene reconstruction.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsworldsensingusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSWorldSensingUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "handstracking",
+    "name": "NSHandsTracking Usage",
+    "description": "A message that tells the user why the app is requesting access to track the user’s hand position and location.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "tracking"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSHandsTrackingUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "7.0"
+      }
+    }
+  },
+  {
+    "id": "financialdata",
+    "name": "NSFinancialData Usage",
+    "description": "A message that tells the user why the app is requesting access to financial data stored in Wallet.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsfinancialdatausagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSFinancialDataUsageDescription",
+        "privacyDescription": "",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "17.4"
+      }
+    }
+  },
+  {
+    "id": "identity",
+    "name": "NSIdentity Usage",
+    "description": "A message that tells the user why the app is requesting identity information.",
+    "deprecated": false,
+    "replacement": null,
+    "categories": [
+      "nsidentityusagedescription"
+    ],
+    "platforms": {
+      "ios": {
+        "usageDescriptionKey": "NSIdentityUsageDescription",
+        "privacyDescription": "Important\n\nThis key is required if your app uses APIs that access identity information from Wallet.\n\nFor more information about requesting identity information, see [Requesting identity data from a Wallet pass](/documentation/PassKit/requesting-identity-data-from-a-wallet-pass). For design guidance, see [Human Interface Guidelines > Technologies > Wallet](https://developer.apple.com/design/human-interface-guidelines/technologies/wallet#identity-verification).",
+        "requiredDeviceCapabilities": [],
+        "minIosVersion": "16.0"
+      }
+    }
+  }
+]
