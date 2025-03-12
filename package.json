@@ -5,12 +5,23 @@
   "engines": {
     "node": ">=18"
   },
+  "packageManager": "pnpm@10.6.2",
   "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "check": "turbo run check",
+    "lint": "turbo run lint",
+    "fmt": "turbo run fmt",
+    "test": "turbo run test",
+    "test:cov": "turbo run test:cov",
+    "test:watch": "turbo run test:watch"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@lynx-js/rspeedy": "^0.8.3",
     "@rsbuild/core": "^1.2.16",
-    "@rslib/core": "^0.5.4"
+    "@rslib/core": "^0.5.4",
+    "turbo": "^2.4.4"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

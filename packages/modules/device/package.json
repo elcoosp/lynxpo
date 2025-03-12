@@ -23,7 +23,6 @@
     "access": "public"
   },
   "scripts": {
-    "postinstall": "pnpm exec lynxpo-nmi",
     "build": "rslib build",
     "dev": "rslib build --watch",
     "check": "biome check --write",
