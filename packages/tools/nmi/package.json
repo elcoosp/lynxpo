@@ -1,0 +1,39 @@
+{
+  "name": "@lynxpo/tools-nmi",
+  "author": "elcoosp <elcoosp@gmail.com>",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Native module installer for Lynx",
+  "bin": {
+    "lynxpo-nmi": "./dist/cjs/index.cjs"
+  },
+  "main": "./dist/cjs/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.cjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rslib build",
+    "dev": "rslib build --watch",
+    "check": "biome check --write",
+    "fmt": "biome format --write",
+    "test": "vitest run",
+    "test:watch": "vitest run --watch"
+  },
+  "devDependencies": {
+    "@elcoosp-configs/rslib": "2.1",
+    "@rslib/core": "^0.5.4",
+    "@types/node": "^22.13.10"
+  }
+}
