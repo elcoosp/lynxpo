@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "packages/playground"
+		},
+		{
+			"path": "packages/modules/device"
+		},
+		{
+			"path": "packages/plugins/ktts"
+		},
+		{
+			"path": "packages/tools/nmi"
+		},
+		{
+			"path": "packages/tools/aps"
+		}
+	],
+	"settings": {}
+}
