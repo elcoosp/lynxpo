@@ -35,23 +35,33 @@ interface ModuleInstallerConfig {
  */
 function detectProjectConfig(workspaceRoot: string): ProjectConfig {
   // Check for explorer project
-  const androidExplorerPath = path.join(workspaceRoot, "android/lynx_explorer");
-  const iosExplorerPath = path.join(workspaceRoot, "ios/lynx_explorer");
-
+  const explorerRoot = "src/lynx/explorer";
+  const androidExplorerPath = path.join(
+    workspaceRoot,
+    explorerRoot + "/android/lynx_explorer",
+  );
+  const iosExplorerPath = path.join(
+    workspaceRoot,
+    explorerRoot + "/darwin/ios/lynx_explorer",
+  );
   if (fs.existsSync(androidExplorerPath) && fs.existsSync(iosExplorerPath)) {
     return {
       type: "explorer",
       android: {
         modulesPath:
-          "android/lynx_explorer/src/main/java/com/lynx/explorer/modules",
-        buildGradlePath: "android/lynx_explorer/build.gradle",
+          explorerRoot +
+          "/android/lynx_explorer/src/main/java/com/lynx/explorer/modules",
+        buildGradlePath: explorerRoot + "/android/lynx_explorer/build.gradle",
         adapterFiles: ["LynxModuleAdapter.kt", "LynxModuleAdapter.java"],
       },
       ios: {
-        modulesPath: "ios/lynx_explorer/LynxExplorer/modules",
+        modulesPath:
+          explorerRoot + "/darwin/ios/lynx_explorer/LynxExplorer/modules",
         initFiles: [
-          "ios/lynx_explorer/LynxExplorer/LynxInitProcessor.swift",
-          "ios/lynx_explorer/LynxExplorer/AppDelegate.swift",
+          explorerRoot +
+            "/darwin/ios/lynx_explorer/LynxExplorer/LynxInitProcessor.swift",
+          explorerRoot +
+            "/darwin/ios/lynx_explorer/LynxExplorer/AppDelegate.swift",
         ],
       },
     };
@@ -64,13 +74,13 @@ function detectProjectConfig(workspaceRoot: string): ProjectConfig {
       type: "user-app",
       android: {
         modulesPath: path.join(
-          androidUserAppPath.appDir,
+          androidUserAppPath?.appDir as string,
           "src/main/java",
-          androidUserAppPath.packagePath,
+          androidUserAppPath?.packagePath as string,
           "modules",
         ),
         buildGradlePath: path.join(
-          androidUserAppPath.projectDir,
+          androidUserAppPath?.projectDir as string,
           "app/build.gradle",
         ),
         adapterFiles: [],

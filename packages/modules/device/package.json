@@ -35,8 +35,8 @@
   },
   "devDependencies": {
     "@lynxpo/tools-nmi": "workspace:*",
+    "@lynxpo/plugins-ktts": "workspace:*",
     "@elcoosp-configs/rslib": "2.1",
-    "@rslib/core": "^0.5.4",
-    "@lynxpo/plugins-ktts": "workspace:*"
+    "@rslib/core": "^0.5.4"
   }
 }
