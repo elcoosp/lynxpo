@@ -1,0 +1,43 @@
+{
+  "name": "@lynxpo/mods-device",
+  "author": "elcoosp <elcoosp@gmail.com>",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Device native module for Lynx",
+  "main": "./dist/cjs/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.cjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "android",
+    "ios"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "postinstall": "pnpm exec lynxpo-nmi",
+    "build": "rslib build",
+    "dev": "rslib build --watch",
+    "check": "biome check --write",
+    "fmt": "biome format --write",
+    "test": "vitest run",
+    "test:watch": "vitest run --watch"
+  },
+  "dependencies": {
+    "@lynx-js/react": "^0.105.1"
+  },
+  "devDependencies": {
+    "@lynxpo/tools-nmi": "workspace:*",
+    "@elcoosp-configs/rslib": "2.1",
+    "@rslib/core": "^0.5.4",
+    "@lynxpo/plugins-ktts": "workspace:*"
+  }
+}
