@@ -1,0 +1,8 @@
+language: Kotlin
+id: is-coroutine-fn-p
+rule:
+  kind: infix_expression
+  pattern: |
+    AsyncFunction("$NAME") Coroutine { $PARAMS ->
+      $$$BODY
+    }

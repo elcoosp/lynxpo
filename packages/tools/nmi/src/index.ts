@@ -1,3 +1,4 @@
+// FIXME: override package declaration to match explorer (or user-app name)
 import * as fs from "fs";
 import * as path from "path";
 

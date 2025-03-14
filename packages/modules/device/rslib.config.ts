@@ -6,8 +6,9 @@ export default defineConfig(async () => ({
     ...(await createRsLibConfig({ preset: 'dual', bundle: false })),
     plugins: [
         pluginKotlinToTS({
-            modules: [{
-                kotlinPath: './android/NativeDeviceModule.kt',
+            modules: [
+            {
+                kotlinPath: './android/DeviceModule.kt',
                 tsPath: './src/index.ts',
             }]
         })

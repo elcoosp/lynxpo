@@ -1,0 +1,79 @@
+id: package
+language: Kotlin
+rule:
+  kind: package_header
+  pattern: package expo.modules.$_
+fix: |
+  // TODO add package
+  import com.lynx.jsbridge.LynxMethod
+  import com.lynx.jsbridge.LynxModule
+  import com.lynx.jsbridge.Promise
+  import com.lynx.tasm.behavior.LynxContext
+---
+
+id: imports
+language: Kotlin
+rule:
+  # TODO Replace expo.modules.core.{utilities} by lynxpo shared package subset (eg EmulatorUtilities)
+  pattern: import expo.modules.$_
+  # was pattern: import expo.modules.kotlin.$_
+fix: ""
+
+---
+
+id: module-base-class
+language: Kotlin
+rule:
+  kind: class_declaration
+  pattern: |
+    class $MODULE : Module() {
+        $$$BODY
+    }
+fix: |
+  class $MODULE(private val context: Context) : LynxModule(context) {
+    $$$BODY
+  }
+
+# Needed to split in two rules because the getter may be on the next line, and not correctly wrapped inside prop_decl
+---
+id: expo-context-prop-decl
+language: Kotlin
+rule:
+  kind: property_declaration
+  any:
+    - pattern: |
+        private val context: Context
+    - pattern: |
+        private val context
+  inside:
+    kind: class_body
+fix: |
+  private fun getContext(): Context {
+    val lynxContext = mContext as LynxContext
+    return lynxContext.getContext()
+  }
+
+---
+
+id: expo-context-getter
+language: Kotlin
+rule:
+  kind: getter
+  any:
+    - pattern: |
+        get() = requireNotNull(appContext.reactContext) {
+          "React Application Context is null"
+        }
+    - pattern: |
+        get() = appContext.reactContext ?: throw Exceptions.ReactContextLost()
+  inside:
+    kind: class_body
+fix: ""
+
+---
+id: module-name
+language: Kotlin
+rule:
+  kind: call_expression
+  pattern: Name("$NAME")
+fix: ""

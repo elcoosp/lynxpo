@@ -1,50 +1,33 @@
-// Auto-generated from NativeDeviceModule.kt
+// Auto-generated from DeviceModule.kt
 import { useEffect, useState } from "@lynx-js/react";
 
 
 
-export type NativeDeviceModule = {
-  isRunningOnEmulator(): boolean;
-  isDevice(): boolean;
-  brand(): string | null;
-  manufacturer(): string | null;
-  modelName(): string | null;
-  designName(): string | null;
-  productName(): string | null;
-  deviceYearClass(): number;
-  totalMemory(): number;
-  deviceType(): number;
-  osName(): string;
-  osVersion(): string | null;
-  platformApiLevel(): number;
-  getDeviceTypeAsync(): number;
-  getUptimeAsync(): number;
-  isRootedExperimentalAsync(): boolean;
-};
-
-export const getIsRunningOnEmulator = () => 
-  NativeModules.NativeDeviceModule.isRunningOnEmulator();
-
-export const useIsRunningOnEmulator = () => {
-  const [value, setValue] = useState<boolean>();
-  
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getIsRunningOnEmulator();
-      setValue(result);
-    };
-    
-    fetchData();
-  }, []);
-  
-  return value;
+export type DeviceModule = {
+  isDevice(): any;
+  brand(): any;
+  manufacturer(): any;
+  modelName(): any;
+  designName(): any;
+  productName(): any;
+  deviceYearClass(): any;
+  totalMemory(): any;
+  deviceType(): any;
+  supportedCpuArchitectures(): any;
+  osName(): any;
+  osVersion(): any;
+  osBuildId(): any;
+  osInternalBuildId(): any;
+  osBuildFingerprint(): any;
+  platformApiLevel(): any;
+  deviceName(): any;
 };
 
 export const getIsDevice = () => 
-  NativeModules.NativeDeviceModule.isDevice();
+  NativeModules.DeviceModule.isDevice();
 
 export const useIsDevice = () => {
-  const [value, setValue] = useState<boolean>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -59,10 +42,10 @@ export const useIsDevice = () => {
 };
 
 export const getBrand = () => 
-  NativeModules.NativeDeviceModule.brand();
+  NativeModules.DeviceModule.brand();
 
 export const useBrand = () => {
-  const [value, setValue] = useState<string | null>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -77,10 +60,10 @@ export const useBrand = () => {
 };
 
 export const getManufacturer = () => 
-  NativeModules.NativeDeviceModule.manufacturer();
+  NativeModules.DeviceModule.manufacturer();
 
 export const useManufacturer = () => {
-  const [value, setValue] = useState<string | null>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -95,10 +78,10 @@ export const useManufacturer = () => {
 };
 
 export const getModelName = () => 
-  NativeModules.NativeDeviceModule.modelName();
+  NativeModules.DeviceModule.modelName();
 
 export const useModelName = () => {
-  const [value, setValue] = useState<string | null>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -113,10 +96,10 @@ export const useModelName = () => {
 };
 
 export const getDesignName = () => 
-  NativeModules.NativeDeviceModule.designName();
+  NativeModules.DeviceModule.designName();
 
 export const useDesignName = () => {
-  const [value, setValue] = useState<string | null>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -131,10 +114,10 @@ export const useDesignName = () => {
 };
 
 export const getProductName = () => 
-  NativeModules.NativeDeviceModule.productName();
+  NativeModules.DeviceModule.productName();
 
 export const useProductName = () => {
-  const [value, setValue] = useState<string | null>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -149,10 +132,10 @@ export const useProductName = () => {
 };
 
 export const getDeviceYearClass = () => 
-  NativeModules.NativeDeviceModule.deviceYearClass();
+  NativeModules.DeviceModule.deviceYearClass();
 
 export const useDeviceYearClass = () => {
-  const [value, setValue] = useState<number>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -167,10 +150,10 @@ export const useDeviceYearClass = () => {
 };
 
 export const getTotalMemory = () => 
-  NativeModules.NativeDeviceModule.totalMemory();
+  NativeModules.DeviceModule.totalMemory();
 
 export const useTotalMemory = () => {
-  const [value, setValue] = useState<number>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -185,10 +168,10 @@ export const useTotalMemory = () => {
 };
 
 export const getDeviceType = () => 
-  NativeModules.NativeDeviceModule.deviceType();
+  NativeModules.DeviceModule.deviceType();
 
 export const useDeviceType = () => {
-  const [value, setValue] = useState<number>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -202,11 +185,29 @@ export const useDeviceType = () => {
   return value;
 };
 
+export const getSupportedCpuArchitectures = () => 
+  NativeModules.DeviceModule.supportedCpuArchitectures();
+
+export const useSupportedCpuArchitectures = () => {
+  const [value, setValue] = useState<any>();
+  
+  useEffect(() => {
+    const fetchData = () => {
+      const result = getSupportedCpuArchitectures();
+      setValue(result);
+    };
+    
+    fetchData();
+  }, []);
+  
+  return value;
+};
+
 export const getOsName = () => 
-  NativeModules.NativeDeviceModule.osName();
+  NativeModules.DeviceModule.osName();
 
 export const useOsName = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -221,10 +222,10 @@ export const useOsName = () => {
 };
 
 export const getOsVersion = () => 
-  NativeModules.NativeDeviceModule.osVersion();
+  NativeModules.DeviceModule.osVersion();
 
 export const useOsVersion = () => {
-  const [value, setValue] = useState<string | null>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -238,11 +239,65 @@ export const useOsVersion = () => {
   return value;
 };
 
+export const getOsBuildId = () => 
+  NativeModules.DeviceModule.osBuildId();
+
+export const useOsBuildId = () => {
+  const [value, setValue] = useState<any>();
+  
+  useEffect(() => {
+    const fetchData = () => {
+      const result = getOsBuildId();
+      setValue(result);
+    };
+    
+    fetchData();
+  }, []);
+  
+  return value;
+};
+
+export const getOsInternalBuildId = () => 
+  NativeModules.DeviceModule.osInternalBuildId();
+
+export const useOsInternalBuildId = () => {
+  const [value, setValue] = useState<any>();
+  
+  useEffect(() => {
+    const fetchData = () => {
+      const result = getOsInternalBuildId();
+      setValue(result);
+    };
+    
+    fetchData();
+  }, []);
+  
+  return value;
+};
+
+export const getOsBuildFingerprint = () => 
+  NativeModules.DeviceModule.osBuildFingerprint();
+
+export const useOsBuildFingerprint = () => {
+  const [value, setValue] = useState<any>();
+  
+  useEffect(() => {
+    const fetchData = () => {
+      const result = getOsBuildFingerprint();
+      setValue(result);
+    };
+    
+    fetchData();
+  }, []);
+  
+  return value;
+};
+
 export const getPlatformApiLevel = () => 
-  NativeModules.NativeDeviceModule.platformApiLevel();
+  NativeModules.DeviceModule.platformApiLevel();
 
 export const usePlatformApiLevel = () => {
-  const [value, setValue] = useState<number>();
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
@@ -256,51 +311,15 @@ export const usePlatformApiLevel = () => {
   return value;
 };
 
-export const getGetDeviceTypeAsync = () => 
-  NativeModules.NativeDeviceModule.getDeviceTypeAsync();
+export const getDeviceName = () => 
+  NativeModules.DeviceModule.deviceName();
 
-export const useGetDeviceTypeAsync = () => {
-  const [value, setValue] = useState<number>();
+export const useDeviceName = () => {
+  const [value, setValue] = useState<any>();
   
   useEffect(() => {
     const fetchData = () => {
-      const result = getGetDeviceTypeAsync();
-      setValue(result);
-    };
-    
-    fetchData();
-  }, []);
-  
-  return value;
-};
-
-export const getGetUptimeAsync = () => 
-  NativeModules.NativeDeviceModule.getUptimeAsync();
-
-export const useGetUptimeAsync = () => {
-  const [value, setValue] = useState<number>();
-  
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getGetUptimeAsync();
-      setValue(result);
-    };
-    
-    fetchData();
-  }, []);
-  
-  return value;
-};
-
-export const getIsRootedExperimentalAsync = () => 
-  NativeModules.NativeDeviceModule.isRootedExperimentalAsync();
-
-export const useIsRootedExperimentalAsync = () => {
-  const [value, setValue] = useState<boolean>();
-  
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getIsRootedExperimentalAsync();
+      const result = getDeviceName();
       setValue(result);
     };
     

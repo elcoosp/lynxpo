@@ -1,0 +1,35 @@
+language: Kotlin
+id: constants-to-lynx-methods
+rewriters:
+  - id: constant-to-method
+    rule:
+      pattern: |
+        "$NAME" to $METHOD_BODY
+      kind: infix_expression
+      inside:
+        kind: value_argument
+        inside:
+          kind: value_arguments
+          inside:
+            kind: call_suffix
+    fix: |
+      @LynxMethod
+      fun $NAME() = $METHOD_BODY
+
+rule:
+  # TODO does not work if there is no constants
+  pattern: |
+    override fun definition() = ModuleDefinition {
+      Constants {
+        return@Constants mapOf($$$CONSTANTS_ARGS)
+      }
+    }
+
+transform:
+  METHODS:
+    rewrite:
+      rewriters: [constant-to-method]
+      source: $$$CONSTANTS_ARGS
+      joinBy: ""
+fix: |
+  $METHODS
