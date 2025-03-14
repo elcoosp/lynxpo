@@ -1,0 +1,14 @@
+[
+  {
+    "rule": "method-existence",
+    "message": "Method 'isDevice' exists in Kotlin but not in Swift",
+    "severity": "error",
+    "details": null
+  },
+  {
+    "rule": "method-existence",
+    "message": "Method 'isDevicef' exists in Swift but not in Kotlin",
+    "severity": "error",
+    "details": null
+  }
+]
