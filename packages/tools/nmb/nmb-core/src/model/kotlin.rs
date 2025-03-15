@@ -7,25 +7,6 @@ use super::{
     UnifiedType, UnifiedTypeInfo, UnifiedTypeKind,
 };
 
-/// Maps Kotlin type names to TypeScript types.
-fn map_kotlin_type(type_name: &str) -> &'static str {
-    match type_name {
-        "kotlin.Int" => "number",
-        "kotlin.Long" => "number",
-        "kotlin.Float" => "number",
-        "kotlin.Double" => "number",
-        "kotlin.Boolean" => "boolean",
-        "kotlin.String" => "string",
-        "kotlin.Unit" => "void",
-        "kotlin.Nothing" => "never",
-        "kotlin.Array" => "Array",
-        "kotlin.collections.List" => "Array",
-        "kotlin.collections.Map" => "Record",
-        "kotlin.Any" => "any",
-        _ => "unknown",
-    }
-}
-
 /// Determines the unified type kind from a Kotlin type name.
 fn determine_type_kind(type_name: &str) -> UnifiedTypeKind {
     match type_name {

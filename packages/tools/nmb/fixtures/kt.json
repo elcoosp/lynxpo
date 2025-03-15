@@ -3,6 +3,38 @@
     "name": "DeviceModule",
     "methods": [
         {
+            "name": "useTypeInfo",
+            "returnType": {
+                "fullName": "kotlin.Boolean",
+                "name": "Boolean",
+                "isNullable": false,
+                "typeArguments": [],
+                "customReturnHint": null,
+                "doc": ""
+            },
+            "parameters": [
+                {
+                    "name": "e",
+                    "type": {
+                        "fullName": "lynxpo.ktts.model.TypeInfo",
+                        "name": "TypeInfo",
+                        "isNullable": false,
+                        "typeArguments": [],
+                        "customReturnHint": null,
+                        "doc": ""
+                    },
+                    "hasDefaultValue": false,
+                    "doc": ""
+                }
+            ],
+            "receiverType": null,
+            "visibility": "PUBLIC",
+            "isExtension": false,
+            "isInline": false,
+            "isAsync": false,
+            "doc": "Is it a device ? superdoc"
+        },
+        {
             "name": "isDevice",
             "returnType": {
                 "fullName": "kotlin.Boolean",
@@ -18,7 +50,7 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": "Is it a device ? superdoc"
+            "doc": ""
         },
         {
             "name": "brand",
@@ -357,6 +389,90 @@
                 }
             ],
             "doc": "DeviceType superdoc"
+        },
+        {
+            "fullName": "lynxpo.ktts.model.TypeInfo",
+            "name": "TypeInfo",
+            "kind": "CLASS",
+            "propertyDefinitions": [
+                {
+                    "name": "customReturnHint",
+                    "type": {
+                        "fullName": "kotlin.String",
+                        "name": "String",
+                        "isNullable": true,
+                        "typeArguments": [],
+                        "customReturnHint": null,
+                        "doc": ""
+                    }
+                },
+                {
+                    "name": "doc",
+                    "type": {
+                        "fullName": "kotlin.String",
+                        "name": "String",
+                        "isNullable": false,
+                        "typeArguments": [],
+                        "customReturnHint": null,
+                        "doc": ""
+                    }
+                },
+                {
+                    "name": "fullName",
+                    "type": {
+                        "fullName": "kotlin.String",
+                        "name": "String",
+                        "isNullable": false,
+                        "typeArguments": [],
+                        "customReturnHint": null,
+                        "doc": ""
+                    }
+                },
+                {
+                    "name": "isNullable",
+                    "type": {
+                        "fullName": "kotlin.Boolean",
+                        "name": "Boolean",
+                        "isNullable": false,
+                        "typeArguments": [],
+                        "customReturnHint": null,
+                        "doc": ""
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": {
+                        "fullName": "kotlin.String",
+                        "name": "String",
+                        "isNullable": false,
+                        "typeArguments": [],
+                        "customReturnHint": null,
+                        "doc": ""
+                    }
+                },
+                {
+                    "name": "typeArguments",
+                    "type": {
+                        "fullName": "kotlin.collections.List",
+                        "name": "List",
+                        "isNullable": false,
+                        "typeArguments": [
+                            {
+                                "fullName": "lynxpo.ktts.model.TypeInfo",
+                                "name": "TypeInfo",
+                                "isNullable": false,
+                                "typeArguments": [],
+                                "customReturnHint": null,
+                                "doc": ""
+                            }
+                        ],
+                        "customReturnHint": null,
+                        "doc": ""
+                    }
+                }
+            ],
+            "enumValues": [],
+            "doc": ""
         }
     ],
     "doc": "DeviceModule superdoc"

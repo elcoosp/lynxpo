@@ -1,5 +1,6 @@
 pub mod gen;
 use anyhow::Result;
+use log::*;
 use nmb_core::model::*;
 use ts_quote::{ts_string, TSSource, TS};
 
@@ -33,7 +34,22 @@ pub fn generate_typescript(unified_info: &UnifiedTypeInfo) -> Result<String> {
     let implementations = unified_info
         .methods
         .iter()
-        .map(|method| generate_impls_from_method(method, unified_info).unwrap())
+        .map(|method| {
+            match generate_impls_from_method(method, unified_info){
+                Ok(x) => x,
+                Err(e) => {
+                    match e.to_string().starts_with("Expected '=>', got ':'"){
+                        true => {
+                            error!("Error while generating impl for `{}` likely caused by missing/incorrect method.return_type.name", method.name)
+                        },
+                        false => {
+                            error!("Unexpected while generating impl for `{}`", method.name)
+                        },
+                    };
+                    error!("{} {:#?}", method.name, method);
+                    panic!("{e}")
+                },
+            }})
         .collect::<Vec<_>>()
         .join("\n");
     let react_imports = ["useState", "useCallback", "useEffect"].join(", ");

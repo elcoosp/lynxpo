@@ -7,23 +7,6 @@ use super::{
     UnifiedType, UnifiedTypeInfo, UnifiedTypeKind,
 };
 
-/// Maps Swift type names to TypeScript types.
-fn map_swift_type(type_name: &str) -> &'static str {
-    match type_name {
-        "Swift.Int" | "Swift.Int32" | "Swift.Int64" => "number",
-        "Swift.Float" | "Swift.Double" => "number",
-        "Swift.Bool" => "boolean",
-        "Swift.String" => "string",
-        "Swift.Void" => "void",
-        "Swift.Never" => "never",
-        "Swift.Array" => "Array",
-        "Swift.Dictionary" => "Record",
-        "Swift.Optional" => "null", // Will be handled separately
-        "Swift.Any" => "any",
-        _ => "unknown",
-    }
-}
-
 /// Determines the unified type kind from a Swift type name.
 fn determine_type_kind(type_name: &str) -> UnifiedTypeKind {
     match type_name {
