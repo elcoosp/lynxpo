@@ -11,8 +11,8 @@ pub fn check_type_compatibility(
     let mut results = Vec::new();
 
     // Create lookup maps for types
-    let kotlin_types_map: std::collections::HashMap<String, &UnifiedType> =
-        kotlin.types.iter().map(|t| (t.name.clone(), t)).collect();
+    // let kotlin_types_map: std::collections::HashMap<String, &UnifiedType> =
+    //     kotlin.types.iter().map(|t| (t.name.clone(), t)).collect();
 
     let swift_types_map: std::collections::HashMap<String, &UnifiedType> =
         swift.types.iter().map(|t| (t.name.clone(), t)).collect();

@@ -1,3 +1,4 @@
+pub mod gen;
 use anyhow::Result;
 use nmb_core::model::*;
 use ts_quote::{ts_string, TSSource, TS};
@@ -39,10 +40,11 @@ pub fn generate_typescript(unified_info: &UnifiedTypeInfo) -> Result<String> {
 
     // Generate function definitions for all methods
     for method in &unified_info.methods {
-        let method_def = generate_ts_method(method).unwrap();
+        let method_def = generate_ts_method(method, unified_info).unwrap();
         ts_content.push_str(&method_def);
         ts_content.push('\n');
     }
+
     // Parse and format the generated TypeScript
     let parsed = TS::from_source(ts_content).unwrap();
     let formatted = parsed.formatted(None).unwrap();
@@ -122,15 +124,22 @@ fn generate_ts_type(type_info: &UnifiedType) -> Result<String, Box<dyn std::erro
 }
 
 /// Generates TypeScript method/function definition
-fn generate_ts_method(method: &UnifiedMethod) -> Result<String, Box<dyn std::error::Error>> {
+fn generate_ts_method(
+    method: &UnifiedMethod,
+    unified_info: &UnifiedTypeInfo,
+) -> Result<String, Box<dyn std::error::Error>> {
     let params = method
         .parameters
         .iter()
         .map(|param| {
             let type_name = get_ts_type_name(&param.type_info);
             let optional = if param.has_default_value { "?" } else { "" };
-            format!("{}{}: {}", param.name, optional, type_name)
+            (format!("{}{}", param.name, optional), type_name)
         })
+        .collect::<Vec<_>>();
+    let params_str = params
+        .iter()
+        .map(|(name, ty)| format!("{}: {}", name, ty))
         .collect::<Vec<_>>()
         .join(", ");
 
@@ -142,7 +151,7 @@ fn generate_ts_method(method: &UnifiedMethod) -> Result<String, Box<dyn std::err
     };
 
     let doc_comment = if !method.doc.is_empty() {
-        let mut doc = method.doc.to_string();
+        let doc = method.doc.to_string();
         // TODO
         // for param in &method.parameters {
         //     if !param.doc.is_empty() {
@@ -159,12 +168,25 @@ fn generate_ts_method(method: &UnifiedMethod) -> Result<String, Box<dyn std::err
     let method_name = method.name.clone();
     let method_def = ts_string! {
         #doc_comment
-        export function #method_name(#params): #return_type {
+        export function #method_name(#params_str): #return_type {
 
         }
     };
-
-    Ok(method_def)
+    let hooks = gen::hooks::generate_hooks(&gen::hooks::HookConfig {
+        native_module_name: unified_info.module_name.clone(),
+        method_name,
+        return_type,
+        params: params
+            .into_iter()
+            .map(|(name, type_name)| gen::hooks::Param { name, type_name })
+            .collect::<Vec<_>>(),
+        strategy: gen::hooks::HookGenerationStrategy::Direct,
+        is_promise: true,
+    })?;
+    Ok(ts_string! {
+        #method_def
+        #hooks
+    })
 }
 
 /// Converts a UnifiedType to a TypeScript type name
