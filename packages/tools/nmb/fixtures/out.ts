@@ -1,14 +1,11 @@
 /**
- * Generated TypeScript definitions from Swift code
- * Module: DeviceModule
+ * Generated TypeScript definitions from Lynx Native Module : DeviceModule
  */
 
 /**
  * DeviceModule superdoc
  */
-/**
- * DeviceType superdoc
- */
+
 export enum DeviceType {
   /**
    * DeviceType.UNKNOWN field superdoc
@@ -23,35 +20,19 @@ export enum DeviceType {
 /**
  * Is it a device ? superdoc
  */
-export function isDevice(): Boolean;
-
-export function brand(): String;
-
-export function manufacturer(): String;
-
-export function modelName(): String;
-
-export function designName(): String;
-
-export function productName(): String;
-
-export function totalMemory(): Long;
-
-export function deviceType(): DeviceType;
-
-export function supportedCpuArchitectures(): Array<String> | null;
-
-export function osName(): String;
-
-export function osVersion(): String;
-
-export function osBuildId(): String;
-
-export function osInternalBuildId(): String;
-
-export function osBuildFingerprint(): String;
-
-export function platformApiLevel(): Int;
-
-export function deviceName(): String;
-
+export function isDevice(): boolean {}
+export function brand(): string {}
+export function manufacturer(): string {}
+export function modelName(): string {}
+export function designName(): string {}
+export function productName(): string {}
+export function totalMemory(): number {}
+export function deviceType(): DeviceType {}
+export function supportedCpuArchitectures(): string[] | null {}
+export function osName(): string {}
+export function osVersion(): string {}
+export function osBuildId(): string {}
+export function osInternalBuildId(): string {}
+export function osBuildFingerprint(): string {}
+export function platformApiLevel(): number {}
+export function deviceName(): string {}

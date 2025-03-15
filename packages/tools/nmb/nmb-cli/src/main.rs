@@ -1,6 +1,7 @@
 //! CLI tool for comparing Kotlin and Swift type information and generating TypeScript.
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
+use log::*;
 use nmb_core::{
     load_type_info,
     model::{Language, UnifiedTypeInfo},
@@ -82,7 +83,7 @@ fn main() -> Result<()> {
             let kotlin_unified = to_unified_model(kotlin_info);
             let swift_unified = to_unified_model(swift_info);
 
-            println!(
+            info!(
                 "Comparing Kotlin module '{}' with Swift module '{}'",
                 kotlin_unified.module_name, swift_unified.module_name
             );
@@ -111,14 +112,17 @@ fn main() -> Result<()> {
 
             let unified = to_unified_model(type_info);
 
-            println!("Generating TypeScript for module '{}'", unified.module_name);
+            info!(
+                "Generating TypeScript for '{}', from language: {:?}",
+                unified.module_name, unified.language
+            );
 
             let ts_content = generate_typescript(&unified).unwrap();
 
             std::fs::write(output, ts_content)
                 .with_context(|| format!("Failed to write TypeScript to {:?}", output))?;
 
-            println!("TypeScript generated successfully: {:?}", output);
+            info!("TypeScript generated successfully: {:?}", output);
 
             Ok(())
         }
@@ -153,7 +157,7 @@ fn main() -> Result<()> {
 
             validate_structure(&unified)?;
 
-            println!(
+            info!(
                 "Validation successful for {:?} module '{}'",
                 unified.language, unified.module_name
             );
@@ -169,28 +173,28 @@ fn print_lint_results(results: &[LintResult]) {
         .iter()
         .partition(|r| r.severity == nmb_lint::Severity::Error);
 
-    println!(
+    info!(
         "\nFound {} errors and {} warnings.",
         errors.len(),
         warnings.len()
     );
 
     if !errors.is_empty() {
-        println!("\nERRORS:");
+        error!("\nERRORS:");
         for error in &errors {
-            println!("  • {}", error.message);
+            error!("  • {}", error.message);
             if let Some(details) = &error.details {
-                println!("    {}", details);
+                error!("    {}", details);
             }
         }
     }
 
     if !warnings.is_empty() {
-        println!("\nWARNINGS:");
+        warn!("\nWARNINGS:");
         for warning in &warnings {
-            println!("  • {}", warning.message);
+            warn!("  • {}", warning.message);
             if let Some(details) = &warning.details {
-                println!("    {}", details);
+                warn!("    {}", details);
             }
         }
     }
@@ -201,7 +205,7 @@ fn save_lint_report(results: &[LintResult], path: &PathBuf) -> Result<()> {
     let json = serde_json::to_string_pretty(results)?;
     std::fs::write(path, json)
         .with_context(|| format!("Failed to write lint report to {:?}", path))?;
-    println!("Lint report saved to {:?}", path);
+    info!("Lint report saved to {:?}", path);
     Ok(())
 }
 

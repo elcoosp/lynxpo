@@ -1,162 +1,129 @@
 use anyhow::Result;
 use nmb_core::model::*;
+use ts_quote::{ts_string, TSSource, TS};
+
+fn doc_wrap(doc: String) -> String {
+    format!(
+        "
+/**
+ * {doc}
+ */
+"
+    )
+    .to_string()
+}
 /// Generates TypeScript type definitions from unified type information
 pub fn generate_typescript(unified_info: &UnifiedTypeInfo) -> Result<String> {
     let mut ts_content = String::new();
 
     // Add file header comment with metadata
-    ts_content.push_str(&format!(
-        "/**\n * Generated TypeScript definitions from {} code\n * Module: {}\n */\n\n",
-        match unified_info.language {
-            Language::Kotlin => "Kotlin",
-            Language::Swift => "Swift",
-        },
-        unified_info.module_name
-    ));
+    let module_name = unified_info.module_name.clone();
+    let header = doc_wrap(
+        ts_string! {Generated TypeScript definitions from Lynx Native Module: #module_name}.into(),
+    );
+    ts_content.push_str(&header);
 
-    // Add documentation if available
+    // Add module documentation if available
     if !unified_info.doc.is_empty() {
-        ts_content.push_str(&format!(
-            "/**\n * {}\n */\n",
-            unified_info.doc.replace("\n", "\n * ")
-        ));
+        ts_content.push('\n');
+        ts_content.push_str(&doc_wrap(unified_info.doc.to_string()));
+        ts_content.push('\n');
     }
 
     // Generate type definitions for all types
     for type_info in &unified_info.types {
-        ts_content.push_str(&generate_ts_type(type_info).unwrap());
+        let type_def = generate_ts_type(type_info).unwrap();
+        ts_content.push_str(&type_def);
         ts_content.push('\n');
     }
 
     // Generate function definitions for all methods
     for method in &unified_info.methods {
-        ts_content.push_str(&generate_ts_method(method).unwrap());
+        let method_def = generate_ts_method(method).unwrap();
+        ts_content.push_str(&method_def);
         ts_content.push('\n');
     }
+    // Parse and format the generated TypeScript
+    let parsed = TS::from_source(ts_content).unwrap();
+    let formatted = parsed.formatted(None).unwrap();
 
-    Ok(ts_content)
+    Ok(formatted)
 }
 
 /// Generates TypeScript type definition for a unified type
 fn generate_ts_type(type_info: &UnifiedType) -> Result<String, Box<dyn std::error::Error>> {
-    let mut ts_type = String::new();
-
-    // Add documentation if available
-    if !type_info.doc.is_empty() {
-        ts_type.push_str(&format!(
-            "/**\n * {}\n */\n",
-            type_info.doc.replace("\n", "\n * ")
-        ));
-    }
-
-    match type_info.kind {
+    let ts_type = match type_info.kind {
         UnifiedTypeKind::Enum => {
-            // Generate enum type
-            ts_type.push_str(&format!("export enum {} {{\n", type_info.name));
-            const CONSTRUCTOR_PROP_INDEX: usize = 0;
-            let constr_ty = type_info.properties[CONSTRUCTOR_PROP_INDEX]
-                .type_info
-                .name
-                .clone();
-            println!("{type_info:#?}");
-            for enum_value in &type_info.enum_values {
-                // Add enum value documentation if available
-                if !enum_value.doc.is_empty() {
-                    ts_type.push_str(&format!(
-                        "  /**\n   * {}\n   */\n",
-                        enum_value.doc.replace("\n", "\n   * ")
-                    ));
+            let enum_name = &type_info.name;
+            let variants = type_info
+                .enum_values
+                .iter()
+                .map(|ev| {
+                    let doc = if !ev.doc.is_empty() {
+                        doc_wrap(ev.doc.to_string())
+                    } else {
+                        String::new()
+                    };
+
+                    const CONSTRUCTOR_PROP_INDEX: usize = 0;
+                    let constr_ty = &type_info.properties[CONSTRUCTOR_PROP_INDEX].type_info.name;
+                    let val = &ev.property_values[CONSTRUCTOR_PROP_INDEX];
+                    let val_maybe_str = match constr_ty.as_str() {
+                        "Int" => val.to_string(),
+                        "String" => format!("\"{val}\""),
+                        _ => panic!("Unsupported enum constructor type: {}", constr_ty),
+                    };
+                    let enum_variant_name = ev.name.clone();
+                    ts_string! {
+                        #doc
+                        #enum_variant_name = #val_maybe_str
+                    }
+                })
+                .collect::<Vec<_>>()
+                .join(",\n");
+
+            ts_string! {
+                export enum #enum_name {
+                    #variants
                 }
-                println!("{enum_value:#?}");
-                // There is no constructor in typescript
-                let val = enum_value.property_values[CONSTRUCTOR_PROP_INDEX].clone();
-                let val_maybe_str = match constr_ty.as_str() {
-                    "Int" => val.to_string(),
-                    "String" => format!("\"{val}\""),
-                    _ => panic!("Can not create a typescript enum with a member value of {val}"),
-                };
-                ts_type.push_str(&format!("  {} = {},\n", enum_value.name, val_maybe_str));
             }
-
-            ts_type.push_str("}\n");
         }
-        UnifiedTypeKind::Interface => {
-            // Generate interface type
-            ts_type.push_str(&format!("export interface {} {{\n", type_info.name));
+        UnifiedTypeKind::Interface | UnifiedTypeKind::Class | UnifiedTypeKind::Struct => {
+            let type_name = &type_info.name;
+            let properties = type_info
+                .properties
+                .iter()
+                .map(|prop| {
+                    let doc = if !prop.doc.is_empty() {
+                        doc_wrap(prop.doc.to_string())
+                    } else {
+                        String::new()
+                    };
+                    let prop_type = get_ts_type_name(&prop.type_info);
+                    let prop_name = prop.name.clone();
+                    ts_string! {
+                        #doc
+                        #prop_name: #prop_type
+                    }
+                })
+                .collect::<Vec<_>>()
+                .join(";\n");
 
-            for property in &type_info.properties {
-                // Add property documentation if available
-                if !property.doc.is_empty() {
-                    ts_type.push_str(&format!(
-                        "  /**\n   * {}\n   */\n",
-                        property.doc.replace("\n", "\n   * ")
-                    ));
+            ts_string! {
+                export interface #type_name {
+                    #properties
                 }
-
-                let property_type = get_ts_type_name(&property.type_info);
-                ts_type.push_str(&format!("  {}: {};\n", property.name, property_type));
             }
-
-            ts_type.push_str("}\n");
         }
-        UnifiedTypeKind::Class | UnifiedTypeKind::Struct => {
-            // Generate class or interface type
-            // For simplicity, we'll use interfaces for both classes and structs
-            ts_type.push_str(&format!("export interface {} {{\n", type_info.name));
-
-            for property in &type_info.properties {
-                // Add property documentation if available
-                if !property.doc.is_empty() {
-                    ts_type.push_str(&format!(
-                        "  /**\n   * {}\n   */\n",
-                        property.doc.replace("\n", "\n   * ")
-                    ));
-                }
-
-                let property_type = get_ts_type_name(&property.type_info);
-                ts_type.push_str(&format!("  {}: {};\n", property.name, property_type));
-            }
-
-            ts_type.push_str("}\n");
-        }
-        _ => {
-            // Handle other type kinds
-            // For primitive types, arrays, etc. we don't need to generate anything
-            return Ok(String::new());
-        }
-    }
+        _ => String::new(),
+    };
 
     Ok(ts_type)
 }
 
 /// Generates TypeScript method/function definition
 fn generate_ts_method(method: &UnifiedMethod) -> Result<String, Box<dyn std::error::Error>> {
-    let mut ts_method = String::new();
-
-    // Add documentation if available
-    if !method.doc.is_empty() {
-        ts_method.push_str(&format!("/**\n * {}\n", method.doc.replace("\n", "\n * ")));
-
-        // Add parameter documentation
-        for param in &method.parameters {
-            if !param.doc.is_empty() {
-                ts_method.push_str(&format!(" * @param {} {}\n", param.name, param.doc));
-            }
-        }
-
-        // Add return documentation
-        if !method.return_type.doc.is_empty() {
-            ts_method.push_str(&format!(" * @returns {}\n", method.return_type.doc));
-        }
-
-        ts_method.push_str(" */\n");
-    }
-
-    // Generate function signature
-    ts_method.push_str(&format!("export function {}(", method.name));
-
-    // Generate parameters
-    let params: Vec<String> = method
+    let params = method
         .parameters
         .iter()
         .map(|param| {
@@ -164,30 +131,44 @@ fn generate_ts_method(method: &UnifiedMethod) -> Result<String, Box<dyn std::err
             let optional = if param.has_default_value { "?" } else { "" };
             format!("{}{}: {}", param.name, optional, type_name)
         })
-        .collect();
+        .collect::<Vec<_>>()
+        .join(", ");
 
-    ts_method.push_str(&params.join(", "));
-
-    // Generate return type
     let return_type = get_ts_type_name(&method.return_type);
-    ts_method.push_str(&format!(
-        "): {}",
-        if method.is_async {
-            format!("Promise<{}>", return_type)
-        } else {
-            return_type
+    let return_type = if method.is_async {
+        format!("Promise<{}>", return_type)
+    } else {
+        return_type
+    };
+
+    let doc_comment = if !method.doc.is_empty() {
+        let mut doc = method.doc.to_string();
+        // TODO
+        // for param in &method.parameters {
+        //     if !param.doc.is_empty() {
+        //         doc.push_str(&format!("\n * @param {} {}", param.name, param.doc));
+        //     }
+        // }
+        // if !method.return_type.doc.is_empty() {
+        //     doc.push_str(&format!("\n * @returns {}", method.return_type.doc));
+        // }
+        doc_wrap(doc)
+    } else {
+        String::new()
+    };
+    let method_name = method.name.clone();
+    let method_def = ts_string! {
+        #doc_comment
+        export function #method_name(#params): #return_type {
+
         }
-    ));
+    };
 
-    // For a type definition file, we just need the signature
-    ts_method.push_str(";\n");
-
-    Ok(ts_method)
+    Ok(method_def)
 }
 
 /// Converts a UnifiedType to a TypeScript type name
 fn get_ts_type_name(type_info: &UnifiedType) -> String {
-    // Handle nullable types
     let type_suffix = if type_info.is_nullable { " | null" } else { "" };
 
     let base_type = match type_info.kind {
@@ -229,17 +210,13 @@ fn get_ts_type_name(type_info: &UnifiedType) -> String {
             }
         }
         _ => {
-            // For custom types, use the name directly
             let type_name = type_info.name.clone();
-
-            // Handle generics
             if !type_info.type_arguments.is_empty() {
                 let generic_args: Vec<String> = type_info
                     .type_arguments
                     .iter()
                     .map(get_ts_type_name)
                     .collect();
-
                 format!("{}<{}>", type_name, generic_args.join(", "))
             } else {
                 type_name

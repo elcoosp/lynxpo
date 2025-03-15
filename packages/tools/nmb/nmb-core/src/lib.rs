@@ -27,8 +27,9 @@ pub fn detect_language(info: &model::TypeInfoFile) -> model::Language {
 
 /// Creates a unified representation from either Kotlin or Swift type info.
 pub fn to_unified_model(info: model::TypeInfoFile) -> model::UnifiedTypeInfo {
-    match detect_language(&info) {
-        model::Language::Kotlin => model::kotlin::to_unified(&info),
-        model::Language::Swift => model::swift::to_unified(&info),
-    }
+    // match detect_language(&info) {
+    // model::Language::Kotlin =>
+    model::kotlin::to_unified(&info)
+    // model::Language::Swift => model::swift::to_unified(&info),
+    // }
 }

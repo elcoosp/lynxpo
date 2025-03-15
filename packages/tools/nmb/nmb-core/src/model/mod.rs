@@ -30,7 +30,9 @@ pub struct TypeInfoFile {
 
 impl TypeInfoFile {
     /// Checks if this file has Kotlin-specific fields or patterns.
+    // FIXME: broken
     pub fn has_kotlin_specific_fields(&self) -> bool {
+        unimplemented!();
         // Look for Kotlin-specific patterns
         self.methods.iter().any(|m| m.is_extension || m.is_async)
             || self
