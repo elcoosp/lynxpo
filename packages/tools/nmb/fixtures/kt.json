@@ -3,38 +3,6 @@
     "name": "DeviceModule",
     "methods": [
         {
-            "name": "useTypeInfo",
-            "returnType": {
-                "fullName": "kotlin.Boolean",
-                "name": "Boolean",
-                "isNullable": false,
-                "typeArguments": [],
-                "customReturnHint": null,
-                "doc": ""
-            },
-            "parameters": [
-                {
-                    "name": "e",
-                    "type": {
-                        "fullName": "lynxpo.ktts.model.TypeInfo",
-                        "name": "TypeInfo",
-                        "isNullable": false,
-                        "typeArguments": [],
-                        "customReturnHint": null,
-                        "doc": ""
-                    },
-                    "hasDefaultValue": false,
-                    "doc": ""
-                }
-            ],
-            "receiverType": null,
-            "visibility": "PUBLIC",
-            "isExtension": false,
-            "isInline": false,
-            "isAsync": false,
-            "doc": "Is it a device ? superdoc"
-        },
-        {
             "name": "isDevice",
             "returnType": {
                 "fullName": "kotlin.Boolean",
@@ -42,7 +10,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -50,7 +25,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 68,
+                "startColumn": 0,
+                "endLine": 68,
+                "endColumn": 8
+            }
         },
         {
             "name": "brand",
@@ -60,7 +42,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -68,7 +57,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 69,
+                "startColumn": 0,
+                "endLine": 69,
+                "endColumn": 5
+            }
         },
         {
             "name": "manufacturer",
@@ -78,7 +74,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -86,7 +89,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 70,
+                "startColumn": 0,
+                "endLine": 70,
+                "endColumn": 12
+            }
         },
         {
             "name": "modelName",
@@ -96,7 +106,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -104,7 +121,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 71,
+                "startColumn": 0,
+                "endLine": 71,
+                "endColumn": 9
+            }
         },
         {
             "name": "designName",
@@ -114,7 +138,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -122,7 +153,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 72,
+                "startColumn": 0,
+                "endLine": 72,
+                "endColumn": 10
+            }
         },
         {
             "name": "productName",
@@ -132,7 +170,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -140,7 +185,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 73,
+                "startColumn": 0,
+                "endLine": 73,
+                "endColumn": 11
+            }
         },
         {
             "name": "totalMemory",
@@ -149,8 +201,15 @@
                 "name": "Long",
                 "isNullable": false,
                 "typeArguments": [],
-                "customReturnHint": null,
-                "doc": ""
+                "customReturnHint": "",
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -158,7 +217,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 76,
+                "startColumn": 0,
+                "endLine": 76,
+                "endColumn": 11
+            }
         },
         {
             "name": "deviceType",
@@ -168,7 +234,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": "DeviceType",
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -176,7 +249,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 83,
+                "startColumn": 0,
+                "endLine": 83,
+                "endColumn": 10
+            }
         },
         {
             "name": "supportedCpuArchitectures",
@@ -191,11 +271,25 @@
                         "isNullable": false,
                         "typeArguments": [],
                         "customReturnHint": null,
-                        "doc": ""
+                        "doc": "",
+                        "location": {
+                            "filePath": "",
+                            "startLine": 0,
+                            "startColumn": 0,
+                            "endLine": 0,
+                            "endColumn": 0
+                        }
                     }
                 ],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -203,7 +297,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 84,
+                "startColumn": 0,
+                "endLine": 84,
+                "endColumn": 25
+            }
         },
         {
             "name": "osName",
@@ -213,7 +314,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -221,7 +329,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 85,
+                "startColumn": 0,
+                "endLine": 85,
+                "endColumn": 6
+            }
         },
         {
             "name": "osVersion",
@@ -231,7 +346,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -239,7 +361,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 86,
+                "startColumn": 0,
+                "endLine": 86,
+                "endColumn": 9
+            }
         },
         {
             "name": "osBuildId",
@@ -249,7 +378,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -257,7 +393,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 87,
+                "startColumn": 0,
+                "endLine": 87,
+                "endColumn": 9
+            }
         },
         {
             "name": "osInternalBuildId",
@@ -267,7 +410,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -275,7 +425,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 88,
+                "startColumn": 0,
+                "endLine": 88,
+                "endColumn": 17
+            }
         },
         {
             "name": "osBuildFingerprint",
@@ -285,7 +442,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -293,7 +457,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 89,
+                "startColumn": 0,
+                "endLine": 89,
+                "endColumn": 18
+            }
         },
         {
             "name": "platformApiLevel",
@@ -303,7 +474,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -311,7 +489,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 90,
+                "startColumn": 0,
+                "endLine": 90,
+                "endColumn": 16
+            }
         },
         {
             "name": "deviceName",
@@ -321,7 +506,14 @@
                 "isNullable": false,
                 "typeArguments": [],
                 "customReturnHint": null,
-                "doc": ""
+                "doc": "",
+                "location": {
+                    "filePath": "",
+                    "startLine": 0,
+                    "startColumn": 0,
+                    "endLine": 0,
+                    "endColumn": 0
+                }
             },
             "parameters": [],
             "receiverType": null,
@@ -329,7 +521,14 @@
             "isExtension": false,
             "isInline": false,
             "isAsync": false,
-            "doc": ""
+            "doc": "",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 92,
+                "startColumn": 0,
+                "endLine": 92,
+                "endColumn": 10
+            }
         }
     ],
     "genericMetadata": "",
@@ -347,7 +546,21 @@
                         "isNullable": false,
                         "typeArguments": [],
                         "customReturnHint": null,
-                        "doc": ""
+                        "doc": "",
+                        "location": {
+                            "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                            "startLine": 54,
+                            "startColumn": 0,
+                            "endLine": 54,
+                            "endColumn": 3
+                        }
+                    },
+                    "location": {
+                        "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                        "startLine": 54,
+                        "startColumn": 0,
+                        "endLine": 54,
+                        "endColumn": 7
                     }
                 }
             ],
@@ -357,123 +570,88 @@
                     "propertyValues": [
                         "0"
                     ],
-                    "doc": "DeviceType.UNKNOWN field superdoc"
+                    "doc": "DeviceType.UNKNOWN field superdoc",
+                    "location": {
+                        "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                        "startLine": 56,
+                        "startColumn": 0,
+                        "endLine": 56,
+                        "endColumn": 7
+                    }
                 },
                 {
                     "name": "PHONE",
                     "propertyValues": [
                         "1"
                     ],
-                    "doc": ""
+                    "doc": "",
+                    "location": {
+                        "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                        "startLine": 57,
+                        "startColumn": 0,
+                        "endLine": 57,
+                        "endColumn": 5
+                    }
                 },
                 {
                     "name": "TABLET",
                     "propertyValues": [
                         "2"
                     ],
-                    "doc": ""
+                    "doc": "",
+                    "location": {
+                        "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                        "startLine": 58,
+                        "startColumn": 0,
+                        "endLine": 58,
+                        "endColumn": 6
+                    }
                 },
                 {
                     "name": "DESKTOP",
                     "propertyValues": [
                         "3"
                     ],
-                    "doc": ""
+                    "doc": "",
+                    "location": {
+                        "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                        "startLine": 59,
+                        "startColumn": 0,
+                        "endLine": 59,
+                        "endColumn": 7
+                    }
                 },
                 {
                     "name": "TV",
                     "propertyValues": [
                         "4"
                     ],
-                    "doc": ""
-                }
-            ],
-            "doc": "DeviceType superdoc"
-        },
-        {
-            "fullName": "lynxpo.ktts.model.TypeInfo",
-            "name": "TypeInfo",
-            "kind": "CLASS",
-            "propertyDefinitions": [
-                {
-                    "name": "customReturnHint",
-                    "type": {
-                        "fullName": "kotlin.String",
-                        "name": "String",
-                        "isNullable": true,
-                        "typeArguments": [],
-                        "customReturnHint": null,
-                        "doc": ""
-                    }
-                },
-                {
-                    "name": "doc",
-                    "type": {
-                        "fullName": "kotlin.String",
-                        "name": "String",
-                        "isNullable": false,
-                        "typeArguments": [],
-                        "customReturnHint": null,
-                        "doc": ""
-                    }
-                },
-                {
-                    "name": "fullName",
-                    "type": {
-                        "fullName": "kotlin.String",
-                        "name": "String",
-                        "isNullable": false,
-                        "typeArguments": [],
-                        "customReturnHint": null,
-                        "doc": ""
-                    }
-                },
-                {
-                    "name": "isNullable",
-                    "type": {
-                        "fullName": "kotlin.Boolean",
-                        "name": "Boolean",
-                        "isNullable": false,
-                        "typeArguments": [],
-                        "customReturnHint": null,
-                        "doc": ""
-                    }
-                },
-                {
-                    "name": "name",
-                    "type": {
-                        "fullName": "kotlin.String",
-                        "name": "String",
-                        "isNullable": false,
-                        "typeArguments": [],
-                        "customReturnHint": null,
-                        "doc": ""
-                    }
-                },
-                {
-                    "name": "typeArguments",
-                    "type": {
-                        "fullName": "kotlin.collections.List",
-                        "name": "List",
-                        "isNullable": false,
-                        "typeArguments": [
-                            {
-                                "fullName": "lynxpo.ktts.model.TypeInfo",
-                                "name": "TypeInfo",
-                                "isNullable": false,
-                                "typeArguments": [],
-                                "customReturnHint": null,
-                                "doc": ""
-                            }
-                        ],
-                        "customReturnHint": null,
-                        "doc": ""
+                    "doc": "",
+                    "location": {
+                        "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                        "startLine": 60,
+                        "startColumn": 0,
+                        "endLine": 60,
+                        "endColumn": 2
                     }
                 }
             ],
-            "enumValues": [],
-            "doc": ""
+            "doc": "DeviceType superdoc",
+            "location": {
+                "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+                "startLine": 54,
+                "startColumn": 0,
+                "endLine": 54,
+                "endColumn": 10
+            }
         }
     ],
-    "doc": "DeviceModule superdoc"
+    "doc": "DeviceModule superdoc",
+    "location": {
+        "filePath": "/Users/admin/Documents/Repos/templates/test-mm-native-lynx-app/template/android/KotlinMyProj/app/src/main/java/com/myOrg/myProj/modules/Device.kt",
+        "startLine": 51,
+        "startColumn": 0,
+        "endLine": 51,
+        "endColumn": 12
+    }
 }

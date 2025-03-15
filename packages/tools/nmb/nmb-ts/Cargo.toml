@@ -8,3 +8,4 @@ nmb-core = { path = "../nmb-core" }
 anyhow.workspace = true
 log.workspace = true
 ts_quote.workspace = true
+terminal_hyperlink.workspace = true

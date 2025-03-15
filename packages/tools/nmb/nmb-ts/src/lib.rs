@@ -1,4 +1,5 @@
 pub mod gen;
+pub mod utils;
 use anyhow::Result;
 use log::*;
 use nmb_core::model::*;
@@ -38,16 +39,27 @@ pub fn generate_typescript(unified_info: &UnifiedTypeInfo) -> Result<String> {
             match generate_impls_from_method(method, unified_info){
                 Ok(x) => x,
                 Err(e) => {
-                    match e.to_string().starts_with("Expected '=>', got ':'"){
+                    // Format a file location hyperlink if location information is available
+                    let location_link = utils::location::fmt_hyperlink(&method.location, &method.name);
+                
+                    match e.to_string().starts_with("Expected '=>', got ':'") {
                         true => {
-                            error!("Error while generating impl for `{}` likely caused by missing/incorrect method.return_type.name", method.name)
+                            error!(
+                                "Error while generating impl for {}: likely caused by missing/incorrect method.return_type.name",
+                                location_link
+                            )
                         },
                         false => {
-                            error!("Unexpected while generating impl for `{}`", method.name)
+                            error!(
+                                "Unexpected error while generating impl for {}",
+                                location_link
+                            )
                         },
                     };
-                    error!("{} {:#?}", method.name, method);
-                    panic!("{e}")
+                    
+                    // Log additional method details for debugging
+                    error!("Method details: {:#?}", method);
+                    panic!("Failed to generate implementation: {}", e)
                 },
             }})
         .collect::<Vec<_>>()

@@ -31,6 +31,7 @@ pub fn to_unified(kotlin_info: &TypeInfoFile) -> UnifiedTypeInfo {
         types: Vec::new(),
         language: Language::Kotlin,
         doc: kotlin_info.doc.clone(),
+        location: kotlin_info.location.clone(),
     };
 
     // Convert methods
@@ -44,6 +45,7 @@ pub fn to_unified(kotlin_info: &TypeInfoFile) -> UnifiedTypeInfo {
                 type_info: convert_type_info(&param.type_info),
                 has_default_value: param.has_default_value,
                 doc: param.doc.clone(),
+                location: param.location.clone(),
             });
         }
 
@@ -53,6 +55,7 @@ pub fn to_unified(kotlin_info: &TypeInfoFile) -> UnifiedTypeInfo {
             parameters,
             is_async: method.is_async,
             doc: method.doc.clone(),
+            location: method.location.clone(),
         });
     }
 
@@ -73,6 +76,7 @@ pub fn to_unified(kotlin_info: &TypeInfoFile) -> UnifiedTypeInfo {
             properties: Vec::new(),
             enum_values: Vec::new(),
             doc: type_info.doc.clone(),
+            location: type_info.location.clone(),
         };
 
         // Convert properties
@@ -81,6 +85,7 @@ pub fn to_unified(kotlin_info: &TypeInfoFile) -> UnifiedTypeInfo {
                 name: prop.name.clone(),
                 type_info: Box::new(convert_type_info(&prop.type_info)),
                 doc: String::new(), // Kotlin doesn't have property docs in this format
+                location: prop.location.clone(),
             });
         }
 
@@ -101,6 +106,7 @@ pub fn to_unified(kotlin_info: &TypeInfoFile) -> UnifiedTypeInfo {
                     name: enum_val.name.clone(),
                     property_values: property_map,
                     doc: enum_val.doc.clone(),
+                    location: enum_val.location.clone(),
                 });
             }
         }
@@ -124,6 +130,7 @@ fn convert_type_info(type_info: &super::TypeInfo) -> UnifiedType {
         properties: Vec::new(),
         enum_values: Vec::new(),
         doc: type_info.doc.clone(),
+        location: type_info.location.clone(),
     };
 
     // Convert type arguments

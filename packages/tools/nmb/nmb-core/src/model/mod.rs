@@ -6,6 +6,34 @@ pub mod swift;
 use ordermap::OrderMap;
 use serde::{Deserialize, Serialize};
 
+/// Represents the source location of a declaration in the source code.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
+pub struct SourceLocation {
+    #[serde(default)]
+    pub file_path: String,
+    #[serde(default)]
+    pub start_line: u32,
+    #[serde(default)]
+    pub start_column: u32,
+    #[serde(default)]
+    pub end_line: u32,
+    #[serde(default)]
+    pub end_column: u32,
+}
+
+impl Default for SourceLocation {
+    fn default() -> Self {
+        Self {
+            file_path: String::new(),
+            start_line: 0,
+            start_column: 0,
+            end_line: 0,
+            end_column: 0,
+        }
+    }
+}
+
 /// Represents the source language of type information.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Language {
@@ -26,6 +54,8 @@ pub struct TypeInfoFile {
     pub serializable_types: Vec<SerializableTypeInfo>,
     #[serde(default)]
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 impl TypeInfoFile {
@@ -60,6 +90,8 @@ pub struct MethodInfo {
     pub is_async: bool,
     #[serde(default)]
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// Visibility modifiers for methods and fields.
@@ -88,6 +120,8 @@ pub struct TypeInfo {
     pub custom_return_hint: Option<String>,
     #[serde(default)]
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// Parameter information for methods.
@@ -101,6 +135,8 @@ pub struct ParameterInfo {
     pub has_default_value: bool,
     #[serde(default)]
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// Information about serializable types like classes, interfaces, and enums.
@@ -116,6 +152,8 @@ pub struct SerializableTypeInfo {
     pub enum_values: Vec<EnumValue>,
     #[serde(default)]
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// Type kind for serializable types.
@@ -140,6 +178,8 @@ pub struct PropertyDefinition {
     pub name: String,
     #[serde(rename = "type")]
     pub type_info: TypeInfo,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// Enum value information for enum types.
@@ -151,6 +191,8 @@ pub struct EnumValue {
     pub property_values: Vec<String>,
     #[serde(default)]
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// A unified representation of type information that abstracts away language differences.
@@ -163,6 +205,8 @@ pub struct UnifiedTypeInfo {
     pub types: Vec<UnifiedType>,
     pub language: Language,
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// A unified method representation.
@@ -174,6 +218,8 @@ pub struct UnifiedMethod {
     pub parameters: Vec<UnifiedParameter>,
     pub is_async: bool,
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// A unified parameter representation.
@@ -184,6 +230,8 @@ pub struct UnifiedParameter {
     pub type_info: UnifiedType,
     pub has_default_value: bool,
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// A unified type representation.
@@ -198,6 +246,8 @@ pub struct UnifiedType {
     pub properties: Vec<UnifiedProperty>,
     pub enum_values: Vec<UnifiedEnumValue>,
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// Type kind for unified types.
@@ -221,6 +271,8 @@ pub struct UnifiedProperty {
     pub name: String,
     pub type_info: Box<UnifiedType>,
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }
 
 /// A unified enum value representation.
@@ -230,4 +282,6 @@ pub struct UnifiedEnumValue {
     pub name: String,
     pub property_values: OrderMap<String, String>,
     pub doc: String,
+    #[serde(default)]
+    pub location: SourceLocation,
 }

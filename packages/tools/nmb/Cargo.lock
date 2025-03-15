@@ -651,6 +651,7 @@ dependencies = [
  "anyhow",
  "log",
  "nmb-core",
+ "terminal_hyperlink",
  "ts_quote",
 ]
 
@@ -1195,6 +1196,12 @@ dependencies = [
  "quote",
  "syn 2.0.100",
 ]
+
+[[package]]
+name = "terminal_hyperlink"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "db7bfa7333cbbfca467f40042a640d3c86063d6e4085cef4a6effdbad7005d50"
 
 [[package]]
 name = "text_lines"
