@@ -1,0 +1,27 @@
+language: Kotlin
+id: serializable-enum-with-props
+rule:
+  pattern: |
+    internal enum class $NAME($$$PROPS) : Enumerable {
+      $$$BODY
+    }
+
+fix: |
+  @Serializable
+  enum class $NAME($$$PROPS) {
+    $$$BODY
+  }
+---
+language: Kotlin
+id: serializable-enum-without-props
+rule:
+  pattern: |
+    internal enum class $NAME : Enumerable {
+      $$$BODY
+    }
+
+fix: |
+  @Serializable
+  enum class $NAME {
+    $$$BODY
+  }

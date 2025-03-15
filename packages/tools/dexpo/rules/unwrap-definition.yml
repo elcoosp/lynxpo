@@ -7,7 +7,7 @@ rule:
       $$$BODY
     }
 fix: $$$BODY
-# TODO: This take precedence
+# This take precedence
 # ---
 # id: unwrap-definition
 # language: Kotlin

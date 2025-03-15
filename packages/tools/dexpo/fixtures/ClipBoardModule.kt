@@ -1,4 +1,12 @@
-// TODO add package
+// TODO add package name
+
+
+import com.lynx.jsbridge.LynxMethod
+import com.lynx.jsbridge.LynxModule
+import com.lynx.jsbridge.Promise
+import com.lynx.tasm.behavior.LynxContext
+// TODO move in dedicated package
+import LynxpoModule
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.ClipboardManager
@@ -10,14 +18,12 @@ import android.text.Spanned
 import android.text.TextUtils
 import android.util.Log
 import androidx.core.os.bundleOf
-import com.lynx.jsbridge.LynxMethod
-import com.lynx.jsbridge.LynxModule
-import com.lynx.jsbridge.Promise
-import com.lynx.tasm.behavior.LynxContext
-
 import java.io.File
 inline fun <T> T?.ifNull(block: () -> T): T = this ?: block()
 inline fun <reified T> Any?.takeIfInstanceOf(): T? = this as? T
+
+
+
 
 
 private const val moduleName = "ExpoClipboard"
@@ -33,10 +39,9 @@ private enum class ContentType(val jsName: String) {
   IMAGE("image")
 }
 
-class ClipboardModule(private val context: Context) : LynxModule(context) {
+class ClipboardModule(private val context: Context) : LynxpoModule(context) {
   // region Strings
-  @LynxMethod
-  fun getStringAsync(options: GetStringOptions, promise: Promise) {
+  AsyncFunction("getStringAsync") { options: GetStringOptions ->
     val item = clipboardManager.firstItem
     when (options.preferredFormat) {
       StringFormat.PLAIN -> item?.coerceToPlainText(context)
@@ -60,6 +65,7 @@ class ClipboardModule(private val context: Context) : LynxModule(context) {
     return promise.resolve(true)
   }
   
+  
   @LynxMethod
   fun hasStringAsync(promise: Promise): Boolean {
     clipboardManager.primaryClipDescription?.hasTextContent ?: false
@@ -71,52 +77,52 @@ class ClipboardModule(private val context: Context) : LynxModule(context) {
   @LynxMethod
   fun getImageAsync(options: GetImageOptions, promise: Promise) {
     runBlocking {
-      launch {
-        val imageUri =
-                clipboardManager
-                        .takeIf { clipboardHasItemWithType("image/*") }
-                        ?.firstItem
-                        ?.uri
-                        .ifNull {
-                          return@launch promise.resolve(null)
-                        }
-  
-        try {
-          val imageResult = imageFromContentUri(context, imageUri, options)
-          return@launch promise.resolve(imageResult.toBundle())
-        } catch (err: Throwable) {
-          err.printStackTrace()
-          return@launch promise.reject(
-                  when (err) {
-                    is CodedException -> err
-                    is SecurityException -> NoPermissionException(err)
-                    else -> PasteFailureException(err, kind = "image")
-                  }
-          )
-        }
+    launch {
+      val imageUri =
+              clipboardManager
+                      .takeIf { clipboardHasItemWithType("image/*") }
+                      ?.firstItem
+                      ?.uri
+                      .ifNull {
+                        return@launch promise.resolve(null)
+                      }
+    
+      try {
+        val imageResult = imageFromContentUri(context, imageUri, options)
+        return@launch promise.resolve(imageResult.toBundle())
+      } catch (err: Throwable) {
+        err.printStackTrace()
+        return@launch promise.reject(when (err) {
+          is CodedException -> err
+          is SecurityException -> NoPermissionException(err)
+          else -> PasteFailureException(err, kind = "image")
+        })
       }
     }
   }
+  
+  }
+  
   
   @LynxMethod
   fun setImageAsync(imageData: String, promise: Promise) {
     runBlocking {
-      launch {
-        try {
-          val clip = clipDataFromBase64Image(context, imageData, clipboardCacheDir)
-          clipboardManager.setPrimaryClip(clip)
-        } catch (err: Throwable) {
-          err.printStackTrace()
-          return@launch promise.reject(
-                  when (err) {
-                    is CodedException -> err
-                    else -> CopyFailureException(err, kind = "image")
-                  }
-          )
-        }
+    launch {
+      try {
+        val clip = clipDataFromBase64Image(context, imageData, clipboardCacheDir)
+        clipboardManager.setPrimaryClip(clip)
+      } catch (err: Throwable) {
+        err.printStackTrace()
+        return@launch promise.reject(when (err) {
+          is CodedException -> err
+          else -> CopyFailureException(err, kind = "image")
+        })
       }
     }
   }
+  
+  }
+  
   
   @LynxMethod
   fun hasImageAsync(promise: Promise): Boolean {
@@ -144,6 +150,8 @@ class ClipboardModule(private val context: Context) : LynxModule(context) {
     val lynxContext = mContext as LynxContext
     return lynxContext.getContext()
   }
+  
+    
 
   private val clipboardManager: ClipboardManager
     get() =
@@ -160,7 +168,6 @@ class ClipboardModule(private val context: Context) : LynxModule(context) {
   private inner class ClipboardEventEmitter {
     private var isListening = true
     private var timestamp = -1L
-
     fun resumeListening() {
       isListening = true
     }
@@ -190,28 +197,24 @@ class ClipboardModule(private val context: Context) : LynxModule(context) {
                   timestamp = clip.timestamp
                 }
 
-                getContext()
-                        .sendGlobalEvent(
-                                CLIPBOARD_CHANGED_EVENT_NAME,
-                                bundleOf(
-                                        "contentTypes" to
-                                                listOfNotNull(
-                                                                ContentType.PLAIN_TEXT.takeIf {
-                                                                  clip.hasTextContent
-                                                                },
-                                                                ContentType.HTML.takeIf {
-                                                                  clip.hasMimeType(
-                                                                          ClipDescription
-                                                                                  .MIMETYPE_TEXT_HTML
-                                                                  )
-                                                                },
-                                                                ContentType.IMAGE.takeIf {
-                                                                  clip.hasMimeType("image/*")
-                                                                }
-                                                        )
-                                                        .map { it.jsName }
-                                )
-                        )
+                getContext().sendGlobalEvent(CLIPBOARD_CHANGED_EVENT_NAME, bundleOf(
+                        "contentTypes" to
+                                listOfNotNull(
+                                                ContentType.PLAIN_TEXT.takeIf {
+                                                  clip.hasTextContent
+                                                },
+                                                ContentType.HTML.takeIf {
+                                                  clip.hasMimeType(
+                                                          ClipDescription.MIMETYPE_TEXT_HTML
+                                                  )
+                                                },
+                                                ContentType.IMAGE.takeIf {
+                                                  clip.hasMimeType("image/*")
+                                                }
+                                        )
+                                        .map { it.jsName }
+                ))
+                
               }
             }
 
@@ -239,6 +242,7 @@ class ClipboardModule(private val context: Context) : LynxModule(context) {
 
   // endregion
 }
+
 
 private fun plainTextFromHtml(htmlContent: String): String {
   val styledText: Spanned = Html.fromHtml(htmlContent, FROM_HTML_MODE_LEGACY)

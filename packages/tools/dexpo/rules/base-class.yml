@@ -1,0 +1,34 @@
+id: base-class
+language: Kotlin
+rule:
+  kind: class_declaration
+  pattern: |
+    class $MODULE : Module() {
+        $$$BODY
+    }
+fix: |
+  class $MODULE(private val context: Context) : LynxpoModule(context) {
+    $$$BODY
+  }
+---
+id: base-class
+language: Kotlin
+rule:
+  pattern: $IMPORT_LIST
+  kind: import_list
+  inside:
+    kind: source_file
+    has:
+      pattern: |
+        class $MODULE : Module() {
+            $$$BODY
+        }
+fix: |
+  import com.lynx.jsbridge.LynxMethod
+  import com.lynx.jsbridge.LynxModule
+  import com.lynx.jsbridge.Promise
+  import com.lynx.tasm.behavior.LynxContext
+  // TODO move in dedicated package
+  import LynxpoModule
+  $IMPORT_LIST
+  
