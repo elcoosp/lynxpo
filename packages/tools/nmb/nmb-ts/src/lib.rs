@@ -15,36 +15,63 @@ fn doc_wrap(doc: String) -> String {
 }
 /// Generates TypeScript type definitions from unified type information
 pub fn generate_typescript(unified_info: &UnifiedTypeInfo) -> Result<String> {
-    let mut ts_content = String::new();
-
     // Add file header comment with metadata
     let module_name = unified_info.module_name.clone();
     let header = doc_wrap(
         ts_string! {Generated TypeScript definitions from Lynx Native Module: #module_name}.into(),
     );
-    ts_content.push_str(&header);
-
-    // Add module documentation if available
-    if !unified_info.doc.is_empty() {
-        ts_content.push('\n');
-        ts_content.push_str(&doc_wrap(unified_info.doc.to_string()));
-        ts_content.push('\n');
-    }
+    let mod_doc = doc_wrap(unified_info.doc.to_string());
 
     // Generate type definitions for all types
-    for type_info in &unified_info.types {
-        let type_def = generate_ts_type(type_info).unwrap();
-        ts_content.push_str(&type_def);
-        ts_content.push('\n');
-    }
+    let common_types = unified_info
+        .types
+        .iter()
+        .map(|type_info| generate_ts_type(type_info).unwrap())
+        .collect::<Vec<_>>()
+        .join("\n");
 
-    // Generate function definitions for all methods
-    for method in &unified_info.methods {
-        let method_def = generate_ts_method(method, unified_info).unwrap();
-        ts_content.push_str(&method_def);
-        ts_content.push('\n');
-    }
+    let implementations = unified_info
+        .methods
+        .iter()
+        .map(|method| generate_impls_from_method(method, unified_info).unwrap())
+        .collect::<Vec<_>>()
+        .join("\n");
+    let react_imports = ["useState", "useCallback", "useEffect"].join(", ");
+    let mod_interface = {
+        let methods_types = unified_info
+            .methods
+            .iter()
+            .map(|method: &UnifiedMethod| {
+                let params = get_method_params(method)
+                    .iter()
+                    .map(|(name, ty)| format!("{}: {}", name, ty))
+                    .collect::<Vec<_>>()
+                    .join(", ");
+                let name = method.name.clone();
+                let ret = get_ts_type_name(&method.return_type);
+                ts_string! { #name: (#params) => #ret }
+            })
+            .collect::<Vec<_>>()
+            .join("\n");
+        ts_string! {
+            #mod_doc
+            export interface #module_name {
+                #methods_types
+            }
+        }
+    };
+    let ts_content = ts_string! {
+        #header
+        import { #react_imports } from "@lynx-js/react";
+        import { NativeModules } from "@lynx-js/core";
 
+        #common_types
+
+        #mod_interface
+
+        #implementations
+
+    };
     // Parse and format the generated TypeScript
     let parsed = TS::from_source(ts_content).unwrap();
     let formatted = parsed.formatted(None).unwrap();
@@ -124,24 +151,11 @@ fn generate_ts_type(type_info: &UnifiedType) -> Result<String, Box<dyn std::erro
 }
 
 /// Generates TypeScript method/function definition
-fn generate_ts_method(
+fn generate_impls_from_method(
     method: &UnifiedMethod,
     unified_info: &UnifiedTypeInfo,
 ) -> Result<String, Box<dyn std::error::Error>> {
-    let params = method
-        .parameters
-        .iter()
-        .map(|param| {
-            let type_name = get_ts_type_name(&param.type_info);
-            let optional = if param.has_default_value { "?" } else { "" };
-            (format!("{}{}", param.name, optional), type_name)
-        })
-        .collect::<Vec<_>>();
-    let params_str = params
-        .iter()
-        .map(|(name, ty)| format!("{}: {}", name, ty))
-        .collect::<Vec<_>>()
-        .join(", ");
+    let params = get_method_params(method);
 
     let return_type = get_ts_type_name(&method.return_type);
     let return_type = if method.is_async {
@@ -166,12 +180,7 @@ fn generate_ts_method(
         String::new()
     };
     let method_name = method.name.clone();
-    let method_def = ts_string! {
-        #doc_comment
-        export function #method_name(#params_str): #return_type {
 
-        }
-    };
     let hooks = gen::hooks::generate_hooks(&gen::hooks::HookConfig {
         native_module_name: unified_info.module_name.clone(),
         method_name,
@@ -184,7 +193,7 @@ fn generate_ts_method(
         is_promise: true,
     })?;
     Ok(ts_string! {
-        #method_def
+        // #method_def
         #hooks
     })
 }
@@ -247,4 +256,17 @@ fn get_ts_type_name(type_info: &UnifiedType) -> String {
     };
 
     format!("{}{}", base_type, type_suffix)
+}
+
+fn get_method_params(method: &UnifiedMethod) -> Vec<(String, String)> {
+    let params = method
+        .parameters
+        .iter()
+        .map(|param| {
+            let type_name = get_ts_type_name(&param.type_info);
+            let optional = if param.has_default_value { "?" } else { "" };
+            (format!("{}{}", param.name, optional), type_name)
+        })
+        .collect::<Vec<_>>();
+    params
 }
