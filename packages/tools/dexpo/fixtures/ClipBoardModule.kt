@@ -40,15 +40,16 @@ private enum class ContentType(val jsName: String) {
 }
 
 class ClipboardModule(private val context: Context) : LynxpoModule(context) {
-  // region Strings
-  AsyncFunction("getStringAsync") { options: GetStringOptions ->
+  @LynxMethod
+  fun getStringAsync(options: GetStringOptions, promise: Promise) {
     val item = clipboardManager.firstItem
     when (options.preferredFormat) {
       StringFormat.PLAIN -> item?.coerceToPlainText(context)
       StringFormat.HTML -> item?.coerceToHtmlText(context)
+      else -> ""
     }
-            ?: ""
   }
+  
   
   @LynxMethod
   fun setStringAsync(content: String, options: SetStringOptions, promise: Promise) {
