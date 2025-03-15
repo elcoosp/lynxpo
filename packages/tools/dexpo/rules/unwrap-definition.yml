@@ -1,0 +1,19 @@
+id: unwrap-definition-with-name
+language: Kotlin
+rule:
+  pattern: |
+    override fun definition() = ModuleDefinition {
+      Name(moduleName)
+      $$$BODY
+    }
+fix: $$$BODY
+# TODO: This take precedence
+# ---
+# id: unwrap-definition
+# language: Kotlin
+# rule:
+#   pattern: |
+#     override fun definition() = ModuleDefinition {
+#       $$$BODY
+#     }
+# fix: $$$BODY

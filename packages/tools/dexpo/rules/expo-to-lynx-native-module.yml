@@ -10,7 +10,29 @@ fix: |
   import com.lynx.jsbridge.Promise
   import com.lynx.tasm.behavior.LynxContext
 ---
-
+id: imports-utils-ifNull
+language: Kotlin
+rule:
+  pattern: import expo.modules.core.utilities.ifNull
+  not:
+    follows:
+      pattern: import java.io.File
+fix: |
+  inline fun <T> T?.ifNull(block: () -> T): T = this ?: block()
+  inline fun <reified T> Any?.takeIfInstanceOf(): T? = this as? T
+---
+id: imports-utils-ifNull-follows-import
+language: Kotlin
+rule:
+  pattern: import $IMPORT
+  follows:
+    pattern: import expo.modules.core.utilities.ifNull
+fix: |
+  import $IMPORT
+  inline fun <T> T?.ifNull(block: () -> T): T = this ?: block()
+  inline fun <reified T> Any?.takeIfInstanceOf(): T? = this as? T
+---
+        
 id: imports
 language: Kotlin
 rule:

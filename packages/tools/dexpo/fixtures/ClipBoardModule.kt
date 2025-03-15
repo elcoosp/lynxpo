@@ -14,8 +14,11 @@ import com.lynx.jsbridge.LynxMethod
 import com.lynx.jsbridge.LynxModule
 import com.lynx.jsbridge.Promise
 import com.lynx.tasm.behavior.LynxContext
-import expo.modules.core.utilities.ifNull
+
 import java.io.File
+inline fun <T> T?.ifNull(block: () -> T): T = this ?: block()
+inline fun <reified T> Any?.takeIfInstanceOf(): T? = this as? T
+
 
 private const val moduleName = "ExpoClipboard"
 private val TAG = ClipboardModule::class.java.simpleName
@@ -31,115 +34,111 @@ private enum class ContentType(val jsName: String) {
 }
 
 class ClipboardModule(private val context: Context) : LynxModule(context) {
-  override fun definition() = ModuleDefinition {
-    Name(moduleName)
-
-    // region Strings
-    @LynxMethod
-    fun getStringAsync(options: GetStringOptions, promise: Promise) {
-      val item = clipboardManager.firstItem
-      when (options.preferredFormat) {
-        StringFormat.PLAIN -> item?.coerceToPlainText(context)
-        StringFormat.HTML -> item?.coerceToHtmlText(context)
-      }
-              ?: ""
+  // region Strings
+  @LynxMethod
+  fun getStringAsync(options: GetStringOptions, promise: Promise) {
+    val item = clipboardManager.firstItem
+    when (options.preferredFormat) {
+      StringFormat.PLAIN -> item?.coerceToPlainText(context)
+      StringFormat.HTML -> item?.coerceToHtmlText(context)
     }
-
-    @LynxMethod
-    fun setStringAsync(content: String, options: SetStringOptions, promise: Promise) {
-      val clip =
-              when (options.inputFormat) {
-                StringFormat.PLAIN -> ClipData.newPlainText(null, content)
-                StringFormat.HTML -> {
-                  // HTML clip requires complementary plain text content
-                  val plainText = plainTextFromHtml(content)
-                  ClipData.newHtmlText(null, plainText, content)
-                }
-              }
-      clipboardManager.setPrimaryClip(clip)
-      return promise.resolve(true)
-    }
-
-    @LynxMethod
-    fun hasStringAsync(promise: Promise): Boolean {
-      clipboardManager.primaryClipDescription?.hasTextContent ?: false
-    }
-
-    // endregion
-
-    // region Images
-    @LynxMethod
-    fun getImageAsync(options: GetImageOptions, promise: Promise) {
-      runBlocking {
-        launch {
-          val imageUri =
-                  clipboardManager
-                          .takeIf { clipboardHasItemWithType("image/*") }
-                          ?.firstItem
-                          ?.uri
-                          .ifNull {
-                            return@launch promise.resolve(null)
-                          }
-
-          try {
-            val imageResult = imageFromContentUri(context, imageUri, options)
-            return@launch promise.resolve(imageResult.toBundle())
-          } catch (err: Throwable) {
-            err.printStackTrace()
-            return@launch promise.reject(
-                    when (err) {
-                      is CodedException -> err
-                      is SecurityException -> NoPermissionException(err)
-                      else -> PasteFailureException(err, kind = "image")
-                    }
-            )
-          }
-        }
-      }
-    }
-
-    @LynxMethod
-    fun setImageAsync(imageData: String, promise: Promise) {
-      runBlocking {
-        launch {
-          try {
-            val clip = clipDataFromBase64Image(context, imageData, clipboardCacheDir)
-            clipboardManager.setPrimaryClip(clip)
-          } catch (err: Throwable) {
-            err.printStackTrace()
-            return@launch promise.reject(
-                    when (err) {
-                      is CodedException -> err
-                      else -> CopyFailureException(err, kind = "image")
-                    }
-            )
-          }
-        }
-      }
-    }
-
-    @LynxMethod
-    fun hasImageAsync(promise: Promise): Boolean {
-      clipboardManager.primaryClipDescription?.hasMimeType("image/*") == true
-    }
-
-    // endregion
-
-    // region Events
-    Events(CLIPBOARD_CHANGED_EVENT_NAME)
-
-    OnCreate {
-      clipboardEventEmitter = ClipboardEventEmitter()
-      clipboardEventEmitter.attachListener()
-    }
-
-    OnDestroy { clipboardEventEmitter.detachListener() }
-
-    OnActivityEntersBackground { clipboardEventEmitter.pauseListening() }
-
-    OnActivityEntersForeground { clipboardEventEmitter.resumeListening() }
-    // endregion
+            ?: ""
   }
+  
+  @LynxMethod
+  fun setStringAsync(content: String, options: SetStringOptions, promise: Promise) {
+    val clip =
+            when (options.inputFormat) {
+              StringFormat.PLAIN -> ClipData.newPlainText(null, content)
+              StringFormat.HTML -> {
+                // HTML clip requires complementary plain text content
+                val plainText = plainTextFromHtml(content)
+                ClipData.newHtmlText(null, plainText, content)
+              }
+            }
+    clipboardManager.setPrimaryClip(clip)
+    return promise.resolve(true)
+  }
+  
+  @LynxMethod
+  fun hasStringAsync(promise: Promise): Boolean {
+    clipboardManager.primaryClipDescription?.hasTextContent ?: false
+  }
+  
+  // endregion
+  
+  // region Images
+  @LynxMethod
+  fun getImageAsync(options: GetImageOptions, promise: Promise) {
+    runBlocking {
+      launch {
+        val imageUri =
+                clipboardManager
+                        .takeIf { clipboardHasItemWithType("image/*") }
+                        ?.firstItem
+                        ?.uri
+                        .ifNull {
+                          return@launch promise.resolve(null)
+                        }
+  
+        try {
+          val imageResult = imageFromContentUri(context, imageUri, options)
+          return@launch promise.resolve(imageResult.toBundle())
+        } catch (err: Throwable) {
+          err.printStackTrace()
+          return@launch promise.reject(
+                  when (err) {
+                    is CodedException -> err
+                    is SecurityException -> NoPermissionException(err)
+                    else -> PasteFailureException(err, kind = "image")
+                  }
+          )
+        }
+      }
+    }
+  }
+  
+  @LynxMethod
+  fun setImageAsync(imageData: String, promise: Promise) {
+    runBlocking {
+      launch {
+        try {
+          val clip = clipDataFromBase64Image(context, imageData, clipboardCacheDir)
+          clipboardManager.setPrimaryClip(clip)
+        } catch (err: Throwable) {
+          err.printStackTrace()
+          return@launch promise.reject(
+                  when (err) {
+                    is CodedException -> err
+                    else -> CopyFailureException(err, kind = "image")
+                  }
+          )
+        }
+      }
+    }
+  }
+  
+  @LynxMethod
+  fun hasImageAsync(promise: Promise): Boolean {
+    clipboardManager.primaryClipDescription?.hasMimeType("image/*") == true
+  }
+  
+  // endregion
+  
+  // region Events
+  Events(CLIPBOARD_CHANGED_EVENT_NAME)
+  
+  OnCreate {
+    clipboardEventEmitter = ClipboardEventEmitter()
+    clipboardEventEmitter.attachListener()
+  }
+  
+  OnDestroy { clipboardEventEmitter.detachListener() }
+  
+  OnActivityEntersBackground { clipboardEventEmitter.pauseListening() }
+  
+  OnActivityEntersForeground { clipboardEventEmitter.resumeListening() }
+  // endregion
 
   private fun getContext(): Context {
     val lynxContext = mContext as LynxContext

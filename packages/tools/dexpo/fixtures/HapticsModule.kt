@@ -29,26 +29,21 @@ class HapticsModule(private val context: Context) : LynxModule(context) {
                   context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
               }
 
-  override fun definition() = ModuleDefinition {
-      
-
-      @LynxMethod
-      fun notificationAsync(type: String, promise: Promise) {
-        vibrate(HapticsNotificationType.fromString(type))
-      }
-      
-
-      @LynxMethod
-      fun selectionAsync(promise: Promise): Unit {
-        vibrate(HapticsSelectionType)
-      }
-      
-
-      @LynxMethod
-      fun impactAsync(style: String, promise: Promise) {
-        vibrate(HapticsImpactType.fromString(style))
-      }
-      
+  @LynxMethod
+  fun notificationAsync(type: String, promise: Promise) {
+    vibrate(HapticsNotificationType.fromString(type))
+  }
+  
+  
+  @LynxMethod
+  fun selectionAsync(promise: Promise): Unit {
+    vibrate(HapticsSelectionType)
+  }
+  
+  
+  @LynxMethod
+  fun impactAsync(style: String, promise: Promise) {
+    vibrate(HapticsImpactType.fromString(style))
   }
 
   private fun vibrate(type: HapticsVibrationType) {

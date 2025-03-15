@@ -15,7 +15,7 @@ import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import com.facebook.device.yearclass.YearClass
-import expo.modules.core.utilities.EmulatorUtilities
+
 
 
 
