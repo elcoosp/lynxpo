@@ -32,7 +32,8 @@
     "test:watch": "vitest run --watch"
   },
   "dependencies": {
-    "@lynx-js/react": "^0.105.1"
+    "@lynx-js/react": "^0.105.1",
+    "@lynx-js/types": "^3.2.0"
   },
   "devDependencies": {
     "@lynxpo/tools-nmi": "workspace:*",
