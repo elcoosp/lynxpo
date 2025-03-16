@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:nmb}/nmb-swift/Packages/NMBSwiftInspect",
+            "name": "Debug NMBSwiftInspectCollector (nmb-swift/Packages/NMBSwiftInspect)",
+            "program": "${workspaceFolder:nmb}/nmb-swift/Packages/NMBSwiftInspect/.build/debug/NMBSwiftInspectCollector",
+            "preLaunchTask": "swift: Build Debug NMBSwiftInspectCollector (nmb-swift/Packages/NMBSwiftInspect)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:nmb}/nmb-swift/Packages/NMBSwiftInspect",
+            "name": "Release NMBSwiftInspectCollector (nmb-swift/Packages/NMBSwiftInspect)",
+            "program": "${workspaceFolder:nmb}/nmb-swift/Packages/NMBSwiftInspect/.build/release/NMBSwiftInspectCollector",
+            "preLaunchTask": "swift: Build Release NMBSwiftInspectCollector (nmb-swift/Packages/NMBSwiftInspect)"
+        }
+    ]
+}

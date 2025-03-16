@@ -26,7 +26,8 @@ let package = Package(
             name: "NMBSwiftInspect",
             targets: ["NMBSwiftInspect"]
         ),
-        .plugin(name: "NMBSwiftInspectPlugin", targets: ["NMBSwiftInspectPlugin"]),
+        // .plugin(name: "NMBSwiftInspectPlugin", targets: ["NMBSwiftInspectPlugin"]),
+        .plugin(name: "NMBSwiftInspectPluginCmd", targets: ["NMBSwiftInspectPluginCmd"]),
         .executable(name: "NMBSwiftInspectCollector", targets: ["NMBSwiftInspectCollector"]),
     ],
     dependencies: [
@@ -48,6 +49,7 @@ let package = Package(
                 "NMBSwiftInspect",
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
+                .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 .product(name: "Logging", package: "swift-log"),
 
@@ -57,9 +59,19 @@ let package = Package(
         //    name: "NMBSwiftInspectTests",
         //    dependencies: depsProducts + ["NMBSwiftInspect"]
         //),
+        // .plugin(
+        //     name: "NMBSwiftInspectPlugin",
+        //     capability: .buildTool(),
+        //     dependencies: ["NMBSwiftInspectCollector"]
+        // ),
         .plugin(
-            name: "NMBSwiftInspectPlugin",
-            capability: .buildTool(),
+            name: "NMBSwiftInspectPluginCmd",
+            capability: .command(
+                intent: .sourceCodeFormatting(),
+                permissions: [
+                    .writeToPackageDirectory(reason: "This command write type infos metadata")
+                ]
+            ),
             dependencies: ["NMBSwiftInspectCollector"]
         ),
         .target(

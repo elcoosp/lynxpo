@@ -4,7 +4,12 @@ import NMBSwiftInspect
 
 @Typed
 class Foo {
+    @LynxMethod
     func bar() {
+
+    }
+    @LynxMethod
+    func baz() {
 
     }
 }

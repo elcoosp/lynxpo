@@ -76,7 +76,6 @@ struct SwiftTypeProcessor {
         // Generate the static property as a member of the class
         return """
             class TypeInfo {
-
                 static let typeInfo = \"\"\"
                 \(raw: jsonString)
                 \"\"\"

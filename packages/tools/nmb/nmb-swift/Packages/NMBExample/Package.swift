@@ -3,7 +3,7 @@
 import PackageDescription
 
 let plugins: [Target.PluginUsage] = [
-    .plugin(name: "NMBSwiftInspectPlugin", package: "NMBSwiftInspect")
+    .plugin(name: "NMBSwiftInspectPluginCmd", package: "NMBSwiftInspect")
 ]
 let package = Package(
     name: "NMBExample",
