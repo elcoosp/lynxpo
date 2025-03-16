@@ -48,7 +48,7 @@ public struct MethodInfo {
 
     @Codable
     public enum Visibility: String {
-        case PUBLIC, INTERNAL, PROTECTED, PRIVATE
+        case public, intern, PROTECTED, priv
     }
 }
 
@@ -79,7 +79,7 @@ public struct SerializableTypeInfo {
 
     @Codable
     public enum Kind: String {
-        case CLASS, INTERFACE, ENUM, OBJECT, STRUCT
+        case CLASS, INTERFACE, ENUM, OBJECT, struct
     }
 }
 
@@ -227,7 +227,7 @@ Must produce identical JSON structure to Kotlin version:
         "location": {...}
       },
       "parameters": [...],
-      "visibility": "PUBLIC",
+      "visibility": "public",
       ...
     }
   ],
