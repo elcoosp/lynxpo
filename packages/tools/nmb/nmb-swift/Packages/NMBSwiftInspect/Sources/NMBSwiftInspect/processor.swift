@@ -1,7 +1,7 @@
-import SwiftSyntax
-import SwiftSyntaxMacros
-import SwiftSyntaxBuilder
 import Foundation
+import SwiftSyntax
+import SwiftSyntaxBuilder
+import SwiftSyntaxMacros
 
 public struct TypedMacro: PeerMacro {
     public static func expansion(
@@ -12,9 +12,9 @@ public struct TypedMacro: PeerMacro {
         guard let classDecl = declaration.as(ClassDeclSyntax.self) else {
             throw MacroError("@Typed can only be applied to classes")
         }
-        
+
         // Process the class and generate metadata
-        let processor = SwiftTypeProcessor(classDecl: classDecl, context: context)
+        let processor = SwiftTypeProcessor(classDecl: classDecl)
         return [try processor.generateMetadata()]
     }
 }
@@ -43,11 +43,11 @@ public struct TsRetIntoMacro: PeerMacro {
 
 enum MacroError: Error, CustomStringConvertible {
     case message(String)
-    
+
     init(_ message: String) {
         self = .message(message)
     }
-    
+
     var description: String {
         switch self {
         case .message(let text):
@@ -58,24 +58,27 @@ enum MacroError: Error, CustomStringConvertible {
 
 struct SwiftTypeProcessor {
     let classDecl: ClassDeclSyntax
-    let context: some MacroExpansionContext
-    
+    private let processedSerializableTypes = Set<String>()
+
     func generateMetadata() throws -> DeclSyntax {
         let className = classDecl.name.text
         let serializableTypes = collectSerializableTypes()
         let methods = collectMethods()
-        
-        let classInfo = createClassInfo(className: className, methods: methods, serializableTypes: serializableTypes)
+
+        let classInfo = createClassInfo(
+            className: className, methods: methods, serializableTypes: serializableTypes)
         let jsonData = try JSONEncoder().encode(classInfo)
-        
+
         // Create a static property with the JSON data
-        let jsonString = String(data: jsonData, encoding: .utf8)?.replacingOccurrences(of: "\"", with: "\\\"") ?? "{}"
-        
+        let jsonString =
+            String(data: jsonData, encoding: .utf8)?.replacingOccurrences(of: "\"", with: "\\\"")
+            ?? "{}"
+
         return """
-        static let typeInfo = \"\"\"\(raw: jsonString)\"\"\"
-        """
+            static let typeInfo = \"\"\"\(raw: jsonString)\"\"\"
+            """
     }
-    
+
     func collectSerializableTypes() -> [SerializableTypeInfo] {
         var result: [SerializableTypeInfo] = []
         // Find all nested types with @Codable annotation
@@ -92,32 +95,36 @@ struct SwiftTypeProcessor {
         }
         return result
     }
-    
+
     func hasCodableAttribute(_ attributes: AttributeListSyntax?) -> Bool {
         guard let attributes = attributes else { return false }
-        
+
         for attribute in attributes {
-            if let attrName = attribute.as(AttributeSyntax.self)?.attributeName.as(IdentifierTypeSyntax.self)?.name.text,
-               attrName == "Codable" {
+            if let attrName = attribute.as(AttributeSyntax.self)?.attributeName.as(
+                IdentifierTypeSyntax.self)?.name.text,
+                attrName == "Codable"
+            {
                 return true
             }
         }
         return false
     }
-    
+
     func processSerializableType(_ structDecl: StructDeclSyntax) -> SerializableTypeInfo {
         let name = structDecl.name.text
         var propertyDefinitions: [SerializableTypeInfo.PropertyDefinition] = []
-        
+
         // Process properties
         for member in structDecl.memberBlock.members {
             if let varDecl = member.decl.as(VariableDeclSyntax.self) {
                 for binding in varDecl.bindings {
-                    if let identifier = binding.pattern.as(IdentifierPatternSyntax.self)?.identifier.text,
-                       let typeAnnotation = binding.typeAnnotation {
+                    if let identifier = binding.pattern.as(IdentifierPatternSyntax.self)?.identifier
+                        .text,
+                        let typeAnnotation = binding.typeAnnotation
+                    {
                         let typeInfo = processTypeAnnotation(typeAnnotation.type)
                         let location = extractLocation(node: binding)
-                        
+
                         propertyDefinitions.append(
                             SerializableTypeInfo.PropertyDefinition(
                                 name: identifier,
@@ -129,9 +136,9 @@ struct SwiftTypeProcessor {
                 }
             }
         }
-        
+
         return SerializableTypeInfo(
-            fullName: name, // In a real implementation, this would include the module name
+            fullName: name,  // In a real implementation, this would include the module name
             name: name,
             kind: .STRUCT,
             propertyDefinitions: propertyDefinitions,
@@ -140,18 +147,18 @@ struct SwiftTypeProcessor {
             location: extractLocation(node: structDecl)
         )
     }
-    
+
     func processEnumType(_ enumDecl: EnumDeclSyntax) -> SerializableTypeInfo {
         let name = enumDecl.name.text
         var enumValues: [SerializableTypeInfo.EnumValue] = []
-        
+
         // Process enum cases
         for member in enumDecl.memberBlock.members {
             if let caseDecl = member.decl.as(EnumCaseDeclSyntax.self) {
                 for element in caseDecl.elements {
                     let caseName = element.name.text
                     let location = extractLocation(node: element)
-                    
+
                     // For simple enums, we don't have property values
                     enumValues.append(
                         SerializableTypeInfo.EnumValue(
@@ -164,9 +171,9 @@ struct SwiftTypeProcessor {
                 }
             }
         }
-        
+
         return SerializableTypeInfo(
-            fullName: name, // In a real implementation, this would include the module name
+            fullName: name,  // In a real implementation, this would include the module name
             name: name,
             kind: .ENUM,
             propertyDefinitions: [],
@@ -175,10 +182,10 @@ struct SwiftTypeProcessor {
             location: extractLocation(node: enumDecl)
         )
     }
-    
+
     func collectMethods() -> [MethodInfo] {
         var result: [MethodInfo] = []
-        
+
         // Find all methods with @LynxMethod annotation
         for member in classDecl.memberBlock.members {
             if let funcDecl = member.decl.as(FunctionDeclSyntax.self) {
@@ -187,32 +194,35 @@ struct SwiftTypeProcessor {
                 }
             }
         }
-        
+
         return result
     }
-    
+
     func hasLynxMethodAttribute(_ attributes: AttributeListSyntax?) -> Bool {
         guard let attributes = attributes else { return false }
-        
+
         for attribute in attributes {
-            if let attrName = attribute.as(AttributeSyntax.self)?.attributeName.as(IdentifierTypeSyntax.self)?.name.text,
-               attrName == "LynxMethod" {
+            if let attrName = attribute.as(AttributeSyntax.self)?.attributeName.as(
+                IdentifierTypeSyntax.self)?.name.text,
+                attrName == "LynxMethod"
+            {
                 return true
             }
         }
         return false
     }
-    
+
     func extractCustomReturnTypeHint(_ attributes: AttributeListSyntax?) -> String? {
         guard let attributes = attributes else { return nil }
-        
+
         for attribute in attributes {
             if let attrSyntax = attribute.as(AttributeSyntax.self),
-               let attrName = attrSyntax.attributeName.as(IdentifierTypeSyntax.self)?.name.text,
-               attrName == "TsRetInto",
-               let args = attrSyntax.arguments?.as(LabeledExprListSyntax.self),
-               let firstArg = args.first?.expression.as(StringLiteralExprSyntax.self) {
-                
+                let attrName = attrSyntax.attributeName.as(IdentifierTypeSyntax.self)?.name.text,
+                attrName == "TsRetInto",
+                let args = attrSyntax.arguments?.as(LabeledExprListSyntax.self),
+                let firstArg = args.first?.expression.as(StringLiteralExprSyntax.self)
+            {
+
                 return firstArg.segments.description
                     .replacingOccurrences(of: "\"", with: "")
                     .trimmingCharacters(in: .whitespacesAndNewlines)
@@ -220,37 +230,46 @@ struct SwiftTypeProcessor {
         }
         return nil
     }
-    
+
     func processMethod(_ funcDecl: FunctionDeclSyntax) -> MethodInfo {
         let name = funcDecl.name.text
         let returnTypeInfo = processReturnType(funcDecl)
         let parameters = processParameters(funcDecl)
         let visibility = determineVisibility(funcDecl.modifiers)
         let customReturnHint = extractCustomReturnTypeHint(funcDecl.attributes)
-        
+
+        var finalReturnType = returnTypeInfo
         if let customReturnHint = customReturnHint {
-            returnTypeInfo.customReturnHint = customReturnHint
+            finalReturnType = TypeInfo(
+                fullName: returnTypeInfo.fullName,
+                name: returnTypeInfo.name,
+                isNullable: returnTypeInfo.isNullable,
+                typeArguments: returnTypeInfo.typeArguments,
+                customReturnHint: customReturnHint,
+                doc: returnTypeInfo.doc,
+                location: returnTypeInfo.location
+            )
         }
-        
+
         return MethodInfo(
             name: name,
-            returnType: returnTypeInfo,
+            returnType: finalReturnType,
             parameters: parameters,
-            receiverType: nil, // No direct equivalent in Swift, but could be computed for extension methods
+            receiverType: nil,  // No direct equivalent in Swift, but could be computed for extension methods
             visibility: visibility,
-            isExtension: false, // Would need to check if this is in an extension
-            isInline: false, // Swift doesn't have direct inline equivalent
+            isExtension: false,  // Would need to check if this is in an extension
+            isInline: false,  // Swift doesn't have direct inline equivalent
             isAsync: funcDecl.signature.effectSpecifiers?.asyncSpecifier != nil,
             doc: extractDocumentation(funcDecl),
             location: extractLocation(node: funcDecl)
         )
     }
-    
+
     func processReturnType(_ funcDecl: FunctionDeclSyntax) -> TypeInfo {
         if let returnType = funcDecl.signature.returnClause?.type {
             return processTypeAnnotation(returnType)
         }
-        
+
         // Default to Void if no return type is specified
         return TypeInfo(
             fullName: "Void",
@@ -259,18 +278,19 @@ struct SwiftTypeProcessor {
             typeArguments: [],
             customReturnHint: nil,
             doc: "",
-            location: SourceLocation()
+            location: SourceLocation(
+                filePath: "", startLine: 0, startColumn: 0, endLine: 0, endColumn: 0)
         )
     }
-    
+
     func processParameters(_ funcDecl: FunctionDeclSyntax) -> [ParameterInfo] {
         var parameters: [ParameterInfo] = []
-        
+
         for parameter in funcDecl.signature.parameterClause.parameters {
             let name = parameter.firstName.text
             let typeInfo = processTypeAnnotation(parameter.type)
             let hasDefaultValue = parameter.defaultValue != nil
-            
+
             parameters.append(
                 ParameterInfo(
                     name: name,
@@ -281,12 +301,11 @@ struct SwiftTypeProcessor {
                 )
             )
         }
-        
+
         return parameters
     }
-    
+
     func processTypeAnnotation(_ type: TypeSyntax) -> TypeInfo {
-        // Process different types of type annotations
         if let identifierType = type.as(IdentifierTypeSyntax.self) {
             return TypeInfo(
                 fullName: identifierType.name.text,
@@ -298,55 +317,29 @@ struct SwiftTypeProcessor {
                 location: extractLocation(node: type)
             )
         } else if let optionalType = type.as(OptionalTypeSyntax.self) {
-            var baseType = processTypeAnnotation(optionalType.wrappedType)
-            baseType.isNullable = true
-            return baseType
-        } else if let arrayType = type.as(ArrayTypeSyntax.self) {
-            let elementType = processTypeAnnotation(arrayType.elementType)
+            let baseType = processTypeAnnotation(optionalType.wrappedType)
             return TypeInfo(
-                fullName: "Array",
-                name: "Array",
-                isNullable: false,
-                typeArguments: [elementType],
-                customReturnHint: nil,
-                doc: "",
-                location: extractLocation(node: type)
-            )
-        } else if let dictionaryType = type.as(DictionaryTypeSyntax.self) {
-            let keyType = processTypeAnnotation(dictionaryType.keyType)
-            let valueType = processTypeAnnotation(dictionaryType.valueType)
-            return TypeInfo(
-                fullName: "Dictionary",
-                name: "Dictionary",
-                isNullable: false,
-                typeArguments: [keyType, valueType],
-                customReturnHint: nil,
-                doc: "",
-                location: extractLocation(node: type)
+                fullName: baseType.fullName,
+                name: baseType.name,
+                isNullable: true,
+                typeArguments: baseType.typeArguments,
+                customReturnHint: baseType.customReturnHint,
+                doc: baseType.doc,
+                location: baseType.location
             )
         } else {
-            // Default fallback
-            return TypeInfo(
-                fullName: type.description,
-                name: type.description,
-                isNullable: false,
-                typeArguments: [],
-                customReturnHint: nil,
-                doc: "",
-                location: extractLocation(node: type)
-            )
+            fatalError("Unsupported type syntax: \(type.description)")
         }
     }
-    
     func determineVisibility(_ modifiers: DeclModifierListSyntax?) -> MethodInfo.Visibility {
         guard let modifiers = modifiers else { return .PUBLIC }
-        
+
         for modifier in modifiers {
             switch modifier.name.text {
             case "private":
                 return .PRIVATE
             case "fileprivate":
-                return .INTERNAL // closest equivalent
+                return .INTERNAL  // closest equivalent
             case "internal":
                 return .INTERNAL
             case "public":
@@ -355,32 +348,32 @@ struct SwiftTypeProcessor {
                 continue
             }
         }
-        
+
         // Default to internal in Swift
         return .INTERNAL
     }
-    
-    func extractDocumentation(_ node: some SyntaxProtocol) -> String {
+
+    func extractDocumentation(_ node: any SyntaxProtocol) -> String {
         // In a real implementation, this would extract doc comments
         // For now, return empty string
         return ""
     }
-    
-    func extractLocation(node: some SyntaxProtocol) -> SourceLocation {
-        let position = node.positionInTree
-        
+
+    func extractLocation(node: any SyntaxProtocol) -> SourceLocation {
         return SourceLocation(
             filePath: "",  // Would need file information from context
-            startLine: position.line ?? 0,
-            startColumn: position.column ?? 0,
-            endLine: position.line ?? 0,  // Would need to calculate end positions
-            endColumn: (position.column ?? 0) + node.description.count
+            startLine: 0,
+            startColumn: 0,
+            endLine: 0,
+            endColumn: node.description.count
         )
     }
-    
-    func createClassInfo(className: String, methods: [MethodInfo], serializableTypes: [SerializableTypeInfo]) -> ClassInfo {
+
+    func createClassInfo(
+        className: String, methods: [MethodInfo], serializableTypes: [SerializableTypeInfo]
+    ) -> ClassInfo {
         return ClassInfo(
-            fullName: className, // In a real implementation, this would include the module name
+            fullName: className,  // In a real implementation, this would include the module name
             name: className,
             methods: methods,
             genericMetadata: "",
@@ -388,14 +381,5 @@ struct SwiftTypeProcessor {
             doc: extractDocumentation(classDecl),
             location: extractLocation(node: classDecl)
         )
-    }
-}
-
-// Helper extensions to get position information
-extension SyntaxProtocol {
-    var positionInTree: (line: Int?, column: Int?) {
-        // In a real implementation, this would use SourceLocationConverter
-        // to get accurate line and column information
-        return (nil, nil)
     }
 }
