@@ -1,5 +1,5 @@
-import Foundation
 import PackagePlugin
+import Foundation
 
 @main
 struct NMBSwiftInspectPluginCmd: CommandPlugin {

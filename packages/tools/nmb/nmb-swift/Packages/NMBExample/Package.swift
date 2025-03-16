@@ -3,7 +3,7 @@
 import PackageDescription
 
 let plugins: [Target.PluginUsage] = [
-    .plugin(name: "NMBSwiftInspectPluginCmd", package: "NMBSwiftInspect")
+    .plugin(name: "NMBSwiftInspectPluginCmd", package: "NMBSwiftInspector")
 ]
 let package = Package(
     name: "NMBExample",
@@ -15,7 +15,7 @@ let package = Package(
             targets: ["NMBExample"])
     ],
     dependencies: [
-        .package(path: "../NMBSwiftInspect")
+        .package(path: "../NMBSwiftInspector")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -23,14 +23,10 @@ let package = Package(
         .target(
             name: "NMBExample",
             dependencies: [
-                .product(name: "NMBSwiftInspect", package: "NMBSwiftInspect")
+                .product(name: "NMBSwiftInspect", package: "NMBSwiftInspector")
             ],
             plugins: plugins
         ),
-        .testTarget(
-            name: "NMBExampleTests",
-            dependencies: ["NMBExample"],
-            plugins: plugins
-        ),
+
     ]
 )

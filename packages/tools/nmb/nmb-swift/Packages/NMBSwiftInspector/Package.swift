@@ -18,7 +18,7 @@ let depsProducts: [Target.Dependency] = [
     // .product(name: "MacroTesting", package: "swift-macro-testing"),
 ]
 let package = Package(
-    name: "NMBSwiftInspect",
+    name: "NMBSwiftInspector",
     platforms: [.macOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -26,7 +26,6 @@ let package = Package(
             name: "NMBSwiftInspect",
             targets: ["NMBSwiftInspect"]
         ),
-        // .plugin(name: "NMBSwiftInspectPlugin", targets: ["NMBSwiftInspectPlugin"]),
         .plugin(name: "NMBSwiftInspectPluginCmd", targets: ["NMBSwiftInspectPluginCmd"]),
         .executable(name: "NMBSwiftInspectCollector", targets: ["NMBSwiftInspectCollector"]),
     ],
@@ -55,15 +54,7 @@ let package = Package(
 
             ]
         ),
-        //.testTarget(
-        //    name: "NMBSwiftInspectTests",
-        //    dependencies: depsProducts + ["NMBSwiftInspect"]
-        //),
-        // .plugin(
-        //     name: "NMBSwiftInspectPlugin",
-        //     capability: .buildTool(),
-        //     dependencies: ["NMBSwiftInspectCollector"]
-        // ),
+
         .plugin(
             name: "NMBSwiftInspectPluginCmd",
             capability: .command(

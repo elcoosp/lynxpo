@@ -9,7 +9,6 @@ import SwiftSyntax
 enum CollectorErr: Error {
     case failed(msg: String)
 }
-@main
 struct NMBSwiftInspectCollector: ParsableCommand {
     @Option(
         name: .customLong("output-directory"), help: "Directory where JSON files will be written")
