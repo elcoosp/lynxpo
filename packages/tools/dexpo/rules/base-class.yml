@@ -28,6 +28,7 @@ fix: |
   import com.lynx.jsbridge.LynxModule
   import com.lynx.jsbridge.Promise
   import com.lynx.tasm.behavior.LynxContext
+  import kotlinx.coroutines.*
   // TODO move in dedicated package
   import LynxpoModule
   $IMPORT_LIST
