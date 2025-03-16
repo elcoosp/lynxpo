@@ -28,7 +28,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.105.1
-        version: 0.105.1(@lynx-js/types@3.2.0)(@types/react@19.0.10)
+        version: 0.105.2(@lynx-js/types@3.2.0)(@types/react@19.0.10)
     devDependencies:
       '@elcoosp-configs/rslib':
         specifier: '2.1'
@@ -259,8 +259,8 @@ packages:
     peerDependencies:
       '@rspack/core': ^1.0.0
 
-  '@lynx-js/react@0.105.1':
-    resolution: {integrity: sha512-sSrkB6mWogd53hw9WKOhqDhos5eEYsdONsqE1avlK3MrFPVM34x1hQrEIiugkhhU6lRDuGPVuZujrIvaebqduQ==}
+  '@lynx-js/react@0.105.2':
+    resolution: {integrity: sha512-AHPCUbeVypAf+e0d+Sh760CJAh2ad1EbesjdjN7Sp0/wAhOjhI3p+sejtFKweS0xr/ivf+TSVp8ibbeGeZYnOQ==}
     peerDependencies:
       '@lynx-js/types': '*'
       '@types/react': ^18
@@ -2375,7 +2375,7 @@ snapshots:
       '@lynx-js/webpack-runtime-globals': 0.0.5
       '@rspack/core': 1.2.8(@swc/helpers@0.5.15)
 
-  '@lynx-js/react@0.105.1(@lynx-js/types@3.2.0)(@types/react@19.0.10)':
+  '@lynx-js/react@0.105.2(@lynx-js/types@3.2.0)(@types/react@19.0.10)':
     dependencies:
       '@types/react': 19.0.10
       preact: '@hongzhiyuan/preact@10.24.0-319c684e'
