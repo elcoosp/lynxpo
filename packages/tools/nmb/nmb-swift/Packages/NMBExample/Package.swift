@@ -22,7 +22,9 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "NMBExample",
-            dependencies: [.product(name: "NMBSwiftInspect", package: "NMBSwiftInspect")],
+            dependencies: [
+                .product(name: "NMBSwiftInspect", package: "NMBSwiftInspect")
+            ],
             plugins: plugins
         ),
         .testTarget(

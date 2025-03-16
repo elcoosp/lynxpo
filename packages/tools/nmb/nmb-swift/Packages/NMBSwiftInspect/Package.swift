@@ -1,6 +1,7 @@
 // swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
+import CompilerPluginSupport
 import PackageDescription
 
 let depsProducts: [Target.Dependency] = [
@@ -13,6 +14,7 @@ let depsProducts: [Target.Dependency] = [
         package: "swift-syntax"
     ),
     .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
+    .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
     // .product(name: "MacroTesting", package: "swift-macro-testing"),
 ]
 let package = Package(
@@ -36,8 +38,8 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log.git", branch: "main"),
     ],
     targets: [
-        .target(
-            name: "NMBSwiftInspect",
+        .macro(
+            name: "NMBSwiftInspectMacros",
             dependencies: depsProducts
         ),
         .executableTarget(
@@ -45,8 +47,10 @@ let package = Package(
             dependencies: [
                 "NMBSwiftInspect",
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
+                .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 .product(name: "Logging", package: "swift-log"),
+
             ]
         ),
         //.testTarget(
@@ -57,6 +61,10 @@ let package = Package(
             name: "NMBSwiftInspectPlugin",
             capability: .buildTool(),
             dependencies: ["NMBSwiftInspectCollector"]
+        ),
+        .target(
+            name: "NMBSwiftInspect",
+            dependencies: ["NMBSwiftInspectMacros"]
         ),
     ]
 )
