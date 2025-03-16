@@ -279,7 +279,7 @@ struct NMBSwiftInspectTests {
         #expect(classInfo.methods.count == 3)
 
         let taskMethod = try #require(classInfo.methods.first { $0.name == "createTask" })
-        #expect(taskMethod.visibility == .PUBLIC)
+        #expect(taskMethod.visibility == .public)
 
         let asyncMethod = try #require(classInfo.methods.first { $0.name == "fetchTasks" })
         #expect(asyncMethod.isAsync == true)

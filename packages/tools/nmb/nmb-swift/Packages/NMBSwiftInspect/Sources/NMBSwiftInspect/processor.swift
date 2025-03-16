@@ -140,7 +140,7 @@ struct SwiftTypeProcessor {
         return SerializableTypeInfo(
             fullName: name,  // In a real implementation, this would include the module name
             name: name,
-            kind: .STRUCT,
+            kind: .structure,
             propertyDefinitions: propertyDefinitions,
             enumValues: [],
             doc: extractDocumentation(structDecl),
@@ -175,7 +175,7 @@ struct SwiftTypeProcessor {
         return SerializableTypeInfo(
             fullName: name,  // In a real implementation, this would include the module name
             name: name,
-            kind: .ENUM,
+            kind: .enumeration,
             propertyDefinitions: [],
             enumValues: enumValues,
             doc: extractDocumentation(enumDecl),
@@ -332,25 +332,25 @@ struct SwiftTypeProcessor {
         }
     }
     func determineVisibility(_ modifiers: DeclModifierListSyntax?) -> MethodInfo.Visibility {
-        guard let modifiers = modifiers else { return .PUBLIC }
+        guard let modifiers = modifiers else { return .pub }
 
         for modifier in modifiers {
             switch modifier.name.text {
             case "private":
-                return .PRIVATE
+                return .priv
             case "fileprivate":
-                return .INTERNAL  // closest equivalent
+                return .intern  // closest equivalent
             case "internal":
-                return .INTERNAL
+                return .intern
             case "public":
-                return .PUBLIC
+                return .pub
             default:
                 continue
             }
         }
 
         // Default to internal in Swift
-        return .INTERNAL
+        return .intern
     }
 
     func extractDocumentation(_ node: any SyntaxProtocol) -> String {

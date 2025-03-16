@@ -43,9 +43,13 @@ public struct MethodInfo {
     let doc: String
     let location: SourceLocation
 
-    @Codable
-    public enum Visibility: String, Sendable {
-        case PUBLIC, INTERNAL, PROTECTED, PRIVATE
+    //@Codable
+    public enum Visibility: String, Codable {
+        //case pub, intern, protected, priv
+        case pub = "PUBLIC"
+        case intern = "INTERNAL"
+        case protected = "PROTECTED"
+        case priv = "PRIVATE"
     }
 }
 
@@ -74,9 +78,14 @@ public struct SerializableTypeInfo {
         let location: SourceLocation
     }
 
-    @Codable
-    public enum Kind: String {
-        case CLASS, INTERFACE, ENUM, OBJECT, STRUCT
+    //@Codable
+    public enum Kind: String, Codable {
+        // case clazz, interf, enumeration, obj, structure
+        case clazz = "CLASS"
+        case interf = "INTERFACE"
+        case enumeration = "ENUM"
+        case obj = "OBJECT"
+        case structure = "STRUCT"
     }
 }
 

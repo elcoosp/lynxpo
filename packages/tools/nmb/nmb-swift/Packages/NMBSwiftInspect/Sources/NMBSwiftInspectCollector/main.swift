@@ -4,7 +4,6 @@ import NMBSwiftInspect
 import SwiftParser
 import SwiftSyntax
 
-@main
 struct NMBSwiftInspectCollector: ParsableCommand {
     @Option(
         name: .customLong("output-directory"), help: "Directory where JSON files will be written")
