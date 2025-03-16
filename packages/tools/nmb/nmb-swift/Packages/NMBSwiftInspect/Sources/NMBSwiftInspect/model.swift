@@ -44,7 +44,7 @@ public struct MethodInfo {
     let location: SourceLocation
 
     @Codable
-    public enum Visibility: String {
+    public enum Visibility: String, Sendable {
         case PUBLIC, INTERNAL, PROTECTED, PRIVATE
     }
 }

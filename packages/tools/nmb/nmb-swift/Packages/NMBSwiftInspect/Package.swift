@@ -3,6 +3,18 @@
 
 import PackageDescription
 
+let depsProducts: [Target.Dependency] = [
+    .product(
+        name: "MetaCodable",
+        package: "MetaCodable"
+    ),
+    .product(
+        name: "SwiftSyntax",
+        package: "swift-syntax"
+    ),
+    .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
+    // .product(name: "MacroTesting", package: "swift-macro-testing"),
+]
 let package = Package(
     name: "NMBSwiftInspect",
     platforms: [.macOS(.v15)],
@@ -10,11 +22,16 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "NMBSwiftInspect",
-            targets: ["NMBSwiftInspect"])
+            targets: ["NMBSwiftInspect"]
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/SwiftyLab/MetaCodable.git", branch: "main"),
-        .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "600.0.1"),
+        .package(url: "https://github.com/elcoosp/MetaCodable", revision: "c2ff8f"),
+        .package(url: "https://github.com/swiftlang/swift-syntax.git", branch: "main"),
+        // .package(url: "https://github.com/pointfreeco/swift-macro-testing", branch: "main"),
+        .package(url: "https://github.com/apple/swift-argument-parser", branch: "main"),
+        .package(url: "https://github.com/stackotter/swift-macro-toolkit", branch: "main"),
+        .package(url: "https://github.com/apple/swift-log.git", branch: "main"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -22,20 +39,25 @@ let package = Package(
         .target(
             name: "NMBSwiftInspect",
 
+            dependencies: depsProducts
+        ),
+        .executableTarget(
+            name: "NMBSwiftInspectCollector",
             dependencies: [
-                .product(
-                    name: "MetaCodable",
-                    package: "MetaCodable"
-                ),
-                .product(
-                    name: "SwiftSyntax",
-                    package: "swift-syntax"
-                ),
-                .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
-            ]),
-        .testTarget(
-            name: "NMBSwiftInspectTests",
-            dependencies: ["NMBSwiftInspect"]
+                "NMBSwiftInspect",
+                .product(name: "SwiftSyntax", package: "swift-syntax"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "Logging", package: "swift-log"),
+            ]
+        ),
+        //.testTarget(
+        //    name: "NMBSwiftInspectTests",
+        //    dependencies: depsProducts + ["NMBSwiftInspect"]
+        //),
+        .plugin(
+            name: "NMBSwiftInspectPlugin",
+            capability: .buildTool(),
+            dependencies: ["NMBSwiftInspectCollector"]
         ),
     ]
 )

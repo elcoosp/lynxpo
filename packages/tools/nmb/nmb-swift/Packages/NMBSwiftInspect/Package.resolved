@@ -1,22 +1,22 @@
 {
-  "originHash" : "808f45218b6b66214a8fd068d1abc173d623103c8c7151425c6fe0a28ab401be",
+  "originHash" : "b52be247102f897eb4047be830357f07a2ea93131703f0ac8198e1e40480668a",
   "pins" : [
     {
       "identity" : "metacodable",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftyLab/MetaCodable.git",
+      "location" : "https://github.com/elcoosp/MetaCodable",
       "state" : {
-        "branch" : "main",
-        "revision" : "412ce20f011c5419a890647c551bf22c06d0b907"
+        "branch" : "c2ff8f",
+        "revision" : "c2ff8f938f8f53d0afcb80c770366c4cf4ef6caf"
       }
     },
     {
       "identity" : "swift-argument-parser",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "location" : "https://github.com/apple/swift-argument-parser",
       "state" : {
-        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
-        "version" : "1.5.0"
+        "branch" : "main",
+        "revision" : "d67151befa39533a6a449136c7992537cbf8ec99"
       }
     },
     {
@@ -29,12 +29,30 @@
       }
     },
     {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3d8596ed08bd13520157f0355e35caed215ffbfa"
+      }
+    },
+    {
+      "identity" : "swift-macro-toolkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stackotter/swift-macro-toolkit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "569627091e1fbb8745d691aeeb008e7247dedb7c"
+      }
+    },
+    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-syntax.git",
       "state" : {
-        "revision" : "0687f71944021d616d34d922343dcef086855920",
-        "version" : "600.0.1"
+        "branch" : "main",
+        "revision" : "ee0146217a46f545fa46e019449c1a4763611d1e"
       }
     }
   ],

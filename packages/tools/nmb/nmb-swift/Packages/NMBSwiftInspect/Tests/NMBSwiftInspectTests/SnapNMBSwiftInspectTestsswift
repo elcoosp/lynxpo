@@ -1,0 +1,22 @@
+import MacroTesting
+import NMBSwiftInspect
+import Testing
+
+@Suite(
+    .macros(
+        record: .missing,
+        macros: ["Typed": TypedMacro.self]
+    )
+)
+struct SnapTypedClass {
+    @Test
+    func testSnapTypedClass() {
+        assertMacro {
+            """
+            @Typed
+            class TestClass {
+            }
+            """
+        }
+    }
+}
