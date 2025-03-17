@@ -40,7 +40,7 @@ let package = Package(
         .package(url: "https://github.com/stackotter/swift-macro-toolkit", branch: "main"),
         .package(url: "https://github.com/apple/swift-log.git", branch: "main"),
 
-        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.27.0"),
+        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.29.0"),
     ],
     targets: [
         .macro(
