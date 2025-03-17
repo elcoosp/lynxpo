@@ -82,22 +82,37 @@ struct SwiftTypeProcessor {
             }
             """
     }
-
     func collectSerializableTypes() -> [SerializableTypeInfo] {
         var result: [SerializableTypeInfo] = []
-        // Find all nested types with @Codable annotation
+
+        // Find all nested types that conform to Codable protocol
         for member in classDecl.memberBlock.members {
             if let structDecl = member.decl.as(StructDeclSyntax.self) {
-                if hasCodableAttribute(structDecl.attributes) {
+                if conformsToCodable(structDecl) {
                     result.append(processSerializableType(structDecl))
                 }
             } else if let enumDecl = member.decl.as(EnumDeclSyntax.self) {
-                if hasCodableAttribute(enumDecl.attributes) {
+                if conformsToCodable(enumDecl) {
                     result.append(processEnumType(enumDecl))
                 }
             }
         }
+
         return result
+    }  // Helper function to check if a type conforms to Codable
+    func conformsToCodable(_ typeDecl: DeclGroupSyntax) -> Bool {
+        // Check inheritance clause for explicit Codable conformance
+        if let inheritanceClause = typeDecl.inheritanceClause {
+            for inheritedType in inheritanceClause.inheritedTypes {
+                if let type = inheritedType.type.as(IdentifierTypeSyntax.self),
+                    type.name.text == "Codable"
+                {
+                    return true
+                }
+            }
+        }
+
+        return false
     }
 
     func hasCodableAttribute(_ attributes: AttributeListSyntax?) -> Bool {

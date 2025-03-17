@@ -13,6 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../NMBSwiftInspector")
+
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -21,6 +22,9 @@ let package = Package(
             name: "NMBExample",
             dependencies: [
                 .product(name: "NMBSwiftInspect", package: "NMBSwiftInspector")
+            ],
+            swiftSettings: [
+                .unsafeFlags(["-Xfrontend", "-dump-macro-expansions"])
             ]
         )
 

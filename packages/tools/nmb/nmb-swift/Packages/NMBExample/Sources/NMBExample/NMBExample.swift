@@ -4,12 +4,20 @@ import NMBSwiftInspect
 
 @Typed
 class Foo {
-    @LynxMethod
-    func bar() {
-
+    enum Barbar: Codable {
+        case foo
     }
     @LynxMethod
-    func baz() {
+    func bar() {
+    }
+    struct MyGen<U: Codable>: Codable {
+        var field: U
+    }
+    @LynxMethod
+    func baz<U: Codable>(gen: MyGen<U>) {
 
+    }
+    enum Foodroi: Codable {
+        case bar, az
     }
 }
