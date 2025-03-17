@@ -33,3 +33,7 @@ pub fn to_unified_model(info: model::TypeInfoFile) -> model::UnifiedTypeInfo {
     // model::Language::Swift => model::swift::to_unified(&info),
     // }
 }
+
+pub mod modtyinfo {
+    include!(concat!(env!("OUT_DIR"), "/modtyinfo.rs"));
+}

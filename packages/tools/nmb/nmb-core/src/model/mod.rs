@@ -64,11 +64,11 @@ impl TypeInfoFile {
     pub fn has_kotlin_specific_fields(&self) -> bool {
         unimplemented!();
         // Look for Kotlin-specific patterns
-        self.methods.iter().any(|m| m.is_extension || m.is_async)
-            || self
-                .serializable_types
-                .iter()
-                .any(|t| matches!(t.kind, TypeKind::Object))
+        //     self.methods.iter().any(|m| m.is_extension || m.is_async)
+        //         || self
+        //             .serializable_types
+        //             .iter()
+        //             .any(|t| matches!(t.kind, TypeKind::Object))
     }
 }
 

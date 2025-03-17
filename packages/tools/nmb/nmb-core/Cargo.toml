@@ -9,3 +9,8 @@ serde_json.workspace = true
 anyhow.workspace = true
 schemars.workspace = true
 ordermap.workspace = true
+prost.workspace = true
+prost-types.workspace = true
+
+[build-dependencies]
+prost-build.workspace = true

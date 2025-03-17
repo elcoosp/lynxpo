@@ -1,0 +1,253 @@
+syntax = "proto3";
+
+package modtyinfo;
+
+message SourceLocation {
+  string file_path = 1;
+  int32 start_line = 2;
+  int32 start_column = 3;
+  int32 end_line = 4;
+  int32 end_column = 5;
+}
+
+// Enhanced TypeInfo with more details about the type
+message TypeInfo {
+  string full_name = 1;
+  string name = 2;
+  bool is_nullable = 3;
+  repeated TypeInfo type_arguments = 4;
+  optional string custom_return_hint = 5;
+  string doc = 6;
+  SourceLocation location = 7;
+  bool is_array = 8;
+  bool is_collection = 9;
+  bool is_map = 10;
+  string language_specific_type = 11;  // For platform-specific type info
+  TypeCategory category = 12;
+  repeated TypeParameterInfo type_parameters = 13;  // Generic type parameters
+}
+
+// Type parameter information for generics
+message TypeParameterInfo {
+  string name = 1;
+  optional TypeInfo upper_bound = 2;  // Upper bound constraint (extends in Java/Kotlin, : in Swift)
+  optional TypeInfo lower_bound = 3;  // Lower bound constraint (super in Java/Kotlin)
+  repeated TypeInfo type_constraints = 4;  // Multiple constraints/where clauses
+  bool is_reified = 5;  // Whether the type parameter is reified (Kotlin)
+  bool is_variant = 6;  // Variance information (in, out, *, etc.)
+  VarianceKind variance = 7;
+  string doc = 8;
+  SourceLocation location = 9;
+}
+
+// Categories of types
+enum TypeCategory {
+  PRIMITIVE = 0;
+  CLASS = 1;
+  INTERFACE = 2;
+  ENUM = 3;
+  STRUCT = 4;
+  FUNCTION = 5;
+  TUPLE = 6;
+  UNION = 7;
+  INTERSECTION = 8;
+  TYPE_ALIAS = 9;
+  GENERIC_PARAMETER = 10;
+  UNKNOWN = 11;
+}
+
+// Variance kinds
+enum VarianceKind {
+  INVARIANT = 0;
+  COVARIANT = 1;  // out in Kotlin
+  CONTRAVARIANT = 2;  // in in Kotlin
+}
+
+// Enhanced parameter info
+message ParameterInfo {
+  string name = 1;
+  TypeInfo type = 2;
+  bool has_default_value = 3;
+  optional string default_value_literal = 4;  // String representation of default value
+  string doc = 5;
+  SourceLocation location = 6;
+  bool is_vararg = 7;  // Variable arguments (vararg in Kotlin, ... in Swift)
+  bool is_crossinline = 8;  // Kotlin-specific but kept for completeness
+  bool is_noinline = 9;  // Kotlin-specific but kept for completeness
+  map<string, string> annotations = 10;  // Annotation key-value pairs
+  repeated string parameter_modifiers = 11;  // Additional modifiers
+}
+
+// Enhanced visibility options
+enum Visibility {
+  PUBLIC = 0;
+  INTERNAL = 1;
+  PROTECTED = 2;
+  PRIVATE = 3;
+  PACKAGE_PRIVATE = 4;  // Default in Java
+  FILE_PRIVATE = 5;     // Swift fileprivate
+  OPEN = 6;             // Swift open
+}
+
+// Enhanced method info
+message MethodInfo {
+  string name = 1;
+  TypeInfo return_type = 2;
+  repeated ParameterInfo parameters = 3;
+  optional TypeInfo receiver_type = 4;
+  Visibility visibility = 5;
+  bool is_extension = 6;
+  bool is_inline = 7;
+  bool is_async = 8;
+  string doc = 9;
+  SourceLocation location = 10;
+  bool is_static = 11;
+  bool is_abstract = 12;
+  bool is_final = 13;
+  bool is_open = 14;
+  bool is_constructor = 15;
+  repeated TypeParameterInfo type_parameters = 16;  // Method-level type parameters
+  repeated string throws = 17;  // Exception/error types thrown
+  map<string, string> annotations = 18;  // Method annotations
+  bool is_operator = 19;  // Whether it's an operator method
+  bool is_infix = 20;     // Whether it's an infix function (Kotlin)
+  optional string language_specific_flags = 21;  // For platform-specific flags
+}
+
+// Enhanced type kind enumeration
+enum TypeKind {
+  CLAZZ = 0;
+  INTERF = 1;
+  ENUMERATION = 2;
+  OBJ = 3;
+  STRUCTURE = 4;
+  PROTOCOL = 5;  // Swift protocols
+  SEALED_CLASS = 6;  // Kotlin sealed classes
+  DATA_CLASS = 7;    // Kotlin data classes
+  ANNOTATION_CLASS = 8;  // Kotlin annotation classes
+  ACTOR = 9;  // Swift actors
+  VALUE_CLASS = 10;  // Kotlin value classes
+}
+
+// Enhanced property definition
+message PropertyDefinition {
+  string name = 1;
+  TypeInfo type = 2;
+  SourceLocation location = 3;
+  bool is_mutable = 4;  // var vs val in Kotlin, var vs let in Swift
+  optional string initial_value_literal = 5;  // String representation of default value
+  bool has_custom_getter = 6;
+  bool has_custom_setter = 7;
+  Visibility visibility = 8;
+  Visibility setter_visibility = 9;  // Can be different from property visibility
+  string doc = 10;
+  bool is_late_init = 11;  // Kotlin lateinit
+  bool is_const = 12;      // Kotlin const
+  bool is_static = 13;     // Class property
+  bool is_lazy = 14;       // Kotlin lazy, Swift lazy
+  map<string, string> annotations = 15;  // Annotations on the property
+  bool is_computed = 16;   // Whether it's a computed property
+  bool is_abstract = 17;   // Abstract property
+  bool is_open = 18;       // Open property
+  bool is_final = 19;      // Final property
+}
+
+// Enhanced enum value info
+message EnumValue {
+  string name = 1;
+  repeated string property_values = 2;
+  string doc = 3;
+  SourceLocation location = 4;
+  int32 ordinal = 5;  // Position in the enum declaration
+  map<string, string> annotations = 6;  // Annotations on the enum value
+  map<string, string> associated_values = 7;  // For Swift enum associated values
+}
+
+// Enhanced serializable type info
+message SerializableTypeInfo {
+  string full_name = 1;
+  string name = 2;
+  TypeKind kind = 3;
+  repeated PropertyDefinition property_definitions = 4;
+  repeated EnumValue enum_values = 5;
+  string doc = 6;
+  SourceLocation location = 7;
+  repeated TypeParameterInfo type_parameters = 8;  // Type-level type parameters
+  repeated TypeInfo implemented_types = 9;  // Interfaces/protocols implemented
+  optional TypeInfo superclass = 10;  // Parent class if any
+  bool is_serializable = 11;  // Is marked with serialization annotation
+  string serialization_strategy = 12;  // Custom serialization strategy if any
+  map<string, string> annotations = 13;  // Type annotations
+  repeated ConstructorInfo constructors = 14;  // Constructors
+  bool is_sealed = 15;  // Kotlin sealed class, Swift closed enum
+  repeated TypeInfo nested_types = 16;  // Types declared inside this type
+  optional string companion_object = 17;  // Companion object name (Kotlin)
+}
+
+// Constructor information
+message ConstructorInfo {
+  Visibility visibility = 1;
+  repeated ParameterInfo parameters = 2;
+  bool is_primary = 3;  // Primary constructor
+  string doc = 4;
+  SourceLocation location = 5;
+  map<string, string> annotations = 6;
+}
+
+// Type alias information
+message TypeAliasInfo {
+  string name = 1;
+  string full_name = 2;
+  TypeInfo underlying_type = 3;
+  string doc = 4;
+  SourceLocation location = 5;
+  repeated TypeParameterInfo type_parameters = 6;
+  Visibility visibility = 7;
+}
+
+// Package/module level info
+message PackageInfo {
+  string name = 1;
+  string doc = 2;
+  map<string, string> annotations = 3;
+}
+
+// Extended class info
+message ClassInfo {
+  string full_name = 1;
+  string name = 2;
+  repeated MethodInfo methods = 3;
+  string generic_metadata = 4;
+  repeated SerializableTypeInfo serializable_types = 5;
+  string doc = 6;
+  SourceLocation location = 7;
+  PackageInfo package_info = 8;
+  repeated TypeAliasInfo type_aliases = 9;
+  map<string, string> annotations = 10;
+  repeated TypeParameterInfo type_parameters = 11;
+  repeated PropertyDefinition properties = 12;
+  repeated TypeInfo implemented_types = 13;
+  optional TypeInfo superclass = 14;
+  TypeKind kind = 15;
+  Visibility visibility = 16;
+  bool is_final = 17;
+  bool is_abstract = 18;
+  bool is_open = 19;
+  bool is_sealed = 20;
+  repeated ConstructorInfo constructors = 21;
+  repeated TypeInfo nested_types = 22;
+  optional string companion_object = 23;
+}
+
+// Complete file with all type information
+message TypeInfoFile {
+  string file_path = 1;
+  PackageInfo package_info = 2;
+  repeated ClassInfo classes = 3;
+  repeated TypeAliasInfo type_aliases = 4;
+  repeated string imports = 5;
+  map<string, string> module_annotations = 6; 
+  string language = 7;  // Source language: "kotlin", "swift", etc.
+  string language_version = 8;  // Source language version
+  repeated string compiler_flags = 9;  // Compiler flags that might affect the output
+}
