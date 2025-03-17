@@ -4,3 +4,4 @@ dist
 packages/playground/**
 .turbo
 .gradle
+proposals

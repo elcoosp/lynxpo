@@ -9,10 +9,10 @@
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     alias(libs.plugins.kotlin.jvm)
-
+    
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
-    id("com.squareup.wire") version "5.3.1"
+    alias(libs.plugins.wire)
 
 }
 
@@ -35,7 +35,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath("com.squareup.wire:wire-gradle-plugin:5.3.1")
+    classpath(libs.wire)
   }
 }
 
