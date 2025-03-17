@@ -14,3 +14,5 @@ prost-types.workspace = true
 
 [build-dependencies]
 prost-build.workspace = true
+build-print.workspace = true
+cmd_lib = { workspace = true, features = ["build-print"] }

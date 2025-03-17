@@ -1,1 +1,0 @@
-protoc --proto_path="../src/protos" --swift_out="Sources/nmb-core-sw" modtyinfo.proto

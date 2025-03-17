@@ -18,3 +18,7 @@ terminal_hyperlink = "0.1.0"
 prost = "0.13"
 prost-types = "0.13"
 prost-build = "0.13.5"
+build-print = "0.1.1"
+cmd_lib = { git = "https://github.com/elcoosp/rust_cmd_lib", features = [
+    "build-print",
+], branch = "feat/build-script-log" }
