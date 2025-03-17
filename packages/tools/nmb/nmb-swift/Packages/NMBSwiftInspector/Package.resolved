@@ -1,13 +1,12 @@
 {
-  "originHash" : "4599867f9a5e9c1b7cb68eeb196adae0bd186f07e671650d07935e57f114e932",
+  "originHash" : "46b32cf81845eea438d3932195f6966b1ae0e3978701c526d654920a06cdf2a9",
   "pins" : [
     {
       "identity" : "metacodable",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/elcoosp/MetaCodable",
       "state" : {
-        "branch" : "c2ff8f",
-        "revision" : "c2ff8f938f8f53d0afcb80c770366c4cf4ef6caf"
+        "revision" : "654b45e48e24a4a8f3e00a1e7b70ede379b50b8e"
       }
     },
     {

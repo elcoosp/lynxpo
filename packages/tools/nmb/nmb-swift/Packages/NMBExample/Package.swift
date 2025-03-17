@@ -2,9 +2,6 @@
 
 import PackageDescription
 
-let plugins: [Target.PluginUsage] = [
-    .plugin(name: "NMBSwiftInspectPluginCmd", package: "NMBSwiftInspector")
-]
 let package = Package(
     name: "NMBExample",
     platforms: [.macOS(.v15)],
@@ -24,9 +21,8 @@ let package = Package(
             name: "NMBExample",
             dependencies: [
                 .product(name: "NMBSwiftInspect", package: "NMBSwiftInspector")
-            ],
-            plugins: plugins
-        ),
+            ]
+        )
 
     ]
 )
