@@ -2,14 +2,14 @@
 // https://docs.swift.org/swift-book
 import NMBSwiftInspect
 
+enum Barbar: Codable {
+    case foo
+}
 @Typed
 class Foo {
-    enum Barbar: Codable {
-        case foo
-    }
 
     @LynxMethod
-    func barz() {
+    func barz(a: ExtBar) {
     }
     @LynxMethod
     func bar() {

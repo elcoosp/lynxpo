@@ -316,15 +316,15 @@ public struct NewTypedMacro: PeerMacro {
                 constructors.append(constructor)
             } else if let classDecl = member.decl.as(ClassDeclSyntax.self) {
                 // Process nested class
-                var nestedTypeInfo = try extractTypeInfo(for: classDecl, context: context)
+                let nestedTypeInfo = try extractTypeInfo(for: classDecl, context: context)
                 nestedTypes.append(nestedTypeInfo)
             } else if let structDecl = member.decl.as(StructDeclSyntax.self) {
                 // Process nested struct
-                var nestedTypeInfo = try extractTypeInfo(for: structDecl, context: context)
+                let nestedTypeInfo = try extractTypeInfo(for: structDecl, context: context)
                 nestedTypes.append(nestedTypeInfo)
             } else if let enumDecl = member.decl.as(EnumDeclSyntax.self) {
                 // Process nested enum
-                var nestedTypeInfo = try extractTypeInfo(for: enumDecl, context: context)
+                let nestedTypeInfo = try extractTypeInfo(for: enumDecl, context: context)
                 nestedTypes.append(nestedTypeInfo)
             }
             // Other member types can be added as needed
@@ -357,15 +357,18 @@ public struct NewTypedMacro: PeerMacro {
             // Extract property type
             if let typeAnnotation = binding.typeAnnotation {
                 property.type = try extractTypeInfo(from: typeAnnotation.type, context: context)
-            } else if let initializer = binding.initializer {
-                // If there's no explicit type but there is an initializer, we could try to infer the type
-                // This would require semantic information, which is not available in this context
-                // For now, we'll create a placeholder type
-                var inferred = TypeInfo()
-                inferred.name = "Inferred"
-                inferred.fullName = "Inferred"
-                property.type = inferred
-            } else {
+            }
+            //  else if let initializer = binding.initializer {
+            //     // If there's no explicit type but there is an initializer, we could try to infer the type
+            //     // This would require semantic information, which is not available in this context
+            //     // For now, we'll create a placeholder type
+
+            //     var inferred = TypeInfo()
+            //     inferred.name = initializer.value.as(ExprSyntaxEnum.Type)
+            //     inferred.fullName = "Inferred"
+            //     property.type = inferred
+            // }
+            else {
                 // Neither type annotation nor initializer
                 throw TypedMacroError.missingTypeInformation(property.name)
             }
@@ -459,7 +462,7 @@ public struct NewTypedMacro: PeerMacro {
         methodInfo.isOpen = funcDecl.modifiers.contains { $0.name.text == "open" }
 
         // Check for throws
-        if funcDecl.signature.effectSpecifiers?.throwsSpecifier != nil {
+        if funcDecl.signature.effectSpecifiers?.throwsClause?.throwsSpecifier != nil {
             methodInfo.throws = ["Swift.Error"]  // Simplified, as we don't have the exact error types
         }
 
@@ -593,14 +596,15 @@ public struct NewTypedMacro: PeerMacro {
         _ modifiers: DeclModifierListSyntax?,
         typeInfo: inout SerializableTypeInfo
     ) {
-        guard let modifiers = modifiers else { return }
-
+        // guard let modifiers = modifiers else { return }
+        // TODO: say no prop may be caused by default prop
         // Extract visibility
-        let visibility = extractVisibility(from: modifiers)
+        // let visibility = extractVisibility(from: modifiers)
+        // typeInfo.visibility = visibility
 
-        // Map additional modifiers to SerializableTypeInfo properties
-        let isFinal = modifiers.contains { $0.name.text == "final" }
-        let isOpen = modifiers.contains { $0.name.text == "open" }
+        // // Map additional modifiers to SerializableTypeInfo properties
+        // let isFinal = modifiers.contains { $0.name.text == "final" }
+        // let isOpen = modifiers.contains { $0.name.text == "open" }
 
         // Update type info
         // typeInfo.isFinal = isFinal
@@ -669,7 +673,7 @@ public struct NewTypedMacro: PeerMacro {
     ) throws -> TypeInfo {
         var typeInfo = TypeInfo()
 
-        if let simpleType = type.as(SimpleTypeIdentifierSyntax.self) {
+        if let simpleType = type.as(IdentifierTypeSyntax.self) {
             // Basic type like Int, String, etc.
             typeInfo.name = simpleType.name.text
             typeInfo.fullName = simpleType.name.text  // Simplified, would need semantic info for complete qualification
@@ -678,7 +682,7 @@ public struct NewTypedMacro: PeerMacro {
             let primitiveTypes = ["Int", "UInt", "Float", "Double", "Bool", "Character", "String"]
             typeInfo.category = primitiveTypes.contains(typeInfo.name) ? .primitive : .class
 
-        } else if let memberType = type.as(MemberTypeIdentifierSyntax.self) {
+        } else if let memberType = type.as(MemberTypeSyntax.self) {
             // Qualified type like Module.Type
             typeInfo.name = memberType.name.text
             typeInfo.fullName = type.trimmedDescription
@@ -699,7 +703,7 @@ public struct NewTypedMacro: PeerMacro {
             typeInfo.isCollection = true
 
             // Extract element type
-            let elementType = try extractTypeInfo(from: arrayType.elementType, context: context)
+            let elementType = try extractTypeInfo(from: arrayType.element, context: context)
             typeInfo.typeArguments = [elementType]
 
         } else if let dictionaryType = type.as(DictionaryTypeSyntax.self) {
@@ -711,8 +715,8 @@ public struct NewTypedMacro: PeerMacro {
             typeInfo.isCollection = true
 
             // Extract key and value types
-            let keyType = try extractTypeInfo(from: dictionaryType.keyType, context: context)
-            let valueType = try extractTypeInfo(from: dictionaryType.valueType, context: context)
+            let keyType = try extractTypeInfo(from: dictionaryType.key, context: context)
+            let valueType = try extractTypeInfo(from: dictionaryType.value, context: context)
             typeInfo.typeArguments = [keyType, valueType]
 
             // } else if let genericType = type.as(GenericIdentifierTypeSyntax.self) {
@@ -769,7 +773,7 @@ public struct NewTypedMacro: PeerMacro {
 
             // Extract return type
             let returnType = try extractTypeInfo(
-                from: functionType.output.returnType, context: context)
+                from: functionType.returnClause.type, context: context)
 
             // Combine parameter types and return type as type arguments
             typeInfo.typeArguments = parameterTypes + [returnType]
