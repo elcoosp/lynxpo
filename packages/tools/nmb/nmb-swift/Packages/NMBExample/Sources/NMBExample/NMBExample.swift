@@ -7,6 +7,10 @@ class Foo {
     enum Barbar: Codable {
         case foo
     }
+
+    @LynxMethod
+    func barz() {
+    }
     @LynxMethod
     func bar() {
     }

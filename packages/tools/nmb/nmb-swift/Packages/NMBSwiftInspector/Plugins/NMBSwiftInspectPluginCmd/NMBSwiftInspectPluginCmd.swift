@@ -25,14 +25,14 @@ struct NMBSwiftInspectPluginCmd: CommandPlugin {
 
             // Collect Swift source files
             let swiftSources = sourceTarget.sourceFiles
-                .filter { $0.path.extension == "swift" }
+                .filter { $0.url.pathExtension == "swift" }
                 .map { $0.path.string }
 
             // Create output directory
-            let outputDir = context.pluginWorkDirectory
-                .appending(["TypeInfo"])
+            let outputDir = context.pluginWorkDirectoryURL
+                .appending(path: "TypeInfo")
             try FileManager.default.createDirectory(
-                atPath: outputDir.string,
+                atPath: outputDir.formatted(),
                 withIntermediateDirectories: true
             )
 
@@ -41,12 +41,12 @@ struct NMBSwiftInspectPluginCmd: CommandPlugin {
                 [
                     "--source-files"
                 ] + swiftSources + [
-                    "--output-directory", outputDir.string,
+                    "--output-directory", outputDir.formatted(),
                 ]
 
             // Run the collection tool
             let process = try Process.run(
-                URL(fileURLWithPath: collectorTool.path.string),
+                URL(fileURLWithPath: collectorTool.url.formatted()),
                 arguments: toolArgs
             )
             process.waitUntilExit()

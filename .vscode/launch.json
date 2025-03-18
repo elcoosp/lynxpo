@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:lynxpo}/packages/tools/nmb/nmb-swift/Packages/NMBSwiftInspector",
+            "name": "Debug NMBSwiftInspectCollector (packages/tools/nmb/nmb-swift/Packages/NMBSwiftInspector)",
+            "program": "${workspaceFolder:lynxpo}/packages/tools/nmb/nmb-swift/Packages/NMBSwiftInspector/.build/debug/NMBSwiftInspectCollector",
+            "preLaunchTask": "swift: Build Debug NMBSwiftInspectCollector (packages/tools/nmb/nmb-swift/Packages/NMBSwiftInspector)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:lynxpo}/packages/tools/nmb/nmb-swift/Packages/NMBSwiftInspector",
+            "name": "Release NMBSwiftInspectCollector (packages/tools/nmb/nmb-swift/Packages/NMBSwiftInspector)",
+            "program": "${workspaceFolder:lynxpo}/packages/tools/nmb/nmb-swift/Packages/NMBSwiftInspector/.build/release/NMBSwiftInspectCollector",
+            "preLaunchTask": "swift: Build Release NMBSwiftInspectCollector (packages/tools/nmb/nmb-swift/Packages/NMBSwiftInspector)"
+        }
+    ]
+}

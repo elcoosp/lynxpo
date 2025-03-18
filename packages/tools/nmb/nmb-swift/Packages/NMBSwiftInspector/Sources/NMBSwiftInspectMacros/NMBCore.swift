@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Categories of types
-enum Modtyinfo_TypeCategory: SwiftProtobuf.Enum, Swift.CaseIterable {
+enum TypeCategory: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case primitive // = 0
   case `class` // = 1
@@ -78,7 +78,7 @@ enum Modtyinfo_TypeCategory: SwiftProtobuf.Enum, Swift.CaseIterable {
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [Modtyinfo_TypeCategory] = [
+  static let allCases: [TypeCategory] = [
     .primitive,
     .class,
     .interface,
@@ -96,7 +96,7 @@ enum Modtyinfo_TypeCategory: SwiftProtobuf.Enum, Swift.CaseIterable {
 }
 
 /// Variance kinds
-enum Modtyinfo_VarianceKind: SwiftProtobuf.Enum, Swift.CaseIterable {
+enum VarianceKind: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case invariant // = 0
 
@@ -130,7 +130,7 @@ enum Modtyinfo_VarianceKind: SwiftProtobuf.Enum, Swift.CaseIterable {
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [Modtyinfo_VarianceKind] = [
+  static let allCases: [VarianceKind] = [
     .invariant,
     .covariant,
     .contravariant,
@@ -139,7 +139,7 @@ enum Modtyinfo_VarianceKind: SwiftProtobuf.Enum, Swift.CaseIterable {
 }
 
 /// Enhanced visibility options
-enum Modtyinfo_Visibility: SwiftProtobuf.Enum, Swift.CaseIterable {
+enum Visibility: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case `public` // = 0
   case `internal` // = 1
@@ -187,7 +187,7 @@ enum Modtyinfo_Visibility: SwiftProtobuf.Enum, Swift.CaseIterable {
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [Modtyinfo_Visibility] = [
+  static let allCases: [Visibility] = [
     .public,
     .internal,
     .protected,
@@ -200,7 +200,7 @@ enum Modtyinfo_Visibility: SwiftProtobuf.Enum, Swift.CaseIterable {
 }
 
 /// Enhanced type kind enumeration
-enum Modtyinfo_TypeKind: SwiftProtobuf.Enum, Swift.CaseIterable {
+enum TypeKind: SwiftProtobuf.Enum, Swift.CaseIterable {
   typealias RawValue = Int
   case clazz // = 0
   case interf // = 1
@@ -266,7 +266,7 @@ enum Modtyinfo_TypeKind: SwiftProtobuf.Enum, Swift.CaseIterable {
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static let allCases: [Modtyinfo_TypeKind] = [
+  static let allCases: [TypeKind] = [
     .clazz,
     .interf,
     .enumeration,
@@ -282,7 +282,7 @@ enum Modtyinfo_TypeKind: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-struct Modtyinfo_SourceLocation: Sendable {
+struct SourceLocation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -303,7 +303,7 @@ struct Modtyinfo_SourceLocation: Sendable {
 }
 
 /// Enhanced TypeInfo with more details about the type
-struct Modtyinfo_TypeInfo: @unchecked Sendable {
+struct TypeInfo: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -323,7 +323,7 @@ struct Modtyinfo_TypeInfo: @unchecked Sendable {
     set {_uniqueStorage()._isNullable = newValue}
   }
 
-  var typeArguments: [Modtyinfo_TypeInfo] {
+  var typeArguments: [TypeInfo] {
     get {return _storage._typeArguments}
     set {_uniqueStorage()._typeArguments = newValue}
   }
@@ -342,8 +342,8 @@ struct Modtyinfo_TypeInfo: @unchecked Sendable {
     set {_uniqueStorage()._doc = newValue}
   }
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _storage._location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _storage._location ?? SourceLocation()}
     set {_uniqueStorage()._location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -372,13 +372,13 @@ struct Modtyinfo_TypeInfo: @unchecked Sendable {
     set {_uniqueStorage()._languageSpecificType = newValue}
   }
 
-  var category: Modtyinfo_TypeCategory {
+  var category: TypeCategory {
     get {return _storage._category}
     set {_uniqueStorage()._category = newValue}
   }
 
   /// Generic type parameters
-  var typeParameters: [Modtyinfo_TypeParameterInfo] {
+  var typeParameters: [TypeParameterInfo] {
     get {return _storage._typeParameters}
     set {_uniqueStorage()._typeParameters = newValue}
   }
@@ -391,7 +391,7 @@ struct Modtyinfo_TypeInfo: @unchecked Sendable {
 }
 
 /// Type parameter information for generics
-struct Modtyinfo_TypeParameterInfo: Sendable {
+struct TypeParameterInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -399,8 +399,8 @@ struct Modtyinfo_TypeParameterInfo: Sendable {
   var name: String = String()
 
   /// Upper bound constraint (extends in Java/Kotlin, : in Swift)
-  var upperBound: Modtyinfo_TypeInfo {
-    get {return _upperBound ?? Modtyinfo_TypeInfo()}
+  var upperBound: TypeInfo {
+    get {return _upperBound ?? TypeInfo()}
     set {_upperBound = newValue}
   }
   /// Returns true if `upperBound` has been explicitly set.
@@ -409,8 +409,8 @@ struct Modtyinfo_TypeParameterInfo: Sendable {
   mutating func clearUpperBound() {self._upperBound = nil}
 
   /// Lower bound constraint (super in Java/Kotlin)
-  var lowerBound: Modtyinfo_TypeInfo {
-    get {return _lowerBound ?? Modtyinfo_TypeInfo()}
+  var lowerBound: TypeInfo {
+    get {return _lowerBound ?? TypeInfo()}
     set {_lowerBound = newValue}
   }
   /// Returns true if `lowerBound` has been explicitly set.
@@ -419,7 +419,7 @@ struct Modtyinfo_TypeParameterInfo: Sendable {
   mutating func clearLowerBound() {self._lowerBound = nil}
 
   /// Multiple constraints/where clauses
-  var typeConstraints: [Modtyinfo_TypeInfo] = []
+  var typeConstraints: [TypeInfo] = []
 
   /// Whether the type parameter is reified (Kotlin)
   var isReified: Bool = false
@@ -427,12 +427,12 @@ struct Modtyinfo_TypeParameterInfo: Sendable {
   /// Variance information (in, out, *, etc.)
   var isVariant: Bool = false
 
-  var variance: Modtyinfo_VarianceKind = .invariant
+  var variance: VarianceKind = .invariant
 
   var doc: String = String()
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _location ?? SourceLocation()}
     set {_location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -444,21 +444,21 @@ struct Modtyinfo_TypeParameterInfo: Sendable {
 
   init() {}
 
-  fileprivate var _upperBound: Modtyinfo_TypeInfo? = nil
-  fileprivate var _lowerBound: Modtyinfo_TypeInfo? = nil
-  fileprivate var _location: Modtyinfo_SourceLocation? = nil
+  fileprivate var _upperBound: TypeInfo? = nil
+  fileprivate var _lowerBound: TypeInfo? = nil
+  fileprivate var _location: SourceLocation? = nil
 }
 
 /// Enhanced parameter info
-struct Modtyinfo_ParameterInfo: Sendable {
+struct ParameterInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var name: String = String()
 
-  var type: Modtyinfo_TypeInfo {
-    get {return _type ?? Modtyinfo_TypeInfo()}
+  var type: TypeInfo {
+    get {return _type ?? TypeInfo()}
     set {_type = newValue}
   }
   /// Returns true if `type` has been explicitly set.
@@ -480,8 +480,8 @@ struct Modtyinfo_ParameterInfo: Sendable {
 
   var doc: String = String()
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _location ?? SourceLocation()}
     set {_location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -508,13 +508,13 @@ struct Modtyinfo_ParameterInfo: Sendable {
 
   init() {}
 
-  fileprivate var _type: Modtyinfo_TypeInfo? = nil
+  fileprivate var _type: TypeInfo? = nil
   fileprivate var _defaultValueLiteral: String? = nil
-  fileprivate var _location: Modtyinfo_SourceLocation? = nil
+  fileprivate var _location: SourceLocation? = nil
 }
 
 /// Enhanced method info
-struct Modtyinfo_MethodInfo: @unchecked Sendable {
+struct MethodInfo: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -524,8 +524,8 @@ struct Modtyinfo_MethodInfo: @unchecked Sendable {
     set {_uniqueStorage()._name = newValue}
   }
 
-  var returnType: Modtyinfo_TypeInfo {
-    get {return _storage._returnType ?? Modtyinfo_TypeInfo()}
+  var returnType: TypeInfo {
+    get {return _storage._returnType ?? TypeInfo()}
     set {_uniqueStorage()._returnType = newValue}
   }
   /// Returns true if `returnType` has been explicitly set.
@@ -533,13 +533,13 @@ struct Modtyinfo_MethodInfo: @unchecked Sendable {
   /// Clears the value of `returnType`. Subsequent reads from it will return its default value.
   mutating func clearReturnType() {_uniqueStorage()._returnType = nil}
 
-  var parameters: [Modtyinfo_ParameterInfo] {
+  var parameters: [ParameterInfo] {
     get {return _storage._parameters}
     set {_uniqueStorage()._parameters = newValue}
   }
 
-  var receiverType: Modtyinfo_TypeInfo {
-    get {return _storage._receiverType ?? Modtyinfo_TypeInfo()}
+  var receiverType: TypeInfo {
+    get {return _storage._receiverType ?? TypeInfo()}
     set {_uniqueStorage()._receiverType = newValue}
   }
   /// Returns true if `receiverType` has been explicitly set.
@@ -547,7 +547,7 @@ struct Modtyinfo_MethodInfo: @unchecked Sendable {
   /// Clears the value of `receiverType`. Subsequent reads from it will return its default value.
   mutating func clearReceiverType() {_uniqueStorage()._receiverType = nil}
 
-  var visibility: Modtyinfo_Visibility {
+  var visibility: Visibility {
     get {return _storage._visibility}
     set {_uniqueStorage()._visibility = newValue}
   }
@@ -572,8 +572,8 @@ struct Modtyinfo_MethodInfo: @unchecked Sendable {
     set {_uniqueStorage()._doc = newValue}
   }
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _storage._location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _storage._location ?? SourceLocation()}
     set {_uniqueStorage()._location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -607,7 +607,7 @@ struct Modtyinfo_MethodInfo: @unchecked Sendable {
   }
 
   /// Method-level type parameters
-  var typeParameters: [Modtyinfo_TypeParameterInfo] {
+  var typeParameters: [TypeParameterInfo] {
     get {return _storage._typeParameters}
     set {_uniqueStorage()._typeParameters = newValue}
   }
@@ -654,7 +654,7 @@ struct Modtyinfo_MethodInfo: @unchecked Sendable {
 }
 
 /// Enhanced property definition
-struct Modtyinfo_PropertyDefinition: @unchecked Sendable {
+struct PropertyDefinition: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -664,8 +664,8 @@ struct Modtyinfo_PropertyDefinition: @unchecked Sendable {
     set {_uniqueStorage()._name = newValue}
   }
 
-  var type: Modtyinfo_TypeInfo {
-    get {return _storage._type ?? Modtyinfo_TypeInfo()}
+  var type: TypeInfo {
+    get {return _storage._type ?? TypeInfo()}
     set {_uniqueStorage()._type = newValue}
   }
   /// Returns true if `type` has been explicitly set.
@@ -673,8 +673,8 @@ struct Modtyinfo_PropertyDefinition: @unchecked Sendable {
   /// Clears the value of `type`. Subsequent reads from it will return its default value.
   mutating func clearType() {_uniqueStorage()._type = nil}
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _storage._location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _storage._location ?? SourceLocation()}
     set {_uniqueStorage()._location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -708,13 +708,13 @@ struct Modtyinfo_PropertyDefinition: @unchecked Sendable {
     set {_uniqueStorage()._hasCustomSetter_p = newValue}
   }
 
-  var visibility: Modtyinfo_Visibility {
+  var visibility: Visibility {
     get {return _storage._visibility}
     set {_uniqueStorage()._visibility = newValue}
   }
 
   /// Can be different from property visibility
-  var setterVisibility: Modtyinfo_Visibility {
+  var setterVisibility: Visibility {
     get {return _storage._setterVisibility}
     set {_uniqueStorage()._setterVisibility = newValue}
   }
@@ -786,7 +786,7 @@ struct Modtyinfo_PropertyDefinition: @unchecked Sendable {
 }
 
 /// Enhanced enum value info
-struct Modtyinfo_EnumValue: Sendable {
+struct EnumValue: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -797,8 +797,8 @@ struct Modtyinfo_EnumValue: Sendable {
 
   var doc: String = String()
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _location ?? SourceLocation()}
     set {_location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -819,11 +819,11 @@ struct Modtyinfo_EnumValue: Sendable {
 
   init() {}
 
-  fileprivate var _location: Modtyinfo_SourceLocation? = nil
+  fileprivate var _location: SourceLocation? = nil
 }
 
 /// Enhanced serializable type info
-struct Modtyinfo_SerializableTypeInfo: @unchecked Sendable {
+struct SerializableTypeInfo: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -838,17 +838,17 @@ struct Modtyinfo_SerializableTypeInfo: @unchecked Sendable {
     set {_uniqueStorage()._name = newValue}
   }
 
-  var kind: Modtyinfo_TypeKind {
+  var kind: TypeKind {
     get {return _storage._kind}
     set {_uniqueStorage()._kind = newValue}
   }
 
-  var propertyDefinitions: [Modtyinfo_PropertyDefinition] {
+  var propertyDefinitions: [PropertyDefinition] {
     get {return _storage._propertyDefinitions}
     set {_uniqueStorage()._propertyDefinitions = newValue}
   }
 
-  var enumValues: [Modtyinfo_EnumValue] {
+  var enumValues: [EnumValue] {
     get {return _storage._enumValues}
     set {_uniqueStorage()._enumValues = newValue}
   }
@@ -858,8 +858,8 @@ struct Modtyinfo_SerializableTypeInfo: @unchecked Sendable {
     set {_uniqueStorage()._doc = newValue}
   }
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _storage._location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _storage._location ?? SourceLocation()}
     set {_uniqueStorage()._location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -868,20 +868,20 @@ struct Modtyinfo_SerializableTypeInfo: @unchecked Sendable {
   mutating func clearLocation() {_uniqueStorage()._location = nil}
 
   /// Type-level type parameters
-  var typeParameters: [Modtyinfo_TypeParameterInfo] {
+  var typeParameters: [TypeParameterInfo] {
     get {return _storage._typeParameters}
     set {_uniqueStorage()._typeParameters = newValue}
   }
 
   /// Interfaces/protocols implemented
-  var implementedTypes: [Modtyinfo_TypeInfo] {
+  var implementedTypes: [TypeInfo] {
     get {return _storage._implementedTypes}
     set {_uniqueStorage()._implementedTypes = newValue}
   }
 
   /// Parent class if any
-  var superclass: Modtyinfo_TypeInfo {
-    get {return _storage._superclass ?? Modtyinfo_TypeInfo()}
+  var superclass: TypeInfo {
+    get {return _storage._superclass ?? TypeInfo()}
     set {_uniqueStorage()._superclass = newValue}
   }
   /// Returns true if `superclass` has been explicitly set.
@@ -908,7 +908,7 @@ struct Modtyinfo_SerializableTypeInfo: @unchecked Sendable {
   }
 
   /// Constructors
-  var constructors: [Modtyinfo_ConstructorInfo] {
+  var constructors: [ConstructorInfo] {
     get {return _storage._constructors}
     set {_uniqueStorage()._constructors = newValue}
   }
@@ -920,7 +920,7 @@ struct Modtyinfo_SerializableTypeInfo: @unchecked Sendable {
   }
 
   /// Types declared inside this type
-  var nestedTypes: [Modtyinfo_TypeInfo] {
+  var nestedTypes: [TypeInfo] {
     get {return _storage._nestedTypes}
     set {_uniqueStorage()._nestedTypes = newValue}
   }
@@ -943,22 +943,22 @@ struct Modtyinfo_SerializableTypeInfo: @unchecked Sendable {
 }
 
 /// Constructor information
-struct Modtyinfo_ConstructorInfo: Sendable {
+struct ConstructorInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var visibility: Modtyinfo_Visibility = .public
+  var visibility: Visibility = .public
 
-  var parameters: [Modtyinfo_ParameterInfo] = []
+  var parameters: [ParameterInfo] = []
 
   /// Primary constructor
   var isPrimary: Bool = false
 
   var doc: String = String()
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _location ?? SourceLocation()}
     set {_location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -972,11 +972,11 @@ struct Modtyinfo_ConstructorInfo: Sendable {
 
   init() {}
 
-  fileprivate var _location: Modtyinfo_SourceLocation? = nil
+  fileprivate var _location: SourceLocation? = nil
 }
 
 /// Type alias information
-struct Modtyinfo_TypeAliasInfo: Sendable {
+struct TypeAliasInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -985,8 +985,8 @@ struct Modtyinfo_TypeAliasInfo: Sendable {
 
   var fullName: String = String()
 
-  var underlyingType: Modtyinfo_TypeInfo {
-    get {return _underlyingType ?? Modtyinfo_TypeInfo()}
+  var underlyingType: TypeInfo {
+    get {return _underlyingType ?? TypeInfo()}
     set {_underlyingType = newValue}
   }
   /// Returns true if `underlyingType` has been explicitly set.
@@ -996,8 +996,8 @@ struct Modtyinfo_TypeAliasInfo: Sendable {
 
   var doc: String = String()
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _location ?? SourceLocation()}
     set {_location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -1005,20 +1005,20 @@ struct Modtyinfo_TypeAliasInfo: Sendable {
   /// Clears the value of `location`. Subsequent reads from it will return its default value.
   mutating func clearLocation() {self._location = nil}
 
-  var typeParameters: [Modtyinfo_TypeParameterInfo] = []
+  var typeParameters: [TypeParameterInfo] = []
 
-  var visibility: Modtyinfo_Visibility = .public
+  var visibility: Visibility = .public
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _underlyingType: Modtyinfo_TypeInfo? = nil
-  fileprivate var _location: Modtyinfo_SourceLocation? = nil
+  fileprivate var _underlyingType: TypeInfo? = nil
+  fileprivate var _location: SourceLocation? = nil
 }
 
 /// Package/module level info
-struct Modtyinfo_PackageInfo: Sendable {
+struct PackageInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1035,7 +1035,7 @@ struct Modtyinfo_PackageInfo: Sendable {
 }
 
 /// Extended class info
-struct Modtyinfo_ClassInfo: @unchecked Sendable {
+struct ClassInfo: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1050,7 +1050,7 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
     set {_uniqueStorage()._name = newValue}
   }
 
-  var methods: [Modtyinfo_MethodInfo] {
+  var methods: [MethodInfo] {
     get {return _storage._methods}
     set {_uniqueStorage()._methods = newValue}
   }
@@ -1060,7 +1060,7 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
     set {_uniqueStorage()._genericMetadata = newValue}
   }
 
-  var serializableTypes: [Modtyinfo_SerializableTypeInfo] {
+  var serializableTypes: [SerializableTypeInfo] {
     get {return _storage._serializableTypes}
     set {_uniqueStorage()._serializableTypes = newValue}
   }
@@ -1070,8 +1070,8 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
     set {_uniqueStorage()._doc = newValue}
   }
 
-  var location: Modtyinfo_SourceLocation {
-    get {return _storage._location ?? Modtyinfo_SourceLocation()}
+  var location: SourceLocation {
+    get {return _storage._location ?? SourceLocation()}
     set {_uniqueStorage()._location = newValue}
   }
   /// Returns true if `location` has been explicitly set.
@@ -1079,8 +1079,8 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
   /// Clears the value of `location`. Subsequent reads from it will return its default value.
   mutating func clearLocation() {_uniqueStorage()._location = nil}
 
-  var packageInfo: Modtyinfo_PackageInfo {
-    get {return _storage._packageInfo ?? Modtyinfo_PackageInfo()}
+  var packageInfo: PackageInfo {
+    get {return _storage._packageInfo ?? PackageInfo()}
     set {_uniqueStorage()._packageInfo = newValue}
   }
   /// Returns true if `packageInfo` has been explicitly set.
@@ -1088,7 +1088,7 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
   /// Clears the value of `packageInfo`. Subsequent reads from it will return its default value.
   mutating func clearPackageInfo() {_uniqueStorage()._packageInfo = nil}
 
-  var typeAliases: [Modtyinfo_TypeAliasInfo] {
+  var typeAliases: [TypeAliasInfo] {
     get {return _storage._typeAliases}
     set {_uniqueStorage()._typeAliases = newValue}
   }
@@ -1098,23 +1098,23 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
     set {_uniqueStorage()._annotations = newValue}
   }
 
-  var typeParameters: [Modtyinfo_TypeParameterInfo] {
+  var typeParameters: [TypeParameterInfo] {
     get {return _storage._typeParameters}
     set {_uniqueStorage()._typeParameters = newValue}
   }
 
-  var properties: [Modtyinfo_PropertyDefinition] {
+  var properties: [PropertyDefinition] {
     get {return _storage._properties}
     set {_uniqueStorage()._properties = newValue}
   }
 
-  var implementedTypes: [Modtyinfo_TypeInfo] {
+  var implementedTypes: [TypeInfo] {
     get {return _storage._implementedTypes}
     set {_uniqueStorage()._implementedTypes = newValue}
   }
 
-  var superclass: Modtyinfo_TypeInfo {
-    get {return _storage._superclass ?? Modtyinfo_TypeInfo()}
+  var superclass: TypeInfo {
+    get {return _storage._superclass ?? TypeInfo()}
     set {_uniqueStorage()._superclass = newValue}
   }
   /// Returns true if `superclass` has been explicitly set.
@@ -1122,12 +1122,12 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
   /// Clears the value of `superclass`. Subsequent reads from it will return its default value.
   mutating func clearSuperclass() {_uniqueStorage()._superclass = nil}
 
-  var kind: Modtyinfo_TypeKind {
+  var kind: TypeKind {
     get {return _storage._kind}
     set {_uniqueStorage()._kind = newValue}
   }
 
-  var visibility: Modtyinfo_Visibility {
+  var visibility: Visibility {
     get {return _storage._visibility}
     set {_uniqueStorage()._visibility = newValue}
   }
@@ -1152,12 +1152,12 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
     set {_uniqueStorage()._isSealed = newValue}
   }
 
-  var constructors: [Modtyinfo_ConstructorInfo] {
+  var constructors: [ConstructorInfo] {
     get {return _storage._constructors}
     set {_uniqueStorage()._constructors = newValue}
   }
 
-  var nestedTypes: [Modtyinfo_TypeInfo] {
+  var nestedTypes: [TypeInfo] {
     get {return _storage._nestedTypes}
     set {_uniqueStorage()._nestedTypes = newValue}
   }
@@ -1179,15 +1179,15 @@ struct Modtyinfo_ClassInfo: @unchecked Sendable {
 }
 
 /// Complete file with all type information
-struct Modtyinfo_TypeInfoFile: Sendable {
+struct TypeInfoFile: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   var filePath: String = String()
 
-  var packageInfo: Modtyinfo_PackageInfo {
-    get {return _packageInfo ?? Modtyinfo_PackageInfo()}
+  var packageInfo: PackageInfo {
+    get {return _packageInfo ?? PackageInfo()}
     set {_packageInfo = newValue}
   }
   /// Returns true if `packageInfo` has been explicitly set.
@@ -1195,9 +1195,9 @@ struct Modtyinfo_TypeInfoFile: Sendable {
   /// Clears the value of `packageInfo`. Subsequent reads from it will return its default value.
   mutating func clearPackageInfo() {self._packageInfo = nil}
 
-  var classes: [Modtyinfo_ClassInfo] = []
+  var classes: [ClassInfo] = []
 
-  var typeAliases: [Modtyinfo_TypeAliasInfo] = []
+  var typeAliases: [TypeAliasInfo] = []
 
   var imports: [String] = []
 
@@ -1216,14 +1216,14 @@ struct Modtyinfo_TypeInfoFile: Sendable {
 
   init() {}
 
-  fileprivate var _packageInfo: Modtyinfo_PackageInfo? = nil
+  fileprivate var _packageInfo: PackageInfo? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "modtyinfo"
 
-extension Modtyinfo_TypeCategory: SwiftProtobuf._ProtoNameProviding {
+extension TypeCategory: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "PRIMITIVE"),
     1: .same(proto: "CLASS"),
@@ -1240,7 +1240,7 @@ extension Modtyinfo_TypeCategory: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Modtyinfo_VarianceKind: SwiftProtobuf._ProtoNameProviding {
+extension VarianceKind: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "INVARIANT"),
     1: .same(proto: "COVARIANT"),
@@ -1248,7 +1248,7 @@ extension Modtyinfo_VarianceKind: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Modtyinfo_Visibility: SwiftProtobuf._ProtoNameProviding {
+extension Visibility: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "PUBLIC"),
     1: .same(proto: "INTERNAL"),
@@ -1260,7 +1260,7 @@ extension Modtyinfo_Visibility: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Modtyinfo_TypeKind: SwiftProtobuf._ProtoNameProviding {
+extension TypeKind: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "CLAZZ"),
     1: .same(proto: "INTERF"),
@@ -1276,7 +1276,7 @@ extension Modtyinfo_TypeKind: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Modtyinfo_SourceLocation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension SourceLocation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".SourceLocation"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "file_path"),
@@ -1321,7 +1321,7 @@ extension Modtyinfo_SourceLocation: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_SourceLocation, rhs: Modtyinfo_SourceLocation) -> Bool {
+  static func ==(lhs: SourceLocation, rhs: SourceLocation) -> Bool {
     if lhs.filePath != rhs.filePath {return false}
     if lhs.startLine != rhs.startLine {return false}
     if lhs.startColumn != rhs.startColumn {return false}
@@ -1332,7 +1332,7 @@ extension Modtyinfo_SourceLocation: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Modtyinfo_TypeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension TypeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TypeInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "full_name"),
@@ -1354,16 +1354,16 @@ extension Modtyinfo_TypeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     var _fullName: String = String()
     var _name: String = String()
     var _isNullable: Bool = false
-    var _typeArguments: [Modtyinfo_TypeInfo] = []
+    var _typeArguments: [TypeInfo] = []
     var _customReturnHint: String? = nil
     var _doc: String = String()
-    var _location: Modtyinfo_SourceLocation? = nil
+    var _location: SourceLocation? = nil
     var _isArray: Bool = false
     var _isCollection: Bool = false
     var _isMap: Bool = false
     var _languageSpecificType: String = String()
-    var _category: Modtyinfo_TypeCategory = .primitive
-    var _typeParameters: [Modtyinfo_TypeParameterInfo] = []
+    var _category: TypeCategory = .primitive
+    var _typeParameters: [TypeParameterInfo] = []
 
     #if swift(>=5.10)
       // This property is used as the initial default value for new instances of the type.
@@ -1477,7 +1477,7 @@ extension Modtyinfo_TypeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_TypeInfo, rhs: Modtyinfo_TypeInfo) -> Bool {
+  static func ==(lhs: TypeInfo, rhs: TypeInfo) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1504,7 +1504,7 @@ extension Modtyinfo_TypeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension Modtyinfo_TypeParameterInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension TypeParameterInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TypeParameterInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -1573,7 +1573,7 @@ extension Modtyinfo_TypeParameterInfo: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_TypeParameterInfo, rhs: Modtyinfo_TypeParameterInfo) -> Bool {
+  static func ==(lhs: TypeParameterInfo, rhs: TypeParameterInfo) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs._upperBound != rhs._upperBound {return false}
     if lhs._lowerBound != rhs._lowerBound {return false}
@@ -1588,7 +1588,7 @@ extension Modtyinfo_TypeParameterInfo: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Modtyinfo_ParameterInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension ParameterInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ParameterInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -1667,7 +1667,7 @@ extension Modtyinfo_ParameterInfo: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_ParameterInfo, rhs: Modtyinfo_ParameterInfo) -> Bool {
+  static func ==(lhs: ParameterInfo, rhs: ParameterInfo) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs._type != rhs._type {return false}
     if lhs.hasDefaultValue_p != rhs.hasDefaultValue_p {return false}
@@ -1684,7 +1684,7 @@ extension Modtyinfo_ParameterInfo: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Modtyinfo_MethodInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension MethodInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".MethodInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -1712,21 +1712,21 @@ extension Modtyinfo_MethodInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
 
   fileprivate class _StorageClass {
     var _name: String = String()
-    var _returnType: Modtyinfo_TypeInfo? = nil
-    var _parameters: [Modtyinfo_ParameterInfo] = []
-    var _receiverType: Modtyinfo_TypeInfo? = nil
-    var _visibility: Modtyinfo_Visibility = .public
+    var _returnType: TypeInfo? = nil
+    var _parameters: [ParameterInfo] = []
+    var _receiverType: TypeInfo? = nil
+    var _visibility: Visibility = .public
     var _isExtension: Bool = false
     var _isInline: Bool = false
     var _isAsync: Bool = false
     var _doc: String = String()
-    var _location: Modtyinfo_SourceLocation? = nil
+    var _location: SourceLocation? = nil
     var _isStatic: Bool = false
     var _isAbstract: Bool = false
     var _isFinal: Bool = false
     var _isOpen: Bool = false
     var _isConstructor: Bool = false
-    var _typeParameters: [Modtyinfo_TypeParameterInfo] = []
+    var _typeParameters: [TypeParameterInfo] = []
     var _throws: [String] = []
     var _annotations: Dictionary<String,String> = [:]
     var _isOperator: Bool = false
@@ -1885,7 +1885,7 @@ extension Modtyinfo_MethodInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_MethodInfo, rhs: Modtyinfo_MethodInfo) -> Bool {
+  static func ==(lhs: MethodInfo, rhs: MethodInfo) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1920,7 +1920,7 @@ extension Modtyinfo_MethodInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Modtyinfo_PropertyDefinition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PropertyDefinition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".PropertyDefinition"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -1946,14 +1946,14 @@ extension Modtyinfo_PropertyDefinition: SwiftProtobuf.Message, SwiftProtobuf._Me
 
   fileprivate class _StorageClass {
     var _name: String = String()
-    var _type: Modtyinfo_TypeInfo? = nil
-    var _location: Modtyinfo_SourceLocation? = nil
+    var _type: TypeInfo? = nil
+    var _location: SourceLocation? = nil
     var _isMutable: Bool = false
     var _initialValueLiteral: String? = nil
     var _hasCustomGetter_p: Bool = false
     var _hasCustomSetter_p: Bool = false
-    var _visibility: Modtyinfo_Visibility = .public
-    var _setterVisibility: Modtyinfo_Visibility = .public
+    var _visibility: Visibility = .public
+    var _setterVisibility: Visibility = .public
     var _doc: String = String()
     var _isLateInit: Bool = false
     var _isConst: Bool = false
@@ -2107,7 +2107,7 @@ extension Modtyinfo_PropertyDefinition: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_PropertyDefinition, rhs: Modtyinfo_PropertyDefinition) -> Bool {
+  static func ==(lhs: PropertyDefinition, rhs: PropertyDefinition) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -2140,7 +2140,7 @@ extension Modtyinfo_PropertyDefinition: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Modtyinfo_EnumValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension EnumValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".EnumValue"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -2199,7 +2199,7 @@ extension Modtyinfo_EnumValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_EnumValue, rhs: Modtyinfo_EnumValue) -> Bool {
+  static func ==(lhs: EnumValue, rhs: EnumValue) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.propertyValues != rhs.propertyValues {return false}
     if lhs.doc != rhs.doc {return false}
@@ -2212,7 +2212,7 @@ extension Modtyinfo_EnumValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Modtyinfo_SerializableTypeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension SerializableTypeInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".SerializableTypeInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "full_name"),
@@ -2237,20 +2237,20 @@ extension Modtyinfo_SerializableTypeInfo: SwiftProtobuf.Message, SwiftProtobuf._
   fileprivate class _StorageClass {
     var _fullName: String = String()
     var _name: String = String()
-    var _kind: Modtyinfo_TypeKind = .clazz
-    var _propertyDefinitions: [Modtyinfo_PropertyDefinition] = []
-    var _enumValues: [Modtyinfo_EnumValue] = []
+    var _kind: TypeKind = .clazz
+    var _propertyDefinitions: [PropertyDefinition] = []
+    var _enumValues: [EnumValue] = []
     var _doc: String = String()
-    var _location: Modtyinfo_SourceLocation? = nil
-    var _typeParameters: [Modtyinfo_TypeParameterInfo] = []
-    var _implementedTypes: [Modtyinfo_TypeInfo] = []
-    var _superclass: Modtyinfo_TypeInfo? = nil
+    var _location: SourceLocation? = nil
+    var _typeParameters: [TypeParameterInfo] = []
+    var _implementedTypes: [TypeInfo] = []
+    var _superclass: TypeInfo? = nil
     var _isSerializable: Bool = false
     var _serializationStrategy: String = String()
     var _annotations: Dictionary<String,String> = [:]
-    var _constructors: [Modtyinfo_ConstructorInfo] = []
+    var _constructors: [ConstructorInfo] = []
     var _isSealed: Bool = false
-    var _nestedTypes: [Modtyinfo_TypeInfo] = []
+    var _nestedTypes: [TypeInfo] = []
     var _companionObject: String? = nil
 
     #if swift(>=5.10)
@@ -2385,7 +2385,7 @@ extension Modtyinfo_SerializableTypeInfo: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_SerializableTypeInfo, rhs: Modtyinfo_SerializableTypeInfo) -> Bool {
+  static func ==(lhs: SerializableTypeInfo, rhs: SerializableTypeInfo) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -2416,7 +2416,7 @@ extension Modtyinfo_SerializableTypeInfo: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Modtyinfo_ConstructorInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension ConstructorInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ConstructorInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "visibility"),
@@ -2470,7 +2470,7 @@ extension Modtyinfo_ConstructorInfo: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_ConstructorInfo, rhs: Modtyinfo_ConstructorInfo) -> Bool {
+  static func ==(lhs: ConstructorInfo, rhs: ConstructorInfo) -> Bool {
     if lhs.visibility != rhs.visibility {return false}
     if lhs.parameters != rhs.parameters {return false}
     if lhs.isPrimary != rhs.isPrimary {return false}
@@ -2482,7 +2482,7 @@ extension Modtyinfo_ConstructorInfo: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Modtyinfo_TypeAliasInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension TypeAliasInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TypeAliasInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -2541,7 +2541,7 @@ extension Modtyinfo_TypeAliasInfo: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_TypeAliasInfo, rhs: Modtyinfo_TypeAliasInfo) -> Bool {
+  static func ==(lhs: TypeAliasInfo, rhs: TypeAliasInfo) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.fullName != rhs.fullName {return false}
     if lhs._underlyingType != rhs._underlyingType {return false}
@@ -2554,7 +2554,7 @@ extension Modtyinfo_TypeAliasInfo: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Modtyinfo_PackageInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PackageInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".PackageInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -2589,7 +2589,7 @@ extension Modtyinfo_PackageInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_PackageInfo, rhs: Modtyinfo_PackageInfo) -> Bool {
+  static func ==(lhs: PackageInfo, rhs: PackageInfo) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.doc != rhs.doc {return false}
     if lhs.annotations != rhs.annotations {return false}
@@ -2598,7 +2598,7 @@ extension Modtyinfo_PackageInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Modtyinfo_ClassInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension ClassInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ClassInfo"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "full_name"),
@@ -2629,26 +2629,26 @@ extension Modtyinfo_ClassInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   fileprivate class _StorageClass {
     var _fullName: String = String()
     var _name: String = String()
-    var _methods: [Modtyinfo_MethodInfo] = []
+    var _methods: [MethodInfo] = []
     var _genericMetadata: String = String()
-    var _serializableTypes: [Modtyinfo_SerializableTypeInfo] = []
+    var _serializableTypes: [SerializableTypeInfo] = []
     var _doc: String = String()
-    var _location: Modtyinfo_SourceLocation? = nil
-    var _packageInfo: Modtyinfo_PackageInfo? = nil
-    var _typeAliases: [Modtyinfo_TypeAliasInfo] = []
+    var _location: SourceLocation? = nil
+    var _packageInfo: PackageInfo? = nil
+    var _typeAliases: [TypeAliasInfo] = []
     var _annotations: Dictionary<String,String> = [:]
-    var _typeParameters: [Modtyinfo_TypeParameterInfo] = []
-    var _properties: [Modtyinfo_PropertyDefinition] = []
-    var _implementedTypes: [Modtyinfo_TypeInfo] = []
-    var _superclass: Modtyinfo_TypeInfo? = nil
-    var _kind: Modtyinfo_TypeKind = .clazz
-    var _visibility: Modtyinfo_Visibility = .public
+    var _typeParameters: [TypeParameterInfo] = []
+    var _properties: [PropertyDefinition] = []
+    var _implementedTypes: [TypeInfo] = []
+    var _superclass: TypeInfo? = nil
+    var _kind: TypeKind = .clazz
+    var _visibility: Visibility = .public
     var _isFinal: Bool = false
     var _isAbstract: Bool = false
     var _isOpen: Bool = false
     var _isSealed: Bool = false
-    var _constructors: [Modtyinfo_ConstructorInfo] = []
-    var _nestedTypes: [Modtyinfo_TypeInfo] = []
+    var _constructors: [ConstructorInfo] = []
+    var _nestedTypes: [TypeInfo] = []
     var _companionObject: String? = nil
 
     #if swift(>=5.10)
@@ -2813,7 +2813,7 @@ extension Modtyinfo_ClassInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_ClassInfo, rhs: Modtyinfo_ClassInfo) -> Bool {
+  static func ==(lhs: ClassInfo, rhs: ClassInfo) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -2850,7 +2850,7 @@ extension Modtyinfo_ClassInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Modtyinfo_TypeInfoFile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension TypeInfoFile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".TypeInfoFile"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "file_path"),
@@ -2919,7 +2919,7 @@ extension Modtyinfo_TypeInfoFile: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Modtyinfo_TypeInfoFile, rhs: Modtyinfo_TypeInfoFile) -> Bool {
+  static func ==(lhs: TypeInfoFile, rhs: TypeInfoFile) -> Bool {
     if lhs.filePath != rhs.filePath {return false}
     if lhs._packageInfo != rhs._packageInfo {return false}
     if lhs.classes != rhs.classes {return false}

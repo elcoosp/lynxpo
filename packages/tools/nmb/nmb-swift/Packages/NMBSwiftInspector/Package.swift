@@ -16,6 +16,7 @@ let depsProducts: [Target.Dependency] = [
     .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
     .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
     .product(name: "SwiftProtobuf", package: "swift-protobuf"),
+    // .product(name: "NMBCore", package: "nmb-core-sw"),
     // .product(name: "MacroTesting", package: "swift-macro-testing"),
 ]
 let package = Package(
@@ -37,8 +38,9 @@ let package = Package(
         .package(url: "https://github.com/swiftlang/swift-syntax.git", branch: "main"),
         // .package(url: "https://github.com/pointfreeco/swift-macro-testing", branch: "main"),
         .package(url: "https://github.com/apple/swift-argument-parser", branch: "main"),
-        .package(url: "https://github.com/stackotter/swift-macro-toolkit", branch: "main"),
+        // .package(url: "https://github.com/stackotter/swift-macro-toolkit", branch: "main"),
         .package(url: "https://github.com/apple/swift-log.git", branch: "main"),
+        .package(path: "../../../nmb-core/nmb-core-sw"),
 
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.27.0"),
     ],
