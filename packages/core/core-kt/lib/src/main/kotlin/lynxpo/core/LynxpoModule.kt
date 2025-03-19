@@ -22,6 +22,7 @@ abstract class LynxpoModule(context: Context) : LynxModule(context) {
         propDefinitions.add(PropDefinition(name, setter))
     }
 
+    // FIXME: this should be for module creation, not activity
     // Lifecycle APIs - Using inline functions with crossinline lambdas
     @LynxpoModuleDsl
     inline fun OnCreate(crossinline handler: () -> Unit) {
@@ -65,45 +66,10 @@ abstract class LynxpoModule(context: Context) : LynxModule(context) {
             .add { handler() }
     }
 
-    fun initialize() {
-        // // Register props with LynxModule system
-        // propDefinitions.forEach { prop ->
-        //     registerLynxProp(prop.name, prop.setter)
-        // }
-
-        // // Register lifecycle listeners
-        // registerLynxLifecycle(object : LynxLifecycleObserver {
-        //     override fun onCreate() {
-        //         onCreateHandlers.forEach { it() }
-        //     }
-
-        //     override fun onDestroy() {
-        //         onDestroyHandlers.forEach { it() }
-        //     }
-        // })
-
-        // // Register observation listeners
-        // registerLynxObservation(object : LynxObservationListener {
-        //     override fun onStartObserving() {
-        //         onStartObservingHandlers.forEach { it() }
-        //     }
-
-        //     override fun onStopObserving() {
-        //         onStopObservingHandlers.forEach { it() }
-        //     }
-        // })
-
-        // // Register activity lifecycle
-        // registerLynxActivityLifecycle(object : LynxActivityLifecycleObserver {
-        //     override fun onEvent(event: ActivityLifecycleEvent) {
-        //         activityLifecycleHandlers[event]?.forEach { it() }
-        //     }
-        // })
-    }
-
     inner class PropDefinition<T>(val name: String, val setter: (T) -> Unit)
 
     enum class ActivityLifecycleEvent {
+        CREATE,
         ENTERS_FOREGROUND,
         ENTERS_BACKGROUND,
         DESTROYS

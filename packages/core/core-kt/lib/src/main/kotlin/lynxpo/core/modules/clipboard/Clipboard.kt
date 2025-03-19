@@ -40,11 +40,7 @@ private enum class ContentType(val jsName: String) {
 class ClipboardModule(private val context: Context) : LynxpoModule(context) {
 
     init {
-
-        OnCreate {
-            clipboardEventEmitter = ClipboardEventEmitter()
-            clipboardEventEmitter.attachListener()
-        }
+        OnCreate { clipboardEventEmitter.attachListener() }
 
         OnDestroy { clipboardEventEmitter.detachListener() }
 
@@ -156,8 +152,10 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
         File(context.cacheDir, CLIPBOARD_DIRECTORY_NAME).also { it.mkdirs() }
     }
 
+    //FIXME: should be in OnCreate(module) and a lateinit, but broken for now
     // region Clipboard event emitter
-    private lateinit var clipboardEventEmitter: ClipboardEventEmitter
+    private var clipboardEventEmitter: ClipboardEventEmitter =
+        ClipboardEventEmitter()
 
     private inner class ClipboardEventEmitter {
         private var isListening = true

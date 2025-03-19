@@ -46,7 +46,7 @@ class LynxpoModulesLifecycleCallbacks(val moduleNames: Array<String>) :
     }
     
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        // No specific action needed
+        notifyLifecycleEvent(LynxpoModule.ActivityLifecycleEvent.CREATE, activity)
     }
 
     override fun onActivityStarted(activity: Activity) {
