@@ -48,7 +48,7 @@ abstract class LynxpoApp : Application() {
 
     /** Can only be called after initLynxService(...) */
     private fun initLynxEnv() {
-        LynxEnv.inst().init(this, null, null, null)
+        LynxEnv.inst().init(this, null, LynxpoTemplateProvider(applicationContext), null)
         initLynxpoModules()
         initLifecycleRegistration()
     }

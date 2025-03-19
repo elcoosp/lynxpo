@@ -6,49 +6,72 @@ import android.os.Bundle
 import com.lynx.jsbridge.LynxModuleWrapper
 import com.lynx.tasm.LynxEnv
 
+/**
+ * Lifecycle callbacks that update the ActivityManager and notify modules of lifecycle events
+ */
 class LynxpoModulesLifecycleCallbacks(val moduleNames: Array<String>) :
     ActivityLifecycleCallbacks {
-    fun getMods(): Array<LynxModuleWrapper> {
+    
+    /**
+     * Get module wrappers safely from the module factory
+     */
+    private fun getModuleWrappers(): List<LynxModuleWrapper> {
         val moduleFactory = LynxEnv.inst().moduleFactory
-        val mods = moduleNames.map { it -> moduleFactory.getModule(it) }
-        return mods.toTypedArray()
+        return moduleNames.mapNotNull { name ->
+            moduleFactory.getModule(name)
+        }
     }
-
+    
+    /**
+     * Notify modules about lifecycle events
+     */
     private fun notifyLifecycleEvent(
         lifecycleEvent: LynxpoModule.ActivityLifecycleEvent,
         activity: Activity
     ) {
-        getMods().forEach { moduleWrapper ->
-            {
-                val mod =
-                    (moduleWrapper.module as? LynxpoModule)
-                mod?.activityLifecycleHandlers
-                    ?.get(lifecycleEvent)
-                    ?.forEach { it() }
+        // Update activity in manager for FOREGROUND events only
+        if (lifecycleEvent == LynxpoModule.ActivityLifecycleEvent.ENTERS_FOREGROUND) {
+            LynxpoActivityManager.setCurrentActivity(activity)
+        }
+        
+        // Notify lifecycle handlers in modules
+        getModuleWrappers().forEach { moduleWrapper ->
+            val module = moduleWrapper.module
+            if (module is LynxpoModule) {
+                module.activityLifecycleHandlers
+                    .get(lifecycleEvent)
+                    ?.forEach { it() }.run {}
             }
         }
+    }
+    
+    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+        // No specific action needed
+    }
+
+    override fun onActivityStarted(activity: Activity) {
+        // Set as current activity
+        LynxpoActivityManager.setCurrentActivity(activity)
+    }
+
+    override fun onActivityResumed(activity: Activity) {
+        notifyLifecycleEvent(LynxpoModule.ActivityLifecycleEvent.ENTERS_FOREGROUND, activity)
     }
 
     override fun onActivityPaused(activity: Activity) {
         notifyLifecycleEvent(LynxpoModule.ActivityLifecycleEvent.ENTERS_BACKGROUND, activity)
     }
 
-    override fun onActivityResumed(activity: Activity) {
-        notifyLifecycleEvent(LynxpoModule.ActivityLifecycleEvent.ENTERS_FOREGROUND, activity)
-
+    override fun onActivityStopped(activity: Activity) {
+        // No specific action needed
     }
 
     override fun onActivityDestroyed(activity: Activity) {
         notifyLifecycleEvent(LynxpoModule.ActivityLifecycleEvent.DESTROYS, activity)
-
+        LynxpoActivityManager.onActivityDestroyed(activity)
     }
 
-    // Unused callbacks
-    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
-
-    override fun onActivityStarted(activity: Activity) {}
-
-    override fun onActivityStopped(activity: Activity) {}
-
-    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+        // No specific action needed
+    }
 }
