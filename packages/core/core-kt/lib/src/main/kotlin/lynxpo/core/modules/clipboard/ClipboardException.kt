@@ -1,4 +1,3 @@
-// FIXME: inject real package name 
 package lynxpo.core.modules.clipboard
 
 import CodedException

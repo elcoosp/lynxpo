@@ -41,11 +41,9 @@ abstract class LynxpoApp : Application() {
     /** Can only be called after LynxEnv.inst().init(...) */
     private fun initLynxpoModules() {
         lynxpoModules.forEach { it ->
-            {
-                val (name, module) = it
-                LynxEnv.inst().registerModule(name, module)
-            }
-        }
+            val (name, module) = it
+            LynxEnv.inst().registerModule(name, module)
+        }.run { }
     }
 
     /** Can only be called after initLynxService(...) */

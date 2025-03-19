@@ -18,16 +18,6 @@ import com.lynx.tasm.behavior.LynxContext
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import lynxpo.core.LynxpoModule
-import lynxpo.core.modules.clipboard.ClipboardUnavailableException
-import lynxpo.core.modules.clipboard.CopyFailureException
-import lynxpo.core.modules.clipboard.GetImageOptions
-import lynxpo.core.modules.clipboard.GetStringOptions
-import lynxpo.core.modules.clipboard.NoPermissionException
-import lynxpo.core.modules.clipboard.PasteFailureException
-import lynxpo.core.modules.clipboard.SetStringOptions
-import lynxpo.core.modules.clipboard.StringFormat
-import lynxpo.core.modules.clipboard.clipDataFromBase64Image
-import lynxpo.core.modules.clipboard.imageFromContentUri
 import java.io.File
 
 inline fun <T> T?.ifNull(block: () -> T): T = this ?: block()
@@ -47,7 +37,7 @@ private enum class ContentType(val jsName: String) {
     IMAGE("image")
 }
 
-public class ClipboardModule(private val context: Context) : LynxpoModule(context) {
+class ClipboardModule(private val context: Context) : LynxpoModule(context) {
 
     init {
 
@@ -92,7 +82,7 @@ public class ClipboardModule(private val context: Context) : LynxpoModule(contex
 
     @LynxMethod
     fun hasStringAsync(promise: Promise): Boolean =
-        clipboardManager.primaryClipDescription?.hasTextContent ?: false
+        clipboardManager.primaryClipDescription?.hasTextContent == true
 
     // endregion
 
@@ -154,7 +144,7 @@ public class ClipboardModule(private val context: Context) : LynxpoModule(contex
 
     private fun getContext(): Context {
         val lynxContext = mContext as LynxContext
-        return lynxContext.getContext()
+        return lynxContext.context
     }
 
     private val clipboardManager: ClipboardManager
@@ -233,7 +223,7 @@ public class ClipboardModule(private val context: Context) : LynxpoModule(contex
      * otherwise returns `false`.
      */
     private fun clipboardHasItemWithType(mimeType: String) =
-        clipboardManager.primaryClipDescription?.hasMimeType(mimeType) ?: false
+        clipboardManager.primaryClipDescription?.hasMimeType(mimeType) == true
 
     /** Gets first item from the clipboard or null if empty */
     private val ClipboardManager.firstItem: ClipData.Item?

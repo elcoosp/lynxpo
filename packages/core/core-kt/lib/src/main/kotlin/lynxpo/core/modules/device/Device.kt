@@ -9,7 +9,6 @@ import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import com.lynx.jsbridge.LynxMethod
-import com.lynx.tasm.behavior.LynxContext
 import kotlinx.serialization.Serializable
 import lynxpo.core.LynxpoModule
 import lynxpo.ktts.annotations.TsRetInto
@@ -48,7 +47,7 @@ object EmulatorUtilities {
 
 /** DeviceModule superdoc */
 @Typed
-public class DeviceModule(private val context: Context) : LynxpoModule(context) {
+class DeviceModule(private val context: Context) : LynxpoModule(context) {
     /** DeviceType superdoc */
     @Serializable
     enum class DeviceType(
@@ -60,11 +59,6 @@ public class DeviceModule(private val context: Context) : LynxpoModule(context) 
         TABLET(2),
         DESKTOP(3),
         TV(4)
-    }
-
-    private fun getContext(): Context {
-        val lynxContext = mContext as LynxContext
-        return lynxContext.getContext()
     }
 
 

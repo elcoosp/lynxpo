@@ -11,15 +11,14 @@ import android.os.Build
 import android.provider.MediaStore
 import android.util.Base64
 import androidx.core.os.bundleOf
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runInterruptible
+import kotlinx.coroutines.yield
 import java.io.BufferedOutputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.lang.StringBuilder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runInterruptible
-import kotlinx.coroutines.yield
 
 const val PNG_PREFIX = "iVBORw0K"
 const val JPEG_PREFIX = "/9j/"

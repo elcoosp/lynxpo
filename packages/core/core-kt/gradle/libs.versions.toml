@@ -27,7 +27,6 @@ lynxServiceLog = "3.2.0-rc.0"
 lynxTrace = "3.2.0-rc.0"
 okhttp = "4.12.0"
 primjs = "2.11.1-rc.2"
-
 [libraries]
 animated-base = { module = "com.facebook.fresco:animated-base", version.ref = "fresco" }
 animated-gif = { module = "com.facebook.fresco:animated-gif", version.ref = "fresco" }
@@ -54,7 +53,6 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
-ktts-plugin = { module = "lynxpo.ktts:ktts-plugin", version.ref = "kttsPlugin" }
 lynx = { module = "org.lynxsdk.lynx:lynx", version.ref = "lynx" }
 lynx-jssdk = { module = "org.lynxsdk.lynx:lynx-jssdk", version.ref = "lynxJssdk" }
 lynx-service-http = { module = "org.lynxsdk.lynx:lynx-service-http", version.ref = "lynxServiceHttp" }
@@ -64,6 +62,9 @@ lynx-trace = { module = "org.lynxsdk.lynx:lynx-trace", version.ref = "lynxTrace"
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 primjs = { module = "org.lynxsdk.lynx:primjs", version.ref = "primjs" }
 webpsupport = { module = "com.facebook.fresco:webpsupport", version.ref = "fresco" }
+
+
+ktts-plugin = { module = "lynxpo.ktts:ktts-plugin", version.ref = "kttsPlugin" }
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agp" }
