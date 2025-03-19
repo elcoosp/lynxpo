@@ -3,7 +3,7 @@
 
 [versions]
 commons-math3 = "3.6.1"
-daggerCompiler = "2.55"
+daggerCompiler = "2.56"
 fresco = "2.6.0"
 guava = "33.3.1-jre"
 agp = "8.9.0"
