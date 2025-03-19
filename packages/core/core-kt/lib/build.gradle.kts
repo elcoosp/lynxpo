@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("com.google.devtools.ksp") version "2.1.20-RC3-1.0.31"
+    kotlin("plugin.serialization") version "2.1.0"
 
     `maven-publish`
 }
@@ -17,7 +19,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "lynxpo.core"
             artifactId = "core"
-            version = "1.0.2"
+            version = "1.0.3"
 
             // Use the Android component instead of Java
             afterEvaluate {
@@ -64,6 +66,14 @@ dependencies {
     implementation(libs.webpsupport)
     implementation(libs.animated.base)
     implementation(libs.okhttp)
+
+    // Lynxpo dependencies
+    implementation(libs.dagger.compiler)
+    ksp(libs.dagger.compiler)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(kotlin("reflect"))
+    implementation(libs.ktts.plugin)
+    ksp(libs.ktts.plugin)
 
 }
 
