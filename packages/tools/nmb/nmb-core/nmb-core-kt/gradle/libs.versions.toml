@@ -11,5 +11,5 @@ guava = { module = "com.google.guava:guava", version.ref = "guava" }
 wire = { module = "com.squareup.wire:wire-gradle-plugin", version.ref = "wire" }
 
 [plugins]
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.0.21" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.1.20" }
 wire = { id = "com.squareup.wire", version.ref = "wire" }
