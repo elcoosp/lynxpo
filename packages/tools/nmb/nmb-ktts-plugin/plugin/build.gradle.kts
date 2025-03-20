@@ -20,6 +20,7 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    mavenLocal()
 }
 
 buildscript { dependencies { classpath(kotlin("gradle-plugin", version = "2.1.20-RC3")) } }
@@ -27,6 +28,7 @@ buildscript { dependencies { classpath(kotlin("gradle-plugin", version = "2.1.20
 dependencies {
     implementation("com.google.devtools.ksp:symbol-processing-api:2.1.20-RC3-1.0.31")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+    implementation(libs.modtyinfo)
 }
 
 

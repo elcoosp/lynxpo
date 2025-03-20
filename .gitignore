@@ -5,3 +5,4 @@ packages/playground/**
 .turbo
 .gradle
 proposals
+.idea

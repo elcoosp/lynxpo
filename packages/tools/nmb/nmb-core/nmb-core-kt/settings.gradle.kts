@@ -11,6 +11,6 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
-rootProject.name = "nmb-core"
+rootProject.name = "nmb-core-kt"
 
 include("lib")

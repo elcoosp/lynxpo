@@ -11,15 +11,12 @@ plugins {
 
 
 
-group = "lynxpo.core"
-version = "1.0.0"
-
 publishing {
     publications {
         register<MavenPublication>("release") {
             groupId = "lynxpo.core"
             artifactId = "core"
-            version = "1.0.21"
+            version = "1.0.23"
 
             // Use the Android component instead of Java
             afterEvaluate {
