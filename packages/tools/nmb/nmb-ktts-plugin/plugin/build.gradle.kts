@@ -32,8 +32,6 @@ dependencies {
 }
 
 
-group = "lynxpo.ktts"  // GROUP_ID
-version = "1.0.0"      // VERSION
 
 // Publish the plugin JAR (which includes annotations)
 publishing {
@@ -41,7 +39,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "lynxpo.ktts"
             artifactId = "ktts-plugin"  // ARTIFACT_ID
-            version = "1.0.0"
+            version = "1.0.1"
             from(components["java"])
         }
     }
