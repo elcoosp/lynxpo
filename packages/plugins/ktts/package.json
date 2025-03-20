@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@elcoosp-configs/rslib": "2.1",
-    "@rsbuild/core": "^1.2.16",
-    "@rslib/core": "^0.5.4"
+    "@rsbuild/core": "^1.2.19",
+    "@rslib/core": "^0.5.5"
   }
 }

@@ -22,8 +22,6 @@ import lynxpo.core.LynxpoUI
 class InputUI(context: LynxContext) : LynxpoUI<AppCompatEditText>(context) {
     override fun createView(context: Context): AppCompatEditText {
         val view = AppCompatEditText(context)
-        // Removed invalid 'lines' property
-
         view.isFocusable = true
         view.isFocusableInTouchMode = true
         view.isEnabled = true

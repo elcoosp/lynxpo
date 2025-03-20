@@ -19,7 +19,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "lynxpo.core"
             artifactId = "core"
-            version = "1.0.19"
+            version = "1.0.21"
 
             // Use the Android component instead of Java
             afterEvaluate {

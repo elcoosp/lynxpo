@@ -32,13 +32,13 @@
     "test:watch": "vitest run --watch"
   },
   "dependencies": {
-    "@lynx-js/react": "^0.105.1",
+    "@lynx-js/react": "^0.105.2",
     "@lynx-js/types": "^3.2.0"
   },
   "devDependencies": {
     "@lynxpo/tools-nmi": "workspace:*",
     "@lynxpo/plugins-ktts": "workspace:*",
     "@elcoosp-configs/rslib": "2.1",
-    "@rslib/core": "^0.5.4"
+    "@rslib/core": "^0.5.5"
   }
 }
