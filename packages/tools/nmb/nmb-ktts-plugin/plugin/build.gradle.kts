@@ -12,7 +12,7 @@ plugins {
 
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     alias(libs.plugins.kotlin.jvm)
-    kotlin("plugin.serialization") version "2.1.0"
+    kotlin("plugin.serialization") version "2.1.20"
 
     `maven-publish`
 }
@@ -22,7 +22,7 @@ repositories {
     mavenCentral()
 }
 
-buildscript { dependencies { classpath(kotlin("gradle-plugin", version = "2.1.0")) } }
+buildscript { dependencies { classpath(kotlin("gradle-plugin", version = "2.1.20")) } }
 
 dependencies {
     implementation("com.google.devtools.ksp:symbol-processing-api:2.1.20-RC3-1.0.31")
