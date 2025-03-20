@@ -1,3 +1,4 @@
+@Typed
 package lynxpo.core.modules.statusbar
 
 import android.content.Context
@@ -9,7 +10,6 @@ import lynxpo.ktts.annotations.Typed
 
 /** Status bar manipulation, use api compat https://github.com/IODevBlue/StatusBarColors
  *  Should migrate to use https://developer.android.com/reference/kotlin/androidx/compose/foundation/layout/WindowInsets */
-@Typed
 class StatusBarModule(private val context: Context) : ActivityAwareLynxpoModule(context) {
     @LynxMethod
     fun setColor() {

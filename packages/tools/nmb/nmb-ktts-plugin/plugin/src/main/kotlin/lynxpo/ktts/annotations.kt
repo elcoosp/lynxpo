@@ -1,12 +1,12 @@
 package lynxpo.ktts.annotations
 
-@Target(AnnotationTarget.CLASS)
+@Target(AnnotationTarget.FILE)
 @Retention(AnnotationRetention.SOURCE)
-public annotation class Typed(val value: String = "")
+annotation class Typed(val value: String = "")
 
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.SOURCE)
-public annotation class TsRetInto(val value: String)
+annotation class TsRetInto(val value: String)
 
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.SOURCE)
