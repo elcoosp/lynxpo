@@ -40,14 +40,17 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-argument-parser", branch: "main"),
         // .package(url: "https://github.com/stackotter/swift-macro-toolkit", branch: "main"),
         .package(url: "https://github.com/apple/swift-log.git", branch: "main"),
-        .package(path: "../../../nmb-core/nmb-core-sw"),
+        //.package(path: "../../../nmb-core/nmb-core-sw"),
 
         .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.27.0"),
     ],
     targets: [
         .macro(
             name: "NMBSwiftInspectMacros",
-            dependencies: depsProducts
+            dependencies: depsProducts,
+            swiftSettings: [
+                .enableExperimentalFeature("ExperimentalLanguageFeatures")
+            ]
         ),
         .executableTarget(
             name: "NMBSwiftInspectCollector",
@@ -57,7 +60,9 @@ let package = Package(
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 .product(name: "Logging", package: "swift-log"),
-
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("ExperimentalLanguageFeatures")
             ]
         ),
         .plugin(
@@ -74,7 +79,10 @@ let package = Package(
         ),
         .target(
             name: "NMBSwiftInspect",
-            dependencies: ["NMBSwiftInspectMacros"]
+            dependencies: ["NMBSwiftInspectMacros"],
+            swiftSettings: [
+                .enableExperimentalFeature("ExperimentalLanguageFeatures")
+            ]
         ),
     ]
 )

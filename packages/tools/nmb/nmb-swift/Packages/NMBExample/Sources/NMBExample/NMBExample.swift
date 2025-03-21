@@ -3,7 +3,7 @@
 import NMBSwiftInspect
 
 enum Barbar: Codable {
-    case foo
+    case foofaz
 }
 @Typed
 class Foo {

@@ -406,8 +406,8 @@ public struct LynxMethodMacro: PeerMacro {
 struct NMBSwiftInspectMacros: CompilerPlugin {
     var providingMacros: [Macro.Type] = [
         // TypedMacro.self,
-        NewTypedMacro.self,
-        LynxMethodMacro.self,
+        //TypedMacro.self,
+        LynxMethodMacro.self
         // TsRetIntoMacro.self,
     ]
 }
