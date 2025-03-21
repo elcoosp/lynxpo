@@ -22,5 +22,5 @@ public macro TsRetInto(_ value: String) =
 public macro Typed(_ value: String = "") =
     #externalMacro(
         module: "NMBSwiftInspectMacros",
-        type: "TypedMacro"
+        type: "TypeInfoMacro"
     )
