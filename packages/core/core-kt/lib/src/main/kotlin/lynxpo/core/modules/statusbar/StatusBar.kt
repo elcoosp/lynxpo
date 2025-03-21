@@ -1,4 +1,4 @@
-@Typed
+@file:Typed
 package lynxpo.core.modules.statusbar
 
 import android.content.Context

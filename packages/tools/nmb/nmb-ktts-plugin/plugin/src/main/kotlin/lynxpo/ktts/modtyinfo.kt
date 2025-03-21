@@ -39,6 +39,7 @@ import modtyinfo.TypeInfoFile
 import modtyinfo.TypeKind
 import modtyinfo.TypeParameterInfo
 import modtyinfo.VarianceKind
+import java.io.OutputStreamWriter
 import modtyinfo.Visibility as ProtoVisibility
 
 class TypeInfoFileProcessor(environment: SymbolProcessorEnvironment) : SymbolProcessor {
@@ -111,10 +112,10 @@ class TypeInfoFileProcessor(environment: SymbolProcessorEnvironment) : SymbolPro
                 .toList()
 
             // Get file-level annotations
-            file.annotations.forEach { annotation ->
-                moduleAnnotations[annotation.shortName.asString()] = annotation.arguments
-                    .joinToString(", ") { "${it.name?.asString() ?: ""}: ${it.value}" }
-            }
+//            file.annotations.forEach { annotation ->
+//                moduleAnnotations[annotation.shortName.asString()] = annotation.arguments
+//                    .joinToString(", ") { "${it.name?.asString() ?: ""}: ${it.value}" }
+//            }
 
             val packageInfo = PackageInfo(
                 name = packageName,
@@ -154,9 +155,10 @@ class TypeInfoFileProcessor(environment: SymbolProcessorEnvironment) : SymbolPro
 
         val dependencies = Dependencies(false, file)
         codeGenerator.createNewFile(
-            dependencies = dependencies,
-            packageName = typeInfoFile.package_info?.name ?: "",
-            fileName = outputFileName
+            dependencies,
+            typeInfoFile.package_info?.name ?: "",
+            outputFileName,
+            "binpb"
         ).use { output ->
             output.write(TypeInfoFile.ADAPTER.encode(typeInfoFile))
         }

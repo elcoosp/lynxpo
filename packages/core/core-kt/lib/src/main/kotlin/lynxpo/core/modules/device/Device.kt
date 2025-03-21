@@ -1,3 +1,4 @@
+@file:Typed
 package lynxpo.core.modules.device
 
 import android.app.ActivityManager
@@ -46,7 +47,6 @@ object EmulatorUtilities {
 }
 
 /** DeviceModule superdoc */
-@Typed
 class DeviceModule(private val context: Context) : LynxpoModule(context) {
     /** DeviceType superdoc */
     @Serializable
