@@ -7,16 +7,16 @@
 			"path": "packages/playground"
 		},
 		{
-			"path": "packages/modules/device"
+			"path": "packages/core"
 		},
 		{
-			"path": "packages/plugins/ktts"
+			"path": "packages/tools/nmb/nmb-core-kt"
 		},
 		{
-			"path": "packages/tools/nmi"
+			"path": "packages/tools/nmb/nmb-core-sw"
 		},
 		{
-			"path": "packages/tools/aps"
+			"path": "packages/tools/dexpo"
 		}
 	],
 	"settings": {}
