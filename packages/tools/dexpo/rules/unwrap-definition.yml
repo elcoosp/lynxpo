@@ -6,7 +6,8 @@ rule:
       Name(moduleName)
       $$$BODY
     }
-fix: $$$BODY
+fix: |
+  $$$BODY
 # This take precedence
 # ---
 # id: unwrap-definition

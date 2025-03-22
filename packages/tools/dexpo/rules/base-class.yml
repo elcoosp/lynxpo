@@ -25,11 +25,8 @@ rule:
         }
 fix: |
   import com.lynx.jsbridge.LynxMethod
-  import com.lynx.jsbridge.LynxModule
   import com.lynx.jsbridge.Promise
   import com.lynx.tasm.behavior.LynxContext
   import kotlinx.coroutines.*
-  // TODO move in dedicated package
-  import LynxpoModule
+  import lynxpo.core.LynxpoModule
   $IMPORT_LIST
-  

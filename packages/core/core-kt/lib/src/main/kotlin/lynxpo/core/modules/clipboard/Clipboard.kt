@@ -100,14 +100,13 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
                     val imageResult = imageFromContentUri(context, imageUri, options)
                     return@launch promise.resolve(imageResult.toBundle())
                 } catch (err: Throwable) {
-                    err.printStackTrace()
-                    return@launch promise.reject(
-                        when (err) {
-                            is CodedException -> err
-                            is SecurityException -> NoPermissionException(err)
-                            else -> PasteFailureException(err, kind = "image")
-                        }.toString()
-                    )
+                    val lynxErr = when (err) {
+                        is CodedException -> err
+                        is SecurityException -> NoPermissionException(err)
+                        else -> PasteFailureException(err, kind = "image")
+                    }
+                    return@launch promise.reject(lynxErr.code, lynxErr.toString())
+
                 }
             }
         }
@@ -121,13 +120,11 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
                     val clip = clipDataFromBase64Image(context, imageData, clipboardCacheDir)
                     clipboardManager.setPrimaryClip(clip)
                 } catch (err: Throwable) {
-                    err.printStackTrace()
-                    return@launch promise.reject(
-                        when (err) {
-                            is CodedException -> err
-                            else -> CopyFailureException(err, kind = "image")
-                        }.toString()
-                    )
+                    val lynxErr = when (err) {
+                        is CodedException -> err
+                        else -> CopyFailureException(err, kind = "image")
+                    }
+                    return@launch promise.reject(lynxErr.code, lynxErr.toString())
                 }
             }
         }

@@ -67,4 +67,6 @@ rule:
               inside:
                 kind: lambda_literal
         - kind: lambda_literal
-fix: return@launch promise.reject($ERR)
+fix: |
+  val lynxErr = $ERR
+  return@launch promise.reject(lynxErr.code, lynxErr.toString())
