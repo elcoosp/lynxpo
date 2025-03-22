@@ -45,7 +45,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "nmb.core"
             artifactId = "modtyinfo"  // ARTIFACT_ID
-            version = "1.0.0"
+            version = "1.0.1"
             from(components["java"])
         }
     }
@@ -79,3 +79,6 @@ wire {
 
 // Apply a specific Java toolchain to ease working on different environments.
 java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
+kotlin {
+    jvmToolchain(21)
+}

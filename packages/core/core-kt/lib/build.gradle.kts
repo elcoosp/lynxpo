@@ -16,7 +16,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "lynxpo.core"
             artifactId = "core"
-            version = "1.0.23"
+            version = "1.0.24"
 
             // Use the Android component instead of Java
             afterEvaluate {
@@ -93,13 +93,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    kotlin {
+        jvmToolchain(21)
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
     testOptions {
         unitTests.all {
             it.useJUnitPlatform()

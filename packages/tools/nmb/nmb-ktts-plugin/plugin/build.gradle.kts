@@ -39,12 +39,22 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "lynxpo.ktts"
             artifactId = "ktts-plugin"  // ARTIFACT_ID
-            version = "1.0.1"
+            version = "1.0.3"
             from(components["java"])
         }
     }
     repositories {
         mavenLocal()  // Publish to ~/.m2/repository
+    }
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
