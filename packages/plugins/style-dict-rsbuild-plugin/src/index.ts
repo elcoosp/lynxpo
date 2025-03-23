@@ -1,7 +1,8 @@
+import * as fs from 'node:fs'
 import type { RsbuildPlugin } from '@rsbuild/core'
 import { logger } from '@rsbuild/core'
+import * as glob from 'glob'
 import StyleDictionary from 'style-dictionary'
-
 import { formats as f, transformGroups } from 'style-dictionary/enums'
 
 const { web } = transformGroups
@@ -72,6 +73,29 @@ const presets = {
   })
 }
 
+/**
+ * Check if a source pattern has matching files
+ * @param pattern - Glob pattern to check
+ * @returns Promise that resolves to boolean indicating if files exist
+ */
+const hasMatchingFiles = async (pattern: string): Promise<boolean> => {
+  const res = await glob.glob(pattern, { nodir: true })
+  return res.length > 0
+}
+
+/**
+ * Check if the base directory for a pattern exists
+ * @param pattern - Glob pattern to check
+ * @returns True if the base directory exists
+ */
+const baseDirectoryExists = (pattern: string): boolean => {
+  // Extract the base directory from the pattern
+  // This handles patterns like 'tokens/brands/main/*.json'
+  const baseDir = pattern.split('*')[0]?.replace(/\/+$/, '')
+  if (!baseDir) throw new Error('Incorrect pattern')
+  return fs.existsSync(baseDir)
+}
+
 type StyleDictionaryPluginOptions = Readonly<{
   preset: PresetName
   platforms: Platform[]
@@ -92,19 +116,52 @@ export const pluginStyleDictionary = (
       const presetGetter = presets[preset]
       if (presetGetter) {
         logger.info(`Starting config of ${preset} style dictionary`)
+
         await Promise.all(
           brands.map(async (brand) => {
-            Promise.all(
+            await Promise.all(
               platforms.map(async (platform) => {
-                const sdOptions = {
-                  verbosity: 'verbose',
-                  warnings: 'warn'
-                } as const
-                const sd = new StyleDictionary(
-                  presetGetter(brand, platform),
-                  sdOptions
+                const config = presetGetter(brand, platform)
+                const sources = config.source as string[]
+
+                // Check if source directories exist and have files
+                const sourcesExist = await Promise.all(
+                  sources.map(async (pattern) => {
+                    const dirExists = baseDirectoryExists(pattern)
+                    if (!dirExists) {
+                      logger.warn(
+                        `Source directory ${pattern.split('*')[0]} does not exist`
+                      )
+                      return false
+                    }
+
+                    const hasFiles = await hasMatchingFiles(pattern)
+                    if (!hasFiles) {
+                      logger.warn(
+                        `No matching files found for pattern: ${pattern}`
+                      )
+                      return false
+                    }
+
+                    return true
+                  })
                 )
-                sd.buildPlatform(platform)
+
+                // If at least one source exists, build the platform
+                if (sourcesExist.some((exists) => exists)) {
+                  const sdOptions = {
+                    verbosity: 'verbose',
+                    warnings: 'warn'
+                  } as const
+
+                  const sd = new StyleDictionary(config, sdOptions)
+                  sd.buildPlatform(platform)
+                  logger.info(`Built ${platform} for brand ${brand}`)
+                } else {
+                  logger.error(
+                    `No valid source files found for ${brand}/${platform}. Skipping build.`
+                  )
+                }
               })
             )
           })
