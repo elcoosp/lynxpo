@@ -1,0 +1,60 @@
+{
+  "name": "@lynxpo/style-dict-rsbuild-plugin",
+  "version": "0.0.0",
+  "repository": "https://github.com/rspack-contrib/rsbuild-plugin-template",
+  "license": "MIT",
+  "description": "style-dict-rsbuild-plugin rsbuild plugin",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "rslib build",
+    "dev": "rslib build --watch",
+    "lint": "biome check .",
+    "lint:ox": "oxlint",
+    "lint:write": "biome check . --write",
+    "prepare": "npm run build",
+    "test": "playwright test",
+    "bump": "npx bumpp"
+  },
+  "dependencies": {
+    "sd-tailwindcss-transformer": "^2.1.0",
+    "style-dictionary": "^4.3.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@playwright/test": "^1.51.1",
+    "@rsbuild/core": "^1.2.19",
+    "@rslib/core": "^0.5.5",
+    "@types/node": "^22.13.11",
+    "playwright": "^1.51.1",
+    "typescript": "^5.8.2",
+    "@elcoosp-configs/rslib": "2.1.0",
+    "@rspack/tracing": "^1.2.8",
+    "@tsconfig/node20": "^20.1.4",
+    "@tsconfig/strictest": "^2.0.5",
+    "oxlint": "^0.16.2"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "1.2.19"
+  },
+  "peerDependenciesMeta": {
+    "@rsbuild/core": {
+      "optional": true
+    }
+  },
+  "packageManager": "pnpm@10.6.5",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

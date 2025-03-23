@@ -1,0 +1,9 @@
+packages:
+  - playground
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@bundled-es-modules/glob'
+  - core-js
+  - protobufjs
+  - simple-git-hooks
+  - style-dictionary
