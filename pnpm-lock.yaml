@@ -13,7 +13,7 @@ importers:
         version: 1.9.4
       '@lynx-js/rspeedy':
         specifier: ^0.9.0
-        version: 0.9.0(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(@rspack/tracing@1.2.8)(typescript@5.8.2)(webpack@5.98.0)
+        version: 0.9.0(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(@rspack/tracing@1.2.8)(typescript@5.8.2)(webpack@5.98.0)
       '@rsbuild/core':
         specifier: ^1.2.19
         version: 1.3.5(@rspack/tracing@1.2.8)
@@ -1136,6 +1136,9 @@ packages:
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
+
+  '@swc/helpers@0.5.17':
+    resolution: {integrity: sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A==}
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -3259,10 +3262,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@lynx-js/chunk-loading-webpack-plugin@0.2.0(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))':
+  '@lynx-js/chunk-loading-webpack-plugin@0.2.0(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))':
     dependencies:
       '@lynx-js/webpack-runtime-globals': 0.0.5
-      '@rspack/core': 1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)
+      '@rspack/core': 1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)
 
   '@lynx-js/react@0.106.1(@lynx-js/types@3.2.0)(@types/react@19.0.12)':
     dependencies:
@@ -3271,14 +3274,14 @@ snapshots:
     optionalDependencies:
       '@lynx-js/types': 3.2.0
 
-  '@lynx-js/rspeedy@0.9.0(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(@rspack/tracing@1.2.8)(typescript@5.8.2)(webpack@5.98.0)':
+  '@lynx-js/rspeedy@0.9.0(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(@rspack/tracing@1.2.8)(typescript@5.8.2)(webpack@5.98.0)':
     dependencies:
-      '@lynx-js/chunk-loading-webpack-plugin': 0.2.0(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))
+      '@lynx-js/chunk-loading-webpack-plugin': 0.2.0(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))
       '@lynx-js/webpack-dev-transport': 0.1.2
       '@lynx-js/websocket': 0.0.4
       '@rsbuild/core': 1.3.2(@rspack/tracing@1.2.8)
       '@rsbuild/plugin-css-minimizer': 1.0.2(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(webpack@5.98.0)
-      '@rsdoctor/rspack-plugin': 1.0.1(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
+      '@rsdoctor/rspack-plugin': 1.0.1(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
     optionalDependencies:
       typescript: 5.8.2
     transitivePeerDependencies:
@@ -3710,9 +3713,9 @@ snapshots:
 
   '@rsbuild/core@1.2.19(@rspack/tracing@1.2.8)':
     dependencies:
-      '@rspack/core': 1.2.8(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)
+      '@rspack/core': 1.2.8(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)
       '@rspack/lite-tapable': 1.0.1
-      '@swc/helpers': 0.5.15
+      '@swc/helpers': 0.5.17
       core-js: 3.41.0
       jiti: 2.4.2
     transitivePeerDependencies:
@@ -3740,9 +3743,9 @@ snapshots:
 
   '@rsbuild/core@1.3.2(@rspack/tracing@1.2.8)':
     dependencies:
-      '@rspack/core': 1.3.1(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)
+      '@rspack/core': 1.3.1(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)
       '@rspack/lite-tapable': 1.0.1
-      '@swc/helpers': 0.5.15
+      '@swc/helpers': 0.5.17
       core-js: 3.41.0
       jiti: 2.4.2
     transitivePeerDependencies:
@@ -3750,9 +3753,9 @@ snapshots:
 
   '@rsbuild/core@1.3.5(@rspack/tracing@1.2.8)':
     dependencies:
-      '@rspack/core': 1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)
+      '@rspack/core': 1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)
       '@rspack/lite-tapable': 1.0.1
-      '@swc/helpers': 0.5.15
+      '@swc/helpers': 0.5.17
       core-js: 3.41.0
       jiti: 2.4.2
     transitivePeerDependencies:
@@ -3785,13 +3788,13 @@ snapshots:
 
   '@rsdoctor/client@1.0.1': {}
 
-  '@rsdoctor/core@1.0.1(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)':
+  '@rsdoctor/core@1.0.1(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)':
     dependencies:
       '@rsbuild/plugin-check-syntax': 1.3.0(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))
-      '@rsdoctor/graph': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/sdk': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/utils': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
+      '@rsdoctor/graph': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/sdk': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/utils': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
       axios: 1.8.4
       browserslist-load-config: 1.0.0
       enhanced-resolve: 5.12.0
@@ -3811,10 +3814,10 @@ snapshots:
       - utf-8-validate
       - webpack
 
-  '@rsdoctor/graph@1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)':
+  '@rsdoctor/graph@1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)':
     dependencies:
-      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/utils': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
+      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/utils': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
       lodash.unionby: 4.8.0
       socket.io: 4.8.1
       source-map: 0.7.4
@@ -3825,14 +3828,14 @@ snapshots:
       - utf-8-validate
       - webpack
 
-  '@rsdoctor/rspack-plugin@1.0.1(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)':
+  '@rsdoctor/rspack-plugin@1.0.1(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)':
     dependencies:
-      '@rsdoctor/core': 1.0.1(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/graph': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/sdk': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/utils': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rspack/core': 1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)
+      '@rsdoctor/core': 1.0.1(@rsbuild/core@1.3.2(@rspack/tracing@1.2.8))(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/graph': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/sdk': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/utils': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rspack/core': 1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)
       lodash: 4.17.21
     transitivePeerDependencies:
       - '@rsbuild/core'
@@ -3842,12 +3845,12 @@ snapshots:
       - utf-8-validate
       - webpack
 
-  '@rsdoctor/sdk@1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)':
+  '@rsdoctor/sdk@1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)':
     dependencies:
       '@rsdoctor/client': 1.0.1
-      '@rsdoctor/graph': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
-      '@rsdoctor/utils': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
+      '@rsdoctor/graph': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
+      '@rsdoctor/utils': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
       '@types/fs-extra': 11.0.4
       body-parser: 1.20.3
       cors: 2.8.5
@@ -3867,7 +3870,7 @@ snapshots:
       - utf-8-validate
       - webpack
 
-  '@rsdoctor/types@1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)':
+  '@rsdoctor/types@1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)':
     dependencies:
       '@types/connect': 3.4.38
       '@types/estree': 1.0.5
@@ -3875,12 +3878,12 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.98.0
     optionalDependencies:
-      '@rspack/core': 1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)
+      '@rspack/core': 1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)
 
-  '@rsdoctor/utils@1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)':
+  '@rsdoctor/utils@1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)':
     dependencies:
       '@babel/code-frame': 7.26.2
-      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15))(webpack@5.98.0)
+      '@rsdoctor/types': 1.0.1(@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17))(webpack@5.98.0)
       '@types/estree': 1.0.5
       acorn: 8.14.1
       acorn-import-attributes: 1.9.5(acorn@8.14.1)
@@ -4151,7 +4154,7 @@ snapshots:
       '@rspack/binding-win32-ia32-msvc': 1.3.3
       '@rspack/binding-win32-x64-msvc': 1.3.3
 
-  '@rspack/core@1.2.8(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)':
+  '@rspack/core@1.2.8(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)':
     dependencies:
       '@module-federation/runtime-tools': 0.8.4
       '@rspack/binding': 1.2.8
@@ -4159,7 +4162,7 @@ snapshots:
       caniuse-lite: 1.0.30001704
     optionalDependencies:
       '@rspack/tracing': 1.2.8
-      '@swc/helpers': 0.5.15
+      '@swc/helpers': 0.5.17
 
   '@rspack/core@1.3.0(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)':
     dependencies:
@@ -4181,7 +4184,7 @@ snapshots:
       '@rspack/tracing': 1.2.8
       '@swc/helpers': 0.5.15
 
-  '@rspack/core@1.3.1(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)':
+  '@rspack/core@1.3.1(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)':
     dependencies:
       '@module-federation/runtime-tools': 0.11.1
       '@rspack/binding': 1.3.1
@@ -4190,9 +4193,9 @@ snapshots:
       tinypool: 1.0.2
     optionalDependencies:
       '@rspack/tracing': 1.2.8
-      '@swc/helpers': 0.5.15
+      '@swc/helpers': 0.5.17
 
-  '@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.15)':
+  '@rspack/core@1.3.3(@rspack/tracing@1.2.8)(@swc/helpers@0.5.17)':
     dependencies:
       '@module-federation/runtime-tools': 0.11.2
       '@rspack/binding': 1.3.3
@@ -4200,7 +4203,7 @@ snapshots:
       caniuse-lite: 1.0.30001713
     optionalDependencies:
       '@rspack/tracing': 1.2.8
-      '@swc/helpers': 0.5.15
+      '@swc/helpers': 0.5.17
 
   '@rspack/lite-tapable@1.0.1': {}
 
@@ -4289,6 +4292,10 @@ snapshots:
   '@socket.io/component-emitter@3.1.2': {}
 
   '@swc/helpers@0.5.15':
+    dependencies:
+      tslib: 2.8.1
+
+  '@swc/helpers@0.5.17':
     dependencies:
       tslib: 2.8.1
 
