@@ -1,4 +1,4 @@
-// FIXME: inject real package name 
+// FIXME: inject real package name
 package com.{{org}}.{{project_name|camel_case}}.modules.clipboard
 
 
@@ -47,18 +47,18 @@ private enum class ContentType(val jsName: String) {
 }
 
 class ClipboardModule(private val context: Context) : LynxpoModule(context) {
-  init {
     // region Strings
     @LynxMethod
     fun getStringAsync(options: GetStringOptions, promise: Promise) {
       val item = clipboardManager.firstItem
-      when (options.preferredFormat) {
+      val str = when (options.preferredFormat) {
         StringFormat.PLAIN -> item?.coerceToPlainText(context)
         StringFormat.HTML -> item?.coerceToHtmlText(context)
       } ?: ""
+      return promise.resolve(str)
     }
-    
-  
+
+
     @LynxMethod
     fun setStringAsync(content: String, options: SetStringOptions, promise: Promise) {
       val clip = when (options.inputFormat) {
@@ -72,8 +72,8 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
       clipboardManager.setPrimaryClip(clip)
       return promise.resolve(true)
     }
-    
-  
+
+
     @LynxMethod
     fun hasStringAsync(promise: Promise): Boolean {
       clipboardManager
@@ -81,10 +81,7 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
         ?.hasTextContent
         ?: false
     }
-    
-    // endregion
-  
-    // region Images
+
     @LynxMethod
     fun getImageAsync(options: GetImageOptions, promise: Promise) {
       runBlocking {
@@ -96,7 +93,7 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
           .ifNull {
             return@launch promise.resolve(null)
           }
-    
+
         try {
           val imageResult = imageFromContentUri(context, imageUri, options)
           return@launch promise.resolve(imageResult.toBundle())
@@ -108,14 +105,14 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
             else -> PasteFailureException(err, kind = "image")
           }
           return@launch promise.reject(lynxErr.code, lynxErr.toString())
-          
+
         }
       }
     }
-    
+
     }
-    
-  
+
+
     @LynxMethod
     fun setImageAsync(imageData: String, promise: Promise) {
       runBlocking {
@@ -130,50 +127,49 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
             else -> CopyFailureException(err, kind = "image")
           }
           return@launch promise.reject(lynxErr.code, lynxErr.toString())
-          
+
         }
       }
     }
-    
+
     }
-    
-  
+
+
     @LynxMethod
     fun hasImageAsync(promise: Promise): Boolean {
       clipboardManager.primaryClipDescription?.hasMimeType("image/*") == true
     }
-    
-    //endregion
-  
+    init {
+
     // region Events
     Events(CLIPBOARD_CHANGED_EVENT_NAME)
-  
+
     OnCreate {
       clipboardEventEmitter = ClipboardEventEmitter()
       clipboardEventEmitter.attachListener()
     }
-  
+
     OnDestroy {
       clipboardEventEmitter.detachListener()
     }
-  
+
     OnActivityEntersBackground {
       clipboardEventEmitter.pauseListening()
     }
-  
+
     OnActivityEntersForeground {
       clipboardEventEmitter.resumeListening()
     }
     // endregion
   }
-  
+
 
   private fun getContext(): Context {
     val lynxContext = mContext as LynxContext
     return lynxContext.getContext()
   }
-  
-    
+
+
 
   private val clipboardManager: ClipboardManager
     get() = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
@@ -225,7 +221,7 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
               ContentType.IMAGE.takeIf { clip.hasMimeType("image/*") }
             ).map { it.jsName }
           ))
-          
+
         }
     }
 

@@ -12,9 +12,10 @@ import android.text.Spanned
 import android.text.TextUtils
 import android.util.Log
 import com.lynx.jsbridge.LynxMethod
-import com.lynx.jsbridge.Promise
+import com.lynx.react.bridge.Callback
 import com.lynx.react.bridge.JavaOnlyArray
 import com.lynx.tasm.behavior.LynxContext
+import com.lynx.tasm.behavior.LynxUIMethodConstants
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import lynxpo.core.LynxpoModule
@@ -50,19 +51,18 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
     }
 
     @LynxMethod
-    fun getStringAsync(options: GetStringOptions, promise: Promise) {
+    fun getStringAsync(options: GetStringOptions, callback: Callback) {
         val item = clipboardManager.firstItem
         val result =
             when (options.preferredFormat) {
                 StringFormat.PLAIN -> item?.coerceToPlainText(context)
                 StringFormat.HTML -> item?.coerceToHtmlText(context)
             }
-        return promise.resolve(result)
+        return callback.invoke(LynxUIMethodConstants.SUCCESS, result)
     }
 
-
     @LynxMethod
-    fun setStringAsync(content: String, options: SetStringOptions, promise: Promise) {
+    fun setStringAsync(content: String, options: SetStringOptions, callback: Callback) {
         val clip =
             when (options.inputFormat) {
                 StringFormat.PLAIN -> ClipData.newPlainText(null, content)
@@ -73,18 +73,21 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
                 }
             }
         clipboardManager.setPrimaryClip(clip)
-        return promise.resolve(true)
+        return callback.invoke(LynxUIMethodConstants.SUCCESS, true)
     }
 
     @LynxMethod
-    fun hasStringAsync(promise: Promise): Boolean =
-        clipboardManager.primaryClipDescription?.hasTextContent == true
+    fun hasStringAsync(callback: Callback): Unit =
+        callback.invoke(
+            LynxUIMethodConstants.SUCCESS,
+            clipboardManager.primaryClipDescription?.hasTextContent == true
+        )
 
     // endregion
 
     // region Images
     @LynxMethod
-    fun getImageAsync(options: GetImageOptions, promise: Promise) {
+    fun getImageAsync(options: GetImageOptions, callback: Callback) {
         runBlocking {
             launch {
                 val imageUri =
@@ -93,19 +96,26 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
                         ?.firstItem
                         ?.uri
                         .ifNull {
-                            return@launch promise.resolve(null)
+                            return@launch callback.invoke(LynxUIMethodConstants.SUCCESS, null)
                         }
 
                 try {
                     val imageResult = imageFromContentUri(context, imageUri, options)
-                    return@launch promise.resolve(imageResult.toBundle())
+                    return@launch callback.invoke(
+                        LynxUIMethodConstants.SUCCESS,
+                        imageResult.toBundle()
+                    )
                 } catch (err: Throwable) {
                     val lynxErr = when (err) {
                         is CodedException -> err
                         is SecurityException -> NoPermissionException(err)
                         else -> PasteFailureException(err, kind = "image")
                     }
-                    return@launch promise.reject(lynxErr.code, lynxErr.toString())
+                    return@launch callback.invoke(
+                        LynxUIMethodConstants.OPERATION_ERROR,
+                        lynxErr.code,
+                        lynxErr.toString()
+                    )
 
                 }
             }
@@ -113,7 +123,7 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
     }
 
     @LynxMethod
-    fun setImageAsync(imageData: String, promise: Promise) {
+    fun setImageAsync(imageData: String, callback: Callback) {
         runBlocking {
             launch {
                 try {
@@ -124,16 +134,22 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
                         is CodedException -> err
                         else -> CopyFailureException(err, kind = "image")
                     }
-                    return@launch promise.reject(lynxErr.code, lynxErr.toString())
+                    return@launch callback.invoke(
+                        LynxUIMethodConstants.OPERATION_ERROR,
+                        lynxErr.code,
+                        lynxErr.toString()
+                    )
                 }
             }
         }
     }
 
     @LynxMethod
-    fun hasImageAsync(promise: Promise): Boolean =
-        clipboardManager.primaryClipDescription?.hasMimeType("image/*") == true
-
+    fun hasImageAsync(callback: Callback) =
+        callback.invoke(
+            LynxUIMethodConstants.SUCCESS,
+            clipboardManager.primaryClipDescription?.hasMimeType("image/*") == true
+        )
 
     private fun getContext(): Context {
         val lynxContext = mContext as LynxContext
@@ -149,10 +165,9 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
         File(context.cacheDir, CLIPBOARD_DIRECTORY_NAME).also { it.mkdirs() }
     }
 
-    //FIXME: should be in OnCreate(module) and a lateinit, but broken for now
+    // FIXME: should be in OnCreate(module) and a lateinit, but broken for now
     // region Clipboard event emitter
-    private var clipboardEventEmitter: ClipboardEventEmitter =
-        ClipboardEventEmitter()
+    private var clipboardEventEmitter: ClipboardEventEmitter = ClipboardEventEmitter()
 
     private inner class ClipboardEventEmitter {
         private var isListening = true
@@ -178,27 +193,37 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
                 // return@OnPrimaryClipChangedListener
                 // }
 
-                maybeClipboardManager.takeIf { isListening }?.primaryClipDescription?.let { clip ->
+                maybeClipboardManager.takeIf { isListening }?.primaryClipDescription?.let { clip
+                    ->
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         if (timestamp == clip.timestamp) {
                             return@OnPrimaryClipChangedListener
                         }
                         timestamp = clip.timestamp
                     }
-                    val contentTypes = listOfNotNull(
-                        ContentType.PLAIN_TEXT.takeIf { clip.hasTextContent },
-                        ContentType.HTML.takeIf { clip.hasMimeType(ClipDescription.MIMETYPE_TEXT_HTML) },
-                        ContentType.IMAGE.takeIf { clip.hasMimeType("image/*") }
-                    ).map { it.jsName }
+                    val contentTypes =
+                        listOfNotNull(
+                            ContentType.PLAIN_TEXT.takeIf {
+                                clip.hasTextContent
+                            },
+                            ContentType.HTML.takeIf {
+                                clip.hasMimeType(
+                                    ClipDescription.MIMETYPE_TEXT_HTML
+                                )
+                            },
+                            ContentType.IMAGE.takeIf {
+                                clip.hasMimeType("image/*")
+                            }
+                        )
+                            .map { it.jsName }
 
                     // Create JavaOnlyArray for contentTypes
                     val contentTypesArray = JavaOnlyArray()
                     contentTypes.forEach { contentTypesArray.pushString(it) }
-                    (mContext as LynxContext)
-                        .sendGlobalEvent(
-                            CLIPBOARD_CHANGED_EVENT_NAME,
-                            contentTypesArray
-                        )
+                    (mContext as LynxContext).sendGlobalEvent(
+                        CLIPBOARD_CHANGED_EVENT_NAME,
+                        contentTypesArray
+                    )
                 }
             }
 
