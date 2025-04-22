@@ -4,9 +4,8 @@ rule:
   kind: jump_expression
   pattern: |
     return@AsyncFunction $RET_VALUE
-fix: return promise.resolve($RET_VALUE)
+fix: return callback.invoke(LynxUIMethodConstants.SUCCESS, $RET_VALUE)
 ---
-
 id: async-functions-with-params-with-retty
 language: Kotlin
 rule:
@@ -20,9 +19,11 @@ rule:
         }
 fix: |
   @LynxMethod
-  fun $NAME($PARAMS, promise: Promise): $RET_TYPE {
+  fun $NAME($PARAMS, callback: Callback): $RET_TYPE {
     $$$BODY
   }
+
+
 # ---
 # # TODO: this need refinement to really correctly work
 # id: async-coroutine-functions-with-params-without-retty
@@ -35,12 +36,11 @@ fix: |
 #     }
 # fix: |
 #   @LynxMethod
-#   fun $NAME($PARAMS, promise: Promise) {
+#   fun $NAME($PARAMS, callback: Callback) {
 #     $$$BODY
 #   }
 
 ---
-
 id: async-coroutine-functions-with-params-with-retty
 language: Kotlin
 rule:
@@ -58,12 +58,11 @@ rule:
         }
 fix: |
   @LynxMethod
-  fun $NAME($PARAMS, promise: Promise): $RET_TYPE {
+  fun $NAME($PARAMS, callback: Callback): $RET_TYPE {
     $$$BODY
   }
 
 ---
-
 id: async-functions-with-params-without-retty
 language: Kotlin
 rule:
@@ -78,11 +77,10 @@ rule:
 # TODO RET_TYPE || Void
 fix: |
   @LynxMethod
-  fun $NAME($PARAMS, promise: Promise) {
+  fun $NAME($PARAMS, callback: Callback) {
     $$$BODY
   }
 ---
-
 id: async-functions-without-params-with-retty
 language: Kotlin
 rule:
@@ -90,7 +88,7 @@ rule:
   pattern: AsyncFunction<$RET_TYPE>("$NAME") { $$$BODY }
 fix: |
   @LynxMethod
-  fun $NAME(promise: Promise): $RET_TYPE {
+  fun $NAME(callback: Callback): $RET_TYPE {
     $$$BODY
   }
 
@@ -103,6 +101,6 @@ rule:
   pattern: AsyncFunction("$NAME") { $$$BODY }
 fix: |
   @LynxMethod
-  fun $NAME(promise: Promise) {
+  fun $NAME(callback: Callback) {
     $$$BODY
   }

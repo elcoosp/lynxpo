@@ -1,5 +1,5 @@
 
-// FIXME: inject real package name 
+// FIXME: inject real package name
 package com.{{org}}.{{project_name|camel_case}}.modules.clipboard
 
 

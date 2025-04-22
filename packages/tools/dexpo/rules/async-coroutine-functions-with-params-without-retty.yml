@@ -21,14 +21,12 @@ rule:
 transform:
   DESUGARED_BODY:
     rewrite:
-      rewriters: [
-        wrap-coroutine-body,
-      ]
+      rewriters: [wrap-coroutine-body]
       source: $$$BODY
 
 fix: |
   @LynxMethod
-  fun $NAME($PARAMS, promise: Promise) {
+  fun $NAME($PARAMS, callback: Callback) {
     $DESUGARED_BODY
   }
 
@@ -48,7 +46,7 @@ rule:
             inside:
               kind: lambda_literal
         - kind: lambda_literal
-fix: return@launch promise.resolve($RET_VALUE)
+fix: return@launch callback.invoke(LynxUIMethodConstants.SUCCESS, $RET_VALUE)
 ---
 language: Kotlin
 id: replace-coroutine-throws
@@ -69,4 +67,4 @@ rule:
         - kind: lambda_literal
 fix: |
   val lynxErr = $ERR
-  return@launch promise.reject(lynxErr.code, lynxErr.toString())
+  return@launch callback.invoke(LynxUIMethodConstants.OPERATION_ERROR, lynxErr.code, lynxErr.toString())
