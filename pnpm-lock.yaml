@@ -27,8 +27,8 @@ importers:
   packages/modules/device:
     dependencies:
       '@lynx-js/react':
-        specifier: ^0.106.1
-        version: 0.106.5(@lynx-js/types@3.2.1)(@types/react@18.3.20)
+        specifier: ^0.115.0
+        version: 0.115.1(@lynx-js/types@3.2.1)(@types/react@18.3.20)
       '@lynx-js/types':
         specifier: ^3.2.0
         version: 3.2.1
@@ -342,8 +342,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  '@hongzhiyuan/preact@10.24.0-319c684e':
-    resolution: {integrity: sha512-weWzMUnmXk7gynEpOo/iIyfq95pRoFO2+18eiwD0hk/TeIQUeHbyG4W/S3lCEjB54jvft/itXwhkF+vz623BEg==}
+  '@hongzhiyuan/preact@10.24.0-00213bad':
+    resolution: {integrity: sha512-bHWp4ZDK5ZimcY+bTWw3S3xGiB8eROpZj0RK3FClNIaTOajb0b11CsT3K+pdeakgPgq1jWN3T2e2rfrPm40JsQ==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -405,8 +405,8 @@ packages:
     peerDependencies:
       '@rspack/core': ^1.3.0
 
-  '@lynx-js/react@0.106.5':
-    resolution: {integrity: sha512-MaWwVcjfL96DX/OyLmUJuG7P6+u1jru8EnRPEIHg+qyUSmHMLW59vF8dh2zfk6ADUjCEuu74S45xWK+icaQh1Q==}
+  '@lynx-js/react@0.115.1':
+    resolution: {integrity: sha512-htZXSUmKI/7NI5hPMBcv2zN8CRJ+Yq8TaHX2nk3oJyZzQdIzo+L9IbtVx1GwRRMsC3PmkdKX9Wiqgtjle0MolQ==}
     peerDependencies:
       '@lynx-js/types': '*'
       '@types/react': ^18
@@ -3093,7 +3093,7 @@ snapshots:
       protobufjs: 7.5.0
       yargs: 17.7.2
 
-  '@hongzhiyuan/preact@10.24.0-319c684e': {}
+  '@hongzhiyuan/preact@10.24.0-00213bad': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -3162,10 +3162,10 @@ snapshots:
       '@lynx-js/webpack-runtime-globals': 0.0.5
       '@rspack/core': 1.3.9(@swc/helpers@0.5.17)
 
-  '@lynx-js/react@0.106.5(@lynx-js/types@3.2.1)(@types/react@18.3.20)':
+  '@lynx-js/react@0.115.1(@lynx-js/types@3.2.1)(@types/react@18.3.20)':
     dependencies:
       '@types/react': 18.3.20
-      preact: '@hongzhiyuan/preact@10.24.0-319c684e'
+      preact: '@hongzhiyuan/preact@10.24.0-00213bad'
     optionalDependencies:
       '@lynx-js/types': 3.2.1
 
