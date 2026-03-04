@@ -15,9 +15,9 @@ schemars = { version = "1.0.0-alpha.17" }
 ordermap = { version = "0.5.6", features = ["serde"] }
 ts_quote = "0.4.0"
 terminal_hyperlink = "0.1.0"
-prost = "0.13"
-prost-types = "0.13"
-prost-build = "0.13.5"
+prost = "0.14"
+prost-types = "0.14"
+prost-build = "0.14.0"
 build-print = "0.1.1"
 cmd_lib = { git = "https://github.com/elcoosp/rust_cmd_lib", features = [
     "build-print",
