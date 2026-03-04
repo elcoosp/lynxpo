@@ -27,8 +27,8 @@ importers:
   packages/modules/device:
     dependencies:
       '@lynx-js/react':
-        specifier: ^0.115.0
-        version: 0.115.1(@lynx-js/types@3.7.0)(@types/react@18.3.20)
+        specifier: ^0.116.0
+        version: 0.116.4(@lynx-js/types@3.7.0)(@types/react@18.3.20)
       '@lynx-js/types':
         specifier: ^3.2.0
         version: 3.7.0
@@ -95,8 +95,8 @@ importers:
         specifier: ^22.13.11
         version: 22.19.13
       oxlint:
-        specifier: ^0.16.2
-        version: 0.16.9
+        specifier: ^0.18.0
+        version: 0.18.1
       playwright:
         specifier: ^1.51.1
         version: 1.58.2
@@ -169,48 +169,56 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@ast-grep/napi-linux-arm64-gnu@0.37.0':
     resolution: {integrity: sha512-L7Sj0lXy8X+BqSMgr1LB8cCoWk0rericdeu+dC8/c8zpsav5Oo2IQKY1PmiZ7H8IHoFBbURLf8iklY9wsD+cyA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@ast-grep/napi-linux-arm64-musl@0.36.3':
     resolution: {integrity: sha512-2XRmNYuovZu0Pa4J3or4PKMkQZnXXfpVcCrPwWB/2ytX7XUo+TWLgYE8rPVnJOyw5zujkveFb0XUrro9mQgLzw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@ast-grep/napi-linux-arm64-musl@0.37.0':
     resolution: {integrity: sha512-LF9sAvYy6es/OdyJDO3RwkX3I82Vkfsng1sqUBcoWC1jVb1wX5YVzHtpQox9JrEhGl+bNp7FYxB4Qba9OdA5GA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@ast-grep/napi-linux-x64-gnu@0.36.3':
     resolution: {integrity: sha512-mTwPRbBi1feGqR2b5TWC5gkEDeRi8wfk4euF5sKNihfMGHj6pdfINHQ3QvLVO4C7z0r/wgWLAvditFA0b997dg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@ast-grep/napi-linux-x64-gnu@0.37.0':
     resolution: {integrity: sha512-TViz5/klqre6aSmJzswEIjApnGjJzstG/SE8VDWsrftMBMYt2PTu3MeluZVwzSqDao8doT/P+6U11dU05UOgxw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@ast-grep/napi-linux-x64-musl@0.36.3':
     resolution: {integrity: sha512-tMGPrT+zuZzJK6n1cD1kOii7HYZE9gUXjwtVNE/uZqXEaWP6lmkfoTMbLjnxEe74VQbmaoDGh1/cjrDBnqC6Uw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@ast-grep/napi-linux-x64-musl@0.37.0':
     resolution: {integrity: sha512-/BcCH33S9E3ovOAEoxYngUNXgb+JLg991sdyiNP2bSoYd30a9RHrG7CYwW6fMgua3ijQ474eV6cq9yZO1bCpXg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@ast-grep/napi-win32-arm64-msvc@0.36.3':
     resolution: {integrity: sha512-7pFyr9+dyV+4cBJJ1I57gg6PDXP3GBQeVAsEEitzEruxx4Hb4cyNro54gGtlsS+6ty+N0t004tPQxYO2VrsPIg==}
@@ -286,24 +294,28 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-arm64@1.9.4':
     resolution: {integrity: sha512-fJIW0+LYujdjUgJJuwesP4EjIBl/N/TcOX3IvIHJQNsAqvV2CHIogsmA94BPG6jZATS4Hi+xv4SkBBQSt1N4/g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-linux-x64-musl@1.9.4':
     resolution: {integrity: sha512-gEhi/jSBhZ2m6wjV530Yy8+fNqG8PAinM3oV7CyO+6c3CEh16Eizm21uHVsyVBEB6RIM8JHIl6AGYCv6Q6Q9Tg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-x64@1.9.4':
     resolution: {integrity: sha512-lRCJv/Vi3Vlwmbd6K+oQ0KhLHMAysN8lXoCI7XeHlxaajk06u7G+UsFSO01NAs5iYuWKmVZjmiOzJ0OJmGsMwg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-win32-arm64@1.9.4':
     resolution: {integrity: sha512-tlbhLk+WXZmgwoIKwHIHEBZUwxml7bRJgk0X2sPyNR3S93cdRq6XulAZRQJ17FYGGzWne0fgrXBKpl7l4M87Hg==}
@@ -347,8 +359,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  '@hongzhiyuan/preact@10.24.0-00213bad':
-    resolution: {integrity: sha512-bHWp4ZDK5ZimcY+bTWw3S3xGiB8eROpZj0RK3FClNIaTOajb0b11CsT3K+pdeakgPgq1jWN3T2e2rfrPm40JsQ==}
+  '@hongzhiyuan/preact@10.28.0-fc4af453':
+    resolution: {integrity: sha512-TrM2g079OZN1poroDnU2kQd1gNUB1DMfVoKyz23AE3hZvl9ypRgG2MdgxAJtwT5u3BmYvI4Z0EbdpJTdf428IQ==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -410,8 +422,8 @@ packages:
     resolution: {integrity: sha512-RS399O/03gpBFbztnsRlwarkMoS2bSVWL8YUnEwy/w9rKewO7CqhX0IUFUZXrzRv0JR17eZJ+YN+14ga+g5FyA==}
     engines: {node: '>=18'}
 
-  '@lynx-js/react@0.115.1':
-    resolution: {integrity: sha512-htZXSUmKI/7NI5hPMBcv2zN8CRJ+Yq8TaHX2nk3oJyZzQdIzo+L9IbtVx1GwRRMsC3PmkdKX9Wiqgtjle0MolQ==}
+  '@lynx-js/react@0.116.4':
+    resolution: {integrity: sha512-U/4D/TtD1JLX+Wl0dyzAY/SFYnLln7BG6EacXnIGS0qHYDvdj+V1vmLmeYIJe6BxxVFMwMBjIAMRJNMxU+uoYA==}
     peerDependencies:
       '@lynx-js/types': '*'
       '@types/react': ^18
@@ -646,43 +658,47 @@ packages:
     resolution: {integrity: sha512-lp4qAiMTD4sNWW4DbKLBkfiMZ4jbAboJIGOQr5DvciMRI494OapieI9qiODpOt0XBr1LjIDy1xAGAnVs5supTA==}
     engines: {node: '>=14'}
 
-  '@oxlint/darwin-arm64@0.16.9':
-    resolution: {integrity: sha512-s8gPacumFNuDQcl0dCRLI0+efbiQrOF984brGrW1i2buJtaMzjYiunaU5TSrbHgnb/omvpFnG4l9g+YHOK/s0A==}
+  '@oxlint/darwin-arm64@0.18.1':
+    resolution: {integrity: sha512-FqDrcQJmEGNkgmZgI4wbCrGyJl1tiRZa3udxvyYaXag8W80A0zLFNCyWVvHIgUJ0DHlZjRc7O72xUGjiyvQrqQ==}
     cpu: [arm64]
     os: [darwin]
 
-  '@oxlint/darwin-x64@0.16.9':
-    resolution: {integrity: sha512-QFue9yhfRU+fkbsOmDzCCwDafPR6fnaP/M+Rocp/MMDQ7qvjbB2sj0/xxp/CcvL7aLtFklMeXPR0hCfW3LyrSw==}
+  '@oxlint/darwin-x64@0.18.1':
+    resolution: {integrity: sha512-YUcyWBJdNuMcJxAwdV/i25/kvnKrVsA+vLn7SsL87cAwiD//rqGdOixk0r8sKUYa71Kx3h0Fg2ToUOjdE6ddYw==}
     cpu: [x64]
     os: [darwin]
 
-  '@oxlint/linux-arm64-gnu@0.16.9':
-    resolution: {integrity: sha512-qP/wdlgqLuiW9WDkAsyMN85wQ3nqAQynjRD+1II1QO0yI9N1ZHD6LF9P5fXAqY0eJwcf3emluQMoaeveewtiCg==}
+  '@oxlint/linux-arm64-gnu@0.18.1':
+    resolution: {integrity: sha512-ol3jhmUv5VI/omMrt6DkwY/jVTSVJlflFyU1SnSb/BuVVf3TyBiCHmZ4wVtcrcT5k3sWjrvYWw2kSozvmuE4tg==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
-  '@oxlint/linux-arm64-musl@0.16.9':
-    resolution: {integrity: sha512-486wn1MIqP4hkHTnuWedTb16X6Zs3ImmmMxqzfYlcemf9kODM6yNlxal6wGvkm7SGRPYrsB/P9S5wgpzmLzKrw==}
+  '@oxlint/linux-arm64-musl@0.18.1':
+    resolution: {integrity: sha512-iKDj1ZwlU4KpXuIL1qkVP6NJzri2VSJreqXCIAe1Bf5RZXMAGSO3xjldgiX+HBvFOKSBIarLcqONYDbYco9uaQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
-  '@oxlint/linux-x64-gnu@0.16.9':
-    resolution: {integrity: sha512-d20zqy4Mimz9CxjIEJdGd6jtyyhpSryff95gNJSTvh/EA4NqvjjlbjxuHt3clNjglRwJWE3kgmUCw9U9oWFcWA==}
+  '@oxlint/linux-x64-gnu@0.18.1':
+    resolution: {integrity: sha512-A3g+fZhlOivUdK7xU/IrbhBcMHig5GLrfMX0HYjXL1fiSqKYu9n1o1p42WpT6KfPL3L2uncSg/iyg7hspcN6qA==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
-  '@oxlint/linux-x64-musl@0.16.9':
-    resolution: {integrity: sha512-mZLshz99773RMa77YhtsgWbqE7JY4xnYSDecDy+ZkafRb0acqz1Ujiq2l4cE+HnJOGVOMaOpzG0UoQ3ZNkXNAA==}
+  '@oxlint/linux-x64-musl@0.18.1':
+    resolution: {integrity: sha512-LA02SdATWZEZBy8ZZpR2GlUbDg7+Jq1/WKkywMXqxdClkcoyyFozj8aQD2iTMKELSra4OSyqqZpOYroqjSSKmw==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
-  '@oxlint/win32-arm64@0.16.9':
-    resolution: {integrity: sha512-Zp9+0CfTb7ebgvRwDO2F6NVgRtRmxWMdBnrbMRdVbKY6CCT2vjLAIILwBf5AsNLdLQC7FbXAEivSKbRX0UPyJA==}
+  '@oxlint/win32-arm64@0.18.1':
+    resolution: {integrity: sha512-FNL+OxDflqLGXRgLxfBM/X4RnLYgtOKTsb1mNSqsjSCEfUi1Oqivh7KvZ09IfAMZeJ85/fL6EI6hSOyY7nNYUg==}
     cpu: [arm64]
     os: [win32]
 
-  '@oxlint/win32-x64@0.16.9':
-    resolution: {integrity: sha512-6a507bALmDNFdvEbJzu9ybajryBHo+6nMWPNyu/mBguCqmconoBbQXftELd2VG/0ecxBmBcMKAQW6aONGUVc3w==}
+  '@oxlint/win32-x64@0.18.1':
+    resolution: {integrity: sha512-W+aVE9Siqs6Oe3NDaDOTTOYsN9X3znl+whfqWK1EcLpqJXX1kdB8Hf45HkGjqnHoFoP96GRgUnXQHQvmUybjvg==}
     cpu: [x64]
     os: [win32]
 
@@ -838,41 +854,49 @@ packages:
     resolution: {integrity: sha512-En/SMl45s19iUVb1/ZDFQvFDxIjnlfk7yqV3drMWWAL5HSgksNejaTIFTO52aoohIBbmwuk5wSGcbU0G0IFiPg==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rspack/binding-linux-arm64-gnu@1.7.7':
     resolution: {integrity: sha512-uSq4qkvmAzSDUTKE2v4yUgHIBdTily1k3BcK5wBCGFm9OPODj5lQZpAdOHHIwu+Jxyjoa7Mb64tghhj9hZcXcA==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rspack/binding-linux-arm64-musl@1.2.8':
     resolution: {integrity: sha512-N1oZsXfJ9VLLcK7p1PS65cxLYQCZ7iqHW2OP6Ew2+hlz/d1hzngxgzrtZMCXFOHXDvTzVu5ff6jGS2v7+zv2tA==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rspack/binding-linux-arm64-musl@1.7.7':
     resolution: {integrity: sha512-NhWCBfiu6plpmLRP6c6D5lBUaVrBr1nvjSEc7VyQF8TGh8URo2btH0wngEiX0nWvidsSlERt1l6Y5QPGuiCl1g==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rspack/binding-linux-x64-gnu@1.2.8':
     resolution: {integrity: sha512-BdPaepoLKuaVwip4QK/nGqNi1xpbCWSxiycPbKRrGqKgt/QGihxxFgiqr4EpWQVIJNIMy4nCsg4arO0+H1KWGQ==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rspack/binding-linux-x64-gnu@1.7.7':
     resolution: {integrity: sha512-aRvf8gCI7jDeEN9i4u9fY5coa3ZAyHzGVA4ZhTJCgZ5wWA5A9SQewMSq7khS1WAAFE1USlk1tUuPujnrGoYrGg==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rspack/binding-linux-x64-musl@1.2.8':
     resolution: {integrity: sha512-GFv0Bod268OcXIcjeLoPlK0oz8rClEIxIRFkz+ejhbvfCwRJ+Fd+EKaaKQTBfZQujPqc0h2GctIF25nN5pFTmA==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rspack/binding-linux-x64-musl@1.7.7':
     resolution: {integrity: sha512-ALPto4OT7snzXbYDyqkLfh1BvwDTTH1hPYXGUXBzQ0wEV7sXeyvxCC4yjH6B5MhR7W3tFuF4IfDy5Z4BxmOoGQ==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rspack/binding-wasm32-wasi@1.7.7':
     resolution: {integrity: sha512-7DZvUp0v75n451qfZw1ppbPakL6NAc2gjb5e9AJcOb7KUMBHNyOxqpPo/jRYKxH7isPpLfpoId79WQGGNTTMAw==}
@@ -2014,8 +2038,8 @@ packages:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
 
-  oxlint@0.16.9:
-    resolution: {integrity: sha512-YMGu177AURJxdCq45/Yw6Q+uDh9ZfU++GuLYhUz+DfIGdHpAqVlBI9lCqm2HkLc6qO8ySYZ+8ljsWHLQA8F+EQ==}
+  oxlint@0.18.1:
+    resolution: {integrity: sha512-JGcQvbhd00Qb+nq4f9sYYRh7mZIb0K/7rbMepNdJDMzo8pbmBpx1N2XOG61RjHDsNnY6ImAmVk3h4QVwFenwUQ==}
     engines: {node: '>=8.*'}
     hasBin: true
 
@@ -2969,7 +2993,7 @@ snapshots:
       protobufjs: 7.5.0
       yargs: 17.7.2
 
-  '@hongzhiyuan/preact@10.24.0-00213bad': {}
+  '@hongzhiyuan/preact@10.28.0-fc4af453': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -3040,10 +3064,10 @@ snapshots:
     dependencies:
       '@lynx-js/webpack-runtime-globals': 0.0.6
 
-  '@lynx-js/react@0.115.1(@lynx-js/types@3.7.0)(@types/react@18.3.20)':
+  '@lynx-js/react@0.116.4(@lynx-js/types@3.7.0)(@types/react@18.3.20)':
     dependencies:
       '@types/react': 18.3.20
-      preact: '@hongzhiyuan/preact@10.24.0-00213bad'
+      preact: '@hongzhiyuan/preact@10.28.0-fc4af453'
     optionalDependencies:
       '@lynx-js/types': 3.7.0
 
@@ -3346,28 +3370,28 @@ snapshots:
 
   '@opentelemetry/semantic-conventions@1.28.0': {}
 
-  '@oxlint/darwin-arm64@0.16.9':
+  '@oxlint/darwin-arm64@0.18.1':
     optional: true
 
-  '@oxlint/darwin-x64@0.16.9':
+  '@oxlint/darwin-x64@0.18.1':
     optional: true
 
-  '@oxlint/linux-arm64-gnu@0.16.9':
+  '@oxlint/linux-arm64-gnu@0.18.1':
     optional: true
 
-  '@oxlint/linux-arm64-musl@0.16.9':
+  '@oxlint/linux-arm64-musl@0.18.1':
     optional: true
 
-  '@oxlint/linux-x64-gnu@0.16.9':
+  '@oxlint/linux-x64-gnu@0.18.1':
     optional: true
 
-  '@oxlint/linux-x64-musl@0.16.9':
+  '@oxlint/linux-x64-musl@0.18.1':
     optional: true
 
-  '@oxlint/win32-arm64@0.16.9':
+  '@oxlint/win32-arm64@0.18.1':
     optional: true
 
-  '@oxlint/win32-x64@0.16.9':
+  '@oxlint/win32-x64@0.18.1':
     optional: true
 
   '@pkgjs/parseargs@0.11.0':
@@ -4769,16 +4793,16 @@ snapshots:
 
   os-tmpdir@1.0.2: {}
 
-  oxlint@0.16.9:
+  oxlint@0.18.1:
     optionalDependencies:
-      '@oxlint/darwin-arm64': 0.16.9
-      '@oxlint/darwin-x64': 0.16.9
-      '@oxlint/linux-arm64-gnu': 0.16.9
-      '@oxlint/linux-arm64-musl': 0.16.9
-      '@oxlint/linux-x64-gnu': 0.16.9
-      '@oxlint/linux-x64-musl': 0.16.9
-      '@oxlint/win32-arm64': 0.16.9
-      '@oxlint/win32-x64': 0.16.9
+      '@oxlint/darwin-arm64': 0.18.1
+      '@oxlint/darwin-x64': 0.18.1
+      '@oxlint/linux-arm64-gnu': 0.18.1
+      '@oxlint/linux-arm64-musl': 0.18.1
+      '@oxlint/linux-x64-gnu': 0.18.1
+      '@oxlint/linux-x64-musl': 0.18.1
+      '@oxlint/win32-arm64': 0.18.1
+      '@oxlint/win32-x64': 0.18.1
 
   package-json-from-dist@1.0.1: {}
 
