@@ -34,6 +34,6 @@
   "devDependencies": {
     "@elcoosp-configs/rslib": "2.1",
     "@rslib/core": "^0.19.0",
-    "@types/node": "^22.13.10"
+    "@types/node": "^24.0.0"
   }
 }
