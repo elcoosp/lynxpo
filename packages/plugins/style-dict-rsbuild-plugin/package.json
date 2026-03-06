@@ -42,7 +42,7 @@
     "@rspack/tracing": "^1.2.8",
     "@tsconfig/node24": "^24.0.0",
     "@tsconfig/strictest": "^2.0.5",
-    "oxlint": "^0.18.0"
+    "oxlint": "^1.0.0"
   },
   "peerDependencies": {
     "@rsbuild/core": "1.7.3"
