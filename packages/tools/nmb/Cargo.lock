@@ -165,6 +165,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4a2128d00b7061b82b72844a351e80acd29e05afc60e9261e2ac90dca9ecc2ac"
 
 [[package]]
+name = "build-print"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d8e6738dfb11354886f890621b4a34c0b177f75538023f7100b608ab9adbd66b"
+
+[[package]]
 name = "bumpalo"
 version = "3.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -236,7 +242,7 @@ name = "cmd_lib"
 version = "1.9.5"
 source = "git+https://github.com/elcoosp/rust_cmd_lib?branch=feat%2Fbuild-script-log#257c22fe577af07e458ef4ab9f59f16fe9438bf1"
 dependencies = [
- "build-print",
+ "build-print 0.1.1",
  "cmd_lib_macros",
  "env_logger 0.10.2",
  "faccess",
@@ -811,7 +817,7 @@ name = "nmb-core"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "build-print",
+ "build-print 1.0.1",
  "cmd_lib",
  "ordermap",
  "prost",
