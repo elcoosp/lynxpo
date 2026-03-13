@@ -42,7 +42,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log.git", branch: "main"),
         .package(path: "../../../nmb-core/nmb-core-sw"),
 
-        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.36.0"),
+        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.36.1"),
     ],
     targets: [
         .macro(
