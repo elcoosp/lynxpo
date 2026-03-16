@@ -5,4 +5,4 @@ nmb = "1.0.1"
 [libraries]
 modtyinfo = { module = "nmb.core:modtyinfo", version.ref = "nmb" }
 [plugins]
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.3.10" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.3.20" }
