@@ -45,7 +45,7 @@
     "oxlint": "^1.0.0"
   },
   "peerDependencies": {
-    "@rsbuild/core": "1.7.4"
+    "@rsbuild/core": "1.7.5"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {
