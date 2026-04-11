@@ -27,8 +27,8 @@ importers:
   packages/modules/device:
     dependencies:
       '@lynx-js/react':
-        specifier: ^0.117.0
-        version: 0.117.1(@lynx-js/types@3.7.0)(@types/react@18.3.28)
+        specifier: ^0.118.0
+        version: 0.118.0(@lynx-js/types@3.7.0)(@types/react@18.3.28)
       '@lynx-js/types':
         specifier: ^3.2.0
         version: 3.7.0
@@ -524,8 +524,8 @@ packages:
   '@lynx-js/internal-preact@10.28.4-4842985':
     resolution: {integrity: sha512-D1ka7Kgv0lXFp1BtyBdc933VDoelOBiR47Td3QGp8ClaHtQJm1tcrTxhdwkmCDKNYe0oeiUUK6t82jiLiJoqiQ==}
 
-  '@lynx-js/react@0.117.1':
-    resolution: {integrity: sha512-IhdB2YvlYwm/mTbwCjHJLx6WQM+jmVIKer2RR5sDIQIHRJ4g3tZOmI0ivJvXlubSUFQdYNIwgcfHnC2rfEwoug==}
+  '@lynx-js/react@0.118.0':
+    resolution: {integrity: sha512-96eaHlvOAJHJ5LTq+renniWZnwjeMXLgI/q1HillmmQ6HxK7XqdfEgXfJq6gbj9mVeBn3cPESOtWnZ4xgHq2lQ==}
     peerDependencies:
       '@lynx-js/types': '*'
       '@types/react': ^18
@@ -3284,7 +3284,7 @@ snapshots:
 
   '@lynx-js/internal-preact@10.28.4-4842985': {}
 
-  '@lynx-js/react@0.117.1(@lynx-js/types@3.7.0)(@types/react@18.3.28)':
+  '@lynx-js/react@0.118.0(@lynx-js/types@3.7.0)(@types/react@18.3.28)':
     dependencies:
       '@types/react': 18.3.28
       preact: '@lynx-js/internal-preact@10.28.4-4842985'
@@ -4889,7 +4889,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.6.0
+      '@types/node': 24.12.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
