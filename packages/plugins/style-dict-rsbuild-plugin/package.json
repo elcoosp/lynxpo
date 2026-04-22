@@ -33,7 +33,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
     "@playwright/test": "^1.51.1",
-    "@rsbuild/core": "^1.2.19",
+    "@rsbuild/core": "^2.0.0",
     "@rslib/core": "^0.21.0",
     "@types/node": "^24.0.0",
     "playwright": "^1.51.1",
@@ -45,7 +45,7 @@
     "oxlint": "^1.0.0"
   },
   "peerDependencies": {
-    "@rsbuild/core": "1.7.5"
+    "@rsbuild/core": "2.0.0"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {
