@@ -26,7 +26,7 @@ importers:
         version: 1.59.1
       '@rsbuild/core':
         specifier: ^2.0.0
-        version: 2.0.0(core-js@3.47.0)
+        version: 2.0.1(core-js@3.47.0)
       '@rslib/core':
         specifier: ^0.21.0
         version: 0.21.3(core-js@3.47.0)(typescript@6.0.3)
@@ -744,8 +744,8 @@ packages:
     engines: {node: '>=16.7.0'}
     hasBin: true
 
-  '@rsbuild/core@2.0.0':
-    resolution: {integrity: sha512-RbVMK3/4l4g+yt2B/cQv+ardlfGroF1Lgcin3pYUbtsLXKPwDjJII8g0XoCvIgapu0kaA+32YmzKlnfnLGx2NA==}
+  '@rsbuild/core@2.0.1':
+    resolution: {integrity: sha512-5TwUpb10Y+VYaYH8oLL/rfJGrhxrk16BiGzv101kzaMPT60MtOXgjEUTxztbjRuq0ifbtRJ/w7rsIZQ4VziWYg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -2223,7 +2223,7 @@ snapshots:
     transitivePeerDependencies:
       - '@rspack/tracing'
 
-  '@rsbuild/core@2.0.0(core-js@3.47.0)':
+  '@rsbuild/core@2.0.1(core-js@3.47.0)':
     dependencies:
       '@rspack/core': 2.0.0(@swc/helpers@0.5.21)
       '@swc/helpers': 0.5.21
@@ -2234,8 +2234,8 @@ snapshots:
 
   '@rslib/core@0.21.3(core-js@3.47.0)(typescript@6.0.3)':
     dependencies:
-      '@rsbuild/core': 2.0.0(core-js@3.47.0)
-      rsbuild-plugin-dts: 0.21.3(@rsbuild/core@2.0.0(core-js@3.47.0))(typescript@6.0.3)
+      '@rsbuild/core': 2.0.1(core-js@3.47.0)
+      rsbuild-plugin-dts: 0.21.3(@rsbuild/core@2.0.1(core-js@3.47.0))(typescript@6.0.3)
     optionalDependencies:
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -2820,10 +2820,10 @@ snapshots:
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
-  rsbuild-plugin-dts@0.21.3(@rsbuild/core@2.0.0(core-js@3.47.0))(typescript@6.0.3):
+  rsbuild-plugin-dts@0.21.3(@rsbuild/core@2.0.1(core-js@3.47.0))(typescript@6.0.3):
     dependencies:
       '@ast-grep/napi': 0.37.0
-      '@rsbuild/core': 2.0.0(core-js@3.47.0)
+      '@rsbuild/core': 2.0.1(core-js@3.47.0)
     optionalDependencies:
       typescript: 6.0.3
 
