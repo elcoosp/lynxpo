@@ -32,7 +32,7 @@
     "test:watch": "vitest run --watch"
   },
   "dependencies": {
-    "@lynx-js/react": "^0.119.0",
+    "@lynx-js/react": "^0.120.0",
     "@lynx-js/types": "^3.2.0"
   },
   "devDependencies": {
