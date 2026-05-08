@@ -28,10 +28,10 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.120.0
-        version: 0.120.0(@lynx-js/types@3.7.0)(@types/react@18.3.28)
+        version: 0.120.0(@lynx-js/types@3.8.0)(@types/react@18.3.28)
       '@lynx-js/types':
         specifier: ^3.2.0
-        version: 3.7.0
+        version: 3.8.0
     devDependencies:
       '@elcoosp-configs/rslib':
         specifier: '2.1'
@@ -543,8 +543,8 @@ packages:
       typescript:
         optional: true
 
-  '@lynx-js/types@3.7.0':
-    resolution: {integrity: sha512-VEcz5HBJ8m938In1VJj2phR06cWyT0Tx+HnwBJrPINiuWPjN9YfrPl1lX87XWr3eMDhKZY+6F+5eFpJ7JFgjXw==}
+  '@lynx-js/types@3.8.0':
+    resolution: {integrity: sha512-QdO5+G2Fh9/rE3E5HeVN/jOtCFZCFHmDXtMuOI1472grW4PpuG/8aq6iQ+HsK46JkbdI7NjhG4hfa98609WThg==}
 
   '@lynx-js/web-rsbuild-server-middleware@0.20.3':
     resolution: {integrity: sha512-uFFmitaU6Y/hRJ5k57CB8kiaXo+oypCtJnyxo3cOTMi0uhwdYP/Ew2ZDy+0pJnk9mWS0i+TogL3HTXAonctXhQ==}
@@ -1370,6 +1370,9 @@ packages:
   '@types/node@25.6.0':
     resolution: {integrity: sha512-+qIYRKdNYJwY3vRCZMdJbPLJAtGjQBudzZzdzwQYkEPQd+PJGixUL5QfvCLDaULoLv+RhT3LDkwEfKaAkgSmNQ==}
 
+  '@types/node@25.6.2':
+    resolution: {integrity: sha512-sokuT28dxf9JT5Kady1fsXOvI4HVpjZa95NKT5y9PNTIrs2AsobR4GFAA90ZG8M+nxVRLysCXsVj6eGC7Vbrlw==}
+
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
@@ -1782,8 +1785,8 @@ packages:
     resolution: {integrity: sha512-U2SN0w3OpjFRVlrc17E6TMDmH58Xl9rai1MblNjAdwWp07Kk+llmzX0hjDpQdrDGzwmvOtgM5yI+meYX6iZ2xA==}
     engines: {node: '>=10.2.0'}
 
-  enhanced-resolve@5.21.0:
-    resolution: {integrity: sha512-otxSQPw4lkOZWkHpB3zaEQs6gWYEsmX4xQF68ElXC/TWvGxGMSGOvoNbaLXm6/cS/fSfHtsEdw90y20PCd+sCA==}
+  enhanced-resolve@5.21.1:
+    resolution: {integrity: sha512-8p7DUVq6XJnZEz9W4oSwiwycxBIjHjRzYb3Je3zVN+geKTRQKzAkR/K4PBExlS0090d9nshak6phMUxr3PDjmQ==}
     engines: {node: '>=10.13.0'}
 
   entities@4.5.0:
@@ -2648,8 +2651,8 @@ packages:
       uglify-js:
         optional: true
 
-  terser@5.47.0:
-    resolution: {integrity: sha512-TV+JFkQFtljk12ffyYAA4+zVF4Hs+qaROsT+Qo9o2/z39x+IUn+pvsmomiCPlp5YigfR1OdbGHOvc0L+Ca1X7g==}
+  terser@5.47.1:
+    resolution: {integrity: sha512-tPbLXTI6ohPASb/1YViL428oEHu6/qv1OxqYnfaonVCFHqx4+wCd95pHrQWsL5X4pl90CTyW9piSAsS2L0VoMw==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -3160,12 +3163,12 @@ snapshots:
 
   '@lynx-js/internal-preact@10.29.1-20260424024911-12b794f': {}
 
-  '@lynx-js/react@0.120.0(@lynx-js/types@3.7.0)(@types/react@18.3.28)':
+  '@lynx-js/react@0.120.0(@lynx-js/types@3.8.0)(@types/react@18.3.28)':
     dependencies:
       '@types/react': 18.3.28
       preact: '@lynx-js/internal-preact@10.29.1-20260424024911-12b794f'
     optionalDependencies:
-      '@lynx-js/types': 3.7.0
+      '@lynx-js/types': 3.8.0
 
   '@lynx-js/rspeedy@0.14.3(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@rspack/core@2.0.2(@swc/helpers@0.5.21))(webpack@5.105.4)':
     dependencies:
@@ -3192,7 +3195,7 @@ snapshots:
       - utf-8-validate
       - webpack
 
-  '@lynx-js/types@3.7.0':
+  '@lynx-js/types@3.8.0':
     dependencies:
       csstype: 3.1.3
 
@@ -4034,6 +4037,10 @@ snapshots:
     dependencies:
       undici-types: 7.19.2
 
+  '@types/node@25.6.2':
+    dependencies:
+      undici-types: 7.19.2
+
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/prop-types@15.7.15': {}
@@ -4472,7 +4479,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  enhanced-resolve@5.21.0:
+  enhanced-resolve@5.21.1:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.3.3
@@ -4679,7 +4686,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.6.0
+      '@types/node': 25.6.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -5325,10 +5332,10 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
       schema-utils: 4.3.3
-      terser: 5.47.0
+      terser: 5.47.1
       webpack: 5.105.4
 
-  terser@5.47.0:
+  terser@5.47.1:
     dependencies:
       '@jridgewell/source-map': 0.3.11
       acorn: 8.16.0
@@ -5438,7 +5445,7 @@ snapshots:
       acorn-import-phases: 1.0.4(acorn@8.16.0)
       browserslist: 4.28.2
       chrome-trace-event: 1.0.4
-      enhanced-resolve: 5.21.0
+      enhanced-resolve: 5.21.1
       es-module-lexer: 2.1.0
       eslint-scope: 5.1.1
       events: 3.3.0
