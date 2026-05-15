@@ -12,7 +12,7 @@ let package = Package(
             targets: ["NMBCore"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.36.1")
+        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.38.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
