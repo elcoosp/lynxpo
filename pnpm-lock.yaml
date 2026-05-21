@@ -28,10 +28,10 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.120.0
-        version: 0.120.0(@lynx-js/types@3.8.0)(@types/react@18.3.28)
+        version: 0.120.0(@lynx-js/types@3.9.0)(@types/react@18.3.28)
       '@lynx-js/types':
         specifier: ^3.2.0
-        version: 3.8.0
+        version: 3.9.0
     devDependencies:
       '@elcoosp-configs/rslib':
         specifier: '2.1'
@@ -543,8 +543,8 @@ packages:
       typescript:
         optional: true
 
-  '@lynx-js/types@3.8.0':
-    resolution: {integrity: sha512-QdO5+G2Fh9/rE3E5HeVN/jOtCFZCFHmDXtMuOI1472grW4PpuG/8aq6iQ+HsK46JkbdI7NjhG4hfa98609WThg==}
+  '@lynx-js/types@3.9.0':
+    resolution: {integrity: sha512-mwODjqahwrGwNUsmpG/GZ5ztccB2aZ3Do8o9KwJpH5XsaXXynaRVEzmOeq2/BsLWzs4rWj6zEwsK+CaX3DCKyA==}
 
   '@lynx-js/web-rsbuild-server-middleware@0.20.4':
     resolution: {integrity: sha512-PduMgg35iGBSKnw8XxkpGUv9C2PZSjC2qF3p/5ptE22wqcp4Ofzs/3xkEv0p9YxIwD+9Q3LhwwKp9AREkohkTA==}
@@ -3189,12 +3189,12 @@ snapshots:
 
   '@lynx-js/internal-preact@10.29.1-20260424024911-12b794f': {}
 
-  '@lynx-js/react@0.120.0(@lynx-js/types@3.8.0)(@types/react@18.3.28)':
+  '@lynx-js/react@0.120.0(@lynx-js/types@3.9.0)(@types/react@18.3.28)':
     dependencies:
       '@types/react': 18.3.28
       preact: '@lynx-js/internal-preact@10.29.1-20260424024911-12b794f'
     optionalDependencies:
-      '@lynx-js/types': 3.8.0
+      '@lynx-js/types': 3.9.0
 
   '@lynx-js/rspeedy@0.14.4(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@rspack/core@2.0.3(@swc/helpers@0.5.21))(webpack@5.105.4(postcss@8.5.15))':
     dependencies:
@@ -3221,7 +3221,7 @@ snapshots:
       - utf-8-validate
       - webpack
 
-  '@lynx-js/types@3.8.0':
+  '@lynx-js/types@3.9.0':
     dependencies:
       csstype: 3.1.3
 
