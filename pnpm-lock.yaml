@@ -28,7 +28,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.121.0
-        version: 0.121.0(@lynx-js/types@3.9.0)(@types/react@18.3.28)
+        version: 0.121.1(@lynx-js/types@3.9.0)(@types/react@18.3.28)
       '@lynx-js/types':
         specifier: ^3.2.0
         version: 3.9.0
@@ -521,11 +521,11 @@ packages:
     resolution: {integrity: sha512-SHe1STEa2oUJodcEU8sHphFT2NaM/PB1h4fC7Wr/3miquaPDudmpEXTrHt9YBuqQMVm0JAVXXJTsTPkGHZrPqQ==}
     engines: {node: '>=18'}
 
-  '@lynx-js/internal-preact@10.29.1-20260424024911-12b794f':
-    resolution: {integrity: sha512-MQ+xjPL2f1P9/eCAdkT2h9cJRXl1qqhSJDX9GkPETt3UAepLo5N+HbGB8Qr3IUzqGDWMr3Mj76my1P0pLkKVDg==}
+  '@lynx-js/internal-preact@10.29.1-20260519060144-e6da44c':
+    resolution: {integrity: sha512-h2pRrt5oLK9LT1NkjyprtzJij/AdZGvv3CN6B5edL4chixqvITbxoCSdYy667Hl6+uKOBuxmCNZoDddgRfcLnw==}
 
-  '@lynx-js/react@0.121.0':
-    resolution: {integrity: sha512-V3/1+kRM7ugFZbhfldnPyJH65gZI06qa9E2/lGM8b+almHWzn+i9G1imMZiHROKlkOT495TauMOH4FiH1U47Fw==}
+  '@lynx-js/react@0.121.1':
+    resolution: {integrity: sha512-nHlm73FiArjRoJyL23Ja7J7be3TLpSZLz1XZEumxXObeW0P+4iSWuOqalvkCm02bPkUg89j3cyO0dhTOXkqb6Q==}
     peerDependencies:
       '@lynx-js/types': '*'
       '@types/react': ^18
@@ -3200,12 +3200,12 @@ snapshots:
     dependencies:
       '@lynx-js/webpack-runtime-globals': 0.0.6
 
-  '@lynx-js/internal-preact@10.29.1-20260424024911-12b794f': {}
+  '@lynx-js/internal-preact@10.29.1-20260519060144-e6da44c': {}
 
-  '@lynx-js/react@0.121.0(@lynx-js/types@3.9.0)(@types/react@18.3.28)':
+  '@lynx-js/react@0.121.1(@lynx-js/types@3.9.0)(@types/react@18.3.28)':
     dependencies:
       '@types/react': 18.3.28
-      preact: '@lynx-js/internal-preact@10.29.1-20260424024911-12b794f'
+      preact: '@lynx-js/internal-preact@10.29.1-20260519060144-e6da44c'
     optionalDependencies:
       '@lynx-js/types': 3.9.0
 
