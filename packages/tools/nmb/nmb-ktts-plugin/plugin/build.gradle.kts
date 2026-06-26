@@ -26,7 +26,7 @@ repositories {
 buildscript { dependencies { classpath(kotlin("gradle-plugin", version = "2.3.21")) } }
 
 dependencies {
-    implementation("com.google.devtools.ksp:symbol-processing-api:2.3.8")
+    implementation("com.google.devtools.ksp:symbol-processing-api:2.3.9")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
     implementation(libs.modtyinfo)
 }
