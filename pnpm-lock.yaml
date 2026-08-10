@@ -27,8 +27,8 @@ importers:
   packages/modules/device:
     dependencies:
       '@lynx-js/react':
-        specifier: ^0.121.0
-        version: 0.121.2(@lynx-js/types@3.9.0)(@types/react@18.3.28)
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@18.3.28)
       '@lynx-js/types':
         specifier: ^3.2.0
         version: 3.9.0
@@ -541,11 +541,11 @@ packages:
   '@lynx-js/internal-preact@10.29.1-20260519060144-e6da44c':
     resolution: {integrity: sha512-h2pRrt5oLK9LT1NkjyprtzJij/AdZGvv3CN6B5edL4chixqvITbxoCSdYy667Hl6+uKOBuxmCNZoDddgRfcLnw==}
 
-  '@lynx-js/react@0.121.2':
-    resolution: {integrity: sha512-Ruf5d2P0v1mXiZXbtxTOoR06Frfrs031Rp4bebnf1ZNW12PuXvnGa6n8gFi+ioJ4c1v9SUSpU40Fl/97TMgSRA==}
+  '@lynx-js/react@0.123.3':
+    resolution: {integrity: sha512-Zf2FxvW37zVrS1ZRsA3hgsWc7JQ3acVhgr+LsjWT7pt+Cs111NGyoMazPDn6VNLi13yFzpARnL/FeJgs1qZtXQ==}
     peerDependencies:
       '@lynx-js/types': '*'
-      '@types/react': ^18
+      '@types/react': ^18 || ^19.0.0
     peerDependenciesMeta:
       '@lynx-js/types':
         optional: true
@@ -3156,7 +3156,7 @@ snapshots:
 
   '@lynx-js/internal-preact@10.29.1-20260519060144-e6da44c': {}
 
-  '@lynx-js/react@0.121.2(@lynx-js/types@3.9.0)(@types/react@18.3.28)':
+  '@lynx-js/react@0.123.3(@lynx-js/types@3.9.0)(@types/react@18.3.28)':
     dependencies:
       '@types/react': 18.3.28
       preact: '@lynx-js/internal-preact@10.29.1-20260519060144-e6da44c'
