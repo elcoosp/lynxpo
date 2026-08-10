@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    id("com.google.devtools.ksp") version "2.3.9"
+    id("com.google.devtools.ksp") version "2.3.11"
     kotlin("plugin.serialization") version "2.3.21"
 
     `maven-publish`
