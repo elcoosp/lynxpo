@@ -1,6 +1,0 @@
-language: Kotlin
-id: events-to-lynx
-rule:
-  pattern: $CALLEE.sendEvent($EVENT_NAME, $PAYLOAD)
-fix: |
-  getContext().sendGlobalEvent($EVENT_NAME, $PAYLOAD)
