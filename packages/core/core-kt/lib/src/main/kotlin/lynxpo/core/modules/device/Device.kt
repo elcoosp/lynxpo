@@ -1,4 +1,3 @@
-@file:Typed
 package lynxpo.core.modules.device
 
 import android.app.ActivityManager
@@ -10,16 +9,15 @@ import android.provider.Settings
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import com.lynx.jsbridge.LynxMethod
-import kotlinx.serialization.Serializable
-import lynxpo.core.LynxpoModule
-import lynxpo.ktts.annotations.TsRetInto
-import lynxpo.ktts.annotations.Typed
 import java.util.Locale
 import kotlin.math.pow
 import kotlin.math.sqrt
+import kotlinx.serialization.Serializable
+import lynxpo.core.LynxpoModule
 
 object EmulatorUtilities {
-    // Adapted from https://github.com/react-native-device-info/react-native-device-info/blob/ea9f868a80acaec68583094c891098a03ecb411a/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java#L225
+    // Adapted from
+    // https://github.com/react-native-device-info/react-native-device-info/blob/ea9f868a80acaec68583094c891098a03ecb411a/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java#L225
     fun isRunningOnEmulator(): Boolean {
         return Build.FINGERPRINT.startsWith("generic") ||
                 Build.FINGERPRINT.startsWith("unknown") ||
@@ -50,9 +48,7 @@ object EmulatorUtilities {
 class DeviceModule(private val context: Context) : LynxpoModule(context) {
     /** DeviceType superdoc */
     @Serializable
-    enum class DeviceType(
-        val JSValue: Int
-    ) {
+    enum class DeviceType(val JSValue: Int) {
         /** DeviceType.UNKNOWN field superdoc */
         UNKNOWN(0),
         PHONE(1),
@@ -61,68 +57,51 @@ class DeviceModule(private val context: Context) : LynxpoModule(context) {
         TV(4)
     }
 
+    @LynxMethod fun isDevice() = !isRunningOnEmulator
 
-    @LynxMethod
-    fun isDevice() = !isRunningOnEmulator
+    @LynxMethod fun brand() = Build.BRAND
 
-    @LynxMethod
-    fun brand() = Build.BRAND
+    @LynxMethod fun manufacturer() = Build.MANUFACTURER
 
-    @LynxMethod
-    fun manufacturer() = Build.MANUFACTURER
+    @LynxMethod fun modelName() = Build.MODEL
 
-    @LynxMethod
-    fun modelName() = Build.MODEL
+    @LynxMethod fun designName() = Build.DEVICE
 
-    @LynxMethod
-    fun designName() = Build.DEVICE
-
-    @LynxMethod
-    fun productName() = Build.PRODUCT
+    @LynxMethod fun productName() = Build.PRODUCT
 
     @LynxMethod
     fun totalMemory() = run {
         val memoryInfo = ActivityManager.MemoryInfo()
         (context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).getMemoryInfo(
-            memoryInfo
+                memoryInfo
         )
         memoryInfo.totalMem
     }
 
-    @TsRetInto("DeviceType")
-    @LynxMethod
-    fun deviceType() = run {
-        getDeviceType(context).JSValue
-    }
+    // @TsRetInto("DeviceType")
+    @LynxMethod fun deviceType() = run { getDeviceType(context).JSValue }
+
+    @LynxMethod fun supportedCpuArchitectures() = Build.SUPPORTED_ABIS?.takeIf { it.isNotEmpty() }
+
+    @LynxMethod fun osName() = systemName
+
+    @LynxMethod fun osVersion() = Build.VERSION.RELEASE
+
+    @LynxMethod fun osBuildId() = Build.DISPLAY
+
+    @LynxMethod fun osInternalBuildId() = Build.ID
+
+    @LynxMethod fun osBuildFingerprint() = Build.FINGERPRINT
+
+    @LynxMethod fun platformApiLevel() = Build.VERSION.SDK_INT
 
     @LynxMethod
-    fun supportedCpuArchitectures() = Build.SUPPORTED_ABIS?.takeIf { it.isNotEmpty() }
-
-    @LynxMethod
-    fun osName() = systemName
-
-    @LynxMethod
-    fun osVersion() = Build.VERSION.RELEASE
-
-    @LynxMethod
-    fun osBuildId() = Build.DISPLAY
-
-    @LynxMethod
-    fun osInternalBuildId() = Build.ID
-
-    @LynxMethod
-    fun osBuildFingerprint() = Build.FINGERPRINT
-
-    @LynxMethod
-    fun platformApiLevel() = Build.VERSION.SDK_INT
-
-    @LynxMethod
-    fun deviceName() = if (Build.VERSION.SDK_INT <= 31) {
-        Settings.Secure.getString(context.contentResolver, "bluetooth_name")
-    } else {
-        Settings.Global.getString(context.contentResolver, Settings.Global.DEVICE_NAME)
-    }
-
+    fun deviceName() =
+            if (Build.VERSION.SDK_INT <= 31) {
+                Settings.Secure.getString(context.contentResolver, "bluetooth_name")
+            } else {
+                Settings.Global.getString(context.contentResolver, Settings.Global.DEVICE_NAME)
+            }
 
     private val systemName: String
         get() {
@@ -135,17 +114,22 @@ class DeviceModule(private val context: Context) : LynxpoModule(context) {
 
         private fun getDeviceType(context: Context): DeviceType {
             // Detect TVs via UI mode (Android TVs) or system features (Fire TV).
-            if (context.applicationContext.packageManager.hasSystemFeature("amazon.hardware.fire_tv")) {
+            if (context.applicationContext.packageManager.hasSystemFeature(
+                            "amazon.hardware.fire_tv"
+                    )
+            ) {
                 return DeviceType.TV
             }
 
             val uiManager = context.getSystemService(Context.UI_MODE_SERVICE) as UiModeManager?
-            if (uiManager != null && uiManager.currentModeType == Configuration.UI_MODE_TYPE_TELEVISION) {
+            if (uiManager != null &&
+                            uiManager.currentModeType == Configuration.UI_MODE_TYPE_TELEVISION
+            ) {
                 return DeviceType.TV
             }
 
             val deviceTypeFromResourceConfiguration =
-                getDeviceTypeFromResourceConfiguration(context)
+                    getDeviceTypeFromResourceConfiguration(context)
             return if (deviceTypeFromResourceConfiguration != DeviceType.UNKNOWN) {
                 deviceTypeFromResourceConfiguration
             } else {
@@ -168,15 +152,18 @@ class DeviceModule(private val context: Context) : LynxpoModule(context) {
         }
 
         private fun getDeviceTypeFromPhysicalSize(context: Context): DeviceType {
-            // Find the current window manager, if none is found we can't measure the device physical size.
-            val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager?
-                ?: return DeviceType.UNKNOWN
+            // Find the current window manager, if none is found we can't measure the device
+            // physical size.
+            val windowManager =
+                    context.getSystemService(Context.WINDOW_SERVICE) as WindowManager?
+                            ?: return DeviceType.UNKNOWN
 
             // Get display metrics to see if we can differentiate phones and tablets.
             val widthInches: Double
             val heightInches: Double
 
-            // windowManager.defaultDisplay was marked as deprecated in API level 30 (Android R) and above
+            // windowManager.defaultDisplay was marked as deprecated in API level 30 (Android R) and
+            // above
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 val windowBounds = windowManager.currentWindowMetrics.bounds
                 val densityDpi = context.resources.configuration.densityDpi
@@ -184,8 +171,7 @@ class DeviceModule(private val context: Context) : LynxpoModule(context) {
                 heightInches = windowBounds.height() / densityDpi.toDouble()
             } else {
                 val metrics = DisplayMetrics()
-                @Suppress("DEPRECATION")
-                windowManager.defaultDisplay.getRealMetrics(metrics)
+                @Suppress("DEPRECATION") windowManager.defaultDisplay.getRealMetrics(metrics)
                 widthInches = metrics.widthPixels / metrics.xdpi.toDouble()
                 heightInches = metrics.heightPixels / metrics.ydpi.toDouble()
             }

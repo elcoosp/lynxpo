@@ -1,5 +1,4 @@
 plugins {
-
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
@@ -9,8 +8,6 @@ plugins {
     `maven-publish`
 }
 
-
-
 publishing {
     publications {
         register<MavenPublication>("release") {
@@ -19,9 +16,7 @@ publishing {
             version = "1.0.24"
 
             // Use the Android component instead of Java
-            afterEvaluate {
-                from(components["release"])
-            }
+            afterEvaluate { from(components["release"]) }
         }
     }
 }
@@ -55,6 +50,8 @@ dependencies {
     implementation(libs.lynx.service.log)
     implementation(libs.lynx.service.http)
     implementation(libs.lynx.service.image)
+    implementation(libs.lynx.xelement)
+    implementation(libs.lynx.xelement.input)
 
     implementation(libs.primjs)
     implementation(libs.fresco)
@@ -69,8 +66,6 @@ dependencies {
     ksp(libs.dagger.compiler)
     implementation(libs.kotlinx.serialization.json)
     implementation(kotlin("reflect"))
-    implementation(libs.ktts.plugin)
-    ksp(libs.ktts.plugin)
 
 }
 
@@ -96,14 +91,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlin {
-        jvmToolchain(21)
-    }
+    kotlin { jvmToolchain(21) }
 
-    testOptions {
-        unitTests.all {
-            it.useJUnitPlatform()
-        }
-    }
-
+    testOptions { unitTests.all { it.useJUnitPlatform() } }
 }

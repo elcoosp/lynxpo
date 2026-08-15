@@ -16,16 +16,15 @@ import com.lynx.react.bridge.Callback
 import com.lynx.react.bridge.JavaOnlyArray
 import com.lynx.tasm.behavior.LynxContext
 import com.lynx.tasm.behavior.LynxUIMethodConstants
+import java.io.File
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import lynxpo.core.LynxpoModule
-import java.io.File
 
 inline fun <T> T?.ifNull(block: () -> T): T = this ?: block()
 
 inline fun <reified T> Any?.takeIfInstanceOf(): T? = this as? T
 
-private const val moduleName = "ExpoClipboard"
 private val TAG = ClipboardModule::class.java.simpleName
 
 // this must match the one from `res/xml/clipboard_provider_paths.xml`
@@ -54,34 +53,34 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
     fun getStringAsync(options: GetStringOptions, callback: Callback) {
         val item = clipboardManager.firstItem
         val result =
-            when (options.preferredFormat) {
-                StringFormat.PLAIN -> item?.coerceToPlainText(context)
-                StringFormat.HTML -> item?.coerceToHtmlText(context)
-            }
+                when (options.preferredFormat) {
+                    StringFormat.PLAIN -> item?.coerceToPlainText(context)
+                    StringFormat.HTML -> item?.coerceToHtmlText(context)
+                }
         return callback.invoke(LynxUIMethodConstants.SUCCESS, result)
     }
 
     @LynxMethod
     fun setStringAsync(content: String, options: SetStringOptions, callback: Callback) {
         val clip =
-            when (options.inputFormat) {
-                StringFormat.PLAIN -> ClipData.newPlainText(null, content)
-                StringFormat.HTML -> {
-                    // HTML clip requires complementary plain text content
-                    val plainText = plainTextFromHtml(content)
-                    ClipData.newHtmlText(null, plainText, content)
+                when (options.inputFormat) {
+                    StringFormat.PLAIN -> ClipData.newPlainText(null, content)
+                    StringFormat.HTML -> {
+                        // HTML clip requires complementary plain text content
+                        val plainText = plainTextFromHtml(content)
+                        ClipData.newHtmlText(null, plainText, content)
+                    }
                 }
-            }
         clipboardManager.setPrimaryClip(clip)
         return callback.invoke(LynxUIMethodConstants.SUCCESS, true)
     }
 
     @LynxMethod
     fun hasStringAsync(callback: Callback): Unit =
-        callback.invoke(
-            LynxUIMethodConstants.SUCCESS,
-            clipboardManager.primaryClipDescription?.hasTextContent == true
-        )
+            callback.invoke(
+                    LynxUIMethodConstants.SUCCESS,
+                    clipboardManager.primaryClipDescription?.hasTextContent == true
+            )
 
     // endregion
 
@@ -91,32 +90,35 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
         runBlocking {
             launch {
                 val imageUri =
-                    clipboardManager
-                        .takeIf { clipboardHasItemWithType("image/*") }
-                        ?.firstItem
-                        ?.uri
-                        .ifNull {
-                            return@launch callback.invoke(LynxUIMethodConstants.SUCCESS, null)
-                        }
+                        clipboardManager
+                                .takeIf { clipboardHasItemWithType("image/*") }
+                                ?.firstItem
+                                ?.uri
+                                .ifNull {
+                                    return@launch callback.invoke(
+                                            LynxUIMethodConstants.SUCCESS,
+                                            null
+                                    )
+                                }
 
                 try {
                     val imageResult = imageFromContentUri(context, imageUri, options)
                     return@launch callback.invoke(
-                        LynxUIMethodConstants.SUCCESS,
-                        imageResult.toBundle()
+                            LynxUIMethodConstants.SUCCESS,
+                            imageResult.toBundle()
                     )
                 } catch (err: Throwable) {
-                    val lynxErr = when (err) {
-                        is CodedException -> err
-                        is SecurityException -> NoPermissionException(err)
-                        else -> PasteFailureException(err, kind = "image")
-                    }
+                    val lynxErr =
+                            when (err) {
+                                is CodedException -> err
+                                is SecurityException -> NoPermissionException(err)
+                                else -> PasteFailureException(err, kind = "image")
+                            }
                     return@launch callback.invoke(
-                        LynxUIMethodConstants.OPERATION_ERROR,
-                        lynxErr.code,
-                        lynxErr.toString()
+                            LynxUIMethodConstants.OPERATION_ERROR,
+                            lynxErr.code,
+                            lynxErr.toString()
                     )
-
                 }
             }
         }
@@ -130,14 +132,15 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
                     val clip = clipDataFromBase64Image(context, imageData, clipboardCacheDir)
                     clipboardManager.setPrimaryClip(clip)
                 } catch (err: Throwable) {
-                    val lynxErr = when (err) {
-                        is CodedException -> err
-                        else -> CopyFailureException(err, kind = "image")
-                    }
+                    val lynxErr =
+                            when (err) {
+                                is CodedException -> err
+                                else -> CopyFailureException(err, kind = "image")
+                            }
                     return@launch callback.invoke(
-                        LynxUIMethodConstants.OPERATION_ERROR,
-                        lynxErr.code,
-                        lynxErr.toString()
+                            LynxUIMethodConstants.OPERATION_ERROR,
+                            lynxErr.code,
+                            lynxErr.toString()
                     )
                 }
             }
@@ -146,10 +149,10 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
 
     @LynxMethod
     fun hasImageAsync(callback: Callback) =
-        callback.invoke(
-            LynxUIMethodConstants.SUCCESS,
-            clipboardManager.primaryClipDescription?.hasMimeType("image/*") == true
-        )
+            callback.invoke(
+                    LynxUIMethodConstants.SUCCESS,
+                    clipboardManager.primaryClipDescription?.hasMimeType("image/*") == true
+            )
 
     private fun getContext(): Context {
         val lynxContext = mContext as LynxContext
@@ -158,8 +161,8 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
 
     private val clipboardManager: ClipboardManager
         get() =
-            context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
-                ?: throw ClipboardUnavailableException()
+                context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+                        ?: throw ClipboardUnavailableException()
 
     private val clipboardCacheDir: File by lazy {
         File(context.cacheDir, CLIPBOARD_DIRECTORY_NAME).also { it.mkdirs() }
@@ -181,51 +184,51 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
         }
 
         fun attachListener() =
-            maybeClipboardManager?.addPrimaryClipChangedListener(listener).ifNull {
-                Log.e(TAG, "'CLIPBOARD_SERVICE' unavailable. Events won't be received")
-            }
+                maybeClipboardManager?.addPrimaryClipChangedListener(listener).ifNull {
+                    Log.e(TAG, "'CLIPBOARD_SERVICE' unavailable. Events won't be received")
+                }
 
         fun detachListener() = maybeClipboardManager?.removePrimaryClipChangedListener(listener)
 
         private val listener =
-            ClipboardManager.OnPrimaryClipChangedListener {
-                // if (!appContext.hasActiveReactInstance) {
-                // return@OnPrimaryClipChangedListener
-                // }
+                ClipboardManager.OnPrimaryClipChangedListener {
+                    // if (!appContext.hasActiveReactInstance) {
+                    // return@OnPrimaryClipChangedListener
+                    // }
 
-                maybeClipboardManager.takeIf { isListening }?.primaryClipDescription?.let { clip
-                    ->
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        if (timestamp == clip.timestamp) {
-                            return@OnPrimaryClipChangedListener
-                        }
-                        timestamp = clip.timestamp
-                    }
-                    val contentTypes =
-                        listOfNotNull(
-                            ContentType.PLAIN_TEXT.takeIf {
-                                clip.hasTextContent
-                            },
-                            ContentType.HTML.takeIf {
-                                clip.hasMimeType(
-                                    ClipDescription.MIMETYPE_TEXT_HTML
-                                )
-                            },
-                            ContentType.IMAGE.takeIf {
-                                clip.hasMimeType("image/*")
+                    maybeClipboardManager.takeIf { isListening }?.primaryClipDescription?.let { clip
+                        ->
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            if (timestamp == clip.timestamp) {
+                                return@OnPrimaryClipChangedListener
                             }
-                        )
-                            .map { it.jsName }
+                            timestamp = clip.timestamp
+                        }
+                        val contentTypes =
+                                listOfNotNull(
+                                                ContentType.PLAIN_TEXT.takeIf {
+                                                    clip.hasTextContent
+                                                },
+                                                ContentType.HTML.takeIf {
+                                                    clip.hasMimeType(
+                                                            ClipDescription.MIMETYPE_TEXT_HTML
+                                                    )
+                                                },
+                                                ContentType.IMAGE.takeIf {
+                                                    clip.hasMimeType("image/*")
+                                                }
+                                        )
+                                        .map { it.jsName }
 
-                    // Create JavaOnlyArray for contentTypes
-                    val contentTypesArray = JavaOnlyArray()
-                    contentTypes.forEach { contentTypesArray.pushString(it) }
-                    (mContext as LynxContext).sendGlobalEvent(
-                        CLIPBOARD_CHANGED_EVENT_NAME,
-                        contentTypesArray
-                    )
+                        // Create JavaOnlyArray for contentTypes
+                        val contentTypesArray = JavaOnlyArray()
+                        contentTypes.forEach { contentTypesArray.pushString(it) }
+                        (mContext as LynxContext).sendGlobalEvent(
+                                CLIPBOARD_CHANGED_EVENT_NAME,
+                                contentTypesArray
+                        )
+                    }
                 }
-            }
 
         private val maybeClipboardManager = runCatching { clipboardManager }.getOrNull()
     }
@@ -243,7 +246,7 @@ class ClipboardModule(private val context: Context) : LynxpoModule(context) {
      * otherwise returns `false`.
      */
     private fun clipboardHasItemWithType(mimeType: String) =
-        clipboardManager.primaryClipDescription?.hasMimeType(mimeType) == true
+            clipboardManager.primaryClipDescription?.hasMimeType(mimeType) == true
 
     /** Gets first item from the clipboard or null if empty */
     private val ClipboardManager.firstItem: ClipData.Item?
@@ -273,14 +276,14 @@ private fun plainTextFromHtml(htmlContent: String): String {
  * @return Returns the item's textual representation.
  */
 private fun ClipData.Item.coerceToPlainText(context: Context): String =
-    if (text == null && htmlText != null) {
-        plainTextFromHtml(htmlText)
-    } else {
-        coerceToText(context).toString()
-    }
+        if (text == null && htmlText != null) {
+            plainTextFromHtml(htmlText)
+        } else {
+            coerceToText(context).toString()
+        }
 
 /** True if clipboard contains plain text or HTML content */
 private val ClipDescription.hasTextContent: Boolean
     get() =
-        hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN) ||
-                hasMimeType(ClipDescription.MIMETYPE_TEXT_HTML)
+            hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN) ||
+                    hasMimeType(ClipDescription.MIMETYPE_TEXT_HTML)

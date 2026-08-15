@@ -1,12 +1,10 @@
-@file:Typed
 package lynxpo.core.modules.backhandler
 
 import android.content.Context
+import com.lynx.jsbridge.LynxMethod
 import lynxpo.core.LynxpoModule
-import lynxpo.ktts.annotations.TsRetInto
-import lynxpo.ktts.annotations.Typed
 
 class BackHandlerModule(private val context: Context) : LynxpoModule(context) {
-// @LynxMethod
-// fun
+    init {}
+    @LynxMethod fun test() = 0
 }
