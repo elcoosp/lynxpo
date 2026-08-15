@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import { Browser, chromium, Page } from "playwright";
-import TurndownService from "turndown";
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { type Browser, chromium, type Page } from 'playwright';
+import TurndownService from 'turndown';
 
 // Initialize Turndown for HTML to Markdown conversion
 const turndownService = new TurndownService();
@@ -93,7 +93,7 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
     if (fs.existsSync(this.config.outputFile)) {
       try {
         this.permissions = JSON.parse(
-          fs.readFileSync(this.config.outputFile, "utf-8"),
+          fs.readFileSync(this.config.outputFile, 'utf-8'),
         );
         console.log(
           `Loaded ${this.permissions.length} existing permissions from ${this.config.outputFile}`,
@@ -129,7 +129,7 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
   // Extract categories from URL based on keywords
   protected getCategoryFromUrl(url: string): string[] {
     const categories: string[] = [];
-    const urlParts = url.split("/");
+    const urlParts = url.split('/');
 
     // Check for category keywords
     Object.entries(this.config.categoryKeywords).forEach(
@@ -151,7 +151,7 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
   // Helper to extract version numbers from text
   protected extractVersionFromText(text: string): string {
     const versionMatch = text.match(/(\d+(\.\d+)*)/);
-    return versionMatch ? versionMatch[1] : "";
+    return versionMatch ? versionMatch[1] : '';
   }
 
   // Process a batch of URLs in parallel
@@ -173,8 +173,8 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
 
     // Filter out failed promises and nulls
     const validResults = results
-      .filter((result) =>
-        result.status === "fulfilled" && result.value !== null
+      .filter(
+        (result) => result.status === 'fulfilled' && result.value !== null,
       )
       .map((result) => (result as PromiseFulfilledResult<T>).value);
 
@@ -196,7 +196,7 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
   protected abstract createPermissionId(key: string): string;
 
   // These methods are now optional with default implementations
-  protected extractPermissionLinks(content: string): string[] {
+  protected extractPermissionLinks(_content: string): string[] {
     return []; // Default implementation returns empty array (for single-page scrapers)
   }
 
@@ -206,7 +206,7 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
   ): Promise<T | null>;
 
   // New method for processing single page with multiple permissions
-  protected async processSinglePage(page: Page, url: string): Promise<T[]> {
+  protected async processSinglePage(_page: Page, _url: string): Promise<T[]> {
     return []; // Default implementation returns empty array
   }
 
@@ -223,9 +223,9 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
         `Fetching main page from ${this.config.baseUrl}${this.config.mainPagePath}...`,
       );
 
-      const page = await this.browser!.newPage();
+      const page = await this.browser?.newPage();
       const mainUrl = `${this.config.baseUrl}${this.config.mainPagePath}`;
-      await page.goto(mainUrl, { waitUntil: "domcontentloaded" });
+      await page.goto(mainUrl, { waitUntil: 'domcontentloaded' });
 
       // Extract HTML content and convert to markdown
       const html = await page.innerHTML(this.config.mainContentSelector);
@@ -233,9 +233,10 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
 
       // Check if this is a single-page scraper
       if (
-        this.isSinglePageScraper && typeof this.processSinglePage === "function"
+        this.isSinglePageScraper &&
+        typeof this.processSinglePage === 'function'
       ) {
-        console.log("Processing as single-page scraper...");
+        console.log('Processing as single-page scraper...');
         const newPermissions = await this.processSinglePage(page, mainUrl);
 
         console.log(
@@ -258,13 +259,12 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
       // Continue with multi-page approach
       await page.close();
 
-      console.log("Extracting permission links...");
+      console.log('Extracting permission links...');
       const allPermissionLinks = this.extractPermissionLinks(content);
 
       // Let each implementation filter out already processed permissions
-      const newPermissionLinks = this.filterNewPermissionLinks(
-        allPermissionLinks,
-      );
+      const newPermissionLinks =
+        this.filterNewPermissionLinks(allPermissionLinks);
 
       console.log(
         `Found ${allPermissionLinks.length} permission links (${newPermissionLinks.length} new to process).`,
@@ -287,21 +287,23 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
       for (let i = 0; i < batches.length; i++) {
         const batch = batches[i];
         console.log(
-          `Processing batch ${i + 1
+          `Processing batch ${
+            i + 1
           }/${batches.length} (${batch.length} URLs)...`,
         );
         const batchResults = await this.processBatch(batch);
         newPermissions.push(...batchResults);
 
         console.log(
-          `Batch ${i + 1
+          `Batch ${
+            i + 1
           } completed. Processed ${batchResults.length} permissions in this batch.`,
         );
 
         // Add a small delay between batches to avoid overwhelming the server
         if (i < batches.length - 1) {
           await new Promise((resolve) =>
-            setTimeout(resolve, this.config.batchDelay)
+            setTimeout(resolve, this.config.batchDelay),
           );
         }
       }
@@ -318,7 +320,7 @@ abstract class PermissionsScraper<T extends PermissionInfo> {
       );
       return this.permissions;
     } catch (error) {
-      console.error("Error scraping permissions:", error);
+      console.error('Error scraping permissions:', error);
       await this.closeBrowser();
       throw error;
     }
@@ -357,10 +359,10 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
   // Define Apple-specific defaults
   private static readonly DEFAULT_CONFIG: AppleScraperConfig = {
-    baseUrl: "https://developer.apple.com",
-    mainPagePath: "/documentation/bundleresources/protected-resources",
+    baseUrl: 'https://developer.apple.com',
+    mainPagePath: '/documentation/bundleresources/protected-resources',
 
-    outputFile: "apple-permissions.json",
+    outputFile: 'apple-permissions.json',
 
     maxConcurrentRequests: 50,
     requestDelay: 100,
@@ -368,7 +370,7 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
     headless: true,
 
-    mainContentSelector: "#app-main",
+    mainContentSelector: '#app-main',
 
     patterns: {
       keyNameBullet: /\*\s+([A-Z][A-Za-z0-9]+UsageDescription)\n/,
@@ -384,22 +386,22 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
     },
 
     categoryKeywords: {
-      "location": "location",
-      "bluetooth": "bluetooth",
-      "camera": "camera",
-      "microphone": "microphone",
-      "photo": "photos",
-      "media": "media",
-      "health": "health",
-      "contact": "contacts",
-      "calendar": "calendar",
-      "siri": "siri",
-      "face": "face",
-      "tracking": "tracking",
+      location: 'location',
+      bluetooth: 'bluetooth',
+      camera: 'camera',
+      microphone: 'microphone',
+      photo: 'photos',
+      media: 'media',
+      health: 'health',
+      contact: 'contacts',
+      calendar: 'calendar',
+      siri: 'siri',
+      face: 'face',
+      tracking: 'tracking',
     },
 
     defaults: {
-      minIosVersion: "7.0",
+      minIosVersion: '7.0',
     },
   };
 
@@ -431,10 +433,10 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
   // Create a unique ID from the permission key
   protected createPermissionId(key: string): string {
     return key
-      .replace(/^NS/, "")
-      .replace(/UsageDescription$/, "")
+      .replace(/^NS/, '')
+      .replace(/UsageDescription$/, '')
       .toLowerCase()
-      .replace(/[^a-z0-9]/g, "_");
+      .replace(/[^a-z0-9]/g, '_');
   }
 
   // Helper method to check if permission already exists
@@ -459,11 +461,11 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
       // Check if this is a permission link
       if (
-        linkText.toLowerCase().includes("UsageDescription".toLowerCase()) ||
-        linkUrl.includes("/information-property-list/")
+        linkText.toLowerCase().includes('UsageDescription'.toLowerCase()) ||
+        linkUrl.includes('/information-property-list/')
       ) {
         // Convert to full URL if needed
-        const fullUrl = linkUrl.startsWith("http")
+        const fullUrl = linkUrl.startsWith('http')
           ? linkUrl
           : `${this.config.baseUrl}${linkUrl}`;
 
@@ -477,15 +479,15 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
   // Filter out already processed permissions
   protected filterNewPermissionLinks(allLinks: string[]): string[] {
     return allLinks.filter((url) => {
-      const urlParts = url.split("/");
+      const urlParts = url.split('/');
       const lastPart = urlParts[urlParts.length - 1];
-      if (lastPart.includes("usagedescription")) {
+      if (lastPart.includes('usagedescription')) {
         const potentialKeyName = lastPart
-          .replace(/-/g, "")
-          .replace(/^n/, "N")
-          .replace(/^k/, "K")
-          .replace(/^c/, "C")
-          .replace(/^s/, "S");
+          .replace(/-/g, '')
+          .replace(/^n/, 'N')
+          .replace(/^k/, 'K')
+          .replace(/^c/, 'C')
+          .replace(/^s/, 'S');
 
         return !this.permissionExists(potentialKeyName);
       }
@@ -494,7 +496,10 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
   }
 
   // Extract information from markdown content based on the actual structure
-  private extractInfoFromMarkdown(markdown: string, url: string): {
+  private extractInfoFromMarkdown(
+    markdown: string,
+    url: string,
+  ): {
     keyName: string;
     description: string;
     deprecationNote: string;
@@ -504,11 +509,11 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
   } {
     // Initialize result object
     const result = {
-      keyName: "",
-      description: "",
-      deprecationNote: "",
-      minIosVersion: "",
-      privacyDescription: "",
+      keyName: '',
+      description: '',
+      deprecationNote: '',
+      minIosVersion: '',
+      privacyDescription: '',
       deviceCapabilities: [] as string[],
     };
 
@@ -527,15 +532,15 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
         result.keyName = headerMatch[1].trim();
       } else {
         // Extract from URL as last resort
-        const urlParts = url.split("/");
+        const urlParts = url.split('/');
         const lastPart = urlParts[urlParts.length - 1];
-        if (lastPart.includes("usagedescription")) {
+        if (lastPart.includes('usagedescription')) {
           result.keyName = lastPart
-            .replace(/-/g, "")
-            .replace(/^n/, "N")
-            .replace(/^k/, "K")
-            .replace(/^c/, "C")
-            .replace(/^s/, "S");
+            .replace(/-/g, '')
+            .replace(/^n/, 'N')
+            .replace(/^k/, 'K')
+            .replace(/^c/, 'C')
+            .replace(/^s/, 'S');
         }
       }
     }
@@ -566,9 +571,9 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
     // Extract name (which often includes "Privacy - ")
     const nameMatch = markdown.match(this.appleConfig.patterns.privacyName);
-    let name = "";
+    let _name = '';
     if (nameMatch) {
-      name = nameMatch[1].trim();
+      _name = nameMatch[1].trim();
     }
 
     // Extract privacy description from Discussion section
@@ -580,9 +585,9 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
       // Look for specific patterns in the discussion that indicate privacy description requirements
       if (
-        discussionText.includes("required") ||
-        discussionText.includes("add this key") ||
-        discussionText.includes("privacy")
+        discussionText.includes('required') ||
+        discussionText.includes('add this key') ||
+        discussionText.includes('privacy')
       ) {
         result.privacyDescription = discussionText;
       }
@@ -594,15 +599,14 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
     );
     if (codeMatches) {
       codeMatches.forEach((match) => {
-        const capability = match.replace(/`/g, "").trim();
+        const capability = match.replace(/`/g, '').trim();
         if (
           capability.match(/^[a-z-]+$/) ||
-          capability.includes("UIRequiredDeviceCapabilities")
+          capability.includes('UIRequiredDeviceCapabilities')
         ) {
-          const cleanCapability = capability.replace(
-            "UIRequiredDeviceCapabilities",
-            "",
-          ).trim();
+          const cleanCapability = capability
+            .replace('UIRequiredDeviceCapabilities', '')
+            .trim();
           if (
             cleanCapability &&
             !result.deviceCapabilities.includes(cleanCapability)
@@ -622,7 +626,7 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
     url: string,
   ): Promise<PermissionInfo | null> {
     try {
-      await page.goto(url, { waitUntil: "domcontentloaded" });
+      await page.goto(url, { waitUntil: 'domcontentloaded' });
 
       // Extract HTML content from the main content and convert to markdown
       const html = await page.innerHTML(this.config.mainContentSelector);
@@ -632,7 +636,7 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
       const info = this.extractInfoFromMarkdown(markdown, url);
 
       // Skip if it's not a usage description key
-      if (!info.keyName || !info.keyName.includes("UsageDescription")) {
+      if (!info.keyName?.includes('UsageDescription')) {
         console.log(
           `Skipping ${url} - not a usage description key or could not extract key name`,
         );
@@ -648,8 +652,8 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
       }
 
       // Check for deprecation
-      const isDeprecated = info.deprecationNote.length > 0 ||
-        markdown.includes("Deprecated");
+      const isDeprecated =
+        info.deprecationNote.length > 0 || markdown.includes('Deprecated');
 
       // Create the permission info object
       const permissionId = this.createPermissionId(info.keyName);
@@ -669,7 +673,7 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
       const permissionInfo: PermissionInfo = {
         id: permissionId,
-        name: info.keyName.replace(/UsageDescription$/, " Usage"),
+        name: info.keyName.replace(/UsageDescription$/, ' Usage'),
         description: description,
         deprecated: isDeprecated,
         replacement: null, // Would need additional parsing to determine replacement
@@ -679,8 +683,8 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
             usageDescriptionKey: info.keyName,
             privacyDescription: info.privacyDescription,
             requiredDeviceCapabilities: info.deviceCapabilities,
-            minIosVersion: info.minIosVersion ||
-              this.appleConfig.defaults.minIosVersion,
+            minIosVersion:
+              info.minIosVersion || this.appleConfig.defaults.minIosVersion,
           },
         },
       };
@@ -692,7 +696,7 @@ class ApplePermissionsScraper extends PermissionsScraper<PermissionInfo> {
           platforms: {
             ios: {
               sinceVersion: this.extractVersionFromText(info.deprecationNote),
-              removalVersion: "",
+              removalVersion: '',
             },
           },
         };
@@ -733,10 +737,10 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
   // Define Android-specific defaults
   private static readonly DEFAULT_CONFIG: AndroidScraperConfig = {
-    baseUrl: "https://developer.android.com",
-    mainPagePath: "/reference/android/Manifest.permission",
+    baseUrl: 'https://developer.android.com',
+    mainPagePath: '/reference/android/Manifest.permission',
 
-    outputFile: "android-permissions.json",
+    outputFile: 'android-permissions.json',
 
     maxConcurrentRequests: 5,
     requestDelay: 500,
@@ -744,30 +748,31 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
     headless: true,
 
-    mainContentSelector: "#main-content > devsite-content > article",
+    mainContentSelector: '#main-content > devsite-content > article',
 
     patterns: {
       permissionBlock: /### ([A-Z_]+)[\s\S]+?(?=### |$)/g,
       permissionName: /### ([A-Z_]+)/,
       description: /public static final \[String\][^\n]+\n\n([^\n]+)/,
-      notes: /\n\n\*\*(Note|Warning):[^\n]*\n\n([\s\S]+?)(?=\n\nProtection level:|\n\nConstant Value:)/,
+      notes:
+        /\n\n\*\*(Note|Warning):[^\n]*\n\n([\s\S]+?)(?=\n\nProtection level:|\n\nConstant Value:)/,
       protectionLevel: /Protection level:\s*([^\n]+)/i,
       minSdk: /Added in \[API level (\d+)\]/i,
       constantValue: /Constant Value:\s*"([^"]+)"/i,
-      deprecationNotice: /This constant was deprecated in API level (\d+)/i
+      deprecationNotice: /This constant was deprecated in API level (\d+)/i,
     },
 
     categoryKeywords: {
-      "location": "location",
-      "camera": "camera",
-      "microphone": "microphone",
-      "storage": "storage",
-      "contacts": "contacts",
-      "calendar": "calendar",
-      "sms": "sms",
-      "phone": "phone",
-      "sensors": "sensors",
-      "bluetooth": "bluetooth",
+      location: 'location',
+      camera: 'camera',
+      microphone: 'microphone',
+      storage: 'storage',
+      contacts: 'contacts',
+      calendar: 'calendar',
+      sms: 'sms',
+      phone: 'phone',
+      sensors: 'sensors',
+      bluetooth: 'bluetooth',
     },
 
     defaults: {
@@ -808,9 +813,9 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
   // Create a unique ID from the permission constant name
   protected createPermissionId(key: string): string {
     return key
-      .replace(/^android\.permission\./, "")
+      .replace(/^android\.permission\./, '')
       .toLowerCase()
-      .replace(/[^a-z0-9]/g, "_");
+      .replace(/[^a-z0-9]/g, '_');
   }
 
   // Helper method to check if permission already exists
@@ -824,17 +829,20 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
   // Implement the single-page processing method
   protected async processSinglePage(
     page: Page,
-    url: string,
+    _url: string,
   ): Promise<PermissionInfo[]> {
     try {
       // Extract HTML content and convert to markdown
       const html = await page.innerHTML(this.config.mainContentSelector);
-      const markdown = turndownService.turndown(html).split("Constants\n--------")[1].replaceAll(/\\/g, "")
+      const markdown = turndownService
+        .turndown(html)
+        .split('Constants\n--------')[1]
+        .replaceAll(/\\/g, '');
       if (!markdown) {
-        console.error("Could not find Constants section in the documentation");
+        console.error('Could not find Constants section in the documentation');
         return [];
       }
-      console.log("Extracting permissions from markdown...");
+      console.log('Extracting permissions from markdown...');
 
       const newPermissions: PermissionInfo[] = [];
       const permissionBlocks =
@@ -843,7 +851,6 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
       console.log(`Found ${permissionBlocks.length} permission blocks.`);
 
       for (const block of permissionBlocks) {
-
         try {
           // Extract permission name
           const nameMatch = block.match(
@@ -866,31 +873,33 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
             this.androidConfig.patterns.description,
           );
 
-          let description = descriptionMatch
-            ? descriptionMatch[1].trim()
-            : "";
+          let description = descriptionMatch ? descriptionMatch[1].trim() : '';
           const notesMatch = block.match(this.androidConfig.patterns.notes);
           if (notesMatch) {
-            description += "\n\n" + notesMatch[0].trim();
+            description += `\n\n${notesMatch[0].trim()}`;
           }
           // Extract protection level
-          const protectionLevelMatch = block.match(this.androidConfig.patterns.protectionLevel);
-          const protectionLevelRaw = protectionLevelMatch ? protectionLevelMatch[1].trim() : "normal";
+          const protectionLevelMatch = block.match(
+            this.androidConfig.patterns.protectionLevel,
+          );
+          const protectionLevelRaw = protectionLevelMatch
+            ? protectionLevelMatch[1].trim()
+            : 'normal';
           const protectionLevel = protectionLevelMatch
-            ? protectionLevelRaw.split("|").map((p) => p.trim())
-            : ["normal"];
+            ? protectionLevelRaw.split('|').map((p) => p.trim())
+            : ['normal'];
 
           // Extract API level
           const minSdkMatch = block.match(this.androidConfig.patterns.minSdk);
           const minSdk = minSdkMatch
-            ? parseInt(minSdkMatch[1])
+            ? parseInt(minSdkMatch[1], 10)
             : this.androidConfig.defaults.minSdk;
 
           // Extract constant value
           const constantValueMatch = block.match(
             this.androidConfig.patterns.constantValue,
           );
-          const constantValue = constantValueMatch ? constantValueMatch[1] : "";
+          const constantValue = constantValueMatch ? constantValueMatch[1] : '';
 
           // Check for deprecation
           const deprecationMatch = block.match(
@@ -909,7 +918,9 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
           const permissionInfo: PermissionInfo = {
             id: permissionId,
-            name: permissionName.replace(/^PERMISSION_/, "").replace(/_/g, " ")
+            name: permissionName
+              .replace(/^PERMISSION_/, '')
+              .replace(/_/g, ' ')
               .toLowerCase(),
             description: description,
             deprecated: isDeprecated,
@@ -927,7 +938,7 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
           // Add deprecation info if applicable
           if (isDeprecated && deprecationMatch) {
-            const deprecationApiLevel = parseInt(deprecationMatch[1]);
+            const deprecationApiLevel = parseInt(deprecationMatch[1], 10);
 
             permissionInfo.deprecationInfo = {
               deprecatedSince: deprecationApiLevel,
@@ -943,7 +954,7 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
           newPermissions.push(permissionInfo);
           console.log(`Successfully processed ${permissionName}`);
         } catch (blockError) {
-          console.error("Error processing permission block:", blockError);
+          console.error('Error processing permission block:', blockError);
         }
       }
 
@@ -959,7 +970,7 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
     name: string,
     description: string,
   ): string[] {
-    const combinedText = (name + " " + description).toLowerCase();
+    const combinedText = `${name} ${description}`.toLowerCase();
     const categories: string[] = [];
 
     // Check against all category keywords
@@ -974,16 +985,16 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
     // Add default category if none found
     if (categories.length === 0) {
       // Check for common patterns in permission names
-      if (name.includes("_BACKGROUND")) {
-        categories.push("background");
-      } else if (name.includes("_ACTIVITY_RECOGNITION")) {
-        categories.push("activity");
-      } else if (name.includes("_ACCOUNTS")) {
-        categories.push("accounts");
-      } else if (name.includes("_NETWORK")) {
-        categories.push("network");
+      if (name.includes('_BACKGROUND')) {
+        categories.push('background');
+      } else if (name.includes('_ACTIVITY_RECOGNITION')) {
+        categories.push('activity');
+      } else if (name.includes('_ACCOUNTS')) {
+        categories.push('accounts');
+      } else if (name.includes('_NETWORK')) {
+        categories.push('network');
       } else {
-        categories.push("other");
+        categories.push('other');
       }
     }
 
@@ -992,8 +1003,8 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
 
   // This method is required by the base class but not used for single-page approach
   protected async processPermissionPage(
-    page: Page,
-    url: string,
+    _page: Page,
+    _url: string,
   ): Promise<PermissionInfo | null> {
     // Not used in single-page scraper
     return null;
@@ -1003,25 +1014,25 @@ class AndroidPermissionsScraper extends PermissionsScraper<PermissionInfo> {
 // Function to run both scrapers
 export async function scrapeAllPlatforms() {
   try {
-    console.log("Starting permission scraping process...");
+    console.log('Starting permission scraping process...');
 
     // Scrape Android permissions first
-    console.log("\n=== SCRAPING ANDROID PERMISSIONS ===\n");
+    console.log('\n=== SCRAPING ANDROID PERMISSIONS ===\n');
     const androidScraper = new AndroidPermissionsScraper();
     await androidScraper.scrapePermissions();
 
     // Then scrape Apple permissions
-    console.log("\n=== SCRAPING APPLE PERMISSIONS ===\n");
+    console.log('\n=== SCRAPING APPLE PERMISSIONS ===\n');
     const appleScraper = new ApplePermissionsScraper();
     await appleScraper.scrapePermissions();
 
     // Merge the data by permission concept
-    console.log("\n=== MERGING PERMISSIONS DATA ===\n");
+    console.log('\n=== MERGING PERMISSIONS DATA ===\n');
     mergePermissionsData();
 
-    console.log("\nPermission scraping completed successfully!");
+    console.log('\nPermission scraping completed successfully!');
   } catch (error) {
-    console.error("Error in scraping process:", error);
+    console.error('Error in scraping process:', error);
   }
 }
 
@@ -1029,19 +1040,19 @@ export async function scrapeAllPlatforms() {
 function mergePermissionsData() {
   try {
     // Load both platform data files
-    const androidPath = path.resolve(process.cwd(), "android-permissions.json");
-    const applePath = path.resolve(process.cwd(), "apple-permissions.json");
+    const androidPath = path.resolve(process.cwd(), 'android-permissions.json');
+    const applePath = path.resolve(process.cwd(), 'apple-permissions.json');
 
     if (!fs.existsSync(androidPath) || !fs.existsSync(applePath)) {
-      console.error("One or both platform files not found. Skipping merge.");
+      console.error('One or both platform files not found. Skipping merge.');
       return;
     }
 
     const androidPermissions: PermissionInfo[] = JSON.parse(
-      fs.readFileSync(androidPath, "utf-8"),
+      fs.readFileSync(androidPath, 'utf-8'),
     );
     const applePermissions: PermissionInfo[] = JSON.parse(
-      fs.readFileSync(applePath, "utf-8"),
+      fs.readFileSync(applePath, 'utf-8'),
     );
 
     console.log(
@@ -1064,22 +1075,21 @@ function mergePermissionsData() {
       // Normalize the permission name for matching
       const normalizedName = applePerm.name
         .toLowerCase()
-        .replace(/\s+usage$/, "")
-        .replace(/\s+/g, "_");
+        .replace(/\s+usage$/, '')
+        .replace(/\s+/g, '_');
 
       // Check for existing permissions with the same categories
-      for (const [id, existingPerm] of mergedPermissions.entries()) {
+      for (const [_id, existingPerm] of mergedPermissions.entries()) {
         // Check if they share at least one category
-        const sharedCategories = applePerm.categories.filter(
-          (cat) => existingPerm.categories.includes(cat),
+        const sharedCategories = applePerm.categories.filter((cat) =>
+          existingPerm.categories.includes(cat),
         );
 
         if (sharedCategories.length > 0) {
           // If categories match, check name similarity
-          const existingName = existingPerm.name.toLowerCase().replace(
-            /\s+/g,
-            "_",
-          );
+          const existingName = existingPerm.name
+            .toLowerCase()
+            .replace(/\s+/g, '_');
 
           if (
             existingName.includes(normalizedName) ||
@@ -1091,10 +1101,7 @@ function mergePermissionsData() {
 
             // Combine categories without duplicates
             existingPerm.categories = [
-              ...new Set([
-                ...existingPerm.categories,
-                ...applePerm.categories,
-              ]),
+              ...new Set([...existingPerm.categories, ...applePerm.categories]),
             ];
 
             // Prefer non-deprecated if one is deprecated
@@ -1122,11 +1129,11 @@ function mergePermissionsData() {
     );
 
     // Save to merged file
-    const outputPath = path.resolve(process.cwd(), "merged-permissions.json");
+    const outputPath = path.resolve(process.cwd(), 'merged-permissions.json');
     fs.writeFileSync(outputPath, JSON.stringify(finalPermissions, null, 2));
     console.log(`Merged permissions saved to ${outputPath}`);
   } catch (error) {
-    console.error("Error merging permissions data:", error);
+    console.error('Error merging permissions data:', error);
   }
 }
 
@@ -1149,6 +1156,6 @@ function comparePermissionNames(name1: string, name2: string): boolean {
 }
 // If this script is run directly (not imported)
 if (require.main === module) {
-  await scrapeAllPlatforms()
-  mergePermissionsData()
+  await scrapeAllPlatforms();
+  mergePermissionsData();
 }

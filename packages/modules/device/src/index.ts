@@ -31,7 +31,7 @@ export interface DeviceModule extends INativeModules {
 };
 
 export const getIsDevice = (): any =>
-  NativeModules.DeviceModule.isDevice();
+  NativeModules.DeviceModule?.isDevice();
 
 export const useIsDevice = () => {
   const [value, setValue] = useState<any>();
@@ -49,7 +49,7 @@ export const useIsDevice = () => {
 };
 
 export const getBrand = (): string =>
-  NativeModules.DeviceModule.brand();
+  NativeModules.DeviceModule?.brand();
 
 export const useBrand = () => {
   const [value, setValue] = useState<string>();
@@ -67,7 +67,7 @@ export const useBrand = () => {
 };
 
 export const getManufacturer = (): string =>
-  NativeModules.DeviceModule.manufacturer();
+  NativeModules.DeviceModule?.manufacturer();
 
 export const useManufacturer = () => {
   const [value, setValue] = useState<string>();
@@ -85,7 +85,7 @@ export const useManufacturer = () => {
 };
 
 export const getModelName = (): string =>
-  NativeModules.DeviceModule.modelName();
+  NativeModules.DeviceModule?.modelName();
 
 export const useModelName = () => {
   const [value, setValue] = useState<string>();
@@ -103,7 +103,7 @@ export const useModelName = () => {
 };
 
 export const getDesignName = (): string =>
-  NativeModules.DeviceModule.designName();
+  NativeModules.DeviceModule?.designName();
 
 export const useDesignName = () => {
   const [value, setValue] = useState<string>();
@@ -121,7 +121,7 @@ export const useDesignName = () => {
 };
 
 export const getProductName = (): any =>
-  NativeModules.DeviceModule.productName();
+  NativeModules.DeviceModule?.productName();
 
 export const useProductName = () => {
   const [value, setValue] = useState<any>();
@@ -139,7 +139,7 @@ export const useProductName = () => {
 };
 
 export const getDeviceYearClass = (): number =>
-  NativeModules.DeviceModule.deviceYearClass();
+  NativeModules.DeviceModule?.deviceYearClass();
 
 export const useDeviceYearClass = () => {
   const [value, setValue] = useState<number>();
@@ -157,7 +157,7 @@ export const useDeviceYearClass = () => {
 };
 
 export const getTotalMemory = (): any =>
-  NativeModules.DeviceModule.totalMemory();
+  NativeModules.DeviceModule?.totalMemory();
 
 export const useTotalMemory = () => {
   const [value, setValue] = useState<any>();
@@ -175,7 +175,7 @@ export const useTotalMemory = () => {
 };
 
 export const getDeviceType = (): any =>
-  NativeModules.DeviceModule.deviceType();
+  NativeModules.DeviceModule?.deviceType();
 
 export const useDeviceType = () => {
   const [value, setValue] = useState<any>();
@@ -193,7 +193,7 @@ export const useDeviceType = () => {
 };
 
 export const getSupportedCpuArchitectures = (): string[] =>
-  NativeModules.DeviceModule.supportedCpuArchitectures();
+  NativeModules.DeviceModule?.supportedCpuArchitectures();
 
 export const useSupportedCpuArchitectures = () => {
   const [value, setValue] = useState<string[]>();
@@ -211,7 +211,7 @@ export const useSupportedCpuArchitectures = () => {
 };
 
 export const getOsName = (): any =>
-  NativeModules.DeviceModule.osName();
+  NativeModules.DeviceModule?.osName();
 
 export const useOsName = () => {
   const [value, setValue] = useState<any>();
@@ -229,7 +229,7 @@ export const useOsName = () => {
 };
 
 export const getOsVersion = (): string =>
-  NativeModules.DeviceModule.osVersion();
+  NativeModules.DeviceModule?.osVersion();
 
 export const useOsVersion = () => {
   const [value, setValue] = useState<string>();
@@ -247,7 +247,7 @@ export const useOsVersion = () => {
 };
 
 export const getOsBuildId = (): any =>
-  NativeModules.DeviceModule.osBuildId();
+  NativeModules.DeviceModule?.osBuildId();
 
 export const useOsBuildId = () => {
   const [value, setValue] = useState<any>();
@@ -265,7 +265,7 @@ export const useOsBuildId = () => {
 };
 
 export const getOsInternalBuildId = (): any =>
-  NativeModules.DeviceModule.osInternalBuildId();
+  NativeModules.DeviceModule?.osInternalBuildId();
 
 export const useOsInternalBuildId = () => {
   const [value, setValue] = useState<any>();
@@ -283,7 +283,7 @@ export const useOsInternalBuildId = () => {
 };
 
 export const getOsBuildFingerprint = (): any =>
-  NativeModules.DeviceModule.osBuildFingerprint();
+  NativeModules.DeviceModule?.osBuildFingerprint();
 
 export const useOsBuildFingerprint = () => {
   const [value, setValue] = useState<any>();
@@ -301,7 +301,7 @@ export const useOsBuildFingerprint = () => {
 };
 
 export const getPlatformApiLevel = (): string =>
-  NativeModules.DeviceModule.platformApiLevel();
+  NativeModules.DeviceModule?.platformApiLevel();
 
 export const usePlatformApiLevel = () => {
   const [value, setValue] = useState<string>();
@@ -319,7 +319,7 @@ export const usePlatformApiLevel = () => {
 };
 
 export const getDeviceName = (): string =>
-  NativeModules.DeviceModule.deviceName();
+  NativeModules.DeviceModule?.deviceName();
 
 export const useDeviceName = () => {
   const [value, setValue] = useState<string>();

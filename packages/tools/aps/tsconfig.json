@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "ES2021"
-    ],
+    "lib": ["ES2021"],
     "target": "ES2018",
     "module": "ESNext",
     "noEmit": true,
@@ -14,7 +12,5 @@
     "useDefineForClassFields": true,
     "allowImportingTsExtensions": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

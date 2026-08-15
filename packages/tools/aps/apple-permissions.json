@@ -5,9 +5,7 @@
     "description": "A message that tells the user why the app needs access to Bluetooth.",
     "deprecated": true,
     "replacement": null,
-    "categories": [
-      "bluetooth"
-    ],
+    "categories": ["bluetooth"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSBluetoothAlwaysUsageDescription",
@@ -32,9 +30,7 @@
     "description": "",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "calendar"
-    ],
+    "categories": ["calendar"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSCalendarsFullAccessUsageDescription",
@@ -50,9 +46,7 @@
     "description": "",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "calendar"
-    ],
+    "categories": ["calendar"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSCalendarsWriteOnlyAccessUsageDescription",
@@ -68,9 +62,7 @@
     "description": "",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsremindersfullaccessusagedescription"
-    ],
+    "categories": ["nsremindersfullaccessusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSRemindersFullAccessUsageDescription",
@@ -86,9 +78,7 @@
     "description": "A message that tells the user why the app is requesting access to the device’s camera.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "camera"
-    ],
+    "categories": ["camera"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSCameraUsageDescription",
@@ -104,9 +94,7 @@
     "description": "A message that tells the user why the app is requesting access to the device’s microphone.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "microphone"
-    ],
+    "categories": ["microphone"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSMicrophoneUsageDescription",
@@ -122,9 +110,7 @@
     "description": "A message that tells the user why the app is requesting access to the user’s contacts.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "contacts"
-    ],
+    "categories": ["contacts"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSContactsUsageDescription",
@@ -140,9 +126,7 @@
     "description": "A message that tells the user why the app is requesting the ability to authenticate with Face ID.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "face"
-    ],
+    "categories": ["face"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSFaceIDUsageDescription",
@@ -158,16 +142,12 @@
     "description": "A message that tells the user why the app needs access to the user’s Desktop folder.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsdesktopfolderusagedescription"
-    ],
+    "categories": ["nsdesktopfolderusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSDesktopFolderUsageDescription",
         "privacyDescription": "",
-        "requiredDeviceCapabilities": [
-          "tccutil"
-        ],
+        "requiredDeviceCapabilities": ["tccutil"],
         "minIosVersion": "7.0"
       }
     }
@@ -178,16 +158,12 @@
     "description": "A message that tells the user why the app needs access to the user’s Documents folder.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsdocumentsfolderusagedescription"
-    ],
+    "categories": ["nsdocumentsfolderusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSDocumentsFolderUsageDescription",
         "privacyDescription": "",
-        "requiredDeviceCapabilities": [
-          "tccutil"
-        ],
+        "requiredDeviceCapabilities": ["tccutil"],
         "minIosVersion": "7.0"
       }
     }
@@ -198,16 +174,12 @@
     "description": "A message that tells the user why the app needs access to the user’s Downloads folder.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsdownloadsfolderusagedescription"
-    ],
+    "categories": ["nsdownloadsfolderusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSDownloadsFolderUsageDescription",
         "privacyDescription": "",
-        "requiredDeviceCapabilities": [
-          "tccutil"
-        ],
+        "requiredDeviceCapabilities": ["tccutil"],
         "minIosVersion": "7.0"
       }
     }
@@ -218,16 +190,12 @@
     "description": "A message that tells the user why the app needs access to files on a network volume.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsnetworkvolumesusagedescription"
-    ],
+    "categories": ["nsnetworkvolumesusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSNetworkVolumesUsageDescription",
         "privacyDescription": "",
-        "requiredDeviceCapabilities": [
-          "tccutil"
-        ],
+        "requiredDeviceCapabilities": ["tccutil"],
         "minIosVersion": "7.0"
       }
     }
@@ -238,16 +206,12 @@
     "description": "A message that tells the user why the app needs access to files on a removable volume.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsremovablevolumesusagedescription"
-    ],
+    "categories": ["nsremovablevolumesusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSRemovableVolumesUsageDescription",
         "privacyDescription": "",
-        "requiredDeviceCapabilities": [
-          "tccutil"
-        ],
+        "requiredDeviceCapabilities": ["tccutil"],
         "minIosVersion": "7.0"
       }
     }
@@ -258,16 +222,12 @@
     "description": "A message that tells the user why the app needs access to files managed by a file provider.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsfileproviderdomainusagedescription"
-    ],
+    "categories": ["nsfileproviderdomainusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSFileProviderDomainUsageDescription",
         "privacyDescription": "",
-        "requiredDeviceCapabilities": [
-          "tccutil"
-        ],
+        "requiredDeviceCapabilities": ["tccutil"],
         "minIosVersion": "7.0"
       }
     }
@@ -278,9 +238,7 @@
     "description": "A message that tells the user why the app needs access to their Game Center friends list.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsgkfriendlistusagedescription"
-    ],
+    "categories": ["nsgkfriendlistusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSGKFriendListUsageDescription",
@@ -296,9 +254,7 @@
     "description": "",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "health"
-    ],
+    "categories": ["health"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSHealthClinicalHealthRecordsShareUsageDescription",
@@ -314,9 +270,7 @@
     "description": "",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "health"
-    ],
+    "categories": ["health"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSHealthShareUsageDescription",
@@ -332,9 +286,7 @@
     "description": "",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "health"
-    ],
+    "categories": ["health"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSHealthUpdateUsageDescription",
@@ -350,9 +302,7 @@
     "description": "A message that tells the user why the app is requesting access to the user’s HomeKit configuration data.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nshomekitusagedescription"
-    ],
+    "categories": ["nshomekitusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSHomeKitUsageDescription",
@@ -368,9 +318,7 @@
     "description": "A message that tells the user why the app is requesting access to the user’s location information at all times.",
     "deprecated": true,
     "replacement": null,
-    "categories": [
-      "location"
-    ],
+    "categories": ["location"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSLocationAlwaysAndWhenInUseUsageDescription",
@@ -395,9 +343,7 @@
     "description": "A message that tells the user why the app is requesting access to the user’s location information.",
     "deprecated": true,
     "replacement": null,
-    "categories": [
-      "location"
-    ],
+    "categories": ["location"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSLocationUsageDescription",
@@ -422,9 +368,7 @@
     "description": "A message that tells the user why the app is requesting access to the user’s location information while the app is running in the foreground.",
     "deprecated": true,
     "replacement": null,
-    "categories": [
-      "location"
-    ],
+    "categories": ["location"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSLocationWhenInUseUsageDescription",
@@ -449,9 +393,7 @@
     "description": "A message that tells the user why the app is requesting access to the user’s media library.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsapplemusicusagedescription"
-    ],
+    "categories": ["nsapplemusicusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSAppleMusicUsageDescription",
@@ -467,9 +409,7 @@
     "description": "A message that tells the user why the app is requesting access to the device’s motion data.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsmotionusagedescription"
-    ],
+    "categories": ["nsmotionusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSMotionUsageDescription",
@@ -485,9 +425,7 @@
     "description": "A message that tells the user why the app is requesting access to the device’s motion data.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsfalldetectionusagedescription"
-    ],
+    "categories": ["nsfalldetectionusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSFallDetectionUsageDescription",
@@ -503,9 +441,7 @@
     "description": "A message that tells the user why the app is requesting access to the local network.",
     "deprecated": true,
     "replacement": null,
-    "categories": [
-      "nslocalnetworkusagedescription"
-    ],
+    "categories": ["nslocalnetworkusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSLocalNetworkUsageDescription",
@@ -530,9 +466,7 @@
     "description": "A message that tells the user why the app is requesting access to the local network.",
     "deprecated": true,
     "replacement": null,
-    "categories": [
-      "nsnearbyinteractionusagedescription"
-    ],
+    "categories": ["nsnearbyinteractionusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSNearbyInteractionUsageDescription",
@@ -557,9 +491,7 @@
     "description": "A message that tells the user why the app is requesting access to the device’s NFC hardware.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nfcreaderusagedescription"
-    ],
+    "categories": ["nfcreaderusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NFCReaderUsageDescription",
@@ -575,9 +507,7 @@
     "description": "A message that tells the user why the app is requesting add-only access to the user’s photo library.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "photos"
-    ],
+    "categories": ["photos"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSPhotoLibraryAddUsageDescription",
@@ -593,9 +523,7 @@
     "description": "A message that tells the user why the app is requesting access to the user’s photo library.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "photos"
-    ],
+    "categories": ["photos"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSPhotoLibraryUsageDescription",
@@ -611,9 +539,7 @@
     "description": "A message that tells the user why the app needs to access files in other apps’ sandbox containers.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsappdatausagedescription"
-    ],
+    "categories": ["nsappdatausagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSAppDataUsageDescription",
@@ -629,9 +555,7 @@
     "description": "A message that tells the user why the app needs to access files in other apps’ sandbox containers.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "tracking"
-    ],
+    "categories": ["tracking"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSUserTrackingUsageDescription",
@@ -647,9 +571,7 @@
     "description": "A message that tells the user why the app is requesting the ability to send Apple events.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsappleeventsusagedescription"
-    ],
+    "categories": ["nsappleeventsusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSAppleEventsUsageDescription",
@@ -665,9 +587,7 @@
     "description": "A message that tells the user why the app needs to access files in other apps’ sandbox containers.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nssystemadministrationusagedescription"
-    ],
+    "categories": ["nssystemadministrationusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSSystemAdministrationUsageDescription",
@@ -683,9 +603,7 @@
     "description": "",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nssensorkitusagedescription"
-    ],
+    "categories": ["nssensorkitusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSSensorKitUsageDescription",
@@ -701,9 +619,7 @@
     "description": "A message that tells the user why the app is requesting to send user data to Siri.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "siri"
-    ],
+    "categories": ["siri"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSSiriUsageDescription",
@@ -719,9 +635,7 @@
     "description": "A message that tells the user why the app is requesting to send user data to Apple’s speech recognition servers.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsspeechrecognitionusagedescription"
-    ],
+    "categories": ["nsspeechrecognitionusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSSpeechRecognitionUsageDescription",
@@ -737,9 +651,7 @@
     "description": "A message that tells the user why the app is requesting access to the user’s TV provider account.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsvideosubscriberaccountusagedescription"
-    ],
+    "categories": ["nsvideosubscriberaccountusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSVideoSubscriberAccountUsageDescription",
@@ -755,9 +667,7 @@
     "description": "A message that tells the user why the app is requesting access to image tracking, plane detection, or scene reconstruction.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsworldsensingusagedescription"
-    ],
+    "categories": ["nsworldsensingusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSWorldSensingUsageDescription",
@@ -773,9 +683,7 @@
     "description": "A message that tells the user why the app is requesting access to track the user’s hand position and location.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "tracking"
-    ],
+    "categories": ["tracking"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSHandsTrackingUsageDescription",
@@ -791,9 +699,7 @@
     "description": "A message that tells the user why the app is requesting access to financial data stored in Wallet.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsfinancialdatausagedescription"
-    ],
+    "categories": ["nsfinancialdatausagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSFinancialDataUsageDescription",
@@ -809,9 +715,7 @@
     "description": "A message that tells the user why the app is requesting identity information.",
     "deprecated": false,
     "replacement": null,
-    "categories": [
-      "nsidentityusagedescription"
-    ],
+    "categories": ["nsidentityusagedescription"],
     "platforms": {
       "ios": {
         "usageDescriptionKey": "NSIdentityUsageDescription",

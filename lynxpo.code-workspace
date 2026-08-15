@@ -1,23 +1,23 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "packages/playground"
-		},
-		{
-			"path": "packages/core"
-		},
-		{
-			"path": "packages/tools/nmb/nmb-core-kt"
-		},
-		{
-			"path": "packages/tools/nmb/nmb-core-sw"
-		},
-		{
-			"path": "packages/tools/dexpo"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "packages/playground"
+    },
+    {
+      "path": "packages/core"
+    },
+    {
+      "path": "packages/tools/nmb/nmb-core-kt"
+    },
+    {
+      "path": "packages/tools/nmb/nmb-core-sw"
+    },
+    {
+      "path": "packages/tools/dexpo"
+    }
+  ],
+  "settings": {}
 }

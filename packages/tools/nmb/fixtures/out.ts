@@ -2,7 +2,7 @@
  * Generated TypeScript definitions from Lynx Native Module : DeviceModule
  */
 import { NativeModules } from '@lynx-js/core';
-import { useCallback, useEffect, useState } from '@lynx-js/react';
+import { useEffect, useState } from '@lynx-js/react';
 export enum DeviceType {
   /**
    * DeviceType.UNKNOWN field superdoc

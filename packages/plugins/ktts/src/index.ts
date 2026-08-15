@@ -1,7 +1,7 @@
-import type { RsbuildPlugin } from "@rsbuild/core";
-import path from "path";
-import fs from "fs/promises";
-import { logger } from "@lynx-js/rspeedy";
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { logger } from '@lynx-js/rspeedy';
+import type { RsbuildPlugin } from '@rsbuild/core';
 
 /**
  * Configuration for a Kotlin module to be processed
@@ -16,7 +16,7 @@ type KotlinModuleConfig = {
 /**
  * Hook generation strategy options
  */
-type HookGenerationStrategy = "direct" | "function-wrapper";
+type HookGenerationStrategy = 'direct' | 'function-wrapper';
 
 /**
  * Plugin configuration options
@@ -34,51 +34,51 @@ export interface KotlinToTSPluginOptions {
  * Maps Kotlin types to TypeScript types
  */
 const kotlinTypeToTS = (kotlinType: string): string => {
-  if (!kotlinType) return "any";
+  if (!kotlinType) return 'any';
 
   // Basic types
   const typeMap: Record<string, string> = {
     // Primitive types
-    String: "string",
-    Boolean: "boolean",
-    Int: "number",
-    Double: "number",
-    Float: "number",
-    Long: "number",
-    Any: "any",
-    Unit: "void",
-    "Array<String>": "string[]",
-    "Array<Int>": "number[]",
-    "Array<Boolean>": "boolean[]",
+    String: 'string',
+    Boolean: 'boolean',
+    Int: 'number',
+    Double: 'number',
+    Float: 'number',
+    Long: 'number',
+    Any: 'any',
+    Unit: 'void',
+    'Array<String>': 'string[]',
+    'Array<Int>': 'number[]',
+    'Array<Boolean>': 'boolean[]',
     // Binary types
-    ByteArray: "ArrayBuffer",
+    ByteArray: 'ArrayBuffer',
 
     // Lynx bridge types
-    ReadableMap: "Record<string, any>",
-    ReadableArray: "Array<any>",
-    Callback: "<T>() => T",
-    Promise: "Promise<any>", // This is handled specially in parameter parsing
+    ReadableMap: 'Record<string, any>',
+    ReadableArray: 'Array<any>',
+    Callback: '<T>() => T',
+    Promise: 'Promise<any>', // This is handled specially in parameter parsing
   };
 
   // Handle nullable types not explicitly defined
-  if (kotlinType.endsWith("?") && !typeMap[kotlinType]) {
+  if (kotlinType.endsWith('?') && !typeMap[kotlinType]) {
     const baseType = kotlinType.slice(0, -1);
     return `${kotlinTypeToTS(baseType)} | null`;
   }
 
   // Handle Array types explicitly (often used in Kotlin)
-  if (kotlinType.startsWith("Array<") && kotlinType.endsWith(">")) {
+  if (kotlinType.startsWith('Array<') && kotlinType.endsWith('>')) {
     const genericPart = kotlinType.substring(
-      "Array<".length,
+      'Array<'.length,
       kotlinType.length - 1,
     );
     return `${kotlinTypeToTS(genericPart)}[]`;
   }
 
   // Handle TypedReadableMap types
-  if (kotlinType.startsWith("TypedReadableMap<") && kotlinType.endsWith(">")) {
+  if (kotlinType.startsWith('TypedReadableMap<') && kotlinType.endsWith('>')) {
     const genericPart = kotlinType.substring(
-      "TypedReadableMap<".length,
+      'TypedReadableMap<'.length,
       kotlinType.length - 1,
     );
     return extractTypedReadableMapType(genericPart);
@@ -86,58 +86,58 @@ const kotlinTypeToTS = (kotlinType: string): string => {
 
   // Handle TypedReadableArray types
   if (
-    kotlinType.startsWith("TypedReadableArray<") &&
-    kotlinType.endsWith(">")
+    kotlinType.startsWith('TypedReadableArray<') &&
+    kotlinType.endsWith('>')
   ) {
     const genericPart = kotlinType.substring(
-      "TypedReadableArray<".length,
+      'TypedReadableArray<'.length,
       kotlinType.length - 1,
     );
     return `Array<${kotlinTypeToTS(genericPart)}>`;
   }
 
   // Handle Promise types for return values
-  if (kotlinType.startsWith("Promise<") && kotlinType.endsWith(">")) {
+  if (kotlinType.startsWith('Promise<') && kotlinType.endsWith('>')) {
     const genericPart = kotlinType.substring(
-      "Promise<".length,
+      'Promise<'.length,
       kotlinType.length - 1,
     );
     return `Promise<${kotlinTypeToTS(genericPart)}>`;
   }
 
   // Handle generic types
-  if (kotlinType.includes("<") && kotlinType.includes(">")) {
-    const baseType = kotlinType.substring(0, kotlinType.indexOf("<"));
+  if (kotlinType.includes('<') && kotlinType.includes('>')) {
+    const baseType = kotlinType.substring(0, kotlinType.indexOf('<'));
     const genericPart = kotlinType.substring(
-      kotlinType.indexOf("<") + 1,
-      kotlinType.lastIndexOf(">"),
+      kotlinType.indexOf('<') + 1,
+      kotlinType.lastIndexOf('>'),
     );
 
     // Handle List types
-    if (baseType === "List") {
-      if (genericPart === "*") {
-        return "any[]";
+    if (baseType === 'List') {
+      if (genericPart === '*') {
+        return 'any[]';
       }
       return `${kotlinTypeToTS(genericPart)}[]`;
     }
 
     // Handle Map types
-    if (baseType === "Map") {
-      const keyValuePairs = genericPart.split(",").map((s) => s.trim());
+    if (baseType === 'Map') {
+      const keyValuePairs = genericPart.split(',').map((s) => s.trim());
       if (keyValuePairs.length === 2) {
         const [keyType, valueType] = keyValuePairs;
-        if (keyType === "*" && valueType === "*") {
-          return "Record<string, any>";
+        if (keyType === '*' && valueType === '*') {
+          return 'Record<string, any>';
         }
         // For maps, most commonly the key will be String in Kotlin
         const tsKeyType =
-          keyType === "String" ? "string" : kotlinTypeToTS(keyType);
+          keyType === 'String' ? 'string' : kotlinTypeToTS(keyType);
         return `Record<${tsKeyType}, ${kotlinTypeToTS(valueType)}>`;
       }
     }
   }
 
-  return typeMap[kotlinType] || "any";
+  return typeMap[kotlinType] || 'any';
 };
 
 /**
@@ -145,18 +145,18 @@ const kotlinTypeToTS = (kotlinType: string): string => {
  */
 const extractTypedReadableMapType = (typeDefinition: string): string => {
   // If the type definition is simple, just return a Record with that type
-  if (!typeDefinition.includes(",")) {
+  if (!typeDefinition.includes(',')) {
     return `Record<string, ${kotlinTypeToTS(typeDefinition)}>`;
   }
 
   // For complex typed maps, generate an interface-like object
-  const propertyPairs = typeDefinition.split(",").map((pair) => pair.trim());
+  const propertyPairs = typeDefinition.split(',').map((pair) => pair.trim());
   const properties = propertyPairs.map((pair) => {
-    const [key, valueType] = pair.split(":").map((p) => p.trim());
+    const [key, valueType] = pair.split(':').map((p) => p.trim());
     return `${key}: ${kotlinTypeToTS(valueType)}`;
   });
 
-  return `{ ${properties.join("; ")} }`;
+  return `{ ${properties.join('; ')} }`;
 };
 
 /**
@@ -171,16 +171,16 @@ const parseFunctionParams = (
   promiseType: string;
 } => {
   if (!paramString.trim()) {
-    return { params: [], hasPromiseParam: false, promiseType: "any" };
+    return { params: [], hasPromiseParam: false, promiseType: 'any' };
   }
 
-  const params = paramString.split(",").map((param) => {
+  const params = paramString.split(',').map((param) => {
     const parts = param
       .trim()
-      .split(":")
+      .split(':')
       .map((p) => p.trim());
     const name = parts[0];
-    const kotlinType = parts.length > 1 ? parts[1] : "Any";
+    const kotlinType = parts.length > 1 ? parts[1] : 'Any';
     return {
       name,
       type: kotlinTypeToTS(kotlinType),
@@ -190,20 +190,20 @@ const parseFunctionParams = (
 
   // Check if the last parameter is a Promise
   const hasPromiseParam =
-    (params.length > 0 && params[params.length - 1].kotlinType === "Promise") ||
-    params[params.length - 1].kotlinType.startsWith("Promise<");
+    (params.length > 0 && params[params.length - 1].kotlinType === 'Promise') ||
+    params[params.length - 1].kotlinType.startsWith('Promise<');
 
-  let promiseType = "any";
+  let promiseType = 'any';
 
   // If the last parameter is a Promise, extract its type information
   if (hasPromiseParam) {
     const lastParam = params[params.length - 1];
     if (
-      lastParam.kotlinType.startsWith("Promise<") &&
-      lastParam.kotlinType.endsWith(">")
+      lastParam.kotlinType.startsWith('Promise<') &&
+      lastParam.kotlinType.endsWith('>')
     ) {
       const genericPart = lastParam.kotlinType.substring(
-        "Promise<".length,
+        'Promise<'.length,
         lastParam.kotlinType.length - 1,
       );
       promiseType = kotlinTypeToTS(genericPart);
@@ -227,15 +227,15 @@ const codeGenerateHooks = (
   isPromise: boolean,
 ): string => {
   const pascalCaseName = methodName[0].toUpperCase() + methodName.slice(1);
-  const paramsSignature = params.map((p) => `${p.name}: ${p.type}`).join(", ");
-  const paramsCall = params.map((p) => p.name).join(", ");
+  const paramsSignature = params.map((p) => `${p.name}: ${p.type}`).join(', ');
+  const paramsCall = params.map((p) => p.name).join(', ');
 
   // Function implementation for getting data
   const getterFunction = `export const get${pascalCaseName} = (${paramsSignature}): ${returnType} =>
-  NativeModules.${nativeModuleName}.${methodName}(${paramsCall});`;
+  NativeModules.${nativeModuleName}?.${methodName}(${paramsCall});`;
 
   // Different hook implementations based on strategy
-  if (strategy === "direct") {
+  if (strategy === 'direct') {
     // Direct strategy: hook calls the function and returns value
     if (isPromise) {
       return `
@@ -270,7 +270,7 @@ export const use${pascalCaseName} = (${paramsSignature}) => {
 
     fetchData();
     return () => { isMounted = false; };
-  }, [${params.map((p) => p.name).join(", ")}]);
+  }, [${params.map((p) => p.name).join(', ')}]);
 
   return { value, loading, error };
 };`.trim();
@@ -288,7 +288,7 @@ export const use${pascalCaseName} = (${paramsSignature}) => {
     };
 
     fetchData();
-  }, [${params.map((p) => p.name).join(", ")}]);
+  }, [${params.map((p) => p.name).join(', ')}]);
 
   return value;
 };`.trim();
@@ -350,7 +350,7 @@ const extractTypedDeclarations = (
 
   // Look for TypedReadableMap declarations
   const typedMapRegex = /typealias\s+(\w+)\s*=\s*TypedReadableMap<([^>]+)>/g;
-  let match;
+  let match: RegExpExecArray | null;
 
   while ((match = typedMapRegex.exec(kotlinCode)) !== null) {
     const [_, typeName, typeDefinition] = match;
@@ -382,14 +382,14 @@ const extractEnumDeclarations = (
 
   // Match enum class declarations
   const enumRegex = /enum\s+class\s+(\w+)(?:\([^)]*\))?\s*\{([^}]+)\}/g;
-  let match;
+  let match: RegExpExecArray | null;
 
   while ((match = enumRegex.exec(kotlinCode)) !== null) {
     const [_, enumName, enumValues] = match;
 
     // Extract individual enum values
     const valuesRegex = /(\w+)(?:\(([^)]*)\))?/g;
-    let valueMatch;
+    let valueMatch: RegExpExecArray | null;
     const valuesList: string[] = [];
 
     while ((valueMatch = valuesRegex.exec(enumValues)) !== null) {
@@ -399,7 +399,7 @@ const extractEnumDeclarations = (
     // Generate TypeScript union type or enum
     if (valuesList.length > 0) {
       enumDeclarations[enumName] = `export enum ${enumName} {
-  ${valuesList.join(",\n  ")}
+  ${valuesList.join(',\n  ')}
 }`;
     }
   }
@@ -413,45 +413,45 @@ const extractEnumDeclarations = (
 const inferReturnType = (expression: string): string => {
   // Common patterns to infer return types from expressions
   if (
-    expression.includes("getString") ||
-    expression.includes(".BRAND") ||
-    expression.includes(".MODEL") ||
-    expression.includes(".DEVICE") ||
-    expression.includes(".MANUFACTURER")
+    expression.includes('getString') ||
+    expression.includes('.BRAND') ||
+    expression.includes('.MODEL') ||
+    expression.includes('.DEVICE') ||
+    expression.includes('.MANUFACTURER')
   ) {
-    return "String";
+    return 'String';
   }
 
-  if (expression.includes(".isRunningOnEmulator")) {
-    return "Boolean";
+  if (expression.includes('.isRunningOnEmulator')) {
+    return 'Boolean';
   }
 
-  if (expression.includes("memoryInfo.totalMem")) {
-    return "Long";
+  if (expression.includes('memoryInfo.totalMem')) {
+    return 'Long';
   }
 
-  if (expression.includes(".JSValue")) {
-    return "Int";
+  if (expression.includes('.JSValue')) {
+    return 'Int';
   }
 
-  if (expression.includes("YearClass")) {
-    return "Int";
+  if (expression.includes('YearClass')) {
+    return 'Int';
   }
 
-  if (expression.includes("Build.VERSION")) {
-    return "String";
+  if (expression.includes('Build.VERSION')) {
+    return 'String';
   }
 
-  if (expression.includes("Settings.Secure")) {
-    return "String";
+  if (expression.includes('Settings.Secure')) {
+    return 'String';
   }
 
-  if (expression.includes("Build.SUPPORTED_ABIS")) {
-    return "Array<String>";
+  if (expression.includes('Build.SUPPORTED_ABIS')) {
+    return 'Array<String>';
   }
 
   // Default to Any if we can't infer
-  return "Any";
+  return 'Any';
 };
 
 /**
@@ -461,18 +461,18 @@ export const pluginKotlinToTS = (
   options: KotlinToTSPluginOptions,
 ): RsbuildPlugin => {
   // Set default options
-  const { modules, generateHooks = true, hookStrategy = "direct" } = options;
+  const { modules, generateHooks = true, hookStrategy = 'direct' } = options;
 
   return {
-    name: "lynxpo:kotlin-to-ts",
+    name: 'lynxpo:kotlin-to-ts',
     setup(api) {
       api.onBeforeBuild(async (_) => {
         await Promise.all(
           modules.map(async ({ kotlinPath, tsPath }) => {
             try {
               const basename = path.basename(kotlinPath);
-              const nativeModuleName = basename.replace(".kt", "");
-              const kotlinCode = await fs.readFile(kotlinPath, "utf-8");
+              const nativeModuleName = basename.replace('.kt', '');
+              const kotlinCode = await fs.readFile(kotlinPath, 'utf-8');
 
               // Extract type aliases and enums
               const typedDeclarations = extractTypedDeclarations(kotlinCode);
@@ -488,7 +488,7 @@ export const pluginKotlinToTS = (
               const hooks: string[] = [];
               const typeInterfaces: string[] = [];
               const processedTypes = new Set<string>();
-              let match;
+              let match: RegExpExecArray | null;
 
               // Add TypedReadableMap and TypedReadableArray interfaces
               Object.entries(typedDeclarations).forEach(
@@ -506,12 +506,12 @@ export const pluginKotlinToTS = (
               });
 
               while ((match = methodRegex.exec(kotlinCode)) !== null) {
-                const lineStart = kotlinCode.lastIndexOf("\n", match.index) + 1;
-                const lineEnd = kotlinCode.indexOf("\n", match.index);
+                const lineStart = kotlinCode.lastIndexOf('\n', match.index) + 1;
+                const lineEnd = kotlinCode.indexOf('\n', match.index);
                 const line = kotlinCode.slice(lineStart, lineEnd);
 
                 // Skip commented lines
-                if (!line.trim().startsWith("//")) {
+                if (!line.trim().startsWith('//')) {
                   const [_, methodName, paramString, expression, returnType] =
                     match;
 
@@ -522,7 +522,7 @@ export const pluginKotlinToTS = (
                   } else if (expression) {
                     finalReturnType = inferReturnType(expression.trim());
                   } else {
-                    finalReturnType = "Any";
+                    finalReturnType = 'Any';
                   }
 
                   // Parse parameters, handling Promise specially
@@ -545,13 +545,12 @@ export const pluginKotlinToTS = (
                   // Generate parameter interfaces for complex types
                   params.forEach((param) => {
                     if (
-                      param.kotlinType &&
-                      param.kotlinType.startsWith("TypedReadableMap<") &&
-                      !param.kotlinType.includes(",")
+                      param.kotlinType?.startsWith('TypedReadableMap<') &&
+                      !param.kotlinType.includes(',')
                     ) {
                       const paramTypeName = `${pascalCase(methodName)}${pascalCase(param.name)}Type`;
                       const genericPart = param.kotlinType.substring(
-                        "TypedReadableMap<".length,
+                        'TypedReadableMap<'.length,
                         param.kotlinType.length - 1,
                       );
 
@@ -570,7 +569,7 @@ export const pluginKotlinToTS = (
                   // Generate method signature with parameters
                   const paramsSignature = params
                     .map((p) => `${p.name}: ${p.type}`)
-                    .join(", ");
+                    .join(', ');
                   methods.push(
                     `${methodName}(${paramsSignature}): ${tsReturnType};`,
                   );
@@ -593,22 +592,22 @@ export const pluginKotlinToTS = (
 
               // Generate TypeScript content
               const imports = [
-                "useEffect",
-                "useState",
-                ...(hookStrategy === "function-wrapper" ? ["useCallback"] : []),
-              ].join(", ");
+                'useEffect',
+                'useState',
+                ...(hookStrategy === 'function-wrapper' ? ['useCallback'] : []),
+              ].join(', ');
 
               const tsContent = `// Auto-generated from ${basename}
 import { ${imports} } from "@lynx-js/react";
 import { NativeModules as INativeModules } from "@lynx-js/types";
 
-${typeInterfaces.join("\n\n")}
+${typeInterfaces.join('\n\n')}
 
 export interface ${nativeModuleName} extends INativeModules {
-  ${methods.join("\n  ")}
+  ${methods.join('\n  ')}
 };
 
-${hooks.join("\n\n")}
+${hooks.join('\n\n')}
 `;
 
               await fs.mkdir(path.dirname(tsPath), { recursive: true });
@@ -633,5 +632,5 @@ const pascalCase = (str: string): string => {
   return str
     .split(/[^a-zA-Z0-9]/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join("");
+    .join('');
 };
