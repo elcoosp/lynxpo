@@ -232,7 +232,7 @@ const codeGenerateHooks = (
 
   // Function implementation for getting data
   const getterFunction = `export const get${pascalCaseName} = (${paramsSignature}): ${returnType} =>
-  NativeModules.${nativeModuleName}?.${methodName}(${paramsCall});`;
+  NativeModules.${nativeModuleName}?.${methodName}?.(${paramsCall});`;
 
   // Different hook implementations based on strategy
   if (strategy === 'direct') {
