@@ -117,3 +117,145 @@ text {
   margin: 5px;
   color: rgba(255, 255, 255, 0.65);
 }
+
+/* ===== Showcase ===== */
+.Screen {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.Screen__Inner {
+  width: 100%;
+  max-width: 520rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20rpx;
+}
+
+.Showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.Showcase__Header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 8rpx;
+}
+
+.Showcase__Title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.Showcase__Subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.Showcase__Note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 6rpx;
+  padding: 0 12rpx;
+}
+
+.Showcase__List {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.Card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
+  border-radius: 16rpx;
+  padding: 16rpx 18rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.Card__Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.Card__Icon {
+  font-size: 22px;
+}
+
+.Card__Heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.Card__Title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.Card__Source {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.Card__Body {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.Row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rpx 0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.Row__Label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.Row__Value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  max-width: 60%;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.BatteryBar {
+  height: 10rpx;
+  border-radius: 6rpx;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  margin-top: 4rpx;
+}
+
+.BatteryBar__Fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6448, #12e5e5);
+  border-radius: 6rpx;
+}

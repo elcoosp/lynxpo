@@ -1,11 +1,7 @@
 import { useCallback, useEffect, useState } from '@lynx-js/react';
 
 import './App.css';
-import arrow from './assets/arrow.png';
-import lynxLogo from './assets/lynx-logo.png';
-import reactLynxLogo from './assets/react-logo.png';
-import { useApplicationInfo } from './mods/applicationInfo.js';
-import { useDeviceInfo } from './mods/deviceInfo.js';
+import { ModsShowcase } from './ModsShowcase.js';
 
 /**
  * Dev-only diagnostic: verifies the in-engine "network" Node-API addon is
@@ -37,29 +33,12 @@ function AddonCheck() {
     }
   }, []);
 
-  return <text className="Description">{addonResult}</text>;
+  return <text className="Hint">{addonResult}</text>;
 }
 
 export function App() {
-  const [alterLogo, setAlterLogo] = useState(false);
-
-  useEffect(() => {
-    console.info('Hello, ReactLynx');
-  }, []);
-
   const onTap = useCallback(() => {
     'background only';
-    setAlterLogo(!alterLogo);
-  }, [alterLogo]);
-
-  const { info, loading, error } = useDeviceInfo();
-  const {
-    info: appInfo,
-    loading: appLoading,
-    error: appError,
-  } = useApplicationInfo();
-
-  const requestPermission = () => {
     const permModule = NativeModules.NativePermissionsModule;
     if (!permModule) {
       console.warn(
@@ -76,43 +55,13 @@ export function App() {
       'demo request',
     );
     permModule.requestLocationPermission();
-  };
+  }, []);
 
   return (
-    <view>
-      <view className="Background" />
-      <view className="App">
-        <view className="Banner">
-          <view className="Logo" bindtap={requestPermission}>
-            {alterLogo ? (
-              <image src={reactLynxLogo} className="Logo--react" />
-            ) : (
-              <image src={lynxLogo} className="Logo--lynx" />
-            )}
-          </view>
-          <text className="Title">React</text>
-          <text className="Subtitle">on Lynx</text>
-        </view>
-        <view className="Content">
-          <image src={arrow} className="Arrow" />
-
-          <text className="Description">
-            {loading
-              ? 'Loading device info…'
-              : error
-                ? `Device info error: ${error.message}`
-                : JSON.stringify(info, null, 2)}
-          </text>
-          <text className="Description">
-            {appLoading
-              ? 'Loading application info…'
-              : appError
-                ? `Application info error: ${appError.message}`
-                : JSON.stringify(appInfo, null, 2)}
-          </text>
-          {import.meta.env.DEV ? <AddonCheck /> : null}
-        </view>
-        <view style={{ flex: 1 }}></view>
+    <view className="Screen" bindtap={onTap}>
+      <view className="Screen__Inner">
+        <ModsShowcase />
+        {import.meta.env.DEV ? <AddonCheck /> : null}
       </view>
     </view>
   );
