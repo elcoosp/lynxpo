@@ -1,9 +1,12 @@
 {
-  "name": "@lynxpo/mods-device",
+  "name": "@lynxpo/tools-dx",
   "author": "elcoosp <elcoosp@gmail.com>",
   "version": "0.0.0",
   "type": "module",
-  "description": "Device native module for Lynx",
+  "description": "Unified local dev experience (dx) for lynxpo: perms, types, build, inject, ios, android, doctor",
+  "bin": {
+    "lynxpo": "./dist/index.js"
+  },
   "main": "./dist/cjs/index.cjs",
   "exports": {
     ".": {
@@ -15,28 +18,26 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "android",
-    "ios"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "postinstall": "node -e \"const p=require('path');const r=process.env.INIT_CWD||process.cwd();process.chdir(r);require('child_process').execFileSync(process.execPath,[p.resolve(r,'packages/tools/nmi/dist/cjs/index.cjs')],{stdio:'inherit'})\"",
     "build": "rslib build",
     "dev": "rslib build --watch",
     "check": "biome check --write",
-    "fmt": "biome format --write"
+    "fmt": "biome format --write",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@lynx-js/react": "^0.123.0",
-    "@lynx-js/types": "^3.2.0"
+    "commander": "^12.1.0"
   },
   "devDependencies": {
-    "@lynxpo/tools-nmi": "workspace:*",
-    "@lynxpo/plugins-ktts": "workspace:*",
     "@elcoosp-configs/rslib": "2.1",
-    "@rslib/core": "^0.23.0"
+    "@rslib/core": "^0.23.0",
+    "@types/node": "^24.0.0",
+    "typescript": "~5.8.3",
+    "vitest": "^2.1.0"
   }
 }

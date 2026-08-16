@@ -14,7 +14,8 @@
     "fmt": "turbo run fmt",
     "test": "turbo run test",
     "test:cov": "turbo run test:cov",
-    "test:watch": "turbo run test:watch"
+    "test:watch": "turbo run test:watch",
+    "dx": "node packages/tools/dx/dist/index.js"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",

@@ -175,7 +175,7 @@ export function installNativeModules(config: ModuleInstallerConfig = {}): void {
   // Determine if we're being called from a monorepo or standalone project.
   // Prefer an explicit config flag; otherwise fall back to a heuristic on
   // INIT_CWD (presence of a "packages/" segment in a pnpm-style workspace).
-  const initCwd = process.env.INIT_CWD as string;
+  const initCwd = (process.env.INIT_CWD as string) ?? process.cwd();
   const isMonorepo = config.monorepo ?? initCwd.includes('packages/');
   // Find the workspace root (if in monorepo)
   const workspaceRoot = isMonorepo ? findWorkspaceRoot(initCwd) : initCwd;

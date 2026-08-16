@@ -12,22 +12,22 @@ export enum DeviceType {
 
 export interface DeviceModule extends INativeModules {
   isDevice(): any;
-  brand(): string;
-  manufacturer(): string;
-  modelName(): string;
-  designName(): string;
+  brand(): any;
+  manufacturer(): any;
+  modelName(): any;
+  designName(): any;
   productName(): any;
-  deviceYearClass(): number;
+  deviceYearClass(): any;
   totalMemory(): any;
   deviceType(): any;
-  supportedCpuArchitectures(): string[];
+  supportedCpuArchitectures(): any;
   osName(): any;
-  osVersion(): string;
+  osVersion(): any;
   osBuildId(): any;
   osInternalBuildId(): any;
   osBuildFingerprint(): any;
-  platformApiLevel(): string;
-  deviceName(): string;
+  platformApiLevel(): any;
+  deviceName(): any;
 };
 
 export const getIsDevice = (): any =>
@@ -48,11 +48,11 @@ export const useIsDevice = () => {
   return value;
 };
 
-export const getBrand = (): string =>
+export const getBrand = (): any =>
   NativeModules.DeviceModule?.brand?.();
 
 export const useBrand = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -66,11 +66,11 @@ export const useBrand = () => {
   return value;
 };
 
-export const getManufacturer = (): string =>
+export const getManufacturer = (): any =>
   NativeModules.DeviceModule?.manufacturer?.();
 
 export const useManufacturer = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -84,11 +84,11 @@ export const useManufacturer = () => {
   return value;
 };
 
-export const getModelName = (): string =>
+export const getModelName = (): any =>
   NativeModules.DeviceModule?.modelName?.();
 
 export const useModelName = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -102,11 +102,11 @@ export const useModelName = () => {
   return value;
 };
 
-export const getDesignName = (): string =>
+export const getDesignName = (): any =>
   NativeModules.DeviceModule?.designName?.();
 
 export const useDesignName = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -138,11 +138,11 @@ export const useProductName = () => {
   return value;
 };
 
-export const getDeviceYearClass = (): number =>
+export const getDeviceYearClass = (): any =>
   NativeModules.DeviceModule?.deviceYearClass?.();
 
 export const useDeviceYearClass = () => {
-  const [value, setValue] = useState<number>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -192,11 +192,11 @@ export const useDeviceType = () => {
   return value;
 };
 
-export const getSupportedCpuArchitectures = (): string[] =>
+export const getSupportedCpuArchitectures = (): any =>
   NativeModules.DeviceModule?.supportedCpuArchitectures?.();
 
 export const useSupportedCpuArchitectures = () => {
-  const [value, setValue] = useState<string[]>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -228,11 +228,11 @@ export const useOsName = () => {
   return value;
 };
 
-export const getOsVersion = (): string =>
+export const getOsVersion = (): any =>
   NativeModules.DeviceModule?.osVersion?.();
 
 export const useOsVersion = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -300,11 +300,11 @@ export const useOsBuildFingerprint = () => {
   return value;
 };
 
-export const getPlatformApiLevel = (): string =>
+export const getPlatformApiLevel = (): any =>
   NativeModules.DeviceModule?.platformApiLevel?.();
 
 export const usePlatformApiLevel = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -318,11 +318,11 @@ export const usePlatformApiLevel = () => {
   return value;
 };
 
-export const getDeviceName = (): string =>
+export const getDeviceName = (): any =>
   NativeModules.DeviceModule?.deviceName?.();
 
 export const useDeviceName = () => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<any>();
 
   useEffect(() => {
     const fetchData = () => {

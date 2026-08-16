@@ -2,8 +2,20 @@
   "name": "@lynxpo/tools-aps",
   "version": "1.0.0",
   "description": "Andoird/apple permissions scrapper",
-  "main": "index.js",
-  "scripts": {},
+  "main": "./dist/cjs/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.cjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "check": "biome check --write",
+    "fmt": "biome format --write"
+  },
   "keywords": [],
   "author": "",
   "dependencies": {

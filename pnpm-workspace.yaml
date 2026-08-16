@@ -5,6 +5,9 @@ packages:
   - "packages/plugins/ktts"
   - "packages/plugins/style-dict-rsbuild-plugin"
 
+allowBuilds:
+  esbuild: true
+
 onlyBuiltDependencies:
   - "@biomejs/biome"
   - "@swc/core"
