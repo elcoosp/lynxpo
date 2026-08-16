@@ -1,8 +1,18 @@
 import { useCallback, useState } from '@lynx-js/react';
 import { useApplicationInfo } from './mods/applicationInfo.js';
 import { batteryStateLabel, useBatteryInfo } from './mods/batteryInfo.js';
+import { useBrightnessInfo } from './mods/brightnessInfo.js';
+import { useCellularInfo } from './mods/cellularInfo.js';
+import { useClipboardInfo } from './mods/clipboardInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
+import { useHapticsInfo } from './mods/hapticsInfo.js';
+import { useImagePickerInfo } from './mods/imagePickerInfo.js';
+import { useKeepAwakeInfo } from './mods/keepAwakeInfo.js';
 import { useLocalizationInfo } from './mods/localizationInfo.js';
+import { useMailComposerInfo } from './mods/mailComposerInfo.js';
+import { useNetworkInfo } from './mods/networkInfo.js';
+import { useScreenOrientationInfo } from './mods/screenOrientationInfo.js';
+import { useStoreReviewInfo } from './mods/storeReviewInfo.js';
 
 interface Row {
   label: string;
@@ -47,6 +57,18 @@ export function ModsShowcase() {
   const { info: battery, error: batteryError } = useBatteryInfo();
   const { info: localization, error: localizationError } =
     useLocalizationInfo();
+  const { rows: brightnessRows, error: brightnessErr } = useBrightnessInfo();
+  const { rows: cellularRows, error: cellularErr } = useCellularInfo();
+  const { rows: hapticsRows, error: hapticsErr } = useHapticsInfo();
+  const { rows: keepAwakeRows, error: keepAwakeErr } = useKeepAwakeInfo();
+  const { rows: storeReviewRows, error: storeReviewErr } = useStoreReviewInfo();
+  const { rows: mailComposerRows, error: mailComposerErr } =
+    useMailComposerInfo();
+  const { rows: networkRows, error: networkErr } = useNetworkInfo();
+  const { rows: screenOrientationRows, error: screenOrientationErr } =
+    useScreenOrientationInfo();
+  const { rows: clipboardRows, error: clipboardErr } = useClipboardInfo();
+  const { rows: imagePickerRows, error: imagePickerErr } = useImagePickerInfo();
   const [alterLogo, setAlterLogo] = useState(false);
 
   const onTap = useCallback(() => {
@@ -182,6 +204,106 @@ export function ModsShowcase() {
             localizationError
               ? [{ label: 'Error', value: localizationError.message }]
               : localizationRows
+          }
+        />
+        <ModuleCard
+          title="Brightness"
+          source="expo-brightness"
+          icon="💡"
+          rows={
+            brightnessErr
+              ? [{ label: 'Error', value: brightnessErr.message }]
+              : brightnessRows
+          }
+        />
+        <ModuleCard
+          title="Cellular"
+          source="expo-cellular"
+          icon="📶"
+          rows={
+            cellularErr
+              ? [{ label: 'Error', value: cellularErr.message }]
+              : cellularRows
+          }
+        />
+        <ModuleCard
+          title="Haptics"
+          source="expo-haptics"
+          icon="🔔"
+          rows={
+            hapticsErr
+              ? [{ label: 'Error', value: hapticsErr.message }]
+              : hapticsRows
+          }
+        />
+        <ModuleCard
+          title="Keep Awake"
+          source="expo-keep-awake"
+          icon="👁️"
+          rows={
+            keepAwakeErr
+              ? [{ label: 'Error', value: keepAwakeErr.message }]
+              : keepAwakeRows
+          }
+        />
+        <ModuleCard
+          title="Store Review"
+          source="expo-store-review"
+          icon="⭐"
+          rows={
+            storeReviewErr
+              ? [{ label: 'Error', value: storeReviewErr.message }]
+              : storeReviewRows
+          }
+        />
+        <ModuleCard
+          title="Mail Composer"
+          source="expo-mail-composer"
+          icon="✉️"
+          rows={
+            mailComposerErr
+              ? [{ label: 'Error', value: mailComposerErr.message }]
+              : mailComposerRows
+          }
+        />
+        <ModuleCard
+          title="Network"
+          source="expo-network"
+          icon="🌍"
+          rows={
+            networkErr
+              ? [{ label: 'Error', value: networkErr.message }]
+              : networkRows
+          }
+        />
+        <ModuleCard
+          title="Screen Orientation"
+          source="expo-screen-orientation"
+          icon="🔄"
+          rows={
+            screenOrientationErr
+              ? [{ label: 'Error', value: screenOrientationErr.message }]
+              : screenOrientationRows
+          }
+        />
+        <ModuleCard
+          title="Clipboard"
+          source="expo-clipboard"
+          icon="📋"
+          rows={
+            clipboardErr
+              ? [{ label: 'Error', value: clipboardErr.message }]
+              : clipboardRows
+          }
+        />
+        <ModuleCard
+          title="Image Picker"
+          source="expo-image-picker"
+          icon="🖼️"
+          rows={
+            imagePickerErr
+              ? [{ label: 'Error', value: imagePickerErr.message }]
+              : imagePickerRows
           }
         />
         {batteryLevelPct !== null && (
