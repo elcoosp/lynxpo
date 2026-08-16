@@ -1,0 +1,19 @@
+{
+  "permissions": [
+    {
+      "name": "ACCESS_BLOBS_ACROSS_USERS",
+      "description": "Allows an app to access blobs across different users on the device.",
+      "deprecated": false,
+      "replacement": null,
+      "protectionLevel": ["signature"],
+      "minSdk": 30,
+      "maxSdk": null,
+      "required": {
+        "autoInject": true,
+        "conditions": []
+      },
+      "categories": ["storage"],
+      "constantValue": "android.permission.ACCESS_BLOBS_ACROSS_USERS"
+    }
+  ]
+}

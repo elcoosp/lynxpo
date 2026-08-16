@@ -1,0 +1,22 @@
+# Local
+.DS_Store
+*.local
+*.log*
+
+# Dist
+node_modules
+dist/
+# Lynx explorer
+out
+buildtools
+third_party
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Vendored Lynx engine (nested git repo) + GN build tree (embedded git repo)
+src/lynx
+src/build
+venv
+*.tmp
