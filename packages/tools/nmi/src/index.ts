@@ -16,6 +16,8 @@ interface ProjectConfig {
 }
 
 interface ModuleInstallerConfig {
+  /** Force monorepo vs standalone detection. When omitted, auto-detected. */
+  monorepo?: boolean;
   projectType?: 'explorer' | 'user-app';
   androidConfig?: {
     moduleSource?: string;
@@ -170,9 +172,11 @@ function findFiles(
  * Main function to discover and install all native modules
  */
 export function installNativeModules(config: ModuleInstallerConfig = {}): void {
-  // Determine if we're being called from a monorepo or standalone project
+  // Determine if we're being called from a monorepo or standalone project.
+  // Prefer an explicit config flag; otherwise fall back to a heuristic on
+  // INIT_CWD (presence of a "packages/" segment in a pnpm-style workspace).
   const initCwd = process.env.INIT_CWD as string;
-  const isMonorepo = initCwd.includes('packages/');
+  const isMonorepo = config.monorepo ?? initCwd.includes('packages/');
   // Find the workspace root (if in monorepo)
   const workspaceRoot = isMonorepo ? findWorkspaceRoot(initCwd) : initCwd;
 
@@ -276,6 +280,7 @@ export function installNativeModules(config: ModuleInstallerConfig = {}): void {
     );
 
     if (androidModules.length > 0) {
+      let androidDirReady = true;
       if (!fs.existsSync(androidModulesDir)) {
         // Create modules directory if it doesn't exist
         try {
@@ -283,36 +288,47 @@ export function installNativeModules(config: ModuleInstallerConfig = {}): void {
           console.log(
             `Created Android modules directory: ${androidModulesDir}`,
           );
-        } catch {
+        } catch (error) {
           console.error(
-            `Failed to create Android modules directory: ${androidModulesDir}`,
+            `Failed to create Android modules directory: ${androidModulesDir}: ${
+              error instanceof Error ? error.message : String(error)
+            }`,
           );
-          console.error('Available directories in workspace root:');
-          fs.readdirSync(workspaceRoot).forEach((dir) => {
-            console.error(`- ${dir}`);
-          });
+          androidDirReady = false;
         }
       }
 
-      console.log(`Android modules will be installed to: ${androidModulesDir}`);
-
-      if (projectConfig.type === 'explorer') {
-        installAndroidModules(androidModules, defaultConfig, workspaceRoot);
+      if (!androidDirReady) {
+        console.error(
+          'Skipping Android module installation (target directory unavailable).',
+        );
       } else {
-        installUserAppAndroidModules(
-          androidModules,
-          defaultConfig,
-          workspaceRoot,
+        console.log(
+          `Android modules will be installed to: ${androidModulesDir}`,
         );
-      }
 
-      // Process build.gradle if it exists
-      if (hasBuildGradle) {
-        const targetBuildGradlePath = path.resolve(
-          workspaceRoot,
-          defaultConfig.androidConfig?.buildGradlePath as string,
-        );
-        processBuildGradle(buildGradlePath, targetBuildGradlePath, packageName);
+        if (projectConfig.type === 'explorer') {
+          installAndroidModules(androidModules, defaultConfig, workspaceRoot);
+        } else {
+          installUserAppAndroidModules(
+            androidModules,
+            defaultConfig,
+            workspaceRoot,
+          );
+        }
+
+        // Process build.gradle if it exists
+        if (hasBuildGradle) {
+          const targetBuildGradlePath = path.resolve(
+            workspaceRoot,
+            defaultConfig.androidConfig?.buildGradlePath as string,
+          );
+          processBuildGradle(
+            buildGradlePath,
+            targetBuildGradlePath,
+            packageName,
+          );
+        }
       }
     }
   } catch (error) {
@@ -430,6 +446,10 @@ function processBuildGradle(
     console.log(`Processing build.gradle from ${sourcePath}`);
     console.log(`Target build.gradle: ${targetPath}`);
 
+    // Back up the target before mutating it, so we can roll back on failure.
+    const backupPath = `${targetPath}.nmi.bak`;
+    fs.copyFileSync(targetPath, backupPath);
+
     // Copy the module build.gradle to a location in the explorer project
     const moduleGradleFileName = `${packageName.replace(/[@/]/g, '_')}_module.gradle`;
     const relativeModulePath = path.relative(
@@ -451,6 +471,7 @@ function processBuildGradle(
       console.log(
         `Module build.gradle is already applied in the target build.gradle`,
       );
+      fs.rmSync(backupPath, { force: true });
       return;
     }
 
@@ -482,7 +503,15 @@ function processBuildGradle(
     console.log(
       `Updated ${targetPath} to apply module build.gradle configuration`,
     );
+    fs.rmSync(backupPath, { force: true });
   } catch (error) {
+    // Roll back the target build.gradle from the backup if we mutated it.
+    const backupPath = `${targetPath}.nmi.bak`;
+    if (fs.existsSync(backupPath)) {
+      fs.copyFileSync(backupPath, targetPath);
+      fs.rmSync(backupPath, { force: true });
+      console.error(`Rolled back ${targetPath} from backup after failure.`);
+    }
     const e = error as { message: string };
     console.error(`Error processing build.gradle: ${e.message}`);
   }

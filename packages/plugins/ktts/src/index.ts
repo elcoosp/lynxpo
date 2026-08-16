@@ -60,8 +60,10 @@ const kotlinTypeToTS = (kotlinType: string): string => {
     Promise: 'Promise<any>', // This is handled specially in parameter parsing
   };
 
-  // Handle nullable types not explicitly defined
-  if (kotlinType.endsWith('?') && !typeMap[kotlinType]) {
+  // Handle nullable types (suffix `?`). Strip the `?` and recurse, then union
+  // with `null`. Note: `Array<String>?` ends in `>`, so it is handled by the
+  // Array branch above and never reaches here.
+  if (kotlinType.endsWith('?')) {
     const baseType = kotlinType.slice(0, -1);
     return `${kotlinTypeToTS(baseType)} | null`;
   }
@@ -408,49 +410,12 @@ const extractEnumDeclarations = (
 };
 
 /**
- * Infer the return type of a single-expression Kotlin function
+ * Fallback return-type inference when a Kotlin method declares no explicit
+ * `: Type`. We deliberately do NOT guess from the function body (e.g. scanning
+ * for `.BRAND`): that produced wrong, silently-`any` types. Prefer the explicit
+ * annotation; otherwise fall back to `Any` and let the caller surface it.
  */
-const inferReturnType = (expression: string): string => {
-  // Common patterns to infer return types from expressions
-  if (
-    expression.includes('getString') ||
-    expression.includes('.BRAND') ||
-    expression.includes('.MODEL') ||
-    expression.includes('.DEVICE') ||
-    expression.includes('.MANUFACTURER')
-  ) {
-    return 'String';
-  }
-
-  if (expression.includes('.isRunningOnEmulator')) {
-    return 'Boolean';
-  }
-
-  if (expression.includes('memoryInfo.totalMem')) {
-    return 'Long';
-  }
-
-  if (expression.includes('.JSValue')) {
-    return 'Int';
-  }
-
-  if (expression.includes('YearClass')) {
-    return 'Int';
-  }
-
-  if (expression.includes('Build.VERSION')) {
-    return 'String';
-  }
-
-  if (expression.includes('Settings.Secure')) {
-    return 'String';
-  }
-
-  if (expression.includes('Build.SUPPORTED_ABIS')) {
-    return 'Array<String>';
-  }
-
-  // Default to Any if we can't infer
+const inferReturnType = (_expression: string): string => {
   return 'Any';
 };
 
