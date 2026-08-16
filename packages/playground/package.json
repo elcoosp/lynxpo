@@ -14,6 +14,7 @@
     "@lynxpo/mods-application": "workspace:*",
     "@lynxpo/mods-battery": "workspace:*",
     "@lynxpo/mods-device": "workspace:*",
+    "@lynxpo/mods-localization": "workspace:*",
     "@rsbuild/core": "2.1.10",
     "glob": "^13.0.0",
     "unplugin-ast": "^0.15.0"

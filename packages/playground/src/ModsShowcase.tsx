@@ -2,6 +2,7 @@ import { useCallback, useState } from '@lynx-js/react';
 import { useApplicationInfo } from './mods/applicationInfo.js';
 import { batteryStateLabel, useBatteryInfo } from './mods/batteryInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
+import { useLocalizationInfo } from './mods/localizationInfo.js';
 
 interface Row {
   label: string;
@@ -44,6 +45,8 @@ export function ModsShowcase() {
   const { info: device, error: deviceError } = useDeviceInfo();
   const { info: app, error: appError } = useApplicationInfo();
   const { info: battery, error: batteryError } = useBatteryInfo();
+  const { info: localization, error: localizationError } =
+    useLocalizationInfo();
   const [alterLogo, setAlterLogo] = useState(false);
 
   const onTap = useCallback(() => {
@@ -91,6 +94,40 @@ export function ModsShowcase() {
       ]
     : [];
 
+  const localizationRows: Row[] = localization?.primaryLocale
+    ? [
+        {
+          label: 'Language',
+          value: localization.primaryLocale.languageTag ?? '—',
+        },
+        {
+          label: 'Region',
+          value: localization.primaryLocale.regionCode ?? '—',
+        },
+        {
+          label: 'Currency',
+          value:
+            localization.primaryLocale.currencySymbol &&
+            localization.primaryLocale.currencyCode
+              ? `${localization.primaryLocale.currencySymbol} (${localization.primaryLocale.currencyCode})`
+              : '—',
+        },
+        {
+          label: 'Text direction',
+          value: localization.primaryLocale.textDirection ?? '—',
+        },
+        {
+          label: 'Measurement',
+          value: localization.primaryLocale.measurementSystem ?? '—',
+        },
+        { label: 'Time zone', value: localization.timeZone ?? '—' },
+        {
+          label: '24-hour clock',
+          value: localization.uses24hourClock ? 'Yes' : 'No',
+        },
+      ]
+    : [];
+
   return (
     <view className="Showcase">
       <view className="Showcase__Header">
@@ -135,6 +172,16 @@ export function ModsShowcase() {
                     value: battery?.batteryOptimizationEnabled ? 'On' : 'Off',
                   },
                 ]
+          }
+        />
+        <ModuleCard
+          title="Localization"
+          source="expo-localization"
+          icon="🌐"
+          rows={
+            localizationError
+              ? [{ label: 'Error', value: localizationError.message }]
+              : localizationRows
           }
         />
         {batteryLevelPct !== null && (
