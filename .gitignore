@@ -1,7 +1,16 @@
 node_modules
 dist
 .DS_Store
-packages/playground/**
+# Lynx playground: ignore the vendored engine tree + build artifacts,
+# but keep the app source tracked.
+packages/playground/src/lynx
+packages/playground/dist
+packages/playground/venv
+packages/playground/out
+packages/playground/build
+packages/playground/.cxx
+packages/playground/.turbo
+packages/playground/buildtools
 .turbo
 .gradle
 proposals

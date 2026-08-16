@@ -27,9 +27,7 @@
     "build": "rslib build",
     "dev": "rslib build --watch",
     "check": "biome check --write",
-    "fmt": "biome format --write",
-    "test": "vitest run",
-    "test:watch": "vitest run --watch"
+    "fmt": "biome format --write"
   },
   "dependencies": {
     "@lynx-js/react": "^0.123.0",

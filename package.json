@@ -22,14 +22,5 @@
     "@rsbuild/core": "^2.0.0",
     "@rslib/core": "^0.23.0",
     "turbo": "^2.4.4"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "@swc/core"
-    ],
-    "ignoredBuiltDependencies": [
-      "core-js"
-    ]
   }
 }

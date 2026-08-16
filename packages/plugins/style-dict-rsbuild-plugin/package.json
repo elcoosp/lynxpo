@@ -15,7 +15,9 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch",
@@ -27,6 +29,7 @@
     "bump": "npx bumpp"
   },
   "dependencies": {
+    "glob": "^11.0.0",
     "sd-tailwindcss-transformer": "^2.1.0",
     "style-dictionary": "^5.0.0"
   },

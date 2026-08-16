@@ -4,3 +4,8 @@ packages:
   - "packages/modules/*"
   - "packages/plugins/ktts"
   - "packages/plugins/style-dict-rsbuild-plugin"
+
+onlyBuiltDependencies:
+  - "@biomejs/biome"
+  - "@swc/core"
+  - esbuild
