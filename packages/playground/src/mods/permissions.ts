@@ -1,11 +1,5 @@
 // Auto-generated from ScrollCoordinatorLayout.kt
-import { useEffect, useState, useCallback } from "@lynx-js/react";
-import { NativeModules as INativeModules } from "@lynx-js/types";
+import { useCallback, useEffect, useState } from '@lynx-js/react';
+import type { NativeModules as INativeModules } from '@lynx-js/types';
 
-
-
-export interface ScrollCoordinatorLayout extends INativeModules {
-  
-};
-
-
+export interface ScrollCoordinatorLayout extends INativeModules {}

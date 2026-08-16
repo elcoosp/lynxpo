@@ -4,6 +4,7 @@ import './App.css';
 import arrow from './assets/arrow.png';
 import lynxLogo from './assets/lynx-logo.png';
 import reactLynxLogo from './assets/react-logo.png';
+import { useApplicationInfo } from './mods/applicationInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
 
 /**
@@ -52,6 +53,11 @@ export function App() {
   }, [alterLogo]);
 
   const { info, loading, error } = useDeviceInfo();
+  const {
+    info: appInfo,
+    loading: appLoading,
+    error: appError,
+  } = useApplicationInfo();
 
   const requestPermission = () => {
     const permModule = NativeModules.NativePermissionsModule;
@@ -96,6 +102,13 @@ export function App() {
               : error
                 ? `Device info error: ${error.message}`
                 : JSON.stringify(info, null, 2)}
+          </text>
+          <text className="Description">
+            {appLoading
+              ? 'Loading application info…'
+              : appError
+                ? `Application info error: ${appError.message}`
+                : JSON.stringify(appInfo, null, 2)}
           </text>
           {import.meta.env.DEV ? <AddonCheck /> : null}
         </view>
