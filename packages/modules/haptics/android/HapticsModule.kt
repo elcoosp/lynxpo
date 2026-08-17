@@ -10,22 +10,12 @@ import com.lynx.jsbridge.LynxModule
  * (registered via nmi).
  */
 class HapticsModule(context: android.content.Context) : LynxModule(context) {
+  
+  
+    @LynxMethod
+  fun impactAsync(style: Int, p: Promise<Unit>) {}
   @LynxMethod
-  fun impactAsync(): Unit {
-    // ported from expo-haptics; runtime impl in explorer modules/HapticsModule.java
-    throw NotImplementedError()
-  }
-
+  fun notificationAsync(type: Int, p: Promise<Unit>) {}
   @LynxMethod
-  fun notificationAsync(): Unit {
-    // ported from expo-haptics; runtime impl in explorer modules/HapticsModule.java
-    throw NotImplementedError()
-  }
-
-  @LynxMethod
-  fun selectionAsync(): Unit {
-    // ported from expo-haptics; runtime impl in explorer modules/HapticsModule.java
-    throw NotImplementedError()
-  }
-
+  fun selectionAsync(p: Promise<Unit>) {}
 }

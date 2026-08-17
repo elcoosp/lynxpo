@@ -1,4 +1,8 @@
 import { useCallback, useState } from '@lynx-js/react';
+import {
+  getGetNetworkStateAsync,
+  useGetNetworkStateAsync,
+} from '@lynxpo/mods-network';
 import { useApplicationInfo } from './mods/applicationInfo.js';
 import { batteryStateLabel, useBatteryInfo } from './mods/batteryInfo.js';
 import { useBrightnessInfo } from './mods/brightnessInfo.js';
@@ -65,6 +69,11 @@ export function ModsShowcase() {
   const { rows: mailComposerRows, error: mailComposerErr } =
     useMailComposerInfo();
   const { rows: networkRows, error: networkErr } = useNetworkInfo();
+  const {
+    value: networkAsync,
+    loading: networkAsyncLoading,
+    error: networkAsyncErr,
+  } = useGetNetworkStateAsync();
   const { rows: screenOrientationRows, error: screenOrientationErr } =
     useScreenOrientationInfo();
   const { rows: clipboardRows, error: clipboardErr } = useClipboardInfo();
@@ -273,7 +282,19 @@ export function ModsShowcase() {
           rows={
             networkErr
               ? [{ label: 'Error', value: networkErr.message }]
-              : networkRows
+              : [
+                  ...networkRows,
+                  {
+                    label: 'via Promise (async)',
+                    value: networkAsyncErr
+                      ? 'err'
+                      : networkAsyncLoading
+                        ? '…'
+                        : networkAsync && networkAsync.isConnected
+                          ? 'Yes'
+                          : 'No',
+                  },
+                ]
           }
         />
         <ModuleCard

@@ -17,9 +17,16 @@ class NetworkModule(context: android.content.Context) : LynxModule(context) {
   }
 
   @LynxMethod
-  fun getNetworkState(): Map<String, Any?> {
+  fun getNetworkState(): Map<String, Any> {
     // ported from expo-network; runtime impl in explorer modules/NetworkModule.java
     throw NotImplementedError()
   }
-
+  @LynxMethod
+  fun getIpAddressAsync(p: Promise<String>) {}
+  @LynxMethod
+  fun getNetworkStateAsync(p: Promise<Any>) {}
+  @LynxMethod
+  fun addListener(eventName: String): Unit {}
+  @LynxMethod
+  fun removeListeners(count: Int): Unit {}
 }

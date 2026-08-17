@@ -232,19 +232,33 @@ const codeGenerateHooks = (
   const paramsSignature = params.map((p) => `${p.name}: ${p.type}`).join(', ');
   const paramsCall = params.map((p) => p.name).join(', ');
 
+  // For promise-returning methods, the hook resolves the value, so the state
+  // holds the *resolved* (inner) type, not the Promise wrapper.
+  // A void/Unit resolution has no meaningful state; use `undefined`.
+  const resolvedType =
+    isPromise && returnType.startsWith('Promise<') && returnType.endsWith('>')
+      ? returnType.slice('Promise<'.length, -1)
+      : returnType;
+  const stateType = resolvedType === 'void' ? 'undefined' : resolvedType;
+  // void-returning promise methods are commands (fire-and-await); they expose
+  // loading/error but no resolved value state.
+  const isVoidPromise = isPromise && resolvedType === 'void';
+
   // Function implementation for getting data
-  const getterFunction = `export const get${pascalCaseName} = (${paramsSignature}): ${returnType} =>
-  NativeModules.${nativeModuleName}?.${methodName}?.(${paramsCall});`;
+  const getterFunction = `export const get${pascalCaseName} = (${paramsSignature}): ${returnType} =>\n  NativeModules.${nativeModuleName}?.${methodName}?.(${paramsCall});`;
 
   // Different hook implementations based on strategy
   if (strategy === 'direct') {
     // Direct strategy: hook calls the function and returns value
     if (isPromise) {
-      return `
-${getterFunction}
+      if (isVoidPromise) {
+        // Command hook: no resolved value, just loading/error.
+        return `\n${getterFunction}\n\nexport const use${pascalCaseName} = (${paramsSignature}) => {\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState<Error | null>(null);\n\n  const run = async () => {\n    setLoading(true);\n    try {\n      await get${pascalCaseName}(${paramsCall});\n      setError(null);\n    } catch (err) {\n      setError(err instanceof Error ? err : new Error(String(err)));\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return { loading, error, run };\n};`.trim();
+      }
+      return `\n${getterFunction}
 
 export const use${pascalCaseName} = (${paramsSignature}) => {
-  const [value, setValue] = useState<${returnType}>();
+  const [value, setValue] = useState<${stateType}>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -302,7 +316,7 @@ export const use${pascalCaseName} = (${paramsSignature}) => {
 ${getterFunction}
 
 export const use${pascalCaseName} = () => {
-  const [value, setValue] = useState<${returnType}>();
+  const [value, setValue] = useState<${stateType}>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 

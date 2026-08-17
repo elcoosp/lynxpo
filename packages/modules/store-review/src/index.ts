@@ -4,7 +4,8 @@ import type { NativeModules as INativeModules } from '@lynx-js/types';
 
 export interface StoreReviewModule extends INativeModules {
   isAvailable(): boolean;
-  requestReview(): void;
+  isAvailableAsync(): Promise<boolean>;
+  requestReviewAsync(): Promise<void>;
 }
 
 export const getIsAvailable = (): boolean =>
@@ -25,20 +26,63 @@ export const useIsAvailable = () => {
   return value;
 };
 
-export const getRequestReview = (): void =>
-  NativeModules.StoreReviewModule?.requestReview?.();
+export const getIsAvailableAsync = (): Promise<boolean> =>
+  NativeModules.StoreReviewModule?.isAvailableAsync?.();
 
-export const useRequestReview = () => {
-  const [value, setValue] = useState<void>();
+export const useIsAvailableAsync = () => {
+  const [value, setValue] = useState<boolean>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = getRequestReview();
-      setValue(result);
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getIsAvailableAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
     };
 
     fetchData();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  return value;
+  return { value, loading, error };
+};
+
+export const getRequestReviewAsync = (): Promise<void> =>
+  NativeModules.StoreReviewModule?.requestReviewAsync?.();
+
+export const useRequestReviewAsync = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const run = async () => {
+    setLoading(true);
+    try {
+      await getRequestReviewAsync();
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { loading, error, run };
 };

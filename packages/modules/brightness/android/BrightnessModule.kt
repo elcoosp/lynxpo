@@ -16,12 +16,7 @@ class BrightnessModule(context: android.content.Context) : LynxModule(context) {
     throw NotImplementedError()
   }
 
-  @LynxMethod
-  fun setBrightness(): Unit {
-    // ported from expo-brightness; runtime impl in explorer modules/BrightnessModule.java
-    throw NotImplementedError()
-  }
-
+  
   @LynxMethod
   fun getSystemBrightness(): Float {
     // ported from expo-brightness; runtime impl in explorer modules/BrightnessModule.java
@@ -39,5 +34,18 @@ class BrightnessModule(context: android.content.Context) : LynxModule(context) {
     // ported from expo-brightness; runtime impl in explorer modules/BrightnessModule.java
     throw NotImplementedError()
   }
-
+  @LynxMethod
+  fun getBrightnessAsync(p: Promise<String>) {}
+  @LynxMethod
+  fun setBrightnessAsync(value: Double, p: Promise<Unit>) {}
+  @LynxMethod
+  fun getSystemBrightnessAsync(p: Promise<String>) {}
+  @LynxMethod
+  fun isUsingSystemBrightnessAsync(p: Promise<Boolean>) {}
+  @LynxMethod
+  fun getSystemBrightnessModeAsync(p: Promise<Int>) {}
+  @LynxMethod
+  fun addListener(eventName: String): Unit {}
+  @LynxMethod
+  fun removeListeners(count: Int): Unit {}
 }

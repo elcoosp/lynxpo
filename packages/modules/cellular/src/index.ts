@@ -8,6 +8,11 @@ export interface CellularModule extends INativeModules {
   getCarrierName(): string | null;
   getMobileCountryCode(): string | null;
   getMobileNetworkCode(): string | null;
+  getCellularGenerationAsync(): Promise<number>;
+  getIsoCountryCodeAsync(): Promise<string>;
+  getCarrierNameAsync(): Promise<string>;
+  getMobileCountryCodeAsync(): Promise<string>;
+  getMobileNetworkCodeAsync(): Promise<string>;
 }
 
 export const getGetCellularGeneration = (): number =>
@@ -98,4 +103,199 @@ export const useGetMobileNetworkCode = () => {
   }, []);
 
   return value;
+};
+
+export const getGetCellularGenerationAsync = (): Promise<number> =>
+  NativeModules.CellularModule?.getCellularGenerationAsync?.();
+
+export const useGetCellularGenerationAsync = () => {
+  const [value, setValue] = useState<number>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getGetCellularGenerationAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
+};
+
+export const getGetIsoCountryCodeAsync = (): Promise<string> =>
+  NativeModules.CellularModule?.getIsoCountryCodeAsync?.();
+
+export const useGetIsoCountryCodeAsync = () => {
+  const [value, setValue] = useState<string>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getGetIsoCountryCodeAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
+};
+
+export const getGetCarrierNameAsync = (): Promise<string> =>
+  NativeModules.CellularModule?.getCarrierNameAsync?.();
+
+export const useGetCarrierNameAsync = () => {
+  const [value, setValue] = useState<string>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getGetCarrierNameAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
+};
+
+export const getGetMobileCountryCodeAsync = (): Promise<string> =>
+  NativeModules.CellularModule?.getMobileCountryCodeAsync?.();
+
+export const useGetMobileCountryCodeAsync = () => {
+  const [value, setValue] = useState<string>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getGetMobileCountryCodeAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
+};
+
+export const getGetMobileNetworkCodeAsync = (): Promise<string> =>
+  NativeModules.CellularModule?.getMobileNetworkCodeAsync?.();
+
+export const useGetMobileNetworkCodeAsync = () => {
+  const [value, setValue] = useState<string>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getGetMobileNetworkCodeAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
 };

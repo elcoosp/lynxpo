@@ -4,8 +4,10 @@ import type { NativeModules as INativeModules } from '@lynx-js/types';
 
 export interface ClipboardModule extends INativeModules {
   getString(): string | null;
-  setString(): void;
   hasString(): boolean;
+  getStringAsync(): Promise<string>;
+  setStringAsync(text: string): Promise<void>;
+  hasStringAsync(): Promise<boolean>;
 }
 
 export const getGetString = (): string | null =>
@@ -17,24 +19,6 @@ export const useGetString = () => {
   useEffect(() => {
     const fetchData = () => {
       const result = getGetString();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getSetString = (): void =>
-  NativeModules.ClipboardModule?.setString?.();
-
-export const useSetString = () => {
-  const [value, setValue] = useState<void>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getSetString();
       setValue(result);
     };
 
@@ -60,4 +44,104 @@ export const useHasString = () => {
   }, []);
 
   return value;
+};
+
+export const getGetStringAsync = (): Promise<string> =>
+  NativeModules.ClipboardModule?.getStringAsync?.();
+
+export const useGetStringAsync = () => {
+  const [value, setValue] = useState<string>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getGetStringAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
+};
+
+export const getSetStringAsync = (text: string): Promise<void> =>
+  NativeModules.ClipboardModule?.setStringAsync?.(text);
+
+export const useSetStringAsync = (text: string) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const run = async () => {
+    setLoading(true);
+    try {
+      await getSetStringAsync(text);
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { loading, error, run };
+};
+
+export const getHasStringAsync = (): Promise<boolean> =>
+  NativeModules.ClipboardModule?.hasStringAsync?.();
+
+export const useHasStringAsync = () => {
+  const [value, setValue] = useState<boolean>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getHasStringAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
 };

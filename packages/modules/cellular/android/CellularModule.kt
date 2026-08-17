@@ -39,5 +39,14 @@ class CellularModule(context: android.content.Context) : LynxModule(context) {
     // ported from expo-cellular; runtime impl in explorer modules/CellularModule.java
     throw NotImplementedError()
   }
-
+  @LynxMethod
+  fun getCellularGenerationAsync(p: Promise<Int>) {}
+  @LynxMethod
+  fun getIsoCountryCodeAsync(p: Promise<String>) {}
+  @LynxMethod
+  fun getCarrierNameAsync(p: Promise<String>) {}
+  @LynxMethod
+  fun getMobileCountryCodeAsync(p: Promise<String>) {}
+  @LynxMethod
+  fun getMobileNetworkCodeAsync(p: Promise<String>) {}
 }

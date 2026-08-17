@@ -16,10 +16,8 @@ class StoreReviewModule(context: android.content.Context) : LynxModule(context) 
     throw NotImplementedError()
   }
 
+    @LynxMethod
+  fun isAvailableAsync(p: Promise<Boolean>) {}
   @LynxMethod
-  fun requestReview(): Unit {
-    // ported from expo-store-review; runtime impl in explorer modules/StoreReviewModule.java
-    throw NotImplementedError()
-  }
-
+  fun requestReviewAsync(p: Promise<Unit>) {}
 }

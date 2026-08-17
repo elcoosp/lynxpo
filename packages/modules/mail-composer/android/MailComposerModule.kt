@@ -22,10 +22,10 @@ class MailComposerModule(context: android.content.Context) : LynxModule(context)
     throw NotImplementedError()
   }
 
+    @LynxMethod
+  fun isAvailableAsync(p: Promise<Boolean>) {}
   @LynxMethod
-  fun compose(): Unit {
-    // ported from expo-mail-composer; runtime impl in explorer modules/MailComposerModule.java
-    throw NotImplementedError()
-  }
-
+  fun getClientsAsync(p: Promise<List<String>>) {}
+  @LynxMethod
+  fun composeAsync(subject: String, body: String, recipients: List<String>, p: Promise<Unit>) {}
 }

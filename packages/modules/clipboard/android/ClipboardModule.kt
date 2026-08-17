@@ -16,16 +16,16 @@ class ClipboardModule(context: android.content.Context) : LynxModule(context) {
     throw NotImplementedError()
   }
 
-  @LynxMethod
-  fun setString(): Unit {
-    // ported from expo-clipboard; runtime impl in explorer modules/ClipboardModule.java
-    throw NotImplementedError()
-  }
-
+  
   @LynxMethod
   fun hasString(): Boolean {
     // ported from expo-clipboard; runtime impl in explorer modules/ClipboardModule.java
     throw NotImplementedError()
   }
-
+  @LynxMethod
+  fun getStringAsync(p: Promise<String>) {}
+  @LynxMethod
+  fun setStringAsync(text: String, p: Promise<Unit>) {}
+  @LynxMethod
+  fun hasStringAsync(p: Promise<Boolean>) {}
 }

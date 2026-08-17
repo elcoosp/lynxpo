@@ -4,7 +4,11 @@ import type { NativeModules as INativeModules } from '@lynx-js/types';
 
 export interface NetworkModule extends INativeModules {
   getIpAddress(): string | null;
-  getNetworkState(): Record<string, any | null>;
+  getNetworkState(): Record<string, any>;
+  getIpAddressAsync(): Promise<string>;
+  getNetworkStateAsync(): Promise<any>;
+  addListener(eventName: string): void;
+  removeListeners(count: number): void;
 }
 
 export const getGetIpAddress = (): string | null =>
@@ -25,11 +29,11 @@ export const useGetIpAddress = () => {
   return value;
 };
 
-export const getGetNetworkState = (): Record<string, any | null> =>
+export const getGetNetworkState = (): Record<string, any> =>
   NativeModules.NetworkModule?.getNetworkState?.();
 
 export const useGetNetworkState = () => {
-  const [value, setValue] = useState<Record<string, any | null>>();
+  const [value, setValue] = useState<Record<string, any>>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -39,6 +43,120 @@ export const useGetNetworkState = () => {
 
     fetchData();
   }, []);
+
+  return value;
+};
+
+export const getGetIpAddressAsync = (): Promise<string> =>
+  NativeModules.NetworkModule?.getIpAddressAsync?.();
+
+export const useGetIpAddressAsync = () => {
+  const [value, setValue] = useState<string>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getGetIpAddressAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
+};
+
+export const getGetNetworkStateAsync = (): Promise<any> =>
+  NativeModules.NetworkModule?.getNetworkStateAsync?.();
+
+export const useGetNetworkStateAsync = () => {
+  const [value, setValue] = useState<any>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getGetNetworkStateAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
+};
+
+export const getAddListener = (eventName: string): void =>
+  NativeModules.NetworkModule?.addListener?.(eventName);
+
+export const useAddListener = (eventName: string) => {
+  const [value, setValue] = useState<void>();
+
+  useEffect(() => {
+    const fetchData = () => {
+      const result = getAddListener(eventName);
+      setValue(result);
+    };
+
+    fetchData();
+  }, [eventName]);
+
+  return value;
+};
+
+export const getRemoveListeners = (count: number): void =>
+  NativeModules.NetworkModule?.removeListeners?.(count);
+
+export const useRemoveListeners = (count: number) => {
+  const [value, setValue] = useState<void>();
+
+  useEffect(() => {
+    const fetchData = () => {
+      const result = getRemoveListeners(count);
+      setValue(result);
+    };
+
+    fetchData();
+  }, [count]);
 
   return value;
 };

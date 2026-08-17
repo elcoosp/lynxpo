@@ -22,22 +22,27 @@ class ScreenOrientationModule(context: android.content.Context) : LynxModule(con
     throw NotImplementedError()
   }
 
-  @LynxMethod
-  fun lock(): Unit {
-    // ported from expo-screen-orientation; runtime impl in explorer modules/ScreenOrientationModule.java
-    throw NotImplementedError()
-  }
-
-  @LynxMethod
-  fun lockPlatform(): Unit {
-    // ported from expo-screen-orientation; runtime impl in explorer modules/ScreenOrientationModule.java
-    throw NotImplementedError()
-  }
-
+  
+  
   @LynxMethod
   fun supportsOrientationLock(): Boolean {
     // ported from expo-screen-orientation; runtime impl in explorer modules/ScreenOrientationModule.java
     throw NotImplementedError()
   }
-
+  @LynxMethod
+  fun getOrientationAsync(p: Promise<Int>) {}
+  @LynxMethod
+  fun getOrientationLockAsync(p: Promise<Int>) {}
+  @LynxMethod
+  fun lockAsync(orientation: Int, p: Promise<Unit>) {}
+  @LynxMethod
+  fun unlockAsync(p: Promise<Unit>) {}
+  @LynxMethod
+  fun lockPlatformAsync(orientation: Int, p: Promise<Unit>) {}
+  @LynxMethod
+  fun supportsOrientationLockAsync(p: Promise<Boolean>) {}
+  @LynxMethod
+  fun addListener(eventName: String): Unit {}
+  @LynxMethod
+  fun removeListeners(count: Int): Unit {}
 }

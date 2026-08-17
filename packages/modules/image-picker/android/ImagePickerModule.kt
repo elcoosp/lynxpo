@@ -11,15 +11,22 @@ import com.lynx.jsbridge.LynxModule
  */
 class ImagePickerModule(context: android.content.Context) : LynxModule(context) {
   @LynxMethod
-  fun getCameraPermissions(): Map<String, Any?> {
+  fun getCameraPermissions(): Map<String, Any> {
     // ported from expo-image-picker; runtime impl in explorer modules/ImagePickerModule.java
     throw NotImplementedError()
   }
 
   @LynxMethod
-  fun getMediaLibraryPermissions(): Map<String, Any?> {
+  fun getMediaLibraryPermissions(): Map<String, Any> {
     // ported from expo-image-picker; runtime impl in explorer modules/ImagePickerModule.java
     throw NotImplementedError()
   }
-
+  @LynxMethod
+  fun getCameraPermissionsAsync(p: Promise<Any>) {}
+  @LynxMethod
+  fun getMediaLibraryPermissionsAsync(p: Promise<Any>) {}
+  @LynxMethod
+  fun launchImageLibraryAsync(p: Promise<Any>) {}
+  @LynxMethod
+  fun launchCameraAsync(p: Promise<Any>) {}
 }
