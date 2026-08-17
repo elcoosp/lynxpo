@@ -1,5 +1,5 @@
 import { useEffect, useState } from '@lynx-js/react';
-import { getClients, isAvailable } from '@lynxpo/mods-mail-composer';
+import { getGetClients, getIsAvailable } from '@lynxpo/mods-mail-composer';
 
 export interface ModuleInfo {
   rows: { label: string; value: string }[];
@@ -18,8 +18,8 @@ export function useMailComposerInfo(): ModuleInfo {
 
   useEffect(() => {
     try {
-      const v0 = isAvailable();
-      const v1 = getClients();
+      const v0 = getIsAvailable();
+      const v1 = getGetClients();
       setRows([
         { label: 'Available', value: v0 ? 'Yes' : 'No' },
         { label: 'Clients', value: v1 && v1.length ? String(v1.length) : '0' },

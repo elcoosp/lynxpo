@@ -1,5 +1,5 @@
 import { useEffect, useState } from '@lynx-js/react';
-import { isAvailable } from '@lynxpo/mods-store-review';
+import { getIsAvailable } from '@lynxpo/mods-store-review';
 
 export interface ModuleInfo {
   rows: { label: string; value: string }[];
@@ -18,7 +18,7 @@ export function useStoreReviewInfo(): ModuleInfo {
 
   useEffect(() => {
     try {
-      const v0 = isAvailable();
+      const v0 = getIsAvailable();
       setRows([{ label: 'Available', value: v0 ? 'Yes' : 'No' }]);
       setError(null);
     } catch (err) {

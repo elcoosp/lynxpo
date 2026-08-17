@@ -28,11 +28,13 @@ function ModuleCard({
   source,
   icon,
   rows,
+  actions,
 }: {
   title: string;
   source: string;
   icon: string;
   rows: Row[];
+  actions?: { label: string; onPress: () => void }[];
 }) {
   return (
     <view className="Card">
@@ -51,6 +53,19 @@ function ModuleCard({
           </view>
         ))}
       </view>
+      {actions && actions.length > 0 && (
+        <view className="Card__Actions">
+          {actions.map((a, i) => (
+            <view
+              className="Card__Action"
+              key={`${a.label}-${i}`}
+              bindtap={a.onPress}
+            >
+              <text className="Card__ActionLabel">{a.label}</text>
+            </view>
+          ))}
+        </view>
+      )}
     </view>
   );
 }
@@ -76,8 +91,16 @@ export function ModsShowcase() {
   } = useGetNetworkStateAsync();
   const { rows: screenOrientationRows, error: screenOrientationErr } =
     useScreenOrientationInfo();
-  const { rows: clipboardRows, error: clipboardErr } = useClipboardInfo();
-  const { rows: imagePickerRows, error: imagePickerErr } = useImagePickerInfo();
+  const {
+    rows: clipboardRows,
+    error: clipboardErr,
+    actions: clipboardActions,
+  } = useClipboardInfo();
+  const {
+    rows: imagePickerRows,
+    error: imagePickerErr,
+    actions: imagePickerActions,
+  } = useImagePickerInfo();
   const [alterLogo, setAlterLogo] = useState(false);
 
   const onTap = useCallback(() => {
@@ -170,7 +193,7 @@ export function ModsShowcase() {
         </text>
       </view>
 
-      <scroll-view className="Showcase__List" direction="vertical">
+      <scroll-view className="Showcase__List" scroll-orientation="vertical">
         <ModuleCard
           title="Device"
           source="expo-device"
@@ -316,6 +339,7 @@ export function ModsShowcase() {
               ? [{ label: 'Error', value: clipboardErr.message }]
               : clipboardRows
           }
+          actions={clipboardActions}
         />
         <ModuleCard
           title="Image Picker"
@@ -326,6 +350,7 @@ export function ModsShowcase() {
               ? [{ label: 'Error', value: imagePickerErr.message }]
               : imagePickerRows
           }
+          actions={imagePickerActions}
         />
         {batteryLevelPct !== null && (
           <view className="BatteryBar">

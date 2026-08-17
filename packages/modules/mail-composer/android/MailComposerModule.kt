@@ -27,5 +27,5 @@ class MailComposerModule(context: android.content.Context) : LynxModule(context)
   @LynxMethod
   fun getClientsAsync(p: Promise<List<String>>) {}
   @LynxMethod
-  fun composeAsync(subject: String, body: String, recipients: List<String>, p: Promise<Unit>) {}
+  fun composeAsync(subject: String, body: String, recipients: String, p: Promise<Unit>) {}
 }

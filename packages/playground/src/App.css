@@ -121,7 +121,7 @@ text {
 /* ===== Showcase ===== */
 .Screen {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,6 +137,8 @@ text {
   flex-direction: column;
   align-items: stretch;
   gap: 20rpx;
+  flex: 1;
+  min-height: 0;
 }
 
 .Showcase {
@@ -176,9 +178,6 @@ text {
 }
 
 .Showcase__List {
-  display: flex;
-  flex-direction: column;
-  gap: 16rpx;
   flex: 1;
   min-height: 0;
 }
@@ -188,6 +187,7 @@ text {
   border: 1rpx solid rgba(255, 255, 255, 0.12);
   border-radius: 16rpx;
   padding: 16rpx 18rpx;
+  margin-bottom: 16rpx;
   display: flex;
   flex-direction: column;
   gap: 12rpx;
@@ -198,6 +198,26 @@ text {
   flex-direction: row;
   align-items: center;
   gap: 12rpx;
+}
+
+.Card__Actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 4rpx;
+}
+
+.Card__Action {
+  background: rgba(99, 102, 241, 0.22);
+  border: 1rpx solid rgba(129, 140, 248, 0.5);
+  border-radius: 10rpx;
+  padding: 8rpx 14rpx;
+}
+
+.Card__ActionLabel {
+  font-size: 12px;
+  color: #c7d2fe;
 }
 
 .Card__Icon {

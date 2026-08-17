@@ -1,7 +1,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import {
-  getOrientation,
-  getOrientationLock,
+  getGetOrientation,
+  getGetOrientationLock,
 } from '@lynxpo/mods-screen-orientation';
 
 export interface ModuleInfo {
@@ -21,8 +21,8 @@ export function useScreenOrientationInfo(): ModuleInfo {
 
   useEffect(() => {
     try {
-      const v0 = getOrientation();
-      const v1 = getOrientationLock();
+      const v0 = getGetOrientation();
+      const v1 = getGetOrientationLock();
       setRows([
         {
           label: 'Orientation',

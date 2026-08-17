@@ -1,8 +1,6 @@
 // Auto-generated from ApplicationModule.kt
-import { useEffect, useState } from "@lynx-js/react";
-import { NativeModules as INativeModules } from "@lynx-js/types";
-
-
+import { useEffect, useState } from '@lynx-js/react';
+import type { NativeModules as INativeModules } from '@lynx-js/types';
 
 export interface ApplicationModule extends INativeModules {
   applicationName(): any;
@@ -12,7 +10,7 @@ export interface ApplicationModule extends INativeModules {
   androidId(): any;
   getInstallationTime(): any;
   getLastUpdateTime(): any;
-};
+}
 
 export const getApplicationName = (): any =>
   NativeModules.ApplicationModule?.applicationName?.();

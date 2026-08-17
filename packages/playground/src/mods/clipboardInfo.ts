@@ -1,30 +1,50 @@
-import { useEffect, useState } from '@lynx-js/react';
-import { getString, hasString } from '@lynxpo/mods-clipboard';
+import { useCallback, useEffect, useState } from '@lynx-js/react';
+import {
+  getGetString,
+  getHasString,
+  getSetStringAsync,
+} from '@lynxpo/mods-clipboard';
+
+export interface ModuleAction {
+  label: string;
+  onPress: () => void;
+}
 
 export interface ModuleInfo {
   rows: { label: string; value: string }[];
   loading: boolean;
   error: Error | null;
+  actions: ModuleAction[];
+}
+
+function readClipboard(): { has: boolean; text: string | null } {
+  const has = getHasString();
+  const text = getGetString();
+  return { has: !!has, text: text ?? null };
 }
 
 /**
- * Fetches native fields in a single synchronous pass over the bridge, returning
- * typed showcase rows. Faithful port of Expo's native module surface.
+ * Interactive clipboard demo: reads the current clipboard and lets the user
+ * write a sample string, faithfully exercising expo-clipboard's get/set/has
+ * surface over the native bridge.
  */
 export function useClipboardInfo(): ModuleInfo {
   const [rows, setRows] = useState<{ label: string; value: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
+  const refresh = useCallback(() => {
     try {
-      const v0 = hasString();
-      const v1 = getString();
+      const { has, text } = readClipboard();
       setRows([
-        { label: 'Has string', value: v0 ? 'Yes' : 'No' },
+        { label: 'Has string', value: has ? 'Yes' : 'No' },
         {
           label: 'Preview',
-          value: v1 ? (v1.length > 24 ? v1.slice(0, 24) + '…' : v1) : '—',
+          value: text
+            ? text.length > 24
+              ? text.slice(0, 24) + '…'
+              : text
+            : '—',
         },
       ]);
       setError(null);
@@ -35,5 +55,27 @@ export function useClipboardInfo(): ModuleInfo {
     }
   }, []);
 
-  return { rows, loading, error };
+  const copySample = useCallback(async () => {
+    try {
+      await getSetStringAsync('LynxPo 🚀 native clipboard');
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      refresh();
+    }
+  }, [refresh]);
+
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
+  return {
+    rows,
+    loading,
+    error,
+    actions: [
+      { label: 'Copy sample', onPress: copySample },
+      { label: 'Refresh', onPress: refresh },
+    ],
+  };
 }

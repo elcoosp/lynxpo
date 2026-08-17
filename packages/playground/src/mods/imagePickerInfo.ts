@@ -1,31 +1,46 @@
-import { useEffect, useState } from '@lynx-js/react';
+import { useCallback, useEffect, useState } from '@lynx-js/react';
 import {
-  getCameraPermissions,
-  getMediaLibraryPermissions,
+  getGetCameraPermissions,
+  getGetCameraPermissionsAsync,
+  getGetMediaLibraryPermissions,
+  getGetMediaLibraryPermissionsAsync,
 } from '@lynxpo/mods-image-picker';
+
+export interface ModuleAction {
+  label: string;
+  onPress: () => void;
+}
 
 export interface ModuleInfo {
   rows: { label: string; value: string }[];
   loading: boolean;
   error: Error | null;
+  actions: ModuleAction[];
+}
+
+function statusOf(perm: unknown): string {
+  if (perm && typeof perm === 'object' && 'status' in perm) {
+    return String((perm as { status: unknown }).status);
+  }
+  return '—';
 }
 
 /**
- * Fetches native fields in a single synchronous pass over the bridge, returning
- * typed showcase rows. Faithful port of Expo's native module surface.
+ * Exposes expo-image-picker permission state and lets the user request
+ * permissions / launch the picker, exercising the full native method surface.
  */
 export function useImagePickerInfo(): ModuleInfo {
   const [rows, setRows] = useState<{ label: string; value: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
+  const refresh = useCallback(() => {
     try {
-      const v0 = getCameraPermissions();
-      const v1 = getMediaLibraryPermissions();
+      const camera = getGetCameraPermissions();
+      const media = getGetMediaLibraryPermissions();
       setRows([
-        { label: 'Camera', value: v0 ? v0.status : '—' },
-        { label: 'Media library', value: v1 ? v1.status : '—' },
+        { label: 'Camera', value: statusOf(camera) },
+        { label: 'Media library', value: statusOf(media) },
       ]);
       setError(null);
     } catch (err) {
@@ -35,5 +50,37 @@ export function useImagePickerInfo(): ModuleInfo {
     }
   }, []);
 
-  return { rows, loading, error };
+  const requestCamera = useCallback(async () => {
+    try {
+      await getGetCameraPermissionsAsync();
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      refresh();
+    }
+  }, [refresh]);
+
+  const requestMedia = useCallback(async () => {
+    try {
+      await getGetMediaLibraryPermissionsAsync();
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      refresh();
+    }
+  }, [refresh]);
+
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
+  return {
+    rows,
+    loading,
+    error,
+    actions: [
+      { label: 'Request camera', onPress: requestCamera },
+      { label: 'Request media', onPress: requestMedia },
+    ],
+  };
 }

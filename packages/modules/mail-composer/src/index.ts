@@ -10,7 +10,7 @@ export interface MailComposerModule extends INativeModules {
   composeAsync(
     subject: string,
     body: string,
-    recipients: string[],
+    recipients: string,
   ): Promise<void>;
 }
 
@@ -131,14 +131,14 @@ export const useGetClientsAsync = () => {
 export const getComposeAsync = (
   subject: string,
   body: string,
-  recipients: string[],
+  recipients: string,
 ): Promise<void> =>
   NativeModules.MailComposerModule?.composeAsync?.(subject, body, recipients);
 
 export const useComposeAsync = (
   subject: string,
   body: string,
-  recipients: string[],
+  recipients: string,
 ) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);

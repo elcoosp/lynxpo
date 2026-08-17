@@ -1,5 +1,5 @@
 import { useEffect, useState } from '@lynx-js/react';
-import { isActivated } from '@lynxpo/mods-keep-awake';
+import { getIsActivated } from '@lynxpo/mods-keep-awake';
 
 export interface ModuleInfo {
   rows: { label: string; value: string }[];
@@ -18,7 +18,7 @@ export function useKeepAwakeInfo(): ModuleInfo {
 
   useEffect(() => {
     try {
-      const v0 = isActivated();
+      const v0 = getIsActivated();
       setRows([{ label: 'Activated', value: v0 ? 'Yes' : 'No' }]);
       setError(null);
     } catch (err) {
