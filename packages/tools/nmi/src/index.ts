@@ -1043,7 +1043,7 @@ function ensurePhotoLibraryUsage(plistPath: string): void {
     '\t<key>NSPhotoLibraryUsageDescription</key>\n' +
     '\t<string>Lynx Explorer uses the photo library to pick images for the native module showcase.</string>\n';
   txt = txt.replace(
-    new RegExp(`(\\t*<key>${anchor}</key>[^<]*<string>[^<]*</string>)`),
+    /(<key>NSCameraUsageDescription<\/key>\s*<string>[^<]*<\/string>)/,
     `$1\n${injection}`,
   );
   fs.writeFileSync(plistPath, txt);
