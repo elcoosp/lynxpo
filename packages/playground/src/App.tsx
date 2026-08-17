@@ -21,7 +21,14 @@ function AddonCheck() {
         return;
       }
       mod.requireNodeAddon('network');
-      const exports = __lynx_node_addon_exports__['network'];
+      // The addon global is only defined when the "network" addon actually
+      // loaded (built via the engine CMake). On platforms where it isn't
+      // wired up (e.g. iOS Explorer without the addon), skip gracefully
+      // instead of throwing a ReferenceError into the diagnostic banner.
+      const exports =
+        typeof __lynx_node_addon_exports__ !== 'undefined'
+          ? __lynx_node_addon_exports__['network']
+          : undefined;
       const result = exports
         ? (exports.foo as () => unknown)()
         : '(no exports)';

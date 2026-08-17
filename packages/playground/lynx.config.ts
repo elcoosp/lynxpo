@@ -13,8 +13,13 @@ export default defineConfig({
   plugins: [
     pluginQRCode({
       schema(url) {
-        // We use `?fullscreen=true` to open the page in LynxExplorer in full screen mode
-        return `${url}?fullscreen=true`;
+        // `?fullscreen=true` opens the page in LynxExplorer full screen.
+        // `enable_napi_addon=true` makes the iOS launcher spin up the background
+        // runtime that loads the Node-API addon (defines
+        // `__lynx_node_addon_exports__` and the native modules). Without it, iOS
+        // renders every module value as "—" while Android (which enables the addon
+        // by default) populates them. Harmless on Android.
+        return `${url}?fullscreen=true&enable_napi_addon=true`;
       },
     }),
     androidPermissionsPlugin(),
