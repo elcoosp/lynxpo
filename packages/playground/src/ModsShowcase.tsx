@@ -170,7 +170,7 @@ export function ModsShowcase() {
         </text>
       </view>
 
-      <view className="Showcase__List">
+      <scroll-view className="Showcase__List" direction="vertical">
         <ModuleCard
           title="Device"
           source="expo-device"
@@ -335,7 +335,7 @@ export function ModsShowcase() {
             />
           </view>
         )}
-      </view>
+      </scroll-view>
     </view>
   );
 }

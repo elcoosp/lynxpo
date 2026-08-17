@@ -143,6 +143,8 @@ text {
   display: flex;
   flex-direction: column;
   gap: 20rpx;
+  flex: 1;
+  min-height: 0;
 }
 
 .Showcase__Header {
@@ -177,6 +179,8 @@ text {
   display: flex;
   flex-direction: column;
   gap: 16rpx;
+  flex: 1;
+  min-height: 0;
 }
 
 .Card {
