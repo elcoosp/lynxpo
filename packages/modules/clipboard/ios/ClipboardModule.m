@@ -17,9 +17,9 @@
     @"setString" : NSStringFromSelector(@selector(setString:)),
     @"hasString" : NSStringFromSelector(@selector(hasString)),
     // Async variants (required by the generated TS wrappers).
-    @"getStringAsync" : NSStringFromSelector(@selector(getStringAsync:resolve:reject:)),
-    @"setStringAsync" : NSStringFromSelector(@selector(setStringAsync:resolve:reject:)),
-    @"hasStringAsync" : NSStringFromSelector(@selector(hasStringAsync:resolve:reject:)),
+    @"getStringAsync" : NSStringFromSelector(@selector(getStringAsync:reject:)),
+    @"setStringAsync" : NSStringFromSelector(@selector(setStringAsync:reject:)),
+    @"hasStringAsync" : NSStringFromSelector(@selector(hasStringAsync:reject:)),
   };
 }
 

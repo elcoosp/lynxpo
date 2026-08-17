@@ -23,10 +23,10 @@
     @"getCameraPermissions" : NSStringFromSelector(@selector(getCameraPermissions)),
     @"getMediaLibraryPermissions" : NSStringFromSelector(@selector(getMediaLibraryPermissions)),
     // Async variants (required by the generated TS wrappers).
-    @"getCameraPermissionsAsync" : NSStringFromSelector(@selector(getCameraPermissionsAsync:resolve:reject:)),
-    @"getMediaLibraryPermissionsAsync" : NSStringFromSelector(@selector(getMediaLibraryPermissionsAsync:resolve:reject:)),
-    @"launchImageLibraryAsync" : NSStringFromSelector(@selector(launchImageLibraryAsync:resolve:reject:)),
-    @"launchCameraAsync" : NSStringFromSelector(@selector(launchCameraAsync:resolve:reject:)),
+    @"getCameraPermissionsAsync" : NSStringFromSelector(@selector(getCameraPermissionsAsync:reject:)),
+    @"getMediaLibraryPermissionsAsync" : NSStringFromSelector(@selector(getMediaLibraryPermissionsAsync:reject:)),
+    @"launchImageLibraryAsync" : NSStringFromSelector(@selector(launchImageLibraryAsync:reject:)),
+    @"launchCameraAsync" : NSStringFromSelector(@selector(launchCameraAsync:reject:)),
   };
 }
 
