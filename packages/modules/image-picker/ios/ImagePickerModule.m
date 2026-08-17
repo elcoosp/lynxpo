@@ -44,11 +44,14 @@
 - (NSString *)photoStatusString:(PHAuthorizationStatus)status {
   switch (status) {
     case PHAuthorizationStatusAuthorized: return @"granted";
-    case PHAuthorizationStatusLimited: return @"limited";
     case PHAuthorizationStatusDenied: return @"denied";
     case PHAuthorizationStatusRestricted: return @"restricted";
-    default: return @"undetermined";
+    default: break;
   }
+  if (@available(iOS 14.0, *)) {
+    if (status == PHAuthorizationStatusLimited) return @"limited";
+  }
+  return @"undetermined";
 }
 
 - (NSDictionary *)permissionDictWithStatus:(NSString *)status granted:(BOOL)granted {
@@ -84,8 +87,10 @@
 
 - (NSDictionary *)getMediaLibraryPermissions {
   PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-  BOOL granted = status == PHAuthorizationStatusAuthorized ||
-                 status == PHAuthorizationStatusLimited;
+  BOOL granted = status == PHAuthorizationStatusAuthorized;
+  if (@available(iOS 14.0, *)) {
+    granted = granted || status == PHAuthorizationStatusLimited;
+  }
   return [self permissionDictWithStatus:[self photoStatusString:status]
                                  granted:granted];
 }
@@ -108,14 +113,22 @@
 
 - (void)getMediaLibraryPermissionsAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   @try {
-    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-      BOOL granted = status == PHAuthorizationStatusAuthorized ||
-                     status == PHAuthorizationStatusLimited;
+    void (^handle)(PHAuthorizationStatus) = ^(PHAuthorizationStatus status) {
+      BOOL granted = status == PHAuthorizationStatusAuthorized;
+      if (@available(iOS 14.0, *)) {
+        granted = granted || status == PHAuthorizationStatusLimited;
+      }
       dispatch_async(dispatch_get_main_queue(), ^{
         resolve([self permissionDictWithStatus:[self photoStatusString:status]
                                         granted:granted]);
       });
-    }];
+    };
+    if (@available(iOS 14.0, *)) {
+      [PHPhotoLibrary requestAuthorizationForAccessLevel:PHAccessLevelReadWrite
+                                                 handler:handle];
+    } else {
+      [PHPhotoLibrary requestAuthorization:handle];
+    }
   } @catch (NSException *e) { reject(e.reason); }
 }
 
@@ -137,8 +150,11 @@
 - (void)launchImageLibraryAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   @try {
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-    if (status != PHAuthorizationStatusAuthorized &&
-        status != PHAuthorizationStatusLimited) {
+    BOOL hasAccess = status == PHAuthorizationStatusAuthorized;
+    if (@available(iOS 14.0, *)) {
+      hasAccess = hasAccess || status == PHAuthorizationStatusLimited;
+    }
+    if (!hasAccess) {
       resolve([self getMediaLibraryPermissions]);
       return;
     }
