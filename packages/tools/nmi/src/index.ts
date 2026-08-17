@@ -975,38 +975,79 @@ function ensureModulesInXcodeProject(
  */
 function ensureStoreKitLinked(pbxPath: string): void {
   let txt = fs.readFileSync(pbxPath, 'utf8');
-  if (txt.includes('StoreKit.framework in Frameworks')) {
-    console.log('StoreKit already linked.');
-    return;
-  }
-  const m = /(\w+) \/\* AVFoundation\.framework in Frameworks \*\/,$/.exec(txt);
-  const m2 = /(\w+) \/\* AVFoundation\.framework \*\/,$/.exec(txt);
+  const m = /(\w+) \/\* AVFoundation\.framework in Frameworks \*\//.exec(txt);
+  const m2 = /(\w+) \/\* AVFoundation\.framework \*\//.exec(txt);
   if (!m || !m2) {
-    console.warn('Could not find AVFoundation anchor; skipping StoreKit link.');
+    console.warn(
+      'Could not find AVFoundation anchor; skipping framework link.',
+    );
     return;
   }
   const avBuild = m[1];
   const avRef = m2[1];
-  const storeBuild = uuid24();
-  const storeRef = uuid24();
-  txt = txt.replace(
-    '/* Begin PBXBuildFile section */',
-    `/* Begin PBXBuildFile section */\n\t\t${storeBuild} /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ${storeRef} /* StoreKit.framework */; };`,
-  );
-  txt = txt.replace(
-    '/* Begin PBXFileReference section */',
-    `/* Begin PBXFileReference section */\n\t\t${storeRef} /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };`,
-  );
-  txt = txt.replace(
-    `\t\t\t\t${avRef} /* AVFoundation.framework */,\n`,
-    `\t\t\t\t${avRef} /* AVFoundation.framework */,\n\t\t\t\t${storeRef} /* StoreKit.framework */,\n`,
-  );
-  txt = txt.replace(
-    `\t\t\t\t${avBuild} /* AVFoundation.framework in Frameworks */,\n`,
-    `\t\t\t\t${avBuild} /* AVFoundation.framework in Frameworks */,\n\t\t\t\t${storeBuild} /* StoreKit.framework in Frameworks */,\n`,
-  );
+
+  const linkFramework = (framework: string): void => {
+    const inFrameworks = `${framework}.framework in Frameworks`;
+    if (txt.includes(inFrameworks)) {
+      console.log(`${framework} already linked.`);
+      return;
+    }
+    const build = uuid24();
+    const ref = uuid24();
+    txt = txt.replace(
+      '/* Begin PBXBuildFile section */',
+      `/* Begin PBXBuildFile section */\n\t\t${build} /* ${framework}.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ${ref} /* ${framework}.framework */; };`,
+    );
+    txt = txt.replace(
+      '/* Begin PBXFileReference section */',
+      `/* Begin PBXFileReference section */\n\t\t${ref} /* ${framework}.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ${framework}.framework; path = System/Library/Frameworks/${framework}.framework; sourceTree = SDKROOT; };`,
+    );
+    txt = txt.replace(
+      `\t\t\t\t${avRef} /* AVFoundation.framework */,\n`,
+      `\t\t\t\t${avRef} /* AVFoundation.framework */,\n\t\t\t\t${ref} /* ${framework}.framework */,\n`,
+    );
+    txt = txt.replace(
+      `\t\t\t\t${avBuild} /* AVFoundation.framework in Frameworks */,\n`,
+      `\t\t\t\t${avBuild} /* AVFoundation.framework in Frameworks */,\n\t\t\t\t${build} /* ${framework}.framework in Frameworks */,\n`,
+    );
+    console.log(`Linked ${framework}.framework.`);
+  };
+
+  // StoreKit (required by StoreReview module) and Photos (required by the
+  // image-picker module's PHPhotoLibrary usage).
+  linkFramework('StoreKit');
+  linkFramework('Photos');
   fs.writeFileSync(pbxPath, txt);
-  console.log('Linked StoreKit.framework.');
+}
+
+/**
+ * Ensures the engine Info.plist declares NSPhotoLibraryUsageDescription,
+ * which the image-picker module's PHPhotoLibrary authorization request needs.
+ * The engine Info.plist is gitignored, so this must be applied on every run.
+ */
+function ensurePhotoLibraryUsage(plistPath: string): void {
+  if (!fs.existsSync(plistPath)) return;
+  let txt = fs.readFileSync(plistPath, 'utf8');
+  if (txt.includes('NSPhotoLibraryUsageDescription')) {
+    console.log('NSPhotoLibraryUsageDescription already present.');
+    return;
+  }
+  const anchor = 'NSCameraUsageDescription';
+  if (!txt.includes(anchor)) {
+    console.warn(
+      'NSCameraUsageDescription anchor missing; skipping photo usage injection.',
+    );
+    return;
+  }
+  const injection =
+    '\t<key>NSPhotoLibraryUsageDescription</key>\n' +
+    '\t<string>Lynx Explorer uses the photo library to pick images for the native module showcase.</string>\n';
+  txt = txt.replace(
+    new RegExp(`(\\t*<key>${anchor}</key>[^<]*<string>[^<]*</string>)`),
+    `$1\n${injection}`,
+  );
+  fs.writeFileSync(plistPath, txt);
+  console.log('Injected NSPhotoLibraryUsageDescription.');
 }
 
 /**
@@ -1059,6 +1100,11 @@ function installIOSModules(
       `Xcode project not found at ${pbxPath}; skipping pbxproj edit.`,
     );
   }
+  const plistPath = modulesDir.replace(
+    /\/LynxExplorer\/modules$/,
+    '/LynxExplorer/Info.plist',
+  );
+  ensurePhotoLibraryUsage(plistPath);
 
   // Register the modules in the explorer's view controller (ObjC).
   const projectType = config.projectType || 'user-app';
