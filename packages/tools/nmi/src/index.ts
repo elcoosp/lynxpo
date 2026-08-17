@@ -237,7 +237,12 @@ export function installNativeModules(config: ModuleInstallerConfig = {}): void {
       ...config.iosConfig,
     },
     projectType: projectConfig.type,
-    typingsPath: config.typingsPath || 'typing.d.ts',
+    // In a monorepo the playground owns its typing.d.ts (it uses
+    // `declare global`), so point nmi at that file. nmi will then skip it
+    // (see updateTypingDefinitions) instead of creating a stray root file.
+    typingsPath:
+      config.typingsPath ||
+      (isMonorepo ? 'packages/playground/src/typing.d.ts' : 'typing.d.ts'),
   };
 
   // Find current package directory (where the modules are located)
@@ -555,82 +560,64 @@ function updateTypingDefinitions(
 
   console.log(`Looking for typing definitions file: ${typingsFile}`);
 
-  let typingsContent = '';
-
-  // Check if the file exists
-  if (fs.existsSync(typingsFile)) {
-    typingsContent = fs.readFileSync(typingsFile, 'utf8');
-    console.log(`Found existing typing.d.ts file`);
-  } else {
-    // Create directory if it doesn't exist
-    const typingsDir = path.dirname(typingsFile);
-    if (!fs.existsSync(typingsDir)) {
-      fs.mkdirSync(typingsDir, { recursive: true });
-    }
-
-    // Create a basic typing.d.ts file
-    typingsContent = '// Generated typing definitions\n\n';
-    console.log(`Creating new typing.d.ts file at ${typingsFile}`);
+  // Never create a stray typing.d.ts (e.g. at the repo root when run from a
+  // monorepo). The playground maintains its own typings; leave absent files
+  // alone.
+  if (!fs.existsSync(typingsFile)) {
+    console.log(
+      `Skipping typing.d.ts update: ${typingsFile} does not exist ` +
+        `(typings are managed by the consuming package).`,
+    );
+    return;
   }
 
-  // Check if NativeModules declaration exists
-  if (typingsContent.includes('declare let NativeModules:')) {
-    // Update existing NativeModules declaration
-    console.log('Updating existing NativeModules declaration');
+  const typingsContent = fs.readFileSync(typingsFile, 'utf8');
 
-    // Find where the NativeModules declaration block ends
-    const nativeModulesStart = typingsContent.indexOf(
-      'declare let NativeModules:',
+  // Only manage the simple `declare let NativeModules:` form. The playground's
+  // typing.d.ts uses `declare global { var NativeModules: ... }` and is
+  // maintained separately, so it must not be clobbered.
+  if (!typingsContent.includes('declare let NativeModules:')) {
+    console.log(
+      'Skipping typing.d.ts update (typings managed via `declare global`).',
     );
-    const openBracePos = typingsContent.indexOf('{', nativeModulesStart);
-    const closeBracePos = findMatchingCloseBrace(typingsContent, openBracePos);
+    return;
+  }
+  // Update existing NativeModules declaration
+  console.log('Updating existing NativeModules declaration');
 
-    if (closeBracePos !== -1) {
-      // Check which modules are already defined
-      const existingContent = typingsContent
-        .substring(openBracePos + 1, closeBracePos)
-        .trim();
-      const newModuleEntries = moduleNames
-        .filter((name) => !existingContent.includes(`${name}:`))
-        .map((name) => `  ${name}: import('${packageName}').${name}`)
-        .join(';\n');
+  // Find where the NativeModules declaration block ends
+  const nativeModulesStart = typingsContent.indexOf(
+    'declare let NativeModules:',
+  );
+  const openBracePos = typingsContent.indexOf('{', nativeModulesStart);
+  const closeBracePos = findMatchingCloseBrace(typingsContent, openBracePos);
 
-      if (newModuleEntries) {
-        // Add new module entries before the closing brace
-        const separator = existingContent.length > 0 ? ';\n' : '';
-        const updatedContent =
-          typingsContent.substring(0, closeBracePos).trim() +
-          (separator + '\n' + newModuleEntries + ';\n') +
-          typingsContent.substring(closeBracePos);
-
-        fs.writeFileSync(typingsFile, updatedContent);
-        console.log(`Updated typing.d.ts with ${moduleNames.length} module(s)`);
-      } else {
-        console.log('All modules are already defined in typing.d.ts');
-      }
-    } else {
-      console.error(
-        'Could not find matching closing brace for NativeModules declaration',
-      );
-    }
-  } else {
-    // Create new NativeModules declaration
-    console.log('Creating new NativeModules declaration');
-
-    const moduleEntries = moduleNames
+  if (closeBracePos !== -1) {
+    // Check which modules are already defined
+    const existingContent = typingsContent
+      .substring(openBracePos + 1, closeBracePos)
+      .trim();
+    const newModuleEntries = moduleNames
+      .filter((name) => !existingContent.includes(`${name}:`))
       .map((name) => `  ${name}: import('${packageName}').${name}`)
       .join(';\n');
 
-    const newDeclaration = `
-declare let NativeModules: {
-${moduleEntries};
-}
-`;
+    if (newModuleEntries) {
+      // Add new module entries before the closing brace
+      const separator = existingContent.length > 0 ? ';\n' : '';
+      const updatedContent =
+        typingsContent.substring(0, closeBracePos).trim() +
+        (separator + '\n' + newModuleEntries + ';\n') +
+        typingsContent.substring(closeBracePos);
 
-    typingsContent += newDeclaration;
-    fs.writeFileSync(typingsFile, typingsContent);
-    console.log(
-      `Created NativeModules declaration with ${moduleNames.length} module(s)`,
+      fs.writeFileSync(typingsFile, updatedContent);
+      console.log(`Updated typing.d.ts with ${moduleNames.length} module(s)`);
+    } else {
+      console.log('All modules are already defined in typing.d.ts');
+    }
+  } else {
+    console.error(
+      'Could not find matching closing brace for NativeModules declaration',
     );
   }
 }
@@ -1201,8 +1188,11 @@ function registerIOSModule(
 const main = () => {
   const args = process.argv.slice(2);
 
+  // Only pass an explicit typingsPath if the caller provided one. When omitted,
+  // installNativeModules falls back to a monorepo-aware default (the playground's
+  // own typing.d.ts) and skips it — never creating a stray root file.
   installNativeModules({
-    typingsPath: args[0] ?? 'src/typing.d.ts',
+    typingsPath: args[0],
   });
 };
 

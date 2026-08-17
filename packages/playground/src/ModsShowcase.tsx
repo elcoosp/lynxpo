@@ -141,7 +141,10 @@ export function ModsShowcase() {
     ? [
         {
           label: 'Level',
-          value: batteryLevelPct !== null ? `${batteryLevelPct}%` : 'Unknown',
+          // batteryLevel is -1 when unknown (e.g. iOS Simulator, which has no
+          // physical battery). Report "Unavailable" rather than a fake %.
+          value:
+            batteryLevelPct !== null ? `${batteryLevelPct}%` : 'Unavailable',
         },
         { label: 'State', value: batteryStateLabel(battery.batteryState) },
         { label: 'Low power mode', value: battery.lowPowerMode ? 'On' : 'Off' },

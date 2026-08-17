@@ -14,7 +14,7 @@ export interface BatteryInfo {
 }
 
 const BATTERY_STATE_LABELS = [
-  'Unknown',
+  'Unavailable', // 0 UNKNOWN — e.g. iOS Simulator has no physical battery
   'Unplugged',
   'Charging',
   'Full',
@@ -22,7 +22,7 @@ const BATTERY_STATE_LABELS = [
 ];
 
 export function batteryStateLabel(state: number): string {
-  return BATTERY_STATE_LABELS[state] ?? 'Unknown';
+  return BATTERY_STATE_LABELS[state] ?? 'Unavailable';
 }
 
 /**
