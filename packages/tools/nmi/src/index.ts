@@ -1,4 +1,6 @@
 // FIXME: override package declaration to match explorer (or user-app name)
+
+import * as crypto from 'node:crypto';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
@@ -37,17 +39,29 @@ interface ModuleInstallerConfig {
  * Detects the project configuration based on directory structure
  */
 function detectProjectConfig(workspaceRoot: string): ProjectConfig {
-  // Check for explorer project
-  const explorerRoot = 'src/lynx/explorer';
-  const androidExplorerPath = path.join(
-    workspaceRoot,
-    `${explorerRoot}/android/lynx_explorer`,
-  );
-  const iosExplorerPath = path.join(
-    workspaceRoot,
-    `${explorerRoot}/darwin/ios/lynx_explorer`,
-  );
-  if (fs.existsSync(androidExplorerPath) && fs.existsSync(iosExplorerPath)) {
+  // Check for explorer project. In this monorepo the explorer lives at
+  // packages/playground/src/lynx/explorer; support both that and a
+  // standalone layout rooted at src/lynx/explorer.
+  const candidateRoots = [
+    'packages/playground/src/lynx/explorer',
+    'src/lynx/explorer',
+  ];
+  let explorerRoot: string | null = null;
+  for (const candidate of candidateRoots) {
+    const androidExplorerPath = path.join(
+      workspaceRoot,
+      `${candidate}/android/lynx_explorer`,
+    );
+    const iosExplorerPath = path.join(
+      workspaceRoot,
+      `${candidate}/darwin/ios/lynx_explorer`,
+    );
+    if (fs.existsSync(androidExplorerPath) && fs.existsSync(iosExplorerPath)) {
+      explorerRoot = candidate;
+      break;
+    }
+  }
+  if (explorerRoot) {
     return {
       type: 'explorer',
       android: {
@@ -59,11 +73,11 @@ function detectProjectConfig(workspaceRoot: string): ProjectConfig {
       },
       ios: {
         modulesPath: `${explorerRoot}/darwin/ios/lynx_explorer/LynxExplorer/modules`,
+        // The iOS modules are plain ObjC LynxModules registered in
+        // LynxViewShellViewController.m (not the Swift init files).
         initFiles: [
           explorerRoot +
-            '/darwin/ios/lynx_explorer/LynxExplorer/LynxInitProcessor.swift',
-          explorerRoot +
-            '/darwin/ios/lynx_explorer/LynxExplorer/AppDelegate.swift',
+            '/darwin/ios/lynx_explorer/LynxExplorer/LynxViewShellViewController.m',
         ],
       },
     };
@@ -222,6 +236,7 @@ export function installNativeModules(config: ModuleInstallerConfig = {}): void {
       initFiles: projectConfig.ios.initFiles,
       ...config.iosConfig,
     },
+    projectType: projectConfig.type,
     typingsPath: config.typingsPath || 'typing.d.ts',
   };
 
@@ -251,10 +266,10 @@ export function installNativeModules(config: ModuleInstallerConfig = {}): void {
     ),
     '.kt',
   );
-  const iosModules = discoverModules(
-    path.resolve(packageDir, defaultConfig.iosConfig?.moduleSource as string),
-    '.swift',
-  );
+  // iOS modules are checked in under packages/modules/<name>/ios/ (one ObjC
+  // .m/.h pair per ported Expo module). Discover them workspace-wide rather
+  // than from a single cwd/ios dir (which doesn't exist in this layout).
+  const iosModules = collectIosModuleFiles(workspaceRoot);
 
   // Discover build.gradle file in the Android source directory
   const androidSourceDir = path.resolve(
@@ -868,6 +883,146 @@ function registerAndroidModule(
   return adapterContent;
 }
 /**
+ * Walks packages/modules/<name>/ios for checked-in ObjC module sources.
+ */
+function collectIosModuleFiles(workspaceRoot: string): string[] {
+  const root = path.join(workspaceRoot, 'packages/modules');
+  if (!fs.existsSync(root)) return [];
+  const out: string[] = [];
+  for (const name of fs.readdirSync(root)) {
+    const iosDir = path.join(root, name, 'ios');
+    if (!fs.existsSync(iosDir)) continue;
+    for (const f of fs.readdirSync(iosDir)) {
+      if (f.toLowerCase().endsWith('.m') && f.includes('Module')) {
+        out.push(path.resolve(iosDir, f));
+      }
+    }
+  }
+  return out;
+}
+
+/**
+ * Inserts `#import "XModule.h"` after the last existing #import line so the
+ * module header sits with the other imports.
+ */
+function addModuleImport(content: string, moduleName: string): string {
+  const importLine = `#import "${moduleName}.h"`;
+  const lines = content.split('\n');
+  let lastImportIdx = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (/^\s*#import\s/.test(lines[i])) lastImportIdx = i;
+  }
+  if (lastImportIdx === -1) return `${importLine}\n${content}`;
+  lines.splice(lastImportIdx + 1, 0, importLine);
+  return lines.join('\n');
+}
+
+function uuid24(): string {
+  return crypto.randomUUID().replace(/-/g, '').toUpperCase().slice(0, 24);
+}
+
+/**
+ * Adds the given module sources to the LynxExplorer Xcode target (mirrors the
+ * manual DeviceModule wiring). Idempotent: skips modules already referenced.
+ */
+function ensureModulesInXcodeProject(
+  pbxPath: string,
+  moduleNames: string[],
+): void {
+  let txt = fs.readFileSync(pbxPath, 'utf8');
+  const groupAnchor =
+    '\t\t\t\t29593FF631FD44EEBD8E8E00 /* DeviceModule.m */,\n';
+  const sourceAnchor =
+    '\t\t\t\t40291E286388457AB37272AF /* DeviceModule.m in Sources */,\n';
+  if (!txt.includes(groupAnchor) || !txt.includes(sourceAnchor)) {
+    console.warn('Could not find pbxproj anchors; skipping module references.');
+    return;
+  }
+  const buildFiles: string[] = [];
+  const fileRefs: string[] = [];
+  const groupChildren: string[] = [];
+  const sources: string[] = [];
+  let changed = false;
+  for (const mod of moduleNames) {
+    // `mod` already ends in "Module" (e.g. ApplicationModule); the source file
+    // is `${mod}.m` / `${mod}.h`, so do NOT append another "Module".
+    if (txt.includes(`${mod}.m in Sources`)) continue;
+    const hRef = uuid24();
+    const mRef = uuid24();
+    const build = uuid24();
+    buildFiles.push(
+      `\t\t${build} /* ${mod}.m in Sources */ = {isa = PBXBuildFile; fileRef = ${mRef} /* ${mod}.m */; };`,
+    );
+    fileRefs.push(
+      `\t\t${mRef} /* ${mod}.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ${mod}.m; sourceTree = "<group>"; };`,
+    );
+    fileRefs.push(
+      `\t\t${hRef} /* ${mod}.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ${mod}.h; sourceTree = "<group>"; };`,
+    );
+    groupChildren.push(`\t\t\t\t${hRef} /* ${mod}.h */,`);
+    groupChildren.push(`\t\t\t\t${mRef} /* ${mod}.m */,`);
+    sources.push(`\t\t\t\t${build} /* ${mod}.m in Sources */,`);
+    changed = true;
+  }
+  if (!changed) {
+    console.log('All modules already referenced in Xcode project.');
+    return;
+  }
+  txt = txt.replace(
+    '/* Begin PBXBuildFile section */',
+    '/* Begin PBXBuildFile section */\n' + buildFiles.join('\n'),
+  );
+  txt = txt.replace(
+    '/* Begin PBXFileReference section */',
+    '/* Begin PBXFileReference section */\n' + fileRefs.join('\n'),
+  );
+  txt = txt.replace(groupAnchor, groupAnchor + groupChildren.join('\n') + '\n');
+  txt = txt.replace(sourceAnchor, sourceAnchor + sources.join('\n') + '\n');
+  fs.writeFileSync(pbxPath, txt);
+  console.log('Added iOS modules to LynxExplorer Xcode target.');
+}
+
+/**
+ * Links StoreKit.framework into the main LynxExplorer target (StoreReviewModule
+ * needs it). Idempotent.
+ */
+function ensureStoreKitLinked(pbxPath: string): void {
+  let txt = fs.readFileSync(pbxPath, 'utf8');
+  if (txt.includes('StoreKit.framework in Frameworks')) {
+    console.log('StoreKit already linked.');
+    return;
+  }
+  const m = /(\w+) \/\* AVFoundation\.framework in Frameworks \*\/,$/.exec(txt);
+  const m2 = /(\w+) \/\* AVFoundation\.framework \*\/,$/.exec(txt);
+  if (!m || !m2) {
+    console.warn('Could not find AVFoundation anchor; skipping StoreKit link.');
+    return;
+  }
+  const avBuild = m[1];
+  const avRef = m2[1];
+  const storeBuild = uuid24();
+  const storeRef = uuid24();
+  txt = txt.replace(
+    '/* Begin PBXBuildFile section */',
+    `/* Begin PBXBuildFile section */\n\t\t${storeBuild} /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ${storeRef} /* StoreKit.framework */; };`,
+  );
+  txt = txt.replace(
+    '/* Begin PBXFileReference section */',
+    `/* Begin PBXFileReference section */\n\t\t${storeRef} /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };`,
+  );
+  txt = txt.replace(
+    `\t\t\t\t${avRef} /* AVFoundation.framework */,\n`,
+    `\t\t\t\t${avRef} /* AVFoundation.framework */,\n\t\t\t\t${storeRef} /* StoreKit.framework */,\n`,
+  );
+  txt = txt.replace(
+    `\t\t\t\t${avBuild} /* AVFoundation.framework in Frameworks */,\n`,
+    `\t\t\t\t${avBuild} /* AVFoundation.framework in Frameworks */,\n\t\t\t\t${storeBuild} /* StoreKit.framework in Frameworks */,\n`,
+  );
+  fs.writeFileSync(pbxPath, txt);
+  console.log('Linked StoreKit.framework.');
+}
+
+/**
  * Installs all discovered iOS modules
  */
 function installIOSModules(
@@ -885,12 +1040,44 @@ function installIOSModules(
     console.log(`Created iOS modules directory: ${modulesDir}`);
   }
 
-  // Find iOS init file - only needed for explorer projects
-  let initProcessorFile = null;
-  const projectType = config.projectType || 'user-app';
+  // Copy the module sources (.m and the paired .h) into the engine modules dir.
+  for (const moduleFile of moduleFiles) {
+    const ext = path.extname(moduleFile);
+    const moduleName = path.basename(moduleFile, ext);
+    const srcDir = path.dirname(moduleFile);
+    for (const e of [ext, '.h']) {
+      const src = path.join(srcDir, `${moduleName}${e}`);
+      if (fs.existsSync(src)) {
+        const targetFile = path.resolve(modulesDir, `${moduleName}${e}`);
+        fs.copyFileSync(src, targetFile);
+        console.log(`Copied ${moduleName}${e} to ${modulesDir}`);
+      }
+    }
+  }
 
+  const moduleNames = moduleFiles.map((f) => path.basename(f, path.extname(f)));
+
+  // Wire the Xcode target so the copied sources actually compile.
+  // The engine project lives at <explorer>/LynxExplorer.xcodeproj, i.e. the
+  // "LynxExplorer/modules" suffix of modulesPath is swapped for the .xcodeproj.
+  const pbxPath = modulesDir.replace(
+    /\/LynxExplorer\/modules$/,
+    '/LynxExplorer.xcodeproj/project.pbxproj',
+  );
+  if (fs.existsSync(pbxPath)) {
+    ensureModulesInXcodeProject(pbxPath, moduleNames);
+    ensureStoreKitLinked(pbxPath);
+  } else {
+    console.warn(
+      `Xcode project not found at ${pbxPath}; skipping pbxproj edit.`,
+    );
+  }
+
+  // Register the modules in the explorer's view controller (ObjC).
+  const projectType = config.projectType || 'user-app';
   if (projectType === 'explorer') {
     const initFiles = config.iosConfig?.initFiles ?? [];
+    let initProcessorFile: string | null = null;
     for (const initFile of initFiles as string[]) {
       const potentialFile = path.resolve(workspaceRoot, initFile);
       if (fs.existsSync(potentialFile)) {
@@ -898,88 +1085,34 @@ function installIOSModules(
         break;
       }
     }
-  }
-
-  // Process each module
-  for (const moduleFile of moduleFiles) {
-    const moduleName = path.basename(moduleFile, path.extname(moduleFile));
-    const targetFile = path.resolve(
-      modulesDir,
-      `${moduleName}${path.extname(moduleFile)}`,
-    );
-
-    // Copy the module file
-    fs.copyFileSync(moduleFile, targetFile);
-    console.log(`Copied ${moduleName} to ${modulesDir}`);
-
-    // Register the module if init file was found (for explorer projects)
-    if (projectType === 'explorer' && initProcessorFile) {
-      let processorContent = fs.readFileSync(initProcessorFile, 'utf8');
-
-      // Check if module is already registered
-      if (!processorContent.includes(moduleName)) {
-        processorContent = registerIOSModule(processorContent, moduleName);
-        fs.writeFileSync(initProcessorFile, processorContent);
-        console.log(`Registered ${moduleName} in Swift init file`);
-      } else {
-        console.log(
-          `Module ${moduleName} already registered in Swift init file`,
-        );
+    if (initProcessorFile) {
+      let content = fs.readFileSync(initProcessorFile, 'utf8');
+      for (const moduleName of moduleNames) {
+        if (!content.includes(`#import "${moduleName}.h"`)) {
+          content = addModuleImport(content, moduleName);
+          console.log(`Added #import "${moduleName}.h"`);
+        }
+        if (!content.includes(`registerModule:${moduleName}.class`)) {
+          content = registerIOSModule(content, moduleName);
+          console.log(
+            `Registered ${moduleName} in LynxViewShellViewController.m`,
+          );
+        }
       }
-    }
-  }
-
-  // Provide appropriate guidance based on project type
-  if (projectType === 'explorer') {
-    if (!initProcessorFile) {
-      console.log('⚠️ Could not find Swift init file to register the modules.');
-      console.log(
-        'Please manually register the modules in your Swift init file:',
+      fs.writeFileSync(initProcessorFile, content);
+    } else {
+      console.warn(
+        '⚠️ Could not find LynxViewShellViewController.m to register the modules.',
       );
-
-      for (const moduleFile of moduleFiles) {
-        const moduleName = path.basename(moduleFile, path.extname(moduleFile));
-        console.log(`globalConfig.register(moduleClass: ${moduleName}.self)`);
-      }
     }
-
-    // Xcode project modification instructions for explorer
-    console.log(
-      '\nIMPORTANT: You need to add the module files to your Xcode project:',
-    );
-    console.log('1. Open your Lynx Explorer Xcode project');
-    console.log(
-      '2. Right-click on the "modules" group in the project navigator',
-    );
-    console.log('3. Select "Add Files to [project name]..."');
-    console.log('4. Navigate to and select the module files:');
   } else {
-    // Instructions for user-app
     console.log(
-      '\nIMPORTANT: You need to manually register these modules in your Swift initialization:',
+      '\nIMPORTANT: manually register these modules in your ObjC initialization:',
     );
-    for (const moduleFile of moduleFiles) {
-      const moduleName = path.basename(moduleFile, path.extname(moduleFile));
-      console.log(`globalConfig.register(moduleClass: ${moduleName}.self)`);
+    for (const moduleName of moduleNames) {
+      console.log(`[builder.config registerModule:${moduleName}.class];`);
     }
-
-    // Xcode project modification instructions for user-app
-    console.log(
-      '\nIMPORTANT: You need to add the module files to your Xcode project:',
-    );
-    console.log('1. Open your Xcode project');
-    console.log(
-      '2. Right-click on the appropriate group in the project navigator',
-    );
-    console.log('3. Select "Add Files to [project name]..."');
-    console.log('4. Navigate to and select the module files:');
   }
-
-  for (const moduleFile of moduleFiles) {
-    console.log(`   - ${path.basename(moduleFile)}`);
-  }
-
-  console.log('5. Click "Add"');
 }
 
 /**
@@ -1038,32 +1171,29 @@ function installUserAppIOSModules(
   console.log('5. Click "Add"');
 }
 /**
- * Registers a module in the iOS init file
+ * Registers a module in the explorer's ObjC view controller.
+ * Anchors on the engine's own LynxNodeAPIModule registration (present on a
+ * clean checkout) and inserts `[builder.config registerModule:XModule.class];`
+ * right after it.
  */
 function registerIOSModule(
   processorContent: string,
   moduleName: string,
 ): string {
-  // Look for setupLynxEnv function or similar
-  const setupFunctionRegex = /func setup(?:LynxEnv|Modules|Environment)/;
-  const match = setupFunctionRegex.exec(processorContent);
-
-  if (!match) {
+  const anchor =
+    '[builder.config registerModule:LynxNodeAPIModule.class param:self];';
+  const idx = processorContent.indexOf(anchor);
+  if (idx === -1) {
     throw new Error(
-      'Could not find a suitable location to register the module.',
+      'Could not find LynxNodeAPIModule registration anchor in LynxViewShellViewController.m',
     );
   }
-
-  // Find the function body
-  const funcStartPos = match.index;
-  const funcBodyStartPos = processorContent.indexOf('{', funcStartPos) + 1;
-
-  // Insert the registration line
-  const registrationCode = `\n        globalConfig.register(moduleClass: ${moduleName}.self)`;
+  const insertPos = idx + anchor.length;
+  const code = `\n    [builder.config registerModule:${moduleName}.class];`;
   return (
-    processorContent.substring(0, funcBodyStartPos) +
-    registrationCode +
-    processorContent.substring(funcBodyStartPos)
+    processorContent.slice(0, insertPos) +
+    code +
+    processorContent.slice(insertPos)
   );
 }
 
