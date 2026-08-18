@@ -10,6 +10,7 @@ import { useCellularInfo } from './mods/cellularInfo.js';
 import { useClipboardInfo } from './mods/clipboardInfo.js';
 import { useCryptoInfo } from './mods/cryptoInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
+import { useFileSystemInfo } from './mods/fileSystemInfo.js';
 import { useHapticsInfo } from './mods/hapticsInfo.js';
 import { useImagePickerInfo } from './mods/imagePickerInfo.js';
 import { useKeepAwakeInfo } from './mods/keepAwakeInfo.js';
@@ -18,8 +19,8 @@ import { useLocalizationInfo } from './mods/localizationInfo.js';
 import { useMailComposerInfo } from './mods/mailComposerInfo.js';
 import { useNetworkInfo } from './mods/networkInfo.js';
 import { useScreenOrientationInfo } from './mods/screenOrientationInfo.js';
-import { useSensorsInfo } from './mods/sensorsInfo.js';
 import { useSecureStoreInfo } from './mods/secureStoreInfo.js';
+import { useSensorsInfo } from './mods/sensorsInfo.js';
 import { useStoreReviewInfo } from './mods/storeReviewInfo.js';
 
 interface Row {
@@ -100,6 +101,7 @@ export function ModsShowcase() {
     useScreenOrientationInfo();
   const { rows: sensorsRows, error: sensorsErr } = useSensorsInfo();
   const { rows: secureStoreRows, error: secureStoreErr } = useSecureStoreInfo();
+  const { rows: fileSystemRows, error: fileSystemErr } = useFileSystemInfo();
   const {
     rows: clipboardRows,
     error: clipboardErr,
@@ -380,6 +382,16 @@ export function ModsShowcase() {
             secureStoreErr
               ? [{ label: 'Error', value: secureStoreErr.message }]
               : secureStoreRows
+          }
+        />
+        <ModuleCard
+          title="File System"
+          source="expo-file-system"
+          icon="🗂️"
+          rows={
+            fileSystemErr
+              ? [{ label: 'Error', value: fileSystemErr.message }]
+              : fileSystemRows
           }
         />
         <ModuleCard
