@@ -19,8 +19,12 @@ export interface ModuleInfo {
 
 function readClipboard(): { has: boolean; text: string | null } {
   const has = getHasString();
-  const text = getGetString();
-  return { has: !!has, text: text ?? null };
+  const raw = getGetString();
+  // Coerce defensively: the bridge may return undefined (module not yet ready)
+  // or a non-string value; normalize so the Preview row can never throw on
+  // `.slice` / `<text>` rendering.
+  const text = typeof raw === 'string' ? raw : null;
+  return { has: !!has, text };
 }
 
 /**
@@ -41,9 +45,9 @@ export function useClipboardInfo(): ModuleInfo {
         {
           label: 'Preview',
           value: text
-            ? text.length > 24
-              ? text.slice(0, 24) + '…'
-              : text
+            ? String(text).length > 24
+              ? String(text).slice(0, 24) + '…'
+              : String(text)
             : '—',
         },
       ]);
