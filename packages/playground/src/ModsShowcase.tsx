@@ -13,6 +13,7 @@ import { useDeviceInfo } from './mods/deviceInfo.js';
 import { useHapticsInfo } from './mods/hapticsInfo.js';
 import { useImagePickerInfo } from './mods/imagePickerInfo.js';
 import { useKeepAwakeInfo } from './mods/keepAwakeInfo.js';
+import { useLocalAuthenticationInfo } from './mods/localAuthenticationInfo.js';
 import { useLocalizationInfo } from './mods/localizationInfo.js';
 import { useMailComposerInfo } from './mods/mailComposerInfo.js';
 import { useNetworkInfo } from './mods/networkInfo.js';
@@ -83,6 +84,8 @@ export function ModsShowcase() {
   const { rows: keepAwakeRows, error: keepAwakeErr } = useKeepAwakeInfo();
   const { rows: storeReviewRows, error: storeReviewErr } = useStoreReviewInfo();
   const { rows: cryptoRows, error: cryptoErr } = useCryptoInfo();
+  const { rows: localAuthRows, error: localAuthErr } =
+    useLocalAuthenticationInfo();
   const { rows: mailComposerRows, error: mailComposerErr } =
     useMailComposerInfo();
   const { rows: networkRows, error: networkErr } = useNetworkInfo();
@@ -301,6 +304,16 @@ export function ModsShowcase() {
             cryptoErr
               ? [{ label: 'Error', value: cryptoErr.message }]
               : cryptoRows
+          }
+        />
+        <ModuleCard
+          title="Local Authentication"
+          source="expo-local-authentication"
+          icon="🔏"
+          rows={
+            localAuthErr
+              ? [{ label: 'Error', value: localAuthErr.message }]
+              : localAuthRows
           }
         />
         <ModuleCard

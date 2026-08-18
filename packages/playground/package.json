@@ -26,6 +26,7 @@
     "@lynxpo/mods-clipboard": "workspace:*",
     "@lynxpo/mods-crypto": "workspace:*",
     "@lynxpo/mods-image-picker": "workspace:*",
+    "@lynxpo/mods-local-authentication": "workspace:*",
     "@rsbuild/core": "2.1.10",
     "glob": "^13.0.0",
     "unplugin-ast": "^0.15.0"
