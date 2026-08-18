@@ -4,6 +4,8 @@ import {
   getGetCameraPermissionsAsync,
   getGetMediaLibraryPermissions,
   getGetMediaLibraryPermissionsAsync,
+  getLaunchCameraAsync,
+  getLaunchImageLibraryAsync,
 } from '@lynxpo/mods-image-picker';
 
 export interface ModuleAction {
@@ -16,6 +18,28 @@ export interface ModuleInfo {
   loading: boolean;
   error: Error | null;
   actions: ModuleAction[];
+}
+
+interface PickerResult {
+  cancelled: boolean;
+  uri?: string;
+}
+
+function setPickerRow(
+  setRows: React.Dispatch<
+    React.SetStateAction<{ label: string; value: string }[]>
+  >,
+  label: string,
+  result: PickerResult,
+  picked: string,
+) {
+  setRows((prev) => [
+    ...prev.filter((r) => r.label !== label),
+    {
+      label,
+      value: result.cancelled ? 'cancelled' : String(result.uri ?? picked),
+    },
+  ]);
 }
 
 function statusOf(perm: unknown): string {
@@ -70,6 +94,24 @@ export function useImagePickerInfo(): ModuleInfo {
     }
   }, [refresh]);
 
+  const launchCamera = useCallback(async () => {
+    try {
+      const result = (await getLaunchCameraAsync()) as PickerResult;
+      setPickerRow(setRows, 'Camera result', result, 'captured');
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    }
+  }, [setRows]);
+
+  const launchLibrary = useCallback(async () => {
+    try {
+      const result = (await getLaunchImageLibraryAsync()) as PickerResult;
+      setPickerRow(setRows, 'Library result', result, 'picked');
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    }
+  }, [setRows]);
+
   useEffect(() => {
     refresh();
   }, [refresh]);
@@ -81,6 +123,8 @@ export function useImagePickerInfo(): ModuleInfo {
     actions: [
       { label: 'Request camera', onPress: requestCamera },
       { label: 'Request media', onPress: requestMedia },
+      { label: 'Launch camera', onPress: launchCamera },
+      { label: 'Pick image', onPress: launchLibrary },
     ],
   };
 }

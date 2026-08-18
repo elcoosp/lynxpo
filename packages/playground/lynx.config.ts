@@ -10,6 +10,11 @@ export default defineConfig({
       main: ['./src/index.tsx'],
     },
   },
+  server: {
+    // Pinned so lynxpo never collides with the Metro/RN bundlers (8081/8082/8083)
+    // or the other vite/rsbuild dev servers already holding 3000/3001.
+    port: 3100,
+  },
   plugins: [
     pluginQRCode({
       schema(url) {

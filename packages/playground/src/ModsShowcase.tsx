@@ -18,6 +18,8 @@ import { useLocalizationInfo } from './mods/localizationInfo.js';
 import { useMailComposerInfo } from './mods/mailComposerInfo.js';
 import { useNetworkInfo } from './mods/networkInfo.js';
 import { useScreenOrientationInfo } from './mods/screenOrientationInfo.js';
+import { useSensorsInfo } from './mods/sensorsInfo.js';
+import { useSecureStoreInfo } from './mods/secureStoreInfo.js';
 import { useStoreReviewInfo } from './mods/storeReviewInfo.js';
 
 interface Row {
@@ -96,6 +98,8 @@ export function ModsShowcase() {
   } = useGetNetworkStateAsync();
   const { rows: screenOrientationRows, error: screenOrientationErr } =
     useScreenOrientationInfo();
+  const { rows: sensorsRows, error: sensorsErr } = useSensorsInfo();
+  const { rows: secureStoreRows, error: secureStoreErr } = useSecureStoreInfo();
   const {
     rows: clipboardRows,
     error: clipboardErr,
@@ -356,6 +360,26 @@ export function ModsShowcase() {
             screenOrientationErr
               ? [{ label: 'Error', value: screenOrientationErr.message }]
               : screenOrientationRows
+          }
+        />
+        <ModuleCard
+          title="Sensors"
+          source="expo-sensors"
+          icon="🧭"
+          rows={
+            sensorsErr
+              ? [{ label: 'Error', value: sensorsErr.message }]
+              : sensorsRows
+          }
+        />
+        <ModuleCard
+          title="Secure Store"
+          source="expo-secure-store"
+          icon="🛡️"
+          rows={
+            secureStoreErr
+              ? [{ label: 'Error', value: secureStoreErr.message }]
+              : secureStoreRows
           }
         />
         <ModuleCard
