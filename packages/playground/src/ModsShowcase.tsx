@@ -8,6 +8,7 @@ import { batteryStateLabel, useBatteryInfo } from './mods/batteryInfo.js';
 import { useBrightnessInfo } from './mods/brightnessInfo.js';
 import { useCellularInfo } from './mods/cellularInfo.js';
 import { useClipboardInfo } from './mods/clipboardInfo.js';
+import { useCryptoInfo } from './mods/cryptoInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
 import { useHapticsInfo } from './mods/hapticsInfo.js';
 import { useImagePickerInfo } from './mods/imagePickerInfo.js';
@@ -81,6 +82,7 @@ export function ModsShowcase() {
   const { rows: hapticsRows, error: hapticsErr } = useHapticsInfo();
   const { rows: keepAwakeRows, error: keepAwakeErr } = useKeepAwakeInfo();
   const { rows: storeReviewRows, error: storeReviewErr } = useStoreReviewInfo();
+  const { rows: cryptoRows, error: cryptoErr } = useCryptoInfo();
   const { rows: mailComposerRows, error: mailComposerErr } =
     useMailComposerInfo();
   const { rows: networkRows, error: networkErr } = useNetworkInfo();
@@ -289,6 +291,16 @@ export function ModsShowcase() {
             storeReviewErr
               ? [{ label: 'Error', value: storeReviewErr.message }]
               : storeReviewRows
+          }
+        />
+        <ModuleCard
+          title="Crypto"
+          source="expo-crypto"
+          icon="🔐"
+          rows={
+            cryptoErr
+              ? [{ label: 'Error', value: cryptoErr.message }]
+              : cryptoRows
           }
         />
         <ModuleCard

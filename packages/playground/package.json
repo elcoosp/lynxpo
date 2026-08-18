@@ -24,6 +24,7 @@
     "@lynxpo/mods-network": "workspace:*",
     "@lynxpo/mods-screen-orientation": "workspace:*",
     "@lynxpo/mods-clipboard": "workspace:*",
+    "@lynxpo/mods-crypto": "workspace:*",
     "@lynxpo/mods-image-picker": "workspace:*",
     "@rsbuild/core": "2.1.10",
     "glob": "^13.0.0",
