@@ -36,6 +36,8 @@
     "@lynxpo/mods-contacts": "workspace:*",
     "@lynxpo/mods-speech": "workspace:*",
     "@lynxpo/mods-web-browser": "workspace:*",
+    "@lynxpo/mods-health": "workspace:*",
+    "@lynxpo/mods-intent-launcher": "workspace:*",
     "@lynxpo/mods-background-task": "workspace:*",
     "@lynxpo/mods-document-picker": "workspace:*",
     "@lynxpo/mods-image-manipulator": "workspace:*",

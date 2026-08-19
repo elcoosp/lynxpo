@@ -23,9 +23,11 @@ import { useDocumentPickerInfo } from './mods/documentPickerInfo.js';
 import { useFileSystemInfo } from './mods/fileSystemInfo.js';
 import { useFontInfo } from './mods/fontInfo.js';
 import { useHapticsInfo } from './mods/hapticsInfo.js';
+import { useHealthInfo } from './mods/healthInfo.js';
 import { useImageInfo } from './mods/imageInfo.js';
 import { useImageManipulatorInfo } from './mods/imageManipulatorInfo.js';
 import { useImagePickerInfo } from './mods/imagePickerInfo.js';
+import { useIntentLauncherInfo } from './mods/intentLauncherInfo.js';
 import { useKeepAwakeInfo } from './mods/keepAwakeInfo.js';
 import { useLinkingInfo } from './mods/linkingInfo.js';
 import { useLocalAuthenticationInfo } from './mods/localAuthenticationInfo.js';
@@ -166,6 +168,16 @@ export function ModsShowcase() {
   } = useContactsInfo();
   const { rows: speechRows, error: speechErr } = useSpeechInfo();
   const { rows: webBrowserRows, error: webBrowserErr } = useWebBrowserInfo();
+  const {
+    rows: healthRows,
+    error: healthErr,
+    actions: healthActions,
+  } = useHealthInfo();
+  const {
+    rows: intentLauncherRows,
+    error: intentLauncherErr,
+    actions: intentLauncherActions,
+  } = useIntentLauncherInfo();
   const {
     rows: backgroundTaskRows,
     error: backgroundTaskErr,
@@ -603,6 +615,28 @@ export function ModsShowcase() {
               ? [{ label: 'Error', value: webBrowserErr.message }]
               : webBrowserRows
           }
+        />
+        <ModuleCard
+          title="Health"
+          source="expo-health"
+          icon="❤️"
+          rows={
+            healthErr
+              ? [{ label: 'Error', value: healthErr.message }]
+              : healthRows
+          }
+          actions={healthActions}
+        />
+        <ModuleCard
+          title="Intent Launcher"
+          source="expo-intent-launcher"
+          icon="🚀"
+          rows={
+            intentLauncherErr
+              ? [{ label: 'Error', value: intentLauncherErr.message }]
+              : intentLauncherRows
+          }
+          actions={intentLauncherActions}
         />
         <ModuleCard
           title="Image Manipulator"

@@ -436,6 +436,28 @@ importers:
         specifier: ^0.23.0
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
+  packages/modules/health:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
   packages/modules/image:
     dependencies:
       '@lynx-js/react':
@@ -481,6 +503,28 @@ importers:
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
   packages/modules/image-picker:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/intent-launcher:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.123.0
@@ -1146,6 +1190,9 @@ importers:
       '@lynxpo/mods-haptics':
         specifier: workspace:*
         version: link:../modules/haptics
+      '@lynxpo/mods-health':
+        specifier: workspace:*
+        version: link:../modules/health
       '@lynxpo/mods-image':
         specifier: workspace:*
         version: link:../modules/image
@@ -1155,6 +1202,9 @@ importers:
       '@lynxpo/mods-image-picker':
         specifier: workspace:*
         version: link:../modules/image-picker
+      '@lynxpo/mods-intent-launcher':
+        specifier: workspace:*
+        version: link:../modules/intent-launcher
       '@lynxpo/mods-keep-awake':
         specifier: workspace:*
         version: link:../modules/keep-awake
