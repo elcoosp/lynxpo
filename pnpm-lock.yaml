@@ -24,7 +24,73 @@ importers:
         specifier: ^2.4.4
         version: 2.10.7
 
+  packages/modules/appearance:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
   packages/modules/application:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/audio:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/background-fetch:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.123.0
@@ -69,6 +135,28 @@ importers:
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
   packages/modules/brightness:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/calendar:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.123.0
@@ -304,6 +392,28 @@ importers:
         specifier: ^0.23.0
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
+  packages/modules/image:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
   packages/modules/image-picker:
     dependencies:
       '@lynx-js/react':
@@ -327,6 +437,28 @@ importers:
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
   packages/modules/keep-awake:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/linking:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.123.0
@@ -455,6 +587,50 @@ importers:
         specifier: ^0.23.0
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
+  packages/modules/music-library:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/navigation-bar:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
   packages/modules/network:
     dependencies:
       '@lynx-js/react':
@@ -478,6 +654,28 @@ importers:
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
   packages/modules/notifications:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/print:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.123.0
@@ -559,6 +757,50 @@ importers:
         specifier: ^0.23.0
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
+  packages/modules/sharing:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/sms:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
   packages/modules/speech:
     dependencies:
       '@lynx-js/react':
@@ -603,7 +845,117 @@ importers:
         specifier: ^0.23.0
         version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
 
+  packages/modules/status-bar:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
   packages/modules/store-review:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/system-ui:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/task-manager:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/tracking-transparency:
+    dependencies:
+      '@lynx-js/react':
+        specifier: ^0.123.0
+        version: 0.123.3(@lynx-js/types@3.9.0)(@types/react@19.2.18)
+      '@lynx-js/types':
+        specifier: ^3.2.0
+        version: 3.9.0
+    devDependencies:
+      '@elcoosp-configs/rslib':
+        specifier: '2.1'
+        version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.8.3)
+      '@lynxpo/plugins-ktts':
+        specifier: workspace:*
+        version: link:../../plugins/ktts
+      '@lynxpo/tools-nmi':
+        specifier: workspace:*
+        version: link:../../tools/nmi
+      '@rslib/core':
+        specifier: ^0.23.0
+        version: 0.23.2(core-js@3.41.0)(typescript@5.8.3)
+
+  packages/modules/video:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.123.0
@@ -652,15 +1004,27 @@ importers:
       '@lynx-js/react':
         specifier: 0.124.0
         version: 0.124.0(@lynx-js/types@4.1.0)(@types/react@19.2.18)
+      '@lynxpo/mods-appearance':
+        specifier: workspace:*
+        version: link:../modules/appearance
       '@lynxpo/mods-application':
         specifier: workspace:*
         version: link:../modules/application
+      '@lynxpo/mods-audio':
+        specifier: workspace:*
+        version: link:../modules/audio
+      '@lynxpo/mods-background-fetch':
+        specifier: workspace:*
+        version: link:../modules/background-fetch
       '@lynxpo/mods-battery':
         specifier: workspace:*
         version: link:../modules/battery
       '@lynxpo/mods-brightness':
         specifier: workspace:*
         version: link:../modules/brightness
+      '@lynxpo/mods-calendar':
+        specifier: workspace:*
+        version: link:../modules/calendar
       '@lynxpo/mods-camera':
         specifier: workspace:*
         version: link:../modules/camera
@@ -688,12 +1052,18 @@ importers:
       '@lynxpo/mods-haptics':
         specifier: workspace:*
         version: link:../modules/haptics
+      '@lynxpo/mods-image':
+        specifier: workspace:*
+        version: link:../modules/image
       '@lynxpo/mods-image-picker':
         specifier: workspace:*
         version: link:../modules/image-picker
       '@lynxpo/mods-keep-awake':
         specifier: workspace:*
         version: link:../modules/keep-awake
+      '@lynxpo/mods-linking':
+        specifier: workspace:*
+        version: link:../modules/linking
       '@lynxpo/mods-local-authentication':
         specifier: workspace:*
         version: link:../modules/local-authentication
@@ -709,12 +1079,21 @@ importers:
       '@lynxpo/mods-media-library':
         specifier: workspace:*
         version: link:../modules/media-library
+      '@lynxpo/mods-music-library':
+        specifier: workspace:*
+        version: link:../modules/music-library
+      '@lynxpo/mods-navigation-bar':
+        specifier: workspace:*
+        version: link:../modules/navigation-bar
       '@lynxpo/mods-network':
         specifier: workspace:*
         version: link:../modules/network
       '@lynxpo/mods-notifications':
         specifier: workspace:*
         version: link:../modules/notifications
+      '@lynxpo/mods-print':
+        specifier: workspace:*
+        version: link:../modules/print
       '@lynxpo/mods-screen-orientation':
         specifier: workspace:*
         version: link:../modules/screen-orientation
@@ -724,15 +1103,36 @@ importers:
       '@lynxpo/mods-sensors':
         specifier: workspace:*
         version: link:../modules/sensors
+      '@lynxpo/mods-sharing':
+        specifier: workspace:*
+        version: link:../modules/sharing
+      '@lynxpo/mods-sms':
+        specifier: workspace:*
+        version: link:../modules/sms
       '@lynxpo/mods-speech':
         specifier: workspace:*
         version: link:../modules/speech
       '@lynxpo/mods-sqlite':
         specifier: workspace:*
         version: link:../modules/sqlite
+      '@lynxpo/mods-status-bar':
+        specifier: workspace:*
+        version: link:../modules/status-bar
       '@lynxpo/mods-store-review':
         specifier: workspace:*
         version: link:../modules/store-review
+      '@lynxpo/mods-system-ui':
+        specifier: workspace:*
+        version: link:../modules/system-ui
+      '@lynxpo/mods-task-manager':
+        specifier: workspace:*
+        version: link:../modules/task-manager
+      '@lynxpo/mods-tracking-transparency':
+        specifier: workspace:*
+        version: link:../modules/tracking-transparency
+      '@lynxpo/mods-video':
+        specifier: workspace:*
+        version: link:../modules/video
       '@lynxpo/mods-web-browser':
         specifier: workspace:*
         version: link:../modules/web-browser

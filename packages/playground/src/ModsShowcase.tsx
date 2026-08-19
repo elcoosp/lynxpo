@@ -4,9 +4,13 @@ import {
   useGetNetworkStateAsync,
 } from '@lynxpo/mods-network';
 import { CameraShowcase } from './CameraShowcase.js';
+import { useAppearanceInfo } from './mods/appearanceInfo.js';
 import { useApplicationInfo } from './mods/applicationInfo.js';
+import { useAudioInfo } from './mods/audioInfo.js';
+import { useBackgroundFetchInfo } from './mods/backgroundFetchInfo.js';
 import { batteryStateLabel, useBatteryInfo } from './mods/batteryInfo.js';
 import { useBrightnessInfo } from './mods/brightnessInfo.js';
+import { useCalendarInfo } from './mods/calendarInfo.js';
 import { useCameraInfo } from './mods/cameraInfo.js';
 import { useCellularInfo } from './mods/cellularInfo.js';
 import { useClipboardInfo } from './mods/clipboardInfo.js';
@@ -17,21 +21,33 @@ import { useDeviceInfo } from './mods/deviceInfo.js';
 import { useFileSystemInfo } from './mods/fileSystemInfo.js';
 import { useFontInfo } from './mods/fontInfo.js';
 import { useHapticsInfo } from './mods/hapticsInfo.js';
+import { useImageInfo } from './mods/imageInfo.js';
 import { useImagePickerInfo } from './mods/imagePickerInfo.js';
 import { useKeepAwakeInfo } from './mods/keepAwakeInfo.js';
+import { useLinkingInfo } from './mods/linkingInfo.js';
 import { useLocalAuthenticationInfo } from './mods/localAuthenticationInfo.js';
 import { useLocalizationInfo } from './mods/localizationInfo.js';
 import { useLocationInfo } from './mods/locationInfo.js';
 import { useMailComposerInfo } from './mods/mailComposerInfo.js';
 import { useMediaLibraryInfo } from './mods/mediaLibraryInfo.js';
+import { useMusicLibraryInfo } from './mods/musicLibraryInfo.js';
+import { useNavigationBarInfo } from './mods/navigationBarInfo.js';
 import { useNetworkInfo } from './mods/networkInfo.js';
 import { useNotificationsInfo } from './mods/notificationsInfo.js';
+import { usePrintInfo } from './mods/printInfo.js';
 import { useScreenOrientationInfo } from './mods/screenOrientationInfo.js';
 import { useSecureStoreInfo } from './mods/secureStoreInfo.js';
 import { useSensorsInfo } from './mods/sensorsInfo.js';
+import { useSharingInfo } from './mods/sharingInfo.js';
+import { useSmsInfo } from './mods/smsInfo.js';
 import { useSpeechInfo } from './mods/speechInfo.js';
 import { useSqliteInfo } from './mods/sqliteInfo.js';
+import { useStatusBarInfo } from './mods/statusBarInfo.js';
 import { useStoreReviewInfo } from './mods/storeReviewInfo.js';
+import { useSystemUiInfo } from './mods/systemUiInfo.js';
+import { useTaskManagerInfo } from './mods/taskManagerInfo.js';
+import { useTrackingTransparencyInfo } from './mods/trackingTransparencyInfo.js';
+import { useVideoInfo } from './mods/videoInfo.js';
 import { useWebBrowserInfo } from './mods/webBrowserInfo.js';
 
 interface Row {
@@ -157,6 +173,36 @@ export function ModsShowcase() {
     error: notificationsErr,
     actions: notificationsActions,
   } = useNotificationsInfo();
+  const { rows: imageRows, error: imageErr } = useImageInfo();
+  const { rows: videoRows, error: videoErr } = useVideoInfo();
+  const { rows: audioRows, error: audioErr } = useAudioInfo();
+  const {
+    rows: calendarRows,
+    error: calendarErr,
+    actions: calendarActions,
+  } = useCalendarInfo();
+  const { rows: sharingRows, error: sharingErr } = useSharingInfo();
+  const { rows: printRows, error: printErr } = usePrintInfo();
+  const { rows: smsRows, error: smsErr } = useSmsInfo();
+  const { rows: navigationBarRows, error: navigationBarErr } =
+    useNavigationBarInfo();
+  const { rows: statusBarRows, error: statusBarErr } = useStatusBarInfo();
+  const { rows: systemUiRows, error: systemUiErr } = useSystemUiInfo();
+  const { rows: appearanceRows, error: appearanceErr } = useAppearanceInfo();
+  const { rows: taskManagerRows, error: taskManagerErr } = useTaskManagerInfo();
+  const { rows: backgroundFetchRows, error: backgroundFetchErr } =
+    useBackgroundFetchInfo();
+  const { rows: linkingRows, error: linkingErr } = useLinkingInfo();
+  const {
+    rows: trackingTransparencyRows,
+    error: trackingTransparencyErr,
+    actions: trackingTransparencyActions,
+  } = useTrackingTransparencyInfo();
+  const {
+    rows: musicLibraryRows,
+    error: musicLibraryErr,
+    actions: musicLibraryActions,
+  } = useMusicLibraryInfo();
   const [alterLogo, setAlterLogo] = useState(false);
   const [page, setPage] = useState<'list' | 'camera'>('list');
 
@@ -571,6 +617,157 @@ export function ModsShowcase() {
               : notificationsRows
           }
           actions={notificationsActions}
+        />
+        <ModuleCard
+          title="Image"
+          source="expo-image"
+          icon="🖼️"
+          rows={
+            imageErr ? [{ label: 'Error', value: imageErr.message }] : imageRows
+          }
+        />
+        <ModuleCard
+          title="Video"
+          source="expo-video"
+          icon="🎬"
+          rows={
+            videoErr ? [{ label: 'Error', value: videoErr.message }] : videoRows
+          }
+        />
+        <ModuleCard
+          title="Audio"
+          source="expo-audio"
+          icon="🔊"
+          rows={
+            audioErr ? [{ label: 'Error', value: audioErr.message }] : audioRows
+          }
+        />
+        <ModuleCard
+          title="Calendar"
+          source="expo-calendar"
+          icon="📅"
+          rows={
+            calendarErr
+              ? [{ label: 'Error', value: calendarErr.message }]
+              : calendarRows
+          }
+          actions={calendarActions}
+        />
+        <ModuleCard
+          title="Sharing"
+          source="expo-sharing"
+          icon="📤"
+          rows={
+            sharingErr
+              ? [{ label: 'Error', value: sharingErr.message }]
+              : sharingRows
+          }
+        />
+        <ModuleCard
+          title="Print"
+          source="expo-print"
+          icon="🖨️"
+          rows={
+            printErr ? [{ label: 'Error', value: printErr.message }] : printRows
+          }
+        />
+        <ModuleCard
+          title="SMS"
+          source="expo-sms"
+          icon="💬"
+          rows={smsErr ? [{ label: 'Error', value: smsErr.message }] : smsRows}
+        />
+        <ModuleCard
+          title="Navigation Bar"
+          source="expo-navigation-bar"
+          icon="🧭"
+          rows={
+            navigationBarErr
+              ? [{ label: 'Error', value: navigationBarErr.message }]
+              : navigationBarRows
+          }
+        />
+        <ModuleCard
+          title="Status Bar"
+          source="expo-status-bar"
+          icon="📶"
+          rows={
+            statusBarErr
+              ? [{ label: 'Error', value: statusBarErr.message }]
+              : statusBarRows
+          }
+        />
+        <ModuleCard
+          title="System UI"
+          source="expo-system-ui"
+          icon="🎨"
+          rows={
+            systemUiErr
+              ? [{ label: 'Error', value: systemUiErr.message }]
+              : systemUiRows
+          }
+        />
+        <ModuleCard
+          title="Appearance"
+          source="expo-appearance"
+          icon="🌓"
+          rows={
+            appearanceErr
+              ? [{ label: 'Error', value: appearanceErr.message }]
+              : appearanceRows
+          }
+        />
+        <ModuleCard
+          title="Task Manager"
+          source="expo-task-manager"
+          icon="🗂️"
+          rows={
+            taskManagerErr
+              ? [{ label: 'Error', value: taskManagerErr.message }]
+              : taskManagerRows
+          }
+        />
+        <ModuleCard
+          title="Background Fetch"
+          source="expo-background-fetch"
+          icon="🔄"
+          rows={
+            backgroundFetchErr
+              ? [{ label: 'Error', value: backgroundFetchErr.message }]
+              : backgroundFetchRows
+          }
+        />
+        <ModuleCard
+          title="Linking"
+          source="expo-linking"
+          icon="🔗"
+          rows={
+            linkingErr
+              ? [{ label: 'Error', value: linkingErr.message }]
+              : linkingRows
+          }
+        />
+        <ModuleCard
+          title="Tracking Transparency"
+          source="expo-tracking-transparency"
+          icon="🛡️"
+          rows={
+            trackingTransparencyErr
+              ? [{ label: 'Error', value: trackingTransparencyErr.message }]
+              : trackingTransparencyRows
+          }
+          actions={trackingTransparencyActions}
+        />
+        <ModuleCard
+          title="Music Library"
+          source="expo-music-library"
+          icon="🎵"
+          rows={
+            musicLibraryErr
+              ? [{ label: 'Error', value: musicLibraryErr.message }]
+              : musicLibraryRows
+          }
+          actions={musicLibraryActions}
         />
         {batteryLevelPct !== null && (
           <view className="BatteryBar">
