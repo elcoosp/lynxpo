@@ -1,0 +1,42 @@
+{
+  "name": "@lynxpo/mods-image",
+  "author": "elcoosp <elcoosp@gmail.com>",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "expo-image native module for Lynx (ports expo-image)",
+  "main": "./dist/cjs/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.cjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "android",
+    "ios"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "postinstall": "node -e \"const p=require('path');const r=process.env.INIT_CWD||process.cwd();process.chdir(r);require('child_process').execFileSync(process.execPath,[p.resolve(r,'packages/tools/nmi/dist/cjs/index.cjs')],{stdio:'inherit'})\"",
+    "build": "rslib build",
+    "dev": "rslib build --watch",
+    "check": "biome check --write",
+    "fmt": "biome format --write"
+  },
+  "dependencies": {
+    "@lynx-js/react": "^0.123.0",
+    "@lynx-js/types": "^3.2.0"
+  },
+  "devDependencies": {
+    "@lynxpo/tools-nmi": "workspace:*",
+    "@lynxpo/plugins-ktts": "workspace:*",
+    "@elcoosp-configs/rslib": "2.1",
+    "@rslib/core": "^0.23.0"
+  }
+}
