@@ -4,9 +4,13 @@ import {
   useGetNetworkStateAsync,
 } from '@lynxpo/mods-network';
 import { CameraShowcase } from './CameraShowcase.js';
+import { useAppIntegrityInfo } from './mods/app-integrityInfo.js';
 import { useAppearanceInfo } from './mods/appearanceInfo.js';
+import { useAppleAuthenticationInfo } from './mods/apple-authenticationInfo.js';
 import { useApplicationInfo } from './mods/applicationInfo.js';
+import { useAssetInfo } from './mods/assetInfo.js';
 import { useAudioInfo } from './mods/audioInfo.js';
+import { useAuthSessionInfo } from './mods/auth-sessionInfo.js';
 import { useBackgroundFetchInfo } from './mods/backgroundFetchInfo.js';
 import { useBackgroundTaskInfo } from './mods/backgroundTaskInfo.js';
 import { batteryStateLabel, useBatteryInfo } from './mods/batteryInfo.js';
@@ -30,6 +34,7 @@ import { useImagePickerInfo } from './mods/imagePickerInfo.js';
 import { useIntentLauncherInfo } from './mods/intentLauncherInfo.js';
 import { useKeepAwakeInfo } from './mods/keepAwakeInfo.js';
 import { useLinkingInfo } from './mods/linkingInfo.js';
+import { useLivePhotoInfo } from './mods/live-photoInfo.js';
 import { useLocalAuthenticationInfo } from './mods/localAuthenticationInfo.js';
 import { useLocalizationInfo } from './mods/localizationInfo.js';
 import { useLocationInfo } from './mods/locationInfo.js';
@@ -37,9 +42,11 @@ import { useMailComposerInfo } from './mods/mailComposerInfo.js';
 import { useMediaLibraryInfo } from './mods/mediaLibraryInfo.js';
 import { useMusicLibraryInfo } from './mods/musicLibraryInfo.js';
 import { useNavigationBarInfo } from './mods/navigationBarInfo.js';
+import { useNetworkAddonsInfo } from './mods/network-addonsInfo.js';
 import { useNetworkInfo } from './mods/networkInfo.js';
 import { useNotificationsInfo } from './mods/notificationsInfo.js';
 import { usePrintInfo } from './mods/printInfo.js';
+import { useScreenCaptureInfo } from './mods/screenCaptureInfo.js';
 import { useScreenOrientationInfo } from './mods/screenOrientationInfo.js';
 import { useSecureStoreInfo } from './mods/secureStoreInfo.js';
 import { useSensorsInfo } from './mods/sensorsInfo.js';
@@ -47,6 +54,7 @@ import { useSharingInfo } from './mods/sharingInfo.js';
 import { useSmsInfo } from './mods/smsInfo.js';
 import { useSpeechInfo } from './mods/speechInfo.js';
 import { useSqliteInfo } from './mods/sqliteInfo.js';
+import { useStandardWebCryptoInfo } from './mods/standard-web-cryptoInfo.js';
 import { useStatusBarInfo } from './mods/statusBarInfo.js';
 import { useStoreReviewInfo } from './mods/storeReviewInfo.js';
 import { useSystemUiInfo } from './mods/systemUiInfo.js';
@@ -168,6 +176,46 @@ export function ModsShowcase() {
   } = useContactsInfo();
   const { rows: speechRows, error: speechErr } = useSpeechInfo();
   const { rows: webBrowserRows, error: webBrowserErr } = useWebBrowserInfo();
+  const {
+    rows: appIntegrityRows,
+    error: appIntegrityErr,
+    actions: appIntegrityActions,
+  } = useAppIntegrityInfo();
+  const {
+    rows: appleAuthenticationRows,
+    error: appleAuthenticationErr,
+    actions: appleAuthenticationActions,
+  } = useAppleAuthenticationInfo();
+  const {
+    rows: assetRows,
+    error: assetErr,
+    actions: assetActions,
+  } = useAssetInfo();
+  const {
+    rows: authSessionRows,
+    error: authSessionErr,
+    actions: authSessionActions,
+  } = useAuthSessionInfo();
+  const {
+    rows: livePhotoRows,
+    error: livePhotoErr,
+    actions: livePhotoActions,
+  } = useLivePhotoInfo();
+  const {
+    rows: networkAddonsRows,
+    error: networkAddonsErr,
+    actions: networkAddonsActions,
+  } = useNetworkAddonsInfo();
+  const {
+    rows: standardWebCryptoRows,
+    error: standardWebCryptoErr,
+    actions: standardWebCryptoActions,
+  } = useStandardWebCryptoInfo();
+  const {
+    rows: screenCaptureRows,
+    error: screenCaptureErr,
+    actions: screenCaptureActions,
+  } = useScreenCaptureInfo();
   const {
     rows: healthRows,
     error: healthErr,
@@ -870,6 +918,92 @@ export function ModsShowcase() {
               : musicLibraryRows
           }
           actions={musicLibraryActions}
+        />
+        <ModuleCard
+          title="App Integrity"
+          source="expo-app-integrity"
+          icon="🛡️"
+          rows={
+            appIntegrityErr
+              ? [{ label: 'Error', value: appIntegrityErr.message }]
+              : appIntegrityRows
+          }
+          actions={appIntegrityActions}
+        />
+        <ModuleCard
+          title="Apple Auth"
+          source="expo-apple-authentication"
+          icon="🍎"
+          rows={
+            appleAuthenticationErr
+              ? [{ label: 'Error', value: appleAuthenticationErr.message }]
+              : appleAuthenticationRows
+          }
+          actions={appleAuthenticationActions}
+        />
+        <ModuleCard
+          title="Asset"
+          source="expo-asset"
+          icon="📦"
+          rows={
+            assetErr ? [{ label: 'Error', value: assetErr.message }] : assetRows
+          }
+          actions={assetActions}
+        />
+        <ModuleCard
+          title="Auth Session"
+          source="expo-auth-session"
+          icon="🔐"
+          rows={
+            authSessionErr
+              ? [{ label: 'Error', value: authSessionErr.message }]
+              : authSessionRows
+          }
+          actions={authSessionActions}
+        />
+        <ModuleCard
+          title="Live Photo"
+          source="expo-live-photo"
+          icon="📷"
+          rows={
+            livePhotoErr
+              ? [{ label: 'Error', value: livePhotoErr.message }]
+              : livePhotoRows
+          }
+          actions={livePhotoActions}
+        />
+        <ModuleCard
+          title="Network Addons"
+          source="expo-network-addons"
+          icon="🌐"
+          rows={
+            networkAddonsErr
+              ? [{ label: 'Error', value: networkAddonsErr.message }]
+              : networkAddonsRows
+          }
+          actions={networkAddonsActions}
+        />
+        <ModuleCard
+          title="Web Crypto"
+          source="expo-standard-web-crypto"
+          icon="🔏"
+          rows={
+            standardWebCryptoErr
+              ? [{ label: 'Error', value: standardWebCryptoErr.message }]
+              : standardWebCryptoRows
+          }
+          actions={standardWebCryptoActions}
+        />
+        <ModuleCard
+          title="Screen Capture"
+          source="expo-screen-capture"
+          icon="📸"
+          rows={
+            screenCaptureErr
+              ? [{ label: 'Error', value: screenCaptureErr.message }]
+              : screenCaptureRows
+          }
+          actions={screenCaptureActions}
         />
         {batteryLevelPct !== null && (
           <view className="BatteryBar">

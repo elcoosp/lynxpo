@@ -62,6 +62,13 @@
     "@lynxpo/mods-linking": "workspace:*",
     "@lynxpo/mods-tracking-transparency": "workspace:*",
     "@lynxpo/mods-music-library": "workspace:*",
+    "@lynxpo/mods-app-integrity": "workspace:*",
+    "@lynxpo/mods-apple-authentication": "workspace:*",
+    "@lynxpo/mods-asset": "workspace:*",
+    "@lynxpo/mods-auth-session": "workspace:*",
+    "@lynxpo/mods-live-photo": "workspace:*",
+    "@lynxpo/mods-network-addons": "workspace:*",
+    "@lynxpo/mods-standard-web-crypto": "workspace:*",
     "@rsbuild/core": "2.1.10",
     "glob": "^13.0.0",
     "unplugin-ast": "^0.15.0"
