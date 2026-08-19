@@ -8,6 +8,7 @@ import { useAppearanceInfo } from './mods/appearanceInfo.js';
 import { useApplicationInfo } from './mods/applicationInfo.js';
 import { useAudioInfo } from './mods/audioInfo.js';
 import { useBackgroundFetchInfo } from './mods/backgroundFetchInfo.js';
+import { useBackgroundTaskInfo } from './mods/backgroundTaskInfo.js';
 import { batteryStateLabel, useBatteryInfo } from './mods/batteryInfo.js';
 import { useBrightnessInfo } from './mods/brightnessInfo.js';
 import { useCalendarInfo } from './mods/calendarInfo.js';
@@ -18,10 +19,12 @@ import { useConstantsInfo } from './mods/constantsInfo.js';
 import { useContactsInfo } from './mods/contactsInfo.js';
 import { useCryptoInfo } from './mods/cryptoInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
+import { useDocumentPickerInfo } from './mods/documentPickerInfo.js';
 import { useFileSystemInfo } from './mods/fileSystemInfo.js';
 import { useFontInfo } from './mods/fontInfo.js';
 import { useHapticsInfo } from './mods/hapticsInfo.js';
 import { useImageInfo } from './mods/imageInfo.js';
+import { useImageManipulatorInfo } from './mods/imageManipulatorInfo.js';
 import { useImagePickerInfo } from './mods/imagePickerInfo.js';
 import { useKeepAwakeInfo } from './mods/keepAwakeInfo.js';
 import { useLinkingInfo } from './mods/linkingInfo.js';
@@ -48,6 +51,7 @@ import { useSystemUiInfo } from './mods/systemUiInfo.js';
 import { useTaskManagerInfo } from './mods/taskManagerInfo.js';
 import { useTrackingTransparencyInfo } from './mods/trackingTransparencyInfo.js';
 import { useVideoInfo } from './mods/videoInfo.js';
+import { useVideoThumbnailsInfo } from './mods/videoThumbnailsInfo.js';
 import { useWebBrowserInfo } from './mods/webBrowserInfo.js';
 
 interface Row {
@@ -162,6 +166,26 @@ export function ModsShowcase() {
   } = useContactsInfo();
   const { rows: speechRows, error: speechErr } = useSpeechInfo();
   const { rows: webBrowserRows, error: webBrowserErr } = useWebBrowserInfo();
+  const {
+    rows: backgroundTaskRows,
+    error: backgroundTaskErr,
+    actions: backgroundTaskActions,
+  } = useBackgroundTaskInfo();
+  const {
+    rows: documentPickerRows,
+    error: documentPickerErr,
+    actions: documentPickerActions,
+  } = useDocumentPickerInfo();
+  const {
+    rows: imageManipulatorRows,
+    error: imageManipulatorErr,
+    actions: imageManipulatorActions,
+  } = useImageManipulatorInfo();
+  const {
+    rows: videoThumbnailsRows,
+    error: videoThumbnailsErr,
+    actions: videoThumbnailsActions,
+  } = useVideoThumbnailsInfo();
   const { rows: sqliteRows, error: sqliteErr } = useSqliteInfo();
   const {
     rows: cameraRows,
@@ -579,6 +603,50 @@ export function ModsShowcase() {
               ? [{ label: 'Error', value: webBrowserErr.message }]
               : webBrowserRows
           }
+        />
+        <ModuleCard
+          title="Image Manipulator"
+          source="expo-image-manipulator"
+          icon="🖌️"
+          rows={
+            imageManipulatorErr
+              ? [{ label: 'Error', value: imageManipulatorErr.message }]
+              : imageManipulatorRows
+          }
+          actions={imageManipulatorActions}
+        />
+        <ModuleCard
+          title="Document Picker"
+          source="expo-document-picker"
+          icon="📄"
+          rows={
+            documentPickerErr
+              ? [{ label: 'Error', value: documentPickerErr.message }]
+              : documentPickerRows
+          }
+          actions={documentPickerActions}
+        />
+        <ModuleCard
+          title="Video Thumbnails"
+          source="expo-video-thumbnails"
+          icon="🎞️"
+          rows={
+            videoThumbnailsErr
+              ? [{ label: 'Error', value: videoThumbnailsErr.message }]
+              : videoThumbnailsRows
+          }
+          actions={videoThumbnailsActions}
+        />
+        <ModuleCard
+          title="Background Task"
+          source="expo-background-task"
+          icon="⏱️"
+          rows={
+            backgroundTaskErr
+              ? [{ label: 'Error', value: backgroundTaskErr.message }]
+              : backgroundTaskRows
+          }
+          actions={backgroundTaskActions}
         />
         <ModuleCard
           title="SQLite"

@@ -31,11 +31,18 @@ export function useMusicLibraryInfo(): ModuleInfo {
     try {
       const v_getGetAlbums = getGetAlbums();
       const v_getGetPermissions = getGetPermissions();
+      const v_getGetSongs = getGetSongs('');
       const rows: { label: string; value: string }[] = [];
       rows.push({
         label: 'GetAlbums',
         value: Array.isArray(v_getGetAlbums)
           ? String(v_getGetAlbums.length)
+          : '—',
+      });
+      rows.push({
+        label: 'GetSongs',
+        value: Array.isArray(v_getGetSongs)
+          ? String(v_getGetSongs.length)
           : '—',
       });
       if (v_getGetPermissions && typeof v_getGetPermissions === 'object') {
