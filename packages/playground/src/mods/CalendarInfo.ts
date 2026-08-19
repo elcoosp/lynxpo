@@ -27,6 +27,8 @@ export function useCalendarInfo(): ModuleInfo {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
+  const [lastEventId, setLastEventId] = useState<string | null>(null);
+
   const refresh = useCallback(() => {
     try {
       const v_getGetCalendars = getGetCalendars();
@@ -53,6 +55,9 @@ export function useCalendarInfo(): ModuleInfo {
       } else {
         rows.push({ label: 'GetPermissions', value: '—' });
       }
+      if (lastEventId) {
+        rows.push({ label: 'Last created event', value: lastEventId });
+      }
       setRows(rows);
       setError(null);
     } catch (err) {
@@ -75,7 +80,8 @@ export function useCalendarInfo(): ModuleInfo {
   actions.push({ label: 'Request permission', onPress: requestPermission });
   const actCreatesampleevent = useCallback(() => {
     try {
-      getCreateEvent('LynxPo', '2026-01-01', '2026-01-02');
+      const id = getCreateEvent('LynxPo', '2026-01-01', '2026-01-02');
+      setLastEventId(id && id.length > 0 ? id : 'event-created');
     } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
     } finally {
