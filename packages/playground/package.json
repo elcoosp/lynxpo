@@ -28,6 +28,7 @@
     "@lynxpo/mods-image-picker": "workspace:*",
     "@lynxpo/mods-local-authentication": "workspace:*",
     "@lynxpo/mods-sensors": "workspace:*",
+    "@lynxpo/mods-screen-capture": "workspace:*",
     "@lynxpo/mods-secure-store": "workspace:*",
     "@lynxpo/mods-constants": "workspace:*",
     "@lynxpo/mods-font": "workspace:*",
