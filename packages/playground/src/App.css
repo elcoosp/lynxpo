@@ -283,3 +283,128 @@ text {
   background: linear-gradient(90deg, #ff6448, #12e5e5);
   border-radius: 6rpx;
 }
+
+/* ---- Camera live preview (custom native Lynx UI component) ---- */
+.CameraPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24rpx;
+  background: #0e1014;
+}
+
+.CameraPage__Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+.CameraPage__Back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8rpx 20rpx;
+  margin-right: 16rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10rpx;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.CameraPage__BackIcon {
+  color: #12e5e5;
+  font-size: 40rpx;
+  font-weight: 700;
+  margin-right: 6rpx;
+  line-height: 1;
+}
+
+.CameraPage__BackLabel {
+  color: #12e5e5;
+  font-size: 28rpx;
+}
+
+.CameraPage__Title {
+  color: #f5f7fa;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.CameraPreview {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.CameraPreview__Stage {
+  width: 100%;
+  height: 520rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CameraPreview__Image {
+  width: 100%;
+  height: 100%;
+}
+
+.CameraPreview__Placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CameraPreview__PlaceholderText {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 28rpx;
+}
+
+.CameraPreview__Controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 18rpx;
+}
+
+.CameraPreview__Button {
+  padding: 14rpx 28rpx;
+  background: rgba(18, 229, 229, 0.16);
+  border-radius: 12rpx;
+}
+
+.CameraPreview__ButtonLabel {
+  color: #12e5e5;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.CameraPreview__Note {
+  margin-top: 12rpx;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.CameraPage__ToggleRow {
+  display: flex;
+  flex-direction: row;
+  margin: 18rpx 0;
+}
+
+.CameraPage__Toggle {
+  padding: 12rpx 24rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12rpx;
+}
+
+.CameraPage__ToggleLabel {
+  color: #f5f7fa;
+  font-size: 26rpx;
+}
