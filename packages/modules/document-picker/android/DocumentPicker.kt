@@ -13,7 +13,7 @@ import android.content.Context
  */
 class DocumentPicker(context: Context) : LynxModule(context) {
   @LynxMethod
-  fun getDocumentAsync(options: String): Map<String, Any> {
+  fun documentAsync(options: String): Map<String, Any> {
     throw NotImplementedError()
   }
 

@@ -6,7 +6,7 @@ export interface BackgroundTask extends INativeModules {
   isAvailableAsync(): boolean;
   registerTaskAsync(taskName: string, options: string): boolean;
   unregisterTaskAsync(taskName: string): boolean;
-  getStatusAsync(): Record<string, any>;
+  getStatus(): Record<string, any>;
 }
 
 export const getIsAvailableAsync = (): boolean =>
@@ -66,15 +66,15 @@ export const useUnregisterTaskAsync = (taskName: string) => {
   return value;
 };
 
-export const getGetStatusAsync = (): Record<string, any> =>
-  NativeModules.BackgroundTask?.getStatusAsync?.();
+export const getGetStatus = (): Record<string, any> =>
+  NativeModules.BackgroundTask?.getStatus?.();
 
-export const useGetStatusAsync = () => {
+export const useGetStatus = () => {
   const [value, setValue] = useState<Record<string, any>>();
 
   useEffect(() => {
     const fetchData = () => {
-      const result = getGetStatusAsync();
+      const result = getGetStatus();
       setValue(result);
     };
 

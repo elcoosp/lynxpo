@@ -13,7 +13,7 @@ import android.content.Context
  */
 class VideoThumbnails(context: Context) : LynxModule(context) {
   @LynxMethod
-  fun getThumbnailAsync(source: String, options: String): Map<String, Any> {
+  fun thumbnailAsync(source: String, options: String): Map<String, Any> {
     throw NotImplementedError()
   }
 

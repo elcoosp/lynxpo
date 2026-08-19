@@ -3,19 +3,19 @@ import { useEffect, useState } from '@lynx-js/react';
 import type { NativeModules as INativeModules } from '@lynx-js/types';
 
 export interface DocumentPicker extends INativeModules {
-  getDocumentAsync(options: string): Record<string, any>;
+  documentAsync(options: string): Record<string, any>;
   isAvailableAsync(): boolean;
 }
 
-export const getGetDocumentAsync = (options: string): Record<string, any> =>
-  NativeModules.DocumentPicker?.getDocumentAsync?.(options);
+export const getDocumentAsync = (options: string): Record<string, any> =>
+  NativeModules.DocumentPicker?.documentAsync?.(options);
 
-export const useGetDocumentAsync = (options: string) => {
+export const useDocumentAsync = (options: string) => {
   const [value, setValue] = useState<Record<string, any>>();
 
   useEffect(() => {
     const fetchData = () => {
-      const result = getGetDocumentAsync(options);
+      const result = getDocumentAsync(options);
       setValue(result);
     };
 

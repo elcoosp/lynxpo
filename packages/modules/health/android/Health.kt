@@ -18,7 +18,7 @@ class Health(context: Context) : LynxModule(context) {
   }
 
   @LynxMethod
-  fun getPermissionsAsync(): Map<String, Any> {
+  fun permissionsAsync(): Map<String, Any> {
     throw NotImplementedError()
   }
 
@@ -28,7 +28,7 @@ class Health(context: Context) : LynxModule(context) {
   }
 
   @LynxMethod
-  fun getRecordsAsync(options: String): Map<String, Any> {
+  fun recordsAsync(options: String): Map<String, Any> {
     throw NotImplementedError()
   }
 

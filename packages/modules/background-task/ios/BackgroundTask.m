@@ -18,7 +18,7 @@
     @"isAvailableAsync": @"isAvailableAsync:",
     @"registerTaskAsync": @"registerTaskAsyncWithTaskname:",
     @"unregisterTaskAsync": @"unregisterTaskAsyncWithTaskname:",
-    @"getStatusAsync": @"getStatusAsync:",
+    @"status": @"status:",
   };
 }
 
@@ -34,7 +34,7 @@
   return NO;
 }
 
-- (NSDictionary *)getStatusAsync: {
+- (NSDictionary *)status: {
   return @{};
 }
 

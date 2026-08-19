@@ -28,7 +28,7 @@ class BackgroundTask(context: Context) : LynxModule(context) {
   }
 
   @LynxMethod
-  fun getStatusAsync(): Map<String, Any> {
+  fun getStatus(): Map<String, Any> {
     throw NotImplementedError()
   }
 

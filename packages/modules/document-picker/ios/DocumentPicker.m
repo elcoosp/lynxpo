@@ -15,12 +15,12 @@
 
 - (NSDictionary<NSString *, NSString *> *)methodLookup {
   return @{
-    @"getDocumentAsync": @"getDocumentAsyncWithOptions:",
+    @"documentAsync": @"documentAsyncWithOptions:",
     @"isAvailableAsync": @"isAvailableAsync:",
   };
 }
 
-- (NSDictionary *)getDocumentAsyncWithOptions: WithOptions:(NSString *)options {
+- (NSDictionary *)documentAsyncWithOptions: WithOptions:(NSString *)options {
   return @{};
 }
 

@@ -4,9 +4,9 @@ import type { NativeModules as INativeModules } from '@lynx-js/types';
 
 export interface Health extends INativeModules {
   isAvailableAsync(): boolean;
-  getPermissionsAsync(): Record<string, any>;
+  permissionsAsync(): Record<string, any>;
   requestPermissionsAsync(permissions: string): Record<string, any>;
-  getRecordsAsync(options: string): Record<string, any>;
+  recordsAsync(options: string): Record<string, any>;
   writeRecordsAsync(records: string): Record<string, any>;
 }
 
@@ -28,15 +28,15 @@ export const useIsAvailableAsync = () => {
   return value;
 };
 
-export const getGetPermissionsAsync = (): Record<string, any> =>
-  NativeModules.Health?.getPermissionsAsync?.();
+export const getPermissionsAsync = (): Record<string, any> =>
+  NativeModules.Health?.permissionsAsync?.();
 
-export const useGetPermissionsAsync = () => {
+export const usePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
 
   useEffect(() => {
     const fetchData = () => {
-      const result = getGetPermissionsAsync();
+      const result = getPermissionsAsync();
       setValue(result);
     };
 
@@ -66,15 +66,15 @@ export const useRequestPermissionsAsync = (permissions: string) => {
   return value;
 };
 
-export const getGetRecordsAsync = (options: string): Record<string, any> =>
-  NativeModules.Health?.getRecordsAsync?.(options);
+export const getRecordsAsync = (options: string): Record<string, any> =>
+  NativeModules.Health?.recordsAsync?.(options);
 
-export const useGetRecordsAsync = (options: string) => {
+export const useRecordsAsync = (options: string) => {
   const [value, setValue] = useState<Record<string, any>>();
 
   useEffect(() => {
     const fetchData = () => {
-      const result = getGetRecordsAsync(options);
+      const result = getRecordsAsync(options);
       setValue(result);
     };
 

@@ -15,12 +15,12 @@
 
 - (NSDictionary<NSString *, NSString *> *)methodLookup {
   return @{
-    @"getThumbnailAsync": @"getThumbnailAsyncWithSource:",
+    @"thumbnailAsync": @"thumbnailAsyncWithSource:",
     @"isAvailableAsync": @"isAvailableAsync:",
   };
 }
 
-- (NSDictionary *)getThumbnailAsyncWithSource: WithSource:(NSString *)source options:(NSString *)options {
+- (NSDictionary *)thumbnailAsyncWithSource: WithSource:(NSString *)source options:(NSString *)options {
   return @{};
 }
 

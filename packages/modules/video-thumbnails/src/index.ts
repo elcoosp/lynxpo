@@ -3,22 +3,22 @@ import { useEffect, useState } from '@lynx-js/react';
 import type { NativeModules as INativeModules } from '@lynx-js/types';
 
 export interface VideoThumbnails extends INativeModules {
-  getThumbnailAsync(source: string, options: string): Record<string, any>;
+  thumbnailAsync(source: string, options: string): Record<string, any>;
   isAvailableAsync(): boolean;
 }
 
-export const getGetThumbnailAsync = (
+export const getThumbnailAsync = (
   source: string,
   options: string,
 ): Record<string, any> =>
-  NativeModules.VideoThumbnails?.getThumbnailAsync?.(source, options);
+  NativeModules.VideoThumbnails?.thumbnailAsync?.(source, options);
 
-export const useGetThumbnailAsync = (source: string, options: string) => {
+export const useThumbnailAsync = (source: string, options: string) => {
   const [value, setValue] = useState<Record<string, any>>();
 
   useEffect(() => {
     const fetchData = () => {
-      const result = getGetThumbnailAsync(source, options);
+      const result = getThumbnailAsync(source, options);
       setValue(result);
     };
 

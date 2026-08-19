@@ -16,9 +16,9 @@
 - (NSDictionary<NSString *, NSString *> *)methodLookup {
   return @{
     @"isAvailableAsync": @"isAvailableAsync:",
-    @"getPermissionsAsync": @"getPermissionsAsync:",
+    @"permissionsAsync": @"permissionsAsync:",
     @"requestPermissionsAsync": @"requestPermissionsAsyncWithPermissions:",
-    @"getRecordsAsync": @"getRecordsAsyncWithOptions:",
+    @"recordsAsync": @"recordsAsyncWithOptions:",
     @"writeRecordsAsync": @"writeRecordsAsyncWithRecords:",
   };
 }
@@ -27,7 +27,7 @@
   return NO;
 }
 
-- (NSDictionary *)getPermissionsAsync: {
+- (NSDictionary *)permissionsAsync: {
   return @{};
 }
 
@@ -35,7 +35,7 @@
   return @{};
 }
 
-- (NSDictionary *)getRecordsAsyncWithOptions: (NSString *)options {
+- (NSDictionary *)recordsAsyncWithOptions: (NSString *)options {
   return @{};
 }
 
