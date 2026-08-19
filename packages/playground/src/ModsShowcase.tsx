@@ -3,25 +3,36 @@ import {
   getGetNetworkStateAsync,
   useGetNetworkStateAsync,
 } from '@lynxpo/mods-network';
+import { CameraShowcase } from './CameraShowcase.js';
 import { useApplicationInfo } from './mods/applicationInfo.js';
 import { batteryStateLabel, useBatteryInfo } from './mods/batteryInfo.js';
 import { useBrightnessInfo } from './mods/brightnessInfo.js';
+import { useCameraInfo } from './mods/cameraInfo.js';
 import { useCellularInfo } from './mods/cellularInfo.js';
 import { useClipboardInfo } from './mods/clipboardInfo.js';
+import { useConstantsInfo } from './mods/constantsInfo.js';
+import { useContactsInfo } from './mods/contactsInfo.js';
 import { useCryptoInfo } from './mods/cryptoInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
 import { useFileSystemInfo } from './mods/fileSystemInfo.js';
+import { useFontInfo } from './mods/fontInfo.js';
 import { useHapticsInfo } from './mods/hapticsInfo.js';
 import { useImagePickerInfo } from './mods/imagePickerInfo.js';
 import { useKeepAwakeInfo } from './mods/keepAwakeInfo.js';
 import { useLocalAuthenticationInfo } from './mods/localAuthenticationInfo.js';
 import { useLocalizationInfo } from './mods/localizationInfo.js';
+import { useLocationInfo } from './mods/locationInfo.js';
 import { useMailComposerInfo } from './mods/mailComposerInfo.js';
+import { useMediaLibraryInfo } from './mods/mediaLibraryInfo.js';
 import { useNetworkInfo } from './mods/networkInfo.js';
+import { useNotificationsInfo } from './mods/notificationsInfo.js';
 import { useScreenOrientationInfo } from './mods/screenOrientationInfo.js';
 import { useSecureStoreInfo } from './mods/secureStoreInfo.js';
 import { useSensorsInfo } from './mods/sensorsInfo.js';
+import { useSpeechInfo } from './mods/speechInfo.js';
+import { useSqliteInfo } from './mods/sqliteInfo.js';
 import { useStoreReviewInfo } from './mods/storeReviewInfo.js';
+import { useWebBrowserInfo } from './mods/webBrowserInfo.js';
 
 interface Row {
   label: string;
@@ -112,7 +123,42 @@ export function ModsShowcase() {
     error: imagePickerErr,
     actions: imagePickerActions,
   } = useImagePickerInfo();
+  const { rows: constantsRows, error: constantsErr } = useConstantsInfo();
+  const {
+    rows: fontRows,
+    error: fontErr,
+    actions: fontActions,
+  } = useFontInfo();
+  const {
+    rows: locationRows,
+    error: locationErr,
+    actions: locationActions,
+  } = useLocationInfo();
+  const {
+    rows: mediaLibraryRows,
+    error: mediaLibraryErr,
+    actions: mediaLibraryActions,
+  } = useMediaLibraryInfo();
+  const {
+    rows: contactsRows,
+    error: contactsErr,
+    actions: contactsActions,
+  } = useContactsInfo();
+  const { rows: speechRows, error: speechErr } = useSpeechInfo();
+  const { rows: webBrowserRows, error: webBrowserErr } = useWebBrowserInfo();
+  const { rows: sqliteRows, error: sqliteErr } = useSqliteInfo();
+  const {
+    rows: cameraRows,
+    error: cameraErr,
+    actions: cameraActions,
+  } = useCameraInfo();
+  const {
+    rows: notificationsRows,
+    error: notificationsErr,
+    actions: notificationsActions,
+  } = useNotificationsInfo();
   const [alterLogo, setAlterLogo] = useState(false);
+  const [page, setPage] = useState<'list' | 'camera'>('list');
 
   const onTap = useCallback(() => {
     'background only';
@@ -196,7 +242,7 @@ export function ModsShowcase() {
       ]
     : [];
 
-  return (
+  return page === 'list' ? (
     <view className="Showcase">
       <view className="Showcase__Header">
         <text className="Showcase__Title">LynxPo</text>
@@ -416,6 +462,116 @@ export function ModsShowcase() {
           }
           actions={imagePickerActions}
         />
+        <ModuleCard
+          title="Constants"
+          source="expo-constants"
+          icon="📐"
+          rows={
+            constantsErr
+              ? [{ label: 'Error', value: constantsErr.message }]
+              : constantsRows
+          }
+        />
+        <ModuleCard
+          title="Font"
+          source="expo-font"
+          icon="🔤"
+          rows={
+            fontErr ? [{ label: 'Error', value: fontErr.message }] : fontRows
+          }
+          actions={fontActions}
+        />
+        <ModuleCard
+          title="Location"
+          source="expo-location"
+          icon="📍"
+          rows={
+            locationErr
+              ? [{ label: 'Error', value: locationErr.message }]
+              : locationRows
+          }
+          actions={locationActions}
+        />
+        <ModuleCard
+          title="Media Library"
+          source="expo-media-library"
+          icon="🖼️"
+          rows={
+            mediaLibraryErr
+              ? [{ label: 'Error', value: mediaLibraryErr.message }]
+              : mediaLibraryRows
+          }
+          actions={mediaLibraryActions}
+        />
+        <ModuleCard
+          title="Contacts"
+          source="expo-contacts"
+          icon="👥"
+          rows={
+            contactsErr
+              ? [{ label: 'Error', value: contactsErr.message }]
+              : contactsRows
+          }
+          actions={contactsActions}
+        />
+        <ModuleCard
+          title="Speech"
+          source="expo-speech"
+          icon="🗣️"
+          rows={
+            speechErr
+              ? [{ label: 'Error', value: speechErr.message }]
+              : speechRows
+          }
+        />
+        <ModuleCard
+          title="Web Browser"
+          source="expo-web-browser"
+          icon="🌐"
+          rows={
+            webBrowserErr
+              ? [{ label: 'Error', value: webBrowserErr.message }]
+              : webBrowserRows
+          }
+        />
+        <ModuleCard
+          title="SQLite"
+          source="expo-sqlite"
+          icon="🗄️"
+          rows={
+            sqliteErr
+              ? [{ label: 'Error', value: sqliteErr.message }]
+              : sqliteRows
+          }
+        />
+        <ModuleCard
+          title="Camera"
+          source="expo-camera"
+          icon="📷"
+          rows={
+            cameraErr
+              ? [{ label: 'Error', value: cameraErr.message }]
+              : cameraRows
+          }
+          actions={[
+            {
+              label: 'Open live preview →',
+              onPress: () => setPage('camera'),
+            },
+            ...cameraActions,
+          ]}
+        />
+        <ModuleCard
+          title="Notifications"
+          source="expo-notifications"
+          icon="🔔"
+          rows={
+            notificationsErr
+              ? [{ label: 'Error', value: notificationsErr.message }]
+              : notificationsRows
+          }
+          actions={notificationsActions}
+        />
         {batteryLevelPct !== null && (
           <view className="BatteryBar">
             <view
@@ -426,6 +582,8 @@ export function ModsShowcase() {
         )}
       </scroll-view>
     </view>
+  ) : (
+    <CameraShowcase onBack={() => setPage('list')} />
   );
 }
 
