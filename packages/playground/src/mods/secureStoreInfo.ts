@@ -41,7 +41,7 @@ export function useSecureStoreInfo(): ModuleInfo {
           { label: 'Read back', value: read === TEST_VALUE ? 'Match ✓' : read },
           {
             label: 'After delete',
-            value: afterDelete == null ? 'Null ✓' : (afterDelete || 'present'),
+            value: afterDelete == null ? 'Null ✓' : afterDelete || 'present',
           },
         ]);
         setError(null);

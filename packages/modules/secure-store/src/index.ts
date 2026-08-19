@@ -26,10 +26,8 @@ export const useIsAvailable = () => {
   return value;
 };
 
-export const setItemAsync = (
-  key: string,
-  value: string,
-): Promise<void> => NativeModules.SecureStoreModule?.setItemAsync?.(key, value);
+export const setItemAsync = (key: string, value: string): Promise<void> =>
+  NativeModules.SecureStoreModule?.setItemAsync?.(key, value);
 
 export const getItemAsync = (key: string): Promise<string | null> =>
   NativeModules.SecureStoreModule?.getItemAsync?.(key);
