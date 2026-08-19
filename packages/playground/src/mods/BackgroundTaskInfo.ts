@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from '@lynx-js/react';
 import {
   getIsAvailableAsync,
   getRegisterTaskAsync,
-  getStatusAsync,
+  getStatus,
   getUnregisterTaskAsync,
 } from '@lynxpo/mods-background-task';
 
@@ -30,14 +30,14 @@ export function useBackgroundTaskInfo(): ModuleInfo {
   const refresh = useCallback(() => {
     try {
       const v_getIsAvailableAsync = getIsAvailableAsync();
-      const v_getStatusAsync = getStatusAsync();
+      const v_getStatus = getStatus();
       const rows: { label: string; value: string }[] = [];
       rows.push({
         label: 'isAvailable',
         value: v_getIsAvailableAsync ? 'Yes' : 'No',
       });
-      if (v_getStatusAsync && typeof v_getStatusAsync === 'object') {
-        for (const [k, val] of Object.entries(v_getStatusAsync)) {
+      if (v_getStatus && typeof v_getStatus === 'object') {
+        for (const [k, val] of Object.entries(v_getStatus)) {
           rows.push({
             label: String(k),
             value:

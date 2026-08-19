@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from '@lynx-js/react';
 import {
+  getAllowScreenCapture,
   getIsAvailableAsync,
   getPermissionsAsync,
-  getRecordsAsync,
+  getPreventScreenCapture,
   getRequestPermissionsAsync,
-} from '@lynxpo/mods-health';
+} from '@lynxpo/mods-screen-capture';
 
 export interface ModuleAction {
   label: string;
@@ -18,11 +19,11 @@ export interface ModuleInfo {
 }
 
 /**
- * Demonstrates Expo's `expo-health` full native method surface: every getter is
- * read into labeled rows and every action is exposed as a button. Values are
- * rendered through the Lynx bridge with no native runtime changes required.
+ * Demonstrates Expo's `expo-screen-capture` full native method surface: every getter is
+ * read into labeled rows and every action is exposed as a button. prevent/allow toggle
+ * FLAG_SECURE on the host window; permissions report granted (explorer cannot prompt).
  */
-export function useHealthInfo(): ModuleInfo {
+export function useScreenCaptureInfo(): ModuleInfo {
   const [rows, setRows] = useState<{ label: string; value: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -61,29 +62,38 @@ export function useHealthInfo(): ModuleInfo {
   }, []);
 
   const actions: ModuleAction[] = [];
+  const actPreventscreencapture = useCallback(() => {
+    try {
+      getPreventScreenCapture();
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      setTimeout(refresh, 300);
+    }
+  }, [refresh]);
+  actions.push({ label: 'Prevent capture', onPress: actPreventscreencapture });
+
+  const actAllowscreencapture = useCallback(() => {
+    try {
+      getAllowScreenCapture();
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      setTimeout(refresh, 300);
+    }
+  }, [refresh]);
+  actions.push({ label: 'Allow capture', onPress: actAllowscreencapture });
+
   const actRequestpermissions = useCallback(() => {
     try {
-      getRequestPermissionsAsync(JSON.stringify(['Steps', 'HeartRate']));
+      getRequestPermissionsAsync();
     } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
     } finally {
       setTimeout(refresh, 300);
     }
   }, [refresh]);
-  actions.push({
-    label: 'Request permissions',
-    onPress: actRequestpermissions,
-  });
-  const actGetrecords = useCallback(() => {
-    try {
-      getRecordsAsync(JSON.stringify({ type: 'Steps' }));
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error(String(err)));
-    } finally {
-      setTimeout(refresh, 300);
-    }
-  }, [refresh]);
-  actions.push({ label: 'Get records', onPress: actGetrecords });
+  actions.push({ label: 'Request permission', onPress: actRequestpermissions });
 
   useEffect(() => {
     refresh();
