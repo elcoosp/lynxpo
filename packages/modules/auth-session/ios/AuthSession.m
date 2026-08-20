@@ -2,11 +2,8 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 #import <Foundation/Foundation.h>
-#import <LynxModule/LynxModule.h>
-#import <UIKit/UIKit.h>
-
-@interface AuthSession () <LynxModule>
-@end
+#import <Lynx/LynxModule.h>
+#import "AuthSession.h"
 
 @implementation AuthSession
 
@@ -22,32 +19,33 @@
   };
 }
 
-- (BOOL)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   resolve(@(YES));
-  return YES;
 }
 
-- (NSString *)redirectUriAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
-  NSString *bundleId = [[NSBundle mainBundle] bundleIdentifier] ?: @"";
-  NSString *reversed = [[[bundleId componentsSeparatedByString:@"."] reverseObjectEnumerator].allObjects
-      componentsJoinedByString:@"."];
-  NSString *uri = [NSString stringWithFormat:@"%@://expo-auth-session", reversed];
-  resolve(uri);
-  return YES;
+- (NSString *)redirectUri {
+  NSBundle *b = [NSBundle mainBundle];
+  NSString *bid = b.bundleIdentifier ?: @"com.lynx.explorer";
+  NSArray *parts = [bid componentsSeparatedByString:@"."];
+  NSArray *reversed = [[parts reverseObjectEnumerator] allObjects];
+  NSString *scheme = [NSString stringWithFormat:@"com.%@", [reversed componentsJoinedByString:@"."]];
+  return [scheme stringByAppendingString:@"://expo-auth-session"];
 }
 
-- (NSDictionary *)providerInfoAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)redirectUriAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+  resolve([self redirectUri]);
+}
+
+- (void)providerInfoAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   result[@"available"] = @(YES);
-  // Detect native OAuth handlers via URL scheme registration.
-  BOOL google = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"com.googleusercontent.apps://"]];
-  BOOL facebook = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]];
-  result[@"google"] = @(google);
-  result[@"facebook"] = @(facebook);
-  result[@"scheme"] = [self redirectUriAsync:resolve reject:reject] ? : @"";
-  result[@"source"] = @"UIApplication";
+  result[@"scheme"] = [self redirectUri];
+  // iOS does not expose installed apps by bundle id (privacy). Report the
+  // system browsers that can handle OAuth instead.
+  result[@"google"] = @(NO);
+  result[@"facebook"] = @(NO);
+  result[@"source"] = @"ios-discovery";
   resolve(result);
-  return YES;
 }
 
 @end
