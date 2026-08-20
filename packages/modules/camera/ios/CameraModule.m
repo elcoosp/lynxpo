@@ -6,13 +6,16 @@
 #import <AVFoundation/AVFoundation.h>
 
 // Shared capture session state for the live preview, faithful to Expo CameraView.
-@interface CameraModule ()
+@interface CameraModule () <AVCapturePhotoCaptureDelegate>
 @property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureDeviceInput *videoInput;
 @property (nonatomic, strong) AVCaptureVideoDataOutput *videoOutput;
 @property (nonatomic, strong) AVCapturePhotoOutput *photoOutput;
 @property (nonatomic, strong) dispatch_queue_t sessionQueue;
 @property (nonatomic, assign) AVCaptureDevicePosition position;
+// captureFrame synchronization
+@property (nonatomic, strong) dispatch_semaphore_t captureSem;
+@property (nonatomic, copy) NSString *capturedBase64;
 @end
 
 @implementation CameraModule
@@ -142,19 +145,22 @@
   // A faithful CameraView exposes the live preview through a layer, not a per-frame
   // bridge pull. On iOS we capture a still JPEG from the session as the frame sample.
   if (!self.session || !self.photoOutput) return @"";
-  __block NSString *result = @"";
-  dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+  self.captureSem = dispatch_semaphore_create(0);
+  self.capturedBase64 = @"";
   AVCapturePhotoSettings *settings = [AVCapturePhotoSettings photoSettings];
-  [self.photoOutput capturePhotoWithSettings:settings
-                            completionHandler:^(AVCapturePhoto *photo, NSError *error) {
-    if (!error) {
-      NSData *data = [photo fileDataRepresentation];
-      if (data) result = [data base64EncodedStringWithOptions:0];
-    }
-    dispatch_semaphore_signal(sem);
-  }];
-  dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)));
-  return result;
+  [self.photoOutput capturePhotoWithSettings:settings delegate:self];
+  dispatch_semaphore_wait(self.captureSem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)));
+  return self.capturedBase64;
+}
+
+- (void)photoOutput:(AVCapturePhotoOutput *)output
+    didFinishProcessingPhoto:(AVCapturePhoto *)photo
+                      error:(NSError *)error {
+  if (!error) {
+    NSData *data = [photo fileDataRepresentation];
+    if (data) self.capturedBase64 = [data base64EncodedStringWithOptions:0];
+  }
+  if (self.captureSem) dispatch_semaphore_signal(self.captureSem);
 }
 
 - (AVCaptureDevice *)deviceForPosition:(AVCaptureDevicePosition)position {
