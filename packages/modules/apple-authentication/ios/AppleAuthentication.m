@@ -2,13 +2,10 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 #import <Foundation/Foundation.h>
-#import <LynxModule/LynxModule.h>
+#import <Lynx/LynxModule.h>
 #import <AuthenticationServices/AuthenticationServices.h>
-
-@interface AppleAuthentication () <LynxModule, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding>
-@property (nonatomic, copy) LynxCallbackBlock pendingResolve;
-@property (nonatomic, copy) LynxCallbackBlock pendingReject;
-@end
+#import <UIKit/UIKit.h>
+#import "AppleAuthentication.h"
 
 @implementation AppleAuthentication
 
@@ -24,16 +21,17 @@
   };
 }
 
-- (BOOL)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+  BOOL available = NO;
   if (@available(iOS 13.0, *)) {
-    resolve(@(YES));
-  } else {
-    resolve(@(NO));
+    available = YES;
   }
-  return YES;
+  resolve(@(available));
 }
 
-- (NSDictionary *)credentialAsync:(NSString *)options resolve:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)credentialAsync:(NSString *)options
+                 resolve:(LynxCallbackBlock)resolve
+                  reject:(LynxCallbackBlock)reject {
   if (@available(iOS 13.0, *)) {
     ASAuthorizationAppleIDProvider *provider = [[ASAuthorizationAppleIDProvider alloc] init];
     ASAuthorizationAppleIDRequest *request = [provider createRequest];
@@ -45,16 +43,17 @@
     controller.delegate = self;
     controller.presentationContextProvider = self;
     [controller performRequests];
-    return YES;
+    return;
   }
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   result[@"available"] = @(NO);
   result[@"error"] = @"Sign in with Apple requires iOS 13+.";
   resolve(result);
-  return YES;
 }
 
-- (NSString *)credentialStateAsync:(NSString *)user resolve:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)credentialStateAsync:(NSString *)user
+                      resolve:(LynxCallbackBlock)resolve
+                       reject:(LynxCallbackBlock)reject {
   if (@available(iOS 13.0, *)) {
     ASAuthorizationAppleIDProvider *provider = [[ASAuthorizationAppleIDProvider alloc] init];
     [provider getCredentialStateForUserID:user completion:^(ASAuthorizationAppleIDCredentialState state, NSError * _Nullable error) {
@@ -64,10 +63,9 @@
       else if (state == ASAuthorizationAppleIDCredentialStateNotFound) stateStr = @"notFound";
       resolve(stateStr);
     }];
-    return YES;
+    return;
   }
   resolve(@"unsupported");
-  return YES;
 }
 
 #pragma mark - ASAuthorizationControllerDelegate
@@ -79,7 +77,7 @@
     ASAuthorizationAppleIDCredential *cred = (ASAuthorizationAppleIDCredential *)authorization.credential;
     result[@"available"] = @(YES);
     result[@"user"] = cred.user;
-    result[@"email"] = cred.email ?: @"" ;
+    result[@"email"] = cred.email ?: @"";
     result[@"state"] = cred.state ?: @"";
     result[@"identityToken"] = cred.identityToken
         ? [[NSString alloc] initWithData:cred.identityToken encoding:NSUTF8StringEncoding] : @"";
