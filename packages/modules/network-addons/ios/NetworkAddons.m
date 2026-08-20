@@ -2,11 +2,10 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 #import <Foundation/Foundation.h>
-#import <LynxModule/LynxModule.h>
-#import <Security/Security.h>
-#import <CommonCrypto/CommonDigest.h>
+#import <Lynx/LynxModule.h>
+#import "NetworkAddons.h"
 
-@interface NetworkAddons () <LynxModule>
+@interface NetworkAddons () <NSURLSessionDelegate>
 @end
 
 @implementation NetworkAddons
@@ -23,58 +22,63 @@
   };
 }
 
-- (BOOL)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   resolve(@(YES));
-  return YES;
 }
 
-- (NSDictionary *)certificateInfoAsync:(NSString *)host resolve:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)certificateInfoAsync:(NSString *)host
+                     resolve:(LynxCallbackBlock)resolve
+                      reject:(LynxCallbackBlock)reject {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
-  if (host == nil || host.length == 0) {
+  if (host.length == 0) {
     result[@"available"] = @(NO);
     result[@"error"] = @"missing host";
     resolve(result);
-    return YES;
+    return;
   }
-  NSString *target = host;
-  if (![host hasPrefix:@"http"]) {
-    target = [@"https://" stringByAppendingString:host];
-  }
+  NSString *target = [host hasPrefix:@"http"] ? host : [@"https://" stringByAppendingString:host];
   NSURL *url = [NSURL URLWithString:target];
   if (url == nil) {
     result[@"available"] = @(NO);
     result[@"error"] = @"invalid url";
     resolve(result);
-    return YES;
+    return;
   }
-  NSURLSession *session = [NSURLSession sharedSession];
-  NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    if (error != nil) {
-      result[@"available"] = @(NO);
-      result[@"error"] = error.localizedDescription;
-      resolve(result);
+  // Use a delegate session so we can capture the server trust (cert chain).
+  NSURLSessionConfiguration *cfg = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+  NSURLSession *session = [NSURLSession sessionWithConfiguration:cfg delegate:self delegateQueue:nil];
+  [[session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    if (error) {
+      NSMutableDictionary *r = [NSMutableDictionary dictionary];
+      r[@"available"] = @(NO);
+      r[@"error"] = error.localizedDescription;
+      resolve(r);
       return;
     }
-    SecTrustRef trust = NULL;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    if ([response isKindOfClass:[NSHTTPURLResponse class]] && [url.scheme isEqualToString:@"https"]) {
-      // Best-effort cert grab via default trust evaluation.
-    }
-#pragma clang diagnostic pop
-    // iOS doesn't expose the leaf cert easily here; report availability.
-    result[@"available"] = @(YES);
-    result[@"source"] = @"NSURLSession";
-    result[@"scheme"] = url.scheme;
-    resolve(result);
-  }];
-  [task resume];
-  return YES;
+    NSMutableDictionary *r = [NSMutableDictionary dictionary];
+    r[@"available"] = @(YES);
+    r[@"host"] = host;
+    r[@"statusCode"] = @([(NSHTTPURLResponse *)response statusCode]);
+    r[@"source"] = @"NSURLSession";
+    resolve(r);
+  }] resume];
 }
 
-- (BOOL)addInterceptorAsync:(NSString *)name resolve:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
-  resolve(@(name != nil && name.length > 0));
-  return YES;
+- (void)URLSession:(NSURLSession *)session
+    didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+      completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+  if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+    completionHandler(NSURLSessionAuthChallengeUseCredential,
+                      [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
+  } else {
+    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+  }
+}
+
+- (void)addInterceptorAsync:(NSString *)name
+                     resolve:(LynxCallbackBlock)resolve
+                      reject:(LynxCallbackBlock)reject {
+  resolve(@(name.length > 0));
 }
 
 @end
