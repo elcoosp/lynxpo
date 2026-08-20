@@ -2,11 +2,8 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 #import <Foundation/Foundation.h>
-#import <LynxModule/LynxModule.h>
-#import <UIKit/UIKit.h>
-
-@interface Asset () <LynxModule>
-@end
+#import <Lynx/LynxModule.h>
+#import "Asset.h"
 
 @implementation Asset
 
@@ -22,69 +19,52 @@
   };
 }
 
-- (BOOL)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   resolve(@(YES));
-  return YES;
 }
 
-- (NSDictionary *)assetInfoAsync:(NSString *)uri resolve:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (NSString *)stripScheme:(NSString *)uri {
+  if (uri == nil) return @"";
+  NSRange r = [uri rangeOfString:@"://"];
+  return r.location != NSNotFound ? [uri substringFromIndex:r.location + 3] : uri;
+}
+
+- (void)assetInfoAsync:(NSString *)uri
+               resolve:(LynxCallbackBlock)resolve
+                reject:(LynxCallbackBlock)reject {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
-  if (uri == nil || uri.length == 0) {
-    result[@"exists"] = @(NO);
-    result[@"size"] = @(0);
-    result[@"name"] = @"";
-    result[@"localUri"] = @"";
-    resolve(result);
-    return YES;
-  }
-  NSString *path = uri;
-  NSRange scheme = [uri rangeOfString:@"://"];
-  if (scheme.location != NSNotFound) {
-    path = [uri substringFromIndex:scheme.location + 3];
-  }
+  NSString *path = [self stripScheme:uri];
   NSFileManager *fm = [NSFileManager defaultManager];
-  NSString *candidate = path;
-  if (![fm fileExistsAtPath:candidate]) {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    if (paths.count > 0) {
-      candidate = [paths[0] stringByAppendingPathComponent:path];
-    }
-  }
-  if ([fm fileExistsAtPath:candidate]) {
-    NSDictionary *attrs = [fm attributesOfItemAtPath:candidate error:nil];
-    result[@"exists"] = @(YES);
-    result[@"size"] = attrs[NSFileSize] ?: @(0);
-    result[@"name"] = [candidate lastPathComponent];
-    result[@"localUri"] = [@"file://" stringByAppendingString:candidate];
-    result[@"source"] = @"filesystem";
-  } else {
+  BOOL isDir = NO;
+  BOOL exists = [fm fileExistsAtPath:path isDirectory:&isDir];
+  if (!exists) {
     result[@"exists"] = @(NO);
     result[@"size"] = @(0);
     result[@"name"] = [path lastPathComponent];
     result[@"localUri"] = @"";
     result[@"source"] = @"unknown";
+  } else {
+    NSDictionary *attrs = [fm attributesOfItemAtPath:path error:nil];
+    result[@"exists"] = @(YES);
+    result[@"size"] = attrs[NSFileSize] ?: @(0);
+    result[@"name"] = [path lastPathComponent];
+    result[@"localUri"] = [@"file://" stringByAppendingString:path];
+    result[@"source"] = @"filesystem";
   }
   resolve(result);
-  return YES;
 }
 
-- (NSString *)localUriAsync:(NSString *)uri resolve:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
-  NSRange scheme = [uri rangeOfString:@"://"];
-  NSString *path = (scheme.location != NSNotFound) ? [uri substringFromIndex:scheme.location + 3] : uri;
+- (void)localUriAsync:(NSString *)uri
+               resolve:(LynxCallbackBlock)resolve
+                reject:(LynxCallbackBlock)reject {
+  NSString *path = [self stripScheme:uri];
   NSFileManager *fm = [NSFileManager defaultManager];
-  NSString *candidate = path;
-  if (![fm fileExistsAtPath:candidate]) {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    if (paths.count > 0) {
-      candidate = [paths[0] stringByAppendingPathComponent:path];
-    }
-  }
-  if ([fm fileExistsAtPath:candidate]) {
-    resolve([@"file://" stringByAppendingString:candidate]);
+  BOOL isDir = NO;
+  if ([fm fileExistsAtPath:path isDirectory:&isDir]) {
+    resolve([@"file://" stringByAppendingString:path]);
   } else {
-    resolve(@(0));
+    resolve(@"");
   }
-  return YES;
 }
 
 @end
