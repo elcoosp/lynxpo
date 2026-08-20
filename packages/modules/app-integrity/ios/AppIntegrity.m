@@ -2,11 +2,9 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 #import <Foundation/Foundation.h>
-#import <LynxModule/LynxModule.h>
+#import <Lynx/LynxModule.h>
 #import <DeviceCheck/DeviceCheck.h>
-
-@interface AppIntegrity () <LynxModule>
-@end
+#import "AppIntegrity.h"
 
 @implementation AppIntegrity
 
@@ -22,47 +20,52 @@
   };
 }
 
-- (BOOL)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
-  // DeviceCheck (and thus App Attest / attestation) is available on iOS 11+.
-  if (@available(iOS 11.0, *)) {
-    resolve(@(YES));
-  } else {
-    resolve(@(NO));
+- (void)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+  BOOL available = NO;
+  if (@available(iOS 14.0, *)) {
+    available = [DCDevice.currentDevice isSupported];
   }
-  return YES;
+  resolve(@(available));
 }
 
-- (NSDictionary *)integrityTokenAsync:(NSString *)options resolve:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)integrityTokenAsync:(NSString *)options
+                    resolve:(LynxCallbackBlock)resolve
+                     reject:(LynxCallbackBlock)reject {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
+  result[@"available"] = @(NO);
   if (@available(iOS 14.0, *)) {
-    result[@"available"] = @(YES);
-    result[@"token"] = @(NO);
-    result[@"error"] = @"App Attest key + assertion requires a server-side attestation "
-                        "object exchange (DCAppAttestService + backend verification). Not "
-                        "performed on-device.";
-    result[@"source"] = @"DeviceCheck";
-  } else {
-    result[@"available"] = @(NO);
-    result[@"error"] = @"DeviceCheck unavailable on this iOS version.";
+    if ([DCDevice.currentDevice isSupported]) {
+      [DCDevice.currentDevice generateTokenWithCompletionHandler:^(NSData * _Nullable token, NSError * _Nullable error) {
+        if (error) {
+          NSMutableDictionary *r = [NSMutableDictionary dictionary];
+          r[@"available"] = @(YES);
+          r[@"token"] = @(NO);
+          r[@"error"] = error.localizedDescription;
+          r[@"source"] = @"DeviceCheck";
+          resolve(r);
+        } else {
+          NSString *b64 = [token base64EncodedStringWithOptions:0];
+          NSMutableDictionary *r = [NSMutableDictionary dictionary];
+          r[@"available"] = @(YES);
+          r[@"token"] = b64 ?: @"";
+          r[@"source"] = @"DeviceCheck";
+          resolve(r);
+        }
+      }];
+      return;
+    }
   }
+  result[@"error"] = @"DeviceCheck is not supported on this device/iOS version.";
+  result[@"source"] = @"DeviceCheck";
   resolve(result);
-  return YES;
 }
 
-- (NSDictionary *)codeHashAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)codeHashAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
-  // App Attest key id is generated on demand and stored server-side; we report
-  // availability rather than fabricating an id.
-  if (@available(iOS 14.0, *)) {
-    result[@"available"] = @(YES);
-    result[@"source"] = @"DeviceCheck";
-    result[@"note"] = @"App Attest generates a per-device key id via DCAppAttestService."
-                       "generateKeyWithCompletionHandler: and verifies it server-side.";
-  } else {
-    result[@"available"] = @(NO);
-  }
+  result[@"available"] = @(NO);
+  result[@"error"] = @"App signing-certificate SHA-256 requires a packaged IPA (TestFlight/App Store). The debug build is not signed by Apple.";
+  result[@"source"] = @"Bundle";
   resolve(result);
-  return YES;
 }
 
 @end
