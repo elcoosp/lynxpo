@@ -2,10 +2,8 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 #import <Foundation/Foundation.h>
-#import <LynxModule/LynxModule.h>
-
-@interface ScreenCapture () <LynxModule>
-@end
+#import <Lynx/LynxModule.h>
+#import "ScreenCapture.h"
 
 @implementation ScreenCapture
 
@@ -23,24 +21,24 @@
   };
 }
 
-- (BOOL)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)isAvailableAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   resolve(@(YES));
 }
 
-- (BOOL)preventScreenCapture:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)preventScreenCapture:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   resolve(@(YES));
 }
 
-- (BOOL)allowScreenCapture:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)allowScreenCapture:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   resolve(@(YES));
 }
 
-- (NSDictionary *)permissionsAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)permissionsAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   NSDictionary *result = @{@"granted": @(YES), @"status": @"granted", @"canAskAgain": @(YES), @"expires": @"never"};
   resolve(result);
 }
 
-- (NSDictionary *)requestPermissionsAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
+- (void)requestPermissionsAsync:(LynxCallbackBlock)resolve reject:(LynxCallbackBlock)reject {
   NSDictionary *result = @{@"granted": @(YES), @"status": @"granted", @"canAskAgain": @(YES), @"expires": @"never"};
   resolve(result);
 }
