@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.contacts",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.contacts",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

@@ -1,18 +1,10 @@
-import type { NativeModules as INativeModules } from '@lynx-js/types';
+import { FileSystemModule } from './generated/FileSystemModule';
 
 export interface FileSystemInfo {
   exists: boolean;
   isDirectory: boolean;
   size: number;
   uri: string;
-}
-
-export interface FileSystemModule extends INativeModules {
-  writeAsStringAsync(path: string, contents: string): Promise<void>;
-  readAsStringAsync(path: string): Promise<string>;
-  getInfoAsync(path: string): Promise<FileSystemInfo>;
-  makeDirectoryAsync(path: string): Promise<boolean>;
-  deleteAsync(path: string): Promise<boolean | null>;
 }
 
 export const writeAsStringAsync = (

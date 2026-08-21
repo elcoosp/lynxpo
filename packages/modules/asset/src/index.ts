@@ -1,15 +1,9 @@
 // Auto-generated from Asset.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface Asset extends INativeModules {
-  isAvailableAsync(): boolean;
-  assetInfoAsync(uri: string): Record<string, any>;
-  localUriAsync(uri: string): string;
-}
+import { Asset } from './generated/Asset';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.Asset?.isAvailableAsync?.();
+  Asset.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();

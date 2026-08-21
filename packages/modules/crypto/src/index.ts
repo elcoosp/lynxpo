@@ -1,22 +1,6 @@
 // Auto-generated from CryptoModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface CryptoModule extends INativeModules {
-  digestString(
-    algorithm: string,
-    data: string,
-    encoding: string,
-  ): string | null;
-  getRandomBytes(byteCount: number): string | null;
-  randomUUID(): string | null;
-  digestStringAsync(
-    algorithm: string,
-    data: string,
-    encoding: string,
-  ): Promise<string>;
-  getRandomBytesAsync(byteCount: number): Promise<string>;
-}
+import { CryptoModule } from './generated/CryptoModule';
 
 export const getDigestString = (
   algorithm: string,
@@ -63,7 +47,7 @@ export const useGetRandomBytes = (byteCount: number) => {
 };
 
 export const getRandomUUID = (): string | null =>
-  NativeModules.CryptoModule?.randomUUID?.();
+  CryptoModule.randomUUID();
 
 export const useRandomUUID = () => {
   const [value, setValue] = useState<string | null>();

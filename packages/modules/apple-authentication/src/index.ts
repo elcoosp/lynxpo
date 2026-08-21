@@ -1,15 +1,9 @@
 // Auto-generated from AppleAuthentication.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface AppleAuthentication extends INativeModules {
-  isAvailableAsync(): boolean;
-  credentialAsync(options: string): Record<string, any>;
-  credentialStateAsync(user: string): string;
-}
+import { AppleAuthentication } from './generated/AppleAuthentication';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.AppleAuthentication?.isAvailableAsync?.();
+  AppleAuthentication.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();

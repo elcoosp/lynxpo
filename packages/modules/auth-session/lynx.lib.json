@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.authsession",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.authsession",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

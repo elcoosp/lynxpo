@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.appleauthentication",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.appleauthentication",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

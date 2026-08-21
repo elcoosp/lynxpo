@@ -1,16 +1,9 @@
 // Auto-generated from ContactsModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface ContactsModule extends INativeModules {
-  permissionsAsync(): Record<string, any>;
-  requestPermission(): void;
-  contactCount(): number;
-  containerCount(): number;
-}
+import { ContactsModule } from './generated/ContactsModule';
 
 export const getPermissionsAsync = (): Record<string, any> =>
-  NativeModules.ContactsModule?.permissionsAsync?.();
+  ContactsModule.permissionsAsync();
 
 export const usePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -28,7 +21,7 @@ export const usePermissionsAsync = () => {
 };
 
 export const getRequestPermission = (): void =>
-  NativeModules.ContactsModule?.requestPermission?.();
+  ContactsModule.requestPermission();
 
 export const useRequestPermission = () => {
   const [value, setValue] = useState<void>();
@@ -46,7 +39,7 @@ export const useRequestPermission = () => {
 };
 
 export const getContactCount = (): number =>
-  NativeModules.ContactsModule?.contactCount?.();
+  ContactsModule.contactCount();
 
 export const useContactCount = () => {
   const [value, setValue] = useState<number>();
@@ -64,7 +57,7 @@ export const useContactCount = () => {
 };
 
 export const getContainerCount = (): number =>
-  NativeModules.ContactsModule?.containerCount?.();
+  ContactsModule.containerCount();
 
 export const useContainerCount = () => {
   const [value, setValue] = useState<number>();

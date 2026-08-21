@@ -1,23 +1,9 @@
 // Auto-generated from CameraModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface CameraModule extends INativeModules {
-  cameraPermissionsAsync(): Record<string, any>;
-  requestCameraPermission(): void;
-  microphonePermissionsAsync(): Record<string, any>;
-  availableCameraTypes(): string[];
-  availableVideoCodecs(): string[];
-  startCamera(): boolean;
-  stopCamera(): void;
-  flipCamera(): void;
-  setTorch(enabled: boolean): void;
-  isTorchAvailable(): boolean;
-  captureFrame(): string;
-}
+import { CameraModule } from './generated/CameraModule';
 
 export const getCameraPermissionsAsync = (): Record<string, any> =>
-  NativeModules.CameraModule?.cameraPermissionsAsync?.();
+  CameraModule.cameraPermissionsAsync();
 
 export const useCameraPermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -35,7 +21,7 @@ export const useCameraPermissionsAsync = () => {
 };
 
 export const getRequestCameraPermission = (): void =>
-  NativeModules.CameraModule?.requestCameraPermission?.();
+  CameraModule.requestCameraPermission();
 
 export const useRequestCameraPermission = () => {
   const [value, setValue] = useState<void>();
@@ -53,7 +39,7 @@ export const useRequestCameraPermission = () => {
 };
 
 export const getMicrophonePermissionsAsync = (): Record<string, any> =>
-  NativeModules.CameraModule?.microphonePermissionsAsync?.();
+  CameraModule.microphonePermissionsAsync();
 
 export const useMicrophonePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -71,7 +57,7 @@ export const useMicrophonePermissionsAsync = () => {
 };
 
 export const getAvailableCameraTypes = (): string[] =>
-  NativeModules.CameraModule?.availableCameraTypes?.();
+  CameraModule.availableCameraTypes();
 
 export const useAvailableCameraTypes = () => {
   const [value, setValue] = useState<string[]>();
@@ -89,7 +75,7 @@ export const useAvailableCameraTypes = () => {
 };
 
 export const getAvailableVideoCodecs = (): string[] =>
-  NativeModules.CameraModule?.availableVideoCodecs?.();
+  CameraModule.availableVideoCodecs();
 
 export const useAvailableVideoCodecs = () => {
   const [value, setValue] = useState<string[]>();
@@ -107,7 +93,7 @@ export const useAvailableVideoCodecs = () => {
 };
 
 export const getStartCamera = (): boolean =>
-  NativeModules.CameraModule?.startCamera?.();
+  CameraModule.startCamera();
 
 export const useStartCamera = () => {
   const [value, setValue] = useState<boolean>();
@@ -125,7 +111,7 @@ export const useStartCamera = () => {
 };
 
 export const getStopCamera = (): void =>
-  NativeModules.CameraModule?.stopCamera?.();
+  CameraModule.stopCamera();
 
 export const useStopCamera = () => {
   const [value, setValue] = useState<void>();
@@ -143,7 +129,7 @@ export const useStopCamera = () => {
 };
 
 export const getFlipCamera = (): void =>
-  NativeModules.CameraModule?.flipCamera?.();
+  CameraModule.flipCamera();
 
 export const useFlipCamera = () => {
   const [value, setValue] = useState<void>();
@@ -179,7 +165,7 @@ export const useSetTorch = (enabled: boolean) => {
 };
 
 export const getIsTorchAvailable = (): boolean =>
-  NativeModules.CameraModule?.isTorchAvailable?.();
+  CameraModule.isTorchAvailable();
 
 export const useIsTorchAvailable = () => {
   const [value, setValue] = useState<boolean>();
@@ -197,7 +183,7 @@ export const useIsTorchAvailable = () => {
 };
 
 export const getCaptureFrame = (): string =>
-  NativeModules.CameraModule?.captureFrame?.();
+  CameraModule.captureFrame();
 
 export const useCaptureFrame = () => {
   const [value, setValue] = useState<string>();

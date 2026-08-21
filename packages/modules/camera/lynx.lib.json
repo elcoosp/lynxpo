@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.camera",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.camera",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

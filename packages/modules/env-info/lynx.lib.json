@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.envinfo",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.envinfo",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

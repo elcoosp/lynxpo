@@ -1,19 +1,9 @@
 // Auto-generated from ApplicationModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface ApplicationModule extends INativeModules {
-  applicationName(): any;
-  applicationId(): any;
-  nativeApplicationVersion(): any;
-  nativeBuildVersion(): any;
-  androidId(): any;
-  getInstallationTime(): any;
-  getLastUpdateTime(): any;
-}
+import { ApplicationModule } from './generated/ApplicationModule';
 
 export const getApplicationName = (): any =>
-  NativeModules.ApplicationModule?.applicationName?.();
+  ApplicationModule.applicationName();
 
 export const useApplicationName = () => {
   const [value, setValue] = useState<any>();
@@ -31,7 +21,7 @@ export const useApplicationName = () => {
 };
 
 export const getApplicationId = (): any =>
-  NativeModules.ApplicationModule?.applicationId?.();
+  ApplicationModule.applicationId();
 
 export const useApplicationId = () => {
   const [value, setValue] = useState<any>();
@@ -49,7 +39,7 @@ export const useApplicationId = () => {
 };
 
 export const getNativeApplicationVersion = (): any =>
-  NativeModules.ApplicationModule?.nativeApplicationVersion?.();
+  ApplicationModule.nativeApplicationVersion();
 
 export const useNativeApplicationVersion = () => {
   const [value, setValue] = useState<any>();
@@ -67,7 +57,7 @@ export const useNativeApplicationVersion = () => {
 };
 
 export const getNativeBuildVersion = (): any =>
-  NativeModules.ApplicationModule?.nativeBuildVersion?.();
+  ApplicationModule.nativeBuildVersion();
 
 export const useNativeBuildVersion = () => {
   const [value, setValue] = useState<any>();
@@ -85,7 +75,7 @@ export const useNativeBuildVersion = () => {
 };
 
 export const getAndroidId = (): any =>
-  NativeModules.ApplicationModule?.androidId?.();
+  ApplicationModule.androidId();
 
 export const useAndroidId = () => {
   const [value, setValue] = useState<any>();
@@ -103,7 +93,7 @@ export const useAndroidId = () => {
 };
 
 export const getGetInstallationTime = (): any =>
-  NativeModules.ApplicationModule?.getInstallationTime?.();
+  ApplicationModule.getInstallationTime();
 
 export const useGetInstallationTime = () => {
   const [value, setValue] = useState<any>();
@@ -121,7 +111,7 @@ export const useGetInstallationTime = () => {
 };
 
 export const getGetLastUpdateTime = (): any =>
-  NativeModules.ApplicationModule?.getLastUpdateTime?.();
+  ApplicationModule.getLastUpdateTime();
 
 export const useGetLastUpdateTime = () => {
   const [value, setValue] = useState<any>();

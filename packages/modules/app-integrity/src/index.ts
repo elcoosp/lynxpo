@@ -1,15 +1,9 @@
 // Auto-generated from AppIntegrity.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface AppIntegrity extends INativeModules {
-  isAvailableAsync(): boolean;
-  integrityTokenAsync(options: string): Record<string, any>;
-  codeHashAsync(): Record<string, any>;
-}
+import { AppIntegrity } from './generated/AppIntegrity';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.AppIntegrity?.isAvailableAsync?.();
+  AppIntegrity.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -45,7 +39,7 @@ export const useIntegrityTokenAsync = (options: string) => {
 };
 
 export const getCodeHashAsync = (): Record<string, any> =>
-  NativeModules.AppIntegrity?.codeHashAsync?.();
+  AppIntegrity.codeHashAsync();
 
 export const useCodeHashAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();

@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.appintegrity",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.appintegrity",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}
