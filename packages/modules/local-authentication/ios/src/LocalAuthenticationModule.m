@@ -72,7 +72,7 @@
 - (id)hasHardwareAsync {
 
   @try {
-    return [self hasHardware];
+    return @([self hasHardware]);
   } @catch (NSException *e) {
     return nil;
   }
@@ -81,7 +81,7 @@
 - (id)isEnrolledAsync {
 
   @try {
-    return [self isEnrolled];
+    return @([self isEnrolled]);
   } @catch (NSException *e) {
     return nil;
   }
@@ -105,21 +105,21 @@
   }
 }
 
-- (id)authenticateAsync:(NSString *)prompt {
+- (void)authenticateAsync:(NSString *)prompt cb:(id)cb {
   LAContext *context = [self freshContext];
   NSString *reason = (prompt.length > 0) ? prompt : @"Authenticate";
   [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
             localizedReason:reason
                       reply:^(BOOL success, NSError *authError) {
+                        NSMutableDictionary *result = [NSMutableDictionary dictionary];
                         if (success) {
-                          return @{@"success" : @YES};
+                          result[@"success"] = @YES;
                         } else {
-                          return @{
-                            @"success" : @NO,
-                            @"error" : authError.localizedDescription ?: @"Authentication failed",
-                            @"warning" : @""
-                          };
+                          result[@"success"] = @NO;
+                          result[@"error"] = authError.localizedDescription ?: @"Authentication failed";
+                          result[@"warning"] = @"";
                         }
+                        if (cb) ((LynxCallbackBlock)cb)(result);
                       }];
 }
 

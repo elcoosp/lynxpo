@@ -4,10 +4,10 @@ declare const NativeModules: {
   ImagePickerModule: {
   getCameraPermissions(): any;
   getMediaLibraryPermissions(): any;
-  getCameraPermissionsAsync(): any;
-  getMediaLibraryPermissionsAsync(): any;
-  launchImageLibraryAsync(): any;
-  launchCameraAsync(): any;
+  getCameraPermissionsAsync(cb: function): void;
+  getMediaLibraryPermissionsAsync(cb: function): void;
+  launchImageLibraryAsync(cb: function): void;
+  launchCameraAsync(cb: function): void;
   };
 };
 

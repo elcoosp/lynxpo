@@ -1,7 +1,7 @@
 // Copyright 2026 The Lynxpo Authors. All rights reserved.
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
-package com.lynx.explorer.modules;
+package com.lynxpo.imagepicker;
 
 import android.Manifest;
 import android.content.Context;
@@ -12,11 +12,9 @@ import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import com.lynx.jsbridge.LynxMethod;
-import com.lynx.jsbridge.LynxModule;
 import com.lynx.jsbridge.LynxNativeModule;
 import com.lynxpo.imagepicker.generated.ImagePickerModuleSpec;
-import com.lynx.jsbridge.Promise;
+import com.lynx.react.bridge.Callback;
 import com.lynx.react.bridge.JavaOnlyMap;
 import com.lynx.react.bridge.WritableMap;
 import com.lynx.tasm.utils.ContextUtils;
@@ -34,8 +32,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * camera / photo picker (via {@link ImagePickerProxyActivity}) and resolve with
  * {@code {cancelled, uri}}, matching the iOS return shape. The async permission
  * getters actually {@code requestPermissions} (routing through the proxy
- * activity, since the host does not forward permission callbacks to modules)
- * and resolve with the resulting status, mirroring iOS.
+ * activity) and resolve with the resulting status, mirroring iOS. Results are
+ * delivered through the deprecated native promise API ({@code Callback}).
  */
 @LynxNativeModule(name = "ImagePickerModule")
 public class ImagePickerModule extends ImagePickerModuleSpec {
@@ -47,38 +45,55 @@ public class ImagePickerModule extends ImagePickerModuleSpec {
   static final int ACTION_CAMERA = 2;
   static final int REQUEST_CODE = 0x4C59; // "LYNX"
 
-  private static final AtomicReference<Promise> PENDING_PROMISE = new AtomicReference<>();
+  private static final AtomicReference<Object> PENDING_CB = new AtomicReference<>();
   private static final AtomicReference<Uri> PENDING_CAMERA_URI = new AtomicReference<>();
 
   /** Resolve with {@code {cancelled, uri}} (picker result). */
   static void resolvePicked(@Nullable Uri uri, boolean cancelled) {
-    Promise promise = PENDING_PROMISE.getAndSet(null);
+    Object cb = PENDING_CB.getAndSet(null);
     PENDING_CAMERA_URI.set(null);
-    if (promise == null) {
-      return;
+    if (cb instanceof Callback) {
+      WritableMap result = new JavaOnlyMap();
+      result.putBoolean("cancelled", cancelled);
+      if (!cancelled) {
+        result.putString("uri", uri != null ? uri.toString() : null);
+      }
+      ((Callback) cb).invoke(result);
     }
-    WritableMap result = new JavaOnlyMap();
-    result.putBoolean("cancelled", cancelled);
-    if (!cancelled) {
-      result.putString("uri", uri != null ? uri.toString() : null);
-    }
-    promise.resolve(result);
   }
 
   /** Resolve with a permission-status map (permission request result). */
   static void resolvePermission(android.content.Context context, String permission) {
-    Promise promise = PENDING_PROMISE.getAndSet(null);
-    if (promise == null) {
-      return;
+    Object cb = PENDING_CB.getAndSet(null);
+    if (cb instanceof Callback) {
+      ((Callback) cb).invoke(buildPermissionStatus(context, permission));
     }
-    promise.resolve(buildPermissionStatus(context, permission));
   }
 
   static void rejectPicked(String message) {
-    Promise promise = PENDING_PROMISE.getAndSet(null);
+    Object cb = PENDING_CB.getAndSet(null);
     PENDING_CAMERA_URI.set(null);
-    if (promise != null) {
-      promise.reject("ERROR", message);
+    if (cb instanceof Callback) {
+      ((Callback) cb).invoke(makeError(message));
+    }
+  }
+
+  private static WritableMap makeError(String message) {
+    WritableMap map = new JavaOnlyMap();
+    map.putBoolean("cancelled", true);
+    map.putString("error", message);
+    return map;
+  }
+
+  private static void invokeCb(Object cb, WritableMap result) {
+    if (cb instanceof Callback) {
+      ((Callback) cb).invoke(result);
+    }
+  }
+
+  private static void resolveError(Object cb, String message) {
+    if (cb instanceof Callback) {
+      ((Callback) cb).invoke(makeError(message));
     }
   }
 
@@ -86,12 +101,12 @@ public class ImagePickerModule extends ImagePickerModuleSpec {
     super(context);
   }
 
-  @LynxMethod
+  @Override
   public WritableMap getCameraPermissions() {
     return buildPermissionStatus(mContext, Manifest.permission.CAMERA);
   }
 
-  @LynxMethod
+  @Override
   public WritableMap getMediaLibraryPermissions() {
     return buildPermissionStatus(mContext, mediaPermission());
   }
@@ -113,63 +128,63 @@ public class ImagePickerModule extends ImagePickerModuleSpec {
     return result;
   }
 
-  @LynxMethod
-  public void getCameraPermissionsAsync(final Promise promise) {
-    requestPermissionOrResolve(Manifest.permission.CAMERA, promise);
+  @Override
+  public void getCameraPermissionsAsync(final Object cb) {
+    requestPermissionOrResolve(Manifest.permission.CAMERA, cb);
   }
 
-  @LynxMethod
-  public void getMediaLibraryPermissionsAsync(final Promise promise) {
-    requestPermissionOrResolve(mediaPermission(), promise);
+  @Override
+  public void getMediaLibraryPermissionsAsync(final Object cb) {
+    requestPermissionOrResolve(mediaPermission(), cb);
   }
 
-  private void requestPermissionOrResolve(String permission, final Promise promise) {
+  private void requestPermissionOrResolve(String permission, final Object cb) {
     android.app.Activity activity = ContextUtils.getActivity(mContext);
     if (activity == null) {
-      promise.reject("ERROR", "Permission request unavailable: no host activity");
+      resolveError(cb, "Permission request unavailable: no host activity");
       return;
     }
     if (ContextCompat.checkSelfPermission(activity, permission)
         == PackageManager.PERMISSION_GRANTED) {
-      promise.resolve(buildPermissionStatus(activity, permission));
+      invokeCb(cb, buildPermissionStatus(activity, permission));
       return;
     }
-    PENDING_PROMISE.set(promise);
+    PENDING_CB.set(cb);
     try {
       Intent proxy = new Intent(activity, ImagePickerProxyActivity.class);
       proxy.putExtra(EXTRA_REQUEST_PERMISSIONS, new String[] { permission });
       proxy.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       activity.startActivity(proxy);
     } catch (Exception e) {
-      PENDING_PROMISE.set(null);
-      promise.reject("ERROR", e.getMessage());
+      PENDING_CB.set(null);
+      resolveError(cb, e.getMessage());
     }
   }
 
-  @LynxMethod
-  public void launchImageLibraryAsync(final Promise promise) {
+  @Override
+  public void launchImageLibraryAsync(final Object cb) {
     android.app.Activity activity = ContextUtils.getActivity(mContext);
     if (activity == null) {
-      promise.reject("ERROR", "Image picker unavailable: no host activity");
+      resolveError(cb, "Image picker unavailable: no host activity");
       return;
     }
-    PENDING_PROMISE.set(promise);
+    PENDING_CB.set(cb);
     try {
       Intent proxy = new Intent(activity, ImagePickerProxyActivity.class);
       proxy.putExtra(EXTRA_PICKER_ACTION, ACTION_LIBRARY);
       proxy.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       activity.startActivity(proxy);
     } catch (Exception e) {
-      PENDING_PROMISE.set(null);
-      promise.reject("ERROR", e.getMessage());
+      PENDING_CB.set(null);
+      resolveError(cb, e.getMessage());
     }
   }
 
-  @LynxMethod
-  public void launchCameraAsync(final Promise promise) {
+  @Override
+  public void launchCameraAsync(final Object cb) {
     android.app.Activity activity = ContextUtils.getActivity(mContext);
     if (activity == null) {
-      promise.reject("ERROR", "Camera unavailable: no host activity");
+      resolveError(cb, "Camera unavailable: no host activity");
       return;
     }
     File photoFile =
@@ -180,7 +195,7 @@ public class ImagePickerModule extends ImagePickerModuleSpec {
             activity.getApplicationContext().getPackageName() + ".fileprovider",
             photoFile);
     PENDING_CAMERA_URI.set(cameraUri);
-    PENDING_PROMISE.set(promise);
+    PENDING_CB.set(cb);
     try {
       Intent proxy = new Intent(activity, ImagePickerProxyActivity.class);
       proxy.putExtra(EXTRA_PICKER_ACTION, ACTION_CAMERA);
@@ -188,9 +203,9 @@ public class ImagePickerModule extends ImagePickerModuleSpec {
       proxy.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       activity.startActivity(proxy);
     } catch (Exception e) {
-      PENDING_PROMISE.set(null);
+      PENDING_CB.set(null);
       PENDING_CAMERA_URI.set(null);
-      promise.reject("ERROR", e.getMessage());
+      resolveError(cb, e.getMessage());
     }
   }
 

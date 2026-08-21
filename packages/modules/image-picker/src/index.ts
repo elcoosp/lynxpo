@@ -39,7 +39,9 @@ export const useGetMediaLibraryPermissions = () => {
 };
 
 export const getGetCameraPermissionsAsync = (): Promise<any> =>
-  ImagePickerModule.getCameraPermissionsAsync();
+  new Promise((resolve) => {
+    ImagePickerModule.getCameraPermissionsAsync((result: any) => resolve(result));
+  });
 
 export const useGetCameraPermissionsAsync = () => {
   const [value, setValue] = useState<any>();
@@ -78,7 +80,9 @@ export const useGetCameraPermissionsAsync = () => {
 };
 
 export const getGetMediaLibraryPermissionsAsync = (): Promise<any> =>
-  ImagePickerModule.getMediaLibraryPermissionsAsync();
+  new Promise((resolve) => {
+    ImagePickerModule.getMediaLibraryPermissionsAsync((result: any) => resolve(result));
+  });
 
 export const useGetMediaLibraryPermissionsAsync = () => {
   const [value, setValue] = useState<any>();
@@ -117,7 +121,9 @@ export const useGetMediaLibraryPermissionsAsync = () => {
 };
 
 export const getLaunchImageLibraryAsync = (): Promise<any> =>
-  ImagePickerModule.launchImageLibraryAsync();
+  new Promise((resolve) => {
+    ImagePickerModule.launchImageLibraryAsync((result: any) => resolve(result));
+  });
 
 export const useLaunchImageLibraryAsync = () => {
   const [value, setValue] = useState<any>();
@@ -156,7 +162,9 @@ export const useLaunchImageLibraryAsync = () => {
 };
 
 export const getLaunchCameraAsync = (): Promise<any> =>
-  ImagePickerModule.launchCameraAsync();
+  new Promise((resolve) => {
+    ImagePickerModule.launchCameraAsync((result: any) => resolve(result));
+  });
 
 export const useLaunchCameraAsync = () => {
   const [value, setValue] = useState<any>();

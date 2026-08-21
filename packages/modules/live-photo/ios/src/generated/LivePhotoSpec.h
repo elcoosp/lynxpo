@@ -8,7 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isAvailableAsync;
 - (BOOL)isLivePhotoAsync:(NSString *)path;
-- (BOOL)saveLivePhotoAsync:(NSString *)video photo:(NSString *)photo;
+- (id)saveLivePhotoAsync:(NSString *)video photo:(NSString *)photo;
 
 @end
 

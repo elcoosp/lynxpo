@@ -36,5 +36,5 @@ public abstract class LocalAuthenticationModuleSpec extends LynxContextModule {
   public abstract Object supportedAuthenticationTypesAsync();
 
   @LynxMethod
-  public abstract Object authenticateAsync(String prompt);
+  public abstract void authenticateAsync(String prompt, Object cb);
 }

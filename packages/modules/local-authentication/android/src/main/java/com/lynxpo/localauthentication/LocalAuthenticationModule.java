@@ -11,7 +11,7 @@ import com.lynx.jsbridge.LynxMethod;
 import com.lynx.jsbridge.LynxModule;
 import com.lynx.jsbridge.LynxNativeModule;
 import com.lynxpo.localauthentication.generated.LocalAuthenticationModuleSpec;
-import com.lynx.jsbridge.Promise;
+import com.lynx.react.bridge.Callback;
 import com.lynx.react.bridge.JavaOnlyMap;
 import java.lang.reflect.Method;
 
@@ -156,8 +156,8 @@ public class LocalAuthenticationModule extends LocalAuthenticationModuleSpec {
     }
   }
 
-  @LynxMethod
-  public void authenticateAsync(final String prompt, final Promise promise) {
+  @Override
+  public void authenticateAsync(final String prompt, final Object cb) {
     // Interactive biometric prompt requires android.hardware.fingerprint at
     // compile time, which the Explorer build's android.jar does not expose.
     // Return a structured, non-crashing result so the JS surface stays honest.
@@ -165,6 +165,8 @@ public class LocalAuthenticationModule extends LocalAuthenticationModuleSpec {
     map.putBoolean("success", false);
     map.putString("error", "Interactive authentication unavailable in this build");
     map.putString("warning", "");
-    promise.resolve(map);
+    if (cb instanceof Callback) {
+      ((Callback) cb).invoke(map);
+    }
   }
 }

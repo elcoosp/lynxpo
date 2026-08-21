@@ -8,10 +8,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id)getCameraPermissions;
 - (id)getMediaLibraryPermissions;
-- (id)getCameraPermissionsAsync;
-- (id)getMediaLibraryPermissionsAsync;
-- (id)launchImageLibraryAsync;
-- (id)launchCameraAsync;
+- (void)getCameraPermissionsAsync:(id)cb;
+- (void)getMediaLibraryPermissionsAsync:(id)cb;
+- (void)launchImageLibraryAsync:(id)cb;
+- (void)launchCameraAsync:(id)cb;
 
 @end
 

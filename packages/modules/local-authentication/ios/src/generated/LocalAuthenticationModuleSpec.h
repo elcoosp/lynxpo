@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)isEnrolledAsync;
 - (id)getEnrolledLevelAsync;
 - (id)supportedAuthenticationTypesAsync;
-- (id)authenticateAsync:(NSString *)prompt;
+- (void)authenticateAsync:(NSString *)prompt cb:(id)cb;
 
 @end
 

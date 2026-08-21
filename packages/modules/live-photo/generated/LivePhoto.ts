@@ -4,7 +4,7 @@ declare const NativeModules: {
   LivePhoto: {
   isAvailableAsync(): boolean;
   isLivePhotoAsync(path: string): boolean;
-  saveLivePhotoAsync(video: string, photo: string): boolean;
+  saveLivePhotoAsync(video: string, photo: string): any;
   };
 };
 

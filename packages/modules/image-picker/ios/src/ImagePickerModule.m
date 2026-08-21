@@ -1,7 +1,6 @@
 // Copyright 2026 The Lynxpo Authors. All rights reserved.
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
-
 #import "ImagePickerModule.h"
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
@@ -9,12 +8,10 @@
 
 @interface ImagePickerModule () <UIImagePickerControllerDelegate,
                                  UINavigationControllerDelegate>
-@property (nonatomic, copy) LynxCallbackBlock pendingResolve;
+@property (nonatomic, copy) LynxCallbackBlock pendingCb;
 @end
 
 @implementation ImagePickerModule
-
-
 
 #pragma mark - Status helpers
 
@@ -61,7 +58,7 @@
   return root;
 }
 
-#pragma mark - Sync getters (read live authorization state)
+#pragma mark - Sync getters
 
 - (id)getCameraPermissions {
   AVAuthorizationStatus status =
@@ -81,83 +78,71 @@
                                  granted:granted];
 }
 
-#pragma mark - Async permission requests (prompt iOS)
+#pragma mark - Async permission requests (deprecated promise API)
 
-- (id)getCameraPermissionsAsync {
-
-  @try {
-    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo
-                             completionHandler:^(BOOL granted) {
-      AVAuthorizationStatus status =
-          [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-      dispatch_async(dispatch_get_main_queue(), ^{
-        return [self permissionDictWithStatus:[self cameraStatusString:status]
-                                        granted:granted];
-      });
-    }];
-  } @catch (NSException *e) { return nil; }
+- (void)getCameraPermissionsAsync:(id)cb {
+  [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo
+                           completionHandler:^(BOOL granted) {
+    AVAuthorizationStatus status =
+        [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    NSDictionary *result =
+        [self permissionDictWithStatus:[self cameraStatusString:status]
+                               granted:granted];
+    if (cb) ((LynxCallbackBlock)cb)(result);
+  }];
 }
 
-- (id)getMediaLibraryPermissionsAsync {
-
-  @try {
-    void (^handle)(PHAuthorizationStatus) = ^(PHAuthorizationStatus status) {
-      BOOL granted = status == PHAuthorizationStatusAuthorized;
-      if (@available(iOS 14.0, *)) {
-        granted = granted || status == PHAuthorizationStatusLimited;
-      }
-      dispatch_async(dispatch_get_main_queue(), ^{
-        return [self permissionDictWithStatus:[self photoStatusString:status]
-                                        granted:granted];
-      });
-    };
+- (void)getMediaLibraryPermissionsAsync:(id)cb {
+  void (^handle)(PHAuthorizationStatus) = ^(PHAuthorizationStatus status) {
+    BOOL granted = status == PHAuthorizationStatusAuthorized;
     if (@available(iOS 14.0, *)) {
-      [PHPhotoLibrary requestAuthorizationForAccessLevel:PHAccessLevelReadWrite
-                                                 handler:handle];
-    } else {
-      [PHPhotoLibrary requestAuthorization:handle];
+      granted = granted || status == PHAuthorizationStatusLimited;
     }
-  } @catch (NSException *e) { return nil; }
+    NSDictionary *result =
+        [self permissionDictWithStatus:[self photoStatusString:status]
+                               granted:granted];
+    if (cb) ((LynxCallbackBlock)cb)(result);
+  };
+  if (@available(iOS 14.0, *)) {
+    [PHPhotoLibrary requestAuthorizationForAccessLevel:PHAccessLevelReadWrite
+                                               handler:handle];
+  } else {
+    [PHPhotoLibrary requestAuthorization:handle];
+  }
 }
 
 #pragma mark - Launch picker (functional, not a stub)
 
-- (id)launchCameraAsync {
-
-  @try {
-    AVAuthorizationStatus status =
-        [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if (status != AVAuthorizationStatusAuthorized ||
-        ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-      return [self getCameraPermissions];
-      return;
-    }
-    [self presentPickerWithSource:UIImagePickerControllerSourceTypeCamera resolve:resolve];
-  } @catch (NSException *e) { return nil; }
+- (void)launchCameraAsync:(id)cb {
+  AVAuthorizationStatus status =
+      [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+  if (status != AVAuthorizationStatusAuthorized ||
+      ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    if (cb) ((LynxCallbackBlock)cb)([self getCameraPermissions]);
+    return;
+  }
+  [self presentPickerWithSource:UIImagePickerControllerSourceTypeCamera cb:cb];
 }
 
-- (id)launchImageLibraryAsync {
-
-  @try {
-    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-    BOOL hasAccess = status == PHAuthorizationStatusAuthorized;
-    if (@available(iOS 14.0, *)) {
-      hasAccess = hasAccess || status == PHAuthorizationStatusLimited;
-    }
-    if (!hasAccess) {
-      return [self getMediaLibraryPermissions];
-      return;
-    }
-    [self presentPickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary resolve:resolve];
-  } @catch (NSException *e) { return nil; }
+- (void)launchImageLibraryAsync:(id)cb {
+  PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+  BOOL hasAccess = status == PHAuthorizationStatusAuthorized;
+  if (@available(iOS 14.0, *)) {
+    hasAccess = hasAccess || status == PHAuthorizationStatusLimited;
+  }
+  if (!hasAccess) {
+    if (cb) ((LynxCallbackBlock)cb)([self getMediaLibraryPermissions]);
+    return;
+  }
+  [self presentPickerWithSource:UIImagePickerControllerSourceTypePhotoLibrary cb:cb];
 }
 
-- (void)presentPickerWithSource:(UIImagePickerControllerSourceType)source {
+- (void)presentPickerWithSource:(UIImagePickerControllerSourceType)source cb:(id)cb {
   UIImagePickerController *picker = [[UIImagePickerController alloc] init];
   picker.sourceType = source;
   picker.delegate = self;
   picker.allowsEditing = NO;
-  self.pendingResolve = resolve;
+  self.pendingCb = (LynxCallbackBlock)cb;
   [[self topViewController] presentViewController:picker animated:YES completion:nil];
 }
 
@@ -182,19 +167,19 @@
   UIImage *image = info[UIImagePickerControllerOriginalImage];
   NSString *uri = [self saveTempPNG:image];
   [picker dismissViewControllerAnimated:YES completion:nil];
-  LynxCallbackBlock resolve = self.pendingResolve;
-  self.pendingResolve = nil;
-  if (resolve) {
-    return @{ @"cancelled" : @NO, @"uri" : (uri ?: [NSNull null]) };
+  LynxCallbackBlock cb = self.pendingCb;
+  self.pendingCb = nil;
+  if (cb) {
+    cb(@{ @"cancelled" : @NO, @"uri" : (uri ?: [NSNull null]) });
   }
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
   [picker dismissViewControllerAnimated:YES completion:nil];
-  LynxCallbackBlock resolve = self.pendingResolve;
-  self.pendingResolve = nil;
-  if (resolve) {
-    return @{ @"cancelled" : @YES };
+  LynxCallbackBlock cb = self.pendingCb;
+  self.pendingCb = nil;
+  if (cb) {
+    cb(@{ @"cancelled" : @YES });
   }
 }
 

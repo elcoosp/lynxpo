@@ -41,7 +41,7 @@
   @try { return [self getClients]; } @catch (NSException *e) { return nil; }
 }
 - (void)composeAsync:(NSString *)subject body:(NSString *)body recipients:(NSArray<NSString *> *)recipients {
-  @try { [self compose:subject body:body recipients:recipients]; return nil; } @catch (NSException *e) { return nil; }
+  @try { [self compose:subject body:body recipients:recipients]; } @catch (NSException *e) {}
 }
 
 @end

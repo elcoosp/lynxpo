@@ -231,7 +231,9 @@ export const useSupportedAuthenticationTypesAsync = () => {
 export const getAuthenticateAsync = (
   prompt: string,
 ): Promise<Record<string, any>> =>
-  NativeModules.LocalAuthenticationModule?.authenticateAsync?.(prompt);
+  new Promise((resolve) => {
+    LocalAuthenticationModule.authenticateAsync(prompt, (result: Record<string, any>) => resolve(result));
+  });
 
 export const useAuthenticateAsync = (prompt: string) => {
   const [value, setValue] = useState<Record<string, any>>();

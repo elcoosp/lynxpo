@@ -18,14 +18,14 @@ public abstract class ImagePickerModuleSpec extends LynxContextModule {
   public abstract Object getMediaLibraryPermissions();
 
   @LynxMethod
-  public abstract Object getCameraPermissionsAsync();
+  public abstract void getCameraPermissionsAsync(Object cb);
 
   @LynxMethod
-  public abstract Object getMediaLibraryPermissionsAsync();
+  public abstract void getMediaLibraryPermissionsAsync(Object cb);
 
   @LynxMethod
-  public abstract Object launchImageLibraryAsync();
+  public abstract void launchImageLibraryAsync(Object cb);
 
   @LynxMethod
-  public abstract Object launchCameraAsync();
+  public abstract void launchCameraAsync(Object cb);
 }

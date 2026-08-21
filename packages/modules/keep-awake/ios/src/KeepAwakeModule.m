@@ -9,11 +9,11 @@
 
 
 
-- (id)activate {
+- (void)activate {
   [UIApplication.sharedApplication setIdleTimerDisabled:YES];
 }
 
-- (id)deactivate {
+- (void)deactivate {
   [UIApplication.sharedApplication setIdleTimerDisabled:NO];
 }
 

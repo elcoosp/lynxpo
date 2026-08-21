@@ -10,7 +10,7 @@ declare const NativeModules: {
   isEnrolledAsync(): any;
   getEnrolledLevelAsync(): any;
   supportedAuthenticationTypesAsync(): any;
-  authenticateAsync(prompt: string): any;
+  authenticateAsync(prompt: string, cb: function): void;
   };
 };
 

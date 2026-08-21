@@ -11,36 +11,19 @@
 
 @implementation LivePhoto
 
-
-
-- (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"isAvailableAsync" : @"isAvailableAsync:",
-    @"isLivePhotoAsync" : @"isLivePhotoAsync:",
-    @"saveLivePhotoAsync" : @"saveLivePhotoAsync:",
-  };
-}
-
 - (BOOL)isAvailableAsync {
-
-  return @(YES);
+  if (@available(iOS 10.0, *)) {
+    return YES;
+  }
+  return NO;
 }
 
 - (BOOL)isLivePhotoAsync:(NSString *)path {
-  // PHLivePhoto content lives in a .mov + .heic pair or an asset catalog;
-  // probe for a paired .mov next to the given path.
-  BOOL isLive = NO;
-  if (path.length > 0) {
-    NSString *mov = [[path stringByDeletingPathExtension] stringByAppendingPathExtension:@"mov"];
-    isLive = [[NSFileManager defaultManager] fileExistsAtPath:mov];
-  }
-  return @(isLive);
+  NSString *ext = [path pathExtension].lowercaseString;
+  return [ext isEqualToString:@"livp"] || [ext isEqualToString:@"mov"];
 }
 
-- (void)saveLivePhotoAsync:(NSString *)video
-                     photo:(NSString *)photo {
-  // Saving a PHLivePhoto requires user interaction via the Photos UI; report
-  // the inputs were received and that the system picker must be presented.
+- (id)saveLivePhotoAsync:(NSString *)video photo:(NSString *)photo {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   result[@"available"] = @(YES);
   result[@"video"] = video ?: @"";
