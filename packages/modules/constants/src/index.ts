@@ -1,20 +1,9 @@
 // Auto-generated from ConstantsModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface ConstantsModule extends INativeModules {
-  appOwnership(): string;
-  platform(): string;
-  executionEnvironment(): string;
-  sessionId(): string;
-  installationId(): string;
-  isHeadless(): boolean;
-  systemFonts(): string[];
-  version(): Record<string, string>;
-}
+import { ConstantsModule } from './generated/ConstantsModule';
 
 export const getAppOwnership = (): string =>
-  NativeModules.ConstantsModule?.appOwnership?.();
+  ConstantsModule.appOwnership();
 
 export const useAppOwnership = () => {
   const [value, setValue] = useState<string>();
@@ -32,7 +21,7 @@ export const useAppOwnership = () => {
 };
 
 export const getPlatform = (): string =>
-  NativeModules.ConstantsModule?.platform?.();
+  ConstantsModule.platform();
 
 export const usePlatform = () => {
   const [value, setValue] = useState<string>();
@@ -50,7 +39,7 @@ export const usePlatform = () => {
 };
 
 export const getExecutionEnvironment = (): string =>
-  NativeModules.ConstantsModule?.executionEnvironment?.();
+  ConstantsModule.executionEnvironment();
 
 export const useExecutionEnvironment = () => {
   const [value, setValue] = useState<string>();
@@ -68,7 +57,7 @@ export const useExecutionEnvironment = () => {
 };
 
 export const getSessionId = (): string =>
-  NativeModules.ConstantsModule?.sessionId?.();
+  ConstantsModule.sessionId();
 
 export const useSessionId = () => {
   const [value, setValue] = useState<string>();
@@ -86,7 +75,7 @@ export const useSessionId = () => {
 };
 
 export const getInstallationId = (): string =>
-  NativeModules.ConstantsModule?.installationId?.();
+  ConstantsModule.installationId();
 
 export const useInstallationId = () => {
   const [value, setValue] = useState<string>();
@@ -104,7 +93,7 @@ export const useInstallationId = () => {
 };
 
 export const getIsHeadless = (): boolean =>
-  NativeModules.ConstantsModule?.isHeadless?.();
+  ConstantsModule.isHeadless();
 
 export const useIsHeadless = () => {
   const [value, setValue] = useState<boolean>();
@@ -122,7 +111,7 @@ export const useIsHeadless = () => {
 };
 
 export const getSystemFonts = (): string[] =>
-  NativeModules.ConstantsModule?.systemFonts?.();
+  ConstantsModule.systemFonts();
 
 export const useSystemFonts = () => {
   const [value, setValue] = useState<string[]>();
@@ -140,7 +129,7 @@ export const useSystemFonts = () => {
 };
 
 export const getVersion = (): Record<string, string> =>
-  NativeModules.ConstantsModule?.version?.();
+  ConstantsModule.version();
 
 export const useVersion = () => {
   const [value, setValue] = useState<Record<string, string>>();

@@ -1,15 +1,9 @@
 // Auto-generated from SpeechModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface SpeechModule extends INativeModules {
-  isSpeaking(): boolean;
-  supported(): boolean;
-  voices(): Record<string, string>[];
-}
+import { SpeechModule } from './generated/SpeechModule';
 
 export const getIsSpeaking = (): boolean =>
-  NativeModules.SpeechModule?.isSpeaking?.();
+  SpeechModule.isSpeaking();
 
 export const useIsSpeaking = () => {
   const [value, setValue] = useState<boolean>();
@@ -27,7 +21,7 @@ export const useIsSpeaking = () => {
 };
 
 export const getSupported = (): boolean =>
-  NativeModules.SpeechModule?.supported?.();
+  SpeechModule.supported();
 
 export const useSupported = () => {
   const [value, setValue] = useState<boolean>();
@@ -45,7 +39,7 @@ export const useSupported = () => {
 };
 
 export const getVoices = (): Record<string, string>[] =>
-  NativeModules.SpeechModule?.voices?.();
+  SpeechModule.voices();
 
 export const useVoices = () => {
   const [value, setValue] = useState<Record<string, string>[]>();

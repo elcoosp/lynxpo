@@ -8,7 +8,7 @@ export interface SensorReading {
 }
 
 export const getAccelerometer = (): SensorReading | null =>
-  NativeModules.SensorsModule?.getAccelerometer?.();
+  SensorsModule.getAccelerometer();
 
 export const useAccelerometer = () => {
   const [value, setValue] = useState<SensorReading | null>();
@@ -25,7 +25,7 @@ export const useAccelerometer = () => {
 };
 
 export const getGyroscope = (): SensorReading | null =>
-  NativeModules.SensorsModule?.getGyroscope?.();
+  SensorsModule.getGyroscope();
 
 export const useGyroscope = () => {
   const [value, setValue] = useState<SensorReading | null>();
@@ -42,7 +42,7 @@ export const useGyroscope = () => {
 };
 
 export const getIsAvailable = (): boolean | null =>
-  NativeModules.SensorsModule?.isAvailable?.() ?? null;
+  SensorsModule.isAvailable() ?? null;
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();
@@ -59,7 +59,7 @@ export const useIsAvailable = () => {
 };
 
 export const getAccelerometerAsync = (): Promise<SensorReading> =>
-  NativeModules.SensorsModule?.getAccelerometerAsync?.();
+  SensorsModule.getAccelerometerAsync();
 
 export const useAccelerometerAsync = () => {
   const [value, setValue] = useState<SensorReading>();
@@ -98,7 +98,7 @@ export const useAccelerometerAsync = () => {
 };
 
 export const getGyroscopeAsync = (): Promise<SensorReading> =>
-  NativeModules.SensorsModule?.getGyroscopeAsync?.();
+  SensorsModule.getGyroscopeAsync();
 
 export const useGyroscopeAsync = () => {
   const [value, setValue] = useState<SensorReading>();

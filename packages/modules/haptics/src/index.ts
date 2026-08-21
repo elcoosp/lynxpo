@@ -47,7 +47,7 @@ export const useNotificationAsync = (type: number) => {
 };
 
 export const getSelectionAsync = (): Promise<void> =>
-  NativeModules.HapticsModule?.selectionAsync?.();
+  HapticsModule.selectionAsync();
 
 export const useSelectionAsync = () => {
   const [loading, setLoading] = useState(false);

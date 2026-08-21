@@ -3,7 +3,7 @@ import { useEffect, useState } from '@lynx-js/react';
 import { BatteryModule } from './generated/BatteryModule';
 
 export const getGetBatteryLevel = (): any =>
-  NativeModules.BatteryModule?.getBatteryLevel?.();
+  BatteryModule.getBatteryLevel();
 
 export const useGetBatteryLevel = () => {
   const [value, setValue] = useState<any>();
@@ -21,7 +21,7 @@ export const useGetBatteryLevel = () => {
 };
 
 export const getGetBatteryState = (): any =>
-  NativeModules.BatteryModule?.getBatteryState?.();
+  BatteryModule.getBatteryState();
 
 export const useGetBatteryState = () => {
   const [value, setValue] = useState<any>();
@@ -39,7 +39,7 @@ export const useGetBatteryState = () => {
 };
 
 export const getIsLowPowerModeEnabled = (): any =>
-  NativeModules.BatteryModule?.isLowPowerModeEnabled?.();
+  BatteryModule.isLowPowerModeEnabled();
 
 export const useIsLowPowerModeEnabled = () => {
   const [value, setValue] = useState<any>();
@@ -57,7 +57,7 @@ export const useIsLowPowerModeEnabled = () => {
 };
 
 export const getIsBatteryOptimizationEnabled = (): any =>
-  NativeModules.BatteryModule?.isBatteryOptimizationEnabled?.();
+  BatteryModule.isBatteryOptimizationEnabled();
 
 export const useIsBatteryOptimizationEnabled = () => {
   const [value, setValue] = useState<any>();

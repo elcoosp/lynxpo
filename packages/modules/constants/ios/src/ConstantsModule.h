@@ -4,13 +4,15 @@
 
 #import <Foundation/Foundation.h>
 #import <Lynx/LynxModule.h>
+#import "ConstantsModuleSpec.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// iOS counterpart of the Android `ConstantsModule`. Exposes app/device
 /// constants to JS via `NativeModules.ConstantsModule`, faithfully porting
 /// Expo's `expo-constants` native method surface.
-@interface ConstantsModule : NSObject <LynxModule>
+@LynxNativeModule("ConstantsModule")
+@interface ConstantsModule : NSObject <ConstantsModuleSpec>
 
 - (NSString *)appOwnership;
 - (NSString *)platform;

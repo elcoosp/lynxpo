@@ -4,13 +4,15 @@
 
 #import <Foundation/Foundation.h>
 #import <Lynx/LynxModule.h>
+#import "SpeechModuleSpec.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// iOS counterpart of the Android `SpeechModule`. Exposes speech synthesis to JS via
 /// `NativeModules.SpeechModule`, faithfully porting Expo's `expo-speech` native
 /// method surface.
-@interface SpeechModule : NSObject <LynxModule>
+@LynxNativeModule("SpeechModule")
+@interface SpeechModule : NSObject <SpeechModuleSpec>
 
 - (BOOL)isSpeaking;
 - (BOOL)supported;

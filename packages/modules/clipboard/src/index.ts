@@ -3,7 +3,7 @@ import { useEffect, useState } from '@lynx-js/react';
 import { ClipboardModule } from './generated/ClipboardModule';
 
 export const getGetString = (): string | null =>
-  NativeModules.ClipboardModule?.getString?.();
+  ClipboardModule.getString();
 
 export const useGetString = () => {
   const [value, setValue] = useState<string | null>();
@@ -21,7 +21,7 @@ export const useGetString = () => {
 };
 
 export const getHasString = (): boolean =>
-  NativeModules.ClipboardModule?.hasString?.();
+  ClipboardModule.hasString();
 
 export const useHasString = () => {
   const [value, setValue] = useState<boolean>();
@@ -39,7 +39,7 @@ export const useHasString = () => {
 };
 
 export const getGetStringAsync = (): Promise<string> =>
-  NativeModules.ClipboardModule?.getStringAsync?.();
+  ClipboardModule.getStringAsync();
 
 export const useGetStringAsync = () => {
   const [value, setValue] = useState<string>();
@@ -100,7 +100,7 @@ export const useSetStringAsync = (text: string) => {
 };
 
 export const getHasStringAsync = (): Promise<boolean> =>
-  NativeModules.ClipboardModule?.hasStringAsync?.();
+  ClipboardModule.hasStringAsync();
 
 export const useHasStringAsync = () => {
   const [value, setValue] = useState<boolean>();

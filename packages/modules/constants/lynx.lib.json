@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.constants",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.constants",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

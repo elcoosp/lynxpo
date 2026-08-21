@@ -7,9 +7,7 @@
 
 @implementation SpeechModule
 
-+ (NSString *)name {
-  return @"SpeechModule";
-}
+
 
 + (NSDictionary<NSString *, NSString *> *)methodLookup {
   return @{

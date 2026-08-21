@@ -3,7 +3,7 @@ import { useEffect, useState } from '@lynx-js/react';
 import { NetworkModule } from './generated/NetworkModule';
 
 export const getGetIpAddress = (): string | null =>
-  NativeModules.NetworkModule?.getIpAddress?.();
+  NetworkModule.getIpAddress();
 
 export const useGetIpAddress = () => {
   const [value, setValue] = useState<string | null>();
@@ -21,7 +21,7 @@ export const useGetIpAddress = () => {
 };
 
 export const getGetNetworkState = (): Record<string, any> =>
-  NativeModules.NetworkModule?.getNetworkState?.();
+  NetworkModule.getNetworkState();
 
 export const useGetNetworkState = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -39,7 +39,7 @@ export const useGetNetworkState = () => {
 };
 
 export const getGetIpAddressAsync = (): Promise<string> =>
-  NativeModules.NetworkModule?.getIpAddressAsync?.();
+  NetworkModule.getIpAddressAsync();
 
 export const useGetIpAddressAsync = () => {
   const [value, setValue] = useState<string>();
@@ -78,7 +78,7 @@ export const useGetIpAddressAsync = () => {
 };
 
 export const getGetNetworkStateAsync = (): Promise<any> =>
-  NativeModules.NetworkModule?.getNetworkStateAsync?.();
+  NetworkModule.getNetworkStateAsync();
 
 export const useGetNetworkStateAsync = () => {
   const [value, setValue] = useState<any>();

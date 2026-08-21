@@ -3,7 +3,7 @@ import { useEffect, useState } from '@lynx-js/react';
 import { LocalizationModule } from './generated/LocalizationModule';
 
 export const getGetLocales = (): Record<string, any | null>[] =>
-  NativeModules.LocalizationModule?.getLocales?.();
+  LocalizationModule.getLocales();
 
 export const useGetLocales = () => {
   const [value, setValue] = useState<Record<string, any | null>[]>();
@@ -21,7 +21,7 @@ export const useGetLocales = () => {
 };
 
 export const getGetCalendars = (): Record<string, any | null>[] =>
-  NativeModules.LocalizationModule?.getCalendars?.();
+  LocalizationModule.getCalendars();
 
 export const useGetCalendars = () => {
   const [value, setValue] = useState<Record<string, any | null>[]>();

@@ -7,9 +7,7 @@
 
 @implementation ConstantsModule
 
-+ (NSString *)name {
-  return @"ConstantsModule";
-}
+
 
 + (NSDictionary<NSString *, NSString *> *)methodLookup {
   return @{

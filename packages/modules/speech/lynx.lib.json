@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.speech",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.speech",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}
