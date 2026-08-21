@@ -11,7 +11,7 @@
 
 #pragma mark - Sync API
 
-- (NSNumber *)isRunningOnDevice {
+- (BOOL)isRunningOnDevice {
   // On the iOS Simulator the model string contains "Simulator" or the
   // `TARGET_OS_SIMULATOR` macro is set at compile time; at runtime we detect
   // the simulator via the hardware model / environment.
@@ -22,7 +22,7 @@
 #endif
 }
 
-- (NSNumber *)installTime {
+- (double)installTime {
   // Best-effort app install time: the modification date of the bundle's
   // executable, which is set at install time on iOS.
   NSString *execPath = [[NSBundle mainBundle] executablePath];
@@ -31,12 +31,12 @@
                                                         error:nil];
   NSDate *installDate = attrs[NSFileModificationDate];
   if (installDate) {
-    return @((long long)([installDate timeIntervalSince1970] * 1000.0));
+    return (double)([installDate timeIntervalSince1970] * 1000.0);
   }
-  return @0;
+  return 0.0;
 }
 
-- (NSDictionary<NSString *, id> *)envInfo {
+- (id)envInfo {
   NSMutableDictionary *info = [NSMutableDictionary dictionary];
   info[@"isRunningOnDevice"] = [self isRunningOnDevice];
   info[@"installTime"] = [self installTime];

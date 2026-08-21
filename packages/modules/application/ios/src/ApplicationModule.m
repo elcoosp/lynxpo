@@ -17,19 +17,19 @@
 
 #pragma mark - LynxModule methods
 
-- (NSString *)applicationName {
+- (id)applicationName {
   return [ApplicationModule infoPlist][@"CFBundleDisplayName"] ?: @"";
 }
 
-- (NSString *)applicationId {
+- (id)applicationId {
   return [ApplicationModule infoPlist][@"CFBundleIdentifier"] ?: @"";
 }
 
-- (NSString *)nativeApplicationVersion {
+- (id)nativeApplicationVersion {
   return [ApplicationModule infoPlist][@"CFBundleShortVersionString"] ?: @"";
 }
 
-- (NSString *)nativeBuildVersion {
+- (id)nativeBuildVersion {
   return [ApplicationModule infoPlist][@"CFBundleVersion"] ?: @"";
 }
 
@@ -37,7 +37,7 @@
   return [UIDevice currentDevice].identifierForVendor.UUIDString ?: @"";
 }
 
-- (NSNumber *)getInstallationTime {
+- (id)getInstallationTime {
   // Mirror Expo: NSFileCreationDate of the Documents directory.
   NSArray<NSURL *> *docs =
       [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory

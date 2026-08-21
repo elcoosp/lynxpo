@@ -33,17 +33,14 @@
 
 #pragma mark - Async API (LynxCallbackBlock resolve:reject:)
 
-- (void)writeAsStringAsync:(NSString *)path
-                  contents:(NSString *)contents {
+- (id)writeAsStringAsync:(NSString *)path contents:(NSString *)contents {
   @try {
     if (path.length == 0 || contents == nil) {
       return nil;
-      return;
     }
     NSString *full = [self resolvePath:path];
     if (full == nil) {
       return nil;
-      return;
     }
     NSError *err = nil;
     NSString *parent = [full stringByDeletingLastPathComponent];
@@ -65,20 +62,17 @@
   }
 }
 
-- (void)readAsStringAsync:(NSString *)path {
+- (id)readAsStringAsync:(NSString *)path {
   @try {
     if (path.length == 0) {
       return nil;
-      return;
     }
     NSString *full = [self resolvePath:path];
     if (full == nil) {
       return nil;
-      return;
     }
     if (![[NSFileManager defaultManager] fileExistsAtPath:full]) {
       return nil;
-      return;
     }
     NSError *err = nil;
     NSString *contents =
@@ -95,16 +89,14 @@
   }
 }
 
-- (void)getInfoAsync:(NSString *)path {
+- (id)getInfoAsync:(NSString *)path {
   @try {
     if (path.length == 0) {
       return nil;
-      return;
     }
     NSString *full = [self resolvePath:path];
     if (full == nil) {
       return nil;
-      return;
     }
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDir = NO;
@@ -124,16 +116,14 @@
   }
 }
 
-- (void)makeDirectoryAsync:(NSString *)path {
+- (id)makeDirectoryAsync:(NSString *)path {
   @try {
     if (path.length == 0) {
       return nil;
-      return;
     }
     NSString *full = [self resolvePath:path];
     if (full == nil) {
       return nil;
-      return;
     }
     NSError *err = nil;
     BOOL ok = [[NSFileManager defaultManager]
@@ -147,21 +137,18 @@
   }
 }
 
-- (void)deleteAsync:(NSString *)path {
+- (id)deleteAsync:(NSString *)path {
   @try {
     if (path.length == 0) {
       return nil;
-      return;
     }
     NSString *full = [self resolvePath:path];
     if (full == nil) {
       return nil;
-      return;
     }
     NSFileManager *fm = [NSFileManager defaultManager];
     if (![fm fileExistsAtPath:full]) {
       return nil;
-      return;
     }
     NSError *err = nil;
     BOOL ok = [fm removeItemAtPath:full error:&err];

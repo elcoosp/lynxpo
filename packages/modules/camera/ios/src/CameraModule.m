@@ -31,21 +31,21 @@
   return self;
 }
 
-- (NSDictionary<NSString *, id> *)cameraPermissionsAsync {
+- (id)cameraPermissionsAsync {
   AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
   BOOL granted = (status == AVAuthorizationStatusAuthorized);
   NSString *statusStr = granted ? @"granted" : (status == AVAuthorizationStatusDenied ? @"denied" : @"undetermined");
   return @{ @"status" : statusStr, @"granted" : @(granted), @"canAskAgain" : @(status != AVAuthorizationStatusDenied) };
 }
 
-- (NSDictionary<NSString *, id> *)microphonePermissionsAsync {
+- (id)microphonePermissionsAsync {
   AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
   BOOL granted = (status == AVAuthorizationStatusAuthorized);
   NSString *statusStr = granted ? @"granted" : (status == AVAuthorizationStatusDenied ? @"denied" : @"undetermined");
   return @{ @"status" : statusStr, @"granted" : @(granted), @"canAskAgain" : @(status != AVAuthorizationStatusDenied) };
 }
 
-- (id)requestCameraPermission {
+- (void)requestCameraPermission {
   AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
   if (status == AVAuthorizationStatusAuthorized) return;
   [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
@@ -53,7 +53,7 @@
   }];
 }
 
-- (NSArray<NSString *> *)availableCameraTypes {
+- (id)availableCameraTypes {
   NSMutableArray *types = [NSMutableArray array];
   for (AVCaptureDevice *device in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
     if (device.position == AVCaptureDevicePositionFront) {
@@ -65,7 +65,7 @@
   return types;
 }
 
-- (NSArray<NSString *> *)availableVideoCodecs {
+- (id)availableVideoCodecs {
   return @[ @"avc", @"hevc", @"jpeg", @"h264" ];
 }
 
@@ -85,14 +85,14 @@
   return YES;
 }
 
-- (id)stopCamera {
+- (void)stopCamera {
   if (self.session) {
     [self.session stopRunning];
     self.session = nil;
   }
 }
 
-- (id)flipCamera {
+- (void)flipCamera {
   self.position = (self.position == AVCaptureDevicePositionBack)
       ? AVCaptureDevicePositionFront
       : AVCaptureDevicePositionBack;

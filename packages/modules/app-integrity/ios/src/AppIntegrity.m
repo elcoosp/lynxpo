@@ -18,7 +18,7 @@
   };
 }
 
-- (id)isAvailableAsync {
+- (BOOL)isAvailableAsync {
 
   BOOL available = NO;
   if (@available(iOS 14.0, *)) {
@@ -27,7 +27,7 @@
   return @(available);
 }
 
-- (void)integrityTokenAsync:(NSString *)options {
+- (id)integrityTokenAsync:(NSString *)options {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   result[@"available"] = @(NO);
   if (@available(iOS 14.0, *)) {

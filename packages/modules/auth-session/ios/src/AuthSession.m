@@ -17,7 +17,7 @@
   };
 }
 
-- (id)isAvailableAsync {
+- (BOOL)isAvailableAsync {
 
   return @(YES);
 }
@@ -31,7 +31,7 @@
   return [scheme stringByAppendingString:@"://expo-auth-session"];
 }
 
-- (id)redirectUriAsync {
+- (NSString *)redirectUriAsync {
 
   return [self redirectUri];
 }

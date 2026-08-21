@@ -19,7 +19,7 @@
   };
 }
 
-- (id)isAvailableAsync {
+- (BOOL)isAvailableAsync {
 
   BOOL available = NO;
   if (@available(iOS 13.0, *)) {
@@ -28,7 +28,7 @@
   return @(available);
 }
 
-- (void)credentialAsync:(NSString *)options {
+- (id)credentialAsync:(NSString *)options {
   if (@available(iOS 13.0, *)) {
     ASAuthorizationAppleIDProvider *provider = [[ASAuthorizationAppleIDProvider alloc] init];
     ASAuthorizationAppleIDRequest *request = [provider createRequest];
@@ -48,7 +48,7 @@
   return result;
 }
 
-- (void)credentialStateAsync:(NSString *)user {
+- (NSString *)credentialStateAsync:(NSString *)user {
   if (@available(iOS 13.0, *)) {
     ASAuthorizationAppleIDProvider *provider = [[ASAuthorizationAppleIDProvider alloc] init];
     [provider getCredentialStateForUserID:user completion:^(ASAuthorizationAppleIDProviderCredentialState state, NSError * _Nullable error) {

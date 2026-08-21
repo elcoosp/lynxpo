@@ -63,8 +63,8 @@
   return [CryptoModule hexString:digest];  // default HEX
 }
 
-- (NSString *)getRandomBytes:(NSNumber *)byteCount {
-  NSInteger count = [byteCount integerValue];
+- (NSString *)getRandomBytes:(double)byteCount {
+  NSInteger count = (NSInteger)byteCount;
   if (count <= 0 || count > 1024) return nil;
   NSMutableData *bytes = [NSMutableData dataWithLength:count];
   if (SecRandomCopyBytes(kSecRandomDefault, count, bytes.mutableBytes) != errSecSuccess) {
@@ -79,9 +79,7 @@
 
 #pragma mark - Async API (LynxCallbackBlock resolve:reject:)
 
-- (void)digestStringAsync:(NSString *)algorithm
-                     data:(NSString *)data
-                 encoding:(NSString *)encoding {
+- (id)digestStringAsync:(NSString *)algorithm data:(NSString *)data encoding:(NSString *)encoding {
   @try {
     NSString *result = [self digestString:algorithm data:data encoding:encoding];
     if (result) {
@@ -94,7 +92,7 @@
   }
 }
 
-- (void)getRandomBytesAsync:(NSNumber *)byteCount {
+- (id)getRandomBytesAsync:(double)byteCount {
   @try {
     NSString *result = [self getRandomBytes:byteCount];
     if (result) {

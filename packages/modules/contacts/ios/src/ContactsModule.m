@@ -9,14 +9,14 @@
 
 
 
-- (NSDictionary<NSString *, id> *)permissionsAsync {
+- (id)permissionsAsync {
   CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
   BOOL granted = (status == CNAuthorizationStatusAuthorized);
   NSString *statusStr = granted ? @"granted" : (status == CNAuthorizationStatusDenied ? @"denied" : @"undetermined");
   return @{ @"status" : statusStr, @"granted" : @(granted) };
 }
 
-- (id)requestPermission {
+- (void)requestPermission {
   CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
   if (status == CNAuthorizationStatusAuthorized) return;
   CNContactStore *store = [[CNContactStore alloc] init];
@@ -25,7 +25,7 @@
   }];
 }
 
-- (NSInteger)contactCount {
+- (double)contactCount {
   CNContactStore *store = [[CNContactStore alloc] init];
   NSError *error = nil;
   NSArray *keys = @[ CNContactIdentifierKey ];
@@ -37,7 +37,7 @@
   return count;
 }
 
-- (NSInteger)containerCount {
+- (double)containerCount {
   CNContactStore *store = [[CNContactStore alloc] init];
   NSError *error = nil;
   NSArray<CNContainer *> *containers = [store containersMatchingPredicate:nil error:&error];

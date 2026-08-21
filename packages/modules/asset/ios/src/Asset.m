@@ -17,7 +17,7 @@
   };
 }
 
-- (id)isAvailableAsync {
+- (BOOL)isAvailableAsync {
 
   return @(YES);
 }
@@ -28,7 +28,7 @@
   return r.location != NSNotFound ? [uri substringFromIndex:r.location + 3] : uri;
 }
 
-- (void)assetInfoAsync:(NSString *)uri {
+- (id)assetInfoAsync:(NSString *)uri {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   NSString *path = [self stripScheme:uri];
   NSFileManager *fm = [NSFileManager defaultManager];
@@ -51,7 +51,7 @@
   return result;
 }
 
-- (void)localUriAsync:(NSString *)uri {
+- (NSString *)localUriAsync:(NSString *)uri {
   NSString *path = [self stripScheme:uri];
   NSFileManager *fm = [NSFileManager defaultManager];
   BOOL isDir = NO;
