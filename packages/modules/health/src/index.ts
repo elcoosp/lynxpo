@@ -1,17 +1,9 @@
 // Auto-generated from Health.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface Health extends INativeModules {
-  isAvailableAsync(): boolean;
-  permissionsAsync(): Record<string, any>;
-  requestPermissionsAsync(permissions: string): Record<string, any>;
-  recordsAsync(options: string): Record<string, any>;
-  writeRecordsAsync(records: string): Record<string, any>;
-}
+import { Health } from './generated/Health';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.Health?.isAvailableAsync?.();
+  Health.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -29,7 +21,7 @@ export const useIsAvailableAsync = () => {
 };
 
 export const getPermissionsAsync = (): Record<string, any> =>
-  NativeModules.Health?.permissionsAsync?.();
+  Health.permissionsAsync();
 
 export const usePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();

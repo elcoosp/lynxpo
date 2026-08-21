@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.sqlite",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.sqlite",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

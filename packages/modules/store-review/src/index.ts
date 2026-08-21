@@ -1,15 +1,9 @@
 // Auto-generated from StoreReviewModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface StoreReviewModule extends INativeModules {
-  isAvailable(): boolean;
-  isAvailableAsync(): Promise<boolean>;
-  requestReviewAsync(): Promise<void>;
-}
+import { StoreReviewModule } from './generated/StoreReviewModule';
 
 export const getIsAvailable = (): boolean =>
-  NativeModules.StoreReviewModule?.isAvailable?.();
+  StoreReviewModule.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();
@@ -27,7 +21,7 @@ export const useIsAvailable = () => {
 };
 
 export const getIsAvailableAsync = (): Promise<boolean> =>
-  NativeModules.StoreReviewModule?.isAvailableAsync?.();
+  StoreReviewModule.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -66,7 +60,7 @@ export const useIsAvailableAsync = () => {
 };
 
 export const getRequestReviewAsync = (): Promise<void> =>
-  NativeModules.StoreReviewModule?.requestReviewAsync?.();
+  StoreReviewModule.requestReviewAsync();
 
 export const useRequestReviewAsync = () => {
   const [loading, setLoading] = useState(false);

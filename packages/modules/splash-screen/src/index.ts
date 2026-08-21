@@ -1,17 +1,13 @@
 // Auto-generated from SplashScreenModule.kt
 import { useEffect, useState } from "@lynx-js/react";
-import { NativeModules as INativeModules } from "@lynx-js/types";
+import { SplashScreenModule } from './generated/SplashScreenModule';
 
 
 
-export interface SplashScreenModule extends INativeModules {
-  hideAsync(): string;
-  preventAutoHideAsync(): string | null;
-  statusAsync(): string;
-};
+;
 
 export const getHideAsync = (): string =>
-  NativeModules.SplashScreenModule?.hideAsync?.();
+  SplashScreenModule.hideAsync();
 
 export const useHideAsync = () => {
   const [value, setValue] = useState<string>();
@@ -29,7 +25,7 @@ export const useHideAsync = () => {
 };
 
 export const getPreventAutoHideAsync = (): string | null =>
-  NativeModules.SplashScreenModule?.preventAutoHideAsync?.();
+  SplashScreenModule.preventAutoHideAsync();
 
 export const usePreventAutoHideAsync = () => {
   const [value, setValue] = useState<string | null>();
@@ -47,7 +43,7 @@ export const usePreventAutoHideAsync = () => {
 };
 
 export const getStatusAsync = (): string =>
-  NativeModules.SplashScreenModule?.statusAsync?.();
+  SplashScreenModule.statusAsync();
 
 export const useStatusAsync = () => {
   const [value, setValue] = useState<string>();

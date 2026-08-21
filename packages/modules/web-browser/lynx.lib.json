@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.webbrowser",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.webbrowser",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

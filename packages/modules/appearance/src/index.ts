@@ -1,14 +1,9 @@
 // Auto-generated from Appearance.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface Appearance extends INativeModules {
-  getColorScheme(): string;
-  setColorScheme(scheme: string): void;
-}
+import { Appearance } from './generated/Appearance';
 
 export const getGetColorScheme = (): string =>
-  NativeModules.Appearance?.getColorScheme?.();
+  Appearance.getColorScheme();
 
 export const useGetColorScheme = () => {
   const [value, setValue] = useState<string>();

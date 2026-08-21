@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.securestore",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.securestore",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

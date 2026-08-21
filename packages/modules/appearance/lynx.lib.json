@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.appearance",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.appearance",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

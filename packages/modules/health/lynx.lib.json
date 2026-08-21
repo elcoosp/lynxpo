@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.health",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.health",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

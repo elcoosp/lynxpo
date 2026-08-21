@@ -1,23 +1,9 @@
 // Auto-generated from ScreenOrientationModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface ScreenOrientationModule extends INativeModules {
-  getOrientation(): number;
-  getOrientationLock(): number;
-  supportsOrientationLock(): boolean;
-  getOrientationAsync(): Promise<number>;
-  getOrientationLockAsync(): Promise<number>;
-  lockAsync(orientation: number): Promise<void>;
-  unlockAsync(): Promise<void>;
-  lockPlatformAsync(orientation: number): Promise<void>;
-  supportsOrientationLockAsync(): Promise<boolean>;
-  addListener(eventName: string): void;
-  removeListeners(count: number): void;
-}
+import { ScreenOrientationModule } from './generated/ScreenOrientationModule';
 
 export const getGetOrientation = (): number =>
-  NativeModules.ScreenOrientationModule?.getOrientation?.();
+  ScreenOrientationModule.getOrientation();
 
 export const useGetOrientation = () => {
   const [value, setValue] = useState<number>();
@@ -35,7 +21,7 @@ export const useGetOrientation = () => {
 };
 
 export const getGetOrientationLock = (): number =>
-  NativeModules.ScreenOrientationModule?.getOrientationLock?.();
+  ScreenOrientationModule.getOrientationLock();
 
 export const useGetOrientationLock = () => {
   const [value, setValue] = useState<number>();
@@ -53,7 +39,7 @@ export const useGetOrientationLock = () => {
 };
 
 export const getSupportsOrientationLock = (): boolean =>
-  NativeModules.ScreenOrientationModule?.supportsOrientationLock?.();
+  ScreenOrientationModule.supportsOrientationLock();
 
 export const useSupportsOrientationLock = () => {
   const [value, setValue] = useState<boolean>();
@@ -71,7 +57,7 @@ export const useSupportsOrientationLock = () => {
 };
 
 export const getGetOrientationAsync = (): Promise<number> =>
-  NativeModules.ScreenOrientationModule?.getOrientationAsync?.();
+  ScreenOrientationModule.getOrientationAsync();
 
 export const useGetOrientationAsync = () => {
   const [value, setValue] = useState<number>();
@@ -110,7 +96,7 @@ export const useGetOrientationAsync = () => {
 };
 
 export const getGetOrientationLockAsync = (): Promise<number> =>
-  NativeModules.ScreenOrientationModule?.getOrientationLockAsync?.();
+  ScreenOrientationModule.getOrientationLockAsync();
 
 export const useGetOrientationLockAsync = () => {
   const [value, setValue] = useState<number>();
@@ -171,7 +157,7 @@ export const useLockAsync = (orientation: number) => {
 };
 
 export const getUnlockAsync = (): Promise<void> =>
-  NativeModules.ScreenOrientationModule?.unlockAsync?.();
+  ScreenOrientationModule.unlockAsync();
 
 export const useUnlockAsync = () => {
   const [loading, setLoading] = useState(false);
@@ -215,7 +201,7 @@ export const useLockPlatformAsync = (orientation: number) => {
 };
 
 export const getSupportsOrientationLockAsync = (): Promise<boolean> =>
-  NativeModules.ScreenOrientationModule?.supportsOrientationLockAsync?.();
+  ScreenOrientationModule.supportsOrientationLockAsync();
 
 export const useSupportsOrientationLockAsync = () => {
   const [value, setValue] = useState<boolean>();

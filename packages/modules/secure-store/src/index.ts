@@ -1,16 +1,8 @@
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface SecureStoreModule extends INativeModules {
-  isAvailable(): boolean;
-  setItemAsync(key: string, value: string): Promise<void>;
-  getItemAsync(key: string): Promise<string | null>;
-  deleteItemAsync(key: string): Promise<void>;
-  isAvailableAsync(): Promise<boolean>;
-}
+import { SecureStoreModule } from './generated/SecureStoreModule';
 
 export const getIsAvailable = (): boolean | null =>
-  NativeModules.SecureStoreModule?.isAvailable?.() ?? null;
+  SecureStoreModule.isAvailable() ?? null;
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();
@@ -36,4 +28,4 @@ export const deleteItemAsync = (key: string): Promise<void> =>
   NativeModules.SecureStoreModule?.deleteItemAsync?.(key);
 
 export const getIsAvailableAsync = (): Promise<boolean> =>
-  NativeModules.SecureStoreModule?.isAvailableAsync?.();
+  SecureStoreModule.isAvailableAsync();

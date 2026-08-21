@@ -1,14 +1,10 @@
 // Auto-generated from SqliteModule.kt
 import { useEffect, useState } from "@lynx-js/react";
-import { NativeModules as INativeModules } from "@lynx-js/types";
+import { SqliteModule } from './generated/SqliteModule';
 
 
 
-export interface SqliteModule extends INativeModules {
-  openDatabase(name: string): void;
-  execSync(query: string): Record<string, any>[];
-  getAllSync(query: string): Record<string, any>[];
-};
+;
 
 export const getOpenDatabase = (name: string): void =>
   NativeModules.SqliteModule?.openDatabase?.(name);

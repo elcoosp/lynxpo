@@ -1,17 +1,9 @@
 // Auto-generated from Calendar.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface Calendar extends INativeModules {
-  getCalendars(): Record<string, any>[];
-  getEvents(startDate: string, endDate: string): Record<string, any>[];
-  requestPermissions(): Record<string, any>;
-  getPermissions(): Record<string, any>;
-  createEvent(title: string, startDate: string, endDate: string): string;
-}
+import { Calendar } from './generated/Calendar';
 
 export const getGetCalendars = (): Record<string, any>[] =>
-  NativeModules.Calendar?.getCalendars?.();
+  Calendar.getCalendars();
 
 export const useGetCalendars = () => {
   const [value, setValue] = useState<Record<string, any>[]>();
@@ -50,7 +42,7 @@ export const useGetEvents = (startDate: string, endDate: string) => {
 };
 
 export const getRequestPermissions = (): Record<string, any> =>
-  NativeModules.Calendar?.requestPermissions?.();
+  Calendar.requestPermissions();
 
 export const useRequestPermissions = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -68,7 +60,7 @@ export const useRequestPermissions = () => {
 };
 
 export const getGetPermissions = (): Record<string, any> =>
-  NativeModules.Calendar?.getPermissions?.();
+  Calendar.getPermissions();
 
 export const useGetPermissions = () => {
   const [value, setValue] = useState<Record<string, any>>();
