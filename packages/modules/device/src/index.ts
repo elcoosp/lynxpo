@@ -1,337 +1,40 @@
-// Auto-generated from DeviceModule.kt
-import { useEffect, useState } from "@lynx-js/react";
-import { NativeModules as INativeModules } from "@lynx-js/types";
-
-export enum DeviceType {
-  UNKNOWN,
-  PHONE,
-  TABLET,
-  DESKTOP,
-  TV
-}
-
-export interface DeviceModule extends INativeModules {
-  isDevice(): any;
-  brand(): any;
-  manufacturer(): any;
-  modelName(): any;
-  designName(): any;
-  productName(): any;
-  deviceYearClass(): any;
-  totalMemory(): any;
-  deviceType(): any;
-  supportedCpuArchitectures(): any;
-  osName(): any;
-  osVersion(): any;
-  osBuildId(): any;
-  osInternalBuildId(): any;
-  osBuildFingerprint(): any;
-  platformApiLevel(): any;
-  deviceName(): any;
-};
-
-export const getIsDevice = (): any =>
-  NativeModules.DeviceModule?.isDevice?.();
-
-export const useIsDevice = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getIsDevice();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getBrand = (): any =>
-  NativeModules.DeviceModule?.brand?.();
-
-export const useBrand = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getBrand();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getManufacturer = (): any =>
-  NativeModules.DeviceModule?.manufacturer?.();
-
-export const useManufacturer = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getManufacturer();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getModelName = (): any =>
-  NativeModules.DeviceModule?.modelName?.();
-
-export const useModelName = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getModelName();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getDesignName = (): any =>
-  NativeModules.DeviceModule?.designName?.();
-
-export const useDesignName = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDesignName();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getProductName = (): any =>
-  NativeModules.DeviceModule?.productName?.();
-
-export const useProductName = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getProductName();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getDeviceYearClass = (): any =>
-  NativeModules.DeviceModule?.deviceYearClass?.();
-
-export const useDeviceYearClass = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDeviceYearClass();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getTotalMemory = (): any =>
-  NativeModules.DeviceModule?.totalMemory?.();
-
-export const useTotalMemory = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getTotalMemory();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getDeviceType = (): any =>
-  NativeModules.DeviceModule?.deviceType?.();
-
-export const useDeviceType = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDeviceType();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getSupportedCpuArchitectures = (): any =>
-  NativeModules.DeviceModule?.supportedCpuArchitectures?.();
-
-export const useSupportedCpuArchitectures = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getSupportedCpuArchitectures();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getOsName = (): any =>
-  NativeModules.DeviceModule?.osName?.();
-
-export const useOsName = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getOsName();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getOsVersion = (): any =>
-  NativeModules.DeviceModule?.osVersion?.();
-
-export const useOsVersion = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getOsVersion();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getOsBuildId = (): any =>
-  NativeModules.DeviceModule?.osBuildId?.();
-
-export const useOsBuildId = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getOsBuildId();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getOsInternalBuildId = (): any =>
-  NativeModules.DeviceModule?.osInternalBuildId?.();
-
-export const useOsInternalBuildId = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getOsInternalBuildId();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getOsBuildFingerprint = (): any =>
-  NativeModules.DeviceModule?.osBuildFingerprint?.();
-
-export const useOsBuildFingerprint = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getOsBuildFingerprint();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getPlatformApiLevel = (): any =>
-  NativeModules.DeviceModule?.platformApiLevel?.();
-
-export const usePlatformApiLevel = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getPlatformApiLevel();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
-
-export const getDeviceName = (): any =>
-  NativeModules.DeviceModule?.deviceName?.();
-
-export const useDeviceName = () => {
-  const [value, setValue] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = () => {
-      const result = getDeviceName();
-      setValue(result);
-    };
-
-    fetchData();
-  }, []);
-
-  return value;
-};
+// @lynxpo/mods-device — autolink facade.
+// `generated/DeviceModule.ts` is produced by @lynx-js/autolink-codegen from
+// types/index.d.ts and exposes NativeModules.DeviceModule with the typed API.
+import { DeviceModule } from './generated/DeviceModule';
+
+export const getIsDevice = (): boolean | undefined =>
+  DeviceModule?.isDevice?.();
+export const getBrand = (): string | undefined => DeviceModule?.brand?.();
+export const getManufacturer = (): string | undefined =>
+  DeviceModule?.manufacturer?.();
+export const getModelName = (): string | undefined =>
+  DeviceModule?.modelName?.();
+export const getDesignName = (): string | undefined =>
+  DeviceModule?.designName?.();
+export const getProductName = (): string | undefined =>
+  DeviceModule?.productName?.();
+export const getDeviceYearClass = (): number | undefined =>
+  DeviceModule?.deviceYearClass?.();
+export const getTotalMemory = (): number | undefined =>
+  DeviceModule?.totalMemory?.();
+export const getDeviceType = (): number | undefined =>
+  DeviceModule?.deviceType?.();
+export const getOsName = (): string | undefined => DeviceModule?.osName?.();
+export const getOsVersion = (): string | undefined =>
+  DeviceModule?.osVersion?.();
+export const getOsBuildId = (): string | undefined =>
+  DeviceModule?.osBuildId?.();
+export const getOsInternalBuildId = (): string | undefined =>
+  DeviceModule?.osInternalBuildId?.();
+export const getOsBuildFingerprint = (): string | undefined =>
+  DeviceModule?.osBuildFingerprint?.();
+export const getPlatformApiLevel = (): number | undefined =>
+  DeviceModule?.platformApiLevel?.();
+export const getDeviceName = (): string | undefined =>
+  DeviceModule?.deviceName?.();
+
+// supportedCpuArchitectures requires an array type not yet supported by
+// @lynx-js/autolink-codegen@0.4.1; revisit when array mappings land.
+export const getSupportedCpuArchitectures = (): string[] | undefined =>
+  undefined;

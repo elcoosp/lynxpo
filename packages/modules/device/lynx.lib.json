@@ -1,0 +1,13 @@
+{
+  "name": "@lynxpo/mods-device",
+  "version": "0.0.0",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.device",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}
