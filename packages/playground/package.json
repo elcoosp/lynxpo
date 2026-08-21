@@ -31,6 +31,7 @@
     "@lynxpo/mods-sensors": "workspace:*",
     "@lynxpo/mods-screen-capture": "workspace:*",
     "@lynxpo/mods-secure-store": "workspace:*",
+    "@lynxpo/mods-splash-screen": "workspace:*",
     "@lynxpo/mods-constants": "workspace:*",
     "@lynxpo/mods-font": "workspace:*",
     "@lynxpo/mods-location": "workspace:*",

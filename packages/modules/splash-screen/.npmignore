@@ -1,0 +1,6 @@
+.turbo
+node_modules
+.rslib
+dist
+*.log
+.DS_Store

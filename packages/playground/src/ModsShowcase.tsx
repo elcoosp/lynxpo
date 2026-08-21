@@ -24,6 +24,7 @@ import { useContactsInfo } from './mods/contactsInfo.js';
 import { useCryptoInfo } from './mods/cryptoInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
 import { useEnvInfo } from './mods/envInfo.js';
+import { useSplashScreenInfo } from './mods/splashScreenInfo.js';
 import { useDocumentPickerInfo } from './mods/documentPickerInfo.js';
 import { useFileSystemInfo } from './mods/fileSystemInfo.js';
 import { useFontInfo } from './mods/fontInfo.js';
@@ -120,6 +121,7 @@ function ModuleCard({
 export function ModsShowcase() {
   const { info: device, error: deviceError } = useDeviceInfo();
   const { info: env, error: envError } = useEnvInfo();
+  const { info: splash, error: splashError } = useSplashScreenInfo();
   const { info: app, error: appError } = useApplicationInfo();
   const { info: battery, error: batteryError } = useBatteryInfo();
   const { info: localization, error: localizationError } =
@@ -321,6 +323,13 @@ export function ModsShowcase() {
       ]
     : [];
 
+  const splashRows: Row[] = splash
+    ? [
+        { label: 'Status', value: splash.status },
+        { label: 'Hide result', value: splash.hideResult ?? '—' },
+      ]
+    : [];
+
   const envRows: Row[] = env
     ? [
         {
@@ -428,6 +437,14 @@ export function ModsShowcase() {
           icon="🌿"
           rows={
             envError ? [{ label: 'Error', value: envError.message }] : envRows
+          }
+        />
+        <ModuleCard
+          title="SplashScreen"
+          source="expo-splash-screen"
+          icon="🌅"
+          rows={
+            splashError ? [{ label: 'Error', value: splashError.message }] : splashRows
           }
         />
         <ModuleCard
