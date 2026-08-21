@@ -9,14 +9,6 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"getBatteryLevel" : NSStringFromSelector(@selector(getBatteryLevel)),
-    @"getBatteryState" : NSStringFromSelector(@selector(getBatteryState)),
-    @"isLowPowerModeEnabled" : NSStringFromSelector(@selector(isLowPowerModeEnabled)),
-  };
-}
-
 #pragma mark - LynxModule methods
 
 - (NSNumber *)getBatteryLevel {

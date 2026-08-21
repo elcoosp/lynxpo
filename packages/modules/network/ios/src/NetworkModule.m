@@ -13,13 +13,6 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"getIpAddress" : NSStringFromSelector(@selector(getIpAddress)),
-    @"getNetworkState" : NSStringFromSelector(@selector(getNetworkState)),
-  };
-}
-
 - (NSString *)getIpAddress {
   NSString *address = nil;
   struct ifaddrs *interfaces = NULL;
@@ -75,6 +68,6 @@
   // The LynxPo playground showcase reads values via the *Async promise APIs,
   // not via native events, so listener registration is a safe no-op here.
 }
-- (void)removeListeners:(NSInteger)count {}
+- (void)removeListeners:(double)count {}
 
 @end

@@ -9,16 +9,6 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"getBrightness" : NSStringFromSelector(@selector(getBrightness)),
-    @"setBrightness" : NSStringFromSelector(@selector(setBrightness:)),
-    @"getSystemBrightness" : NSStringFromSelector(@selector(getSystemBrightness)),
-    @"isUsingSystemBrightness" : NSStringFromSelector(@selector(isUsingSystemBrightness)),
-    @"getSystemBrightnessMode" : NSStringFromSelector(@selector(getSystemBrightnessMode)),
-  };
-}
-
 - (double)getBrightness {
   return UIScreen.mainScreen.brightness;
 }
@@ -43,7 +33,7 @@
 
   @try { return @([self getBrightness]); } @catch (NSException *e) { return nil; }
 }
-- (void)setBrightnessAsync:(double)value {
+- (id)setBrightnessAsync:(double)value {
   @try { [self setBrightness:value]; return nil; } @catch (NSException *e) { return nil; }
 }
 - (id)getSystemBrightnessAsync {
@@ -62,6 +52,6 @@
   // The LynxPo playground showcase reads values via the *Async promise APIs,
   // not via native events, so listener registration is a safe no-op here.
 }
-- (void)removeListeners:(NSInteger)count {}
+- (void)removeListeners:(double)count {}
 
 @end

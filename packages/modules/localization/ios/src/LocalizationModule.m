@@ -9,13 +9,6 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"getLocales" : NSStringFromSelector(@selector(getLocales)),
-    @"getCalendars" : NSStringFromSelector(@selector(getCalendars)),
-  };
-}
-
 #pragma mark - helpers
 
 + (NSString *)unicodeCalendarIdentifier:(NSCalendar *)calendar {

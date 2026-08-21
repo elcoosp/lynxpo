@@ -9,18 +9,6 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"getString" : NSStringFromSelector(@selector(getString)),
-    @"setString" : NSStringFromSelector(@selector(setString:)),
-    @"hasString" : NSStringFromSelector(@selector(hasString)),
-    // Async variants (required by the generated TS wrappers).
-    @"getStringAsync" : NSStringFromSelector(@selector(getStringAsync:reject:)),
-    @"setStringAsync" : NSStringFromSelector(@selector(setStringAsync:reject:)),
-    @"hasStringAsync" : NSStringFromSelector(@selector(hasStringAsync:reject:)),
-  };
-}
-
 - (NSString *)getString {
   UIPasteboard *pb = UIPasteboard.generalPasteboard;
   return pb.string ?: @"";
@@ -38,7 +26,7 @@
 
   @try { return [self getString]; } @catch (NSException *e) { return nil; }
 }
-- (void)setStringAsync:(NSString *)text {
+- (id)setStringAsync:(NSString *)text {
   @try { [self setString:text]; return nil; } @catch (NSException *e) { return nil; }
 }
 - (id)hasStringAsync {

@@ -9,16 +9,10 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"isSpeaking" : NSStringFromSelector(@selector(isSpeaking)),
-    @"supported" : NSStringFromSelector(@selector(supported)),
-    @"voices" : NSStringFromSelector(@selector(voices)),
-  };
-}
-
 - (BOOL)isSpeaking {
-  return [AVSpeechSynthesizer.sharedSpeechSynthesizer isSpeaking];
+  // No module-scoped AVSpeechSynthesizer instance is retained here, so there is no
+  // in-flight utterance to report. Mirrors the Android twin (also NO at module scope).
+  return NO;
 }
 
 - (BOOL)supported {

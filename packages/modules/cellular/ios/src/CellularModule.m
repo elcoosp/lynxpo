@@ -14,16 +14,6 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"getCellularGeneration" : NSStringFromSelector(@selector(getCellularGeneration)),
-    @"getIsoCountryCode" : NSStringFromSelector(@selector(getIsoCountryCode)),
-    @"getCarrierName" : NSStringFromSelector(@selector(getCarrierName)),
-    @"getMobileCountryCode" : NSStringFromSelector(@selector(getMobileCountryCode)),
-    @"getMobileNetworkCode" : NSStringFromSelector(@selector(getMobileNetworkCode)),
-  };
-}
-
 - (int)getCellularGeneration {
   // Unknown on the simulator / without CoreTelephony.
   return 0;

@@ -9,14 +9,6 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"getAccelerometer" : NSStringFromSelector(@selector(getAccelerometer)),
-    @"getGyroscope" : NSStringFromSelector(@selector(getGyroscope)),
-    @"isAvailable" : NSStringFromSelector(@selector(isAvailable)),
-  };
-}
-
 #pragma mark - Helpers
 
 - (CMMotionManager *)freshMotionManager {

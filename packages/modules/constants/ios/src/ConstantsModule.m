@@ -9,19 +9,6 @@
 
 
 
-+ (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"appOwnership" : NSStringFromSelector(@selector(appOwnership)),
-    @"platform" : NSStringFromSelector(@selector(platform)),
-    @"executionEnvironment" : NSStringFromSelector(@selector(executionEnvironment)),
-    @"sessionId" : NSStringFromSelector(@selector(sessionId)),
-    @"installationId" : NSStringFromSelector(@selector(installationId)),
-    @"isHeadless" : NSStringFromSelector(@selector(isHeadless)),
-    @"systemFonts" : NSStringFromSelector(@selector(systemFonts)),
-    @"version" : NSStringFromSelector(@selector(version)),
-  };
-}
-
 - (NSString *)appOwnership {
   // Lynxpo runs as a bare app, mirroring Expo's bare workflow.
   return @"bare";
