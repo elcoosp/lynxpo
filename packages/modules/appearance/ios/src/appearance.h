@@ -4,15 +4,17 @@
 
 #import <Foundation/Foundation.h>
 #import <Lynx/LynxModule.h>
+#import "AppearanceSpec.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// iOS counterpart of the Android `Appearance`. Exposes native functionality to JS via
 /// `NativeModules.Appearance`, faithfully porting Expo's `expo-appearance` native method surface.
-@interface Appearance : NSObject <LynxModule>
+@LynxNativeModule("Appearance")
+@interface Appearance : NSObject <AppearanceSpec>
 
 - (NSString *)getColorScheme;
-- (void)setColorSchemeWithScheme:(NSString *)scheme;
+- (void)setColorScheme:(NSString *)scheme;
 
 @end
 

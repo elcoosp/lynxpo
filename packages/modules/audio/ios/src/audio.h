@@ -4,18 +4,20 @@
 
 #import <Foundation/Foundation.h>
 #import <Lynx/LynxModule.h>
+#import "AudioSpec.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// iOS counterpart of the Android `Audio`. Exposes native functionality to JS via
 /// `NativeModules.Audio`, faithfully porting Expo's `expo-audio` native method surface.
-@interface Audio : NSObject <LynxModule>
+@LynxNativeModule("Audio")
+@interface Audio : NSObject <AudioSpec>
 
-- (NSDictionary *)getStatus;
+- (id)getStatus;
 - (void)play;
 - (void)pause;
-- (void)setVolumeWithVolume:(double)volume;
-- (void)setIsLoopingWithLooping:(BOOL)looping;
+- (void)setVolume:(double)volume;
+- (void)setIsLooping:(BOOL)looping;
 
 @end
 

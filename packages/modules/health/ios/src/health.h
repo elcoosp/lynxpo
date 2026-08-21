@@ -2,9 +2,11 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 #import <Foundation/Foundation.h>
-#import <LynxModule/LynxModule.h>
+#import <Lynx/LynxModule.h>
+#import "HealthSpec.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface Health : NSObject <LynxModule>
+@LynxNativeModule("Health")
+@interface Health : NSObject <HealthSpec>
 @end
 NS_ASSUME_NONNULL_END

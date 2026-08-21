@@ -4,18 +4,20 @@
 
 #import <Foundation/Foundation.h>
 #import <Lynx/LynxModule.h>
+#import "CalendarSpec.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// iOS counterpart of the Android `Calendar`. Exposes native functionality to JS via
 /// `NativeModules.Calendar`, faithfully porting Expo's `expo-calendar` native method surface.
-@interface Calendar : NSObject <LynxModule>
+@LynxNativeModule("Calendar")
+@interface Calendar : NSObject <CalendarSpec>
 
-- (NSArray *)getCalendars;
-- (NSArray *)getEventsWithStartDate:(NSString *)startDate endDate:(NSString *)endDate;
-- (NSDictionary *)requestPermissions;
-- (NSDictionary *)getPermissions;
-- (NSString *)createEventWithTitle:(NSString *)title startDate:(NSString *)startDate endDate:(NSString *)endDate;
+- (id)getCalendars;
+- (id)getEvents:(NSString *)startDate endDate:(NSString *)endDate;
+- (id)requestPermissions;
+- (id)getPermissions;
+- (NSString *)createEvent:(NSString *)title startDate:(NSString *)startDate endDate:(NSString *)endDate;
 
 @end
 
