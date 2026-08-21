@@ -14,6 +14,7 @@
     "@lynxpo/mods-application": "workspace:*",
     "@lynxpo/mods-battery": "workspace:*",
     "@lynxpo/mods-device": "workspace:*",
+    "@lynxpo/mods-env-info": "workspace:*",
     "@lynxpo/mods-localization": "workspace:*",
     "@lynxpo/mods-brightness": "workspace:*",
     "@lynxpo/mods-cellular": "workspace:*",

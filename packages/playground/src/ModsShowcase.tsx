@@ -23,6 +23,7 @@ import { useConstantsInfo } from './mods/constantsInfo.js';
 import { useContactsInfo } from './mods/contactsInfo.js';
 import { useCryptoInfo } from './mods/cryptoInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
+import { useEnvInfo } from './mods/envInfo.js';
 import { useDocumentPickerInfo } from './mods/documentPickerInfo.js';
 import { useFileSystemInfo } from './mods/fileSystemInfo.js';
 import { useFontInfo } from './mods/fontInfo.js';
@@ -118,6 +119,7 @@ function ModuleCard({
 
 export function ModsShowcase() {
   const { info: device, error: deviceError } = useDeviceInfo();
+  const { info: env, error: envError } = useEnvInfo();
   const { info: app, error: appError } = useApplicationInfo();
   const { info: battery, error: batteryError } = useBatteryInfo();
   const { info: localization, error: localizationError } =
@@ -319,6 +321,24 @@ export function ModsShowcase() {
       ]
     : [];
 
+  const envRows: Row[] = env
+    ? [
+        {
+          label: 'Running on device',
+          value: env.isRunningOnDevice === true ? 'Yes' : 'No (simulator)',
+        },
+        {
+          label: 'Install time',
+          value: env.installTime
+            ? new Date(env.installTime).toISOString()
+            : '—',
+        },
+        { label: 'OS', value: `${env.osName ?? '—'} ${env.osVersion ?? '—'}` },
+        { label: 'App version', value: env.appVersion ?? '—' },
+        { label: 'App id', value: env.appId ?? '—' },
+      ]
+    : [];
+
   const batteryLevelPct =
     battery && battery.batteryLevel >= 0
       ? Math.round(battery.batteryLevel * 100)
@@ -400,6 +420,14 @@ export function ModsShowcase() {
           icon="📦"
           rows={
             appError ? [{ label: 'Error', value: appError.message }] : appRows
+          }
+        />
+        <ModuleCard
+          title="EnvInfo"
+          source="expo-env-info"
+          icon="🌿"
+          rows={
+            envError ? [{ label: 'Error', value: envError.message }] : envRows
           }
         />
         <ModuleCard
