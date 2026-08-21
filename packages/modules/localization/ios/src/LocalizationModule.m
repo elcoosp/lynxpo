@@ -63,7 +63,7 @@
 
 #pragma mark - LynxModule methods
 
-- (NSArray<NSDictionary *> *)getLocales {
+- (id)getLocales {
   NSLocale *userSettingsLocale = NSLocale.currentLocale;
   NSArray<NSString *> *preferred =
       NSLocale.preferredLanguages.count > 0
@@ -97,7 +97,7 @@
   return result;
 }
 
-- (NSArray<NSDictionary *> *)getCalendars {
+- (id)getCalendars {
   NSCalendar *calendar = NSCalendar.currentCalendar;
   return @[ @{
     @"calendar" : [LocalizationModule unicodeCalendarIdentifier:calendar],

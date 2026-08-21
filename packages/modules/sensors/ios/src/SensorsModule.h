@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("SensorsModule")
 @interface SensorsModule : NSObject <SensorsModuleSpec>
 
-- (NSDictionary *)getAccelerometer;
-- (NSDictionary *)getGyroscope;
-- (NSNumber *)isAvailable;
+- (id)getAccelerometer;
+- (id)getGyroscope;
+- (BOOL)isAvailable;
 @end
 
 NS_ASSUME_NONNULL_END

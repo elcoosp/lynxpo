@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isSpeaking;
 - (BOOL)supported;
-- (NSArray<NSDictionary<NSString *, NSString *> *> *)voices;
+- (id)voices;
 @end
 
 NS_ASSUME_NONNULL_END

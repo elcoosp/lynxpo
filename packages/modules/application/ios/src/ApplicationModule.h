@@ -16,12 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("ApplicationModule")
 @interface ApplicationModule : NSObject <ApplicationModuleSpec>
 
-- (NSString *)applicationName;
-- (NSString *)applicationId;
-- (NSString *)nativeApplicationVersion;
-- (NSString *)nativeBuildVersion;
+- (id)applicationName;
+- (id)applicationId;
+- (id)nativeApplicationVersion;
+- (id)nativeBuildVersion;
 - (NSString *)getIosIdForVendor;
-- (NSNumber *)getInstallationTime;
+- (id)getInstallationTime;
 
 @end
 

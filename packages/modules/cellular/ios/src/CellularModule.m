@@ -14,7 +14,7 @@
 
 
 
-- (int)getCellularGeneration {
+- (double)getCellularGeneration {
   // Unknown on the simulator / without CoreTelephony.
   return 0;
 }

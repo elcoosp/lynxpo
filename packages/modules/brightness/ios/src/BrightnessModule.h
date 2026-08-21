@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBrightness:(double)brightnessValue;
 - (double)getSystemBrightness;
 - (BOOL)isUsingSystemBrightness;
-- (int)getSystemBrightnessMode;
+- (double)getSystemBrightnessMode;
 @end
 
 NS_ASSUME_NONNULL_END

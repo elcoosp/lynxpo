@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("HapticsModule")
 @interface HapticsModule : NSObject <HapticsModuleSpec>
 
-- (void)impactAsync:(int)style;
-- (void)notificationAsync:(int)type;
-- (void)selectionAsync;
+- (id)impactAsync:(double)style;
+- (id)notificationAsync:(double)type;
+- (id)selectionAsync;
 @end
 
 NS_ASSUME_NONNULL_END

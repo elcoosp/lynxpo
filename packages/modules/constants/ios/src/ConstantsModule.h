@@ -20,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)sessionId;
 - (NSString *)installationId;
 - (BOOL)isHeadless;
-- (NSArray<NSString *> *)systemFonts;
-- (NSDictionary<NSString *, NSString *> *)version;
+- (id)systemFonts;
+- (id)version;
 @end
 
 NS_ASSUME_NONNULL_END

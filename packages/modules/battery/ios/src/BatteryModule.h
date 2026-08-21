@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("BatteryModule")
 @interface BatteryModule : NSObject <BatteryModuleSpec>
 
-- (NSNumber *)getBatteryLevel;
-- (NSNumber *)getBatteryState;
-- (NSNumber *)isLowPowerModeEnabled;
+- (id)getBatteryLevel;
+- (id)getBatteryState;
+- (id)isLowPowerModeEnabled;
 
 @end
 

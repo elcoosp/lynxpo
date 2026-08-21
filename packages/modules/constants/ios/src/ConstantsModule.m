@@ -34,12 +34,12 @@
   return NO;
 }
 
-- (NSArray<NSString *> *)systemFonts {
+- (id)systemFonts {
   NSArray<NSString *> *families = [UIFont familyNames];
   return families ?: @[];
 }
 
-- (NSDictionary<NSString *, NSString *> *)version {
+- (id)version {
   NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
   NSString *build = info[@"CFBundleVersion"] ?: @"";
   return @{ @"nativeBuildVersion" : build, @"sdkVersion" : [NSNull null] };

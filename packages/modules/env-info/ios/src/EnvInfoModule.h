@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("EnvInfoModule")
 @interface EnvInfoModule : NSObject <EnvInfoModuleSpec>
 
-- (NSNumber *)isRunningOnDevice;
-- (NSNumber *)installTime;
-- (NSDictionary<NSString *, id> *)envInfo;
+- (BOOL)isRunningOnDevice;
+- (double)installTime;
+- (id)envInfo;
 
 @end
 

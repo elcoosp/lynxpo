@@ -25,7 +25,7 @@
   return YES;
 }
 
-- (int)getSystemBrightnessMode {
+- (double)getSystemBrightnessMode {
   return 2; // MANUAL on iOS (system auto-brightness not directly readable)
 }
 

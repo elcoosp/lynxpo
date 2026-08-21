@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NetworkModule : NSObject <NetworkModuleSpec>
 
 - (NSString *)getIpAddress;
-- (NSDictionary *)getNetworkState;
+- (id)getNetworkState;
 @end
 
 NS_ASSUME_NONNULL_END

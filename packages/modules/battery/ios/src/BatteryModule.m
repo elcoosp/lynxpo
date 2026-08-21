@@ -11,7 +11,7 @@
 
 #pragma mark - LynxModule methods
 
-- (NSNumber *)getBatteryLevel {
+- (id)getBatteryLevel {
   UIDevice *device = [UIDevice currentDevice];
   device.batteryMonitoringEnabled = YES;
   // UIDevice batteryLevel is 0..1, or -1 when unknown. Mirrors Expo's
@@ -19,7 +19,7 @@
   return @(device.batteryLevel);
 }
 
-- (NSNumber *)getBatteryState {
+- (id)getBatteryState {
   UIDevice *device = [UIDevice currentDevice];
   device.batteryMonitoringEnabled = YES;
   // Apple's UIDeviceBatteryState raw values map 1:1 onto Expo's BatteryState
@@ -27,7 +27,7 @@
   return @((NSInteger)device.batteryState);
 }
 
-- (NSNumber *)isLowPowerModeEnabled {
+- (id)isLowPowerModeEnabled {
   return @([NSProcessInfo processInfo].isLowPowerModeEnabled);
 }
 

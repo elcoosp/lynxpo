@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("CellularModule")
 @interface CellularModule : NSObject <CellularModuleSpec>
 
-- (int)getCellularGeneration;
+- (double)getCellularGeneration;
 - (NSString *)getIsoCountryCode;
 - (NSString *)getCarrierName;
 - (NSString *)getMobileCountryCode;

@@ -33,7 +33,7 @@
   return address;
 }
 
-- (NSDictionary *)getNetworkState {
+- (id)getNetworkState {
   BOOL connected = NO;
   // Use a simple reachability-style check via a socket.
   const char *host = "www.apple.com";

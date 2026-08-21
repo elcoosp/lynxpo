@@ -19,7 +19,7 @@
   return YES;
 }
 
-- (NSArray<NSDictionary<NSString *, NSString *> *> *)voices {
+- (id)voices {
   NSMutableArray *voices = [NSMutableArray array];
   for (AVSpeechSynthesisVoice *voice in [AVSpeechSynthesisVoice speechVoices]) {
     [voices addObject:@{

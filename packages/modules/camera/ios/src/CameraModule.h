@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("CameraModule")
 @interface CameraModule : NSObject <CameraModuleSpec>
 
-- (NSDictionary<NSString *, id> *)cameraPermissionsAsync;
-- (NSDictionary<NSString *, id> *)microphonePermissionsAsync;
+- (id)cameraPermissionsAsync;
+- (id)microphonePermissionsAsync;
 - (void)requestCameraPermission;
-- (NSArray<NSString *> *)availableCameraTypes;
-- (NSArray<NSString *> *)availableVideoCodecs;
+- (id)availableCameraTypes;
+- (id)availableVideoCodecs;
 - (BOOL)startCamera;
 - (void)stopCamera;
 - (void)flipCamera;

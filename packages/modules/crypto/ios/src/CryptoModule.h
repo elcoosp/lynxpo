@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CryptoModule : NSObject <CryptoModuleSpec>
 
 - (NSString *)digestString:(NSString *)algorithm data:(NSString *)data encoding:(NSString *)encoding;
-- (NSString *)getRandomBytes:(NSNumber *)byteCount;
+- (NSString *)getRandomBytes:(double)byteCount;
 - (NSString *)randomUUID;
 @end
 

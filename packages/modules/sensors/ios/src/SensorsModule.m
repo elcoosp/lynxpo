@@ -58,15 +58,15 @@
   };
 }
 
-- (NSDictionary *)getAccelerometer {
+- (id)getAccelerometer {
   return [self readingFor:@"accelerometer"];
 }
 
-- (NSDictionary *)getGyroscope {
+- (id)getGyroscope {
   return [self readingFor:@"gyroscope"];
 }
 
-- (NSNumber *)isAvailable {
+- (BOOL)isAvailable {
   CMMotionManager *manager = [self freshMotionManager];
   return @(manager.accelerometerAvailable || manager.gyroAvailable);
 }

@@ -14,10 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("ContactsModule")
 @interface ContactsModule : NSObject <ContactsModuleSpec>
 
-- (NSDictionary<NSString *, id> *)permissionsAsync;
+- (id)permissionsAsync;
 - (void)requestPermission;
-- (NSInteger)contactCount;
-- (NSInteger)containerCount;
+- (double)contactCount;
+- (double)containerCount;
 @end
 
 NS_ASSUME_NONNULL_END

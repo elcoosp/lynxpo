@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @LynxNativeModule("LocalizationModule")
 @interface LocalizationModule : NSObject <LocalizationModuleSpec>
 
-- (NSArray<NSDictionary *> *)getLocales;
-- (NSArray<NSDictionary *> *)getCalendars;
+- (id)getLocales;
+- (id)getCalendars;
 
 @end
 
