@@ -15,7 +15,7 @@ public abstract class AppIntegritySpec extends LynxContextModule {
   public abstract boolean isAvailableAsync();
 
   @LynxMethod
-  public abstract Object integrityTokenAsync(String options);
+  public abstract void integrityTokenAsync(String options, Object cb);
 
   @LynxMethod
   public abstract Object codeHashAsync();

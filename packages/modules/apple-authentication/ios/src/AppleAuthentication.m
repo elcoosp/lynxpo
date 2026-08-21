@@ -7,36 +7,28 @@
 #import <UIKit/UIKit.h>
 #import "AppleAuthentication.h"
 
+@interface AppleAuthentication ()
+@property (nonatomic, copy) LynxCallbackBlock pendingCb;
+@end
+
 @implementation AppleAuthentication
 
-
-
-- (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"isAvailableAsync" : @"isAvailableAsync:",
-    @"credentialAsync" : @"credentialAsync:",
-    @"credentialStateAsync" : @"credentialStateAsync:",
-  };
-}
-
 - (BOOL)isAvailableAsync {
-
   BOOL available = NO;
   if (@available(iOS 13.0, *)) {
     available = YES;
   }
-  return @(available);
+  return available;
 }
 
-- (id)credentialAsync:(NSString *)options {
+- (void)credentialAsync:(NSString *)options cb:(id)cb {
   if (@available(iOS 13.0, *)) {
+    self.pendingCb = (LynxCallbackBlock)cb;
     ASAuthorizationAppleIDProvider *provider = [[ASAuthorizationAppleIDProvider alloc] init];
     ASAuthorizationAppleIDRequest *request = [provider createRequest];
     request.requestedScopes = @[ASAuthorizationScopeFullName, ASAuthorizationScopeEmail];
     ASAuthorizationController *controller =
         [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[request]];
-    self.pendingResolve = resolve;
-    self.pendingReject = reject;
     controller.delegate = self;
     controller.presentationContextProvider = self;
     [controller performRequests];
@@ -45,10 +37,10 @@
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   result[@"available"] = @(NO);
   result[@"error"] = @"Sign in with Apple requires iOS 13+.";
-  return result;
+  if (cb) ((LynxCallbackBlock)cb)(result);
 }
 
-- (NSString *)credentialStateAsync:(NSString *)user {
+- (void)credentialStateAsync:(NSString *)user cb:(id)cb {
   if (@available(iOS 13.0, *)) {
     ASAuthorizationAppleIDProvider *provider = [[ASAuthorizationAppleIDProvider alloc] init];
     [provider getCredentialStateForUserID:user completion:^(ASAuthorizationAppleIDProviderCredentialState state, NSError * _Nullable error) {
@@ -56,20 +48,20 @@
       if (state == ASAuthorizationAppleIDProviderCredentialAuthorized) stateStr = @"authorized";
       else if (state == ASAuthorizationAppleIDProviderCredentialRevoked) stateStr = @"revoked";
       else if (state == ASAuthorizationAppleIDProviderCredentialNotFound) stateStr = @"notFound";
-      return stateStr;
+      if (cb) ((LynxCallbackBlock)cb)(stateStr);
     }];
     return;
   }
-  return @"unsupported";
+  if (cb) ((LynxCallbackBlock)cb)(@"unsupported");
 }
 
 #pragma mark - ASAuthorizationControllerDelegate
 
 - (void)authorizationController:(ASAuthorizationController *)controller
-   didCompleteWithAuthorization:(ASAuthorization *)authorization API_AVAILABLE(ios(13.0)) {
+   didCompleteWithAuthorization:(id)authorization API_AVAILABLE(ios(13.0)) {
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
-  if ([authorization.credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
-    ASAuthorizationAppleIDCredential *cred = (ASAuthorizationAppleIDCredential *)authorization.credential;
+  if ([authorization isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
+    ASAuthorizationAppleIDCredential *cred = (ASAuthorizationAppleIDCredential *)authorization;
     result[@"available"] = @(YES);
     result[@"user"] = cred.user;
     result[@"email"] = cred.email ?: @"";
@@ -81,7 +73,8 @@
     result[@"available"] = @(NO);
     result[@"error"] = @"unexpected credential type";
   }
-  if (self.pendingResolve) self.pendingResolve(result);
+  if (self.pendingCb) self.pendingCb(result);
+  self.pendingCb = nil;
 }
 
 - (void)authorizationController:(ASAuthorizationController *)controller
@@ -89,7 +82,8 @@
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   result[@"available"] = @(NO);
   result[@"error"] = error.localizedDescription;
-  if (self.pendingResolve) self.pendingResolve(result);
+  if (self.pendingCb) self.pendingCb(result);
+  self.pendingCb = nil;
 }
 
 #pragma mark - ASAuthorizationControllerPresentationContextProviding

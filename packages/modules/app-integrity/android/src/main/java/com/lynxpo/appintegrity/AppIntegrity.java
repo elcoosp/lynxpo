@@ -1,17 +1,16 @@
 // Copyright 2026 The Lynxpo Authors. All rights reserved.
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
-package com.lynx.explorer.modules;
+package com.lynxpo.appintegrity;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Build;
-import com.lynx.jsbridge.LynxMethod;
-import com.lynx.jsbridge.LynxModule;
 import com.lynx.jsbridge.LynxNativeModule;
 import com.lynxpo.appintegrity.generated.AppIntegritySpec;
+import com.lynx.react.bridge.Callback;
 import com.lynx.react.bridge.JavaOnlyMap;
 import com.lynx.react.bridge.WritableMap;
 import java.security.MessageDigest;
@@ -31,7 +30,7 @@ public class AppIntegrity extends AppIntegritySpec {
     super(context);
   }
 
-  @LynxMethod
+  @Override
   public boolean isAvailableAsync() {
     // Play Integrity is gated on Google Play services being present.
     Context ctx = mContext;
@@ -47,8 +46,8 @@ public class AppIntegrity extends AppIntegritySpec {
     }
   }
 
-  @LynxMethod
-  public WritableMap integrityTokenAsync(String options) {
+  @Override
+  public void integrityTokenAsync(String options, Object cb) {
     WritableMap map = new JavaOnlyMap();
     // A real token requires the Play Integrity client + a cloud project +
     // a backend verification exchange. We surface that constraint truthfully.
@@ -59,10 +58,12 @@ public class AppIntegrity extends AppIntegritySpec {
             + "verification (requestIntegrityToken + decrypt on backend). "
             + "Not performed on-device.");
     map.putString("source", "PlayIntegrity");
-    return map;
+    if (cb instanceof Callback) {
+      ((Callback) cb).invoke(map);
+    }
   }
 
-  @LynxMethod
+  @Override
   public WritableMap codeHashAsync() {
     WritableMap map = new JavaOnlyMap();
     Context ctx = mContext;

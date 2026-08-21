@@ -94,7 +94,7 @@
 - (id)isAvailableAsync {
 
   @try {
-    return [self isAvailable];
+    return @([self isAvailable]);
   } @catch (NSException *e) {
     return nil;
   }

@@ -8,57 +8,41 @@
 
 @implementation AppIntegrity
 
-
-
-- (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"isAvailableAsync" : @"isAvailableAsync:",
-    @"integrityTokenAsync" : @"integrityTokenAsync:",
-    @"codeHashAsync" : @"codeHashAsync:",
-  };
-}
-
 - (BOOL)isAvailableAsync {
-
   BOOL available = NO;
   if (@available(iOS 14.0, *)) {
     available = [DCDevice.currentDevice isSupported];
   }
-  return @(available);
+  return available;
 }
 
-- (id)integrityTokenAsync:(NSString *)options {
-  NSMutableDictionary *result = [NSMutableDictionary dictionary];
-  result[@"available"] = @(NO);
+- (void)integrityTokenAsync:(NSString *)options cb:(id)cb {
   if (@available(iOS 14.0, *)) {
     if ([DCDevice.currentDevice isSupported]) {
       [DCDevice.currentDevice generateTokenWithCompletionHandler:^(NSData * _Nullable token, NSError * _Nullable error) {
+        NSMutableDictionary *r = [NSMutableDictionary dictionary];
+        r[@"available"] = @(YES);
+        r[@"source"] = @"DeviceCheck";
         if (error) {
-          NSMutableDictionary *r = [NSMutableDictionary dictionary];
-          r[@"available"] = @(YES);
           r[@"token"] = @(NO);
           r[@"error"] = error.localizedDescription;
-          r[@"source"] = @"DeviceCheck";
-          return r;
         } else {
           NSString *b64 = [token base64EncodedStringWithOptions:0];
-          NSMutableDictionary *r = [NSMutableDictionary dictionary];
-          r[@"available"] = @(YES);
           r[@"token"] = b64 ?: @"";
-          r[@"source"] = @"DeviceCheck";
-          return r;
         }
+        if (cb) ((LynxCallbackBlock)cb)(r);
       }];
       return;
     }
   }
+  NSMutableDictionary *result = [NSMutableDictionary dictionary];
+  result[@"available"] = @(NO);
   result[@"error"] = @"DeviceCheck is not supported on this device/iOS version.";
   result[@"source"] = @"DeviceCheck";
-  return result;
+  if (cb) ((LynxCallbackBlock)cb)(result);
 }
 
 - (id)codeHashAsync {
-
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   result[@"available"] = @(NO);
   result[@"error"] = @"App signing-certificate SHA-256 requires a packaged IPA (TestFlight/App Store). The debug build is not signed by Apple.";

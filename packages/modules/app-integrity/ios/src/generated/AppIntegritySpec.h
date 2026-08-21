@@ -7,7 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol AppIntegritySpec <LynxModule>
 
 - (BOOL)isAvailableAsync;
-- (id)integrityTokenAsync:(NSString *)options;
+- (void)integrityTokenAsync:(NSString *)options cb:(id)cb;
 - (id)codeHashAsync;
 
 @end

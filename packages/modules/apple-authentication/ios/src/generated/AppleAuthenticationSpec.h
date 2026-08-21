@@ -7,8 +7,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol AppleAuthenticationSpec <LynxModule>
 
 - (BOOL)isAvailableAsync;
-- (id)credentialAsync:(NSString *)options;
-- (NSString *)credentialStateAsync:(NSString *)user;
+- (void)credentialAsync:(NSString *)options cb:(id)cb;
+- (void)credentialStateAsync:(NSString *)user cb:(id)cb;
 
 @end
 

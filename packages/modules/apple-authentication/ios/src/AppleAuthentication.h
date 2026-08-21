@@ -8,7 +8,4 @@
 @LynxNativeModule("AppleAuthentication")
 @interface AppleAuthentication : NSObject <AppleAuthenticationSpec>
 
-@property (nonatomic, copy) LynxCallbackBlock pendingResolve;
-@property (nonatomic, copy) LynxCallbackBlock pendingReject;
-
 @end

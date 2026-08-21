@@ -38,8 +38,8 @@
 
 - (id)envInfo {
   NSMutableDictionary *info = [NSMutableDictionary dictionary];
-  info[@"isRunningOnDevice"] = [self isRunningOnDevice];
-  info[@"installTime"] = [self installTime];
+  info[@"isRunningOnDevice"] = @([self isRunningOnDevice]);
+  info[@"installTime"] = @([self installTime]);
   info[@"osName"] = @"iOS";
   info[@"osVersion"] =
       [[UIDevice currentDevice] systemVersion] ?: [NSNull null];

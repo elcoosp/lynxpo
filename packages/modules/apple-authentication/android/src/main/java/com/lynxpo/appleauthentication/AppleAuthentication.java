@@ -1,13 +1,12 @@
 // Copyright 2026 The Lynxpo Authors. All rights reserved.
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
-package com.lynx.explorer.modules;
+package com.lynxpo.appleauthentication;
 
 import android.content.Context;
-import com.lynx.jsbridge.LynxMethod;
-import com.lynx.jsbridge.LynxModule;
 import com.lynx.jsbridge.LynxNativeModule;
 import com.lynxpo.appleauthentication.generated.AppleAuthenticationSpec;
+import com.lynx.react.bridge.Callback;
 import com.lynx.react.bridge.JavaOnlyMap;
 import com.lynx.react.bridge.WritableMap;
 
@@ -24,23 +23,27 @@ public class AppleAuthentication extends AppleAuthenticationSpec {
     super(context);
   }
 
-  @LynxMethod
+  @Override
   public boolean isAvailableAsync() {
     // No Apple identity platform on Android.
     return false;
   }
 
-  @LynxMethod
-  public WritableMap credentialAsync(String options) {
+  @Override
+  public void credentialAsync(String options, Object cb) {
     WritableMap map = new JavaOnlyMap();
     map.putBoolean("available", false);
     map.putString("error", "Sign in with Apple is only available on iOS.");
     map.putString("source", "android-unsupported");
-    return map;
+    if (cb instanceof Callback) {
+      ((Callback) cb).invoke(map);
+    }
   }
 
-  @LynxMethod
-  public String credentialStateAsync(String user) {
-    return "unsupported";
+  @Override
+  public void credentialStateAsync(String user, Object cb) {
+    if (cb instanceof Callback) {
+      ((Callback) cb).invoke("unsupported");
+    }
   }
 }

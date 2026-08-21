@@ -3,8 +3,8 @@
 declare const NativeModules: {
   AppleAuthentication: {
   isAvailableAsync(): boolean;
-  credentialAsync(options: string): any;
-  credentialStateAsync(user: string): string;
+  credentialAsync(options: string, cb: function): void;
+  credentialStateAsync(user: string, cb: function): void;
   };
 };
 

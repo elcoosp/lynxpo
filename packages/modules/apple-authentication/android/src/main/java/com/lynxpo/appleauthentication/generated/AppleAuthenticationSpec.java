@@ -15,8 +15,8 @@ public abstract class AppleAuthenticationSpec extends LynxContextModule {
   public abstract boolean isAvailableAsync();
 
   @LynxMethod
-  public abstract Object credentialAsync(String options);
+  public abstract void credentialAsync(String options, Object cb);
 
   @LynxMethod
-  public abstract String credentialStateAsync(String user);
+  public abstract void credentialStateAsync(String user, Object cb);
 }
