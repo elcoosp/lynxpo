@@ -1,16 +1,9 @@
 // Auto-generated from LocationModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface LocationModule extends INativeModules {
-  providerStatus(): Record<string, boolean>;
-  permissionsAsync(): Record<string, any>;
-  requestPermission(): void;
-  currentPositionAsync(): Record<string, number>;
-}
+import { LocationModule } from './generated/LocationModule';
 
 export const getProviderStatus = (): Record<string, boolean> =>
-  NativeModules.LocationModule?.providerStatus?.();
+  LocationModule.providerStatus();
 
 export const useProviderStatus = () => {
   const [value, setValue] = useState<Record<string, boolean>>();
@@ -28,7 +21,7 @@ export const useProviderStatus = () => {
 };
 
 export const getPermissionsAsync = (): Record<string, any> =>
-  NativeModules.LocationModule?.permissionsAsync?.();
+  LocationModule.permissionsAsync();
 
 export const usePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -46,7 +39,7 @@ export const usePermissionsAsync = () => {
 };
 
 export const getRequestPermission = (): void =>
-  NativeModules.LocationModule?.requestPermission?.();
+  LocationModule.requestPermission();
 
 export const useRequestPermission = () => {
   const [value, setValue] = useState<void>();
@@ -64,7 +57,7 @@ export const useRequestPermission = () => {
 };
 
 export const getCurrentPositionAsync = (): Record<string, number> =>
-  NativeModules.LocationModule?.currentPositionAsync?.();
+  LocationModule.currentPositionAsync();
 
 export const useCurrentPositionAsync = () => {
   const [value, setValue] = useState<Record<string, number>>();

@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.notifications",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.notifications",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

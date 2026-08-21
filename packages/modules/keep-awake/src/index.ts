@@ -1,16 +1,9 @@
 // Auto-generated from KeepAwakeModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface KeepAwakeModule extends INativeModules {
-  isActivated(): boolean;
-  activateAsync(): Promise<void>;
-  deactivateAsync(): Promise<void>;
-  isActivatedAsync(): Promise<boolean>;
-}
+import { KeepAwakeModule } from './generated/KeepAwakeModule';
 
 export const getIsActivated = (): boolean =>
-  NativeModules.KeepAwakeModule?.isActivated?.();
+  KeepAwakeModule.isActivated();
 
 export const useIsActivated = () => {
   const [value, setValue] = useState<boolean>();
@@ -28,7 +21,7 @@ export const useIsActivated = () => {
 };
 
 export const getActivateAsync = (): Promise<void> =>
-  NativeModules.KeepAwakeModule?.activateAsync?.();
+  KeepAwakeModule.activateAsync();
 
 export const useActivateAsync = () => {
   const [loading, setLoading] = useState(false);
@@ -50,7 +43,7 @@ export const useActivateAsync = () => {
 };
 
 export const getDeactivateAsync = (): Promise<void> =>
-  NativeModules.KeepAwakeModule?.deactivateAsync?.();
+  KeepAwakeModule.deactivateAsync();
 
 export const useDeactivateAsync = () => {
   const [loading, setLoading] = useState(false);
@@ -72,7 +65,7 @@ export const useDeactivateAsync = () => {
 };
 
 export const getIsActivatedAsync = (): Promise<boolean> =>
-  NativeModules.KeepAwakeModule?.isActivatedAsync?.();
+  KeepAwakeModule.isActivatedAsync();
 
 export const useIsActivatedAsync = () => {
   const [value, setValue] = useState<boolean>();

@@ -1,17 +1,9 @@
 // Auto-generated from ScreenCapture.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface ScreenCapture extends INativeModules {
-  isAvailableAsync(): boolean;
-  preventScreenCapture(): boolean;
-  allowScreenCapture(): boolean;
-  permissionsAsync(): Record<string, any>;
-  requestPermissionsAsync(): Record<string, any>;
-}
+import { ScreenCapture } from './generated/ScreenCapture';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.ScreenCapture?.isAvailableAsync?.();
+  ScreenCapture.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -29,7 +21,7 @@ export const useIsAvailableAsync = () => {
 };
 
 export const getPreventScreenCapture = (): boolean =>
-  NativeModules.ScreenCapture?.preventScreenCapture?.();
+  ScreenCapture.preventScreenCapture();
 
 export const usePreventScreenCapture = () => {
   const [value, setValue] = useState<boolean>();
@@ -47,7 +39,7 @@ export const usePreventScreenCapture = () => {
 };
 
 export const getAllowScreenCapture = (): boolean =>
-  NativeModules.ScreenCapture?.allowScreenCapture?.();
+  ScreenCapture.allowScreenCapture();
 
 export const useAllowScreenCapture = () => {
   const [value, setValue] = useState<boolean>();
@@ -65,7 +57,7 @@ export const useAllowScreenCapture = () => {
 };
 
 export const getPermissionsAsync = (): Record<string, any> =>
-  NativeModules.ScreenCapture?.permissionsAsync?.();
+  ScreenCapture.permissionsAsync();
 
 export const usePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -83,7 +75,7 @@ export const usePermissionsAsync = () => {
 };
 
 export const getRequestPermissionsAsync = (): Record<string, any> =>
-  NativeModules.ScreenCapture?.requestPermissionsAsync?.();
+  ScreenCapture.requestPermissionsAsync();
 
 export const useRequestPermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();

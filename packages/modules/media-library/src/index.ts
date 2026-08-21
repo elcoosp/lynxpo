@@ -1,16 +1,9 @@
 // Auto-generated from MediaLibraryModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface MediaLibraryModule extends INativeModules {
-  permissionsAsync(): Record<string, any>;
-  requestPermission(): void;
-  albumsAsync(): Record<string, any>[];
-  assetsAsync(): Record<string, any>;
-}
+import { MediaLibraryModule } from './generated/MediaLibraryModule';
 
 export const getPermissionsAsync = (): Record<string, any> =>
-  NativeModules.MediaLibraryModule?.permissionsAsync?.();
+  MediaLibraryModule.permissionsAsync();
 
 export const usePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -28,7 +21,7 @@ export const usePermissionsAsync = () => {
 };
 
 export const getRequestPermission = (): void =>
-  NativeModules.MediaLibraryModule?.requestPermission?.();
+  MediaLibraryModule.requestPermission();
 
 export const useRequestPermission = () => {
   const [value, setValue] = useState<void>();
@@ -46,7 +39,7 @@ export const useRequestPermission = () => {
 };
 
 export const getAlbumsAsync = (): Record<string, any>[] =>
-  NativeModules.MediaLibraryModule?.albumsAsync?.();
+  MediaLibraryModule.albumsAsync();
 
 export const useAlbumsAsync = () => {
   const [value, setValue] = useState<Record<string, any>[]>();
@@ -64,7 +57,7 @@ export const useAlbumsAsync = () => {
 };
 
 export const getAssetsAsync = (): Record<string, any> =>
-  NativeModules.MediaLibraryModule?.assetsAsync?.();
+  MediaLibraryModule.assetsAsync();
 
 export const useAssetsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();

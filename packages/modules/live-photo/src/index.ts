@@ -1,15 +1,9 @@
 // Auto-generated from LivePhoto.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface LivePhoto extends INativeModules {
-  isAvailableAsync(): boolean;
-  isLivePhotoAsync(path: string): boolean;
-  saveLivePhotoAsync(video: string, photo: string): boolean;
-}
+import { LivePhoto } from './generated/LivePhoto';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.LivePhoto?.isAvailableAsync?.();
+  LivePhoto.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();

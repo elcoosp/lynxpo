@@ -1,17 +1,9 @@
 // Auto-generated from NotificationsModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface NotificationsModule extends INativeModules {
-  permissionsAsync(): Record<string, any>;
-  requestPermission(): void;
-  isDeviceRegisteredForRemoteMessages(): boolean;
-  badgeCountAsync(): number;
-  devicePushTokenAsync(): Record<string, string>;
-}
+import { NotificationsModule } from './generated/NotificationsModule';
 
 export const getPermissionsAsync = (): Record<string, any> =>
-  NativeModules.NotificationsModule?.permissionsAsync?.();
+  NotificationsModule.permissionsAsync();
 
 export const usePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -29,7 +21,7 @@ export const usePermissionsAsync = () => {
 };
 
 export const getRequestPermission = (): void =>
-  NativeModules.NotificationsModule?.requestPermission?.();
+  NotificationsModule.requestPermission();
 
 export const useRequestPermission = () => {
   const [value, setValue] = useState<void>();
@@ -47,7 +39,7 @@ export const useRequestPermission = () => {
 };
 
 export const getIsDeviceRegisteredForRemoteMessages = (): boolean =>
-  NativeModules.NotificationsModule?.isDeviceRegisteredForRemoteMessages?.();
+  NotificationsModule.isDeviceRegisteredForRemoteMessages();
 
 export const useIsDeviceRegisteredForRemoteMessages = () => {
   const [value, setValue] = useState<boolean>();
@@ -65,7 +57,7 @@ export const useIsDeviceRegisteredForRemoteMessages = () => {
 };
 
 export const getBadgeCountAsync = (): number =>
-  NativeModules.NotificationsModule?.badgeCountAsync?.();
+  NotificationsModule.badgeCountAsync();
 
 export const useBadgeCountAsync = () => {
   const [value, setValue] = useState<number>();
@@ -83,7 +75,7 @@ export const useBadgeCountAsync = () => {
 };
 
 export const getDevicePushTokenAsync = (): Record<string, string> =>
-  NativeModules.NotificationsModule?.devicePushTokenAsync?.();
+  NotificationsModule.devicePushTokenAsync();
 
 export const useDevicePushTokenAsync = () => {
   const [value, setValue] = useState<Record<string, string>>();

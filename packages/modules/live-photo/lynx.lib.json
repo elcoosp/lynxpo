@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.livephoto",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.livephoto",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

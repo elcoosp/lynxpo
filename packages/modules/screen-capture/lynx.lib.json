@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.screencapture",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.screencapture",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

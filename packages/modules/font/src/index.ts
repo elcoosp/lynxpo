@@ -1,13 +1,6 @@
 // Auto-generated from FontModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface FontModule extends INativeModules {
-  isLoaded(fontFamily: string): boolean;
-  loadedFonts(): string[];
-  processFontFamily(fontFamily: string): string;
-  loadAsync(fontFamily: string): void;
-}
+import { FontModule } from './generated/FontModule';
 
 export const getIsLoaded = (fontFamily: string): boolean =>
   NativeModules.FontModule?.isLoaded?.(fontFamily);
@@ -28,7 +21,7 @@ export const useIsLoaded = (fontFamily: string) => {
 };
 
 export const getLoadedFonts = (): string[] =>
-  NativeModules.FontModule?.loadedFonts?.();
+  FontModule.loadedFonts();
 
 export const useLoadedFonts = () => {
   const [value, setValue] = useState<string[]>();

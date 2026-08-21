@@ -1,21 +1,9 @@
 // Auto-generated from LocalAuthenticationModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface LocalAuthenticationModule extends INativeModules {
-  hasHardware(): boolean;
-  isEnrolled(): boolean;
-  getEnrolledLevel(): string | null;
-  supportedAuthenticationTypes(): string | null;
-  hasHardwareAsync(): Promise<boolean>;
-  isEnrolledAsync(): Promise<boolean>;
-  getEnrolledLevelAsync(): Promise<string>;
-  supportedAuthenticationTypesAsync(): Promise<string>;
-  authenticateAsync(prompt: string): Promise<Record<string, any>>;
-}
+import { LocalAuthenticationModule } from './generated/LocalAuthenticationModule';
 
 export const getHasHardware = (): boolean =>
-  NativeModules.LocalAuthenticationModule?.hasHardware?.() ?? false;
+  LocalAuthenticationModule.hasHardware() ?? false;
 
 export const useHasHardware = () => {
   const [value, setValue] = useState<boolean>(false);
@@ -32,7 +20,7 @@ export const useHasHardware = () => {
 };
 
 export const getIsEnrolled = (): boolean =>
-  NativeModules.LocalAuthenticationModule?.isEnrolled?.() ?? false;
+  LocalAuthenticationModule.isEnrolled() ?? false;
 
 export const useIsEnrolled = () => {
   const [value, setValue] = useState<boolean>(false);
@@ -49,7 +37,7 @@ export const useIsEnrolled = () => {
 };
 
 export const getGetEnrolledLevel = (): string | null =>
-  NativeModules.LocalAuthenticationModule?.getEnrolledLevel?.();
+  LocalAuthenticationModule.getEnrolledLevel();
 
 export const useGetEnrolledLevel = () => {
   const [value, setValue] = useState<string | null>();
@@ -67,7 +55,7 @@ export const useGetEnrolledLevel = () => {
 };
 
 export const getSupportedAuthenticationTypes = (): string | null =>
-  NativeModules.LocalAuthenticationModule?.supportedAuthenticationTypes?.();
+  LocalAuthenticationModule.supportedAuthenticationTypes();
 
 export const useSupportedAuthenticationTypes = () => {
   const [value, setValue] = useState<string | null>();
@@ -85,7 +73,7 @@ export const useSupportedAuthenticationTypes = () => {
 };
 
 export const getHasHardwareAsync = (): Promise<boolean> =>
-  NativeModules.LocalAuthenticationModule?.hasHardwareAsync?.();
+  LocalAuthenticationModule.hasHardwareAsync();
 
 export const useHasHardwareAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -124,7 +112,7 @@ export const useHasHardwareAsync = () => {
 };
 
 export const getIsEnrolledAsync = (): Promise<boolean> =>
-  NativeModules.LocalAuthenticationModule?.isEnrolledAsync?.();
+  LocalAuthenticationModule.isEnrolledAsync();
 
 export const useIsEnrolledAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -163,7 +151,7 @@ export const useIsEnrolledAsync = () => {
 };
 
 export const getGetEnrolledLevelAsync = (): Promise<string> =>
-  NativeModules.LocalAuthenticationModule?.getEnrolledLevelAsync?.();
+  LocalAuthenticationModule.getEnrolledLevelAsync();
 
 export const useGetEnrolledLevelAsync = () => {
   const [value, setValue] = useState<string>();
@@ -202,7 +190,7 @@ export const useGetEnrolledLevelAsync = () => {
 };
 
 export const getSupportedAuthenticationTypesAsync = (): Promise<string> =>
-  NativeModules.LocalAuthenticationModule?.supportedAuthenticationTypesAsync?.();
+  LocalAuthenticationModule.supportedAuthenticationTypesAsync();
 
 export const useSupportedAuthenticationTypesAsync = () => {
   const [value, setValue] = useState<string>();

@@ -1,21 +1,9 @@
 // Auto-generated from MailComposerModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface MailComposerModule extends INativeModules {
-  isAvailable(): boolean;
-  getClients(): string[];
-  isAvailableAsync(): Promise<boolean>;
-  getClientsAsync(): Promise<string[]>;
-  composeAsync(
-    subject: string,
-    body: string,
-    recipients: string,
-  ): Promise<void>;
-}
+import { MailComposerModule } from './generated/MailComposerModule';
 
 export const getIsAvailable = (): boolean =>
-  NativeModules.MailComposerModule?.isAvailable?.();
+  MailComposerModule.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();
@@ -33,7 +21,7 @@ export const useIsAvailable = () => {
 };
 
 export const getGetClients = (): string[] =>
-  NativeModules.MailComposerModule?.getClients?.();
+  MailComposerModule.getClients();
 
 export const useGetClients = () => {
   const [value, setValue] = useState<string[]>();
@@ -51,7 +39,7 @@ export const useGetClients = () => {
 };
 
 export const getIsAvailableAsync = (): Promise<boolean> =>
-  NativeModules.MailComposerModule?.isAvailableAsync?.();
+  MailComposerModule.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -90,7 +78,7 @@ export const useIsAvailableAsync = () => {
 };
 
 export const getGetClientsAsync = (): Promise<string[]> =>
-  NativeModules.MailComposerModule?.getClientsAsync?.();
+  MailComposerModule.getClientsAsync();
 
 export const useGetClientsAsync = () => {
   const [value, setValue] = useState<string[]>();

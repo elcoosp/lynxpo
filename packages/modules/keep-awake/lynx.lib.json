@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.keepawake",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.keepawake",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

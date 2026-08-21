@@ -1,18 +1,9 @@
 // Auto-generated from ImagePickerModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface ImagePickerModule extends INativeModules {
-  getCameraPermissions(): Record<string, any>;
-  getMediaLibraryPermissions(): Record<string, any>;
-  getCameraPermissionsAsync(): Promise<any>;
-  getMediaLibraryPermissionsAsync(): Promise<any>;
-  launchImageLibraryAsync(): Promise<any>;
-  launchCameraAsync(): Promise<any>;
-}
+import { ImagePickerModule } from './generated/ImagePickerModule';
 
 export const getGetCameraPermissions = (): Record<string, any> =>
-  NativeModules.ImagePickerModule?.getCameraPermissions?.();
+  ImagePickerModule.getCameraPermissions();
 
 export const useGetCameraPermissions = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -30,7 +21,7 @@ export const useGetCameraPermissions = () => {
 };
 
 export const getGetMediaLibraryPermissions = (): Record<string, any> =>
-  NativeModules.ImagePickerModule?.getMediaLibraryPermissions?.();
+  ImagePickerModule.getMediaLibraryPermissions();
 
 export const useGetMediaLibraryPermissions = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -48,7 +39,7 @@ export const useGetMediaLibraryPermissions = () => {
 };
 
 export const getGetCameraPermissionsAsync = (): Promise<any> =>
-  NativeModules.ImagePickerModule?.getCameraPermissionsAsync?.();
+  ImagePickerModule.getCameraPermissionsAsync();
 
 export const useGetCameraPermissionsAsync = () => {
   const [value, setValue] = useState<any>();
@@ -87,7 +78,7 @@ export const useGetCameraPermissionsAsync = () => {
 };
 
 export const getGetMediaLibraryPermissionsAsync = (): Promise<any> =>
-  NativeModules.ImagePickerModule?.getMediaLibraryPermissionsAsync?.();
+  ImagePickerModule.getMediaLibraryPermissionsAsync();
 
 export const useGetMediaLibraryPermissionsAsync = () => {
   const [value, setValue] = useState<any>();
@@ -126,7 +117,7 @@ export const useGetMediaLibraryPermissionsAsync = () => {
 };
 
 export const getLaunchImageLibraryAsync = (): Promise<any> =>
-  NativeModules.ImagePickerModule?.launchImageLibraryAsync?.();
+  ImagePickerModule.launchImageLibraryAsync();
 
 export const useLaunchImageLibraryAsync = () => {
   const [value, setValue] = useState<any>();
@@ -165,7 +156,7 @@ export const useLaunchImageLibraryAsync = () => {
 };
 
 export const getLaunchCameraAsync = (): Promise<any> =>
-  NativeModules.ImagePickerModule?.launchCameraAsync?.();
+  ImagePickerModule.launchCameraAsync();
 
 export const useLaunchCameraAsync = () => {
   const [value, setValue] = useState<any>();

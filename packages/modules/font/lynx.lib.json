@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.font",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.font",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}
