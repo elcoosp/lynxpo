@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.intentlauncher",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.intentlauncher",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

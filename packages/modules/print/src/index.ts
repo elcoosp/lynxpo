@@ -1,12 +1,6 @@
 // Auto-generated from Print.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface Print extends INativeModules {
-  printAsync(uri: string): void;
-  selectPrinter(): Record<string, any>;
-  isAvailable(): boolean;
-}
+import { Print } from './generated/Print';
 
 export const getPrintAsync = (uri: string): void =>
   NativeModules.Print?.printAsync?.(uri);
@@ -27,7 +21,7 @@ export const usePrintAsync = (uri: string) => {
 };
 
 export const getSelectPrinter = (): Record<string, any> =>
-  NativeModules.Print?.selectPrinter?.();
+  Print.selectPrinter();
 
 export const useSelectPrinter = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -45,7 +39,7 @@ export const useSelectPrinter = () => {
 };
 
 export const getIsAvailable = (): boolean =>
-  NativeModules.Print?.isAvailable?.();
+  Print.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();

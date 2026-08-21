@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.print",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.print",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

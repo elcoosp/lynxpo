@@ -1,11 +1,6 @@
 // Auto-generated from VideoThumbnails.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface VideoThumbnails extends INativeModules {
-  thumbnailAsync(source: string, options: string): Record<string, any>;
-  isAvailableAsync(): boolean;
-}
+import { VideoThumbnails } from './generated/VideoThumbnails';
 
 export const getThumbnailAsync = (
   source: string,
@@ -29,7 +24,7 @@ export const useThumbnailAsync = (source: string, options: string) => {
 };
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.VideoThumbnails?.isAvailableAsync?.();
+  VideoThumbnails.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();

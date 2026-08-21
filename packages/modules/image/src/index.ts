@@ -1,17 +1,9 @@
 // Auto-generated from Image.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface Image extends INativeModules {
-  getCacheSize(): number;
-  clearCache(): void;
-  prefetch(url: string): boolean;
-  isImageLoading(uri: string): boolean;
-  cancelLoading(uri: string): void;
-}
+import { Image } from './generated/Image';
 
 export const getGetCacheSize = (): number =>
-  NativeModules.Image?.getCacheSize?.();
+  Image.getCacheSize();
 
 export const useGetCacheSize = () => {
   const [value, setValue] = useState<number>();
@@ -28,7 +20,7 @@ export const useGetCacheSize = () => {
   return value;
 };
 
-export const getClearCache = (): void => NativeModules.Image?.clearCache?.();
+export const getClearCache = (): void => Image.clearCache();
 
 export const useClearCache = () => {
   const [value, setValue] = useState<void>();

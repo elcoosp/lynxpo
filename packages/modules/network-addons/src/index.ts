@@ -1,15 +1,9 @@
 // Auto-generated from NetworkAddons.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface NetworkAddons extends INativeModules {
-  isAvailableAsync(): boolean;
-  certificateInfoAsync(host: string): Record<string, any>;
-  addInterceptorAsync(name: string): boolean;
-}
+import { NetworkAddons } from './generated/NetworkAddons';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.NetworkAddons?.isAvailableAsync?.();
+  NetworkAddons.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();

@@ -1,14 +1,9 @@
 // Auto-generated from TrackingTransparency.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface TrackingTransparency extends INativeModules {
-  getAuthorizationStatus(): string;
-  requestAuthorization(): string;
-}
+import { TrackingTransparency } from './generated/TrackingTransparency';
 
 export const getGetAuthorizationStatus = (): string =>
-  NativeModules.TrackingTransparency?.getAuthorizationStatus?.();
+  TrackingTransparency.getAuthorizationStatus();
 
 export const useGetAuthorizationStatus = () => {
   const [value, setValue] = useState<string>();
@@ -26,7 +21,7 @@ export const useGetAuthorizationStatus = () => {
 };
 
 export const getRequestAuthorization = (): string =>
-  NativeModules.TrackingTransparency?.requestAuthorization?.();
+  TrackingTransparency.requestAuthorization();
 
 export const useRequestAuthorization = () => {
   const [value, setValue] = useState<string>();

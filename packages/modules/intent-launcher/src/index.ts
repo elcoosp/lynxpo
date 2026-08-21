@@ -1,12 +1,6 @@
 // Auto-generated from IntentLauncher.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface IntentLauncher extends INativeModules {
-  startActivity(activity: string, data: string): string;
-  startActivityAsync(options: string): string;
-  canOpenURL(url: string): boolean;
-}
+import { IntentLauncher } from './generated/IntentLauncher';
 
 export const getStartActivity = (activity: string, data: string): string =>
   NativeModules.IntentLauncher?.startActivity?.(activity, data);

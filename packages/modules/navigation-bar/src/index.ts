@@ -1,13 +1,6 @@
 // Auto-generated from NavigationBar.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface NavigationBar extends INativeModules {
-  setBackgroundColor(color: string): void;
-  setButtonStyle(style: string): void;
-  setVisibility(visible: boolean): void;
-  getVisibility(): Record<string, any>;
-}
+import { NavigationBar } from './generated/NavigationBar';
 
 export const getSetBackgroundColor = (color: string): void =>
   NativeModules.NavigationBar?.setBackgroundColor?.(color);
@@ -64,7 +57,7 @@ export const useSetVisibility = (visible: boolean) => {
 };
 
 export const getGetVisibility = (): Record<string, any> =>
-  NativeModules.NavigationBar?.getVisibility?.();
+  NavigationBar.getVisibility();
 
 export const useGetVisibility = () => {
   const [value, setValue] = useState<Record<string, any>>();

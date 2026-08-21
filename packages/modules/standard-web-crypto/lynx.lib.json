@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.standardwebcrypto",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.standardwebcrypto",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

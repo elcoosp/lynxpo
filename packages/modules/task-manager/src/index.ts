@@ -1,12 +1,6 @@
 // Auto-generated from TaskManager.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface TaskManager extends INativeModules {
-  isTaskRegistered(taskName: string): boolean;
-  getRegisteredTasks(): string[];
-  unregisterTaskAsync(taskName: string): void;
-}
+import { TaskManager } from './generated/TaskManager';
 
 export const getIsTaskRegistered = (taskName: string): boolean =>
   NativeModules.TaskManager?.isTaskRegistered?.(taskName);
@@ -27,7 +21,7 @@ export const useIsTaskRegistered = (taskName: string) => {
 };
 
 export const getGetRegisteredTasks = (): string[] =>
-  NativeModules.TaskManager?.getRegisteredTasks?.();
+  TaskManager.getRegisteredTasks();
 
 export const useGetRegisteredTasks = () => {
   const [value, setValue] = useState<string[]>();

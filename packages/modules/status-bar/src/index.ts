@@ -1,13 +1,6 @@
 // Auto-generated from StatusBar.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface StatusBar extends INativeModules {
-  setStyle(style: string): void;
-  setHidden(hidden: boolean): void;
-  setNetworkActivityIndicatorVisible(visible: boolean): void;
-  setBackgroundColor(color: string): void;
-}
+import { StatusBar } from './generated/StatusBar';
 
 export const getSetStyle = (style: string): void =>
   NativeModules.StatusBar?.setStyle?.(style);

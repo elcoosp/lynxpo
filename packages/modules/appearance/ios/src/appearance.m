@@ -8,9 +8,7 @@
 
 @implementation Appearance
 
-+ (NSString *)name {
- return @"Appearance";
-}
+
 
 - (NSString *)getColorScheme {
   if (@available(iOS 13.0, *)) {

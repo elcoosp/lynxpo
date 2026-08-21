@@ -1,15 +1,6 @@
 // Auto-generated from ImageManipulator.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface ImageManipulator extends INativeModules {
-  manipulateAsync(
-    uri: string,
-    actions: string,
-    saveOptions: string,
-  ): Record<string, any>;
-  isAvailableAsync(uri: string): boolean;
-}
+import { ImageManipulator } from './generated/ImageManipulator';
 
 export const getManipulateAsync = (
   uri: string,

@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.statusbar",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.statusbar",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

@@ -6,9 +6,7 @@
 
 @implementation Health
 
-+ (NSString *)name {
-  return @"Health";
-}
+
 
 - (BOOL)isAvailableAsync {
   // HealthKit is unavailable in the LynxPo simulator showcase.

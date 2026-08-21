@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.backgroundtask",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.backgroundtask",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

@@ -7,9 +7,7 @@
 
 @implementation Audio
 
-+ (NSString *)name {
- return @"Audio";
-}
+
 
 - (id)getStatus {
   return @{ @"isPlaying": @NO, @"duration": @0.0, @"position": @0.0,

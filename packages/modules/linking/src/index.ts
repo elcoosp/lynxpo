@@ -1,15 +1,9 @@
 // Auto-generated from Linking.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface Linking extends INativeModules {
-  getInitialURL(): string;
-  canOpenURL(url: string): boolean;
-  openURL(url: string): void;
-}
+import { Linking } from './generated/Linking';
 
 export const getGetInitialURL = (): string =>
-  NativeModules.Linking?.getInitialURL?.();
+  Linking.getInitialURL();
 
 export const useGetInitialURL = () => {
   const [value, setValue] = useState<string>();

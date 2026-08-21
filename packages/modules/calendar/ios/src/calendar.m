@@ -8,9 +8,7 @@
 
 @implementation Calendar
 
-+ (NSString *)name {
- return @"Calendar";
-}
+
 
 - (id)getCalendars {
   EKEventStore *store = [[EKEventStore alloc] init];

@@ -1,17 +1,9 @@
 // Auto-generated from Video.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface Video extends INativeModules {
-  getStatus(): Record<string, any>;
-  play(): void;
-  pause(): void;
-  setVolume(volume: number): void;
-  setMuted(muted: boolean): void;
-}
+import { Video } from './generated/Video';
 
 export const getGetStatus = (): Record<string, any> =>
-  NativeModules.Video?.getStatus?.();
+  Video.getStatus();
 
 export const useGetStatus = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -28,7 +20,7 @@ export const useGetStatus = () => {
   return value;
 };
 
-export const getPlay = (): void => NativeModules.Video?.play?.();
+export const getPlay = (): void => Video.play();
 
 export const usePlay = () => {
   const [value, setValue] = useState<void>();
@@ -45,7 +37,7 @@ export const usePlay = () => {
   return value;
 };
 
-export const getPause = (): void => NativeModules.Video?.pause?.();
+export const getPause = (): void => Video.pause();
 
 export const usePause = () => {
   const [value, setValue] = useState<void>();

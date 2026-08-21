@@ -1,16 +1,9 @@
 // Auto-generated from MusicLibrary.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface MusicLibrary extends INativeModules {
-  getAlbums(): Record<string, any>[];
-  getSongs(albumId: string): Record<string, any>[];
-  requestPermissions(): Record<string, any>;
-  getPermissions(): Record<string, any>;
-}
+import { MusicLibrary } from './generated/MusicLibrary';
 
 export const getGetAlbums = (): Record<string, any>[] =>
-  NativeModules.MusicLibrary?.getAlbums?.();
+  MusicLibrary.getAlbums();
 
 export const useGetAlbums = () => {
   const [value, setValue] = useState<Record<string, any>[]>();
@@ -46,7 +39,7 @@ export const useGetSongs = (albumId: string) => {
 };
 
 export const getRequestPermissions = (): Record<string, any> =>
-  NativeModules.MusicLibrary?.requestPermissions?.();
+  MusicLibrary.requestPermissions();
 
 export const useRequestPermissions = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -64,7 +57,7 @@ export const useRequestPermissions = () => {
 };
 
 export const getGetPermissions = (): Record<string, any> =>
-  NativeModules.MusicLibrary?.getPermissions?.();
+  MusicLibrary.getPermissions();
 
 export const useGetPermissions = () => {
   const [value, setValue] = useState<Record<string, any>>();

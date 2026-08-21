@@ -1,13 +1,8 @@
 // Auto-generated from Sms.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
+import { Sms } from './generated/Sms';
 
-export interface Sms extends INativeModules {
-  isAvailable(): boolean;
-  sendSMS(addresses: string[], message: string): void;
-}
-
-export const getIsAvailable = (): boolean => NativeModules.Sms?.isAvailable?.();
+export const getIsAvailable = (): boolean => Sms.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();

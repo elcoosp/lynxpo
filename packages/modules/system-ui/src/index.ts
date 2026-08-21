@@ -1,15 +1,9 @@
 // Auto-generated from SystemUi.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface SystemUi extends INativeModules {
-  getBackgroundColor(): string;
-  setBackgroundColor(color: string): void;
-  setStatusBarBackgroundColor(color: string): void;
-}
+import { SystemUi } from './generated/SystemUi';
 
 export const getGetBackgroundColor = (): string =>
-  NativeModules.SystemUi?.getBackgroundColor?.();
+  SystemUi.getBackgroundColor();
 
 export const useGetBackgroundColor = () => {
   const [value, setValue] = useState<string>();

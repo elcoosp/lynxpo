@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.backgroundfetch",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.backgroundfetch",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

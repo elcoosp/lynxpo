@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.linking",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.linking",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

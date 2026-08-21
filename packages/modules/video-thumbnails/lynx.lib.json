@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.videothumbnails",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.videothumbnails",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

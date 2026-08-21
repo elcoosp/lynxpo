@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.musiclibrary",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.musiclibrary",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

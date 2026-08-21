@@ -1,15 +1,9 @@
 // Auto-generated from StandardWebCrypto.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface StandardWebCrypto extends INativeModules {
-  isAvailableAsync(): boolean;
-  randomBytesAsync(length: string): string;
-  digestAsync(algorithm: string, data: string): string;
-}
+import { StandardWebCrypto } from './generated/StandardWebCrypto';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.StandardWebCrypto?.isAvailableAsync?.();
+  StandardWebCrypto.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
