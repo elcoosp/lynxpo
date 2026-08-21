@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.sensors",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.sensors",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

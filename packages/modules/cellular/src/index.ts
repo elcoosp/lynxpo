@@ -1,19 +1,6 @@
 // Auto-generated from CellularModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface CellularModule extends INativeModules {
-  getCellularGeneration(): number;
-  getIsoCountryCode(): string | null;
-  getCarrierName(): string | null;
-  getMobileCountryCode(): string | null;
-  getMobileNetworkCode(): string | null;
-  getCellularGenerationAsync(): Promise<number>;
-  getIsoCountryCodeAsync(): Promise<string>;
-  getCarrierNameAsync(): Promise<string>;
-  getMobileCountryCodeAsync(): Promise<string>;
-  getMobileNetworkCodeAsync(): Promise<string>;
-}
+import { CellularModule } from './generated/CellularModule';
 
 export const getGetCellularGeneration = (): number =>
   NativeModules.CellularModule?.getCellularGeneration?.();

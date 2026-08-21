@@ -1,12 +1,6 @@
 // Auto-generated from HapticsModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface HapticsModule extends INativeModules {
-  impactAsync(style: number): Promise<void>;
-  notificationAsync(type: number): Promise<void>;
-  selectionAsync(): Promise<void>;
-}
+import { HapticsModule } from './generated/HapticsModule';
 
 export const getImpactAsync = (style: number): Promise<void> =>
   NativeModules.HapticsModule?.impactAsync?.(style);

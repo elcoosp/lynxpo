@@ -1,15 +1,6 @@
 // Auto-generated from NetworkModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface NetworkModule extends INativeModules {
-  getIpAddress(): string | null;
-  getNetworkState(): Record<string, any>;
-  getIpAddressAsync(): Promise<string>;
-  getNetworkStateAsync(): Promise<any>;
-  addListener(eventName: string): void;
-  removeListeners(count: number): void;
-}
+import { NetworkModule } from './generated/NetworkModule';
 
 export const getGetIpAddress = (): string | null =>
   NativeModules.NetworkModule?.getIpAddress?.();

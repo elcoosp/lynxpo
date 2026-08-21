@@ -1,13 +1,6 @@
 // Auto-generated from BatteryModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface BatteryModule extends INativeModules {
-  getBatteryLevel(): any;
-  getBatteryState(): any;
-  isLowPowerModeEnabled(): any;
-  isBatteryOptimizationEnabled(): any;
-}
+import { BatteryModule } from './generated/BatteryModule';
 
 export const getGetBatteryLevel = (): any =>
   NativeModules.BatteryModule?.getBatteryLevel?.();

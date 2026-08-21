@@ -1,14 +1,6 @@
 // Auto-generated from ClipboardModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface ClipboardModule extends INativeModules {
-  getString(): string | null;
-  hasString(): boolean;
-  getStringAsync(): Promise<string>;
-  setStringAsync(text: string): Promise<void>;
-  hasStringAsync(): Promise<boolean>;
-}
+import { ClipboardModule } from './generated/ClipboardModule';
 
 export const getGetString = (): string | null =>
   NativeModules.ClipboardModule?.getString?.();

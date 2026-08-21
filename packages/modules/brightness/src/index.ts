@@ -1,20 +1,6 @@
 // Auto-generated from BrightnessModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface BrightnessModule extends INativeModules {
-  getBrightness(): number;
-  getSystemBrightness(): number;
-  isUsingSystemBrightness(): boolean;
-  getSystemBrightnessMode(): number;
-  getBrightnessAsync(): Promise<string>;
-  setBrightnessAsync(value: number): Promise<void>;
-  getSystemBrightnessAsync(): Promise<string>;
-  isUsingSystemBrightnessAsync(): Promise<boolean>;
-  getSystemBrightnessModeAsync(): Promise<number>;
-  addListener(eventName: string): void;
-  removeListeners(count: number): void;
-}
+import { BrightnessModule } from './generated/BrightnessModule';
 
 export const getGetBrightness = (): number =>
   NativeModules.BrightnessModule?.getBrightness?.();

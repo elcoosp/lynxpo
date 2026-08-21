@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.haptics",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.haptics",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}

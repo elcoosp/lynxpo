@@ -1,19 +1,10 @@
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
+import { SensorsModule } from './generated/SensorsModule';
 
 export interface SensorReading {
   x: number;
   y: number;
   z: number;
-}
-
-export interface SensorsModule extends INativeModules {
-  getAccelerometer(): SensorReading | null;
-  getGyroscope(): SensorReading | null;
-  isAvailable(): boolean;
-  getAccelerometerAsync(): Promise<SensorReading>;
-  getGyroscopeAsync(): Promise<SensorReading>;
-  isAvailableAsync(): Promise<boolean>;
 }
 
 export const getAccelerometer = (): SensorReading | null =>

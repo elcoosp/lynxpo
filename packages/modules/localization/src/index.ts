@@ -1,11 +1,6 @@
 // Auto-generated from LocalizationModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface LocalizationModule extends INativeModules {
-  getLocales(): Record<string, any | null>[];
-  getCalendars(): Record<string, any | null>[];
-}
+import { LocalizationModule } from './generated/LocalizationModule';
 
 export const getGetLocales = (): Record<string, any | null>[] =>
   NativeModules.LocalizationModule?.getLocales?.();

@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.brightness",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.brightness",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}
