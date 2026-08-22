@@ -1,18 +1,5 @@
-:root {
-  --bg-0: #07080d;
-  --bg-1: #0e1018;
-  --bg-2: #161a26;
-  --line: rgba(255, 255, 255, 0.08);
-  --txt: #e7ecf5;
-  --txt-dim: #8b93a7;
-  --accent: #12e5e5;
-  --accent-2: #ef9bff;
-  --accent-3: #ff6448;
-  --ok: #4ade80;
-  --warn: #fbbf24;
-  --err: #fb7185;
-  --chip: rgba(18, 229, 229, 0.12);
-}
+/* NOTE: Lynx does not reliably resolve CSS custom properties (var(--x)),
+   so all colors are literal here. Do not reintroduce var(). */
 
 .Showcase {
   display: flex;
@@ -22,28 +9,26 @@
     radial-gradient(120% 80% at 12% -10%, rgba(239, 155, 255, 0.18), transparent 55%),
     radial-gradient(120% 90% at 100% 0%, rgba(18, 229, 229, 0.16), transparent 50%),
     radial-gradient(140% 120% at 50% 120%, rgba(255, 100, 72, 0.12), transparent 55%),
-    var(--bg-0);
-  color: var(--txt);
+    #07080d;
+  color: #e7ecf5;
 }
 
 /* ---- Header ---- */
 .Header {
   padding: 28px 22px 18px;
-  border-bottom: 1px solid var(--line);
+  padding-top: 52px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .Header__Title {
   font-size: 30px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  background: linear-gradient(92deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #12e5e5;
 }
 .Header__Sub {
   margin-top: 6px;
   font-size: 13px;
-  color: var(--txt-dim);
+  color: #8b93a7;
   font-weight: 500;
 }
 .Header__Stats {
@@ -54,7 +39,7 @@
 .Stat {
   flex: 1;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 12px 14px;
   margin-right: 10px;
@@ -63,13 +48,12 @@
 .Stat__Num {
   font-size: 22px;
   font-weight: 800;
-  color: var(--accent);
+  color: #12e5e5;
 }
 .Stat__Label {
   margin-top: 2px;
   font-size: 11px;
-  color: var(--txt-dim);
-  text-transform: uppercase;
+  color: #8b93a7;
   letter-spacing: 0.6px;
 }
 
@@ -79,6 +63,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding: 16px;
+  width: 100%;
 }
 .Cell {
   width: 33.33%;
@@ -92,42 +77,43 @@
   justify-content: center;
   height: 78px;
   padding: 12px 14px;
-  background: linear-gradient(150deg, var(--bg-2), var(--bg-1));
-  border: 1px solid var(--line);
+  background: linear-gradient(150deg, #161a26, #0e1018);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   transition: transform 0.08s ease, border-color 0.15s ease;
 }
 .Cell__Btn:active {
   transform: scale(0.97);
-  border-color: var(--accent);
+  border-color: #12e5e5;
 }
 .Cell__Name {
   font-size: 14px;
   font-weight: 700;
+  color: #e7ecf5;
 }
 .Cell__Count {
   margin-top: 4px;
   font-size: 11px;
-  color: var(--txt-dim);
+  color: #8b93a7;
 }
 .Cell__Dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--txt-dim);
+  background: #8b93a7;
   position: absolute;
   top: 14px;
   right: 14px;
 }
-.Cell__Dot--ok { background: var(--ok); }
-.Cell__Dot--warn { background: var(--warn); }
-.Cell__Dot--err { background: var(--err); }
+.Cell__Dot--ok { background: #4ade80; }
+.Cell__Dot--warn { background: #fbbf24; }
+.Cell__Dot--err { background: #fb7185; }
 
 /* ---- Detail panel ---- */
 .Detail {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 18px 18px 40px;
   background: rgba(7, 8, 13, 0.6);
 }
@@ -140,27 +126,35 @@
 .Detail__Title {
   font-size: 20px;
   font-weight: 800;
+  color: #e7ecf5;
 }
 .Detail__Key {
   font-size: 12px;
-  color: var(--accent);
+  color: #12e5e5;
   font-family: monospace;
 }
 .Detail__Back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 9px 16px;
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   font-size: 13px;
   font-weight: 700;
-  color: var(--txt);
+}
+.Detail__BackText {
+  color: #e7ecf5;
+  font-size: 13px;
+  font-weight: 700;
 }
 .MethList { margin-top: 16px; }
 .Meth {
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.025);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 12px 14px;
   margin-bottom: 10px;
@@ -175,10 +169,11 @@
   font-size: 14px;
   font-weight: 700;
   font-family: monospace;
+  color: #e7ecf5;
 }
 .Meth__Call {
   padding: 7px 13px;
-  background: linear-gradient(92deg, var(--accent), var(--accent-2));
+  background: linear-gradient(92deg, #12e5e5, #ef9bff);
   border-radius: 10px;
   font-size: 12px;
   font-weight: 800;
@@ -186,37 +181,40 @@
 }
 .Meth__Call--disabled {
   background: rgba(255, 255, 255, 0.06);
-  color: var(--txt-dim);
+  color: #8b93a7;
 }
 .Meth__Flag {
   font-size: 10px;
-  color: var(--txt-dim);
+  color: #8b93a7;
   margin-left: 8px;
 }
 .Meth__Result {
   margin-top: 10px;
   padding: 10px 12px;
-  background: var(--bg-0);
+  background: #07080d;
   border-radius: 10px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 12px;
   font-family: monospace;
-  color: var(--txt);
+  color: #e7ecf5;
   word-break: break-word;
   white-space: pre-wrap;
+}
+.Meth__ResultText {
+  color: #e7ecf5;
 }
 .Meth__Status {
   margin-left: 8px;
   font-size: 11px;
   font-weight: 700;
 }
-.Meth__Status--ok { color: var(--ok); }
-.Meth__Status--err { color: var(--err); }
-.Meth__Status--pending { color: var(--txt-dim); }
+.Meth__Status--ok { color: #4ade80; }
+.Meth__Status--err { color: #fb7185; }
+.Meth__Status--pending { color: #8b93a7; }
 
 .Footer {
   padding: 18px 22px 40px;
   font-size: 11px;
-  color: var(--txt-dim);
-  border-top: 1px solid var(--line);
+  color: #8b93a7;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
