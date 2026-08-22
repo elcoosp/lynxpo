@@ -97,77 +97,77 @@ export function HostShowcase() {
         </view>
       </view>
 
-      {!selected && (
-        <scroll-view scroll-orientation="vertical">
-          <view className="Grid">
-            {MODULES.map((m) => {
-              const dot =
-                stats[m.key] === 'ok' ? 'Cell__Dot--ok'
-                : stats[m.key] === 'err' ? 'Cell__Dot--err'
-                : stats[m.key] === 'warn' ? 'Cell__Dot--warn'
-                : '';
-              return (
-                <view className="Cell" key={m.pkg}>
-                  <view
-                    className="Cell__Btn"
-                    bindtap={() => setSelected(m)}
-                  >
-                    <view className={`Cell__Dot ${dot}`} />
-                    <text className="Cell__Name">{m.label}</text>
-                    <text className="Cell__Count">{m.methods.length} methods</text>
-                  </view>
+      <scroll-view scroll-orientation="vertical" style={{ display: selected ? 'none' : 'flex' }}>
+        <view className="Grid">
+          {MODULES.map((m) => {
+            const dot =
+              stats[m.key] === 'ok' ? 'Cell__Dot--ok'
+              : stats[m.key] === 'err' ? 'Cell__Dot--err'
+              : stats[m.key] === 'warn' ? 'Cell__Dot--warn'
+              : '';
+            return (
+              <view className="Cell" key={m.pkg}>
+                <view
+                  className="Cell__Btn"
+                  bindtap={() => setSelected(m)}
+                >
+                  <view className={`Cell__Dot ${dot}`} />
+                  <text className="Cell__Name">{m.label}</text>
+                  <text className="Cell__Count">{m.methods.length} methods</text>
                 </view>
-              );
-            })}
-          </view>
-        </scroll-view>
-      )}
-
-      {selected && (
-        <view className="Detail">
-          <view className="Detail__Head">
-            <view>
-              <text className="Detail__Title">{selected.label}</text>
-              <text className="Detail__Key">NativeModules.{selected.key}</text>
-            </view>
-            <view className="Detail__Back" bindtap={() => setSelected(null)}>
-              ← Modules
-            </view>
-          </view>
-          <view className="MethList">
-            {selected.methods.map((md) => {
-              const id = `${selected.key}.${md.name}`;
-              const st = meth[id] ?? { status: 'pending', result: '' };
-              return (
-                <view className="Meth" key={id}>
-                  <view className="Meth__Top">
-                    <view style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                      <text className="Meth__Name">{md.name}</text>
-                      {!md.zeroArg ? null : (
-                        <text className="Meth__Flag">auto</text>
-                      )}
-                    </view>
-                    <view
-                      className={md.zeroArg ? 'Meth__Call' : 'Meth__Call Meth__Call--disabled'}
-                      bindtap={() => callMethod(selected, md.name, md.zeroArg)}
-                    >
-                      Call
-                    </view>
-                  </view>
-                  {st.result ? (
-                    <view className="Meth__Result">
-                      <text className={`Meth__Status Meth__Status--${st.status}`}>
-                        {st.status === 'ok' ? '✓ ' : st.status === 'err' ? '✗ ' : ''}
-                      </text>
-                      <text>{st.result}</text>
-                    </view>
-                  ) : null}
-                </view>
-              );
-            })}
-          </view>
+              </view>
+            );
+          })}
         </view>
-      )}
+      </scroll-view>
+
+      <view className="Detail" style={{ display: selected ? 'flex' : 'none' }}>
+        {selected ? (
+          <>
+            <view className="Detail__Head">
+              <view>
+                <text className="Detail__Title">{selected.label}</text>
+                <text className="Detail__Key">NativeModules.{selected.key}</text>
+              </view>
+              <view className="Detail__Back" bindtap={() => setSelected(null)}>
+                <text className="Detail__BackText">‹ Back</text>
+              </view>
+            </view>
+            <view className="MethList">
+              {selected.methods.map((md) => {
+                const id = `${selected.key}.${md.name}`;
+                const st = meth[id] ?? { status: 'pending', result: '' };
+                return (
+                  <view className="Meth" key={id}>
+                    <view className="Meth__Top">
+                      <view style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <text className="Meth__Name">{md.name}</text>
+                        {!md.zeroArg ? null : (
+                          <text className="Meth__Flag">auto</text>
+                        )}
+                      </view>
+                      <view
+                        className={md.zeroArg ? 'Meth__Call' : 'Meth__Call Meth__Call--disabled'}
+                        bindtap={() => callMethod(selected, md.name, md.zeroArg)}
+                      >
+                        Call
+                      </view>
+                    </view>
+                    {st.result ? (
+                      <view className="Meth__Result">
+                        <text className={`Meth__Status Meth__Status--${st.status}`}>
+                          {st.status === 'ok' ? '✓ ' : st.status === 'err' ? '✗ ' : ''}
+                        </text>
+                        <text className="Meth__ResultText">{st.result}</text>
+                      </view>
+                    ) : null}
+                  </view>
+                );
+              })}
+            </view>
+          </>
+        ) : null}
+      </view>
 
       <view className="Footer">
         Verified = a zero-arg method returned without throwing. Tap a module to inspect and re-invoke its methods.
