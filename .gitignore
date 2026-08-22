@@ -18,3 +18,6 @@ proposals
 
 # Local dev-environment notes (port map, agent conventions) — not product source
 AGENTS.md
+
+# Generated source dump for external review (see scripts/dump-files.sh)
+dump.txt
