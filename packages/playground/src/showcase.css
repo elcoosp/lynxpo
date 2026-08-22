@@ -248,3 +248,23 @@
   color: #8b93a7;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* ---- Native UI components (expo-linear-gradient port) ---- */
+.NativeUI {
+  margin: 16px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+.NativeUI__Title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #12e5e5;
+  margin-bottom: 10px;
+}
+.NativeUI__Gradient {
+  width: 100%;
+  height: 90px;
+  border-radius: 12px;
+}

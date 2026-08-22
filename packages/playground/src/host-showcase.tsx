@@ -164,6 +164,18 @@ export function HostShowcase() {
         </view>
       </view>
 
+      {/* Native UI component port (expo-linear-gradient) — real CAGradientLayer */}
+      <view className="NativeUI">
+        <text className="NativeUI__Title">Native UI · linear-gradient</text>
+        <linear-gradient
+          className="NativeUI__Gradient"
+          colors={['#fe2c55', '#7d2cff', '#00ebeb']}
+          locations={[0, 0.5, 1]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+        />
+      </view>
+
       <scroll-view
         scroll-orientation="vertical"
         style={{ display: selected ? 'none' : 'flex' }}
