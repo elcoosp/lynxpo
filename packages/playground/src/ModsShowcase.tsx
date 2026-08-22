@@ -23,9 +23,8 @@ import { useConstantsInfo } from './mods/constantsInfo.js';
 import { useContactsInfo } from './mods/contactsInfo.js';
 import { useCryptoInfo } from './mods/cryptoInfo.js';
 import { useDeviceInfo } from './mods/deviceInfo.js';
-import { useEnvInfo } from './mods/envInfo.js';
-import { useSplashScreenInfo } from './mods/splashScreenInfo.js';
 import { useDocumentPickerInfo } from './mods/documentPickerInfo.js';
+import { useEnvInfo } from './mods/envInfo.js';
 import { useFileSystemInfo } from './mods/fileSystemInfo.js';
 import { useFontInfo } from './mods/fontInfo.js';
 import { useHapticsInfo } from './mods/hapticsInfo.js';
@@ -55,6 +54,7 @@ import { useSensorsInfo } from './mods/sensorsInfo.js';
 import { useSharingInfo } from './mods/sharingInfo.js';
 import { useSmsInfo } from './mods/smsInfo.js';
 import { useSpeechInfo } from './mods/speechInfo.js';
+import { useSplashScreenInfo } from './mods/splashScreenInfo.js';
 import { useSqliteInfo } from './mods/sqliteInfo.js';
 import { useStandardWebCryptoInfo } from './mods/standard-web-cryptoInfo.js';
 import { useStatusBarInfo } from './mods/statusBarInfo.js';
@@ -444,7 +444,9 @@ export function ModsShowcase() {
           source="expo-splash-screen"
           icon="🌅"
           rows={
-            splashError ? [{ label: 'Error', value: splashError.message }] : splashRows
+            splashError
+              ? [{ label: 'Error', value: splashError.message }]
+              : splashRows
           }
         />
         <ModuleCard

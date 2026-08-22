@@ -6,9 +6,21 @@
   flex-direction: column;
   min-height: 100vh;
   background:
-    radial-gradient(120% 80% at 12% -10%, rgba(239, 155, 255, 0.18), transparent 55%),
-    radial-gradient(120% 90% at 100% 0%, rgba(18, 229, 229, 0.16), transparent 50%),
-    radial-gradient(140% 120% at 50% 120%, rgba(255, 100, 72, 0.12), transparent 55%),
+    radial-gradient(
+      120% 80% at 12% -10%,
+      rgba(239, 155, 255, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 90% at 100% 0%,
+      rgba(18, 229, 229, 0.16),
+      transparent 50%
+    ),
+    radial-gradient(
+      140% 120% at 50% 120%,
+      rgba(255, 100, 72, 0.12),
+      transparent 55%
+    ),
     #07080d;
   color: #e7ecf5;
 }
@@ -44,7 +56,9 @@
   padding: 12px 14px;
   margin-right: 10px;
 }
-.Stat:last-child { margin-right: 0; }
+.Stat:last-child {
+  margin-right: 0;
+}
 .Stat__Num {
   font-size: 22px;
   font-weight: 800;
@@ -80,7 +94,9 @@
   background: linear-gradient(150deg, #161a26, #0e1018);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  transition: transform 0.08s ease, border-color 0.15s ease;
+  transition:
+    transform 0.08s ease,
+    border-color 0.15s ease;
 }
 .Cell__Btn:active {
   transform: scale(0.97);
@@ -105,9 +121,15 @@
   top: 14px;
   right: 14px;
 }
-.Cell__Dot--ok { background: #4ade80; }
-.Cell__Dot--warn { background: #fbbf24; }
-.Cell__Dot--err { background: #fb7185; }
+.Cell__Dot--ok {
+  background: #4ade80;
+}
+.Cell__Dot--warn {
+  background: #fbbf24;
+}
+.Cell__Dot--err {
+  background: #fb7185;
+}
 
 /* ---- Detail panel ---- */
 .Detail {
@@ -149,7 +171,9 @@
   font-size: 13px;
   font-weight: 700;
 }
-.MethList { margin-top: 16px; }
+.MethList {
+  margin-top: 16px;
+}
 .Meth {
   display: flex;
   flex-direction: column;
@@ -208,9 +232,15 @@
   font-size: 11px;
   font-weight: 700;
 }
-.Meth__Status--ok { color: #4ade80; }
-.Meth__Status--err { color: #fb7185; }
-.Meth__Status--pending { color: #8b93a7; }
+.Meth__Status--ok {
+  color: #4ade80;
+}
+.Meth__Status--err {
+  color: #fb7185;
+}
+.Meth__Status--pending {
+  color: #8b93a7;
+}
 
 .Footer {
   padding: 18px 22px 40px;
