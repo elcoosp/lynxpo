@@ -1,4 +1,8 @@
 // Auto-generated from MusicLibrary.kt
+// NOTE: There is no current `expo-music-library` package on Expo main (it was
+// removed/deprecated in favor of `expo-media-library`). This module is an
+// intentionally-retained LynxPo original exposing music-library capability
+// that has no current upstream Expo module to port from.
 import { useEffect, useState } from '@lynx-js/react';
 import { MusicLibrary } from './generated/MusicLibrary';
 

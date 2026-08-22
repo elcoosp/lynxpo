@@ -1,9 +1,18 @@
 // Auto-generated from Appearance.kt
+// NOTE: There is no current `expo-appearance` package on Expo main (it was
+// removed). This module is an intentionally-retained LynxPo original — kept
+// because the capability (color-scheme/appearance observation) is still
+// useful and has no upstream Expo module to port from.
 import { useEffect, useState } from '@lynx-js/react';
-import { Appearance } from './generated/Appearance';
+import type { NativeModules as INativeModules } from '@lynx-js/types';
+
+export interface Appearance extends INativeModules {
+  getColorScheme(): string;
+  setColorScheme(scheme: string): void;
+}
 
 export const getGetColorScheme = (): string =>
-  Appearance.getColorScheme();
+  NativeModules.Appearance?.getColorScheme?.();
 
 export const useGetColorScheme = () => {
   const [value, setValue] = useState<string>();

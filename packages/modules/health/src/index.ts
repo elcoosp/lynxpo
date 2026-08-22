@@ -1,9 +1,13 @@
 // Auto-generated from Health.kt
+// NOTE: There is no `expo-health` package on Expo main — Expo never shipped a
+// first-party Health module (health data goes through `expo-sensors` /
+// `expo-healthkit`-style community addons). This module is an
+// intentionally-retained LynxPo original exposing device health/sensor
+// capability that has no upstream Expo module to port from.
 import { useEffect, useState } from '@lynx-js/react';
 import { Health } from './generated/Health';
 
-export const getIsAvailableAsync = (): boolean =>
-  Health.isAvailableAsync();
+export const getIsAvailableAsync = (): boolean => Health.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
