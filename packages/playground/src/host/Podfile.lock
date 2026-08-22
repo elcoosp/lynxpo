@@ -37,6 +37,8 @@ PODS:
     - Lynx/Framework
   - LynxpoModsBatteryModule (0.0.0):
     - Lynx/Framework
+  - LynxpoModsBlobModule (0.0.0):
+    - Lynx/Framework
   - LynxpoModsBrightnessModule (0.0.0):
     - Lynx/Framework
   - LynxpoModsCalendar (0.0.0):
@@ -181,6 +183,7 @@ DEPENDENCIES:
   - LynxpoModsBackgroundFetch (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/background-fetch/ios`)
   - LynxpoModsBackgroundTask (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/background-task/ios`)
   - LynxpoModsBatteryModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/battery/ios`)
+  - LynxpoModsBlobModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/blob/ios`)
   - LynxpoModsBrightnessModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/brightness/ios`)
   - LynxpoModsCalendar (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/calendar/ios`)
   - LynxpoModsCameraModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/camera/ios`)
@@ -268,6 +271,8 @@ EXTERNAL SOURCES:
     :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/background-task/ios"
   LynxpoModsBatteryModule:
     :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/battery/ios"
+  LynxpoModsBlobModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/blob/ios"
   LynxpoModsBrightnessModule:
     :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/brightness/ios"
   LynxpoModsCalendar:
@@ -385,6 +390,7 @@ SPEC CHECKSUMS:
   LynxpoModsBackgroundFetch: 13b4b912c3f210b3310031b4c978721ef9c0bbab
   LynxpoModsBackgroundTask: 24608899fbea12f4bded27a9baeddfb3a0f1876f
   LynxpoModsBatteryModule: 4e7fd61100e0c9358f5b528e260daef723b93980
+  LynxpoModsBlobModule: 320ae23a46cd424f8495aa5a3a842fef14142d9f
   LynxpoModsBrightnessModule: 15290bd96701f10e2bece0f08cdfcacbd009ff5b
   LynxpoModsCalendar: a43a82a9a7b70edc6adc9ec343e48f121b740cff
   LynxpoModsCameraModule: 2453e8c526483932c61a364929c2eca2c942bad3

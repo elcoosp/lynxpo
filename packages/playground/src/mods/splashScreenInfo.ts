@@ -1,5 +1,5 @@
 import { useEffect, useState } from '@lynx-js/react';
-import { getStatusAsync, getHideAsync } from '@lynxpo/mods-splash-screen';
+import { getHideAsync, getStatusAsync } from '@lynxpo/mods-splash-screen';
 
 export interface SplashScreenInfo {
   status: string;

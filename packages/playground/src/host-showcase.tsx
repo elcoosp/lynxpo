@@ -1,6 +1,11 @@
-import { root, useState, useEffect, useCallback } from '@lynx-js/react';
+import { root, useCallback, useEffect, useState } from '@lynx-js/react';
 import './showcase.css';
-import { MODULES, MODULE_COUNT, METHOD_COUNT, ModEntry } from './mods-registry.js';
+import {
+  METHOD_COUNT,
+  MODULE_COUNT,
+  MODULES,
+  type ModEntry,
+} from './mods-registry.js';
 
 type Status = 'pending' | 'ok' | 'err';
 interface MethState {
@@ -15,7 +20,9 @@ declare const NativeModules: Record<string, any>;
 // every call silently returned undefined before this fix.
 const resolveMod = (key: string): any => {
   const nm =
-    typeof NativeModules !== 'undefined' ? NativeModules : (globalThis as any).NativeModules;
+    typeof NativeModules !== 'undefined'
+      ? NativeModules
+      : (globalThis as any).NativeModules;
   return nm?.[key];
 };
 
@@ -47,21 +54,33 @@ export function HostShowcase() {
     setStats(nextMod);
   }, []);
 
-  const callMethod = useCallback((m: ModEntry, name: string, zeroArg: boolean) => {
-    const id = `${m.key}.${name}`;
-    if (!zeroArg) {
-      setMeth((p) => ({ ...p, [id]: { status: 'pending', result: '⚠ requires arguments — not auto-callable' } }));
-      return;
-    }
-    try {
-      const mod = resolveMod(m.key);
-      const out = mod?.[name]?.();
-      setMeth((p) => ({ ...p, [id]: { status: 'ok', result: fmt(out) } }));
-      setStats((s) => ({ ...s, [m.key]: 'ok' }));
-    } catch (e: any) {
-      setMeth((p) => ({ ...p, [id]: { status: 'err', result: String(e?.message ?? e) } }));
-    }
-  }, []);
+  const callMethod = useCallback(
+    (m: ModEntry, name: string, zeroArg: boolean) => {
+      const id = `${m.key}.${name}`;
+      if (!zeroArg) {
+        setMeth((p) => ({
+          ...p,
+          [id]: {
+            status: 'pending',
+            result: '⚠ requires arguments — not auto-callable',
+          },
+        }));
+        return;
+      }
+      try {
+        const mod = resolveMod(m.key);
+        const out = mod?.[name]?.();
+        setMeth((p) => ({ ...p, [id]: { status: 'ok', result: fmt(out) } }));
+        setStats((s) => ({ ...s, [m.key]: 'ok' }));
+      } catch (e: any) {
+        setMeth((p) => ({
+          ...p,
+          [id]: { status: 'err', result: String(e?.message ?? e) },
+        }));
+      }
+    },
+    [],
+  );
 
   // On-demand probe: when a module is opened, invoke its zero-arg (non-privacy)
   // methods so the detail view shows real values immediately. We deliberately do
@@ -69,11 +88,29 @@ export function HostShowcase() {
   // trigger an uncatchable native abort that blanks the whole view. Privacy
   // modules are excluded here too (their prompt is shown on explicit tap).
   const PRIVACY_KEYS = new Set([
-    'CameraModule', 'ContactsModule', 'Calendar', 'LocationModule', 'MediaLibraryModule',
-    'MusicLibrary', 'ImagePickerModule', 'SpeechModule', 'Health', 'SensorsModule',
-    'LocalAuthenticationModule', 'AppleAuthentication', 'TrackingTransparency', 'Audio',
-    'Microphone', 'ClipboardModule', 'PhotoLibrary', 'Video', 'LivePhoto', 'ScreenCapture',
-    'ImageManipulator', 'Image', 'VideoThumbnails',
+    'CameraModule',
+    'ContactsModule',
+    'Calendar',
+    'LocationModule',
+    'MediaLibraryModule',
+    'MusicLibrary',
+    'ImagePickerModule',
+    'SpeechModule',
+    'Health',
+    'SensorsModule',
+    'LocalAuthenticationModule',
+    'AppleAuthentication',
+    'TrackingTransparency',
+    'Audio',
+    'Microphone',
+    'ClipboardModule',
+    'PhotoLibrary',
+    'Video',
+    'LivePhoto',
+    'ScreenCapture',
+    'ImageManipulator',
+    'Image',
+    'VideoThumbnails',
   ]);
   useEffect(() => {
     if (!selected) return;
@@ -84,9 +121,18 @@ export function HostShowcase() {
       try {
         const mod = resolveMod(m.key);
         const out = mod?.[md.name]?.();
-        setMeth((p) => (p[id] ? p : { ...p, [id]: { status: 'ok', result: fmt(out) } }));
+        setMeth((p) =>
+          p[id] ? p : { ...p, [id]: { status: 'ok', result: fmt(out) } },
+        );
       } catch (e: any) {
-        setMeth((p) => (p[id] ? p : { ...p, [id]: { status: 'err', result: String(e?.message ?? e) } }));
+        setMeth((p) =>
+          p[id]
+            ? p
+            : {
+                ...p,
+                [id]: { status: 'err', result: String(e?.message ?? e) },
+              },
+        );
       }
     }
   }, [selected]);
@@ -98,7 +144,10 @@ export function HostShowcase() {
     <view className="Showcase">
       <view className="Header">
         <text className="Header__Title">LynxPo Modules</text>
-        <text className="Header__Sub">Standalone host · {MODULE_COUNT} native modules · {METHOD_COUNT} methods</text>
+        <text className="Header__Sub">
+          Standalone host · {MODULE_COUNT} native modules · {METHOD_COUNT}{' '}
+          methods
+        </text>
         <view className="Header__Stats">
           <view className="Stat">
             <text className="Stat__Num">{MODULE_COUNT}</text>
@@ -115,23 +164,28 @@ export function HostShowcase() {
         </view>
       </view>
 
-      <scroll-view scroll-orientation="vertical" style={{ display: selected ? 'none' : 'flex' }}>
+      <scroll-view
+        scroll-orientation="vertical"
+        style={{ display: selected ? 'none' : 'flex' }}
+      >
         <view className="Grid">
           {MODULES.map((m) => {
             const dot =
-              stats[m.key] === 'ok' ? 'Cell__Dot--ok'
-              : stats[m.key] === 'err' ? 'Cell__Dot--err'
-              : stats[m.key] === 'warn' ? 'Cell__Dot--warn'
-              : '';
+              stats[m.key] === 'ok'
+                ? 'Cell__Dot--ok'
+                : stats[m.key] === 'err'
+                  ? 'Cell__Dot--err'
+                  : stats[m.key] === 'warn'
+                    ? 'Cell__Dot--warn'
+                    : '';
             return (
               <view className="Cell" key={m.pkg}>
-                <view
-                  className="Cell__Btn"
-                  bindtap={() => setSelected(m)}
-                >
+                <view className="Cell__Btn" bindtap={() => setSelected(m)}>
                   <view className={`Cell__Dot ${dot}`} />
                   <text className="Cell__Name">{m.label}</text>
-                  <text className="Cell__Count">{m.methods.length} methods</text>
+                  <text className="Cell__Count">
+                    {m.methods.length} methods
+                  </text>
                 </view>
               </view>
             );
@@ -145,7 +199,9 @@ export function HostShowcase() {
             <view className="Detail__Head">
               <view>
                 <text className="Detail__Title">{selected.label}</text>
-                <text className="Detail__Key">NativeModules.{selected.key}</text>
+                <text className="Detail__Key">
+                  NativeModules.{selected.key}
+                </text>
               </view>
               <view className="Detail__Back" bindtap={() => setSelected(null)}>
                 <text className="Detail__BackText">‹ Back</text>
@@ -158,23 +214,41 @@ export function HostShowcase() {
                 return (
                   <view className="Meth" key={id}>
                     <view className="Meth__Top">
-                      <view style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                      <view
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                        }}
+                      >
                         <text className="Meth__Name">{md.name}</text>
                         {!md.zeroArg ? null : (
                           <text className="Meth__Flag">auto</text>
                         )}
                       </view>
                       <view
-                        className={md.zeroArg ? 'Meth__Call' : 'Meth__Call Meth__Call--disabled'}
-                        bindtap={() => callMethod(selected, md.name, md.zeroArg)}
+                        className={
+                          md.zeroArg
+                            ? 'Meth__Call'
+                            : 'Meth__Call Meth__Call--disabled'
+                        }
+                        bindtap={() =>
+                          callMethod(selected, md.name, md.zeroArg)
+                        }
                       >
                         Call
                       </view>
                     </view>
                     {st.result ? (
                       <view className="Meth__Result">
-                        <text className={`Meth__Status Meth__Status--${st.status}`}>
-                          {st.status === 'ok' ? '✓ ' : st.status === 'err' ? '✗ ' : ''}
+                        <text
+                          className={`Meth__Status Meth__Status--${st.status}`}
+                        >
+                          {st.status === 'ok'
+                            ? '✓ '
+                            : st.status === 'err'
+                              ? '✗ '
+                              : ''}
                         </text>
                         <text className="Meth__ResultText">{st.result}</text>
                       </view>
@@ -188,7 +262,8 @@ export function HostShowcase() {
       </view>
 
       <view className="Footer">
-        Verified = a zero-arg method returned without throwing. Tap a module to inspect and re-invoke its methods.
+        Verified = a zero-arg method returned without throwing. Tap a module to
+        inspect and re-invoke its methods.
       </view>
     </view>
   );
