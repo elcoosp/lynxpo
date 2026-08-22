@@ -1,6 +1,16 @@
 #!/bin/bash
 cd "/Users/adm/Documents/Repos/lynxpo/packages/playground/src/host"
 export JAVA_HOME=~/jdk11/Contents/Home
+
+# Refresh the host's bundled showcase template from the latest playground
+# build so the standalone host always boots into hostshowcase. The iOS build
+# below copies LynxpoHost/host.lynx.bundle into the app resource.
+PG="/Users/adm/Documents/Repos/lynxpo/packages/playground"
+if [ -f "$PG/dist/hostshowcase.lynx.bundle" ]; then
+  cp "$PG/dist/hostshowcase.lynx.bundle" "$PG/src/host/LynxpoHost/host.lynx.bundle"
+  echo "refreshed host.lynx.bundle from dist/hostshowcase.lynx.bundle"
+fi
+
 xcodebuild -workspace LynxpoHost.xcworkspace \
   -scheme LynxpoHost \
   -configuration Debug \
