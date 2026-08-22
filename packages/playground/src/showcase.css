@@ -1,0 +1,222 @@
+:root {
+  --bg-0: #07080d;
+  --bg-1: #0e1018;
+  --bg-2: #161a26;
+  --line: rgba(255, 255, 255, 0.08);
+  --txt: #e7ecf5;
+  --txt-dim: #8b93a7;
+  --accent: #12e5e5;
+  --accent-2: #ef9bff;
+  --accent-3: #ff6448;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --err: #fb7185;
+  --chip: rgba(18, 229, 229, 0.12);
+}
+
+.Showcase {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background:
+    radial-gradient(120% 80% at 12% -10%, rgba(239, 155, 255, 0.18), transparent 55%),
+    radial-gradient(120% 90% at 100% 0%, rgba(18, 229, 229, 0.16), transparent 50%),
+    radial-gradient(140% 120% at 50% 120%, rgba(255, 100, 72, 0.12), transparent 55%),
+    var(--bg-0);
+  color: var(--txt);
+}
+
+/* ---- Header ---- */
+.Header {
+  padding: 28px 22px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.Header__Title {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(92deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.Header__Sub {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--txt-dim);
+  font-weight: 500;
+}
+.Header__Stats {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+}
+.Stat {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-right: 10px;
+}
+.Stat:last-child { margin-right: 0; }
+.Stat__Num {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.Stat__Label {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--txt-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* ---- Grid ---- */
+.Grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.Cell {
+  width: 33.33%;
+  box-sizing: border-box;
+  padding: 7px;
+}
+.Cell__Btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 78px;
+  padding: 12px 14px;
+  background: linear-gradient(150deg, var(--bg-2), var(--bg-1));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: transform 0.08s ease, border-color 0.15s ease;
+}
+.Cell__Btn:active {
+  transform: scale(0.97);
+  border-color: var(--accent);
+}
+.Cell__Name {
+  font-size: 14px;
+  font-weight: 700;
+}
+.Cell__Count {
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--txt-dim);
+}
+.Cell__Dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--txt-dim);
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+.Cell__Dot--ok { background: var(--ok); }
+.Cell__Dot--warn { background: var(--warn); }
+.Cell__Dot--err { background: var(--err); }
+
+/* ---- Detail panel ---- */
+.Detail {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+  padding: 18px 18px 40px;
+  background: rgba(7, 8, 13, 0.6);
+}
+.Detail__Head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.Detail__Title {
+  font-size: 20px;
+  font-weight: 800;
+}
+.Detail__Key {
+  font-size: 12px;
+  color: var(--accent);
+  font-family: monospace;
+}
+.Detail__Back {
+  padding: 9px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--txt);
+}
+.MethList { margin-top: 16px; }
+.Meth {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.Meth__Top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.Meth__Name {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: monospace;
+}
+.Meth__Call {
+  padding: 7px 13px;
+  background: linear-gradient(92deg, var(--accent), var(--accent-2));
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #07080d;
+}
+.Meth__Call--disabled {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--txt-dim);
+}
+.Meth__Flag {
+  font-size: 10px;
+  color: var(--txt-dim);
+  margin-left: 8px;
+}
+.Meth__Result {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: var(--bg-0);
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  font-family: monospace;
+  color: var(--txt);
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+.Meth__Status {
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.Meth__Status--ok { color: var(--ok); }
+.Meth__Status--err { color: var(--err); }
+.Meth__Status--pending { color: var(--txt-dim); }
+
+.Footer {
+  padding: 18px 22px 40px;
+  font-size: 11px;
+  color: var(--txt-dim);
+  border-top: 1px solid var(--line);
+}
