@@ -268,3 +268,41 @@
   height: 90px;
   border-radius: 12px;
 }
+
+/* ---- expo-blur demo (blur-view) ---- */
+.BlurDemo {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.BlurDemo__Bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(120deg, #ff8a00, #e52e71 55%, #9b2cff);
+}
+.BlurDemo__Blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.BlurDemo__Label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+.BlurDemo__Text {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+}

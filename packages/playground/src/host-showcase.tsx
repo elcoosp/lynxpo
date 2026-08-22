@@ -176,6 +176,23 @@ export function HostShowcase() {
         />
       </view>
 
+      {/* Native UI · blur-view (expo-blur) — real UIVisualEffectView backdrop */}
+      <view className="NativeUI">
+        <text className="NativeUI__Title">Native UI · blur-view</text>
+        <view className="BlurDemo">
+          <view className="BlurDemo__Bg" />
+          <blur-view
+            className="BlurDemo__Blur"
+            tint="dark"
+            intensity={70}
+            border-radius={12}
+          />
+          <view className="BlurDemo__Label">
+            <text className="BlurDemo__Text">Blurred overlay</text>
+          </view>
+        </view>
+      </view>
+
       <scroll-view
         scroll-orientation="vertical"
         style={{ display: selected ? 'none' : 'flex' }}
