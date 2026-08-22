@@ -16,6 +16,7 @@
 		D334A21D796187F7DE77E1FA /* HostTemplateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = C089B7D73B033434422ED746 /* HostTemplateProvider.h */; };
 		E4F815C651632EE0A40E2CF0 /* HostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B143953687F618D2C21B14A4 /* HostViewController.m */; };
 		F082D49DA7910432E22AB5ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B3A0C0827F1AD20E3FDC30 /* Foundation.framework */; };
+		A1B2C3D4E5F60001A1B2C3D4 /* LynxpoLinearGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60002A1B2C3D4 /* LynxpoLinearGradient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		F1709B168CEC976F7E17E829 /* main.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LynxpoHost/main.m; sourceTree = "<group>"; };
 		F5ACB9B1E76BF59BCBFB8579 /* LynxpoHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LynxpoHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB868CEF7680D0C9A5D16C66 /* HostAppDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HostAppDelegate.m; path = LynxpoHost/HostAppDelegate.m; sourceTree = "<group>"; };
+		A1B2C3D4E5F60002A1B2C3D4 /* LynxpoLinearGradient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LynxpoLinearGradient.m; path = LynxpoHost/LynxpoLinearGradient.m; sourceTree = "<group>"; };
+		A1B2C3D4E5F60003A1B2C3D4 /* LynxpoLinearGradient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LynxpoLinearGradient.h; path = LynxpoHost/LynxpoLinearGradient.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				7B31E5881C7CFFBEE6495A3B /* Frameworks */,
 				F1709B168CEC976F7E17E829 /* main.m */,
 				FB868CEF7680D0C9A5D16C66 /* HostAppDelegate.m */,
+				A1B2C3D4E5F60002A1B2C3D4 /* LynxpoLinearGradient.m */,
+				A1B2C3D4E5F60003A1B2C3D4 /* LynxpoLinearGradient.h */,
 				B143953687F618D2C21B14A4 /* HostViewController.m */,
 				C425F43A6E9C152A9FE92D73 /* Info.plist */,
 				15E789A0BA3090C230FA3C94 /* Assets.xcassets */,
@@ -222,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B2C3D4E5F60001A1B2C3D4 /* LynxpoLinearGradient.m in Sources */,
 				559B820FA9745BB0C923E30A /* main.m in Sources */,
 				15409E2F41AEEA58B591C2D8 /* HostAppDelegate.m in Sources */,
 				E4F815C651632EE0A40E2CF0 /* HostViewController.m in Sources */,
