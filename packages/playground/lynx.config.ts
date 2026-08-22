@@ -8,6 +8,10 @@ export default defineConfig({
   source: {
     entry: {
       main: ['./src/index.tsx'],
+      hostdemo: ['./src/host-demo.tsx'],
+      hostmin: ['./src/host-min.tsx'],
+      hostsingle: ['./src/host-single.tsx'],
+      hostsync: ['./src/host-sync.tsx'],
     },
   },
   server: {
