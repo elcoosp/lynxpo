@@ -1,0 +1,12 @@
+{
+  "name": "com.lynxpo.blob",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.blob",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
+}
