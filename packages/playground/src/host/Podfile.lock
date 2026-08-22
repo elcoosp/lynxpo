@@ -1,0 +1,444 @@
+PODS:
+  - Lynx (4.3):
+    - Lynx/Framework (= 4.3)
+  - Lynx/Framework (4.3):
+    - Lynx/Gfx
+    - Lynx/ReleaseResource
+    - LynxBase/Framework
+    - LynxServiceAPI
+    - PrimJS/napi/env
+    - PrimJS/napi/jsc
+    - PrimJS/napi/quickjs
+    - PrimJS/quickjs (= 4.2.0-alpha.0)
+  - Lynx/Gfx (4.3):
+    - LynxBase/Framework
+  - Lynx/ReleaseResource (4.3)
+  - LynxBase/Framework (4.3):
+    - LynxServiceAPI/Core
+  - LynxLibraryRegistry (0.1.0):
+    - Lynx
+  - LynxpoModsAppearance (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsAppIntegrity (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsAppleAuthentication (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsApplicationModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsAsset (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsAudio (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsAuthSession (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsBackgroundFetch (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsBackgroundTask (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsBatteryModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsBrightnessModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsCalendar (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsCameraModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsCellularModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsClipboardModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsConstantsModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsContactsModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsCryptoModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsDevice (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsDocumentPicker (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsEnvInfoModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsFileSystemModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsFontModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsHapticsModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsHealth (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsImage (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsImageManipulator (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsImagePickerModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsIntentLauncher (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsKeepAwakeModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsLinking (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsLivePhoto (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsLocalAuthenticationModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsLocalizationModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsLocationModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsMailComposerModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsMediaLibraryModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsMusicLibrary (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsNavigationBar (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsNetworkAddons (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsNetworkModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsNotificationsModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsPrint (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsScreenCapture (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsScreenOrientationModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsSecureStoreModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsSensorsModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsSharing (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsSms (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsSpeechModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsSplashScreenModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsSqliteModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsStandardWebCrypto (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsStatusBar (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsStoreReviewModule (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsSystemUi (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsTaskManager (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsTrackingTransparency (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsVideo (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsVideoThumbnails (0.0.0):
+    - Lynx/Framework
+  - LynxpoModsWebBrowserModule (0.0.0):
+    - Lynx/Framework
+  - LynxServiceAPI (4.0.1):
+    - LynxServiceAPI/Core (= 4.0.1)
+  - LynxServiceAPI/Core (4.0.1)
+  - PrimJS/log (4.2.0-alpha.0)
+  - PrimJS/napi (4.2.0-alpha.0):
+    - PrimJS/napi/adapter (= 4.2.0-alpha.0)
+    - PrimJS/napi/core (= 4.2.0-alpha.0)
+    - PrimJS/napi/env (= 4.2.0-alpha.0)
+    - PrimJS/napi/jsc (= 4.2.0-alpha.0)
+    - PrimJS/napi/quickjs (= 4.2.0-alpha.0)
+  - PrimJS/napi/adapter (4.2.0-alpha.0):
+    - PrimJS/napi/core
+    - PrimJS/napi/env
+  - PrimJS/napi/core (4.2.0-alpha.0)
+  - PrimJS/napi/env (4.2.0-alpha.0):
+    - PrimJS/napi/core
+  - PrimJS/napi/jsc (4.2.0-alpha.0):
+    - PrimJS/log
+    - PrimJS/napi/core
+    - PrimJS/quickjs
+  - PrimJS/napi/quickjs (4.2.0-alpha.0):
+    - PrimJS/napi/core
+    - PrimJS/quickjs
+  - PrimJS/quickjs (4.2.0-alpha.0):
+    - PrimJS/log
+  - PrimJS/quickjs_debugger (4.2.0-alpha.0):
+    - PrimJS/quickjs
+
+DEPENDENCIES:
+  - Lynx/Framework (from `..`)
+  - LynxBase/Framework (from `..`)
+  - LynxLibraryRegistry (from `/Users/adm/Documents/Repos/lynxpo/packages/playground/src/lynx/host/generated/lynx-library`)
+  - LynxpoModsAppearance (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/appearance/ios`)
+  - LynxpoModsAppIntegrity (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/app-integrity/ios`)
+  - LynxpoModsAppleAuthentication (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/apple-authentication/ios`)
+  - LynxpoModsApplicationModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/application/ios`)
+  - LynxpoModsAsset (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/asset/ios`)
+  - LynxpoModsAudio (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/audio/ios`)
+  - LynxpoModsAuthSession (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/auth-session/ios`)
+  - LynxpoModsBackgroundFetch (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/background-fetch/ios`)
+  - LynxpoModsBackgroundTask (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/background-task/ios`)
+  - LynxpoModsBatteryModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/battery/ios`)
+  - LynxpoModsBrightnessModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/brightness/ios`)
+  - LynxpoModsCalendar (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/calendar/ios`)
+  - LynxpoModsCameraModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/camera/ios`)
+  - LynxpoModsCellularModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/cellular/ios`)
+  - LynxpoModsClipboardModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/clipboard/ios`)
+  - LynxpoModsConstantsModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/constants/ios`)
+  - LynxpoModsContactsModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/contacts/ios`)
+  - LynxpoModsCryptoModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/crypto/ios`)
+  - LynxpoModsDevice (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/device/ios`)
+  - LynxpoModsDocumentPicker (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/document-picker/ios`)
+  - LynxpoModsEnvInfoModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/env-info/ios`)
+  - LynxpoModsFileSystemModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/file-system/ios`)
+  - LynxpoModsFontModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/font/ios`)
+  - LynxpoModsHapticsModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/haptics/ios`)
+  - LynxpoModsHealth (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/health/ios`)
+  - LynxpoModsImage (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/image/ios`)
+  - LynxpoModsImageManipulator (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/image-manipulator/ios`)
+  - LynxpoModsImagePickerModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/image-picker/ios`)
+  - LynxpoModsIntentLauncher (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/intent-launcher/ios`)
+  - LynxpoModsKeepAwakeModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/keep-awake/ios`)
+  - LynxpoModsLinking (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/linking/ios`)
+  - LynxpoModsLivePhoto (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/live-photo/ios`)
+  - LynxpoModsLocalAuthenticationModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/local-authentication/ios`)
+  - LynxpoModsLocalizationModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/localization/ios`)
+  - LynxpoModsLocationModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/location/ios`)
+  - LynxpoModsMailComposerModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/mail-composer/ios`)
+  - LynxpoModsMediaLibraryModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/media-library/ios`)
+  - LynxpoModsMusicLibrary (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/music-library/ios`)
+  - LynxpoModsNavigationBar (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/navigation-bar/ios`)
+  - LynxpoModsNetworkAddons (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/network-addons/ios`)
+  - LynxpoModsNetworkModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/network/ios`)
+  - LynxpoModsNotificationsModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/notifications/ios`)
+  - LynxpoModsPrint (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/print/ios`)
+  - LynxpoModsScreenCapture (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/screen-capture/ios`)
+  - LynxpoModsScreenOrientationModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/screen-orientation/ios`)
+  - LynxpoModsSecureStoreModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/secure-store/ios`)
+  - LynxpoModsSensorsModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/sensors/ios`)
+  - LynxpoModsSharing (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/sharing/ios`)
+  - LynxpoModsSms (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/sms/ios`)
+  - LynxpoModsSpeechModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/speech/ios`)
+  - LynxpoModsSplashScreenModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/splash-screen/ios`)
+  - LynxpoModsSqliteModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/sqlite/ios`)
+  - LynxpoModsStandardWebCrypto (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/standard-web-crypto/ios`)
+  - LynxpoModsStatusBar (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/status-bar/ios`)
+  - LynxpoModsStoreReviewModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/store-review/ios`)
+  - LynxpoModsSystemUi (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/system-ui/ios`)
+  - LynxpoModsTaskManager (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/task-manager/ios`)
+  - LynxpoModsTrackingTransparency (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/tracking-transparency/ios`)
+  - LynxpoModsVideo (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/video/ios`)
+  - LynxpoModsVideoThumbnails (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/video-thumbnails/ios`)
+  - LynxpoModsWebBrowserModule (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/web-browser/ios`)
+  - PrimJS/napi (= 4.2.0-alpha.0)
+  - PrimJS/quickjs (= 4.2.0-alpha.0)
+  - PrimJS/quickjs_debugger (= 4.2.0-alpha.0)
+
+SPEC REPOS:
+  trunk:
+    - LynxServiceAPI
+    - PrimJS
+
+EXTERNAL SOURCES:
+  Lynx:
+    :path: ".."
+  LynxBase:
+    :path: ".."
+  LynxLibraryRegistry:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/playground/src/lynx/host/generated/lynx-library"
+  LynxpoModsAppearance:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/appearance/ios"
+  LynxpoModsAppIntegrity:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/app-integrity/ios"
+  LynxpoModsAppleAuthentication:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/apple-authentication/ios"
+  LynxpoModsApplicationModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/application/ios"
+  LynxpoModsAsset:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/asset/ios"
+  LynxpoModsAudio:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/audio/ios"
+  LynxpoModsAuthSession:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/auth-session/ios"
+  LynxpoModsBackgroundFetch:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/background-fetch/ios"
+  LynxpoModsBackgroundTask:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/background-task/ios"
+  LynxpoModsBatteryModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/battery/ios"
+  LynxpoModsBrightnessModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/brightness/ios"
+  LynxpoModsCalendar:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/calendar/ios"
+  LynxpoModsCameraModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/camera/ios"
+  LynxpoModsCellularModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/cellular/ios"
+  LynxpoModsClipboardModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/clipboard/ios"
+  LynxpoModsConstantsModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/constants/ios"
+  LynxpoModsContactsModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/contacts/ios"
+  LynxpoModsCryptoModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/crypto/ios"
+  LynxpoModsDevice:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/device/ios"
+  LynxpoModsDocumentPicker:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/document-picker/ios"
+  LynxpoModsEnvInfoModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/env-info/ios"
+  LynxpoModsFileSystemModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/file-system/ios"
+  LynxpoModsFontModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/font/ios"
+  LynxpoModsHapticsModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/haptics/ios"
+  LynxpoModsHealth:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/health/ios"
+  LynxpoModsImage:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/image/ios"
+  LynxpoModsImageManipulator:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/image-manipulator/ios"
+  LynxpoModsImagePickerModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/image-picker/ios"
+  LynxpoModsIntentLauncher:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/intent-launcher/ios"
+  LynxpoModsKeepAwakeModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/keep-awake/ios"
+  LynxpoModsLinking:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/linking/ios"
+  LynxpoModsLivePhoto:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/live-photo/ios"
+  LynxpoModsLocalAuthenticationModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/local-authentication/ios"
+  LynxpoModsLocalizationModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/localization/ios"
+  LynxpoModsLocationModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/location/ios"
+  LynxpoModsMailComposerModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/mail-composer/ios"
+  LynxpoModsMediaLibraryModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/media-library/ios"
+  LynxpoModsMusicLibrary:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/music-library/ios"
+  LynxpoModsNavigationBar:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/navigation-bar/ios"
+  LynxpoModsNetworkAddons:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/network-addons/ios"
+  LynxpoModsNetworkModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/network/ios"
+  LynxpoModsNotificationsModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/notifications/ios"
+  LynxpoModsPrint:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/print/ios"
+  LynxpoModsScreenCapture:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/screen-capture/ios"
+  LynxpoModsScreenOrientationModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/screen-orientation/ios"
+  LynxpoModsSecureStoreModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/secure-store/ios"
+  LynxpoModsSensorsModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/sensors/ios"
+  LynxpoModsSharing:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/sharing/ios"
+  LynxpoModsSms:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/sms/ios"
+  LynxpoModsSpeechModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/speech/ios"
+  LynxpoModsSplashScreenModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/splash-screen/ios"
+  LynxpoModsSqliteModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/sqlite/ios"
+  LynxpoModsStandardWebCrypto:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/standard-web-crypto/ios"
+  LynxpoModsStatusBar:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/status-bar/ios"
+  LynxpoModsStoreReviewModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/store-review/ios"
+  LynxpoModsSystemUi:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/system-ui/ios"
+  LynxpoModsTaskManager:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/task-manager/ios"
+  LynxpoModsTrackingTransparency:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/tracking-transparency/ios"
+  LynxpoModsVideo:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/video/ios"
+  LynxpoModsVideoThumbnails:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/video-thumbnails/ios"
+  LynxpoModsWebBrowserModule:
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/web-browser/ios"
+
+SPEC CHECKSUMS:
+  Lynx: 5fd7b7aca258d3b294e753d3bc80632f194a1d12
+  LynxBase: 9e5668b060fa4b8450a6f4634ea0bc7e2fe25367
+  LynxLibraryRegistry: 1bd2e8b0e1a180e41ad2d60aec1406d5bae14faa
+  LynxpoModsAppearance: aade62afa170a482db06f7b9687b2850828bd75b
+  LynxpoModsAppIntegrity: a260b1967785418b547e0a9e8629de3ad7fa8ced
+  LynxpoModsAppleAuthentication: 9a8294d2a6cf0fc0f96f3632d5d240003113c571
+  LynxpoModsApplicationModule: 31be913dfa2890bcb8cd795489fb5bbd709e89dd
+  LynxpoModsAsset: 8883b501a42aa9e81c0df32066f9c002ea2ee703
+  LynxpoModsAudio: d65196446982dbd0bbaba166513af8a12c0f87ac
+  LynxpoModsAuthSession: 2c9d7ef69641a51bbed03f8427aa7d3aa0a2f3a2
+  LynxpoModsBackgroundFetch: 13b4b912c3f210b3310031b4c978721ef9c0bbab
+  LynxpoModsBackgroundTask: 24608899fbea12f4bded27a9baeddfb3a0f1876f
+  LynxpoModsBatteryModule: 4e7fd61100e0c9358f5b528e260daef723b93980
+  LynxpoModsBrightnessModule: 15290bd96701f10e2bece0f08cdfcacbd009ff5b
+  LynxpoModsCalendar: a43a82a9a7b70edc6adc9ec343e48f121b740cff
+  LynxpoModsCameraModule: 2453e8c526483932c61a364929c2eca2c942bad3
+  LynxpoModsCellularModule: 50d2331b60a02c2c85cd687f94573a4fd4fdc1b2
+  LynxpoModsClipboardModule: bf8b762996b0f6f737ff0924cb429c906f358d19
+  LynxpoModsConstantsModule: 42c2ac938e180858833331f546e658614c6051ce
+  LynxpoModsContactsModule: 8895b94f2af5075d82965cfb5a7cfbf1ca9c5118
+  LynxpoModsCryptoModule: 276eaaf3cf92cc83a0a78deae9d2118b6cf78199
+  LynxpoModsDevice: 9fec4da7fc56657da7cc208dc8f0426c98c04c9e
+  LynxpoModsDocumentPicker: fbdb888291200dd642af809fe4f64ea7a42b952d
+  LynxpoModsEnvInfoModule: 50ac1653e1745e2e087d3129f72fddaa6ef09c61
+  LynxpoModsFileSystemModule: 759de414714090e18903769a1873b846254d8c9c
+  LynxpoModsFontModule: 66348dc4c9dbec7dbbe4661f1fd45f0b5c8e015e
+  LynxpoModsHapticsModule: 9fb176a62ac64ecb7412b184934a09a5efdc6b38
+  LynxpoModsHealth: 7fdf5bf48887fcd4261b9e4b8afaee69c7a8a06d
+  LynxpoModsImage: 8c2588571fc8225f9393920f28a2847440b031b1
+  LynxpoModsImageManipulator: 1cd8bba93180c3fa270da8e5f014c3a2bce5c70e
+  LynxpoModsImagePickerModule: 3dabaf84c96d46c518fb1efc371b14f2459d811b
+  LynxpoModsIntentLauncher: 1c8f82c30e5e67df3572d6adf0eee15f0f51e24a
+  LynxpoModsKeepAwakeModule: 174d75d22710742aab15b9c093bbb20cabd2b9bd
+  LynxpoModsLinking: 0891825a504910efb889b67ba5454999b0133a42
+  LynxpoModsLivePhoto: be46447c816f6e3206a946249600fb29580e057d
+  LynxpoModsLocalAuthenticationModule: c757b894de42a46f3b5f5a577b47bae2ebfc70c4
+  LynxpoModsLocalizationModule: 7bdaa29a820cd3862c13343729c34f3a3b1dbdd2
+  LynxpoModsLocationModule: 1dcd41612581067794d26c65e621a3f3ea4efee6
+  LynxpoModsMailComposerModule: 100e1571f7b2351bfd80a1b038aa51eb4925b50b
+  LynxpoModsMediaLibraryModule: f0f07fbafdc4a320edcf614bbba21e0b3a06d4cb
+  LynxpoModsMusicLibrary: b931df5eaf32a2c985677a6573d30c36652d669b
+  LynxpoModsNavigationBar: 4c8ea9638a2ace82cf886a721f0a64faac0b2d5b
+  LynxpoModsNetworkAddons: 6405434083d7a8c7cba1f9bea9d36dfcc5ec2761
+  LynxpoModsNetworkModule: 63b127d75995db492fffd8e384340c9bbb32d233
+  LynxpoModsNotificationsModule: 3b1bb1ab8fd3cfcd8bd29e82272fdb9340d5e166
+  LynxpoModsPrint: 9985e37551cfa816e87318b9d59145afb2afc80d
+  LynxpoModsScreenCapture: e89adc8510d0b821e37750926a1dea85976f5eaa
+  LynxpoModsScreenOrientationModule: 873c3142e307f68d9ed38ef4d70a36d2150db862
+  LynxpoModsSecureStoreModule: 1206fd843f77032b47f21b20545f1d137c409984
+  LynxpoModsSensorsModule: 36cb38496ba42c323501000c022f131f2eaa991d
+  LynxpoModsSharing: 0c8173d688b96257391ed21021d32a10125ad061
+  LynxpoModsSms: f9132efaa947e61a248d2b15c66aeeacbde0b613
+  LynxpoModsSpeechModule: 6ca365cc8b94f3ce134b465c3830163fc93ed907
+  LynxpoModsSplashScreenModule: 22cc5e97829117a6a19d36c384633bf236312a4c
+  LynxpoModsSqliteModule: e96d0930eddf7d9301d47b370c51472505943e67
+  LynxpoModsStandardWebCrypto: 026eef224e18cafa89687720b6a0cbbe5d097329
+  LynxpoModsStatusBar: 48d9c8c0490034c5ecef93a39e03f7833998724c
+  LynxpoModsStoreReviewModule: cb0a9de7f5d1dd2486f6d72f72d91f958064bf4c
+  LynxpoModsSystemUi: acfeee3d5a69dcf0e7318368bc0b86942bacd19b
+  LynxpoModsTaskManager: cc241331a7b631930c3cf8f3e771b3bf66b82bd4
+  LynxpoModsTrackingTransparency: 99cd60ab788916d6095448190bac2dda5a88cf33
+  LynxpoModsVideo: b9ae5ac254c11298aa51c79b1a6b4f0c7f5cae6d
+  LynxpoModsVideoThumbnails: 261634e31ace69f0103291c3a1513cbf230251e9
+  LynxpoModsWebBrowserModule: d7bc9f87a16df6663a8766424e6cbb47a60cbdfc
+  LynxServiceAPI: 67ae06f77e45c80f0ecaa6705d126ac3b4b8dff4
+  PrimJS: 68292fff5763086940a54ea416a888f1efefb995
+
+PODFILE CHECKSUM: fc168b3b4dffe8e53e6b1d1ef372387b52f8e804
+
+COCOAPODS: 1.17.0

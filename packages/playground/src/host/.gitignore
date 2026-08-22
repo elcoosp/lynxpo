@@ -1,0 +1,11 @@
+# LynxpoHost standalone host build artifacts
+Pods/
+build/
+build_final_host/
+build_host_*/
+
+# Xcode user state
+xcuserdata/
+*.xcuserdatad/
+*.moved-aside
+*.hmap

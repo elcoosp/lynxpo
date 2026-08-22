@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15409E2F41AEEA58B591C2D8 /* HostAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB868CEF7680D0C9A5D16C66 /* HostAppDelegate.m */; };
+		411542FD7826D81DE5362E40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15E789A0BA3090C230FA3C94 /* Assets.xcassets */; };
+		53911800914859B7196D6427 /* HostTemplateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3067F418FCFB7161B47E1771 /* HostTemplateProvider.m */; };
+		559B820FA9745BB0C923E30A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1709B168CEC976F7E17E829 /* main.m */; };
+		A8B246B0D163922E55FE045F /* host.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38B608BB675D1F6CEE568D82 /* host.lynx.bundle */; };
+		C02083DFBB681645A5749DB0 /* Pods_LynxpoHost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C0FB6D5EBF995A11B22EC7 /* Pods_LynxpoHost.framework */; };
+		D334A21D796187F7DE77E1FA /* HostTemplateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = C089B7D73B033434422ED746 /* HostTemplateProvider.h */; };
+		E4F815C651632EE0A40E2CF0 /* HostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B143953687F618D2C21B14A4 /* HostViewController.m */; };
+		F082D49DA7910432E22AB5ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B3A0C0827F1AD20E3FDC30 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		15E789A0BA3090C230FA3C94 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = LynxpoHost/Assets.xcassets; sourceTree = "<group>"; };
+		3067F418FCFB7161B47E1771 /* HostTemplateProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HostTemplateProvider.m; path = LynxpoHost/HostTemplateProvider.m; sourceTree = "<group>"; };
+		38B608BB675D1F6CEE568D82 /* host.lynx.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = host.lynx.bundle; path = LynxpoHost/host.lynx.bundle; sourceTree = "<group>"; };
+		76B3A0C0827F1AD20E3FDC30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A20A4B0E376088DD365AFE69 /* Pods-LynxpoHost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LynxpoHost.debug.xcconfig"; path = "Target Support Files/Pods-LynxpoHost/Pods-LynxpoHost.debug.xcconfig"; sourceTree = "<group>"; };
+		AB31F23E78EBE5C803C9713F /* Pods-LynxpoHost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LynxpoHost.release.xcconfig"; path = "Target Support Files/Pods-LynxpoHost/Pods-LynxpoHost.release.xcconfig"; sourceTree = "<group>"; };
+		B143953687F618D2C21B14A4 /* HostViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HostViewController.m; path = LynxpoHost/HostViewController.m; sourceTree = "<group>"; };
+		C089B7D73B033434422ED746 /* HostTemplateProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HostTemplateProvider.h; path = LynxpoHost/HostTemplateProvider.h; sourceTree = "<group>"; };
+		C425F43A6E9C152A9FE92D73 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = LynxpoHost/Info.plist; sourceTree = "<group>"; };
+		E4C0FB6D5EBF995A11B22EC7 /* Pods_LynxpoHost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LynxpoHost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1709B168CEC976F7E17E829 /* main.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LynxpoHost/main.m; sourceTree = "<group>"; };
+		F5ACB9B1E76BF59BCBFB8579 /* LynxpoHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LynxpoHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB868CEF7680D0C9A5D16C66 /* HostAppDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HostAppDelegate.m; path = LynxpoHost/HostAppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		355FFCF89F44E3D07EA06054 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F082D49DA7910432E22AB5ED /* Foundation.framework in Frameworks */,
+				C02083DFBB681645A5749DB0 /* Pods_LynxpoHost.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		035CCB6B305A04CC4D910754 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB31F23E78EBE5C803C9713F /* Pods-LynxpoHost.release.xcconfig */,
+				A20A4B0E376088DD365AFE69 /* Pods-LynxpoHost.debug.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		0E2FC9318172DB614B5295E7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				76B3A0C0827F1AD20E3FDC30 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		19B34218FFBB460868C1435F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5ACB9B1E76BF59BCBFB8579 /* LynxpoHost.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1CBBCD9C6A24E437E0293B29 = {
+			isa = PBXGroup;
+			children = (
+				19B34218FFBB460868C1435F /* Products */,
+				7B31E5881C7CFFBEE6495A3B /* Frameworks */,
+				F1709B168CEC976F7E17E829 /* main.m */,
+				FB868CEF7680D0C9A5D16C66 /* HostAppDelegate.m */,
+				B143953687F618D2C21B14A4 /* HostViewController.m */,
+				C425F43A6E9C152A9FE92D73 /* Info.plist */,
+				15E789A0BA3090C230FA3C94 /* Assets.xcassets */,
+				38B608BB675D1F6CEE568D82 /* host.lynx.bundle */,
+				035CCB6B305A04CC4D910754 /* Pods */,
+				3067F418FCFB7161B47E1771 /* HostTemplateProvider.m */,
+				C089B7D73B033434422ED746 /* HostTemplateProvider.h */,
+			);
+			sourceTree = "<group>";
+		};
+		7B31E5881C7CFFBEE6495A3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E2FC9318172DB614B5295E7 /* iOS */,
+				E4C0FB6D5EBF995A11B22EC7 /* Pods_LynxpoHost.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D62B93071F5E92A7208996D8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D334A21D796187F7DE77E1FA /* HostTemplateProvider.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		810FEF546D42058BF8AC79BE /* LynxpoHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5753B7C0A592D6FE9F3F808 /* Build configuration list for PBXNativeTarget "LynxpoHost" */;
+			buildPhases = (
+				91EDEB1AAF7D82E4E8A32D4B /* [CP] Check Pods Manifest.lock */,
+				DD99AEA99346B2765C42EF5B /* Sources */,
+				355FFCF89F44E3D07EA06054 /* Frameworks */,
+				911D3F87C6310F0538475B4F /* Resources */,
+				44DC61094769648BED9CEA8A /* [CP] Copy Pods Resources */,
+				D62B93071F5E92A7208996D8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LynxpoHost;
+			productName = LynxpoHost;
+			productReference = F5ACB9B1E76BF59BCBFB8579 /* LynxpoHost.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2B40856A544B03AE7BC04A43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 526C7B610125108A8A00F75A /* Build configuration list for PBXProject "LynxpoHost" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1CBBCD9C6A24E437E0293B29;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 100;
+			productRefGroup = 19B34218FFBB460868C1435F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				810FEF546D42058BF8AC79BE /* LynxpoHost */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		911D3F87C6310F0538475B4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				411542FD7826D81DE5362E40 /* Assets.xcassets in Resources */,
+				A8B246B0D163922E55FE045F /* host.lynx.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		44DC61094769648BED9CEA8A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LynxpoHost/Pods-LynxpoHost-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Lynx/LynxResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LynxResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LynxpoHost/Pods-LynxpoHost-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91EDEB1AAF7D82E4E8A32D4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LynxpoHost-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD99AEA99346B2765C42EF5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				559B820FA9745BB0C923E30A /* main.m in Sources */,
+				15409E2F41AEEA58B591C2D8 /* HostAppDelegate.m in Sources */,
+				E4F815C651632EE0A40E2CF0 /* HostViewController.m in Sources */,
+				53911800914859B7196D6427 /* HostTemplateProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3571454DFD675E1D60916E2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6D9CDDA66049361FDF47EB2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A20A4B0E376088DD365AFE69 /* Pods-LynxpoHost.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRONTEND_LANGUAGE = "";
+				INFOPLIST_FILE = LynxpoHost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.lynxpo.host;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		C1980D008D25D96628BA4CD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CDBC0C4585FBFA0F80A41AAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB31F23E78EBE5C803C9713F /* Pods-LynxpoHost.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRONTEND_LANGUAGE = "";
+				INFOPLIST_FILE = LynxpoHost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.lynxpo.host;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		526C7B610125108A8A00F75A /* Build configuration list for PBXProject "LynxpoHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3571454DFD675E1D60916E2B /* Debug */,
+				C1980D008D25D96628BA4CD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5753B7C0A592D6FE9F3F808 /* Build configuration list for PBXNativeTarget "LynxpoHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDBC0C4585FBFA0F80A41AAE /* Release */,
+				6D9CDDA66049361FDF47EB2E /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2B40856A544B03AE7BC04A43 /* Project object */;
+}

@@ -1,0 +1,45 @@
+require 'json'
+
+source 'https://cdn.cocoapods.org/'
+project './LynxpoHost.xcodeproj'
+
+lynx_root = File.expand_path('../lynx', __dir__)
+lynx_library_plugin_dir = File.join(lynx_root, 'tools/ios_tools/cocoapods-lynx-library/lib')
+$LOAD_PATH.unshift lynx_library_plugin_dir
+load File.join(lynx_library_plugin_dir, 'cocoapods_plugin.rb')
+
+platform :ios, '12.0'
+
+install! 'cocoapods',
+         :deterministic_uuids => false,
+         :lock_pod_sources => false,
+         :generate_multiple_pod_projects => true,
+         :incremental_installation => true,
+         :warn_for_multiple_pod_sources => false
+
+post_install do |installer|
+  installer.pod_target_subprojects.flat_map { |p| p.targets }.each do |t|
+    t.build_configurations.each do |c|
+      c.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+    end
+  end
+end
+
+target 'LynxpoHost' do
+  use_frameworks! :linkage => :static
+  pod 'Lynx', :path => '../lynx', :subspecs => ['Framework']
+  pod 'LynxBase', :path => '../lynx', :subspecs => ['Framework']
+
+  # The vendored Lynx framework references the QuickJS debugger symbols
+  # (_QJSDebugger*, _SetCpuProfiler*, _StartCpuProfiler*). These are emitted
+  # only by the PrimJS `quickjs_debugger` subspec (which defines
+  # ENABLE_QUICKJS_DEBUGGER and ships the inspector headers). The full Explorer
+  # pulls this in transitively via its devtool pods; the standalone host pins it
+  # explicitly so PrimJS links against the Lynx framework.
+  pod 'PrimJS', '4.2.0-alpha.0', :subspecs => ['quickjs', 'quickjs_debugger', 'napi']
+
+  use_lynx_library!(
+    :root => File.join(lynx_root, '..'),
+    :output_dir => File.join(__dir__, 'generated/lynx-library')
+  )
+end
