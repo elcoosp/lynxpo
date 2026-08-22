@@ -74,6 +74,6 @@ LYNX_PROP_SETTER("border-radius", setBorderRadius, NSNumber *) {
   self.view.layer.masksToBounds = r > 0;
 }
 
-LYNX_LAZY_REGISTER_UI("blur-view")
+LYNX_LAZY_REGISTER_UI("lynxpo-blur")
 
 @end

@@ -11,21 +11,25 @@
 		411542FD7826D81DE5362E40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15E789A0BA3090C230FA3C94 /* Assets.xcassets */; };
 		53911800914859B7196D6427 /* HostTemplateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3067F418FCFB7161B47E1771 /* HostTemplateProvider.m */; };
 		559B820FA9745BB0C923E30A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1709B168CEC976F7E17E829 /* main.m */; };
+		11F4295C379C4DA2B3A4294B /* LynxpoLinearGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C835E81F724485BB16764D /* LynxpoLinearGradient.m */; };
 		A8B246B0D163922E55FE045F /* host.lynx.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38B608BB675D1F6CEE568D82 /* host.lynx.bundle */; };
+		AF5FC784C9734508A31DA5A4 /* LynxpoBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B61A7685F5249279B227EAD /* LynxpoBlurView.m */; };
 		C02083DFBB681645A5749DB0 /* Pods_LynxpoHost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C0FB6D5EBF995A11B22EC7 /* Pods_LynxpoHost.framework */; };
 		D334A21D796187F7DE77E1FA /* HostTemplateProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = C089B7D73B033434422ED746 /* HostTemplateProvider.h */; };
 		E4F815C651632EE0A40E2CF0 /* HostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B143953687F618D2C21B14A4 /* HostViewController.m */; };
 		F082D49DA7910432E22AB5ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B3A0C0827F1AD20E3FDC30 /* Foundation.framework */; };
-		A1B2C3D4E5F60001A1B2C3D4 /* LynxpoLinearGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60002A1B2C3D4 /* LynxpoLinearGradient.m */; };
-		B2C3D4E5F60001B2C3D4E5 /* LynxpoBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D4E5F60002B2C3D4 /* LynxpoBlurView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		15E789A0BA3090C230FA3C94 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = LynxpoHost/Assets.xcassets; sourceTree = "<group>"; };
 		3067F418FCFB7161B47E1771 /* HostTemplateProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HostTemplateProvider.m; path = LynxpoHost/HostTemplateProvider.m; sourceTree = "<group>"; };
+		12C835E81F724485BB16764D /* LynxpoLinearGradient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LynxpoLinearGradient.m; path = LynxpoHost/LynxpoLinearGradient.m; sourceTree = "<group>"; };
 		38B608BB675D1F6CEE568D82 /* host.lynx.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = host.lynx.bundle; path = LynxpoHost/host.lynx.bundle; sourceTree = "<group>"; };
+		73322C1591B54B728657E7C7 /* LynxpoLinearGradient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LynxpoLinearGradient.h; path = LynxpoHost/LynxpoLinearGradient.h; sourceTree = "<group>"; };
 		76B3A0C0827F1AD20E3FDC30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4B61A7685F5249279B227EAD /* LynxpoBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LynxpoBlurView.m; path = LynxpoHost/LynxpoBlurView.m; sourceTree = "<group>"; };
 		A20A4B0E376088DD365AFE69 /* Pods-LynxpoHost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LynxpoHost.debug.xcconfig"; path = "Target Support Files/Pods-LynxpoHost/Pods-LynxpoHost.debug.xcconfig"; sourceTree = "<group>"; };
+		D7D3611B3C5F448BB5C07D26 /* LynxpoBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LynxpoBlurView.h; path = LynxpoHost/LynxpoBlurView.h; sourceTree = "<group>"; };
 		AB31F23E78EBE5C803C9713F /* Pods-LynxpoHost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LynxpoHost.release.xcconfig"; path = "Target Support Files/Pods-LynxpoHost/Pods-LynxpoHost.release.xcconfig"; sourceTree = "<group>"; };
 		B143953687F618D2C21B14A4 /* HostViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HostViewController.m; path = LynxpoHost/HostViewController.m; sourceTree = "<group>"; };
 		C089B7D73B033434422ED746 /* HostTemplateProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HostTemplateProvider.h; path = LynxpoHost/HostTemplateProvider.h; sourceTree = "<group>"; };
@@ -34,10 +38,6 @@
 		F1709B168CEC976F7E17E829 /* main.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LynxpoHost/main.m; sourceTree = "<group>"; };
 		F5ACB9B1E76BF59BCBFB8579 /* LynxpoHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LynxpoHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB868CEF7680D0C9A5D16C66 /* HostAppDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HostAppDelegate.m; path = LynxpoHost/HostAppDelegate.m; sourceTree = "<group>"; };
-		A1B2C3D4E5F60002A1B2C3D4 /* LynxpoLinearGradient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LynxpoLinearGradient.m; path = LynxpoHost/LynxpoLinearGradient.m; sourceTree = "<group>"; };
-		A1B2C3D4E5F60003A1B2C3D4 /* LynxpoLinearGradient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LynxpoLinearGradient.h; path = LynxpoHost/LynxpoLinearGradient.h; sourceTree = "<group>"; };
-		B2C3D4E5F60002B2C3D4 /* LynxpoBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LynxpoBlurView.m; path = LynxpoHost/LynxpoBlurView.m; sourceTree = "<group>"; };
-		B2C3D4E5F60003B2C3D4 /* LynxpoBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LynxpoBlurView.h; path = LynxpoHost/LynxpoBlurView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,14 +86,14 @@
 				7B31E5881C7CFFBEE6495A3B /* Frameworks */,
 				F1709B168CEC976F7E17E829 /* main.m */,
 				FB868CEF7680D0C9A5D16C66 /* HostAppDelegate.m */,
-				A1B2C3D4E5F60002A1B2C3D4 /* LynxpoLinearGradient.m */,
-				A1B2C3D4E5F60003A1B2C3D4 /* LynxpoLinearGradient.h */,
-				B2C3D4E5F60002B2C3D4 /* LynxpoBlurView.m */,
-				B2C3D4E5F60003B2C3D4 /* LynxpoBlurView.h */,
 				B143953687F618D2C21B14A4 /* HostViewController.m */,
+				12C835E81F724485BB16764D /* LynxpoLinearGradient.m */,
 				C425F43A6E9C152A9FE92D73 /* Info.plist */,
+				73322C1591B54B728657E7C7 /* LynxpoLinearGradient.h */,
 				15E789A0BA3090C230FA3C94 /* Assets.xcassets */,
+				4B61A7685F5249279B227EAD /* LynxpoBlurView.m */,
 				38B608BB675D1F6CEE568D82 /* host.lynx.bundle */,
+				D7D3611B3C5F448BB5C07D26 /* LynxpoBlurView.h */,
 				035CCB6B305A04CC4D910754 /* Pods */,
 				3067F418FCFB7161B47E1771 /* HostTemplateProvider.m */,
 				C089B7D73B033434422ED746 /* HostTemplateProvider.h */,
@@ -232,12 +232,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2C3D4E5F60001B2C3D4 /* LynxpoBlurView.m in Sources */,
-				A1B2C3D4E5F60001A1B2C3D4 /* LynxpoLinearGradient.m in Sources */,
 				559B820FA9745BB0C923E30A /* main.m in Sources */,
 				15409E2F41AEEA58B591C2D8 /* HostAppDelegate.m in Sources */,
 				E4F815C651632EE0A40E2CF0 /* HostViewController.m in Sources */,
+				11F4295C379C4DA2B3A4294B /* LynxpoLinearGradient.m in Sources */,
 				53911800914859B7196D6427 /* HostTemplateProvider.m in Sources */,
+				AF5FC784C9734508A31DA5A4 /* LynxpoBlurView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
