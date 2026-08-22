@@ -16,4 +16,13 @@
   return @"";
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"initialURL" : NSStringFromSelector(@selector(initialURL)),
+    @"isAvailable" : NSStringFromSelector(@selector(isAvailable)),
+  };
+}
 @end

@@ -50,4 +50,14 @@
   return result;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"codeHashAsync" : NSStringFromSelector(@selector(codeHashAsync)),
+    @"integrityTokenAsync" : NSStringFromSelector(@selector(integrityTokenAsync:cb:)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+  };
+}
 @end

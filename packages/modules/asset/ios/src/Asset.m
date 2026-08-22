@@ -7,16 +7,6 @@
 
 @implementation Asset
 
-
-
-- (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"isAvailableAsync" : @"isAvailableAsync:",
-    @"assetInfoAsync" : @"assetInfoAsync:",
-    @"localUriAsync" : @"localUriAsync:",
-  };
-}
-
 - (BOOL)isAvailableAsync {
 
   return @(YES);
@@ -62,4 +52,14 @@
   }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"assetInfoAsync" : NSStringFromSelector(@selector(assetInfoAsync)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+    @"localUriAsync" : NSStringFromSelector(@selector(localUriAsync)),
+  };
+}
 @end

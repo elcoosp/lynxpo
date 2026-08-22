@@ -25,4 +25,15 @@
   return @{};
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getStatus" : NSStringFromSelector(@selector(getStatus)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+    @"registerTaskAsync" : NSStringFromSelector(@selector(registerTaskAsync:options:)),
+    @"unregisterTaskAsync" : NSStringFromSelector(@selector(unregisterTaskAsync)),
+  };
+}
 @end

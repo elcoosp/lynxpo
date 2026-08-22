@@ -15,4 +15,13 @@
   (void)url;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isAvailable" : NSStringFromSelector(@selector(isAvailable)),
+    @"shareAsync" : NSStringFromSelector(@selector(shareAsync)),
+  };
+}
 @end

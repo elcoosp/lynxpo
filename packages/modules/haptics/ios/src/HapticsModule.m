@@ -45,4 +45,14 @@
   }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"impactAsync" : NSStringFromSelector(@selector(impactAsync)),
+    @"notificationAsync" : NSStringFromSelector(@selector(notificationAsync)),
+    @"selectionAsync" : NSStringFromSelector(@selector(selectionAsync)),
+  };
+}
 @end

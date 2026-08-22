@@ -107,4 +107,14 @@
   } ];
 }
 
+
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getCalendars" : NSStringFromSelector(@selector(getCalendars)),
+    @"getLocales" : NSStringFromSelector(@selector(getLocales)),
+  };
+}
 @end

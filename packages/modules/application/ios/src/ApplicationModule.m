@@ -53,4 +53,16 @@
   return @(installDate.timeIntervalSince1970 * 1000);
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"applicationId" : NSStringFromSelector(@selector(applicationId)),
+    @"applicationName" : NSStringFromSelector(@selector(applicationName)),
+    @"getInstallationTime" : NSStringFromSelector(@selector(getInstallationTime)),
+    @"nativeApplicationVersion" : NSStringFromSelector(@selector(nativeApplicationVersion)),
+    @"nativeBuildVersion" : NSStringFromSelector(@selector(nativeBuildVersion)),
+  };
+}
 @end

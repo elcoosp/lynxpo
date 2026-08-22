@@ -16,4 +16,13 @@
   (void)message;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isAvailable" : NSStringFromSelector(@selector(isAvailable)),
+    @"sendSMS" : NSStringFromSelector(@selector(sendSMS:message:)),
+  };
+}
 @end

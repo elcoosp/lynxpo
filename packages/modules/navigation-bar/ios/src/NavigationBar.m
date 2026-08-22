@@ -23,4 +23,15 @@
   return @{ @"visible": @YES };
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getVisibility" : NSStringFromSelector(@selector(getVisibility)),
+    @"setBackgroundColor" : NSStringFromSelector(@selector(setBackgroundColor)),
+    @"setButtonStyle" : NSStringFromSelector(@selector(setButtonStyle)),
+    @"setVisibility" : NSStringFromSelector(@selector(setVisibility)),
+  };
+}
 @end

@@ -19,4 +19,14 @@
   return NO;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isAvailable" : NSStringFromSelector(@selector(isAvailable)),
+    @"printAsync" : NSStringFromSelector(@selector(printAsync)),
+    @"selectPrinter" : NSStringFromSelector(@selector(selectPrinter)),
+  };
+}
 @end

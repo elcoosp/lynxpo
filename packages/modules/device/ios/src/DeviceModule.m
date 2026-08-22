@@ -102,4 +102,28 @@
   return [UIDevice currentDevice].name;
 }
 
+
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"brand" : NSStringFromSelector(@selector(brand)),
+    @"designName" : NSStringFromSelector(@selector(designName)),
+    @"deviceName" : NSStringFromSelector(@selector(deviceName)),
+    @"deviceType" : NSStringFromSelector(@selector(deviceType)),
+    @"deviceYearClass" : NSStringFromSelector(@selector(deviceYearClass)),
+    @"isDevice" : NSStringFromSelector(@selector(isDevice)),
+    @"manufacturer" : NSStringFromSelector(@selector(manufacturer)),
+    @"modelName" : NSStringFromSelector(@selector(modelName)),
+    @"osBuildFingerprint" : NSStringFromSelector(@selector(osBuildFingerprint)),
+    @"osBuildId" : NSStringFromSelector(@selector(osBuildId)),
+    @"osInternalBuildId" : NSStringFromSelector(@selector(osInternalBuildId)),
+    @"osName" : NSStringFromSelector(@selector(osName)),
+    @"osVersion" : NSStringFromSelector(@selector(osVersion)),
+    @"platformApiLevel" : NSStringFromSelector(@selector(platformApiLevel)),
+    @"productName" : NSStringFromSelector(@selector(productName)),
+    @"totalMemory" : NSStringFromSelector(@selector(totalMemory)),
+  };
+}
 @end

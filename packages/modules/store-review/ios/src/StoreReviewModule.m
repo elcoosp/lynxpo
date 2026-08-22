@@ -32,4 +32,14 @@
   @try { [self requestReview]; return nil; } @catch (NSException *e) { return nil; }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isAvailable" : NSStringFromSelector(@selector(isAvailable)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+    @"requestReviewAsync" : NSStringFromSelector(@selector(requestReviewAsync)),
+  };
+}
 @end

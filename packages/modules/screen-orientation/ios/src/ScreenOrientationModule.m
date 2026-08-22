@@ -101,4 +101,22 @@
 }
 - (void)removeListeners:(double)count {}
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"addListener" : NSStringFromSelector(@selector(addListener)),
+    @"getOrientation" : NSStringFromSelector(@selector(getOrientation)),
+    @"getOrientationAsync" : NSStringFromSelector(@selector(getOrientationAsync)),
+    @"getOrientationLock" : NSStringFromSelector(@selector(getOrientationLock)),
+    @"getOrientationLockAsync" : NSStringFromSelector(@selector(getOrientationLockAsync)),
+    @"lockAsync" : NSStringFromSelector(@selector(lockAsync)),
+    @"lockPlatformAsync" : NSStringFromSelector(@selector(lockPlatformAsync)),
+    @"removeListeners" : NSStringFromSelector(@selector(removeListeners)),
+    @"supportsOrientationLock" : NSStringFromSelector(@selector(supportsOrientationLock)),
+    @"supportsOrientationLockAsync" : NSStringFromSelector(@selector(supportsOrientationLockAsync)),
+    @"unlockAsync" : NSStringFromSelector(@selector(unlockAsync)),
+  };
+}
 @end

@@ -31,4 +31,15 @@
   return @([NSProcessInfo processInfo].isLowPowerModeEnabled);
 }
 
+
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getBatteryLevel" : NSStringFromSelector(@selector(getBatteryLevel)),
+    @"getBatteryState" : NSStringFromSelector(@selector(getBatteryState)),
+    @"isLowPowerModeEnabled" : NSStringFromSelector(@selector(isLowPowerModeEnabled)),
+  };
+}
 @end

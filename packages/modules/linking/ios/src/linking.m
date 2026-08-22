@@ -20,4 +20,14 @@
   (void)url;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"canOpenURL" : NSStringFromSelector(@selector(canOpenURL)),
+    @"getInitialURL" : NSStringFromSelector(@selector(getInitialURL)),
+    @"openURL" : NSStringFromSelector(@selector(openURL)),
+  };
+}
 @end

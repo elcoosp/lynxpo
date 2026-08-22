@@ -66,4 +66,16 @@
   return @{ @"data" : @"" };
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"badgeCountAsync" : NSStringFromSelector(@selector(badgeCountAsync)),
+    @"devicePushTokenAsync" : NSStringFromSelector(@selector(devicePushTokenAsync)),
+    @"isDeviceRegisteredForRemoteMessages" : NSStringFromSelector(@selector(isDeviceRegisteredForRemoteMessages)),
+    @"permissionsAsync" : NSStringFromSelector(@selector(permissionsAsync)),
+    @"requestPermission" : NSStringFromSelector(@selector(requestPermission)),
+  };
+}
 @end

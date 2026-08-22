@@ -54,4 +54,22 @@
 }
 - (void)removeListeners:(double)count {}
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"addListener" : NSStringFromSelector(@selector(addListener)),
+    @"getBrightness" : NSStringFromSelector(@selector(getBrightness)),
+    @"getBrightnessAsync" : NSStringFromSelector(@selector(getBrightnessAsync)),
+    @"getSystemBrightness" : NSStringFromSelector(@selector(getSystemBrightness)),
+    @"getSystemBrightnessAsync" : NSStringFromSelector(@selector(getSystemBrightnessAsync)),
+    @"getSystemBrightnessMode" : NSStringFromSelector(@selector(getSystemBrightnessMode)),
+    @"getSystemBrightnessModeAsync" : NSStringFromSelector(@selector(getSystemBrightnessModeAsync)),
+    @"isUsingSystemBrightness" : NSStringFromSelector(@selector(isUsingSystemBrightness)),
+    @"isUsingSystemBrightnessAsync" : NSStringFromSelector(@selector(isUsingSystemBrightnessAsync)),
+    @"removeListeners" : NSStringFromSelector(@selector(removeListeners)),
+    @"setBrightnessAsync" : NSStringFromSelector(@selector(setBrightnessAsync)),
+  };
+}
 @end

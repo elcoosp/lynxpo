@@ -68,4 +68,13 @@
   }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+    @"randomBytesAsync" : NSStringFromSelector(@selector(randomBytesAsync)),
+  };
+}
 @end

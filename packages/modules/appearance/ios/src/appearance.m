@@ -25,4 +25,13 @@
   (void)scheme;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getColorScheme" : NSStringFromSelector(@selector(getColorScheme)),
+    @"setColorScheme" : NSStringFromSelector(@selector(setColorScheme)),
+  };
+}
 @end

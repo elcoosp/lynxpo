@@ -105,4 +105,14 @@
   }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getRandomBytes" : NSStringFromSelector(@selector(getRandomBytes)),
+    @"getRandomBytesAsync" : NSStringFromSelector(@selector(getRandomBytesAsync)),
+    @"randomUUID" : NSStringFromSelector(@selector(randomUUID)),
+  };
+}
 @end

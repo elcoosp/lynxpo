@@ -24,4 +24,15 @@
   return @{ @"status": @"undetermined", @"granted": @NO };
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getAlbums" : NSStringFromSelector(@selector(getAlbums)),
+    @"getPermissions" : NSStringFromSelector(@selector(getPermissions)),
+    @"getSongs" : NSStringFromSelector(@selector(getSongs)),
+    @"requestPermissions" : NSStringFromSelector(@selector(requestPermissions)),
+  };
+}
 @end

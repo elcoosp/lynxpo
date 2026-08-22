@@ -36,4 +36,14 @@
   return (name.length > 0);
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"addInterceptorAsync" : NSStringFromSelector(@selector(addInterceptorAsync)),
+    @"certificateInfoAsync" : NSStringFromSelector(@selector(certificateInfoAsync)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+  };
+}
 @end

@@ -59,4 +59,15 @@
   };
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"currentPositionAsync" : NSStringFromSelector(@selector(currentPositionAsync)),
+    @"permissionsAsync" : NSStringFromSelector(@selector(permissionsAsync)),
+    @"providerStatus" : NSStringFromSelector(@selector(providerStatus)),
+    @"requestPermission" : NSStringFromSelector(@selector(requestPermission)),
+  };
+}
 @end

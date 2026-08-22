@@ -42,4 +42,16 @@
   return @"";
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"createEvent" : NSStringFromSelector(@selector(createEvent:startDate:endDate:)),
+    @"getCalendars" : NSStringFromSelector(@selector(getCalendars)),
+    @"getEvents" : NSStringFromSelector(@selector(getEvents:endDate:)),
+    @"getPermissions" : NSStringFromSelector(@selector(getPermissions)),
+    @"requestPermissions" : NSStringFromSelector(@selector(requestPermissions)),
+  };
+}
 @end

@@ -23,4 +23,15 @@
   (void)color;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"setBackgroundColor" : NSStringFromSelector(@selector(setBackgroundColor)),
+    @"setHidden" : NSStringFromSelector(@selector(setHidden)),
+    @"setNetworkActivityIndicatorVisible" : NSStringFromSelector(@selector(setNetworkActivityIndicatorVisible)),
+    @"setStyle" : NSStringFromSelector(@selector(setStyle)),
+  };
+}
 @end

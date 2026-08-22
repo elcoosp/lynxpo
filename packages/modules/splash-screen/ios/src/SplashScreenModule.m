@@ -30,4 +30,14 @@
   return @"hidden";
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"hideAsync" : NSStringFromSelector(@selector(hideAsync)),
+    @"preventAutoHideAsync" : NSStringFromSelector(@selector(preventAutoHideAsync)),
+    @"statusAsync" : NSStringFromSelector(@selector(statusAsync)),
+  };
+}
 @end

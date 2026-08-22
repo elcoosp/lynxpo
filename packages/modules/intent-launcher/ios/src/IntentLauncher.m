@@ -22,4 +22,14 @@
   return NO;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"canOpenURL" : NSStringFromSelector(@selector(canOpenURL)),
+    @"startActivity" : NSStringFromSelector(@selector(startActivity:data:)),
+    @"startActivityAsync" : NSStringFromSelector(@selector(startActivityAsync)),
+  };
+}
 @end

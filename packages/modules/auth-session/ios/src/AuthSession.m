@@ -7,16 +7,6 @@
 
 @implementation AuthSession
 
-
-
-- (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"isAvailableAsync" : @"isAvailableAsync:",
-    @"redirectUriAsync" : @"redirectUriAsync:",
-    @"providerInfoAsync" : @"providerInfoAsync:",
-  };
-}
-
 - (BOOL)isAvailableAsync {
 
   return @(YES);
@@ -49,4 +39,14 @@
   return result;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+    @"providerInfoAsync" : NSStringFromSelector(@selector(providerInfoAsync)),
+    @"redirectUriAsync" : NSStringFromSelector(@selector(redirectUriAsync)),
+  };
+}
 @end

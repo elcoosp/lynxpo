@@ -28,4 +28,16 @@
   (void)uri;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"cancelLoading" : NSStringFromSelector(@selector(cancelLoading)),
+    @"clearCache" : NSStringFromSelector(@selector(clearCache)),
+    @"getCacheSize" : NSStringFromSelector(@selector(getCacheSize)),
+    @"isImageLoading" : NSStringFromSelector(@selector(isImageLoading)),
+    @"prefetch" : NSStringFromSelector(@selector(prefetch)),
+  };
+}
 @end

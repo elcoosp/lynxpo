@@ -31,4 +31,14 @@
   return voices;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isSpeaking" : NSStringFromSelector(@selector(isSpeaking)),
+    @"supported" : NSStringFromSelector(@selector(supported)),
+    @"voices" : NSStringFromSelector(@selector(voices)),
+  };
+}
 @end

@@ -51,4 +51,15 @@
   return info;
 }
 
+
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"envInfo" : NSStringFromSelector(@selector(envInfo)),
+    @"installTime" : NSStringFromSelector(@selector(installTime)),
+    @"isRunningOnDevice" : NSStringFromSelector(@selector(isRunningOnDevice)),
+  };
+}
 @end

@@ -45,4 +45,19 @@
   return @{ @"nativeBuildVersion" : build, @"sdkVersion" : [NSNull null] };
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"appOwnership" : NSStringFromSelector(@selector(appOwnership)),
+    @"executionEnvironment" : NSStringFromSelector(@selector(executionEnvironment)),
+    @"installationId" : NSStringFromSelector(@selector(installationId)),
+    @"isHeadless" : NSStringFromSelector(@selector(isHeadless)),
+    @"platform" : NSStringFromSelector(@selector(platform)),
+    @"sessionId" : NSStringFromSelector(@selector(sessionId)),
+    @"systemFonts" : NSStringFromSelector(@selector(systemFonts)),
+    @"version" : NSStringFromSelector(@selector(version)),
+  };
+}
 @end

@@ -33,4 +33,14 @@
   return result;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+    @"isLivePhotoAsync" : NSStringFromSelector(@selector(isLivePhotoAsync)),
+    @"saveLivePhotoAsync" : NSStringFromSelector(@selector(saveLivePhotoAsync:photo:)),
+  };
+}
 @end

@@ -56,4 +56,21 @@
   @try { return [self getMobileNetworkCode]; } @catch (NSException *e) { return nil; }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getCarrierName" : NSStringFromSelector(@selector(getCarrierName)),
+    @"getCarrierNameAsync" : NSStringFromSelector(@selector(getCarrierNameAsync)),
+    @"getCellularGeneration" : NSStringFromSelector(@selector(getCellularGeneration)),
+    @"getCellularGenerationAsync" : NSStringFromSelector(@selector(getCellularGenerationAsync)),
+    @"getIsoCountryCode" : NSStringFromSelector(@selector(getIsoCountryCode)),
+    @"getIsoCountryCodeAsync" : NSStringFromSelector(@selector(getIsoCountryCodeAsync)),
+    @"getMobileCountryCode" : NSStringFromSelector(@selector(getMobileCountryCode)),
+    @"getMobileCountryCodeAsync" : NSStringFromSelector(@selector(getMobileCountryCodeAsync)),
+    @"getMobileNetworkCode" : NSStringFromSelector(@selector(getMobileNetworkCode)),
+    @"getMobileNetworkCodeAsync" : NSStringFromSelector(@selector(getMobileNetworkCodeAsync)),
+  };
+}
 @end

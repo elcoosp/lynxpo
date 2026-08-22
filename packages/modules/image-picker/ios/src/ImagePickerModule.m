@@ -183,4 +183,17 @@
   }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getCameraPermissions" : NSStringFromSelector(@selector(getCameraPermissions)),
+    @"getCameraPermissionsAsync" : NSStringFromSelector(@selector(getCameraPermissionsAsync)),
+    @"getMediaLibraryPermissions" : NSStringFromSelector(@selector(getMediaLibraryPermissions)),
+    @"getMediaLibraryPermissionsAsync" : NSStringFromSelector(@selector(getMediaLibraryPermissionsAsync)),
+    @"launchCameraAsync" : NSStringFromSelector(@selector(launchCameraAsync)),
+    @"launchImageLibraryAsync" : NSStringFromSelector(@selector(launchImageLibraryAsync)),
+  };
+}
 @end

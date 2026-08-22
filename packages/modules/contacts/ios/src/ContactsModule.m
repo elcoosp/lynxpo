@@ -44,4 +44,15 @@
   return containers ? containers.count : 0;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"contactCount" : NSStringFromSelector(@selector(contactCount)),
+    @"containerCount" : NSStringFromSelector(@selector(containerCount)),
+    @"permissionsAsync" : NSStringFromSelector(@selector(permissionsAsync)),
+    @"requestPermission" : NSStringFromSelector(@selector(requestPermission)),
+  };
+}
 @end

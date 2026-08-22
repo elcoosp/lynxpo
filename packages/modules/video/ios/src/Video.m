@@ -25,4 +25,16 @@
   (void)muted;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getStatus" : NSStringFromSelector(@selector(getStatus)),
+    @"pause" : NSStringFromSelector(@selector(pause)),
+    @"play" : NSStringFromSelector(@selector(play)),
+    @"setMuted" : NSStringFromSelector(@selector(setMuted)),
+    @"setVolume" : NSStringFromSelector(@selector(setVolume)),
+  };
+}
 @end

@@ -92,4 +92,14 @@
   return [UIApplication sharedApplication].keyWindow;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"credentialAsync" : NSStringFromSelector(@selector(credentialAsync:cb:)),
+    @"credentialStateAsync" : NSStringFromSelector(@selector(credentialStateAsync:cb:)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+  };
+}
 @end

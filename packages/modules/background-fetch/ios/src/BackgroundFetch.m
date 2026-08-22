@@ -19,4 +19,14 @@
   (void)taskName;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getStatus" : NSStringFromSelector(@selector(getStatus)),
+    @"registerTaskAsync" : NSStringFromSelector(@selector(registerTaskAsync)),
+    @"unregisterTaskAsync" : NSStringFromSelector(@selector(unregisterTaskAsync)),
+  };
+}
 @end

@@ -34,4 +34,15 @@
   @try { return @([self isActivated]); } @catch (NSException *e) { return nil; }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"activateAsync" : NSStringFromSelector(@selector(activateAsync)),
+    @"deactivateAsync" : NSStringFromSelector(@selector(deactivateAsync)),
+    @"isActivated" : NSStringFromSelector(@selector(isActivated)),
+    @"isActivatedAsync" : NSStringFromSelector(@selector(isActivatedAsync)),
+  };
+}
 @end

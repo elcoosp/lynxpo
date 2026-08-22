@@ -41,4 +41,15 @@
   return @{ @"totalCount" : @(result.count), @"hasNextPage" : @(NO) };
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"albumsAsync" : NSStringFromSelector(@selector(albumsAsync)),
+    @"assetsAsync" : NSStringFromSelector(@selector(assetsAsync)),
+    @"permissionsAsync" : NSStringFromSelector(@selector(permissionsAsync)),
+    @"requestPermission" : NSStringFromSelector(@selector(requestPermission)),
+  };
+}
 @end

@@ -156,4 +156,22 @@
   return nil;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"availableCameraTypes" : NSStringFromSelector(@selector(availableCameraTypes)),
+    @"availableVideoCodecs" : NSStringFromSelector(@selector(availableVideoCodecs)),
+    @"cameraPermissionsAsync" : NSStringFromSelector(@selector(cameraPermissionsAsync)),
+    @"captureFrame" : NSStringFromSelector(@selector(captureFrame)),
+    @"flipCamera" : NSStringFromSelector(@selector(flipCamera)),
+    @"isTorchAvailable" : NSStringFromSelector(@selector(isTorchAvailable)),
+    @"microphonePermissionsAsync" : NSStringFromSelector(@selector(microphonePermissionsAsync)),
+    @"requestCameraPermission" : NSStringFromSelector(@selector(requestCameraPermission)),
+    @"setTorch" : NSStringFromSelector(@selector(setTorch)),
+    @"startCamera" : NSStringFromSelector(@selector(startCamera)),
+    @"stopCamera" : NSStringFromSelector(@selector(stopCamera)),
+  };
+}
 @end

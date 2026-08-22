@@ -51,4 +51,13 @@
   return @"unavailable";
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getAuthorizationStatus" : NSStringFromSelector(@selector(getAuthorizationStatus)),
+    @"requestAuthorization" : NSStringFromSelector(@selector(requestAuthorization)),
+  };
+}
 @end

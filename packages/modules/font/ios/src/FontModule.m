@@ -37,4 +37,15 @@
   return set;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isLoaded" : NSStringFromSelector(@selector(isLoaded)),
+    @"loadAsync" : NSStringFromSelector(@selector(loadAsync)),
+    @"loadedFonts" : NSStringFromSelector(@selector(loadedFonts)),
+    @"processFontFamily" : NSStringFromSelector(@selector(processFontFamily)),
+  };
+}
 @end

@@ -7,18 +7,6 @@
 
 @implementation ScreenCapture
 
-
-
-- (NSDictionary<NSString *, NSString *> *)methodLookup {
-  return @{
-    @"isAvailableAsync": @"isAvailableAsync:",
-    @"preventScreenCapture": @"preventScreenCapture:",
-    @"allowScreenCapture": @"allowScreenCapture:",
-    @"permissionsAsync": @"permissionsAsync:",
-    @"requestPermissionsAsync": @"requestPermissionsAsync:",
-  };
-}
-
 - (BOOL)isAvailableAsync {
 
   return @(YES);
@@ -46,4 +34,16 @@
   return result;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"allowScreenCapture" : NSStringFromSelector(@selector(allowScreenCapture)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+    @"permissionsAsync" : NSStringFromSelector(@selector(permissionsAsync)),
+    @"preventScreenCapture" : NSStringFromSelector(@selector(preventScreenCapture)),
+    @"requestPermissionsAsync" : NSStringFromSelector(@selector(requestPermissionsAsync)),
+  };
+}
 @end

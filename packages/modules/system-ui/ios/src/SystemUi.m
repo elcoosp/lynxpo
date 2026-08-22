@@ -19,4 +19,14 @@
   (void)color;
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getBackgroundColor" : NSStringFromSelector(@selector(getBackgroundColor)),
+    @"setBackgroundColor" : NSStringFromSelector(@selector(setBackgroundColor)),
+    @"setStatusBarBackgroundColor" : NSStringFromSelector(@selector(setStatusBarBackgroundColor)),
+  };
+}
 @end

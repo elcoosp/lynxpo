@@ -32,4 +32,16 @@
   return @{};
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+    @"permissionsAsync" : NSStringFromSelector(@selector(permissionsAsync)),
+    @"recordsAsync" : NSStringFromSelector(@selector(recordsAsync)),
+    @"requestPermissionsAsync" : NSStringFromSelector(@selector(requestPermissionsAsync)),
+    @"writeRecordsAsync" : NSStringFromSelector(@selector(writeRecordsAsync)),
+  };
+}
 @end

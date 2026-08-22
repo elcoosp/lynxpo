@@ -158,4 +158,16 @@
   }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"deleteAsync" : NSStringFromSelector(@selector(deleteAsync)),
+    @"getInfoAsync" : NSStringFromSelector(@selector(getInfoAsync)),
+    @"makeDirectoryAsync" : NSStringFromSelector(@selector(makeDirectoryAsync)),
+    @"readAsStringAsync" : NSStringFromSelector(@selector(readAsStringAsync)),
+    @"writeAsStringAsync" : NSStringFromSelector(@selector(writeAsStringAsync:contents:)),
+  };
+}
 @end

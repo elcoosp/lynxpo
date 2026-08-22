@@ -70,4 +70,18 @@
 }
 - (void)removeListeners:(double)count {}
 
+
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"addListener" : NSStringFromSelector(@selector(addListener)),
+    @"getIpAddress" : NSStringFromSelector(@selector(getIpAddress)),
+    @"getIpAddressAsync" : NSStringFromSelector(@selector(getIpAddressAsync)),
+    @"getNetworkState" : NSStringFromSelector(@selector(getNetworkState)),
+    @"getNetworkStateAsync" : NSStringFromSelector(@selector(getNetworkStateAsync)),
+    @"removeListeners" : NSStringFromSelector(@selector(removeListeners)),
+  };
+}
 @end

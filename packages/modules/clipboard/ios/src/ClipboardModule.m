@@ -34,4 +34,16 @@
   @try { return @([self hasString]); } @catch (NSException *e) { return nil; }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getString" : NSStringFromSelector(@selector(getString)),
+    @"getStringAsync" : NSStringFromSelector(@selector(getStringAsync)),
+    @"hasString" : NSStringFromSelector(@selector(hasString)),
+    @"hasStringAsync" : NSStringFromSelector(@selector(hasStringAsync)),
+    @"setStringAsync" : NSStringFromSelector(@selector(setStringAsync)),
+  };
+}
 @end

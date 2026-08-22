@@ -100,4 +100,17 @@
   }
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getAccelerometer" : NSStringFromSelector(@selector(getAccelerometer)),
+    @"getAccelerometerAsync" : NSStringFromSelector(@selector(getAccelerometerAsync)),
+    @"getGyroscope" : NSStringFromSelector(@selector(getGyroscope)),
+    @"getGyroscopeAsync" : NSStringFromSelector(@selector(getGyroscopeAsync)),
+    @"isAvailable" : NSStringFromSelector(@selector(isAvailable)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+  };
+}
 @end

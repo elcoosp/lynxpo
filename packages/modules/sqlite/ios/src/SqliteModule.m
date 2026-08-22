@@ -34,4 +34,14 @@
   return [self execSync:query];
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"execSync" : NSStringFromSelector(@selector(execSync)),
+    @"getAllSync" : NSStringFromSelector(@selector(getAllSync)),
+    @"openDatabase" : NSStringFromSelector(@selector(openDatabase)),
+  };
+}
 @end

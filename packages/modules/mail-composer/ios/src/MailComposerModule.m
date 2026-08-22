@@ -44,4 +44,15 @@
   @try { [self compose:subject body:body recipients:recipients]; } @catch (NSException *e) {}
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"getClients" : NSStringFromSelector(@selector(getClients)),
+    @"getClientsAsync" : NSStringFromSelector(@selector(getClientsAsync)),
+    @"isAvailable" : NSStringFromSelector(@selector(isAvailable)),
+    @"isAvailableAsync" : NSStringFromSelector(@selector(isAvailableAsync)),
+  };
+}
 @end

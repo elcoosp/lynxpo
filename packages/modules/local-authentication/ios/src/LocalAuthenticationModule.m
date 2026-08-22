@@ -123,4 +123,20 @@
                       }];
 }
 
+
+#pragma mark - LynxModule protocol
+
++ (NSDictionary<NSString *, NSString *> *)methodLookup {
+  return @{
+    @"authenticateAsync" : NSStringFromSelector(@selector(authenticateAsync:cb:)),
+    @"getEnrolledLevel" : NSStringFromSelector(@selector(getEnrolledLevel)),
+    @"getEnrolledLevelAsync" : NSStringFromSelector(@selector(getEnrolledLevelAsync)),
+    @"hasHardware" : NSStringFromSelector(@selector(hasHardware)),
+    @"hasHardwareAsync" : NSStringFromSelector(@selector(hasHardwareAsync)),
+    @"isEnrolled" : NSStringFromSelector(@selector(isEnrolled)),
+    @"isEnrolledAsync" : NSStringFromSelector(@selector(isEnrolledAsync)),
+    @"supportedAuthenticationTypes" : NSStringFromSelector(@selector(supportedAuthenticationTypes)),
+    @"supportedAuthenticationTypesAsync" : NSStringFromSelector(@selector(supportedAuthenticationTypesAsync)),
+  };
+}
 @end
