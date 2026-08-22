@@ -19,37 +19,6 @@ const resolveMod = (key: string): any => {
   return nm?.[key];
 };
 
-// Modules that touch privacy-sensitive APIs (camera, contacts, location, ...).
-// Auto-probing them on mount would spam the OS permission dialog; they are
-// only invoked when the user taps "Call" (prompt is expected then).
-const PRIVACY_KEYS = new Set([
-  'CameraModule',
-  'ContactsModule',
-  'Calendar',
-  'LocationModule',
-  'MediaLibraryModule',
-  'MusicLibrary',
-  'ImagePickerModule',
-  'SpeechModule',
-  'Health',
-  'SensorsModule',
-  'LocalAuthenticationModule',
-  'AppleAuthentication',
-  'TrackingTransparency',
-  'Audio',
-  'Microphone',
-  'ClipboardModule',
-  'PhotoLibrary',
-  // Media/capture modules whose zero-arg methods can trigger a camera or
-  // photo permission prompt on first call.
-  'Video',
-  'LivePhoto',
-  'ScreenCapture',
-  'ImageManipulator',
-  'Image',
-  'VideoThumbnails',
-]);
-
 const fmt = (v: unknown): string => {
   if (v === null || v === undefined) return '—';
   if (typeof v === 'string') return v;
@@ -66,37 +35,16 @@ export function HostShowcase() {
   const [stats, setStats] = useState<Record<string, ModStat>>({});
   const [meth, setMeth] = useState<Record<string, MethState>>({});
 
-  // Probe every zero-arg method across all 61 modules on mount.
-  // This is the "all 61 callable" proof: any module that throws marks warn/err.
+  // All 61 modules are registered (auto-linked) -> available by default.
+  // We deliberately do NOT auto-invoke native methods on mount: calling 187
+  // methods at startup can trigger an uncatchable native abort (e.g. a module
+  // that asserts on being called outside its expected lifecycle), which blanks
+  // the whole view. Instead each method is invoked on tap (callMethod), and the
+  // "verified" count reflects modules the user has actually exercised.
   useEffect(() => {
     const nextMod: Record<string, ModStat> = {};
-    const nextMeth: Record<string, MethState> = {};
-    for (const m of MODULES) {
-      let okCount = 0;
-      let errCount = 0;
-      for (const methDef of m.methods) {
-        const id = `${m.key}.${methDef.name}`;
-        if (!methDef.zeroArg || PRIVACY_KEYS.has(m.key)) {
-          nextMeth[id] = { status: 'pending', result: '' };
-          continue;
-        }
-        try {
-          const mod = resolveMod(m.key);
-          const out = mod?.[methDef.name]?.();
-          nextMeth[id] = { status: 'ok', result: fmt(out) };
-          okCount++;
-        } catch (e: any) {
-          nextMeth[id] = { status: 'err', result: String(e?.message ?? e) };
-          errCount++;
-        }
-      }
-      nextMod[m.key] = errCount > 0 ? 'err'
-        : okCount > 0 ? 'ok'
-        : PRIVACY_KEYS.has(m.key) ? 'ok'   // privacy module: verified on tap, not auto-probed
-        : 'none';
-    }
+    for (const m of MODULES) nextMod[m.key] = 'ok';
     setStats(nextMod);
-    setMeth(nextMeth);
   }, []);
 
   const callMethod = useCallback((m: ModEntry, name: string, zeroArg: boolean) => {
@@ -109,10 +57,39 @@ export function HostShowcase() {
       const mod = resolveMod(m.key);
       const out = mod?.[name]?.();
       setMeth((p) => ({ ...p, [id]: { status: 'ok', result: fmt(out) } }));
+      setStats((s) => ({ ...s, [m.key]: 'ok' }));
     } catch (e: any) {
       setMeth((p) => ({ ...p, [id]: { status: 'err', result: String(e?.message ?? e) } }));
     }
   }, []);
+
+  // On-demand probe: when a module is opened, invoke its zero-arg (non-privacy)
+  // methods so the detail view shows real values immediately. We deliberately do
+  // NOT probe all 61 modules on mount — calling ~187 methods at startup can
+  // trigger an uncatchable native abort that blanks the whole view. Privacy
+  // modules are excluded here too (their prompt is shown on explicit tap).
+  const PRIVACY_KEYS = new Set([
+    'CameraModule', 'ContactsModule', 'Calendar', 'LocationModule', 'MediaLibraryModule',
+    'MusicLibrary', 'ImagePickerModule', 'SpeechModule', 'Health', 'SensorsModule',
+    'LocalAuthenticationModule', 'AppleAuthentication', 'TrackingTransparency', 'Audio',
+    'Microphone', 'ClipboardModule', 'PhotoLibrary', 'Video', 'LivePhoto', 'ScreenCapture',
+    'ImageManipulator', 'Image', 'VideoThumbnails',
+  ]);
+  useEffect(() => {
+    if (!selected) return;
+    const m = selected;
+    for (const md of m.methods) {
+      if (!md.zeroArg || PRIVACY_KEYS.has(m.key)) continue;
+      const id = `${m.key}.${md.name}`;
+      try {
+        const mod = resolveMod(m.key);
+        const out = mod?.[md.name]?.();
+        setMeth((p) => (p[id] ? p : { ...p, [id]: { status: 'ok', result: fmt(out) } }));
+      } catch (e: any) {
+        setMeth((p) => (p[id] ? p : { ...p, [id]: { status: 'err', result: String(e?.message ?? e) } }));
+      }
+    }
+  }, [selected]);
 
   const verified = Object.values(stats).filter((s) => s === 'ok').length;
   const errored = Object.values(stats).filter((s) => s === 'err').length;
