@@ -181,10 +181,14 @@ export function HostShowcase() {
         <text className="NativeUI__Title">Native UI · blur-view</text>
         <view className="BlurDemo">
           <view className="BlurDemo__Bg" />
-          <blur-view
+          <view className="BlurDemo__Stripes" />
+          <view className="BlurDemo__Dot BlurDemo__Dot--a" />
+          <view className="BlurDemo__Dot BlurDemo__Dot--b" />
+          <view className="BlurDemo__Dot BlurDemo__Dot--c" />
+          <lynxpo-blur
             className="BlurDemo__Blur"
-            tint="dark"
-            intensity={70}
+            tint="light"
+            intensity={80}
             border-radius={12}
           />
           <view className="BlurDemo__Label">
