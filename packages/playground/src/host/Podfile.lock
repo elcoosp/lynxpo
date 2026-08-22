@@ -168,9 +168,9 @@ PODS:
     - PrimJS/quickjs
 
 DEPENDENCIES:
-  - Lynx/Framework (from `..`)
-  - LynxBase/Framework (from `..`)
-  - LynxLibraryRegistry (from `/Users/adm/Documents/Repos/lynxpo/packages/playground/src/lynx/host/generated/lynx-library`)
+  - Lynx/Framework (from `../lynx`)
+  - LynxBase/Framework (from `../lynx`)
+  - LynxLibraryRegistry (from `/Users/adm/Documents/Repos/lynxpo/packages/playground/src/host/generated/lynx-library`)
   - LynxpoModsAppearance (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/appearance/ios`)
   - LynxpoModsAppIntegrity (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/app-integrity/ios`)
   - LynxpoModsAppleAuthentication (from `/Users/adm/Documents/Repos/lynxpo/packages/modules/apple-authentication/ios`)
@@ -243,11 +243,11 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Lynx:
-    :path: ".."
+    :path: "../lynx"
   LynxBase:
-    :path: ".."
+    :path: "../lynx"
   LynxLibraryRegistry:
-    :path: "/Users/adm/Documents/Repos/lynxpo/packages/playground/src/lynx/host/generated/lynx-library"
+    :path: "/Users/adm/Documents/Repos/lynxpo/packages/playground/src/host/generated/lynx-library"
   LynxpoModsAppearance:
     :path: "/Users/adm/Documents/Repos/lynxpo/packages/modules/appearance/ios"
   LynxpoModsAppIntegrity:
@@ -439,6 +439,6 @@ SPEC CHECKSUMS:
   LynxServiceAPI: 67ae06f77e45c80f0ecaa6705d126ac3b4b8dff4
   PrimJS: 68292fff5763086940a54ea416a888f1efefb995
 
-PODFILE CHECKSUM: fc168b3b4dffe8e53e6b1d1ef372387b52f8e804
+PODFILE CHECKSUM: 93930e3fc06eb062098b5826ba1d5057e4a51a3d
 
 COCOAPODS: 1.17.0
