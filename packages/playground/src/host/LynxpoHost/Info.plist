@@ -30,5 +30,51 @@
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict/>
+	<!-- Privacy usage descriptions: this host app exercises all 61 native
+	     modules (camera, contacts, calendar, location, photos, microphone,
+	     etc.), so the standard usage keys must be declared or the OS aborts
+	     the process when a module touches a privacy-sensitive API. -->
+	<key>NSCameraUsageDescription</key>
+	<string>LynxpoHost uses the camera to exercise camera native modules.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>LynxpoHost accesses the photo library to exercise photo native modules.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>LynxpoHost saves to the photo library to exercise photo native modules.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>LynxpoHost uses the microphone to exercise audio native modules.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>LynxpoHost accesses contacts to exercise contacts native modules.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>LynxpoHost accesses calendars to exercise calendar native modules.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>LynxpoHost accesses reminders to exercise reminder native modules.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>LynxpoHost uses location to exercise location native modules.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>LynxpoHost uses location to exercise location native modules.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>LynxpoHost accesses motion to exercise sensor native modules.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>LynxpoHost uses Face ID to exercise biometric native modules.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>LynxpoHost uses Bluetooth to exercise bluetooth native modules.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>LynxpoHost uses Bluetooth to exercise bluetooth native modules.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>LynxpoHost uses speech recognition to exercise speech native modules.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>LynxpoHost accesses health to exercise health native modules.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>LynxpoHost updates health to exercise health native modules.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>LynxpoHost accesses media to exercise media native modules.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>LynxpoHost tracks usage to exercise tracking native modules.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>LynxpoHost uses the local network to exercise network native modules.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_lynxpo._tcp</string>
+	</array>
 </dict>
 </plist>

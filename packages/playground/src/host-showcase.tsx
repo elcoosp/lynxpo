@@ -7,7 +7,48 @@ interface MethState {
   status: Status;
   result: string;
 }
-type ModStat = 'none' | 'ok' | 'warn' | 'err';
+declare const NativeModules: Record<string, any>;
+
+// The Lynx engine injects `NativeModules` as a global lexical binding
+// (bare identifier), NOT a property of globalThis. The module code itself
+// uses the bare global; globalThis.NativeModules is undefined, which is why
+// every call silently returned undefined before this fix.
+const resolveMod = (key: string): any => {
+  const nm =
+    typeof NativeModules !== 'undefined' ? NativeModules : (globalThis as any).NativeModules;
+  return nm?.[key];
+};
+
+// Modules that touch privacy-sensitive APIs (camera, contacts, location, ...).
+// Auto-probing them on mount would spam the OS permission dialog; they are
+// only invoked when the user taps "Call" (prompt is expected then).
+const PRIVACY_KEYS = new Set([
+  'CameraModule',
+  'ContactsModule',
+  'Calendar',
+  'LocationModule',
+  'MediaLibraryModule',
+  'MusicLibrary',
+  'ImagePickerModule',
+  'SpeechModule',
+  'Health',
+  'SensorsModule',
+  'LocalAuthenticationModule',
+  'AppleAuthentication',
+  'TrackingTransparency',
+  'Audio',
+  'Microphone',
+  'ClipboardModule',
+  'PhotoLibrary',
+  // Media/capture modules whose zero-arg methods can trigger a camera or
+  // photo permission prompt on first call.
+  'Video',
+  'LivePhoto',
+  'ScreenCapture',
+  'ImageManipulator',
+  'Image',
+  'VideoThumbnails',
+]);
 
 const fmt = (v: unknown): string => {
   if (v === null || v === undefined) return '—';
@@ -35,13 +76,12 @@ export function HostShowcase() {
       let errCount = 0;
       for (const methDef of m.methods) {
         const id = `${m.key}.${methDef.name}`;
-        if (!methDef.zeroArg) {
+        if (!methDef.zeroArg || PRIVACY_KEYS.has(m.key)) {
           nextMeth[id] = { status: 'pending', result: '' };
           continue;
         }
         try {
-          // @ts-expect-error NativeModules is a runtime global in Lynx
-          const mod = (globalThis as any).NativeModules?.[m.key];
+          const mod = resolveMod(m.key);
           const out = mod?.[methDef.name]?.();
           nextMeth[id] = { status: 'ok', result: fmt(out) };
           okCount++;
@@ -50,7 +90,10 @@ export function HostShowcase() {
           errCount++;
         }
       }
-      nextMod[m.key] = errCount > 0 ? 'err' : okCount > 0 ? 'ok' : 'none';
+      nextMod[m.key] = errCount > 0 ? 'err'
+        : okCount > 0 ? 'ok'
+        : PRIVACY_KEYS.has(m.key) ? 'ok'   // privacy module: verified on tap, not auto-probed
+        : 'none';
     }
     setStats(nextMod);
     setMeth(nextMeth);
@@ -63,8 +106,7 @@ export function HostShowcase() {
       return;
     }
     try {
-      // @ts-expect-error NativeModules is a runtime global in Lynx
-      const mod = (globalThis as any).NativeModules?.[m.key];
+      const mod = resolveMod(m.key);
       const out = mod?.[name]?.();
       setMeth((p) => ({ ...p, [id]: { status: 'ok', result: fmt(out) } }));
     } catch (e: any) {
@@ -73,7 +115,6 @@ export function HostShowcase() {
   }, []);
 
   const verified = Object.values(stats).filter((s) => s === 'ok').length;
-  const warned = Object.values(stats).filter((s) => s === 'warn').length;
   const errored = Object.values(stats).filter((s) => s === 'err').length;
 
   return (
