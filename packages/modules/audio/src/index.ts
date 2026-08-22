@@ -1,9 +1,17 @@
 // Auto-generated from Audio.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { Audio } from './generated/Audio';
+import type { NativeModules as INativeModules } from '@lynx-js/types';
+
+export interface Audio extends INativeModules {
+  getStatus(): Record<string, any>;
+  play(): void;
+  pause(): void;
+  setVolume(volume: number): void;
+  setIsLooping(looping: boolean): void;
+}
 
 export const getGetStatus = (): Record<string, any> =>
-  Audio.getStatus();
+  NativeModules.Audio?.getStatus?.();
 
 export const useGetStatus = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -20,7 +28,7 @@ export const useGetStatus = () => {
   return value;
 };
 
-export const getPlay = (): void => Audio.play();
+export const getPlay = (): void => NativeModules.Audio?.play?.();
 
 export const usePlay = () => {
   const [value, setValue] = useState<void>();
@@ -37,7 +45,7 @@ export const usePlay = () => {
   return value;
 };
 
-export const getPause = (): void => Audio.pause();
+export const getPause = (): void => NativeModules.Audio?.pause?.();
 
 export const usePause = () => {
   const [value, setValue] = useState<void>();

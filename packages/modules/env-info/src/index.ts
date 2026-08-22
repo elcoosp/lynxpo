@@ -1,10 +1,6 @@
 // Auto-generated from EnvInfoModule.kt
-import { useEffect, useState } from "@lynx-js/react";
+import { useEffect, useState } from '@lynx-js/react';
 import { EnvInfoModule } from './generated/EnvInfoModule';
-
-
-
-;
 
 export const getIsRunningOnDevice = (): boolean =>
   EnvInfoModule.isRunningOnDevice();
@@ -24,8 +20,7 @@ export const useIsRunningOnDevice = () => {
   return value;
 };
 
-export const getInstallTime = (): number =>
-  EnvInfoModule.installTime();
+export const getInstallTime = (): number => EnvInfoModule.installTime();
 
 export const useInstallTime = () => {
   const [value, setValue] = useState<number>();

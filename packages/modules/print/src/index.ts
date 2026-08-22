@@ -38,8 +38,7 @@ export const useSelectPrinter = () => {
   return value;
 };
 
-export const getIsAvailable = (): boolean =>
-  Print.isAvailable();
+export const getIsAvailable = (): boolean => Print.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();

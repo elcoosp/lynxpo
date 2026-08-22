@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { LivePhoto } from './generated/LivePhoto';
 
-export const getIsAvailableAsync = (): boolean =>
-  LivePhoto.isAvailableAsync();
+export const getIsAvailableAsync = (): boolean => LivePhoto.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();

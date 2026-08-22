@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { WebBrowserModule } from './generated/WebBrowserModule';
 
-export const getIsAvailable = (): boolean =>
-  WebBrowserModule.isAvailable();
+export const getIsAvailable = (): boolean => WebBrowserModule.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();
@@ -20,8 +19,7 @@ export const useIsAvailable = () => {
   return value;
 };
 
-export const getInitialURL = (): string =>
-  WebBrowserModule.initialURL();
+export const getInitialURL = (): string => WebBrowserModule.initialURL();
 
 export const useInitialURL = () => {
   const [value, setValue] = useState<string>();

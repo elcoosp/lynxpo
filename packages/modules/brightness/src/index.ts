@@ -1,9 +1,23 @@
 // Auto-generated from BrightnessModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { BrightnessModule } from './generated/BrightnessModule';
+import type { NativeModules as INativeModules } from '@lynx-js/types';
+
+export interface BrightnessModule extends INativeModules {
+  getBrightness(): number;
+  getSystemBrightness(): number;
+  isUsingSystemBrightness(): boolean;
+  getSystemBrightnessMode(): number;
+  getBrightnessAsync(): Promise<string>;
+  setBrightnessAsync(value: number): Promise<void>;
+  getSystemBrightnessAsync(): Promise<string>;
+  isUsingSystemBrightnessAsync(): Promise<boolean>;
+  getSystemBrightnessModeAsync(): Promise<number>;
+  addListener(eventName: string): void;
+  removeListeners(count: number): void;
+}
 
 export const getGetBrightness = (): number =>
-  BrightnessModule.getBrightness();
+  NativeModules.BrightnessModule?.getBrightness?.();
 
 export const useGetBrightness = () => {
   const [value, setValue] = useState<number>();
@@ -21,7 +35,7 @@ export const useGetBrightness = () => {
 };
 
 export const getGetSystemBrightness = (): number =>
-  BrightnessModule.getSystemBrightness();
+  NativeModules.BrightnessModule?.getSystemBrightness?.();
 
 export const useGetSystemBrightness = () => {
   const [value, setValue] = useState<number>();
@@ -39,7 +53,7 @@ export const useGetSystemBrightness = () => {
 };
 
 export const getIsUsingSystemBrightness = (): boolean =>
-  BrightnessModule.isUsingSystemBrightness();
+  NativeModules.BrightnessModule?.isUsingSystemBrightness?.();
 
 export const useIsUsingSystemBrightness = () => {
   const [value, setValue] = useState<boolean>();
@@ -57,7 +71,7 @@ export const useIsUsingSystemBrightness = () => {
 };
 
 export const getGetSystemBrightnessMode = (): number =>
-  BrightnessModule.getSystemBrightnessMode();
+  NativeModules.BrightnessModule?.getSystemBrightnessMode?.();
 
 export const useGetSystemBrightnessMode = () => {
   const [value, setValue] = useState<number>();
@@ -75,7 +89,7 @@ export const useGetSystemBrightnessMode = () => {
 };
 
 export const getGetBrightnessAsync = (): Promise<string> =>
-  BrightnessModule.getBrightnessAsync();
+  NativeModules.BrightnessModule?.getBrightnessAsync?.();
 
 export const useGetBrightnessAsync = () => {
   const [value, setValue] = useState<string>();
@@ -136,7 +150,7 @@ export const useSetBrightnessAsync = (value: number) => {
 };
 
 export const getGetSystemBrightnessAsync = (): Promise<string> =>
-  BrightnessModule.getSystemBrightnessAsync();
+  NativeModules.BrightnessModule?.getSystemBrightnessAsync?.();
 
 export const useGetSystemBrightnessAsync = () => {
   const [value, setValue] = useState<string>();
@@ -175,7 +189,7 @@ export const useGetSystemBrightnessAsync = () => {
 };
 
 export const getIsUsingSystemBrightnessAsync = (): Promise<boolean> =>
-  BrightnessModule.isUsingSystemBrightnessAsync();
+  NativeModules.BrightnessModule?.isUsingSystemBrightnessAsync?.();
 
 export const useIsUsingSystemBrightnessAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -214,7 +228,7 @@ export const useIsUsingSystemBrightnessAsync = () => {
 };
 
 export const getGetSystemBrightnessModeAsync = (): Promise<number> =>
-  BrightnessModule.getSystemBrightnessModeAsync();
+  NativeModules.BrightnessModule?.getSystemBrightnessModeAsync?.();
 
 export const useGetSystemBrightnessModeAsync = () => {
   const [value, setValue] = useState<number>();

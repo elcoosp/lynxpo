@@ -1,9 +1,15 @@
 // Auto-generated from AuthSession.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { AuthSession } from './generated/AuthSession';
+import type { NativeModules as INativeModules } from '@lynx-js/types';
+
+export interface AuthSession extends INativeModules {
+  isAvailableAsync(): boolean;
+  redirectUriAsync(): string;
+  providerInfoAsync(): Record<string, any>;
+}
 
 export const getIsAvailableAsync = (): boolean =>
-  AuthSession.isAvailableAsync();
+  NativeModules.AuthSession?.isAvailableAsync?.();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -21,7 +27,7 @@ export const useIsAvailableAsync = () => {
 };
 
 export const getRedirectUriAsync = (): string =>
-  AuthSession.redirectUriAsync();
+  NativeModules.AuthSession?.redirectUriAsync?.();
 
 export const useRedirectUriAsync = () => {
   const [value, setValue] = useState<string>();
@@ -39,7 +45,7 @@ export const useRedirectUriAsync = () => {
 };
 
 export const getProviderInfoAsync = (): Record<string, any> =>
-  AuthSession.providerInfoAsync();
+  NativeModules.AuthSession?.providerInfoAsync?.();
 
 export const useProviderInfoAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();

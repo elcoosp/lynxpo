@@ -232,7 +232,10 @@ export const getAuthenticateAsync = (
   prompt: string,
 ): Promise<Record<string, any>> =>
   new Promise((resolve) => {
-    LocalAuthenticationModule.authenticateAsync(prompt, (result: Record<string, any>) => resolve(result));
+    LocalAuthenticationModule.authenticateAsync(
+      prompt,
+      (result: Record<string, any>) => resolve(result),
+    );
   });
 
 export const useAuthenticateAsync = (prompt: string) => {

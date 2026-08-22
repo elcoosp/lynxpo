@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { Linking } from './generated/Linking';
 
-export const getGetInitialURL = (): string =>
-  Linking.getInitialURL();
+export const getGetInitialURL = (): string => Linking.getInitialURL();
 
 export const useGetInitialURL = () => {
   const [value, setValue] = useState<string>();

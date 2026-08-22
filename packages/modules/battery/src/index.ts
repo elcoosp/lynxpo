@@ -1,9 +1,16 @@
 // Auto-generated from BatteryModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { BatteryModule } from './generated/BatteryModule';
+import type { NativeModules as INativeModules } from '@lynx-js/types';
+
+export interface BatteryModule extends INativeModules {
+  getBatteryLevel(): any;
+  getBatteryState(): any;
+  isLowPowerModeEnabled(): any;
+  isBatteryOptimizationEnabled(): any;
+}
 
 export const getGetBatteryLevel = (): any =>
-  BatteryModule.getBatteryLevel();
+  NativeModules.BatteryModule?.getBatteryLevel?.();
 
 export const useGetBatteryLevel = () => {
   const [value, setValue] = useState<any>();
@@ -21,7 +28,7 @@ export const useGetBatteryLevel = () => {
 };
 
 export const getGetBatteryState = (): any =>
-  BatteryModule.getBatteryState();
+  NativeModules.BatteryModule?.getBatteryState?.();
 
 export const useGetBatteryState = () => {
   const [value, setValue] = useState<any>();
@@ -39,7 +46,7 @@ export const useGetBatteryState = () => {
 };
 
 export const getIsLowPowerModeEnabled = (): any =>
-  BatteryModule.isLowPowerModeEnabled();
+  NativeModules.BatteryModule?.isLowPowerModeEnabled?.();
 
 export const useIsLowPowerModeEnabled = () => {
   const [value, setValue] = useState<any>();
@@ -57,7 +64,7 @@ export const useIsLowPowerModeEnabled = () => {
 };
 
 export const getIsBatteryOptimizationEnabled = (): any =>
-  BatteryModule.isBatteryOptimizationEnabled();
+  NativeModules.BatteryModule?.isBatteryOptimizationEnabled?.();
 
 export const useIsBatteryOptimizationEnabled = () => {
   const [value, setValue] = useState<any>();

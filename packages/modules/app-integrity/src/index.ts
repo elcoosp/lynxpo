@@ -2,7 +2,8 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { AppIntegrity } from './generated/AppIntegrity';
 
-export const getIsAvailableAsync = (): boolean => AppIntegrity.isAvailableAsync();
+export const getIsAvailableAsync = (): boolean =>
+  AppIntegrity.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -12,9 +13,13 @@ export const useIsAvailableAsync = () => {
   return value;
 };
 
-export const getIntegrityTokenAsync = (options: string): Promise<Record<string, any>> =>
+export const getIntegrityTokenAsync = (
+  options: string,
+): Promise<Record<string, any>> =>
   new Promise((resolve) => {
-    AppIntegrity.integrityTokenAsync(options, (result: Record<string, any>) => resolve(result));
+    AppIntegrity.integrityTokenAsync(options, (result: Record<string, any>) =>
+      resolve(result),
+    );
   });
 
 export const useIntegrityTokenAsync = (options: string) => {
@@ -31,7 +36,8 @@ export const useIntegrityTokenAsync = (options: string) => {
   return value;
 };
 
-export const getCodeHashAsync = (): Record<string, any> => AppIntegrity.codeHashAsync();
+export const getCodeHashAsync = (): Record<string, any> =>
+  AppIntegrity.codeHashAsync();
 
 export const useCodeHashAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();

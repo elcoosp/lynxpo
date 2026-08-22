@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { StoreReviewModule } from './generated/StoreReviewModule';
 
-export const getIsAvailable = (): boolean =>
-  StoreReviewModule.isAvailable();
+export const getIsAvailable = (): boolean => StoreReviewModule.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();

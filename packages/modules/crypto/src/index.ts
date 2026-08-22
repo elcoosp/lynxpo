@@ -46,8 +46,7 @@ export const useGetRandomBytes = (byteCount: number) => {
   return value;
 };
 
-export const getRandomUUID = (): string | null =>
-  CryptoModule.randomUUID();
+export const getRandomUUID = (): string | null => CryptoModule.randomUUID();
 
 export const useRandomUUID = () => {
   const [value, setValue] = useState<string | null>();

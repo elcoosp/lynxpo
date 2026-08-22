@@ -38,8 +38,7 @@ export const useRequestPermission = () => {
   return value;
 };
 
-export const getContactCount = (): number =>
-  ContactsModule.contactCount();
+export const getContactCount = (): number => ContactsModule.contactCount();
 
 export const useContactCount = () => {
   const [value, setValue] = useState<number>();
@@ -56,8 +55,7 @@ export const useContactCount = () => {
   return value;
 };
 
-export const getContainerCount = (): number =>
-  ContactsModule.containerCount();
+export const getContainerCount = (): number => ContactsModule.containerCount();
 
 export const useContainerCount = () => {
   const [value, setValue] = useState<number>();

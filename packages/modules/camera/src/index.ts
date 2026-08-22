@@ -92,8 +92,7 @@ export const useAvailableVideoCodecs = () => {
   return value;
 };
 
-export const getStartCamera = (): boolean =>
-  CameraModule.startCamera();
+export const getStartCamera = (): boolean => CameraModule.startCamera();
 
 export const useStartCamera = () => {
   const [value, setValue] = useState<boolean>();
@@ -110,8 +109,7 @@ export const useStartCamera = () => {
   return value;
 };
 
-export const getStopCamera = (): void =>
-  CameraModule.stopCamera();
+export const getStopCamera = (): void => CameraModule.stopCamera();
 
 export const useStopCamera = () => {
   const [value, setValue] = useState<void>();
@@ -128,8 +126,7 @@ export const useStopCamera = () => {
   return value;
 };
 
-export const getFlipCamera = (): void =>
-  CameraModule.flipCamera();
+export const getFlipCamera = (): void => CameraModule.flipCamera();
 
 export const useFlipCamera = () => {
   const [value, setValue] = useState<void>();
@@ -182,8 +179,7 @@ export const useIsTorchAvailable = () => {
   return value;
 };
 
-export const getCaptureFrame = (): string =>
-  CameraModule.captureFrame();
+export const getCaptureFrame = (): string => CameraModule.captureFrame();
 
 export const useCaptureFrame = () => {
   const [value, setValue] = useState<string>();

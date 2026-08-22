@@ -1,13 +1,8 @@
 // Auto-generated from SplashScreenModule.kt
-import { useEffect, useState } from "@lynx-js/react";
+import { useEffect, useState } from '@lynx-js/react';
 import { SplashScreenModule } from './generated/SplashScreenModule';
 
-
-
-;
-
-export const getHideAsync = (): string =>
-  SplashScreenModule.hideAsync();
+export const getHideAsync = (): string => SplashScreenModule.hideAsync();
 
 export const useHideAsync = () => {
   const [value, setValue] = useState<string>();
@@ -42,8 +37,7 @@ export const usePreventAutoHideAsync = () => {
   return value;
 };
 
-export const getStatusAsync = (): string =>
-  SplashScreenModule.statusAsync();
+export const getStatusAsync = (): string => SplashScreenModule.statusAsync();
 
 export const useStatusAsync = () => {
   const [value, setValue] = useState<string>();

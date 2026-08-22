@@ -1,10 +1,6 @@
 // Auto-generated from SqliteModule.kt
-import { useEffect, useState } from "@lynx-js/react";
+import { useEffect, useState } from '@lynx-js/react';
 import { SqliteModule } from './generated/SqliteModule';
-
-
-
-;
 
 export const getOpenDatabase = (name: string): void =>
   NativeModules.SqliteModule?.openDatabase?.(name);

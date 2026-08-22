@@ -2,7 +2,8 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { AppleAuthentication } from './generated/AppleAuthentication';
 
-export const getIsAvailableAsync = (): boolean => AppleAuthentication.isAvailableAsync();
+export const getIsAvailableAsync = (): boolean =>
+  AppleAuthentication.isAvailableAsync();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -12,9 +13,14 @@ export const useIsAvailableAsync = () => {
   return value;
 };
 
-export const getCredentialAsync = (options: string): Promise<Record<string, any>> =>
+export const getCredentialAsync = (
+  options: string,
+): Promise<Record<string, any>> =>
   new Promise((resolve) => {
-    AppleAuthentication.credentialAsync(options, (result: Record<string, any>) => resolve(result));
+    AppleAuthentication.credentialAsync(
+      options,
+      (result: Record<string, any>) => resolve(result),
+    );
   });
 
 export const useCredentialAsync = (options: string) => {
@@ -33,7 +39,9 @@ export const useCredentialAsync = (options: string) => {
 
 export const getCredentialStateAsync = (user: string): Promise<string> =>
   new Promise((resolve) => {
-    AppleAuthentication.credentialStateAsync(user, (result: string) => resolve(result));
+    AppleAuthentication.credentialStateAsync(user, (result: string) =>
+      resolve(result),
+    );
   });
 
 export const useCredentialStateAsync = (user: string) => {

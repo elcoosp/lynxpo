@@ -40,7 +40,9 @@ export const useGetMediaLibraryPermissions = () => {
 
 export const getGetCameraPermissionsAsync = (): Promise<any> =>
   new Promise((resolve) => {
-    ImagePickerModule.getCameraPermissionsAsync((result: any) => resolve(result));
+    ImagePickerModule.getCameraPermissionsAsync((result: any) =>
+      resolve(result),
+    );
   });
 
 export const useGetCameraPermissionsAsync = () => {
@@ -81,7 +83,9 @@ export const useGetCameraPermissionsAsync = () => {
 
 export const getGetMediaLibraryPermissionsAsync = (): Promise<any> =>
   new Promise((resolve) => {
-    ImagePickerModule.getMediaLibraryPermissionsAsync((result: any) => resolve(result));
+    ImagePickerModule.getMediaLibraryPermissionsAsync((result: any) =>
+      resolve(result),
+    );
   });
 
 export const useGetMediaLibraryPermissionsAsync = () => {

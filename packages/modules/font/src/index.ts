@@ -20,8 +20,7 @@ export const useIsLoaded = (fontFamily: string) => {
   return value;
 };
 
-export const getLoadedFonts = (): string[] =>
-  FontModule.loadedFonts();
+export const getLoadedFonts = (): string[] => FontModule.loadedFonts();
 
 export const useLoadedFonts = () => {
   const [value, setValue] = useState<string[]>();

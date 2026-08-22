@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { KeepAwakeModule } from './generated/KeepAwakeModule';
 
-export const getIsActivated = (): boolean =>
-  KeepAwakeModule.isActivated();
+export const getIsActivated = (): boolean => KeepAwakeModule.isActivated();
 
 export const useIsActivated = () => {
   const [value, setValue] = useState<boolean>();

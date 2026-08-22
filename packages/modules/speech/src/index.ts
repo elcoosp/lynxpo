@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { SpeechModule } from './generated/SpeechModule';
 
-export const getIsSpeaking = (): boolean =>
-  SpeechModule.isSpeaking();
+export const getIsSpeaking = (): boolean => SpeechModule.isSpeaking();
 
 export const useIsSpeaking = () => {
   const [value, setValue] = useState<boolean>();
@@ -20,8 +19,7 @@ export const useIsSpeaking = () => {
   return value;
 };
 
-export const getSupported = (): boolean =>
-  SpeechModule.supported();
+export const getSupported = (): boolean => SpeechModule.supported();
 
 export const useSupported = () => {
   const [value, setValue] = useState<boolean>();
@@ -38,8 +36,7 @@ export const useSupported = () => {
   return value;
 };
 
-export const getVoices = (): Record<string, string>[] =>
-  SpeechModule.voices();
+export const getVoices = (): Record<string, string>[] => SpeechModule.voices();
 
 export const useVoices = () => {
   const [value, setValue] = useState<Record<string, string>[]>();

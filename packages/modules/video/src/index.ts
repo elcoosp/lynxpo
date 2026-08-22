@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { Video } from './generated/Video';
 
-export const getGetStatus = (): Record<string, any> =>
-  Video.getStatus();
+export const getGetStatus = (): Record<string, any> => Video.getStatus();
 
 export const useGetStatus = () => {
   const [value, setValue] = useState<Record<string, any>>();

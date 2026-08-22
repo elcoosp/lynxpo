@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { ClipboardModule } from './generated/ClipboardModule';
 
-export const getGetString = (): string | null =>
-  ClipboardModule.getString();
+export const getGetString = (): string | null => ClipboardModule.getString();
 
 export const useGetString = () => {
   const [value, setValue] = useState<string | null>();
@@ -20,8 +19,7 @@ export const useGetString = () => {
   return value;
 };
 
-export const getHasString = (): boolean =>
-  ClipboardModule.hasString();
+export const getHasString = (): boolean => ClipboardModule.hasString();
 
 export const useHasString = () => {
   const [value, setValue] = useState<boolean>();

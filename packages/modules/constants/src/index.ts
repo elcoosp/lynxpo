@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { ConstantsModule } from './generated/ConstantsModule';
 
-export const getAppOwnership = (): string =>
-  ConstantsModule.appOwnership();
+export const getAppOwnership = (): string => ConstantsModule.appOwnership();
 
 export const useAppOwnership = () => {
   const [value, setValue] = useState<string>();
@@ -20,8 +19,7 @@ export const useAppOwnership = () => {
   return value;
 };
 
-export const getPlatform = (): string =>
-  ConstantsModule.platform();
+export const getPlatform = (): string => ConstantsModule.platform();
 
 export const usePlatform = () => {
   const [value, setValue] = useState<string>();
@@ -56,8 +54,7 @@ export const useExecutionEnvironment = () => {
   return value;
 };
 
-export const getSessionId = (): string =>
-  ConstantsModule.sessionId();
+export const getSessionId = (): string => ConstantsModule.sessionId();
 
 export const useSessionId = () => {
   const [value, setValue] = useState<string>();
@@ -74,8 +71,7 @@ export const useSessionId = () => {
   return value;
 };
 
-export const getInstallationId = (): string =>
-  ConstantsModule.installationId();
+export const getInstallationId = (): string => ConstantsModule.installationId();
 
 export const useInstallationId = () => {
   const [value, setValue] = useState<string>();
@@ -92,8 +88,7 @@ export const useInstallationId = () => {
   return value;
 };
 
-export const getIsHeadless = (): boolean =>
-  ConstantsModule.isHeadless();
+export const getIsHeadless = (): boolean => ConstantsModule.isHeadless();
 
 export const useIsHeadless = () => {
   const [value, setValue] = useState<boolean>();
@@ -110,8 +105,7 @@ export const useIsHeadless = () => {
   return value;
 };
 
-export const getSystemFonts = (): string[] =>
-  ConstantsModule.systemFonts();
+export const getSystemFonts = (): string[] => ConstantsModule.systemFonts();
 
 export const useSystemFonts = () => {
   const [value, setValue] = useState<string[]>();

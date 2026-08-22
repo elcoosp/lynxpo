@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { MailComposerModule } from './generated/MailComposerModule';
 
-export const getIsAvailable = (): boolean =>
-  MailComposerModule.isAvailable();
+export const getIsAvailable = (): boolean => MailComposerModule.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();
@@ -20,8 +19,7 @@ export const useIsAvailable = () => {
   return value;
 };
 
-export const getGetClients = (): string[] =>
-  MailComposerModule.getClients();
+export const getGetClients = (): string[] => MailComposerModule.getClients();
 
 export const useGetClients = () => {
   const [value, setValue] = useState<string[]>();

@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { Image } from './generated/Image';
 
-export const getGetCacheSize = (): number =>
-  Image.getCacheSize();
+export const getGetCacheSize = (): number => Image.getCacheSize();
 
 export const useGetCacheSize = () => {
   const [value, setValue] = useState<number>();

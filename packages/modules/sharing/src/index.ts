@@ -2,8 +2,7 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { Sharing } from './generated/Sharing';
 
-export const getIsAvailable = (): boolean =>
-  Sharing.isAvailable();
+export const getIsAvailable = (): boolean => Sharing.isAvailable();
 
 export const useIsAvailable = () => {
   const [value, setValue] = useState<boolean>();
