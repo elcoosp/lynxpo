@@ -12,6 +12,7 @@ export default defineConfig({
       hostmin: ['./src/host-min.tsx'],
       hostsingle: ['./src/host-single.tsx'],
       hostsync: ['./src/host-sync.tsx'],
+      hostshowcase: ['./src/host-showcase.tsx'],
     },
   },
   server: {
