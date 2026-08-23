@@ -6,10 +6,13 @@
 #import <Lynx/LynxComponentRegistry.h>
 #import <Lynx/LynxPropsProcessor.h>
 
-/// Container view: a UIVisualEffectView pinned to the back, children added on
-/// top by the engine (it inserts subviews into self.view).
+/// Container view that stacks several UIVisualEffectViews. iOS fixes the blur
+/// radius per UIBlurEffect style, so layering multiple effect views compounds
+/// the frost into a genuinely strong, unmistakable blur (public API only — no
+/// private radius selectors, which do not exist on UIVisualEffectView).
 @interface LynxpoBlurContainer : UIView
-@property(nonatomic, strong) UIVisualEffectView *blurEffectView;
+@property(nonatomic, strong) NSArray<UIVisualEffectView *> *layers;
+- (void)applyEffectWithStyle:(UIBlurEffectStyle)style;
 @end
 
 @implementation LynxpoBlurContainer
@@ -17,44 +20,59 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
-    _blurEffectView = [[UIVisualEffectView alloc] initWithEffect:nil];
-    _blurEffectView.frame = self.bounds;
-    _blurEffectView.autoresizingMask =
-        UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self addSubview:_blurEffectView];
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i = 0; i < 3; i++) {
+      UIVisualEffectView *ev =
+          [[UIVisualEffectView alloc] initWithEffect:nil];
+      ev.frame = self.bounds;
+      ev.autoresizingMask =
+          UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+      [self addSubview:ev];
+      [arr addObject:ev];
+    }
+    _layers = [arr copy];
   }
   return self;
 }
 
-// Lynx may size the view via -setFrame:/-setBounds: without triggering
-// -layoutSubviews, so track the frame here to keep the effect view filled.
 - (void)setFrame:(CGRect)frame {
   [super setFrame:frame];
-  _blurEffectView.frame = self.bounds;
+  for (UIVisualEffectView *ev in _layers) ev.frame = self.bounds;
 }
 
 - (void)setBounds:(CGRect)bounds {
   [super setBounds:bounds];
-  _blurEffectView.frame = self.bounds;
+  for (UIVisualEffectView *ev in _layers) ev.frame = self.bounds;
 }
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  _blurEffectView.frame = self.bounds;
+  for (UIVisualEffectView *ev in _layers) ev.frame = self.bounds;
 }
 
+- (void)applyEffectWithStyle:(UIBlurEffectStyle)style {
+  for (UIVisualEffectView *ev in _layers) {
+    ev.effect = [UIBlurEffect effectWithStyle:style];
+  }
+}
+
+@end
+
+@interface LynxpoBlurView ()
+@property(nonatomic, assign) UIBlurEffectStyle tintStyle;
 @end
 
 @implementation LynxpoBlurView
 
 - (UIView *)createView {
+  self.tintStyle = UIBlurEffectStyleProminent;
   return [[LynxpoBlurContainer alloc] init];
 }
 
 #pragma mark - expo-blur props
 
 LYNX_PROP_SETTER("tint", setTint, NSString *) {
-  UIBlurEffectStyle style = UIBlurEffectStyleRegular;
+  UIBlurEffectStyle style = UIBlurEffectStyleProminent;
   NSString *t = [value lowercaseString];
   if ([t isEqualToString:@"light"]) style = UIBlurEffectStyleLight;
   else if ([t isEqualToString:@"dark"]) style = UIBlurEffectStyleDark;
@@ -69,16 +87,17 @@ LYNX_PROP_SETTER("tint", setTint, NSString *) {
     style = UIBlurEffectStyleSystemThickMaterial;
   else if ([t isEqualToString:@"systemultrathinmaterial"])
     style = UIBlurEffectStyleSystemUltraThinMaterial;
+  _tintStyle = style;
   LynxpoBlurContainer *v = (LynxpoBlurContainer *)self.view;
-  v.blurEffectView.effect = [UIBlurEffect effectWithStyle:style];
+  [v applyEffectWithStyle:style];
 }
 
 LYNX_PROP_SETTER("intensity", setIntensity, NSNumber *) {
-  // expo-blur approximates intensity on iOS by adjusting the blur view alpha.
+  // expo-blur: intensity drives opacity of the stacked (already heavy) frost.
+  // The blur is strong by construction (4 layered effect views); intensity
+  // scales how much of it shows through.
   CGFloat i = [value doubleValue];
   CGFloat a = MAX(0.0, MIN(1.0, i / 100.0));
-  // Keep the overlay fully opaque so the frosted backdrop is unmistakable;
-  // intensity still drives the effect strength via alpha for higher values.
   self.view.alpha = a > 0 ? a : 1.0;
 }
 

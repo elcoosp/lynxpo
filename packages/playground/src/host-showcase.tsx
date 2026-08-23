@@ -187,7 +187,7 @@ export function HostShowcase() {
           <view className="BlurDemo__Dot BlurDemo__Dot--c" />
           <lynxpo-blur
             className="BlurDemo__Blur"
-            tint="light"
+            tint="dark"
             intensity={80}
             border-radius={12}
           />
