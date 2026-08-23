@@ -221,6 +221,40 @@
   color: #8b93a7;
   margin-left: 8px;
 }
+.Meth__Flag--args {
+  color: #ffcf5c;
+}
+/* Editable arguments for methods that require them (all methods testable). */
+.Meth__Args {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.Meth__Arg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.Meth__ArgType {
+  font-size: 10px;
+  color: #12e5e5;
+  width: 52px;
+  flex-shrink: 0;
+  font-family: monospace;
+}
+.Meth__ArgValue {
+  flex: 1;
+  font-size: 12px;
+  color: #ffcf5c;
+  font-family: monospace;
+}
+.Meth__ArgCycle {
+  font-size: 10px;
+  color: #8b93a7;
+  flex-shrink: 0;
+}
 .Meth__Result {
   margin-top: 10px;
   padding: 10px 12px;
