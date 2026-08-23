@@ -780,14 +780,46 @@ export const MODULES: ModEntry[] = [
     ],
   },
   {
-    pkg: 'web-browser',
-    name: 'webBrowser',
-    label: 'Web Browser',
-    key: 'WebBrowserModule',
+    pkg: 'updates',
+    name: 'updates',
+    label: 'Updates',
+    key: 'UpdatesModule',
     methods: [
-      { name: 'isAvailable', zeroArg: true },
-      { name: 'initialURL', zeroArg: true },
+      { name: 'getNativeStateAsync', zeroArg: true },
+      { name: 'checkForUpdateAsync', zeroArg: false },
+      { name: 'fetchUpdateAsync', zeroArg: false },
+      { name: 'isUpdateAvailableAsync', zeroArg: true },
+      { name: 'reloadAsync', zeroArg: false },
     ],
+  },
+  {
+    pkg: 'quick-actions',
+    name: 'quickActions',
+    label: 'Quick Actions',
+    key: 'QuickActionsModule',
+    methods: [
+      { name: 'getShortcutItemsAsync', zeroArg: false },
+      { name: 'setShortcutItemsAsync', zeroArg: false },
+      { name: 'clearShortcutItemsAsync', zeroArg: true },
+      { name: 'initialActionAsync', zeroArg: false },
+    ],
+  },
+  {
+    pkg: 'receive-sharing',
+    name: 'receiveSharing',
+    label: 'Receive Sharing',
+    key: 'ReceiveSharingModule',
+    methods: [
+      { name: 'getInitialIntentAsync', zeroArg: false },
+      { name: 'hasIntentAsync', zeroArg: true },
+    ],
+  },
+  {
+    pkg: 'link-preview',
+    name: 'linkPreview',
+    label: 'Link Preview',
+    key: 'LinkPreviewModule',
+    methods: [{ name: 'generateLinkPreviewAsync', zeroArg: false }],
   },
 ];
 

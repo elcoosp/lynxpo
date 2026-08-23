@@ -236,12 +236,21 @@ export function HostShowcase() {
           <view className="UIThumbRow">
             <lynxpo-image
               className="UIThumb"
-              source="star.fill"
-              tint-color="#00ebeb"
+              source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOklEQVR4nGNkYGD4z4AGmBgYGBgYGP4zMDEwMDAwMDD8Z2BiYGBgYGD4n4GJgYGBgYHhPwMTAwMDgwMQAgDpJgME2tQ3WwAAAABJRU5ErkJggg=="
               content-fit="contain"
             />
             <lynxpo-gl className="UIThumb" clear-color={[0.1, 0.6, 0.9, 1]} />
           </view>
+        </view>
+
+        <view className="NativeUI">
+          <text className="NativeUI__Title">Native UI · dom (expo-dom)</text>
+          <lynxpo-dom
+            className="DomBox"
+            markup={
+              '<html><body style="margin:0;font-family:system-ui;color:#0ff;background:#0a0a12;padding:12px"><b>expo-dom</b><p>This is a live WKWebView DOM surface.</p></body></html>'
+            }
+          />
         </view>
 
         <view className="NativeUI">
@@ -304,7 +313,12 @@ export function HostShowcase() {
             Native UI · video + camera + widgets
           </text>
           <view className="UIThumbRow">
-            <lynxpo-video className="UIThumb" source="" muted={true} />
+            <lynxpo-video
+              className="UIThumb"
+              source="sample.mp4"
+              muted={true}
+              loop={true}
+            />
             <lynxpo-camera className="UIThumb" active={false} facing="back" />
             <view bindtap={onWidgetTap}>
               <lynxpo-widget-card

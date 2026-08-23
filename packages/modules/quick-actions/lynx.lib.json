@@ -1,0 +1,8 @@
+{
+  "name": "@lynxpo/mods-quick-actions",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "modules": [
+    { "name": "QuickActionsModule", "ios": "ios", "android": "android" }
+  ]
+}
