@@ -26,6 +26,18 @@
   return self;
 }
 
+// Lynx may size the view via -setFrame:/-setBounds: without triggering
+// -layoutSubviews, so track the frame here to keep the effect view filled.
+- (void)setFrame:(CGRect)frame {
+  [super setFrame:frame];
+  _blurEffectView.frame = self.bounds;
+}
+
+- (void)setBounds:(CGRect)bounds {
+  [super setBounds:bounds];
+  _blurEffectView.frame = self.bounds;
+}
+
 - (void)layoutSubviews {
   [super layoutSubviews];
   _blurEffectView.frame = self.bounds;
@@ -65,6 +77,8 @@ LYNX_PROP_SETTER("intensity", setIntensity, NSNumber *) {
   // expo-blur approximates intensity on iOS by adjusting the blur view alpha.
   CGFloat i = [value doubleValue];
   CGFloat a = MAX(0.0, MIN(1.0, i / 100.0));
+  // Keep the overlay fully opaque so the frosted backdrop is unmistakable;
+  // intensity still drives the effect strength via alpha for higher values.
   self.view.alpha = a > 0 ? a : 1.0;
 }
 
