@@ -4,7 +4,7 @@
 .Showcase {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   background:
     radial-gradient(
       120% 80% at 12% -10%,
@@ -23,6 +23,15 @@
     ),
     #07080d;
   color: #e7ecf5;
+}
+
+/* Scrollable module list — must have a bounded height (flex:1 in the
+   column flex root) so Lynx actually scrolls instead of collapsing. */
+.ModuleScroll {
+  flex: 1;
+  height: 1px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---- Header ---- */
@@ -283,7 +292,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(120deg, #ff8a00, #e52e71 55%, #9b2cff);
+  background: #ffd400;
 }
 .BlurDemo__Stripes {
   position: absolute;
@@ -291,38 +300,40 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.35) 0,
-    rgba(255, 255, 255, 0.35) 6px,
-    rgba(0, 0, 0, 0.25) 6px,
-    rgba(0, 0, 0, 0.25) 12px
-  );
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%),
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%);
+  background-size: 16px 16px;
+  background-position:
+    0 0,
+    8px 8px;
+  opacity: 0.9;
 }
 .BlurDemo__Dot {
   position: absolute;
   border-radius: 50%;
 }
 .BlurDemo__Dot--a {
-  width: 46px;
-  height: 46px;
-  top: 12px;
-  left: 16px;
-  background: #00e5ff;
+  width: 54px;
+  height: 54px;
+  top: 10px;
+  left: 14px;
+  background: #ff2d95;
 }
 .BlurDemo__Dot--b {
-  width: 34px;
-  height: 34px;
-  top: 48px;
-  left: 78px;
+  width: 40px;
+  height: 40px;
+  top: 52px;
+  left: 96px;
   background: #ffe600;
 }
 .BlurDemo__Dot--c {
-  width: 52px;
-  height: 52px;
-  top: 30px;
-  right: 18px;
-  background: #00ff85;
+  width: 60px;
+  height: 60px;
+  top: 24px;
+  right: 16px;
+  background: #ffffff;
 }
 .BlurDemo__Blur {
   position: absolute;

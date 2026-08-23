@@ -180,17 +180,18 @@ export function HostShowcase() {
       <view className="NativeUI">
         <text className="NativeUI__Title">Native UI · blur-view</text>
         <view className="BlurDemo">
-          <view className="BlurDemo__Bg" />
-          <view className="BlurDemo__Stripes" />
-          <view className="BlurDemo__Dot BlurDemo__Dot--a" />
-          <view className="BlurDemo__Dot BlurDemo__Dot--b" />
-          <view className="BlurDemo__Dot BlurDemo__Dot--c" />
           <lynxpo-blur
             className="BlurDemo__Blur"
-            tint="dark"
-            intensity={80}
+            tint="light"
+            intensity={50}
             border-radius={12}
-          />
+          >
+            <view className="BlurDemo__Bg" />
+            <view className="BlurDemo__Stripes" />
+            <view className="BlurDemo__Dot BlurDemo__Dot--a" />
+            <view className="BlurDemo__Dot BlurDemo__Dot--b" />
+            <view className="BlurDemo__Dot BlurDemo__Dot--c" />
+          </lynxpo-blur>
           <view className="BlurDemo__Label">
             <text className="BlurDemo__Text">Blurred overlay</text>
           </view>
@@ -198,6 +199,7 @@ export function HostShowcase() {
       </view>
 
       <scroll-view
+        className="ModuleScroll"
         scroll-orientation="vertical"
         style={{ display: selected ? 'none' : 'flex' }}
       >
