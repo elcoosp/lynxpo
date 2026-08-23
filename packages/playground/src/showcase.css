@@ -25,9 +25,10 @@
   color: #e7ecf5;
 }
 
-/* Scrollable module list — must have a bounded height (flex:1 in the
-   column flex root) so Lynx actually scrolls instead of collapsing. */
-.ModuleScroll {
+/* Page scroll-view — wraps Header + Native UI demos + module grid so the
+   whole showcase scrolls instead of compressing. Lynx scroll-view needs a
+   bounded height (flex:1 + height:1px) to actually scroll. */
+.Page {
   flex: 1;
   height: 1px;
   display: flex;
@@ -347,4 +348,63 @@
   font-size: 15px;
   font-weight: 800;
   color: #1a1a1a;
+}
+
+/* ---- New native UI component demos (expo-symbols / checkbox / mesh-gradient /
+   glass-effect / image / video / gl-view / camera-view / ui-button / widget-card) ---- */
+.UIThumbRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.UIThumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.UIBtn {
+  margin-top: 12px;
+  width: 160px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(18, 229, 229, 0.12);
+  border: 1px solid #12e5e5;
+}
+/* Glass demo: gradient content sits BEHIND the UIVisualEffectView so the
+   real frosted/vibrant blur is visible (a bare glass view with nothing behind
+   reads as a flat gray panel). */
+.GlassDemo {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.GlassDemo__Bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.GlassDemo__Glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.DemoRow {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.DemoHint {
+  margin-left: 12px;
+  font-size: 12px;
+  color: #9fe9e9;
 }

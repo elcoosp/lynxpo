@@ -42,6 +42,8 @@ export function HostShowcase() {
   const [selected, setSelected] = useState<ModEntry | null>(null);
   const [stats, setStats] = useState<Record<string, ModStat>>({});
   const [meth, setMeth] = useState<Record<string, MethState>>({});
+  const [pressCount, setPressCount] = useState(0);
+  const [widgetTapped, setWidgetTapped] = useState(false);
 
   // All 61 modules are registered (auto-linked) -> available by default.
   // We deliberately do NOT auto-invoke native methods on mount: calling 187
@@ -109,6 +111,11 @@ export function HostShowcase() {
     });
   };
 
+  // Native UI demo interactivity (proves the custom elements dispatch real
+  // Lynx tap events, not just static rendering).
+  const onButtonTap = useCallback(() => setPressCount((c) => c + 1), []);
+  const onWidgetTap = useCallback(() => setWidgetTapped((t) => !t), []);
+
   // On-demand probe: when a module is opened, invoke its zero-arg (non-privacy)
   // methods so the detail view shows real values immediately. We deliberately do
   // NOT probe all 61 modules on mount — calling ~187 methods at startup can
@@ -169,62 +176,160 @@ export function HostShowcase() {
 
   return (
     <view className="Showcase">
-      <view className="Header">
-        <text className="Header__Title">LynxPo Modules</text>
-        <text className="Header__Sub">
-          Standalone host · {MODULE_COUNT} native modules · {METHOD_COUNT}{' '}
-          methods
-        </text>
-        <view className="Header__Stats">
-          <view className="Stat">
-            <text className="Stat__Num">{MODULE_COUNT}</text>
-            <text className="Stat__Label">Modules</text>
-          </view>
-          <view className="Stat">
-            <text className="Stat__Num">{verified}</text>
-            <text className="Stat__Label">Verified</text>
-          </view>
-          <view className="Stat">
-            <text className="Stat__Num">{METHOD_COUNT}</text>
-            <text className="Stat__Label">Methods</text>
-          </view>
-        </view>
-      </view>
-
-      {/* Native UI component port (expo-linear-gradient) — real CAGradientLayer */}
-      <view className="NativeUI">
-        <text className="NativeUI__Title">Native UI · linear-gradient</text>
-        <linear-gradient
-          className="NativeUI__Gradient"
-          colors={['#fe2c55', '#7d2cff', '#00ebeb']}
-          locations={[0, 0.5, 1]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-        />
-      </view>
-
-      {/* Native UI · blur-view (expo-blur) — real UIVisualEffectView backdrop */}
-      <view className="NativeUI">
-        <text className="NativeUI__Title">Native UI · blur-view</text>
-        <view className="BlurDemo">
-          <lynxpo-blur
-            className="BlurDemo__Blur"
-            tint="light"
-            intensity={55}
-            border-radius={12}
-          ></lynxpo-blur>
-          <view className="BlurDemo__Label">
-            <text className="BlurDemo__Text">Blurred photo</text>
+      <scroll-view className="Page" scroll-orientation="vertical">
+        <view className="Header">
+          <text className="Header__Title">LynxPo Modules</text>
+          <text className="Header__Sub">
+            Standalone host · {MODULE_COUNT} native modules · {METHOD_COUNT}{' '}
+            methods
+          </text>
+          <view className="Header__Stats">
+            <view className="Stat">
+              <text className="Stat__Num">{MODULE_COUNT}</text>
+              <text className="Stat__Label">Modules</text>
+            </view>
+            <view className="Stat">
+              <text className="Stat__Num">{verified}</text>
+              <text className="Stat__Label">Verified</text>
+            </view>
+            <view className="Stat">
+              <text className="Stat__Num">{METHOD_COUNT}</text>
+              <text className="Stat__Label">Methods</text>
+            </view>
           </view>
         </view>
-      </view>
 
-      <scroll-view
-        className="ModuleScroll"
-        scroll-orientation="vertical"
-        style={{ display: selected ? 'none' : 'flex' }}
-      >
-        <view className="Grid">
+        {/* Native UI component port (expo-linear-gradient) — real CAGradientLayer */}
+        <view className="NativeUI">
+          <text className="NativeUI__Title">Native UI · linear-gradient</text>
+          <linear-gradient
+            className="NativeUI__Gradient"
+            colors={['#fe2c55', '#7d2cff', '#00ebeb']}
+            locations={[0, 0.5, 1]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+          />
+        </view>
+
+        {/* Native UI · blur-view (expo-blur) — real UIVisualEffectView backdrop */}
+        <view className="NativeUI">
+          <text className="NativeUI__Title">Native UI · blur-view</text>
+          <view className="BlurDemo">
+            <lynxpo-blur
+              className="BlurDemo__Blur"
+              tint="light"
+              intensity={55}
+              border-radius={12}
+            ></lynxpo-blur>
+            <view className="BlurDemo__Label">
+              <text className="BlurDemo__Text">Blurred photo</text>
+            </view>
+          </view>
+        </view>
+
+        {/* Native UI component ports (expo-symbols / checkbox / mesh-gradient /
+            glass-effect / image / video / gl-view / camera-view / ui-button /
+            widget-card). Order differs from expo; image+gl and video+camera are
+            placed near the top so they render in the initial viewport. */}
+        <view className="NativeUI">
+          <text className="NativeUI__Title">Native UI · image + gl-view</text>
+          <view className="UIThumbRow">
+            <lynxpo-image
+              className="UIThumb"
+              source="star.fill"
+              tint-color="#00ebeb"
+              content-fit="contain"
+            />
+            <lynxpo-gl className="UIThumb" clear-color={[0.1, 0.6, 0.9, 1]} />
+          </view>
+        </view>
+
+        <view className="NativeUI">
+          <text className="NativeUI__Title">
+            Native UI · symbols + checkbox
+          </text>
+          <view className="UIThumbRow">
+            <lynxpo-symbols
+              className="UIThumb"
+              name="star.fill"
+              tint-color="#ffcf5c"
+              point-size={44}
+            />
+            <lynxpo-symbols
+              className="UIThumb"
+              name="heart.fill"
+              tint-color="#ff2d55"
+              point-size={44}
+            />
+            <lynxpo-checkbox
+              className="UIThumb"
+              checked={true}
+              color="#12e5e5"
+            />
+            <lynxpo-checkbox
+              className="UIThumb"
+              checked={false}
+              color="#ef9bff"
+            />
+          </view>
+        </view>
+
+        <view className="NativeUI">
+          <text className="NativeUI__Title">
+            Native UI · mesh-gradient + glass
+          </text>
+          <view className="UIThumbRow">
+            <lynxpo-mesh-gradient
+              className="UIThumb"
+              colors={['#ff0080', '#7928ca', '#00ebeb']}
+            />
+            <view className="GlassDemo">
+              <linear-gradient
+                className="GlassDemo__Bg"
+                colors={['#ff0080', '#00ebeb', '#ffcf5c']}
+                locations={[0, 0.5, 1]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+              />
+              <lynxpo-glass-effect
+                className="GlassDemo__Glass"
+                border-radius={16}
+              />
+            </view>
+          </view>
+        </view>
+
+        <view className="NativeUI">
+          <text className="NativeUI__Title">
+            Native UI · video + camera + widgets
+          </text>
+          <view className="UIThumbRow">
+            <lynxpo-video className="UIThumb" source="" muted={true} />
+            <lynxpo-camera className="UIThumb" active={false} facing="back" />
+            <view bindtap={onWidgetTap}>
+              <lynxpo-widget-card
+                className="UIThumb"
+                corner-radius={16}
+                background-color="#1a1a2e"
+              />
+            </view>
+          </view>
+          <view className="DemoRow" bindtap={onButtonTap}>
+            <lynxpo-ui-button
+              className="UIBtn"
+              title="Press me"
+              color="#12e5e5"
+            />
+            <text className="DemoHint">
+              {pressCount > 0 ? `Pressed ${pressCount}×` : 'tap the button'}
+            </text>
+          </view>
+          <text className="DemoHint">
+            {widgetTapped ? 'Widget tapped ✓' : 'tap the widget'}
+          </text>
+        </view>
+
+        <view className="Grid" style={{ display: selected ? 'none' : 'flex' }}>
           {MODULES.map((m) => {
             const dot =
               stats[m.key] === 'ok'
@@ -246,6 +351,12 @@ export function HostShowcase() {
               </view>
             );
           })}
+        </view>
+
+        <view className="Footer">
+          Verified = a method returned without throwing. Tap a module to inspect
+          and invoke its methods. Arg-requiring methods show typed inputs
+          pre-filled with safe defaults — edit and tap Call to test them.
         </view>
       </scroll-view>
 
@@ -359,12 +470,6 @@ export function HostShowcase() {
             </view>
           </>
         ) : null}
-      </view>
-
-      <view className="Footer">
-        Verified = a method returned without throwing. Tap a module to inspect
-        and invoke its methods. Arg-requiring methods show typed inputs
-        pre-filled with safe defaults — edit and tap Call to test them.
       </view>
     </view>
   );
