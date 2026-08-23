@@ -183,17 +183,11 @@ export function HostShowcase() {
           <lynxpo-blur
             className="BlurDemo__Blur"
             tint="light"
-            intensity={50}
+            intensity={55}
             border-radius={12}
-          >
-            <view className="BlurDemo__Bg" />
-            <view className="BlurDemo__Stripes" />
-            <view className="BlurDemo__Dot BlurDemo__Dot--a" />
-            <view className="BlurDemo__Dot BlurDemo__Dot--b" />
-            <view className="BlurDemo__Dot BlurDemo__Dot--c" />
-          </lynxpo-blur>
+          ></lynxpo-blur>
           <view className="BlurDemo__Label">
-            <text className="BlurDemo__Text">Blurred overlay</text>
+            <text className="BlurDemo__Text">Blurred photo</text>
           </view>
         </view>
       </view>
