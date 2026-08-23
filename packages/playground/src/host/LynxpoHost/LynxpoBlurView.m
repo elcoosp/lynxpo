@@ -21,7 +21,7 @@
   self = [super init];
   if (self) {
     NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 1; i++) {
       UIVisualEffectView *ev =
           [[UIVisualEffectView alloc] initWithEffect:nil];
       ev.frame = self.bounds;
@@ -47,7 +47,12 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  for (UIVisualEffectView *ev in _layers) ev.frame = self.bounds;
+  // Keep the stacked effect views on top of any engine-inserted children
+  // (the blurred content), so the UIVisualEffectView blurs what is behind it.
+  for (UIVisualEffectView *ev in _layers) {
+    [self bringSubviewToFront:ev];
+    ev.frame = self.bounds;
+  }
 }
 
 - (void)applyEffectWithStyle:(UIBlurEffectStyle)style {
@@ -93,12 +98,14 @@ LYNX_PROP_SETTER("tint", setTint, NSString *) {
 }
 
 LYNX_PROP_SETTER("intensity", setIntensity, NSNumber *) {
-  // expo-blur: intensity drives opacity of the stacked (already heavy) frost.
-  // The blur is strong by construction (4 layered effect views); intensity
-  // scales how much of it shows through.
+  // expo-blur: on iOS the blur strength is fixed per UIBlurEffect style (no
+  // public/private radius setter exists), so intensity only nudges the
+  // overlay opacity within a safe opaque range. We keep the container fully
+  // opaque (alpha 1.0) so the frost reads as a real blur, never a darkened
+  // wash of the content behind it.
   CGFloat i = [value doubleValue];
   CGFloat a = MAX(0.0, MIN(1.0, i / 100.0));
-  self.view.alpha = a > 0 ? a : 1.0;
+  self.view.alpha = a < 0.7 ? 0.7 : a;
 }
 
 LYNX_PROP_SETTER("border-radius", setBorderRadius, NSNumber *) {
