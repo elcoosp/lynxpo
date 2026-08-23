@@ -34,7 +34,18 @@
 - (UIView *)createView { return [[LynxpoVideoView alloc] init]; }
 LYNX_PROP_SETTER("source", setSource, NSString *) {
   LynxpoVideoView *v = (LynxpoVideoView *)self.view;
-  if (value.length) { v.player = [AVPlayer playerWithURL:[NSURL URLWithString:value]]; v.playerLayer.player = v.player; [v.player play]; }
+  if (!value.length) { [v.player pause]; v.player = [[AVPlayer alloc] init]; v.playerLayer.player = v.player; return; }
+  NSURL *url = nil;
+  if ([value hasPrefix:@"http://"] || [value hasPrefix:@"https://"] || [value hasPrefix:@"file://"]) {
+    url = [NSURL URLWithString:value];
+  } else if ([value hasPrefix:@"/"]) {
+    url = [NSURL fileURLWithPath:value];
+  } else {
+    // bare name -> look up in the host app bundle (e.g. "sample.mp4")
+    NSString *path = [[NSBundle mainBundle] pathForResource:[value stringByDeletingPathExtension] ofType:value.pathExtension];
+    if (path) url = [NSURL fileURLWithPath:path];
+  }
+  if (url) { v.player = [AVPlayer playerWithURL:url]; v.playerLayer.player = v.player; [v.player play]; }
 }
 LYNX_PROP_SETTER("muted", setMuted, BOOL) { ((LynxpoVideoView *)self.view).player.muted = value; }
 LYNX_PROP_SETTER("loop", setLoop, BOOL) {

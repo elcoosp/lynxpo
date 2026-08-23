@@ -48,12 +48,32 @@
     NSURL *u = [NSURL URLWithString:_source];
     if (u) { @try { NSData *d = [NSData dataWithContentsOfURL:u options:NSDataReadingUncached error:nil]; if (d) img = [UIImage imageWithData:d]; } @catch (NSException *e) {} }
   }
+  // 2b) local file:// or absolute path (e.g. a bundled sample in the host)
+  if (!img && ([_source hasPrefix:@"file://"] || [_source hasPrefix:@"/"])) {
+    NSString *path = _source;
+    if ([path hasPrefix:@"file://"]) path = [path substringFromIndex:7];
+    NSData *d = [NSData dataWithContentsOfFile:path options:NSDataReadingUncached error:nil];
+    if (d) img = [UIImage imageWithData:d];
+  }
   // 3) system symbol fallback so the component always shows something real
   if (!img) {
     img = [UIImage systemImageNamed:_source];
-    if (img && _tint.length) img = [img imageWithTintColor:[LynxpoImageView colorFromHex:_tint] renderingMode:UIImageRenderingModeAlwaysOriginal];
+    if (img && _tint.length) {
+      UIColor *tc = [LynxpoImageView colorFromHex:_tint];
+      if (tc) {
+        // SF Symbols are template images: render the tinted variant to a
+        // CGImage so it survives assignment to layer.contents (which strips
+        // UIImage tint). Without this the symbol shows black.
+        UIGraphicsImageRenderer *r = [[UIGraphicsImageRenderer alloc] initWithSize:img.size];
+        img = [r imageWithActions:^(UIGraphicsImageRendererContext *ctx) {
+          [tc setFill];
+          [img drawInRect:CGRectMake(0, 0, img.size.width, img.size.height)];
+        }];
+      }
+    }
   }
-  self.layer.contents = (id)(img.CGImage);
+  if (img) self.layer.contents = (id)(img.CGImage);
+  else self.layer.contents = nil;
 }
 + (UIColor *)colorFromHex:(NSString *)hex {
   NSString *s = [hex stringByReplacingOccurrencesOfString:@"#" withString:@""];
