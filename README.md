@@ -2,14 +2,14 @@
 
 A pnpm + Turborepo monorepo that ports Expo / React-Native native APIs into [Lynx](https://lynxjs.org), so they run inside **LynxExplorer** — not the iOS Simulator or the Android-via-ADB Expo path. Each capability ships as a twin-native module (Kotlin + Swift) wrapped by a React-Lynx surface and exercised in a live playground.
 
-[![pnpm](https://img.shields.io/badge/pnpm-11.17.0-FFC43D?style=flat-square&logo=pnpm)](https://pnpm.io)
-[![Node](https://img.shields.io/badge/node-%3E%3D20.19-339933?style=flat-square&logo=node.js)](https://nodejs.org)
-[![Turborepo](https://img.shields.io/badge/Turborepo-2.4.4-EF4444?style=flat-square&logo=turbo)](https://turbo.build)
-[![Biome](https://img.shields.io/badge/Biome-2.0-60A5FA?style=flat-square)](https://biomejs.dev)
-[![Lynx](https://img.shields.io/badge/Lynx-Explorer-F7B500?style=flat-square)](https://lynxjs.org)
-[![Modules](https://img.shields.io/badge/modules-66-8B5CF6?style=flat-square)](./packages/modules)
-[![License](https://img.shields.io/badge/License-MIT-000000?style=flat-square)](./LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/elcoosp/lynxpo/v2?style=flat-square)](https://github.com/elcoosp/lynxpo/commits/v2)
+[![pnpm](https://img.shields.io/badge/pnpm-11.17.0-FFC43D?style=for-the-badge&logo=pnpm)](https://pnpm.io)
+[![Node](https://img.shields.io/badge/node-%3E%3D20.19-339933?style=for-the-badge&logo=node.js)](https://nodejs.org)
+[![Turborepo](https://img.shields.io/badge/Turborepo-2.4.4-EF4444?style=for-the-badge&logo=turbo)](https://turbo.build)
+[![Biome](https://img.shields.io/badge/Biome-2.0-60A5FA?style=for-the-badge)](https://biomejs.dev)
+[![Lynx](https://img.shields.io/badge/Lynx-Explorer-F7B500?style=for-the-badge)](https://lynxjs.org)
+[![Modules](https://img.shields.io/badge/modules-66-8B5CF6?style=for-the-badge)](./packages/modules)
+[![License](https://img.shields.io/badge/License-MIT-000000?style=for-the-badge)](./LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/elcoosp/lynxpo/v2?style=for-the-badge)](https://github.com/elcoosp/lynxpo/commits/v2)
 
 ## Why lynxpo
 
