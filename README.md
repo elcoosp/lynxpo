@@ -9,7 +9,7 @@ A pnpm + Turborepo monorepo that ports Expo / React-Native native APIs into [Lyn
 [![Lynx](https://img.shields.io/badge/Lynx-Explorer-F7B500?style=for-the-badge)](https://lynxjs.org)
 [![Modules](https://img.shields.io/badge/modules-66-8B5CF6?style=for-the-badge)](./packages/modules)
 [![License](https://img.shields.io/badge/License-MIT-000000?style=for-the-badge)](./LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/elcoosp/lynxpo/v2?style=for-the-badge)](https://github.com/elcoosp/lynxpo/commits/v2)
+[![Branch](https://img.shields.io/badge/branch-main-2EA043?style=for-the-badge)](https://github.com/elcoosp/lynxpo/tree/main)
 
 ## Why lynxpo
 
