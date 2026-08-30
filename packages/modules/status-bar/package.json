@@ -30,7 +30,7 @@
     "fmt": "biome format --write"
   },
   "dependencies": {
-    "@lynx-js/react": "^0.123.0",
+    "@lynx-js/react": "^0.125.0",
     "@lynx-js/types": "^3.2.0"
   },
   "devDependencies": {

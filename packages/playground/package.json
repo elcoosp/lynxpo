@@ -10,7 +10,7 @@
     "preview": "rspeedy preview"
   },
   "dependencies": {
-    "@lynx-js/react": "0.124.0",
+    "@lynx-js/react": "0.125.0",
     "@lynxpo/mods-application": "workspace:*",
     "@lynxpo/mods-battery": "workspace:*",
     "@lynxpo/mods-blob": "workspace:*",
