@@ -31,7 +31,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "commander": "^12.1.0"
+    "commander": "^15.0.0"
   },
   "devDependencies": {
     "@elcoosp-configs/rslib": "2.1",
