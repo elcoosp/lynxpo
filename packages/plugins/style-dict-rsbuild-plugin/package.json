@@ -29,7 +29,7 @@
     "bump": "npx bumpp"
   },
   "dependencies": {
-    "glob": "^11.0.0",
+    "glob": "^13.0.0",
     "sd-tailwindcss-transformer": "^2.1.0",
     "style-dictionary": "^5.0.0"
   },
