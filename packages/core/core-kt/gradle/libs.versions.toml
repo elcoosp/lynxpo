@@ -25,7 +25,7 @@ lynxServiceHttp = "4.1.0-nightly.202606260632.87.g01ad13ce"
 lynxServiceImage = "4.1.0-nightly.202606260632.87.g01ad13ce"
 lynxServiceLog = "4.1.0-nightly.202606260632.87.g01ad13ce"
 lynxTrace = "4.1.0-nightly.202606260632.87.g01ad13ce"
-okhttp = "5.3.2"
+okhttp = "5.5.0"
 primjs = "3.8.0"
 [libraries]
 animated-base = { module = "com.facebook.fresco:animated-base", version.ref = "fresco" }
