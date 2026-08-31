@@ -37,7 +37,7 @@
     "@elcoosp-configs/rslib": "2.1",
     "@rslib/core": "^0.23.0",
     "@types/node": "^24.0.0",
-    "typescript": "~5.9.0",
+    "typescript": "~7.0.0",
     "vitest": "^2.1.0"
   }
 }
