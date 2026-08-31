@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@lynx-js/react": "^0.125.0",
-    "@lynx-js/types": "^3.2.0"
+    "@lynx-js/types": "^4.0.0"
   },
   "devDependencies": {
     "@lynxpo/tools-nmi": "workspace:*",
