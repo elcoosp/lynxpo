@@ -77,7 +77,7 @@
     "unplugin-ast": "^0.19.0"
   },
   "devDependencies": {
-    "@babel/types": "^7.27.1",
+    "@babel/types": "^8.0.0",
     "@lynx-js/qrcode-rsbuild-plugin": "0.6.0",
     "@lynx-js/react-rsbuild-plugin": "0.19.1",
     "@lynx-js/rspeedy": "0.16.5",
