@@ -18,8 +18,8 @@ importers:
         specifier: ^2.0.0
         version: 2.2.3(core-js@3.41.0)
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@6.0.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@6.0.3)
       turbo:
         specifier: ^2.4.4
         version: 2.10.12
@@ -43,8 +43,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/appearance:
     dependencies:
@@ -65,8 +65,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/apple-authentication:
     dependencies:
@@ -87,8 +87,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/application:
     dependencies:
@@ -109,8 +109,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/asset:
     dependencies:
@@ -131,8 +131,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/audio:
     dependencies:
@@ -153,8 +153,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/auth-session:
     dependencies:
@@ -175,8 +175,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/background-fetch:
     dependencies:
@@ -197,8 +197,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/background-task:
     dependencies:
@@ -219,8 +219,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/battery:
     dependencies:
@@ -241,8 +241,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/blob:
     dependencies:
@@ -260,8 +260,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/brightness:
     dependencies:
@@ -282,8 +282,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/calendar:
     dependencies:
@@ -304,8 +304,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/camera:
     dependencies:
@@ -326,8 +326,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/cellular:
     dependencies:
@@ -348,8 +348,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/clipboard:
     dependencies:
@@ -370,8 +370,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/constants:
     dependencies:
@@ -392,8 +392,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/contacts:
     dependencies:
@@ -414,8 +414,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/crypto:
     dependencies:
@@ -433,8 +433,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/device:
     dependencies:
@@ -455,8 +455,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/document-picker:
     dependencies:
@@ -477,8 +477,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/env-info:
     dependencies:
@@ -499,8 +499,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/file-system:
     dependencies:
@@ -518,8 +518,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/font:
     dependencies:
@@ -540,8 +540,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/haptics:
     dependencies:
@@ -562,8 +562,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/health:
     dependencies:
@@ -584,8 +584,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/image:
     dependencies:
@@ -606,8 +606,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/image-manipulator:
     dependencies:
@@ -628,8 +628,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/image-picker:
     dependencies:
@@ -650,8 +650,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/intent-launcher:
     dependencies:
@@ -672,8 +672,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/keep-awake:
     dependencies:
@@ -694,8 +694,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/link-preview:
     dependencies:
@@ -716,8 +716,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/linking:
     dependencies:
@@ -738,8 +738,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/live-photo:
     dependencies:
@@ -760,8 +760,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/local-authentication:
     dependencies:
@@ -779,8 +779,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/localization:
     dependencies:
@@ -801,8 +801,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/location:
     dependencies:
@@ -823,8 +823,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/mail-composer:
     dependencies:
@@ -845,8 +845,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/media-library:
     dependencies:
@@ -867,8 +867,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/music-library:
     dependencies:
@@ -889,8 +889,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/navigation-bar:
     dependencies:
@@ -911,8 +911,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/network:
     dependencies:
@@ -933,8 +933,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/network-addons:
     dependencies:
@@ -955,8 +955,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/notifications:
     dependencies:
@@ -977,8 +977,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/print:
     dependencies:
@@ -999,8 +999,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/quick-actions:
     dependencies:
@@ -1021,8 +1021,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/receive-sharing:
     dependencies:
@@ -1043,8 +1043,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/screen-capture:
     dependencies:
@@ -1065,8 +1065,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/screen-orientation:
     dependencies:
@@ -1087,8 +1087,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/secure-store:
     dependencies:
@@ -1106,8 +1106,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/sensors:
     dependencies:
@@ -1125,8 +1125,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/sharing:
     dependencies:
@@ -1147,8 +1147,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/sms:
     dependencies:
@@ -1169,8 +1169,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/speech:
     dependencies:
@@ -1191,8 +1191,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/splash-screen:
     dependencies:
@@ -1213,8 +1213,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/sqlite:
     dependencies:
@@ -1235,8 +1235,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/standard-web-crypto:
     dependencies:
@@ -1257,8 +1257,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/status-bar:
     dependencies:
@@ -1279,8 +1279,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/store-review:
     dependencies:
@@ -1301,8 +1301,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/system-ui:
     dependencies:
@@ -1323,8 +1323,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/task-manager:
     dependencies:
@@ -1345,8 +1345,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/tracking-transparency:
     dependencies:
@@ -1367,8 +1367,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/updates:
     dependencies:
@@ -1389,8 +1389,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/video:
     dependencies:
@@ -1411,8 +1411,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/video-thumbnails:
     dependencies:
@@ -1433,8 +1433,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/web-browser:
     dependencies:
@@ -1455,8 +1455,8 @@ importers:
         specifier: workspace:*
         version: link:../../tools/nmi
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/playground:
     dependencies:
@@ -1690,8 +1690,8 @@ importers:
         specifier: ^2.0.0
         version: 2.2.3(core-js@3.41.0)
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
 
   packages/plugins/style-dict-rsbuild-plugin:
     dependencies:
@@ -1718,8 +1718,8 @@ importers:
         specifier: ^2.0.0
         version: 2.2.3(core-js@3.41.0)
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@7.0.2)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@7.0.2)
       '@rspack/tracing':
         specifier: ^1.2.8
         version: 1.3.5(supports-color@8.1.1)
@@ -1774,8 +1774,8 @@ importers:
         specifier: '2.1'
         version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@7.0.2)
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@7.0.2)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@7.0.2)
       '@types/node':
         specifier: ^24.0.0
         version: 24.13.3
@@ -1792,8 +1792,8 @@ importers:
         specifier: '2.1'
         version: 2.1.0(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.9.3)
       '@rslib/core':
-        specifier: ^0.23.0
-        version: 0.23.2(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.0
+        version: 1.0.0(core-js@3.41.0)(typescript@5.9.3)
       '@types/node':
         specifier: ^24.0.0
         version: 24.13.3
@@ -1806,8 +1806,8 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
-  '@ast-grep/napi-darwin-arm64@0.37.0':
-    resolution: {integrity: sha512-QAiIiaAbLvMEg/yBbyKn+p1gX2/FuaC0SMf7D7capm/oG4xGMzdeaQIcSosF4TCxxV+hIH4Bz9e4/u7w6Bnk3Q==}
+  '@ast-grep/napi-darwin-arm64@0.45.2':
+    resolution: {integrity: sha512-29+sfXTJ7xxqgTuWAHA89gDAQIiJyAZ1ZiHoupjKIqyn0mhXrktO1WOghlDzyYs++hITEPOeXftxy48Y0tDGDQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -1818,8 +1818,8 @@ packages:
     cpu: [x64]
     os: [darwin]
 
-  '@ast-grep/napi-darwin-x64@0.37.0':
-    resolution: {integrity: sha512-zvcvdgekd4ySV3zUbUp8HF5nk5zqwiMXTuVzTUdl/w08O7JjM6XPOIVT+d2o/MqwM9rsXdzdergY5oY2RdhSPA==}
+  '@ast-grep/napi-darwin-x64@0.45.2':
+    resolution: {integrity: sha512-PUjh7Zf4dKNzYLOYhX5wU6O4BgRPdJnD9zkS1n+/5SeK0U1L5YL486RjNgFt9Xyff0PGtP/wDeoHMF5PhKEwsw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -1831,8 +1831,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@ast-grep/napi-linux-arm64-gnu@0.37.0':
-    resolution: {integrity: sha512-L7Sj0lXy8X+BqSMgr1LB8cCoWk0rericdeu+dC8/c8zpsav5Oo2IQKY1PmiZ7H8IHoFBbURLf8iklY9wsD+cyA==}
+  '@ast-grep/napi-linux-arm64-gnu@0.45.2':
+    resolution: {integrity: sha512-bnGKLLHWO13pjPChOFq7Ifqj3HJdOAxMQAGDCUC2JSJhO2YL8/xBZrpN0cHIWNuoUNSAXjCtr5AsCnPz/3jlFg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -1845,8 +1845,8 @@ packages:
     os: [linux]
     libc: [musl]
 
-  '@ast-grep/napi-linux-arm64-musl@0.37.0':
-    resolution: {integrity: sha512-LF9sAvYy6es/OdyJDO3RwkX3I82Vkfsng1sqUBcoWC1jVb1wX5YVzHtpQox9JrEhGl+bNp7FYxB4Qba9OdA5GA==}
+  '@ast-grep/napi-linux-arm64-musl@0.45.2':
+    resolution: {integrity: sha512-FXVb4/V55THjhKxi5zWVrAO8JQj+/DiYP7JLsqenkm5V3UNuC8p2opGOyQpUvNpvcqJiZA9Hl+Onj/yfwSVr/A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -1859,8 +1859,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@ast-grep/napi-linux-x64-gnu@0.37.0':
-    resolution: {integrity: sha512-TViz5/klqre6aSmJzswEIjApnGjJzstG/SE8VDWsrftMBMYt2PTu3MeluZVwzSqDao8doT/P+6U11dU05UOgxw==}
+  '@ast-grep/napi-linux-x64-gnu@0.45.2':
+    resolution: {integrity: sha512-mtEIPLV9MW2PBswFcp3ydM4T5Ub73s89SRd0QMT2+DfA9XBLCLhnC+r/Yt4eRgnf8FyNx49bFTPxXvFKscr9hw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -1873,8 +1873,8 @@ packages:
     os: [linux]
     libc: [musl]
 
-  '@ast-grep/napi-linux-x64-musl@0.37.0':
-    resolution: {integrity: sha512-/BcCH33S9E3ovOAEoxYngUNXgb+JLg991sdyiNP2bSoYd30a9RHrG7CYwW6fMgua3ijQ474eV6cq9yZO1bCpXg==}
+  '@ast-grep/napi-linux-x64-musl@0.45.2':
+    resolution: {integrity: sha512-WLLHxDmuXkb/e3mz/xDCrB2dZPzv1ntsepuRTtpaIGczxnQTgFSzX/CXPD0e1MfsU/QL1AiXxxni8w+NGy/ZpQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -1886,8 +1886,8 @@ packages:
     cpu: [arm64]
     os: [win32]
 
-  '@ast-grep/napi-win32-arm64-msvc@0.37.0':
-    resolution: {integrity: sha512-TjQA4cFoIEW2bgjLkaL9yqT4XWuuLa5MCNd0VCDhGRDMNQ9+rhwi9eLOWRaap3xzT7g+nlbcEHL3AkVCD2+b3A==}
+  '@ast-grep/napi-win32-arm64-msvc@0.45.2':
+    resolution: {integrity: sha512-04iOFaMzD2nf8CKw3nURWN42900wqPtUTQaMo1I2KRk3qbgtHSJjJoVJGAWUXkCq4LhPg3Xlk1s+ssWf4rNm2A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -1898,8 +1898,8 @@ packages:
     cpu: [ia32]
     os: [win32]
 
-  '@ast-grep/napi-win32-ia32-msvc@0.37.0':
-    resolution: {integrity: sha512-uNmVka8fJCdYsyOlF9aZqQMLTatEYBynjChVTzUfFMDfmZ0bihs/YTqJVbkSm8TZM7CUX82apvn50z/dX5iWRA==}
+  '@ast-grep/napi-win32-ia32-msvc@0.45.2':
+    resolution: {integrity: sha512-tE3y0RQcajocKwpYLbgHKd4lzGGAx1wGMA0bGPsWdoFK8VSob6ZDuYdSlSdnaRs8jAc4F3axToNRKn15p+0/Dg==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
@@ -1910,8 +1910,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@ast-grep/napi-win32-x64-msvc@0.37.0':
-    resolution: {integrity: sha512-vCiFOT3hSCQuHHfZ933GAwnPzmL0G04JxQEsBRfqONywyT8bSdDc/ECpAfr3S9VcS4JZ9/F6tkePKW/Om2Dq2g==}
+  '@ast-grep/napi-win32-x64-msvc@0.45.2':
+    resolution: {integrity: sha512-o8Z5Z42TAJe0fPnb11rrjtte58wlw/MuR4KpVMHl8IhJLBBR7gHR0E8wfMz88TxzsQz0U2KYev0k0a2fV4i0sQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -1920,8 +1920,8 @@ packages:
     resolution: {integrity: sha512-ExypohE8L7FvKBHxu7UpwcV9XVfyS+AqNZKyKIfxYwJyD9l7Gw6pmMYd7J2uopJsPEIUf44/emEFds6nFUx/dw==}
     engines: {node: '>= 10'}
 
-  '@ast-grep/napi@0.37.0':
-    resolution: {integrity: sha512-Hb4o6h1Pf6yRUAX07DR4JVY7dmQw+RVQMW5/m55GoiAT/VRoKCWBtIUPPOnqDVhbx1Cjfil9b6EDrgJsUAujEQ==}
+  '@ast-grep/napi@0.45.2':
+    resolution: {integrity: sha512-hBA5c7JV6OM7zFWoLjUNZhsDpxEIEIeew5S3z1giwK5tPQqobuFfM2OhS45bN3E0+yQtgCX/o8/AEHKbGD3ykg==}
     engines: {node: '>= 10'}
 
   '@babel/code-frame@7.26.2':
@@ -3089,16 +3089,6 @@ packages:
       core-js:
         optional: true
 
-  '@rsbuild/core@2.1.13':
-    resolution: {integrity: sha512-Z+6MzmjOio4+bFZQ24k+7ge/oNCOdXIunAssrswTNE8AIf6mcyXpJZevRXRiOEMZasRPA8VNyh+9JngQLg729Q==}
-    engines: {node: ^20.19.0 || >=22.12.0}
-    hasBin: true
-    peerDependencies:
-      core-js: '>= 3.0.0'
-    peerDependenciesMeta:
-      core-js:
-        optional: true
-
   '@rsbuild/core@2.2.3':
     resolution: {integrity: sha512-oJrYtYDhb7AMwY8HIda2hgMuuxHkYPYar4svdS5uTq0fXY0M1wLfllkTQz0d729pNJ4S//6GUM1WX5LsW2mFLw==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -3159,19 +3149,6 @@ packages:
   '@rsdoctor/utils@1.6.3':
     resolution: {integrity: sha512-xuZalAwSE8r/8Ro+N9RxyA+0OXvaSGXOaggmbmF89YGrYhQ4R3h05XvgZKQLtd//w8DxR6znUqb1xKp8a4NYDw==}
 
-  '@rslib/core@0.23.2':
-    resolution: {integrity: sha512-KxSp+/y0BJ1O4oKwxX4ydBY7/ZVeJCUpWAmQniCIct8mTxIQFPGO/ibKbKq2IxZYqRuRpM8g+Dtyq0VbEQf9HQ==}
-    engines: {node: ^20.19.0 || >=22.12.0}
-    hasBin: true
-    peerDependencies:
-      '@microsoft/api-extractor': ^7
-      typescript: ^5 || ^6 || ^7.0.1-0
-    peerDependenciesMeta:
-      '@microsoft/api-extractor':
-        optional: true
-      typescript:
-        optional: true
-
   '@rslib/core@0.5.5':
     resolution: {integrity: sha512-RpjixdO8a4G99+jZ5P4W35fZyhHasBa13lvErUPXT0fz1QBfLiR/HS+QikjIFiyS538oAaZ8/8BLf88vHERQ0w==}
     engines: {node: '>=16.7.0'}
@@ -3179,6 +3156,19 @@ packages:
     peerDependencies:
       '@microsoft/api-extractor': ^7
       typescript: ^5
+    peerDependenciesMeta:
+      '@microsoft/api-extractor':
+        optional: true
+      typescript:
+        optional: true
+
+  '@rslib/core@1.0.0':
+    resolution: {integrity: sha512-eZNXCWU1v5oti4+DKCunc76DkNnYqMgRtks9UyZRRFlmaK4pKAxhejeCUS+XkbMurGIAa+aDyVynQD7DXEgK1w==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    hasBin: true
+    peerDependencies:
+      '@microsoft/api-extractor': ^7
+      typescript: ^5 || ^6 || ^7
     peerDependenciesMeta:
       '@microsoft/api-extractor':
         optional: true
@@ -5258,22 +5248,6 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
-  rsbuild-plugin-dts@0.23.2:
-    resolution: {integrity: sha512-Ve8WOSPyTBjxH40O/6fChJtflL7yqcUtt5zbF0eHDM4hIt35jqLocRlSdCxFJdQm0blTjl6+hkmPa/vNI06ArA==}
-    engines: {node: ^20.19.0 || >=22.12.0}
-    peerDependencies:
-      '@microsoft/api-extractor': ^7
-      '@rsbuild/core': ^1.0.0 || ^2.0.0-0
-      '@typescript/native-preview': ^7.0.0-0
-      typescript: ^5 || ^6 || ^7.0.1-0
-    peerDependenciesMeta:
-      '@microsoft/api-extractor':
-        optional: true
-      '@typescript/native-preview':
-        optional: true
-      typescript:
-        optional: true
-
   rsbuild-plugin-dts@0.5.5:
     resolution: {integrity: sha512-e3sH3Rmzjb5vlifyvBYmtk/IzCK6x9K3HoxbkZUgH194MYrWNDe9IU8tBVj4DpZmYjAZf8/Znk5ntsYXDBCnZw==}
     engines: {node: '>=16.7.0'}
@@ -5281,6 +5255,19 @@ packages:
       '@microsoft/api-extractor': ^7
       '@rsbuild/core': 1.x
       typescript: ^5
+    peerDependenciesMeta:
+      '@microsoft/api-extractor':
+        optional: true
+      typescript:
+        optional: true
+
+  rsbuild-plugin-dts@1.0.0:
+    resolution: {integrity: sha512-FVoTsiTfSc0LPeSjrVhpvFOBRig0YXJq3Hp+bVxzh9/bzFvODzLRWOEux8q1Phe1oVCIIVSc2+Nb7kDcxIhosw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    peerDependencies:
+      '@microsoft/api-extractor': ^7
+      '@rsbuild/core': ^2.0.0
+      typescript: ^5 || ^6 || ^7
     peerDependenciesMeta:
       '@microsoft/api-extractor':
         optional: true
@@ -5840,55 +5827,55 @@ snapshots:
   '@ast-grep/napi-darwin-arm64@0.36.3':
     optional: true
 
-  '@ast-grep/napi-darwin-arm64@0.37.0':
+  '@ast-grep/napi-darwin-arm64@0.45.2':
     optional: true
 
   '@ast-grep/napi-darwin-x64@0.36.3':
     optional: true
 
-  '@ast-grep/napi-darwin-x64@0.37.0':
+  '@ast-grep/napi-darwin-x64@0.45.2':
     optional: true
 
   '@ast-grep/napi-linux-arm64-gnu@0.36.3':
     optional: true
 
-  '@ast-grep/napi-linux-arm64-gnu@0.37.0':
+  '@ast-grep/napi-linux-arm64-gnu@0.45.2':
     optional: true
 
   '@ast-grep/napi-linux-arm64-musl@0.36.3':
     optional: true
 
-  '@ast-grep/napi-linux-arm64-musl@0.37.0':
+  '@ast-grep/napi-linux-arm64-musl@0.45.2':
     optional: true
 
   '@ast-grep/napi-linux-x64-gnu@0.36.3':
     optional: true
 
-  '@ast-grep/napi-linux-x64-gnu@0.37.0':
+  '@ast-grep/napi-linux-x64-gnu@0.45.2':
     optional: true
 
   '@ast-grep/napi-linux-x64-musl@0.36.3':
     optional: true
 
-  '@ast-grep/napi-linux-x64-musl@0.37.0':
+  '@ast-grep/napi-linux-x64-musl@0.45.2':
     optional: true
 
   '@ast-grep/napi-win32-arm64-msvc@0.36.3':
     optional: true
 
-  '@ast-grep/napi-win32-arm64-msvc@0.37.0':
+  '@ast-grep/napi-win32-arm64-msvc@0.45.2':
     optional: true
 
   '@ast-grep/napi-win32-ia32-msvc@0.36.3':
     optional: true
 
-  '@ast-grep/napi-win32-ia32-msvc@0.37.0':
+  '@ast-grep/napi-win32-ia32-msvc@0.45.2':
     optional: true
 
   '@ast-grep/napi-win32-x64-msvc@0.36.3':
     optional: true
 
-  '@ast-grep/napi-win32-x64-msvc@0.37.0':
+  '@ast-grep/napi-win32-x64-msvc@0.45.2':
     optional: true
 
   '@ast-grep/napi@0.36.3':
@@ -5903,17 +5890,17 @@ snapshots:
       '@ast-grep/napi-win32-ia32-msvc': 0.36.3
       '@ast-grep/napi-win32-x64-msvc': 0.36.3
 
-  '@ast-grep/napi@0.37.0':
+  '@ast-grep/napi@0.45.2':
     optionalDependencies:
-      '@ast-grep/napi-darwin-arm64': 0.37.0
-      '@ast-grep/napi-darwin-x64': 0.37.0
-      '@ast-grep/napi-linux-arm64-gnu': 0.37.0
-      '@ast-grep/napi-linux-arm64-musl': 0.37.0
-      '@ast-grep/napi-linux-x64-gnu': 0.37.0
-      '@ast-grep/napi-linux-x64-musl': 0.37.0
-      '@ast-grep/napi-win32-arm64-msvc': 0.37.0
-      '@ast-grep/napi-win32-ia32-msvc': 0.37.0
-      '@ast-grep/napi-win32-x64-msvc': 0.37.0
+      '@ast-grep/napi-darwin-arm64': 0.45.2
+      '@ast-grep/napi-darwin-x64': 0.45.2
+      '@ast-grep/napi-linux-arm64-gnu': 0.45.2
+      '@ast-grep/napi-linux-arm64-musl': 0.45.2
+      '@ast-grep/napi-linux-x64-gnu': 0.45.2
+      '@ast-grep/napi-linux-x64-musl': 0.45.2
+      '@ast-grep/napi-win32-arm64-msvc': 0.45.2
+      '@ast-grep/napi-win32-ia32-msvc': 0.45.2
+      '@ast-grep/napi-win32-x64-msvc': 0.45.2
 
   '@babel/code-frame@7.26.2':
     dependencies:
@@ -6988,15 +6975,6 @@ snapshots:
     transitivePeerDependencies:
       - '@module-federation/runtime-tools'
 
-  '@rsbuild/core@2.1.13(core-js@3.41.0)':
-    dependencies:
-      '@rspack/core': 2.1.10(@swc/helpers@0.5.23)
-      '@swc/helpers': 0.5.23
-    optionalDependencies:
-      core-js: 3.41.0
-    transitivePeerDependencies:
-      - '@module-federation/runtime-tools'
-
   '@rsbuild/core@2.2.3(core-js@3.41.0)':
     dependencies:
       '@rspack/core': 2.2.2(@swc/helpers@0.5.23)
@@ -7149,39 +7127,6 @@ snapshots:
       - '@rspack/core'
       - webpack
 
-  '@rslib/core@0.23.2(core-js@3.41.0)(typescript@5.9.3)':
-    dependencies:
-      '@rsbuild/core': 2.1.13(core-js@3.41.0)
-      rsbuild-plugin-dts: 0.23.2(@rsbuild/core@2.1.13(core-js@3.41.0))(typescript@5.9.3)
-    optionalDependencies:
-      typescript: 5.9.3
-    transitivePeerDependencies:
-      - '@module-federation/runtime-tools'
-      - '@typescript/native-preview'
-      - core-js
-
-  '@rslib/core@0.23.2(core-js@3.41.0)(typescript@6.0.3)':
-    dependencies:
-      '@rsbuild/core': 2.1.13(core-js@3.41.0)
-      rsbuild-plugin-dts: 0.23.2(@rsbuild/core@2.1.13(core-js@3.41.0))(typescript@6.0.3)
-    optionalDependencies:
-      typescript: 6.0.3
-    transitivePeerDependencies:
-      - '@module-federation/runtime-tools'
-      - '@typescript/native-preview'
-      - core-js
-
-  '@rslib/core@0.23.2(core-js@3.41.0)(typescript@7.0.2)':
-    dependencies:
-      '@rsbuild/core': 2.1.13(core-js@3.41.0)
-      rsbuild-plugin-dts: 0.23.2(@rsbuild/core@2.1.13(core-js@3.41.0))(typescript@7.0.2)
-    optionalDependencies:
-      typescript: 7.0.2
-    transitivePeerDependencies:
-      - '@module-federation/runtime-tools'
-      - '@typescript/native-preview'
-      - core-js
-
   '@rslib/core@0.5.5(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.9.3)':
     dependencies:
       '@rsbuild/core': 1.2.19(@rspack/tracing@1.3.5(supports-color@8.1.1))
@@ -7201,6 +7146,36 @@ snapshots:
       typescript: 7.0.2
     transitivePeerDependencies:
       - '@rspack/tracing'
+
+  '@rslib/core@1.0.0(core-js@3.41.0)(typescript@5.9.3)':
+    dependencies:
+      '@rsbuild/core': 2.2.3(core-js@3.41.0)
+      rsbuild-plugin-dts: 1.0.0(@rsbuild/core@2.2.3(core-js@3.41.0))(typescript@5.9.3)
+    optionalDependencies:
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - '@module-federation/runtime-tools'
+      - core-js
+
+  '@rslib/core@1.0.0(core-js@3.41.0)(typescript@6.0.3)':
+    dependencies:
+      '@rsbuild/core': 2.2.3(core-js@3.41.0)
+      rsbuild-plugin-dts: 1.0.0(@rsbuild/core@2.2.3(core-js@3.41.0))(typescript@6.0.3)
+    optionalDependencies:
+      typescript: 6.0.3
+    transitivePeerDependencies:
+      - '@module-federation/runtime-tools'
+      - core-js
+
+  '@rslib/core@1.0.0(core-js@3.41.0)(typescript@7.0.2)':
+    dependencies:
+      '@rsbuild/core': 2.2.3(core-js@3.41.0)
+      rsbuild-plugin-dts: 1.0.0(@rsbuild/core@2.2.3(core-js@3.41.0))(typescript@7.0.2)
+    optionalDependencies:
+      typescript: 7.0.2
+    transitivePeerDependencies:
+      - '@module-federation/runtime-tools'
+      - core-js
 
   '@rspack/binding-darwin-arm64@1.2.8':
     optional: true
@@ -9185,27 +9160,6 @@ snapshots:
       fsevents: 2.3.3
     optional: true
 
-  rsbuild-plugin-dts@0.23.2(@rsbuild/core@2.1.13(core-js@3.41.0))(typescript@5.9.3):
-    dependencies:
-      '@ast-grep/napi': 0.37.0
-      '@rsbuild/core': 2.1.13(core-js@3.41.0)
-    optionalDependencies:
-      typescript: 5.9.3
-
-  rsbuild-plugin-dts@0.23.2(@rsbuild/core@2.1.13(core-js@3.41.0))(typescript@6.0.3):
-    dependencies:
-      '@ast-grep/napi': 0.37.0
-      '@rsbuild/core': 2.1.13(core-js@3.41.0)
-    optionalDependencies:
-      typescript: 6.0.3
-
-  rsbuild-plugin-dts@0.23.2(@rsbuild/core@2.1.13(core-js@3.41.0))(typescript@7.0.2):
-    dependencies:
-      '@ast-grep/napi': 0.37.0
-      '@rsbuild/core': 2.1.13(core-js@3.41.0)
-    optionalDependencies:
-      typescript: 7.0.2
-
   rsbuild-plugin-dts@0.5.5(@rsbuild/core@1.2.19(@rspack/tracing@1.3.5(supports-color@8.1.1)))(typescript@5.9.3):
     dependencies:
       '@ast-grep/napi': 0.36.3
@@ -9225,6 +9179,27 @@ snapshots:
       picocolors: 1.1.1
       tinyglobby: 0.2.17
       tsconfig-paths: 4.2.0
+    optionalDependencies:
+      typescript: 7.0.2
+
+  rsbuild-plugin-dts@1.0.0(@rsbuild/core@2.2.3(core-js@3.41.0))(typescript@5.9.3):
+    dependencies:
+      '@ast-grep/napi': 0.45.2
+      '@rsbuild/core': 2.2.3(core-js@3.41.0)
+    optionalDependencies:
+      typescript: 5.9.3
+
+  rsbuild-plugin-dts@1.0.0(@rsbuild/core@2.2.3(core-js@3.41.0))(typescript@6.0.3):
+    dependencies:
+      '@ast-grep/napi': 0.45.2
+      '@rsbuild/core': 2.2.3(core-js@3.41.0)
+    optionalDependencies:
+      typescript: 6.0.3
+
+  rsbuild-plugin-dts@1.0.0(@rsbuild/core@2.2.3(core-js@3.41.0))(typescript@7.0.2):
+    dependencies:
+      '@ast-grep/napi': 0.45.2
+      '@rsbuild/core': 2.2.3(core-js@3.41.0)
     optionalDependencies:
       typescript: 7.0.2
 

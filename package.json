@@ -21,7 +21,7 @@
     "@biomejs/biome": "^2.0.0",
     "@lynx-js/rspeedy": "^0.16.0",
     "@rsbuild/core": "^2.0.0",
-    "@rslib/core": "^0.23.0",
+    "@rslib/core": "^1.0.0",
     "turbo": "^2.4.4"
   }
 }
