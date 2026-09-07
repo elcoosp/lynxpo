@@ -1700,10 +1700,10 @@ importers:
         version: 13.0.6
       sd-tailwindcss-transformer:
         specifier: ^2.1.0
-        version: 2.2.1(style-dictionary@5.5.2)
+        version: 2.2.1(style-dictionary@5.5.3)
       style-dictionary:
         specifier: ^5.0.0
-        version: 5.5.2
+        version: 5.5.3
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.0.0
@@ -5451,8 +5451,8 @@ packages:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
     engines: {node: '>=4'}
 
-  style-dictionary@5.5.2:
-    resolution: {integrity: sha512-OPXsfLzy+8YZrUmlgOGDmTlykL8xWLvhb70bHUvBKkPCY75eQabQsl+Jd4JO8nC/uuz/6UdikCHxagiBdUugtw==}
+  style-dictionary@5.5.3:
+    resolution: {integrity: sha512-vt4wLw+3H47XLW5Awvq//FqV2BUMElGdhmuUapi2oXNERY4tjFJ6Cd+G3HYjV+9JWYHNFPbmDWwLN8wHzpaEkQ==}
     engines: {node: '>=22.0.0'}
     hasBin: true
 
@@ -9261,9 +9261,9 @@ snapshots:
       ajv-formats: 2.1.1(ajv@8.20.0)
       ajv-keywords: 5.1.0(ajv@8.20.0)
 
-  sd-tailwindcss-transformer@2.2.1(style-dictionary@5.5.2):
+  sd-tailwindcss-transformer@2.2.1(style-dictionary@5.5.3):
     dependencies:
-      style-dictionary: 5.5.2
+      style-dictionary: 5.5.3
 
   semver@7.8.5: {}
 
@@ -9437,7 +9437,7 @@ snapshots:
 
   strip-bom@3.0.0: {}
 
-  style-dictionary@5.5.2:
+  style-dictionary@5.5.3:
     dependencies:
       '@bundled-es-modules/deepmerge': 4.3.2
       '@bundled-es-modules/glob': 13.0.6
