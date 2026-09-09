@@ -1,15 +1,22 @@
-# lynxpo
+<div align="center">
+  <img src="docs/logo.png" alt="Lynxpo Logo" width="200"/>
+  <p>
+    <strong>lynxpo</strong> — A pnpm + Turborepo monorepo that ports Expo / React‑Native native APIs into <a href="https://lynxjs.org">Lynx</a>, so they run inside <strong>LynxExplorer</strong> — not the iOS Simulator or the Android‑via‑ADB Expo path.<br/>
+    Each capability ships as a twin‑native module (Kotlin + Swift) wrapped by a React‑Lynx surface and exercised in a live playground.
+  </p>
+  <p>
+    <a href="https://pnpm.io"><img src="https://img.shields.io/badge/pnpm-11.17.0-FFC43D?style=for-the-badge&logo=pnpm" alt="pnpm"/></a>
+    <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20.19-339933?style=for-the-badge&logo=node.js" alt="Node"/></a>
+    <a href="https://turbo.build"><img src="https://img.shields.io/badge/Turborepo-2.4.4-EF4444?style=for-the-badge&logo=turbo" alt="Turborepo"/></a>
+    <a href="https://biomejs.dev"><img src="https://img.shields.io/badge/Biome-2.0-60A5FA?style=for-the-badge" alt="Biome"/></a>
+    <a href="https://lynxjs.org"><img src="https://img.shields.io/badge/Lynx-Explorer-F7B500?style=for-the-badge" alt="Lynx"/></a>
+    <a href="./packages/modules"><img src="https://img.shields.io/badge/modules-66-8B5CF6?style=for-the-badge" alt="Modules"/></a>
+    <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-000000?style=for-the-badge" alt="License"/></a>
+    <a href="https://github.com/elcoosp/lynxpo/tree/main"><img src="https://img.shields.io/badge/branch-main-2EA043?style=for-the-badge" alt="Branch"/></a>
+  </p>
+</div>
 
-A pnpm + Turborepo monorepo that ports Expo / React-Native native APIs into [Lynx](https://lynxjs.org), so they run inside **LynxExplorer** — not the iOS Simulator or the Android-via-ADB Expo path. Each capability ships as a twin-native module (Kotlin + Swift) wrapped by a React-Lynx surface and exercised in a live playground.
-
-[![pnpm](https://img.shields.io/badge/pnpm-11.17.0-FFC43D?style=for-the-badge&logo=pnpm)](https://pnpm.io)
-[![Node](https://img.shields.io/badge/node-%3E%3D20.19-339933?style=for-the-badge&logo=node.js)](https://nodejs.org)
-[![Turborepo](https://img.shields.io/badge/Turborepo-2.4.4-EF4444?style=for-the-badge&logo=turbo)](https://turbo.build)
-[![Biome](https://img.shields.io/badge/Biome-2.0-60A5FA?style=for-the-badge)](https://biomejs.dev)
-[![Lynx](https://img.shields.io/badge/Lynx-Explorer-F7B500?style=for-the-badge)](https://lynxjs.org)
-[![Modules](https://img.shields.io/badge/modules-66-8B5CF6?style=for-the-badge)](./packages/modules)
-[![License](https://img.shields.io/badge/License-MIT-000000?style=for-the-badge)](./LICENSE)
-[![Branch](https://img.shields.io/badge/branch-main-2EA043?style=for-the-badge)](https://github.com/elcoosp/lynxpo/tree/main)
+---
 
 ## Why lynxpo
 
