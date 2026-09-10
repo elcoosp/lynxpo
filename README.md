@@ -5,14 +5,14 @@
     Each capability ships as a twin‑native module (Kotlin + Swift) wrapped by a React‑Lynx surface and exercised in a live playground.
   </p>
   <p>
-    <a href="https://pnpm.io"><img src="https://img.shields.io/badge/pnpm-11.17.0-FFC43D?style=for-the-badge&logo=pnpm" alt="pnpm"/></a>
-    <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20.19-339933?style=for-the-badge&logo=node.js" alt="Node"/></a>
-    <a href="https://turbo.build"><img src="https://img.shields.io/badge/Turborepo-2.4.4-EF4444?style=for-the-badge&logo=turbo" alt="Turborepo"/></a>
-    <a href="https://biomejs.dev"><img src="https://img.shields.io/badge/Biome-2.0-60A5FA?style=for-the-badge" alt="Biome"/></a>
-    <a href="https://lynxjs.org"><img src="https://img.shields.io/badge/Lynx-Explorer-F7B500?style=for-the-badge" alt="Lynx"/></a>
-    <a href="./packages/modules"><img src="https://img.shields.io/badge/modules-66-8B5CF6?style=for-the-badge" alt="Modules"/></a>
-    <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-000000?style=for-the-badge" alt="License"/></a>
-    <a href="https://github.com/elcoosp/lynxpo/tree/main"><img src="https://img.shields.io/badge/branch-main-2EA043?style=for-the-badge" alt="Branch"/></a>
+    <a href="https://pnpm.io"><img src="https://img.shields.io/badge/pnpm-11.17.0-FFC43D?style=flat-square&logo=pnpm" alt="pnpm"/></a>
+    <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20.19-339933?style=flat-square&logo=node.js" alt="Node"/></a>
+    <a href="https://turbo.build"><img src="https://img.shields.io/badge/Turborepo-2.4.4-EF4444?style=flat-square&logo=turbo" alt="Turborepo"/></a>
+    <a href="https://biomejs.dev"><img src="https://img.shields.io/badge/Biome-2.0-60A5FA?style=flat-square" alt="Biome"/></a>
+    <a href="https://lynxjs.org"><img src="https://img.shields.io/badge/Lynx-Explorer-F7B500?style=flat-square" alt="Lynx"/></a>
+    <a href="./packages/modules"><img src="https://img.shields.io/badge/modules-66-8B5CF6?style=flat-square" alt="Modules"/></a>
+    <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-000000?style=flat-square" alt="License"/></a>
+    <a href="https://github.com/elcoosp/lynxpo/tree/main"><img src="https://img.shields.io/badge/branch-main-2EA043?style=flat-square" alt="Branch"/></a>
   </p>
 </div>
 
