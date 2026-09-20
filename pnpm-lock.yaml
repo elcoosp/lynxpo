@@ -129,7 +129,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -151,7 +151,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -173,7 +173,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -195,7 +195,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -217,7 +217,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -239,7 +239,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -261,7 +261,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -283,7 +283,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -305,7 +305,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -327,7 +327,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -349,7 +349,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -368,7 +368,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -390,7 +390,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -412,7 +412,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -434,7 +434,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -456,7 +456,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -478,7 +478,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -500,7 +500,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -522,7 +522,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -541,7 +541,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -563,7 +563,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -585,7 +585,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -607,7 +607,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -626,7 +626,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -648,7 +648,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -670,7 +670,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -692,7 +692,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -714,7 +714,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -736,7 +736,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -758,7 +758,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -780,7 +780,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -802,7 +802,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -824,7 +824,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -846,7 +846,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -868,7 +868,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -887,7 +887,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -909,7 +909,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -931,7 +931,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -953,7 +953,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -975,7 +975,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -997,7 +997,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1019,7 +1019,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1041,7 +1041,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1063,7 +1063,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1085,7 +1085,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1107,7 +1107,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1129,7 +1129,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1151,7 +1151,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1173,7 +1173,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1195,7 +1195,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1214,7 +1214,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1233,7 +1233,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1255,7 +1255,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1277,7 +1277,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1299,7 +1299,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1321,7 +1321,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1343,7 +1343,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1365,7 +1365,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1387,7 +1387,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1409,7 +1409,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1431,7 +1431,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1453,7 +1453,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1475,7 +1475,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1497,7 +1497,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1519,7 +1519,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -1541,7 +1541,7 @@ importers:
     dependencies:
       '@lynx-js/react':
         specifier: ^0.126.0
-        version: 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
+        version: 0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)
       '@lynx-js/types':
         specifier: ^4.0.0
         version: 4.2.1
@@ -2539,6 +2539,15 @@ packages:
 
   '@lynx-js/react@0.126.0':
     resolution: {integrity: sha512-3R5FLTgT8DPiyu/w78cJk4Zy36GFGNbFT2ZhonTlnhEb6jewil146/jVYBRlvVoNvTQI+oRcHnHBlgp8HYdybg==}
+    peerDependencies:
+      '@lynx-js/types': '*'
+      '@types/react': ^18 || ^19.0.0
+    peerDependenciesMeta:
+      '@lynx-js/types':
+        optional: true
+
+  '@lynx-js/react@0.126.1':
+    resolution: {integrity: sha512-vb4FAznktLlL5Gqrw0RvGVONdm9sW4AmiqEhY695XD/Apv7j6Pc27oO4m3qxspjEg/PWpWNiwDpvKAgWTzm0Gw==}
     peerDependencies:
       '@lynx-js/types': '*'
       '@types/react': ^18 || ^19.0.0
@@ -6520,6 +6529,15 @@ snapshots:
       '@lynx-js/react': 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
 
   '@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)':
+    dependencies:
+      '@types/react': 19.2.18
+      preact: '@lynx-js/internal-preact@11.0.0-rc.1-20260903085447-f95471a'
+    optionalDependencies:
+      '@lynx-js/types': 4.2.1
+    transitivePeerDependencies:
+      - preact-render-to-string
+
+  '@lynx-js/react@0.126.1(@lynx-js/types@4.2.1)(@types/react@19.2.18)':
     dependencies:
       '@types/react': 19.2.18
       preact: '@lynx-js/internal-preact@11.0.0-rc.1-20260903085447-f95471a'
