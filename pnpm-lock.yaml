@@ -1812,7 +1812,7 @@ importers:
         version: 13.0.6
       unplugin-ast:
         specifier: ^0.19.0
-        version: 0.19.0(@rspack/core@2.2.2(@swc/helpers@0.5.23))(esbuild@0.21.5)(rolldown@1.2.7)(rollup@4.63.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.21.5)(jiti@2.7.0)(terser@5.51.2))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
+        version: 0.19.0(@rspack/core@2.2.2(@swc/helpers@0.5.23))(esbuild@0.21.5)(rolldown@1.2.7)(rollup@4.63.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
     devDependencies:
       '@babel/types':
         specifier: ^8.0.0
@@ -1821,8 +1821,8 @@ importers:
         specifier: 0.7.1
         version: 0.7.1(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))
       '@lynx-js/react-rsbuild-plugin':
-        specifier: 0.20.3
-        version: 0.20.3(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
+        specifier: 0.20.4
+        version: 0.20.4(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
       '@lynx-js/rspeedy':
         specifier: 0.16.5
         version: 0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
@@ -2504,8 +2504,8 @@ packages:
     resolution: {integrity: sha512-iU7rgaDKZwchDnFA3wYK8RWlfUS0EyxtUgL+ojlGmBwWXY4BfysShf1jvv6FcRq7in7nQRss2U4Gfi7x1161wA==}
     engines: {node: '>=18'}
 
-  '@lynx-js/css-extract-webpack-plugin@0.11.0':
-    resolution: {integrity: sha512-5XcrXYWzZo2tLy9IRIf2GVn2i+oADAU5tgO9zuBUSdc3GEiworghEezhwvLQgOdq140KoZ7OlKPK1BXkkk0DeA==}
+  '@lynx-js/css-extract-webpack-plugin@0.11.1':
+    resolution: {integrity: sha512-kRbZH8/XVqppMIzRrQhc1dh9+WPEUQvqS2C2xPFiRGlqVpvNx1Tw2OD32die6A0ekJVrsPT4RbkIP6UfV3Y9IQ==}
     engines: {node: '>=18'}
     peerDependencies:
       '@lynx-js/template-webpack-plugin': ^0.16.0
@@ -2551,8 +2551,8 @@ packages:
       '@rsbuild/core':
         optional: true
 
-  '@lynx-js/react-alias-rsbuild-plugin@0.20.3':
-    resolution: {integrity: sha512-khBWmwU63cj5+YXTkFrsFlHq3lzHMCXjFfW268vllQiKQIqFamSe3q9N9XukZeBPTsacxlI2kX65RGG3PgW1Cw==}
+  '@lynx-js/react-alias-rsbuild-plugin@0.20.4':
+    resolution: {integrity: sha512-YYwWEG6t7H5iBVANsjZ7LquEk8239vUp62aAZKSuEsjcY2nzmDYJYT/FE5B5gUSQYYl2aQvHcFnCVOw6PCOAPg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@lynx-js/rspeedy': ^0.16.0 || ^0.17.0 || ^0.18.0
@@ -2569,11 +2569,11 @@ packages:
     peerDependencies:
       '@lynx-js/react-webpack-plugin': ^0.3.0 || ^0.4.0 || ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0
 
-  '@lynx-js/react-rsbuild-plugin@0.20.3':
-    resolution: {integrity: sha512-j9gNSr9ri4G9er0CUm9U345t1M/osPx6flQ6Eh92p+Ih8U50WONnXfNHYcWQXE08R/Gc9P1NJgA/KdEKZt9cvg==}
+  '@lynx-js/react-rsbuild-plugin@0.20.4':
+    resolution: {integrity: sha512-p1UvkuCMU2O7JqpTTC1l79bmj9gWhXsBjRVFNipr6lEzK9GajLo+fF4+8je2PCZ+asyTpq4nxmxEyYGHb7Zw9Q==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@lynx-js/react': ^0.124.0 || ^0.125.0 || ^0.126.0
+      '@lynx-js/react': ^0.124.0 || ^0.125.0 || ^0.126.0 || ^0.127.0
       '@lynx-js/rspeedy': ^0.17.0 || ^0.18.0
       '@rsbuild/core': ^2.0.0
     peerDependenciesMeta:
@@ -2584,8 +2584,8 @@ packages:
       '@rsbuild/core':
         optional: true
 
-  '@lynx-js/react-webpack-plugin@0.12.0':
-    resolution: {integrity: sha512-jPN3b6ROR0U4V3al1Kq9HiV9WyB/laKvna9ZwKbwBDTzbsxsohrfq0/6dNWKV4VI8ZN1WBLyqDU2vUIyjK+Dgw==}
+  '@lynx-js/react-webpack-plugin@0.12.1':
+    resolution: {integrity: sha512-WKwLMnEVR7aNTT1Hk1Couz8O28bxFBEytoeqNuoey/iJ9ejJSzh2G8dyvG2TgK1OXjw1xVwQz+THcUUyygQ35w==}
     engines: {node: '>=18'}
     peerDependencies:
       '@lynx-js/react': '*'
@@ -2618,8 +2618,8 @@ packages:
     peerDependencies:
       '@rsbuild/core': ^2.0.0
 
-  '@lynx-js/rsbuild-plugin@0.1.3':
-    resolution: {integrity: sha512-F9wtDVDAgRbNzBNJFazE2Ibhdyz+xFZHJyCqL4sVpiwQNyIQzwX5eQ4K9eVIUoqIBmLvBDehENnCYefTAlmwDg==}
+  '@lynx-js/rsbuild-plugin@0.1.4':
+    resolution: {integrity: sha512-HscKdPcfkC2zCOv0zz+by9CcpbYRTQULSHw/Od1Y/fQs9pw5egOnrptwSL+cLGLDyz3suVAUBM1hwyRgGS+dVw==}
     engines: {node: '>=18'}
     peerDependencies:
       '@rsbuild/core': ^2.0.0
@@ -2649,8 +2649,8 @@ packages:
     resolution: {integrity: sha512-sI+xmLXaMvXWFN5n47kYNHFEMIEpkrz/bVvU2GwvhB26lXfYPdSNedE3bh85vfW/vAmYsB/TbKwtiNhXgN3LDw==}
     hasBin: true
 
-  '@lynx-js/template-webpack-plugin@0.16.2':
-    resolution: {integrity: sha512-raz8fnerhbz/kVK+ucMj2KBodUrqfplesj5EL8+wwugLl7Ef2LswAlrmnnaHp6UTDhHWRi5kByeAmPegBj6KpQ==}
+  '@lynx-js/template-webpack-plugin@0.16.3':
+    resolution: {integrity: sha512-5RFLLSzHQlg3Uld+ip21PubXJjv9wPOJgcfL1PIrgWlgRI8DgDJRhroD+4Fy2500J+sorHUi4+MqM0bVWHy7Fw==}
     engines: {node: ^18.14 || >=19.4}
 
   '@lynx-js/types@4.2.1':
@@ -2661,8 +2661,8 @@ packages:
     peerDependencies:
       '@lynx-js/react': '*'
 
-  '@lynx-js/web-core@0.26.2':
-    resolution: {integrity: sha512-y/+5uztLYQmZ7lXVkYDbpwKtbKtUQyGnymEhwU1ohPlNW2mJLLesFnblAljci2UdjCedlIq/KE7tE4ILYXDrpw==}
+  '@lynx-js/web-core@0.26.3':
+    resolution: {integrity: sha512-gmD2KHFJatxdXNshziXr0jq9s8jZkNuezWHYkRf/TEvTx3gJtzPe0KuEAM91/u+Ho0+PF5343J5geiu8TiIn5g==}
     peerDependencies:
       '@lynx-js/animax': 0.1.0-alpha.0
       '@lynx-js/lynx-core': 0.1.4
@@ -2675,19 +2675,19 @@ packages:
       tslib:
         optional: true
 
-  '@lynx-js/web-elements@0.12.12':
-    resolution: {integrity: sha512-LHxCTMoSTgM5iLKSMolE87riEuFkNY9NpMxC27x4MO28+7PLI/mA18i644l4I0BweiU6gbD82+NAvak0SjWcCA==}
+  '@lynx-js/web-elements@0.12.13':
+    resolution: {integrity: sha512-SrNK2j5FNjHs2NJiYDDnLYUbDIOnYzCynM5FOsNuZCNPApJmMdgMt3KeP4AlL9+P5UNZxcp3b4CA9BNwBV5eEw==}
     peerDependencies:
       tslib: ^2.5.0
 
   '@lynx-js/web-rsbuild-server-middleware@0.25.0':
     resolution: {integrity: sha512-wn6CnEed839sfV3b4g82sIPopmHsRdQLEh7Sz+kFFwErokfdjKHkKtT98v5EbZfUsjFKuRSeuCi5Xy8R/QTpGQ==}
 
-  '@lynx-js/web-rsbuild-server-middleware@0.26.2':
-    resolution: {integrity: sha512-DeBYye1wZK61pDEDvR1cbRhSWh7lO76M6iZ1CX8kouglaMpmI+ZQBtOk3FLa5KoRHxTi1++qC0DsCRx6NlnhQQ==}
+  '@lynx-js/web-rsbuild-server-middleware@0.26.3':
+    resolution: {integrity: sha512-1TGOw3MxRoR7n9JtoyYCktBMJIKhGwgSo9z3FcrkNB4lKhyMII173brU9JMD2MlCZBrkOOM4hXe7jFH8K5gH5A==}
 
-  '@lynx-js/web-worker-rpc@0.26.2':
-    resolution: {integrity: sha512-HrM/pFLmcDKPq0MSxl8D8JleZIYbkbHPD2v20USVIPDUqHSk6HdP4APpioZ2lMmItS/S7t+8xuHKVNTtLeQTRw==}
+  '@lynx-js/web-worker-rpc@0.26.3':
+    resolution: {integrity: sha512-NffdhP3F01L1jUSylBhFN/gAbaGz476vGlmWKrm6MfXBPmWa3JS2D5Ow8ZwaduIjF10N/6mv2ozcMwwGuEOyug==}
 
   '@lynx-js/webpack-dev-transport@0.4.0':
     resolution: {integrity: sha512-+XeG9yUGM7oCWeXe/Pbxl6cBmF6JQ6jQ08rm9w8zbV6Liq1THghlcKPdj2DAS1u1WU3llSi1RGzGQabWlDwR1w==}
@@ -4495,8 +4495,8 @@ packages:
     resolution: {integrity: sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==}
     engines: {node: '>= 4'}
 
-  dompurify@3.4.14:
-    resolution: {integrity: sha512-dVoH9z+MY+C9IilgGCk3YfFqjLi3fChm2OiKJMzh6axrJ5qwxqWaZamgmHrpv22CN/KdbZJuGEGgfQoL00LTdg==}
+  dompurify@3.4.16:
+    resolution: {integrity: sha512-sqo+pNp3qRhCIpbgRi1y8Tgk27Bo2Ry7w0dC1NBeNTdZChWjz9Xb/KOoZbRP/R6pQZ80Qw8YhXw13hWWBbMRnQ==}
 
   domutils@3.2.2:
     resolution: {integrity: sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==}
@@ -6510,9 +6510,9 @@ snapshots:
     dependencies:
       '@lynx-js/webpack-runtime-globals': 0.0.8
 
-  '@lynx-js/css-extract-webpack-plugin@0.11.0(@lynx-js/template-webpack-plugin@0.16.2(tslib@2.8.1))':
+  '@lynx-js/css-extract-webpack-plugin@0.11.1(@lynx-js/template-webpack-plugin@0.16.3(tslib@2.8.1))':
     dependencies:
-      '@lynx-js/template-webpack-plugin': 0.16.2(tslib@2.8.1)
+      '@lynx-js/template-webpack-plugin': 0.16.3(tslib@2.8.1)
 
   '@lynx-js/css-serializer@0.1.9':
     dependencies:
@@ -6538,25 +6538,25 @@ snapshots:
       '@lynx-js/rspeedy': 0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
       '@rsbuild/core': 2.2.3(core-js@3.41.0)
 
-  '@lynx-js/react-alias-rsbuild-plugin@0.20.3(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))':
+  '@lynx-js/react-alias-rsbuild-plugin@0.20.4(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))':
     optionalDependencies:
       '@lynx-js/rspeedy': 0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
       '@rsbuild/core': 2.2.3(core-js@3.41.0)
 
-  '@lynx-js/react-refresh-webpack-plugin@0.4.3(@lynx-js/react-webpack-plugin@0.12.0(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.2(tslib@2.8.1)))':
+  '@lynx-js/react-refresh-webpack-plugin@0.4.3(@lynx-js/react-webpack-plugin@0.12.1(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.3(tslib@2.8.1)))':
     dependencies:
-      '@lynx-js/react-webpack-plugin': 0.12.0(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.2(tslib@2.8.1))
+      '@lynx-js/react-webpack-plugin': 0.12.1(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.3(tslib@2.8.1))
 
-  '@lynx-js/react-rsbuild-plugin@0.20.3(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))':
+  '@lynx-js/react-rsbuild-plugin@0.20.4(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))':
     dependencies:
-      '@lynx-js/css-extract-webpack-plugin': 0.11.0(@lynx-js/template-webpack-plugin@0.16.2(tslib@2.8.1))
-      '@lynx-js/react-alias-rsbuild-plugin': 0.20.3(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))
-      '@lynx-js/react-refresh-webpack-plugin': 0.4.3(@lynx-js/react-webpack-plugin@0.12.0(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.2(tslib@2.8.1)))
-      '@lynx-js/react-webpack-plugin': 0.12.0(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.2(tslib@2.8.1))
-      '@lynx-js/rsbuild-plugin': 0.1.3(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
+      '@lynx-js/css-extract-webpack-plugin': 0.11.1(@lynx-js/template-webpack-plugin@0.16.3(tslib@2.8.1))
+      '@lynx-js/react-alias-rsbuild-plugin': 0.20.4(@lynx-js/rspeedy@0.16.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@rspack/core@2.2.2(@swc/helpers@0.5.23))(core-js@3.41.0)(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(supports-color@8.1.1)(typescript@7.0.2)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)))(@rsbuild/core@2.2.3(core-js@3.41.0))
+      '@lynx-js/react-refresh-webpack-plugin': 0.4.3(@lynx-js/react-webpack-plugin@0.12.1(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.3(tslib@2.8.1)))
+      '@lynx-js/react-webpack-plugin': 0.12.1(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.3(tslib@2.8.1))
+      '@lynx-js/rsbuild-plugin': 0.1.4(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
       '@lynx-js/runtime-config-webpack-plugin': 0.0.1
       '@lynx-js/runtime-wrapper-webpack-plugin': 0.2.4
-      '@lynx-js/template-webpack-plugin': 0.16.2(tslib@2.8.1)
+      '@lynx-js/template-webpack-plugin': 0.16.3(tslib@2.8.1)
       '@lynx-js/use-sync-external-store': 1.5.0(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))
       background-only: 0.0.1
       tiny-invariant: 1.3.3
@@ -6576,10 +6576,10 @@ snapshots:
       - tslib
       - webpack
 
-  '@lynx-js/react-webpack-plugin@0.12.0(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.2(tslib@2.8.1))':
+  '@lynx-js/react-webpack-plugin@0.12.1(@lynx-js/react@0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18))(@lynx-js/template-webpack-plugin@0.16.3(tslib@2.8.1))':
     dependencies:
       '@lynx-js/debug-metadata': 0.1.0
-      '@lynx-js/template-webpack-plugin': 0.16.2(tslib@2.8.1)
+      '@lynx-js/template-webpack-plugin': 0.16.3(tslib@2.8.1)
       '@lynx-js/webpack-runtime-globals': 0.0.8
       tiny-invariant: 1.3.3
     optionalDependencies:
@@ -6622,14 +6622,14 @@ snapshots:
       - lightningcss
       - webpack
 
-  '@lynx-js/rsbuild-plugin@0.1.3(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))':
+  '@lynx-js/rsbuild-plugin@0.1.4(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))':
     dependencies:
       '@lynx-js/cache-events-webpack-plugin': 0.2.1
       '@lynx-js/chunk-loading-webpack-plugin': 0.4.2
       '@lynx-js/debug-metadata-rsbuild-plugin': 0.2.3(@rsbuild/core@2.2.3(core-js@3.41.0))
       '@lynx-js/runtime-wrapper-webpack-plugin': 0.2.4
-      '@lynx-js/template-webpack-plugin': 0.16.2(tslib@2.8.1)
-      '@lynx-js/web-rsbuild-server-middleware': 0.26.2
+      '@lynx-js/template-webpack-plugin': 0.16.3(tslib@2.8.1)
+      '@lynx-js/web-rsbuild-server-middleware': 0.26.3
       '@lynx-js/webpack-dev-transport': 0.4.0
       '@lynx-js/websocket': 0.0.4
       '@rsbuild/plugin-css-minimizer': 2.0.1(@rsbuild/core@2.2.3(core-js@3.41.0))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
@@ -6705,12 +6705,12 @@ snapshots:
 
   '@lynx-js/tasm@0.0.49': {}
 
-  '@lynx-js/template-webpack-plugin@0.16.2(tslib@2.8.1)':
+  '@lynx-js/template-webpack-plugin@0.16.3(tslib@2.8.1)':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@lynx-js/css-serializer': 0.1.9
       '@lynx-js/tasm': 0.0.49
-      '@lynx-js/web-core': 0.26.2(tslib@2.8.1)
+      '@lynx-js/web-core': 0.26.3(tslib@2.8.1)
       '@lynx-js/webpack-runtime-globals': 0.0.8
       '@rspack/lite-tapable': 1.1.5
       css-tree: 3.2.1
@@ -6729,26 +6729,26 @@ snapshots:
     dependencies:
       '@lynx-js/react': 0.126.0(@lynx-js/types@4.2.1)(@types/react@19.2.18)
 
-  '@lynx-js/web-core@0.26.2(tslib@2.8.1)':
+  '@lynx-js/web-core@0.26.3(tslib@2.8.1)':
     dependencies:
       '@lynx-js/css-serializer': 0.1.9
-      '@lynx-js/web-elements': 0.12.12(tslib@2.8.1)
-      '@lynx-js/web-worker-rpc': 0.26.2
+      '@lynx-js/web-elements': 0.12.13(tslib@2.8.1)
+      '@lynx-js/web-worker-rpc': 0.26.3
       wasm-feature-detect: 1.9.0
     optionalDependencies:
       tslib: 2.8.1
 
-  '@lynx-js/web-elements@0.12.12(tslib@2.8.1)':
+  '@lynx-js/web-elements@0.12.13(tslib@2.8.1)':
     dependencies:
-      dompurify: 3.4.14
+      dompurify: 3.4.16
       markdown-it: 15.0.2
       tslib: 2.8.1
 
   '@lynx-js/web-rsbuild-server-middleware@0.25.0': {}
 
-  '@lynx-js/web-rsbuild-server-middleware@0.26.2': {}
+  '@lynx-js/web-rsbuild-server-middleware@0.26.3': {}
 
-  '@lynx-js/web-worker-rpc@0.26.2': {}
+  '@lynx-js/web-worker-rpc@0.26.3': {}
 
   '@lynx-js/webpack-dev-transport@0.4.0': {}
 
@@ -8351,7 +8351,7 @@ snapshots:
     dependencies:
       domelementtype: 2.3.0
 
-  dompurify@3.4.14:
+  dompurify@3.4.16:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
 
@@ -9849,12 +9849,12 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-ast@0.19.0(@rspack/core@2.2.2(@swc/helpers@0.5.23))(esbuild@0.21.5)(rolldown@1.2.7)(rollup@4.63.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.21.5)(jiti@2.7.0)(terser@5.51.2))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)):
+  unplugin-ast@0.19.0(@rspack/core@2.2.2(@swc/helpers@0.5.23))(esbuild@0.21.5)(rolldown@1.2.7)(rollup@4.63.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)):
     dependencies:
       '@yuku-toolchain/types': 0.9.3
       magic-string-ast: 2.1.1
       rolldown-string: 0.3.1(rolldown@1.2.7)
-      unplugin: 3.3.0(@rspack/core@2.2.2(@swc/helpers@0.5.23))(esbuild@0.21.5)(rolldown@1.2.7)(rollup@4.63.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.21.5)(jiti@2.7.0)(terser@5.51.2))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
+      unplugin: 3.3.0(@rspack/core@2.2.2(@swc/helpers@0.5.23))(esbuild@0.21.5)(rolldown@1.2.7)(rollup@4.63.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26))
       yuku-ast: 0.9.3
       yuku-codegen: 0.9.3
       yuku-parser: 0.9.3
@@ -9869,7 +9869,7 @@ snapshots:
       - vite
       - webpack
 
-  unplugin@3.3.0(@rspack/core@2.2.2(@swc/helpers@0.5.23))(esbuild@0.21.5)(rolldown@1.2.7)(rollup@4.63.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.21.5)(jiti@2.7.0)(terser@5.51.2))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)):
+  unplugin@3.3.0(@rspack/core@2.2.2(@swc/helpers@0.5.23))(esbuild@0.21.5)(rolldown@1.2.7)(rollup@4.63.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.7
@@ -9879,7 +9879,6 @@ snapshots:
       esbuild: 0.21.5
       rolldown: 1.2.7
       rollup: 4.63.1
-      vite: 8.2.2(@types/node@24.13.3)(esbuild@0.21.5)(jiti@2.7.0)(terser@5.51.2)
       webpack: 5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(esbuild@0.21.5)(lightningcss@1.33.0)(postcss@8.5.26)
 
   update-browserslist-db@1.3.2(browserslist@4.28.8):
