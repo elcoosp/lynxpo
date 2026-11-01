@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <application>
+    <activity
+        android:name="com.lynxpo.imagepicker.ImagePickerProxyActivity"
+        android:exported="false"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+  </application>
+</manifest>
