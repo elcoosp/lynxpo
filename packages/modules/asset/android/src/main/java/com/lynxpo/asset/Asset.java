@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -24,7 +25,7 @@ import java.io.File;
 @LynxNativeModule(name = "Asset")
 public class Asset extends AssetSpec {
 
-  public Asset(Context context) {
+  public Asset(LynxContext context) {
     super(context);
   }
 

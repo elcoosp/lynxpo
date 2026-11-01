@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class ScreenCaptureSpec extends LynxContextModule {
   public ScreenCaptureSpec(LynxContext context) {
@@ -21,8 +22,8 @@ public abstract class ScreenCaptureSpec extends LynxContextModule {
   public abstract boolean allowScreenCapture();
 
   @LynxMethod
-  public abstract Object permissionsAsync();
+  public abstract WritableMap permissionsAsync();
 
   @LynxMethod
-  public abstract Object requestPermissionsAsync();
+  public abstract WritableMap requestPermissionsAsync();
 }

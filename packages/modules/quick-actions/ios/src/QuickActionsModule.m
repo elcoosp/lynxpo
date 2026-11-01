@@ -3,6 +3,7 @@
     // LICENSE file in the root directory of this source tree.
 
     #import "QuickActionsModule.h"
+#import <UIKit/UIKit.h>
 
     @implementation QuickActionsModule
 

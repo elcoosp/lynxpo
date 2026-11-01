@@ -6,41 +6,43 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
+import com.lynx.jsbridge.Promise;
+
 public abstract class BrightnessModuleSpec extends LynxContextModule {
   public BrightnessModuleSpec(LynxContext context) {
     super(context);
   }
 
   @LynxMethod
-  public abstract double getBrightness();
+  public abstract float getBrightness();
 
   @LynxMethod
-  public abstract double getSystemBrightness();
+  public abstract float getSystemBrightness();
 
   @LynxMethod
   public abstract boolean isUsingSystemBrightness();
 
   @LynxMethod
-  public abstract double getSystemBrightnessMode();
+  public abstract int getSystemBrightnessMode();
 
   @LynxMethod
-  public abstract Object getBrightnessAsync();
+  public abstract void getBrightnessAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object setBrightnessAsync(double value);
+  public abstract void setBrightnessAsync(double value, final Promise promise);
 
   @LynxMethod
-  public abstract Object getSystemBrightnessAsync();
+  public abstract void getSystemBrightnessAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object isUsingSystemBrightnessAsync();
+  public abstract void isUsingSystemBrightnessAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object getSystemBrightnessModeAsync();
+  public abstract void getSystemBrightnessModeAsync(final Promise promise);
 
   @LynxMethod
   public abstract void addListener(String eventName);
 
   @LynxMethod
-  public abstract void removeListeners(double count);
+  public abstract void removeListeners(int count);
 }

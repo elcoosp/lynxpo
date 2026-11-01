@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.os.Environment;
 import com.lynx.jsbridge.LynxMethod;
@@ -31,7 +32,7 @@ import com.lynx.react.bridge.JavaOnlyMap;
 @LynxNativeModule(name = "FileSystemModule")
 public class FileSystemModule extends FileSystemModuleSpec {
 
-  public FileSystemModule(Context context) {
+  public FileSystemModule(LynxContext context) {
     super(context);
   }
 

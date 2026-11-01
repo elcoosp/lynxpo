@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,7 +32,7 @@ public class SqliteModule extends SqliteModuleSpec {
 
   private SQLiteDatabase db;
 
-  public SqliteModule(Context context) {
+  public SqliteModule(LynxContext context) {
     super(context);
     db = SQLiteDatabase.openOrCreateDatabase(":memory:", null);
     db.execSQL("CREATE TABLE IF NOT EXISTS kv (id INTEGER PRIMARY KEY, value TEXT)");

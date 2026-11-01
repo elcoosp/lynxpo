@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynxpo.appintegrity;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -26,7 +27,7 @@ import java.security.MessageDigest;
 @LynxNativeModule(name = "AppIntegrity")
 public class AppIntegrity extends AppIntegritySpec {
 
-  public AppIntegrity(Context context) {
+  public AppIntegrity(LynxContext context) {
     super(context);
   }
 

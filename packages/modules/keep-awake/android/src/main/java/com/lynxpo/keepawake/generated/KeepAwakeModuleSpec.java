@@ -6,6 +6,8 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
+import com.lynx.jsbridge.Promise;
+
 public abstract class KeepAwakeModuleSpec extends LynxContextModule {
   public KeepAwakeModuleSpec(LynxContext context) {
     super(context);
@@ -15,11 +17,11 @@ public abstract class KeepAwakeModuleSpec extends LynxContextModule {
   public abstract boolean isActivated();
 
   @LynxMethod
-  public abstract Object activateAsync();
+  public abstract void activateAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object deactivateAsync();
+  public abstract void deactivateAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object isActivatedAsync();
+  public abstract void isActivatedAsync(final Promise promise);
 }

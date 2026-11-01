@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class AppIntegritySpec extends LynxContextModule {
   public AppIntegritySpec(LynxContext context) {
@@ -18,5 +19,5 @@ public abstract class AppIntegritySpec extends LynxContextModule {
   public abstract void integrityTokenAsync(String options, Object cb);
 
   @LynxMethod
-  public abstract Object codeHashAsync();
+  public abstract WritableMap codeHashAsync();
 }

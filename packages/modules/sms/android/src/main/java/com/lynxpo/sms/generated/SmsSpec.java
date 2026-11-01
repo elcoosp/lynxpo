@@ -6,6 +6,8 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
+import com.lynx.react.bridge.ReadableArray;
+
 public abstract class SmsSpec extends LynxContextModule {
   public SmsSpec(LynxContext context) {
     super(context);
@@ -15,5 +17,5 @@ public abstract class SmsSpec extends LynxContextModule {
   public abstract boolean isAvailable();
 
   @LynxMethod
-  public abstract void sendSMS(Object addresses, String message);
+  public abstract void sendSMS(ReadableArray addresses, String message);
 }

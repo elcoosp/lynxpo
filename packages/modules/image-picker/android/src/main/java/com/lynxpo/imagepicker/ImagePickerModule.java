@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynxpo.imagepicker;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -97,7 +98,7 @@ public class ImagePickerModule extends ImagePickerModuleSpec {
     }
   }
 
-  public ImagePickerModule(Context context) {
+  public ImagePickerModule(LynxContext context) {
     super(context);
   }
 

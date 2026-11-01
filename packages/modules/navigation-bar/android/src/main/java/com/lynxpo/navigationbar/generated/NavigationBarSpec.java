@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class NavigationBarSpec extends LynxContextModule {
   public NavigationBarSpec(LynxContext context) {
@@ -18,8 +19,8 @@ public abstract class NavigationBarSpec extends LynxContextModule {
   public abstract void setButtonStyle(String style);
 
   @LynxMethod
-  public abstract void setVisibility(boolean visible);
+  public abstract void setVisibility(Boolean visible);
 
   @LynxMethod
-  public abstract Object getVisibility();
+  public abstract WritableMap getVisibility();
 }

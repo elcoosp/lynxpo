@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.view.WindowManager;
 import com.lynx.jsbridge.LynxMethod;
@@ -21,7 +22,7 @@ import com.lynx.react.bridge.WritableMap;
 @LynxNativeModule(name = "ScreenCapture")
 public class ScreenCapture extends ScreenCaptureSpec {
 
-  public ScreenCapture(Context context) {
+  public ScreenCapture(LynxContext context) {
     super(context);
   }
 

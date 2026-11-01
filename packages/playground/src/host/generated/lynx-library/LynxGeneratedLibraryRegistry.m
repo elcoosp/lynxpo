@@ -40,6 +40,7 @@ extern void LynxGeneratedNodeAPIAddonUse(void);
   if (NSClassFromString(@"ImagePickerModule")) { [config registerModule:NSClassFromString(@"ImagePickerModule") withName:@"ImagePickerModule"]; }
   if (NSClassFromString(@"IntentLauncher")) { [config registerModule:NSClassFromString(@"IntentLauncher") withName:@"IntentLauncher"]; }
   if (NSClassFromString(@"KeepAwakeModule")) { [config registerModule:NSClassFromString(@"KeepAwakeModule") withName:@"KeepAwakeModule"]; }
+  if (NSClassFromString(@"LinkPreviewModule")) { [config registerModule:NSClassFromString(@"LinkPreviewModule") withName:@"LinkPreviewModule"]; }
   if (NSClassFromString(@"Linking")) { [config registerModule:NSClassFromString(@"Linking") withName:@"Linking"]; }
   if (NSClassFromString(@"LivePhoto")) { [config registerModule:NSClassFromString(@"LivePhoto") withName:@"LivePhoto"]; }
   if (NSClassFromString(@"LocalAuthenticationModule")) { [config registerModule:NSClassFromString(@"LocalAuthenticationModule") withName:@"LocalAuthenticationModule"]; }
@@ -53,9 +54,10 @@ extern void LynxGeneratedNodeAPIAddonUse(void);
   if (NSClassFromString(@"NetworkAddons")) { [config registerModule:NSClassFromString(@"NetworkAddons") withName:@"NetworkAddons"]; }
   if (NSClassFromString(@"NotificationsModule")) { [config registerModule:NSClassFromString(@"NotificationsModule") withName:@"NotificationsModule"]; }
   if (NSClassFromString(@"Print")) { [config registerModule:NSClassFromString(@"Print") withName:@"Print"]; }
+  if (NSClassFromString(@"QuickActionsModule")) { [config registerModule:NSClassFromString(@"QuickActionsModule") withName:@"QuickActionsModule"]; }
+  if (NSClassFromString(@"ReceiveSharingModule")) { [config registerModule:NSClassFromString(@"ReceiveSharingModule") withName:@"ReceiveSharingModule"]; }
   if (NSClassFromString(@"ScreenCapture")) { [config registerModule:NSClassFromString(@"ScreenCapture") withName:@"ScreenCapture"]; }
   if (NSClassFromString(@"ScreenOrientationModule")) { [config registerModule:NSClassFromString(@"ScreenOrientationModule") withName:@"ScreenOrientationModule"]; }
-  if (NSClassFromString(@"SecureStoreModule")) { [config registerModule:NSClassFromString(@"SecureStoreModule") withName:@"SecureStoreModule"]; }
   if (NSClassFromString(@"SecureStoreModule")) { [config registerModule:NSClassFromString(@"SecureStoreModule") withName:@"SecureStoreModule"]; }
   if (NSClassFromString(@"SensorsModule")) { [config registerModule:NSClassFromString(@"SensorsModule") withName:@"SensorsModule"]; }
   if (NSClassFromString(@"Sharing")) { [config registerModule:NSClassFromString(@"Sharing") withName:@"Sharing"]; }
@@ -69,6 +71,7 @@ extern void LynxGeneratedNodeAPIAddonUse(void);
   if (NSClassFromString(@"SystemUi")) { [config registerModule:NSClassFromString(@"SystemUi") withName:@"SystemUi"]; }
   if (NSClassFromString(@"TaskManager")) { [config registerModule:NSClassFromString(@"TaskManager") withName:@"TaskManager"]; }
   if (NSClassFromString(@"TrackingTransparency")) { [config registerModule:NSClassFromString(@"TrackingTransparency") withName:@"TrackingTransparency"]; }
+  if (NSClassFromString(@"UpdatesModule")) { [config registerModule:NSClassFromString(@"UpdatesModule") withName:@"UpdatesModule"]; }
   if (NSClassFromString(@"Video")) { [config registerModule:NSClassFromString(@"Video") withName:@"Video"]; }
   if (NSClassFromString(@"VideoThumbnails")) { [config registerModule:NSClassFromString(@"VideoThumbnails") withName:@"VideoThumbnails"]; }
   if (NSClassFromString(@"WebBrowserModule")) { [config registerModule:NSClassFromString(@"WebBrowserModule") withName:@"WebBrowserModule"]; }

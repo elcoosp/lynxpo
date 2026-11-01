@@ -7,6 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@LynxNativeModule("LinkPreviewModule")
 @interface LinkPreviewModule : NSObject <LynxModule>
 @end
 

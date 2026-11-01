@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class PrintSpec extends LynxContextModule {
   public PrintSpec(LynxContext context) {
@@ -15,7 +16,7 @@ public abstract class PrintSpec extends LynxContextModule {
   public abstract void printAsync(String uri);
 
   @LynxMethod
-  public abstract Object selectPrinter();
+  public abstract WritableMap selectPrinter();
 
   @LynxMethod
   public abstract boolean isAvailable();

@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class NetworkAddonsSpec extends LynxContextModule {
   public NetworkAddonsSpec(LynxContext context) {
@@ -15,7 +16,7 @@ public abstract class NetworkAddonsSpec extends LynxContextModule {
   public abstract boolean isAvailableAsync();
 
   @LynxMethod
-  public abstract Object certificateInfoAsync(String host);
+  public abstract WritableMap certificateInfoAsync(String host);
 
   @LynxMethod
   public abstract boolean addInterceptorAsync(String name);

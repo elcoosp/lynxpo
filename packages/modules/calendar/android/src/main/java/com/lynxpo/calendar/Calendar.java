@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.jsbridge.LynxModule;
@@ -22,7 +23,7 @@ public class Calendar extends CalendarSpec {
 
   private boolean granted = false;
 
-  public Calendar(Context context) {
+  public Calendar(LynxContext context) {
     super(context);
   }
 

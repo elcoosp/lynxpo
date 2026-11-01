@@ -1,11 +1,12 @@
 package com.lynxpo.constants;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings;
-import com.lynx.jsbridge.LynxContext;
+import com.lynx.tasm.behavior.LynxContext;
 import com.lynx.jsbridge.LynxModule;
 import com.lynx.jsbridge.LynxNativeModule;
 import com.lynxpo.constants.generated.ConstantsModuleSpec;
@@ -22,7 +23,7 @@ import java.util.UUID;
  */
 @LynxNativeModule(name = "ConstantsModule")
 public class ConstantsModule extends ConstantsModuleSpec {
-  public ConstantsModule(Context context) {
+  public ConstantsModule(LynxContext context) {
     super(context);
   }
 

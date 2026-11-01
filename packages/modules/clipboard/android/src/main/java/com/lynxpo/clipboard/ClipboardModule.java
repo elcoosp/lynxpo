@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -26,7 +27,7 @@ import com.lynx.jsbridge.Promise;
 @LynxNativeModule(name = "ClipboardModule")
 public class ClipboardModule extends ClipboardModuleSpec {
 
-  public ClipboardModule(Context context) {
+  public ClipboardModule(LynxContext context) {
     super(context);
   }
 

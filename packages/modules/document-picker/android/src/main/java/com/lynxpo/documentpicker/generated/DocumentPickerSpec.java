@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class DocumentPickerSpec extends LynxContextModule {
   public DocumentPickerSpec(LynxContext context) {
@@ -12,7 +13,7 @@ public abstract class DocumentPickerSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract Object documentAsync(String options);
+  public abstract WritableMap documentAsync(String options);
 
   @LynxMethod
   public abstract boolean isAvailableAsync();

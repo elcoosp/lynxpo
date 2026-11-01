@@ -1,12 +1,12 @@
-require 'json'
-
+# lynxpo host app — engine from published channels, no vendored lynx checkout.
 source 'https://cdn.cocoapods.org/'
+source 'https://github.com/lynx-family/Specs.git'
+
 project './LynxpoHost.xcodeproj'
 
-lynx_root = File.expand_path('../lynx', __dir__)
-lynx_library_plugin_dir = File.join(lynx_root, 'tools/ios_tools/cocoapods-lynx-library/lib')
-$LOAD_PATH.unshift lynx_library_plugin_dir
-load File.join(lynx_library_plugin_dir, 'cocoapods_plugin.rb')
+# Official autolink plugin (published gem, 4.2.0 — replaces the copy that used
+# to be loaded from the old vendored engine checkout).
+plugin 'cocoapods-lynx-library'
 
 platform :ios, '12.0'
 
@@ -27,19 +27,25 @@ end
 
 target 'LynxpoHost' do
   use_frameworks! :linkage => :static
-  pod 'Lynx', :path => '../lynx', :subspecs => ['Framework']
-  pod 'LynxBase', :path => '../lynx', :subspecs => ['Framework']
 
-  # The vendored Lynx framework references the QuickJS debugger symbols
-  # (_QJSDebugger*, _SetCpuProfiler*, _StartCpuProfiler*). These are emitted
-  # only by the PrimJS `quickjs_debugger` subspec (which defines
-  # ENABLE_QUICKJS_DEBUGGER and ships the inspector headers). The full Explorer
-  # pulls this in transitively via its devtool pods; the standalone host pins it
-  # explicitly so PrimJS links against the Lynx framework.
-  pod 'PrimJS', '4.2.0-alpha.0', :subspecs => ['quickjs', 'quickjs_debugger', 'napi']
+  # Engine — pinned to one version line across pods, Maven and Explorer.
+  pod 'Lynx', '4.2.0', :subspecs => ['Framework']
+  # Lynx pulls these transitively; pin them to the same line so CocoaPods does
+  # not drift to the newest major/minor published in the Specs repo.
+  pod 'LynxBase', '4.2.0', :subspecs => ['Framework']
+  pod 'LynxServiceAPI', '4.2.0', :subspecs => ['Core']
+  # JS runtime (official integration pins PrimJS from the CDN):
+  pod 'PrimJS', '4.2.1', :subspecs => ['quickjs', 'napi']
 
-  use_lynx_library!(
-    :root => File.join(lynx_root, '..'),
-    :output_dir => File.join(__dir__, 'generated/lynx-library')
-  )
+  # Uncomment when the host uses image/log/http services:
+  # pod 'LynxService', '4.2.0', :subspecs => ['Image', 'Log', 'Http']
+  # pod 'SDWebImage', '5.15.5'
+  # pod 'SDWebImageWebPCoder', '0.11.0'
+
+  # Richer element set maintained by the Lynx team (optional):
+  # pod 'XElement', '4.2.0'
+
+  # Autolink: scans node_modules for lynx.lib.json and generates the
+  # registry pod into generated/lynx-library (tracked, same path as before).
+  use_lynx_library!(:output_dir => File.join(__dir__, 'generated/lynx-library'))
 end

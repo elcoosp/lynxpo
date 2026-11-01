@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.lynx.jsbridge.LynxMethod;
@@ -35,7 +36,7 @@ public class SecureStoreModule extends SecureStoreModuleSpec {
   private static final String PREF_FILE = "lynxpo_secure_store";
   private static final String FALLBACK_PREF_FILE = "lynxpo_secure_store_fallback";
 
-  public SecureStoreModule(Context context) {
+  public SecureStoreModule(LynxContext context) {
     super(context);
   }
 

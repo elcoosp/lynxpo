@@ -1,16 +1,9 @@
 // Auto-generated from BackgroundTask.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface BackgroundTask extends INativeModules {
-  isAvailableAsync(): boolean;
-  registerTaskAsync(taskName: string, options: string): boolean;
-  unregisterTaskAsync(taskName: string): boolean;
-  getStatus(): Record<string, any>;
-}
+import { BackgroundTask } from './generated/BackgroundTask';
 
 export const getIsAvailableAsync = (): boolean =>
-  NativeModules.BackgroundTask?.isAvailableAsync?.();
+  BackgroundTask?.isAvailableAsync?.();
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -30,8 +23,7 @@ export const useIsAvailableAsync = () => {
 export const getRegisterTaskAsync = (
   taskName: string,
   options: string,
-): boolean =>
-  NativeModules.BackgroundTask?.registerTaskAsync?.(taskName, options);
+): boolean => BackgroundTask?.registerTaskAsync?.(taskName, options);
 
 export const useRegisterTaskAsync = (taskName: string, options: string) => {
   const [value, setValue] = useState<boolean>();
@@ -49,7 +41,7 @@ export const useRegisterTaskAsync = (taskName: string, options: string) => {
 };
 
 export const getUnregisterTaskAsync = (taskName: string): boolean =>
-  NativeModules.BackgroundTask?.unregisterTaskAsync?.(taskName);
+  BackgroundTask?.unregisterTaskAsync?.(taskName);
 
 export const useUnregisterTaskAsync = (taskName: string) => {
   const [value, setValue] = useState<boolean>();
@@ -67,7 +59,7 @@ export const useUnregisterTaskAsync = (taskName: string) => {
 };
 
 export const getGetStatus = (): Record<string, any> =>
-  NativeModules.BackgroundTask?.getStatus?.();
+  BackgroundTask?.getStatus?.();
 
 export const useGetStatus = () => {
   const [value, setValue] = useState<Record<string, any>>();

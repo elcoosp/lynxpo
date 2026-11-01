@@ -15,10 +15,10 @@ public abstract class StatusBarSpec extends LynxContextModule {
   public abstract void setStyle(String style);
 
   @LynxMethod
-  public abstract void setHidden(boolean hidden);
+  public abstract void setHidden(Boolean hidden);
 
   @LynxMethod
-  public abstract void setNetworkActivityIndicatorVisible(boolean visible);
+  public abstract void setNetworkActivityIndicatorVisible(Boolean visible);
 
   @LynxMethod
   public abstract void setBackgroundColor(String color);

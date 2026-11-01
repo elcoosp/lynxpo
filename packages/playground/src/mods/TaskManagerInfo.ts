@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from '@lynx-js/react';
 import {
   getGetRegisteredTasks,
   getIsTaskRegistered,
-  getRegisterTaskAsync,
   getUnregisterTaskAsync,
 } from '@lynxpo/mods-task-manager';
 
@@ -52,16 +51,6 @@ export function useTaskManagerInfo(): ModuleInfo {
   }, []);
 
   const actions: ModuleAction[] = [];
-  const actRegisterdemotask = useCallback(() => {
-    try {
-      getRegisterTaskAsync('LynxPoTask');
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error(String(err)));
-    } finally {
-      setTimeout(refresh, 300);
-    }
-  }, [refresh]);
-  actions.push({ label: 'Register demo task', onPress: actRegisterdemotask });
   const actUnregister = useCallback(() => {
     try {
       getUnregisterTaskAsync('LynxPoTask');

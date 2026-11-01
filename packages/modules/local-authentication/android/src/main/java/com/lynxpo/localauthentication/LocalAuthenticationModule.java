@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -10,6 +11,7 @@ import android.os.Build;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.jsbridge.LynxModule;
 import com.lynx.jsbridge.LynxNativeModule;
+import com.lynx.jsbridge.Promise;
 import com.lynxpo.localauthentication.generated.LocalAuthenticationModuleSpec;
 import com.lynx.react.bridge.Callback;
 import com.lynx.react.bridge.JavaOnlyMap;
@@ -36,7 +38,7 @@ public class LocalAuthenticationModule extends LocalAuthenticationModuleSpec {
   private static final String FINGERPRINT_FEATURE = "android.hardware.fingerprint";
   private static final String FACE_FEATURE = "android.hardware.face";
 
-  public LocalAuthenticationModule(Context context) {
+  public LocalAuthenticationModule(LynxContext context) {
     super(context);
   }
 

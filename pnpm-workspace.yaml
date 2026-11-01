@@ -1,12 +1,11 @@
 packages:
   - "packages/*"
-  - "packages/tools/*"
   - "packages/modules/*"
-  - "packages/plugins/ktts"
-  - "packages/plugins/style-dict-rsbuild-plugin"
 
 allowBuilds:
+  core-js: false
   esbuild: true
+  protobufjs: false
 
 onlyBuiltDependencies:
   - "@biomejs/biome"

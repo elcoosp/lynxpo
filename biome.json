@@ -27,10 +27,7 @@
   },
   "overrides": [
     {
-      "includes": [
-        "packages/modules/device/src/index.ts",
-        "packages/tools/nmb/fixtures/out.ts"
-      ],
+      "includes": ["packages/modules/device/src/index.ts"],
       "formatter": {
         "enabled": false
       },
@@ -48,21 +45,6 @@
           },
           "style": {
             "useImportType": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": [
-        "packages/plugins/ktts/src/index.ts",
-        "packages/tools/aps/src/index-legacy.ts",
-        "packages/tools/aps/src/index.ts"
-      ],
-      "linter": {
-        "rules": {
-          "suspicious": {
-            "noAssignInExpressions": "off",
-            "noImplicitAnyLet": "off"
           }
         }
       }

@@ -6,23 +6,25 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
+import com.lynx.jsbridge.Promise;
+
 public abstract class FileSystemModuleSpec extends LynxContextModule {
   public FileSystemModuleSpec(LynxContext context) {
     super(context);
   }
 
   @LynxMethod
-  public abstract Object writeAsStringAsync(String path, String contents);
+  public abstract void writeAsStringAsync(final String path, final String contents, final Promise promise);
 
   @LynxMethod
-  public abstract Object readAsStringAsync(String path);
+  public abstract void readAsStringAsync(final String path, final Promise promise);
 
   @LynxMethod
-  public abstract Object getInfoAsync(String path);
+  public abstract void getInfoAsync(final String path, final Promise promise);
 
   @LynxMethod
-  public abstract Object makeDirectoryAsync(String path);
+  public abstract void makeDirectoryAsync(final String path, final Promise promise);
 
   @LynxMethod
-  public abstract Object deleteAsync(String path);
+  public abstract void deleteAsync(final String path, final Promise promise);
 }

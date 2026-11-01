@@ -15,4 +15,7 @@ class ReceiveSharingModule(context: android.content.Context) : LynxModule(contex
 
   @LynxMethod
   fun hasIntentAsync(): Boolean { throw NotImplementedError() }
+
+  @LynxMethod
+  fun addListener(event: String): Unit { throw NotImplementedError() }
 }
