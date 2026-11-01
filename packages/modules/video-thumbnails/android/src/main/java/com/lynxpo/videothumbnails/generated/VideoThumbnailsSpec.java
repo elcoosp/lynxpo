@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class VideoThumbnailsSpec extends LynxContextModule {
   public VideoThumbnailsSpec(LynxContext context) {
@@ -12,7 +13,7 @@ public abstract class VideoThumbnailsSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract Object thumbnailAsync(String source, String options);
+  public abstract WritableMap thumbnailAsync(String source, String options);
 
   @LynxMethod
   public abstract boolean isAvailableAsync();
