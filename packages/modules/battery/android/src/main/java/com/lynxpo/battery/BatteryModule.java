@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -29,7 +30,7 @@ import com.lynxpo.battery.generated.BatteryModuleSpec;
 @LynxNativeModule(name = "BatteryModule")
 public class BatteryModule extends BatteryModuleSpec {
 
-  public BatteryModule(Context context) {
+  public BatteryModule(LynxContext context) {
     super(context);
   }
 
