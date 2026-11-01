@@ -11,7 +11,7 @@ import com.lynx.jsbridge.LynxModule
  */
 class QuickActionsModule(context: android.content.Context) : LynxModule(context) {
   @LynxMethod
-  fun getShortcutItemsAsync(): Map<String, Any> { throw NotImplementedError() }
+  fun getShortcutItemsAsync(): List<Map<String, Any>> { throw NotImplementedError() }
 
   @LynxMethod
   fun setShortcutItemsAsync(items: String): Unit { throw NotImplementedError() }
