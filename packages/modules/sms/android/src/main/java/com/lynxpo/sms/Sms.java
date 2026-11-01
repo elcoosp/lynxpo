@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.jsbridge.LynxModule;
@@ -21,7 +22,7 @@ import com.lynx.react.bridge.JavaOnlyArray;
 @LynxNativeModule(name = "Sms")
 public class Sms extends SmsSpec {
 
-  public Sms(Context context) {
+  public Sms(LynxContext context) {
     super(context);
   }
 
