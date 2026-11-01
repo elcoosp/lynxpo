@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import java.util.List;
 
 public abstract class ConstantsModuleSpec extends LynxContextModule {
   public ConstantsModuleSpec(LynxContext context) {
@@ -30,7 +31,7 @@ public abstract class ConstantsModuleSpec extends LynxContextModule {
   public abstract boolean isHeadless();
 
   @LynxMethod
-  public abstract Object systemFonts();
+  public abstract List<String> systemFonts();
 
   @LynxMethod
   public abstract Object version();
