@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -27,7 +28,7 @@ import com.lynxpo.application.generated.ApplicationModuleSpec;
 @LynxNativeModule(name = "ApplicationModule")
 public class ApplicationModule extends ApplicationModuleSpec {
 
-  public ApplicationModule(Context context) {
+  public ApplicationModule(LynxContext context) {
     super(context);
   }
 
