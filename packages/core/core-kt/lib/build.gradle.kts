@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     id("com.google.devtools.ksp") version "2.3.11"
     kotlin("plugin.serialization") version "2.4.10"
@@ -71,7 +70,7 @@ dependencies {
 
 // Specify Java compatibility within the Android block
 android {
-    compileSdk = 35
+    compileSdk = 37
     namespace = "lynxpo.core"
 
     // Add other necessary Android configuration
@@ -93,5 +92,10 @@ android {
     }
     kotlin { jvmToolchain(21) }
 
-    testOptions { unitTests.all { it.useJUnitPlatform() } }
+    testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+            it.failOnNoDiscoveredTests = false
+        }
+    }
 }
