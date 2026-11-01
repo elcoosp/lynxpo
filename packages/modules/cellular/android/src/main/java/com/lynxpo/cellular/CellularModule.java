@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -28,7 +29,7 @@ import com.lynx.jsbridge.Promise;
 @LynxNativeModule(name = "CellularModule")
 public class CellularModule extends CellularModuleSpec {
 
-  public CellularModule(Context context) {
+  public CellularModule(LynxContext context) {
     super(context);
   }
 
