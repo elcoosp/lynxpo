@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynxpo.blob;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.util.Base64;
 import com.lynx.jsbridge.LynxMethod;
@@ -31,7 +32,7 @@ public class BlobModule extends BlobModuleSpec {
   // blobId -> type
   private final Map<String, String> types = new ConcurrentHashMap<>();
 
-  public BlobModule(Context context) {
+  public BlobModule(LynxContext context) {
     super(context);
   }
 
