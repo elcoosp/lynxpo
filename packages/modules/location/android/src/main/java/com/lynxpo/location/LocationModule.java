@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.location.LocationManager;
 import android.content.pm.PackageManager;
@@ -25,7 +26,7 @@ public class LocationModule extends LocationModuleSpec {
 
   private boolean granted = false;
 
-  public LocationModule(Context context) {
+  public LocationModule(LynxContext context) {
     super(context);
   }
 
