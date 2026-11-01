@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -31,7 +32,7 @@ import java.util.Set;
 @LynxNativeModule(name = "MediaLibraryModule")
 public class MediaLibraryModule extends MediaLibraryModuleSpec {
 
-  public MediaLibraryModule(Context context) {
+  public MediaLibraryModule(LynxContext context) {
     super(context);
   }
 
