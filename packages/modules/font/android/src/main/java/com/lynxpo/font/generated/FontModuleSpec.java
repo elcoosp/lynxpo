@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableArray;
 
 public abstract class FontModuleSpec extends LynxContextModule {
   public FontModuleSpec(LynxContext context) {
@@ -15,7 +16,7 @@ public abstract class FontModuleSpec extends LynxContextModule {
   public abstract boolean isLoaded(String fontFamily);
 
   @LynxMethod
-  public abstract Object loadedFonts();
+  public abstract WritableArray loadedFonts();
 
   @LynxMethod
   public abstract String processFontFamily(String fontFamily);
