@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import com.lynx.jsbridge.LynxMethod;
@@ -24,7 +25,7 @@ public class ScreenOrientationModule extends ScreenOrientationModuleSpec {
 
   // Orientation enum mirrors Expo's Orientation (UNKNOWN=0, PORTRAIT_UP=1,
   // PORTRAIT_DOWN=2, LANDSCAPE_LEFT=3, LANDSCAPE_RIGHT=4).
-  public ScreenOrientationModule(Context context) {
+  public ScreenOrientationModule(LynxContext context) {
     super(context);
   }
 
