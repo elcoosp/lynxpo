@@ -1,6 +1,12 @@
 {
-  "name": "@lynxpo/mods-updates",
-  "version": "0.0.0",
-  "main": "dist/index.js",
-  "modules": [{ "name": "UpdatesModule", "ios": "ios", "android": "android" }]
+  "name": "com.lynxpo.updates",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.updates",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
 }
