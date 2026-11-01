@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -32,7 +33,7 @@ import com.lynx.react.bridge.JavaOnlyMap;
 @LynxNativeModule(name = "SensorsModule")
 public class SensorsModule extends SensorsModuleSpec {
 
-  public SensorsModule(Context context) {
+  public SensorsModule(LynxContext context) {
     super(context);
   }
 
