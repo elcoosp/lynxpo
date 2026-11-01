@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import com.lynx.jsbridge.LynxMethod;
@@ -20,7 +21,7 @@ import com.lynxpo.webbrowser.generated.WebBrowserModuleSpec;
 @LynxNativeModule(name = "WebBrowserModule")
 public class WebBrowserModule extends WebBrowserModuleSpec {
 
-  public WebBrowserModule(Context context) {
+  public WebBrowserModule(LynxContext context) {
     super(context);
   }
 
