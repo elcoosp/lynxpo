@@ -12,14 +12,14 @@ public abstract class BatteryModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract Object getBatteryLevel();
+  public abstract double getBatteryLevel();
 
   @LynxMethod
-  public abstract Object getBatteryState();
+  public abstract int getBatteryState();
 
   @LynxMethod
-  public abstract Object isLowPowerModeEnabled();
+  public abstract boolean isLowPowerModeEnabled();
 
   @LynxMethod
-  public abstract Object isBatteryOptimizationEnabled();
+  public abstract boolean isBatteryOptimizationEnabled();
 }
