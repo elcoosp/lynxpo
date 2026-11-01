@@ -7,6 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@LynxNativeModule("ReceiveSharingModule")
 @interface ReceiveSharingModule : NSObject <LynxModule>
 @end
 
