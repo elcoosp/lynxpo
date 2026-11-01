@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.os.Build;
 import android.os.VibrationEffect;
@@ -38,7 +39,7 @@ public class HapticsModule extends HapticsModuleSpec {
   private static final int NOTIFICATION_WARNING = 1;
   private static final int NOTIFICATION_ERROR = 2;
 
-  public HapticsModule(Context context) {
+  public HapticsModule(LynxContext context) {
     super(context);
   }
 
