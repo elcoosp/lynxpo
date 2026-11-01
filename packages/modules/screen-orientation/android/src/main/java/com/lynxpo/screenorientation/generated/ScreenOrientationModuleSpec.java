@@ -6,41 +6,43 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
+import com.lynx.jsbridge.Promise;
+
 public abstract class ScreenOrientationModuleSpec extends LynxContextModule {
   public ScreenOrientationModuleSpec(LynxContext context) {
     super(context);
   }
 
   @LynxMethod
-  public abstract double getOrientation();
+  public abstract int getOrientation();
 
   @LynxMethod
-  public abstract double getOrientationLock();
+  public abstract int getOrientationLock();
 
   @LynxMethod
   public abstract boolean supportsOrientationLock();
 
   @LynxMethod
-  public abstract Object getOrientationAsync();
+  public abstract void getOrientationAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object getOrientationLockAsync();
+  public abstract void getOrientationLockAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object lockAsync(double orientation);
+  public abstract void lockAsync(int orientation, final Promise promise);
 
   @LynxMethod
-  public abstract Object unlockAsync();
+  public abstract void unlockAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object lockPlatformAsync(double orientation);
+  public abstract void lockPlatformAsync(int orientation, final Promise promise);
 
   @LynxMethod
-  public abstract Object supportsOrientationLockAsync();
+  public abstract void supportsOrientationLockAsync(int orientationLock, final Promise promise);
 
   @LynxMethod
   public abstract void addListener(String eventName);
 
   @LynxMethod
-  public abstract void removeListeners(double count);
+  public abstract void removeListeners(int count);
 }
