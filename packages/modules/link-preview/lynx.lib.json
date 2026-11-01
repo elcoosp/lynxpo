@@ -1,8 +1,12 @@
 {
-  "name": "@lynxpo/mods-link-preview",
-  "version": "0.0.0",
-  "main": "dist/index.js",
-  "modules": [
-    { "name": "LinkPreviewModule", "ios": "ios", "android": "android" }
-  ]
+  "name": "com.lynxpo.linkpreview",
+  "platforms": {
+    "android": {
+      "packageName": "com.lynxpo.linkpreview",
+      "sourceDir": "android"
+    },
+    "ios": {
+      "sourceDir": "ios"
+    }
+  }
 }
