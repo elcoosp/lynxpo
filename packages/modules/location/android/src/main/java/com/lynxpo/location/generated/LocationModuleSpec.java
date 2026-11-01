@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class LocationModuleSpec extends LynxContextModule {
   public LocationModuleSpec(LynxContext context) {
@@ -12,14 +13,14 @@ public abstract class LocationModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract Object providerStatus();
+  public abstract WritableMap providerStatus();
 
   @LynxMethod
-  public abstract Object permissionsAsync();
+  public abstract WritableMap permissionsAsync();
 
   @LynxMethod
   public abstract void requestPermission();
 
   @LynxMethod
-  public abstract Object currentPositionAsync();
+  public abstract WritableMap currentPositionAsync();
 }
