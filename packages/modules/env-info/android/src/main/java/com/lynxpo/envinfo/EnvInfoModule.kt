@@ -1,8 +1,8 @@
 package com.lynxpo.envinfo
 
-import com.lynx.jsbridge.LynxContext
 import com.lynx.jsbridge.LynxModule
 import com.lynx.jsbridge.LynxNativeModule
+import com.lynx.tasm.behavior.LynxContext
 import com.lynxpo.envinfo.generated.EnvInfoModuleSpec
 
 import android.content.Context
@@ -10,7 +10,7 @@ import android.content.pm.PackageManager
 import java.io.File
 
 @LynxNativeModule(name = "EnvInfoModule")
-class EnvInfoModule(private val context: Context) : EnvInfoModuleSpec(context) {
+class EnvInfoModule(private val context: LynxContext) : EnvInfoModuleSpec(context) {
 
   private fun getContext(): Context {
     val lynxContext = mContext as LynxContext
@@ -21,18 +21,18 @@ class EnvInfoModule(private val context: Context) : EnvInfoModuleSpec(context) {
     return !isRunningOnEmulator()
   }
 
-  override fun installTime(): Long {
+  override fun installTime(): Double {
     val pkgManager = getContext().packageManager
     return try {
       val pkgInfo = pkgManager.getPackageInfo(getContext().packageName, 0)
       val sourceDir = pkgInfo.applicationInfo?.sourceDir
       if (sourceDir != null) {
-        File(sourceDir).lastModified()
+        File(sourceDir).lastModified().toDouble()
       } else {
-        0L
+        0.0
       }
     } catch (e: PackageManager.NameNotFoundException) {
-      0L
+      0.0
     }
   }
 
