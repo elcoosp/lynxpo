@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.jsbridge.LynxModule;
@@ -26,7 +27,7 @@ import javax.net.ssl.HttpsURLConnection;
 @LynxNativeModule(name = "NetworkAddons")
 public class NetworkAddons extends NetworkAddonsSpec {
 
-  public NetworkAddons(Context context) {
+  public NetworkAddons(LynxContext context) {
     super(context);
   }
 
