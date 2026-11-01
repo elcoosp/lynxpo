@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.LinkAddress;
@@ -34,7 +35,7 @@ import java.util.Enumeration;
 @LynxNativeModule(name = "NetworkModule")
 public class NetworkModule extends NetworkModuleSpec {
 
-  public NetworkModule(Context context) {
+  public NetworkModule(LynxContext context) {
     super(context);
   }
 
