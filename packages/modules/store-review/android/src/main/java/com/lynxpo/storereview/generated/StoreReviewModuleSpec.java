@@ -6,6 +6,8 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
+import com.lynx.jsbridge.Promise;
+
 public abstract class StoreReviewModuleSpec extends LynxContextModule {
   public StoreReviewModuleSpec(LynxContext context) {
     super(context);
@@ -15,8 +17,8 @@ public abstract class StoreReviewModuleSpec extends LynxContextModule {
   public abstract boolean isAvailable();
 
   @LynxMethod
-  public abstract Object isAvailableAsync();
+  public abstract void isAvailableAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object requestReviewAsync();
+  public abstract void requestReviewAsync(final Promise promise);
 }
