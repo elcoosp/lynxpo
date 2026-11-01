@@ -6,17 +6,19 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
+import com.lynx.jsbridge.Promise;
+
 public abstract class CryptoModuleSpec extends LynxContextModule {
   public CryptoModuleSpec(LynxContext context) {
     super(context);
   }
 
   @LynxMethod
-  public abstract @Nullable String getRandomBytes(double byteCount);
+  public abstract String getRandomBytes(int byteCount);
 
   @LynxMethod
   public abstract @Nullable String randomUUID();
 
   @LynxMethod
-  public abstract Object getRandomBytesAsync(double byteCount);
+  public abstract void getRandomBytesAsync(final int byteCount, final Promise promise);
 }
