@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.JavaOnlyArray;
 
 public abstract class LocalizationModuleSpec extends LynxContextModule {
   public LocalizationModuleSpec(LynxContext context) {
@@ -12,8 +13,8 @@ public abstract class LocalizationModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract Object getLocales();
+  public abstract JavaOnlyArray getLocales();
 
   @LynxMethod
-  public abstract Object getCalendars();
+  public abstract JavaOnlyArray getCalendars();
 }
