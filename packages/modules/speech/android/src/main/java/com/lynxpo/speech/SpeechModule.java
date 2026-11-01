@@ -1,7 +1,8 @@
 package com.lynxpo.speech;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
-import com.lynx.jsbridge.LynxContext;
+import com.lynx.tasm.behavior.LynxContext;
 import com.lynx.jsbridge.LynxModule;
 import com.lynx.jsbridge.LynxNativeModule;
 import com.lynxpo.speech.generated.SpeechModuleSpec;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 @LynxNativeModule(name = "SpeechModule")
 public class SpeechModule extends SpeechModuleSpec {
-  public SpeechModule(Context context) {
+  public SpeechModule(LynxContext context) {
     super(context);
   }
 
