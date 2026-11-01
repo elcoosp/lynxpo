@@ -15,11 +15,17 @@
     "test": "turbo run test",
     "test:cov": "turbo run test:cov",
     "test:watch": "turbo run test:watch",
-    "dx": "node packages/tools/dx/dist/index.js"
+    "dev": "pnpm --filter @lynxpo/playground dev",
+    "preview": "pnpm --filter @lynxpo/playground preview",
+    "host:bundle:copy": "cp packages/playground/dist/hostshowcase.lynx.bundle packages/playground/src/host/LynxpoHost/host.lynx.bundle",
+    "host:ios": "pnpm host:bundle:copy && cd packages/playground/src/host && xcodebuild -workspace LynxpoHost.xcworkspace -scheme LynxpoHost -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator'",
+    "check:native:android": "packages/core/core-kt/gradlew -p packages/core/core-kt :lib:build --no-daemon && packages/core/core-kt/gradlew -p scripts/native-android-check :lib:assembleDebug --no-daemon",
+    "check:native:ios": "pnpm host:bundle:copy && cd packages/playground/src/host && xcodebuild -workspace LynxpoHost.xcworkspace -scheme LynxpoHost -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' build"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
-    "@lynx-js/rspeedy": "^0.16.0",
+    "@changesets/cli": "^3.0.3",
+    "@lynx-js/rspeedy": "^0.17.0",
     "@rsbuild/core": "^2.0.0",
     "@rslib/core": "^1.0.0",
     "turbo": "^2.4.4"
