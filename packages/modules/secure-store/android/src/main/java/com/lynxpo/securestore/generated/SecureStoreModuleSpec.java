@@ -6,6 +6,8 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
+import com.lynx.jsbridge.Promise;
+
 public abstract class SecureStoreModuleSpec extends LynxContextModule {
   public SecureStoreModuleSpec(LynxContext context) {
     super(context);
@@ -15,14 +17,14 @@ public abstract class SecureStoreModuleSpec extends LynxContextModule {
   public abstract boolean isAvailable();
 
   @LynxMethod
-  public abstract Object setItemAsync(String key, String value);
+  public abstract void setItemAsync(final String key, final String value, final Promise promise);
 
   @LynxMethod
-  public abstract Object getItemAsync(String key);
+  public abstract void getItemAsync(final String key, final Promise promise);
 
   @LynxMethod
-  public abstract Object deleteItemAsync(String key);
+  public abstract void deleteItemAsync(final String key, final Promise promise);
 
   @LynxMethod
-  public abstract Object isAvailableAsync();
+  public abstract void isAvailableAsync(final Promise promise);
 }
