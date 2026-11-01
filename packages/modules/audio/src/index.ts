@@ -1,17 +1,8 @@
 // Auto-generated from Audio.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
+import { Audio } from './generated/Audio';
 
-export interface Audio extends INativeModules {
-  getStatus(): Record<string, any>;
-  play(): void;
-  pause(): void;
-  setVolume(volume: number): void;
-  setIsLooping(looping: boolean): void;
-}
-
-export const getGetStatus = (): Record<string, any> =>
-  NativeModules.Audio?.getStatus?.();
+export const getGetStatus = (): Record<string, any> => Audio?.getStatus?.();
 
 export const useGetStatus = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -28,7 +19,7 @@ export const useGetStatus = () => {
   return value;
 };
 
-export const getPlay = (): void => NativeModules.Audio?.play?.();
+export const getPlay = (): void => Audio?.play?.();
 
 export const usePlay = () => {
   const [value, setValue] = useState<void>();
@@ -45,7 +36,7 @@ export const usePlay = () => {
   return value;
 };
 
-export const getPause = (): void => NativeModules.Audio?.pause?.();
+export const getPause = (): void => Audio?.pause?.();
 
 export const usePause = () => {
   const [value, setValue] = useState<void>();
@@ -63,7 +54,7 @@ export const usePause = () => {
 };
 
 export const getSetVolume = (volume: number): void =>
-  NativeModules.Audio?.setVolume?.(volume);
+  Audio?.setVolume?.(volume);
 
 export const useSetVolume = (volume: number) => {
   const [value, setValue] = useState<void>();
@@ -81,7 +72,7 @@ export const useSetVolume = (volume: number) => {
 };
 
 export const getSetIsLooping = (looping: boolean): void =>
-  NativeModules.Audio?.setIsLooping?.(looping);
+  Audio?.setIsLooping?.(looping);
 
 export const useSetIsLooping = (looping: boolean) => {
   const [value, setValue] = useState<void>();
