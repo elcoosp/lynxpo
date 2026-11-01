@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,7 +29,7 @@ import java.util.List;
 @LynxNativeModule(name = "MailComposerModule")
 public class MailComposerModule extends MailComposerModuleSpec {
 
-  public MailComposerModule(Context context) {
+  public MailComposerModule(LynxContext context) {
     super(context);
   }
 
