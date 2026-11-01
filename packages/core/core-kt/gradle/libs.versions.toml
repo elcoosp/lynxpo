@@ -19,14 +19,14 @@ activityCompose = "1.13.0"
 composeBom = "2026.05.01"
 constraintlayout = "2.2.2"
 appcompat = "1.8.0"
-lynx = "4.1.0"
-lynxJssdk = "4.1.0-nightly.202606260632.87.g01ad13ce"
-lynxServiceHttp = "4.1.0-nightly.202606260632.87.g01ad13ce"
-lynxServiceImage = "4.1.0-nightly.202606260632.87.g01ad13ce"
-lynxServiceLog = "4.1.0-nightly.202606260632.87.g01ad13ce"
-lynxTrace = "4.1.0-nightly.202606260632.87.g01ad13ce"
+lynx = "4.2.0"
+lynxJssdk = "4.2.0"
+lynxServiceHttp = "4.2.0"
+lynxServiceImage = "4.2.0"
+lynxServiceLog = "4.2.0"
+lynxTrace = "4.2.0"
 okhttp = "5.5.0"
-primjs = "4.1.1"
+primjs = "4.2.1"
 [libraries]
 animated-base = { module = "com.facebook.fresco:animated-base", version.ref = "fresco" }
 animated-gif = { module = "com.facebook.fresco:animated-gif", version.ref = "fresco" }
@@ -59,6 +59,8 @@ lynx-service-http = { module = "org.lynxsdk.lynx:lynx-service-http", version.ref
 lynx-service-image = { module = "org.lynxsdk.lynx:lynx-service-image", version.ref = "lynxServiceImage" }
 lynx-service-log = { module = "org.lynxsdk.lynx:lynx-service-log", version.ref = "lynxServiceLog" }
 lynx-trace = { module = "org.lynxsdk.lynx:lynx-trace", version.ref = "lynxTrace" }
+lynx-xelement = { module = "org.lynxsdk.lynx:xelement", version.ref = "lynx" }
+lynx-xelement-input = { module = "org.lynxsdk.lynx:xelement-input", version.ref = "lynx" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 primjs = { module = "org.lynxsdk.lynx:primjs", version.ref = "primjs" }
 webpsupport = { module = "com.facebook.fresco:webpsupport", version.ref = "fresco" }
@@ -68,5 +70,4 @@ ktts-plugin = { module = "lynxpo.ktts:ktts-plugin", version.ref = "kttsPlugin" }
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agp" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
