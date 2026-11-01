@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.icu.util.LocaleData;
 import android.icu.util.ULocale;
@@ -48,7 +49,7 @@ public class LocalizationModule extends LocalizationModuleSpec {
       "AG", "BZ", "VG", "FM", "MH", "MS", "KN", "BS", "CY", "TC",
       "US", "LR", "PW", "KY");
 
-  public LocalizationModule(Context context) {
+  public LocalizationModule(LynxContext context) {
     super(context);
   }
 
