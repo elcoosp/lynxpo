@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -27,7 +28,7 @@ import com.lynx.react.bridge.WritableMap;
 @LynxNativeModule(name = "NotificationsModule")
 public class NotificationsModule extends NotificationsModuleSpec {
 
-  public NotificationsModule(Context context) {
+  public NotificationsModule(LynxContext context) {
     super(context);
   }
 
