@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -23,7 +24,7 @@ import com.lynx.jsbridge.Promise;
 @LynxNativeModule(name = "StoreReviewModule")
 public class StoreReviewModule extends StoreReviewModuleSpec {
 
-  public StoreReviewModule(Context context) {
+  public StoreReviewModule(LynxContext context) {
     super(context);
   }
 
