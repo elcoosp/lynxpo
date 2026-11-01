@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableArray;
+import com.lynx.react.bridge.WritableMap;
 
 public abstract class MediaLibraryModuleSpec extends LynxContextModule {
   public MediaLibraryModuleSpec(LynxContext context) {
@@ -12,14 +14,14 @@ public abstract class MediaLibraryModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract Object permissionsAsync();
+  public abstract WritableMap permissionsAsync();
 
   @LynxMethod
   public abstract void requestPermission();
 
   @LynxMethod
-  public abstract Object albumsAsync();
+  public abstract WritableArray albumsAsync();
 
   @LynxMethod
-  public abstract Object assetsAsync();
+  public abstract WritableMap assetsAsync();
 }
