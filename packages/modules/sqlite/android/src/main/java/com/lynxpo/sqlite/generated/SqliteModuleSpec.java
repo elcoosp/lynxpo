@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.WritableArray;
 
 public abstract class SqliteModuleSpec extends LynxContextModule {
   public SqliteModuleSpec(LynxContext context) {
@@ -15,8 +16,8 @@ public abstract class SqliteModuleSpec extends LynxContextModule {
   public abstract void openDatabase(String name);
 
   @LynxMethod
-  public abstract Object execSync(String query);
+  public abstract WritableArray execSync(String query);
 
   @LynxMethod
-  public abstract Object getAllSync(String query);
+  public abstract WritableArray getAllSync(String query);
 }
