@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -63,7 +64,7 @@ public class CameraModule extends CameraModuleSpec {
   private final Object frameLock = new Object();
   private byte[] latestJpeg;
 
-  public CameraModule(Context context) {
+  public CameraModule(LynxContext context) {
     super(context);
     cameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
   }
