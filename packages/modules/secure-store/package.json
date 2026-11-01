@@ -1,39 +1,61 @@
 {
   "name": "@lynxpo/mods-secure-store",
   "author": "elcoosp <elcoosp@gmail.com>",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "Secure store native module for Lynx (ports expo-secure-store)",
   "main": "./dist/cjs/index.cjs",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.cjs",
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.cjs"
     }
   },
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "android",
+    "dist",
+    "ios",
+    "lynx.lib.json",
+    "types"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "postinstall": "node -e \"const p=require('path');const r=process.env.INIT_CWD||process.cwd();process.chdir(r);require('child_process').execFileSync(process.execPath,[p.resolve(r,'packages/tools/nmi/dist/cjs/index.cjs')],{stdio:'inherit'})\"",
     "build": "rslib build",
     "dev": "rslib build --watch",
     "check": "biome check --write",
     "fmt": "biome format --write"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@elcoosp-configs/rslib": "2.1",
+    "@rslib/core": "^1.0.0",
     "@lynx-js/react": "^0.126.0",
     "@lynx-js/types": "^4.0.0"
   },
-  "devDependencies": {
-    "@lynxpo/tools-nmi": "workspace:*",
-    "@elcoosp-configs/rslib": "2.1",
-    "@rslib/core": "^1.0.0"
-  }
+  "peerDependencies": {
+    "@lynx-js/react": ">=0.126.0 <1"
+  },
+  "license": "Apache-2.0",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elcoosp/lynxpo.git",
+    "directory": "packages/modules/secure-store"
+  },
+  "bugs": {
+    "url": "https://github.com/elcoosp/lynxpo/issues"
+  },
+  "homepage": "https://github.com/elcoosp/lynxpo/tree/main/packages/modules/secure-store#readme",
+  "keywords": [
+    "autolink",
+    "expo",
+    "lynx",
+    "lynxjs",
+    "react-lynx",
+    "secure-store"
+  ]
 }
