@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynxpo.appleauthentication;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import com.lynx.jsbridge.LynxNativeModule;
 import com.lynxpo.appleauthentication.generated.AppleAuthenticationSpec;
@@ -19,7 +20,7 @@ import com.lynx.react.bridge.WritableMap;
 @LynxNativeModule(name = "AppleAuthentication")
 public class AppleAuthentication extends AppleAuthenticationSpec {
 
-  public AppleAuthentication(Context context) {
+  public AppleAuthentication(LynxContext context) {
     super(context);
   }
 
