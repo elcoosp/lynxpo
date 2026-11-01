@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.graphics.Typeface;
 import com.lynx.jsbridge.LynxMethod;
@@ -26,7 +27,7 @@ public class FontModule extends FontModuleSpec {
 
   private static final Set<String> sLoadedFonts = new HashSet<>();
 
-  public FontModule(Context context) {
+  public FontModule(LynxContext context) {
     super(context);
   }
 
