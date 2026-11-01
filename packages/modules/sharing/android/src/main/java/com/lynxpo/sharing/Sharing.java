@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.jsbridge.LynxModule;
@@ -20,7 +21,7 @@ import com.lynx.react.bridge.JavaOnlyArray;
 @LynxNativeModule(name = "Sharing")
 public class Sharing extends SharingSpec {
 
-  public Sharing(Context context) {
+  public Sharing(LynxContext context) {
     super(context);
   }
 
