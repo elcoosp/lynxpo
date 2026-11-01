@@ -1,6 +1,7 @@
 package com.lynxpo.device
 
 import com.lynx.jsbridge.LynxNativeModule
+import com.lynx.tasm.behavior.LynxContext
 import com.lynxpo.device.generated.DeviceModuleSpec
 
 import android.content.Context
@@ -42,7 +43,7 @@ object EmulatorUtilities {
 }
 
 @LynxNativeModule(name = "DeviceModule")
-class DeviceModule(private val context: Context) : DeviceModuleSpec(context) {
+class DeviceModule(private val context: LynxContext) : DeviceModuleSpec(context) {
   private val mContext = context
 
   private fun getContext(): Context {
