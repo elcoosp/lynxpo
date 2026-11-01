@@ -3,6 +3,7 @@
 // LICENSE file in the root directory of this source tree.
 package com.lynx.explorer.modules;
 
+import com.lynx.tasm.behavior.LynxContext;
 import android.content.Context;
 import android.view.WindowManager;
 import com.lynx.jsbridge.LynxMethod;
@@ -27,7 +28,7 @@ public class KeepAwakeModule extends KeepAwakeModuleSpec {
 
   private boolean activated = false;
 
-  public KeepAwakeModule(Context context) {
+  public KeepAwakeModule(LynxContext context) {
     super(context);
   }
 
