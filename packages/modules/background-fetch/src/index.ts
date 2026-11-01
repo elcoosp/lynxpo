@@ -1,15 +1,9 @@
 // Auto-generated from BackgroundFetch.kt
 import { useEffect, useState } from '@lynx-js/react';
-import type { NativeModules as INativeModules } from '@lynx-js/types';
-
-export interface BackgroundFetch extends INativeModules {
-  getStatus(): Record<string, any>;
-  registerTaskAsync(taskName: string): void;
-  unregisterTaskAsync(taskName: string): void;
-}
+import { BackgroundFetch } from './generated/BackgroundFetch';
 
 export const getGetStatus = (): Record<string, any> =>
-  NativeModules.BackgroundFetch?.getStatus?.();
+  BackgroundFetch?.getStatus?.();
 
 export const useGetStatus = () => {
   const [value, setValue] = useState<Record<string, any>>();
@@ -27,7 +21,7 @@ export const useGetStatus = () => {
 };
 
 export const getRegisterTaskAsync = (taskName: string): void =>
-  NativeModules.BackgroundFetch?.registerTaskAsync?.(taskName);
+  BackgroundFetch?.registerTaskAsync?.(taskName);
 
 export const useRegisterTaskAsync = (taskName: string) => {
   const [value, setValue] = useState<void>();
@@ -45,7 +39,7 @@ export const useRegisterTaskAsync = (taskName: string) => {
 };
 
 export const getUnregisterTaskAsync = (taskName: string): void =>
-  NativeModules.BackgroundFetch?.unregisterTaskAsync?.(taskName);
+  BackgroundFetch?.unregisterTaskAsync?.(taskName);
 
 export const useUnregisterTaskAsync = (taskName: string) => {
   const [value, setValue] = useState<void>();
