@@ -5,6 +5,9 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
+import com.lynx.react.bridge.JavaOnlyArray;
+
+import com.lynx.jsbridge.Promise;
 
 public abstract class MailComposerModuleSpec extends LynxContextModule {
   public MailComposerModuleSpec(LynxContext context) {
@@ -15,11 +18,11 @@ public abstract class MailComposerModuleSpec extends LynxContextModule {
   public abstract boolean isAvailable();
 
   @LynxMethod
-  public abstract Object getClients();
+  public abstract JavaOnlyArray getClients();
 
   @LynxMethod
-  public abstract Object isAvailableAsync();
+  public abstract void isAvailableAsync(final Promise promise);
 
   @LynxMethod
-  public abstract Object getClientsAsync();
+  public abstract void getClientsAsync(final Promise promise);
 }
