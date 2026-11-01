@@ -7,6 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@LynxNativeModule("UpdatesModule")
 @interface UpdatesModule : NSObject <LynxModule>
 @end
 
