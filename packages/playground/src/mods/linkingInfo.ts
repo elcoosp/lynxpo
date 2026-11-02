@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from '@lynx-js/react';
 import {
-  getGetCacheSize,
-  getIsImageLoading,
-  getPrefetch,
-} from '@lynxpo/mods-image';
+  getCanOpenURL,
+  getGetInitialURL,
+  getOpenURL,
+} from '@lynxpo/mods-linking';
 
 export interface ModuleAction {
   label: string;
@@ -17,33 +17,22 @@ export interface ModuleInfo {
 }
 
 /**
- * Demonstrates Expo's `expo-image` full native method surface: every getter is
+ * Demonstrates Expo's `expo-linking` full native method surface: every getter is
  * read into labeled rows and every setter/action is exposed as a button. Values are
  * rendered through the Lynx bridge with no native runtime changes required.
  */
-export function useImageInfo(): ModuleInfo {
+export function useLinkingInfo(): ModuleInfo {
   const [rows, setRows] = useState<{ label: string; value: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   const refresh = useCallback(() => {
     try {
-      const v_getGetCacheSize = getGetCacheSize();
-      const v_getIsImageLoading = getIsImageLoading();
-      const v_getPrefetch = getPrefetch();
+      const v_getGetInitialURL = getGetInitialURL();
+      const v_getCanOpenURL = getCanOpenURL('https://lynx.dev');
       const rows: { label: string; value: string }[] = [];
-      rows.push({
-        label: 'GetCacheSize',
-        value:
-          typeof v_getGetCacheSize === 'number'
-            ? v_getGetCacheSize.toFixed(2)
-            : '—',
-      });
-      rows.push({
-        label: 'IsImageLoading',
-        value: v_getIsImageLoading ? 'Yes' : 'No',
-      });
-      rows.push({ label: 'Prefetch', value: v_getPrefetch ? 'Yes' : 'No' });
+      rows.push({ label: 'GetInitialURL', value: v_getGetInitialURL || '—' });
+      rows.push({ label: 'CanOpenURL', value: v_getCanOpenURL ? 'Yes' : 'No' });
       setRows(rows);
       setError(null);
     } catch (err) {
@@ -54,6 +43,16 @@ export function useImageInfo(): ModuleInfo {
   }, []);
 
   const actions: ModuleAction[] = [];
+  const actOpenlynxdev = useCallback(() => {
+    try {
+      getOpenURL('https://lynx.dev');
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      setTimeout(refresh, 300);
+    }
+  }, [refresh]);
+  actions.push({ label: 'Open lynx.dev', onPress: actOpenlynxdev });
 
   useEffect(() => {
     refresh();

@@ -27,7 +27,7 @@ export function useImageManipulatorInfo(): ModuleInfo {
 
   const refresh = useCallback(() => {
     try {
-      const v_getIsAvailableAsync = getIsAvailableAsync();
+      const v_getIsAvailableAsync = getIsAvailableAsync('file:///sample.png');
       const v_getManipulateAsync = getManipulateAsync(
         'file:///sample.png',
         JSON.stringify(['resize', 'rotate']),

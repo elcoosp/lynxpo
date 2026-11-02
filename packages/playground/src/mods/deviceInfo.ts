@@ -23,15 +23,15 @@ export interface DeviceInfo {
   designName: string | undefined;
   productName: string | undefined;
   deviceYearClass: number | undefined;
-  totalMemory: unknown;
-  deviceType: unknown;
+  totalMemory: number | undefined;
+  deviceType: number | undefined;
   supportedCpuArchitectures: string[] | undefined;
   osName: string | undefined;
   osVersion: string | undefined;
   osBuildId: unknown;
   osInternalBuildId: unknown;
   osBuildFingerprint: unknown;
-  platformApiLevel: string | undefined;
+  platformApiLevel: number | undefined;
   deviceName: string | undefined;
 }
 

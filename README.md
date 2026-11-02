@@ -5,10 +5,10 @@
     Each capability ships as a twin‑native module (Kotlin + Swift) wrapped by a React‑Lynx surface and exercised in a live playground.
   </p>
   <p>
-    <a href="https://pnpm.io"><img src="https://img.shields.io/badge/pnpm-11.17.0-FFC43D?style=flat-square&logo=pnpm" alt="pnpm"/></a>
+    <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-6.0.3-3178C6?style=flat-square&logo=typescript" alt="TypeScript"/></a>
     <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20.19-339933?style=flat-square&logo=node.js" alt="Node"/></a>
-    <a href="https://turbo.build"><img src="https://img.shields.io/badge/Turborepo-2.4.4-EF4444?style=flat-square&logo=turbo" alt="Turborepo"/></a>
-    <a href="https://biomejs.dev"><img src="https://img.shields.io/badge/Biome-2.0-60A5FA?style=flat-square" alt="Biome"/></a>
+    <a href="https://turbo.build"><img src="https://img.shields.io/badge/Turborepo-2.11.10-EF4444?style=flat-square&logo=turbo" alt="Turborepo"/></a>
+    <a href="https://biomejs.dev"><img src="https://img.shields.io/badge/Biome-2.6.4-60A5FA?style=flat-square" alt="Biome"/></a>
     <a href="https://lynxjs.org"><img src="https://img.shields.io/badge/Lynx-Explorer-F7B500?style=flat-square" alt="Lynx"/></a>
     <a href="./packages/modules"><img src="https://img.shields.io/badge/modules-66-8B5CF6?style=flat-square" alt="Modules"/></a>
     <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-84C341?style=flat-square" alt="License"/></a>
@@ -82,6 +82,10 @@ for library codegen, the Autolink host plugins (`org.lynxsdk.lynx.library-build`
 `cocoapods-lynx-library` gem) for consumption, and pre-built LynxExplorer as
 the dev sandbox.
 
+TypeScript is pinned to `6.0.x`: Rspeedy `0.18` supports `5.1.6 - 6.0.x`, and
+TypeScript 7's native compiler no longer exposes the compiler API Rspeedy uses
+at build time.
+
 ### Playground (`packages/playground`)
 
 A React-Lynx app (`@lynxpo/playground`) that renders every module's API on a scrollable demo grid and as native LynxUI custom elements, so each port is verifiable on real hardware through LynxExplorer. It builds several entry points, each exercising a different slice of the surface:
@@ -95,7 +99,7 @@ A React-Lynx app (`@lynxpo/playground`) that renders every module's API on a scr
 Prerequisites:
 
 - Node.js `>=20.19` (the root allows `>=18`; the playground build requires `20.19+`)
-- pnpm `11.17.0` (enforced via `packageManager`)
+- pnpm `12.16.1` (enforced via `packageManager`)
 - A pre-built [LynxExplorer](https://lynxjs.org/guide/start/quick-start.html) for live verification (no native toolchain required — see below)
 
 Install and build:

@@ -28,7 +28,10 @@ export function useVideoThumbnailsInfo(): ModuleInfo {
   const refresh = useCallback(() => {
     try {
       const v_getIsAvailableAsync = getIsAvailableAsync();
-      const v_getThumbnailAsync = getThumbnailAsync('file:///sample.mp4');
+      const v_getThumbnailAsync = getThumbnailAsync(
+        'file:///sample.mp4',
+        JSON.stringify({ time: 0 }),
+      );
       const rows: { label: string; value: string }[] = [];
       rows.push({
         label: 'isAvailable',

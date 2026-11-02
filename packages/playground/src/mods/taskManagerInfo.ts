@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from '@lynx-js/react';
 import {
-  getCanOpenURL,
-  getGetInitialURL,
-  getOpenURL,
-} from '@lynxpo/mods-linking';
+  getGetRegisteredTasks,
+  getIsTaskRegistered,
+  getUnregisterTaskAsync,
+} from '@lynxpo/mods-task-manager';
 
 export interface ModuleAction {
   label: string;
@@ -17,22 +17,30 @@ export interface ModuleInfo {
 }
 
 /**
- * Demonstrates Expo's `expo-linking` full native method surface: every getter is
+ * Demonstrates Expo's `expo-task-manager` full native method surface: every getter is
  * read into labeled rows and every setter/action is exposed as a button. Values are
  * rendered through the Lynx bridge with no native runtime changes required.
  */
-export function useLinkingInfo(): ModuleInfo {
+export function useTaskManagerInfo(): ModuleInfo {
   const [rows, setRows] = useState<{ label: string; value: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   const refresh = useCallback(() => {
     try {
-      const v_getGetInitialURL = getGetInitialURL();
-      const v_getCanOpenURL = getCanOpenURL();
+      const v_getGetRegisteredTasks = getGetRegisteredTasks();
+      const v_getIsTaskRegistered = getIsTaskRegistered('lynxpo-demo-task');
       const rows: { label: string; value: string }[] = [];
-      rows.push({ label: 'GetInitialURL', value: v_getGetInitialURL || '—' });
-      rows.push({ label: 'CanOpenURL', value: v_getCanOpenURL ? 'Yes' : 'No' });
+      rows.push({
+        label: 'GetRegisteredTasks',
+        value: Array.isArray(v_getGetRegisteredTasks)
+          ? String(v_getGetRegisteredTasks.length)
+          : '—',
+      });
+      rows.push({
+        label: 'IsTaskRegistered',
+        value: v_getIsTaskRegistered ? 'Yes' : 'No',
+      });
       setRows(rows);
       setError(null);
     } catch (err) {
@@ -43,16 +51,16 @@ export function useLinkingInfo(): ModuleInfo {
   }, []);
 
   const actions: ModuleAction[] = [];
-  const actOpenlynxdev = useCallback(() => {
+  const actUnregister = useCallback(() => {
     try {
-      getOpenURL('https://lynx.dev');
+      getUnregisterTaskAsync('LynxPoTask');
     } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
     } finally {
       setTimeout(refresh, 300);
     }
   }, [refresh]);
-  actions.push({ label: 'Open lynx.dev', onPress: actOpenlynxdev });
+  actions.push({ label: 'Unregister', onPress: actUnregister });
 
   useEffect(() => {
     refresh();

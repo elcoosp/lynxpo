@@ -5,7 +5,7 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "pnpm@12.9.1",
+  "packageManager": "pnpm@12.16.1",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -23,11 +23,11 @@
     "check:native:ios": "pnpm host:bundle:copy && cd packages/playground/src/host && xcodebuild -workspace LynxpoHost.xcworkspace -scheme LynxpoHost -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' build"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.0",
+    "@biomejs/biome": "^2.6.4",
     "@changesets/cli": "^3.0.3",
-    "@lynx-js/rspeedy": "^0.17.0",
-    "@rsbuild/core": "^2.0.0",
-    "@rslib/core": "^1.0.0",
-    "turbo": "^2.4.4"
+    "@lynx-js/rspeedy": "^0.18.4",
+    "@rsbuild/core": "^2.3.0",
+    "@rslib/core": "^1.0.5",
+    "turbo": "^2.11.10"
   }
 }

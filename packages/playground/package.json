@@ -10,7 +10,7 @@
     "preview": "rspeedy preview"
   },
   "dependencies": {
-    "@lynx-js/react": "0.126.0",
+    "@lynx-js/react": "0.129.1",
     "@lynxpo/mods-application": "workspace:*",
     "@lynxpo/mods-battery": "workspace:*",
     "@lynxpo/mods-blob": "workspace:*",
@@ -72,9 +72,9 @@
     "@lynxpo/mods-live-photo": "workspace:*",
     "@lynxpo/mods-network-addons": "workspace:*",
     "@lynxpo/mods-standard-web-crypto": "workspace:*",
-    "@rsbuild/core": "2.2.3",
-    "glob": "^13.0.0",
-    "unplugin-ast": "^0.19.0",
+    "@rsbuild/core": "2.3.0",
+    "glob": "^14.0.3",
+    "unplugin-ast": "^0.19.2",
     "@lynxpo/mods-file-system": "workspace:*",
     "@lynxpo/mods-link-preview": "workspace:*",
     "@lynxpo/mods-quick-actions": "workspace:*",
@@ -82,13 +82,13 @@
     "@lynxpo/mods-updates": "workspace:*"
   },
   "devDependencies": {
-    "@babel/types": "^8.0.0",
-    "@lynx-js/qrcode-rsbuild-plugin": "0.7.1",
-    "@lynx-js/react-rsbuild-plugin": "0.20.1",
-    "@lynx-js/rspeedy": "0.17.1",
-    "@lynx-js/types": "4.2.1",
-    "@types/react": "^19.1.4",
-    "typescript": "~6.0.0"
+    "@babel/types": "^8.0.10",
+    "@lynx-js/qrcode-rsbuild-plugin": "0.7.3",
+    "@lynx-js/react-rsbuild-plugin": "0.22.1",
+    "@lynx-js/rspeedy": "0.18.4",
+    "@lynx-js/types": "4.4.2",
+    "@types/react": "^19.3.0",
+    "typescript": "~6.0.3"
   },
   "engines": {
     "node": ">=20.19"

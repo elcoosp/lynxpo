@@ -9,6 +9,7 @@ import {
 } from './mods-registry.js';
 
 type Status = 'pending' | 'ok' | 'err';
+type ModStat = Status | 'warn';
 interface MethState {
   status: Status;
   result: string;

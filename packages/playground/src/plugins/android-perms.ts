@@ -1,4 +1,3 @@
-import type { CallExpression, Node, StringLiteral } from '@babel/types';
 import { logger } from '@lynx-js/rspeedy';
 import type { RsbuildPlugin } from '@rsbuild/core';
 import fs from 'fs';
@@ -9,6 +8,8 @@ import type {
   PermissionInfo,
   PermissionsManifest,
 } from './permissionsManifest.js';
+
+type AstNode = Parameters<Transformer['transform']>[0];
 
 interface Options {
   /** Android application package id written into the generated manifest. */
@@ -104,7 +105,7 @@ function renderManifest(
  * Returns false (no AST mutation).
  */
 function detectPermissionRequest(
-  node: Node,
+  node: AstNode,
   detectedPermissions: Set<string>,
   contextId: string,
 ): boolean {
@@ -120,9 +121,10 @@ function detectPermissionRequest(
     callee.object.property.type === 'Identifier' &&
     callee.object.property.name === 'NativePermissionsModule' &&
     node.arguments.length > 0 &&
-    node.arguments[0].type === 'StringLiteral'
+    node.arguments[0].type === 'Literal' &&
+    typeof node.arguments[0].value === 'string'
   ) {
-    const permissionName = (node.arguments[0] as StringLiteral).value;
+    const permissionName = node.arguments[0].value;
     detectedPermissions.add(permissionName);
     logger.info(`Found permission request "${permissionName}" in ${contextId}`);
   }
@@ -240,7 +242,7 @@ export function androidPermissionsPlugin(
   const detectedPermissions = new Set<string>();
   const detector: Transformer = {
     onNode: () => true,
-    transform(node: Node) {
+    transform(node) {
       detectPermissionRequest(node, detectedPermissions, 'build');
       return undefined;
     },
@@ -255,7 +257,6 @@ export function androidPermissionsPlugin(
         include: [/\.(ts|tsx)$/],
         parserOptions: {
           sourceType: 'module',
-          plugins: ['typescript', 'jsx'],
         },
         transformer: [detector],
       });
@@ -280,6 +281,7 @@ export function androidPermissionsPlugin(
           'AndroidManifest.xml',
         );
         try {
+          fs.mkdirSync(api.context.distPath, { recursive: true });
           fs.writeFileSync(
             outputPath,
             renderManifest(resolvedOptions.packageId, requiredPermissions),

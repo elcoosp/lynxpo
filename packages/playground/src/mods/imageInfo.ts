@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from '@lynx-js/react';
 import {
-  getGetRegisteredTasks,
-  getIsTaskRegistered,
-  getUnregisterTaskAsync,
-} from '@lynxpo/mods-task-manager';
+  getGetCacheSize,
+  getIsImageLoading,
+  getPrefetch,
+} from '@lynxpo/mods-image';
 
 export interface ModuleAction {
   label: string;
@@ -17,30 +17,33 @@ export interface ModuleInfo {
 }
 
 /**
- * Demonstrates Expo's `expo-task-manager` full native method surface: every getter is
+ * Demonstrates Expo's `expo-image` full native method surface: every getter is
  * read into labeled rows and every setter/action is exposed as a button. Values are
  * rendered through the Lynx bridge with no native runtime changes required.
  */
-export function useTaskManagerInfo(): ModuleInfo {
+export function useImageInfo(): ModuleInfo {
   const [rows, setRows] = useState<{ label: string; value: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   const refresh = useCallback(() => {
     try {
-      const v_getGetRegisteredTasks = getGetRegisteredTasks();
-      const v_getIsTaskRegistered = getIsTaskRegistered();
+      const v_getGetCacheSize = getGetCacheSize();
+      const v_getIsImageLoading = getIsImageLoading('file:///sample.png');
+      const v_getPrefetch = getPrefetch('file:///sample.png');
       const rows: { label: string; value: string }[] = [];
       rows.push({
-        label: 'GetRegisteredTasks',
-        value: Array.isArray(v_getGetRegisteredTasks)
-          ? String(v_getGetRegisteredTasks.length)
-          : '—',
+        label: 'GetCacheSize',
+        value:
+          typeof v_getGetCacheSize === 'number'
+            ? v_getGetCacheSize.toFixed(2)
+            : '—',
       });
       rows.push({
-        label: 'IsTaskRegistered',
-        value: v_getIsTaskRegistered ? 'Yes' : 'No',
+        label: 'IsImageLoading',
+        value: v_getIsImageLoading ? 'Yes' : 'No',
       });
+      rows.push({ label: 'Prefetch', value: v_getPrefetch ? 'Yes' : 'No' });
       setRows(rows);
       setError(null);
     } catch (err) {
@@ -51,16 +54,6 @@ export function useTaskManagerInfo(): ModuleInfo {
   }, []);
 
   const actions: ModuleAction[] = [];
-  const actUnregister = useCallback(() => {
-    try {
-      getUnregisterTaskAsync('LynxPoTask');
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error(String(err)));
-    } finally {
-      setTimeout(refresh, 300);
-    }
-  }, [refresh]);
-  actions.push({ label: 'Unregister', onPress: actUnregister });
 
   useEffect(() => {
     refresh();

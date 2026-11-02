@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@lynx-js/react",
     "module": "node16",
     "moduleResolution": "node16",
     "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
