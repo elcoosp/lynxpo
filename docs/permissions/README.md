@@ -1,4 +1,3 @@
-
 - Parse https://developer.android.com/reference/android/Manifest.permission with https://html.to-markdown.com/
 - Paste remove "\"
 - Extract ## Constants section only
