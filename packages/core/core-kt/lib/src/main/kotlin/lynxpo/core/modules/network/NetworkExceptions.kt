@@ -1,6 +1,6 @@
 package lynxpo.core.modules.network
 
-import CodedException
+import lynxpo.core.modules.CodedException
 
 internal class NetworkAccessException(e: Throwable) :
         CodedException("Unable to access network information", e.cause)
