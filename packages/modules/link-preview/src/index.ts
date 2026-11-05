@@ -1,6 +1,5 @@
 // Auto-generated from LinkPreviewModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { NativeModules as INativeModules } from '@lynx-js/types';
 
 export const getGenerateLinkPreviewAsync = (...args: any[]): Promise<any> =>
   NativeModules.LinkPreviewModule?.generateLinkPreviewAsync?.(...args);
