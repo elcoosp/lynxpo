@@ -1,3 +1,5 @@
+package lynxpo.core.modules
+
 interface CodedThrowable {
     fun getCode(): String
     fun getMessage(): String
