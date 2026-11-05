@@ -14,3 +14,6 @@ AGENTS.md
 # Generated source dump for external review (see scripts/dump-files.sh)
 dump.txt
 .hermes
+
+# Test coverage output
+coverage
