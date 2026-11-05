@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /** Strip the nmi postinstall hook and devDependency from every module. */
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const modulesDir = join(process.cwd(), 'packages/modules');
@@ -14,7 +14,7 @@ for (const name of readdirSync(modulesDir)) {
   delete pkg.scripts?.postinstall;
   if (pkg.devDependencies) delete pkg.devDependencies['@lynxpo/tools-nmi'];
 
-  writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+  writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
   touched++;
 }
 console.log(`stripped nmi hooks from ${touched} packages`);
