@@ -24,7 +24,7 @@ export function HostShowcase() {
   const { info: battery, error: batteryError } = useBatteryInfo();
   const { rows: networkRows, error: networkErr } = useNetworkInfo();
   const { info: localization, error: localizationErr } = useLocalizationInfo();
-  const [n, setN] = useState(0);
+  const [n, _setN] = useState(0);
 
   const deviceRows = device
     ? [
