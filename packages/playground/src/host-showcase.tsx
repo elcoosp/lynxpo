@@ -14,18 +14,21 @@ interface MethState {
   status: Status;
   result: string;
 }
-declare const NativeModules: Record<string, any>;
+declare const NativeModules: Record<string, unknown>;
+
+type NativeModule = Record<string, (...args: unknown[]) => unknown>;
 
 // The Lynx engine injects `NativeModules` as a global lexical binding
 // (bare identifier), NOT a property of globalThis. The module code itself
 // uses the bare global; globalThis.NativeModules is undefined, which is why
 // every call silently returned undefined before this fix.
-const resolveMod = (key: string): any => {
+const resolveMod = (key: string): NativeModule | undefined => {
   const nm =
     typeof NativeModules !== 'undefined'
       ? NativeModules
-      : (globalThis as any).NativeModules;
-  return nm?.[key];
+      : (globalThis as { NativeModules?: Record<string, unknown> })
+          .NativeModules;
+  return nm?.[key] as NativeModule | undefined;
 };
 
 const fmt = (v: unknown): string => {
@@ -33,7 +36,7 @@ const fmt = (v: unknown): string => {
   if (typeof v === 'string') return v;
   try {
     const s = JSON.stringify(v);
-    return s.length > 400 ? s.slice(0, 400) + '…' : s;
+    return s.length > 400 ? `${s.slice(0, 400)}…` : s;
   } catch {
     return String(v);
   }
@@ -71,10 +74,13 @@ export function HostShowcase() {
         const out = mod?.[name]?.(...args);
         setMeth((p) => ({ ...p, [id]: { status: 'ok', result: fmt(out) } }));
         setStats((s) => ({ ...s, [m.key]: 'ok' }));
-      } catch (e: any) {
+      } catch (e: unknown) {
         setMeth((p) => ({
           ...p,
-          [id]: { status: 'err', result: String(e?.message ?? e) },
+          [id]: {
+            status: 'err',
+            result: e instanceof Error ? e.message : String(e),
+          },
         }));
       }
     },
@@ -159,13 +165,16 @@ export function HostShowcase() {
         setMeth((p) =>
           p[id] ? p : { ...p, [id]: { status: 'ok', result: fmt(out) } },
         );
-      } catch (e: any) {
+      } catch (e: unknown) {
         setMeth((p) =>
           p[id]
             ? p
             : {
                 ...p,
-                [id]: { status: 'err', result: String(e?.message ?? e) },
+                [id]: {
+                  status: 'err',
+                  result: e instanceof Error ? e.message : String(e),
+                },
               },
         );
       }
@@ -173,7 +182,7 @@ export function HostShowcase() {
   }, [selected]);
 
   const verified = Object.values(stats).filter((s) => s === 'ok').length;
-  const errored = Object.values(stats).filter((s) => s === 'err').length;
+  const _errored = Object.values(stats).filter((s) => s === 'err').length;
 
   return (
     <view className="Showcase">
