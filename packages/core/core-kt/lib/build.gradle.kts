@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
-    id("com.google.devtools.ksp") version "2.3.11"
-    kotlin("plugin.serialization") version "2.4.10"
+    id("com.google.devtools.ksp") version "2.3.13"
+    kotlin("plugin.serialization") version "2.4.21"
 
     `maven-publish`
 }
@@ -94,8 +94,10 @@ android {
 
     testOptions {
         unitTests.all {
-            it.useJUnitPlatform()
-            it.failOnNoDiscoveredTests = false
+            it.maxHeapSize = "1g"
+            it.testLogging {
+                events("passed", "skipped", "failed")
+            }
         }
     }
 }
