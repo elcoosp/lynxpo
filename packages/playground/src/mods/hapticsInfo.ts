@@ -1,5 +1,4 @@
 import { useEffect, useState } from '@lynx-js/react';
-import {} from '@lynxpo/mods-haptics';
 
 export interface ModuleInfo {
   rows: { label: string; value: string }[];
