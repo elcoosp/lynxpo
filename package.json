@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": ">=20.11"
   },
   "packageManager": "pnpm@12.16.1",
   "private": true,
@@ -12,22 +12,30 @@
     "check": "turbo run check",
     "lint": "turbo run lint",
     "fmt": "turbo run fmt",
-    "test": "turbo run test",
-    "test:cov": "turbo run test:cov",
-    "test:watch": "turbo run test:watch",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "node scripts/typecheck.mjs",
+    "check:codegen": "node scripts/check-codegen.mjs",
+    "check:licenses": "node scripts/check-licenses.mjs",
+    "audit:deps": "pnpm audit --prod --audit-level high",
     "dev": "pnpm --filter @lynxpo/playground dev",
     "preview": "pnpm --filter @lynxpo/playground preview",
     "host:bundle:copy": "cp packages/playground/dist/hostshowcase.lynx.bundle packages/playground/src/host/LynxpoHost/host.lynx.bundle",
     "host:ios": "pnpm host:bundle:copy && cd packages/playground/src/host && xcodebuild -workspace LynxpoHost.xcworkspace -scheme LynxpoHost -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator'",
-    "check:native:android": "packages/core/core-kt/gradlew -p packages/core/core-kt :lib:build --no-daemon && packages/core/core-kt/gradlew -p scripts/native-android-check :lib:assembleDebug --no-daemon",
-    "check:native:ios": "pnpm host:bundle:copy && cd packages/playground/src/host && xcodebuild -workspace LynxpoHost.xcworkspace -scheme LynxpoHost -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' build"
+    "check:native:android": "packages/core/core-kt/gradlew -p packages/core/core-kt :lib:build --no-daemon -Dorg.gradle.jvmargs=\"-Xmx4g -XX:MaxMetaspaceSize=2g\" && packages/core/core-kt/gradlew -p scripts/native-android-check :lib:assembleDebug --no-daemon -Dorg.gradle.jvmargs=\"-Xmx4g -XX:MaxMetaspaceSize=2g\"",
+    "check:native:ios": "pnpm host:bundle:copy && cd packages/playground/src/host && xcodebuild -workspace LynxpoHost.xcworkspace -scheme LynxpoHost -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build && node ../../../../scripts/verify-ios-build.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.4",
     "@changesets/cli": "^3.0.3",
+    "@lynx-js/autolink-codegen": "0.2.1",
     "@lynx-js/rspeedy": "^0.18.4",
     "@rsbuild/core": "^2.3.0",
     "@rslib/core": "^1.0.5",
-    "turbo": "^2.11.10"
+    "@vitest/coverage-v8": "^5.1.0",
+    "turbo": "^2.11.10",
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0"
   }
 }
