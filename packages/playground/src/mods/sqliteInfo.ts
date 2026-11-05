@@ -37,7 +37,7 @@ export function useSqliteInfo(): ModuleInfo {
         { label: 'Rows', value: String(list.length) },
         {
           label: 'Last value',
-          value: last && last.value ? String(last.value) : '—',
+          value: last?.value ? String(last.value) : '—',
         },
       ]);
       setError(null);
