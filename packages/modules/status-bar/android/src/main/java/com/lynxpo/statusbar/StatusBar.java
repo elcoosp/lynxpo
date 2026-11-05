@@ -30,11 +30,11 @@ public class StatusBar extends StatusBarSpec {
   }
 
   @LynxMethod
-  public void setHidden(Boolean hidden) {
+  public void setHidden(boolean hidden) {
   }
 
   @LynxMethod
-  public void setNetworkActivityIndicatorVisible(Boolean visible) {
+  public void setNetworkActivityIndicatorVisible(boolean visible) {
   }
 
   @LynxMethod
