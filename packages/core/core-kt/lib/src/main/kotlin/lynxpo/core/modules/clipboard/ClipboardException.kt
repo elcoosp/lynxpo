@@ -1,6 +1,6 @@
 package lynxpo.core.modules.clipboard
 
-import CodedException
+import lynxpo.core.modules.CodedException
 
 
 internal class ClipboardUnavailableException :
