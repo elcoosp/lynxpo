@@ -1,6 +1,5 @@
 // Auto-generated from IntentLauncher.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { IntentLauncher } from './generated/IntentLauncher';
 
 export const getStartActivity = (activity: string, data: string): string =>
   NativeModules.IntentLauncher?.startActivity?.(activity, data);
