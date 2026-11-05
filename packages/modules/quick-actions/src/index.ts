@@ -1,6 +1,5 @@
 // Auto-generated from QuickActionsModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { NativeModules as INativeModules } from '@lynx-js/types';
 
 export const getGetShortcutItemsAsync = (...args: any[]): Promise<any> =>
   NativeModules.QuickActionsModule?.getShortcutItemsAsync?.(...args);
