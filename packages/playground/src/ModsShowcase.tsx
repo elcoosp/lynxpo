@@ -1,8 +1,5 @@
 import { useCallback, useState } from '@lynx-js/react';
-import {
-  getGetNetworkStateAsync,
-  useGetNetworkStateAsync,
-} from '@lynxpo/mods-network';
+import { useGetNetworkStateAsync } from '@lynxpo/mods-network';
 import { CameraShowcase } from './CameraShowcase.js';
 import { useAppIntegrityInfo } from './mods/app-integrityInfo.js';
 import { useAppearanceInfo } from './mods/appearanceInfo.js';
@@ -294,7 +291,7 @@ export function ModsShowcase() {
   const [alterLogo, setAlterLogo] = useState(false);
   const [page, setPage] = useState<'list' | 'camera'>('list');
 
-  const onTap = useCallback(() => {
+  const _onTap = useCallback(() => {
     'background only';
     setAlterLogo(!alterLogo);
   }, [alterLogo]);
@@ -570,7 +567,7 @@ export function ModsShowcase() {
                       ? 'err'
                       : networkAsyncLoading
                         ? '…'
-                        : networkAsync && networkAsync.isConnected
+                        : networkAsync?.isConnected
                           ? 'Yes'
                           : 'No',
                   },
