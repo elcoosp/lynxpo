@@ -1,6 +1,5 @@
 // Auto-generated from ImageManipulator.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { ImageManipulator } from './generated/ImageManipulator';
 
 export const getManipulateAsync = (
   uri: string,
