@@ -46,10 +46,7 @@ export function useNotificationsInfo(): ModuleInfo {
         },
         {
           label: 'Device token',
-          value:
-            token && token.data
-              ? `${token.data.slice(0, 12)}…`
-              : 'not registered',
+          value: token?.data ? `${token.data.slice(0, 12)}…` : 'not registered',
         },
       ]);
       setError(null);
