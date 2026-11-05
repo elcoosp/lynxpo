@@ -27,8 +27,9 @@
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch",
-    "check": "biome check --write",
-    "fmt": "biome format --write"
+    "check": "biome check --error-on-warnings",
+    "fmt": "biome format --write",
+    "check:fix": "biome check --write --unsafe"
   },
   "devDependencies": {
     "@elcoosp-configs/rslib": "2.1",
