@@ -6,7 +6,13 @@
  *  - ship lynx.lib.json + native twins in files (official autolink layout)
  *  - add license/repository/keywords/sideEffects, bump 0.0.0 -> 0.1.0
  */
-import { existsSync, readFileSync, readdirSync, writeFileSync, copyFileSync } from 'node:fs';
+import {
+  copyFileSync,
+  existsSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from 'node:fs';
 import { join } from 'node:path';
 
 const REPO_URL = 'git+https://github.com/elcoosp/lynxpo.git';
@@ -31,7 +37,9 @@ for (const name of readdirSync(modulesDir)) {
   // --- runtime deps -> peer + dev (all 66 have exactly the two lynx deps)
   const hadReact = Boolean(pkg.dependencies?.['@lynx-js/react']);
   delete pkg.dependencies;
-  pkg.peerDependencies = hadReact ? { '@lynx-js/react': '>=0.126.0 <1' } : undefined;
+  pkg.peerDependencies = hadReact
+    ? { '@lynx-js/react': '>=0.126.0 <1' }
+    : undefined;
   if (!pkg.peerDependencies) delete pkg.peerDependencies;
   pkg.devDependencies = {
     ...(pkg.devDependencies ?? {}),
@@ -50,10 +58,16 @@ for (const name of readdirSync(modulesDir)) {
   if (pkg.version === '0.0.0') pkg.version = '0.1.0';
   pkg.license = 'Apache-2.0';
   pkg.sideEffects = false;
-  pkg.repository = { type: 'git', url: REPO_URL, directory: `packages/modules/${name}` };
+  pkg.repository = {
+    type: 'git',
+    url: REPO_URL,
+    directory: `packages/modules/${name}`,
+  };
   pkg.bugs = { url: 'https://github.com/elcoosp/lynxpo/issues' };
   pkg.homepage = `https://github.com/elcoosp/lynxpo/tree/main/packages/modules/${name}#readme`;
-  pkg.keywords = [...new Set(['lynx', 'lynxjs', 'react-lynx', 'autolink', 'expo', name])].sort();
+  pkg.keywords = [
+    ...new Set(['lynx', 'lynxjs', 'react-lynx', 'autolink', 'expo', name]),
+  ].sort();
   pkg.exports = {
     '.': {
       types: './dist/index.d.ts',
@@ -65,7 +79,7 @@ for (const name of readdirSync(modulesDir)) {
   // LICENSE must sit inside the package dir to land in the tarball
   if (existsSync(rootLicense)) copyFileSync(rootLicense, join(dir, 'LICENSE'));
 
-  writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+  writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
   report.push(`${pkg.name}@${pkg.version}  files=[${pkg.files.join(',')}]`);
 }
 console.log(report.join('\n'));
