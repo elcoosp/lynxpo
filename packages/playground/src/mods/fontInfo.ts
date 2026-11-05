@@ -1,5 +1,5 @@
 import { useEffect, useState } from '@lynx-js/react';
-import { getIsLoaded, getLoadedFonts } from '@lynxpo/mods-font';
+import { getLoadedFonts } from '@lynxpo/mods-font';
 
 export interface ModuleInfo {
   rows: { label: string; value: string }[];
