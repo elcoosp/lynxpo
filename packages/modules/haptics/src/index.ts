@@ -1,5 +1,5 @@
 // Auto-generated from HapticsModule.kt
-import { useEffect, useState } from '@lynx-js/react';
+import { useState } from '@lynx-js/react';
 import { HapticsModule } from './generated/HapticsModule';
 
 export const getImpactAsync = (style: number): Promise<void> =>
