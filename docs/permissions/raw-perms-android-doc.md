@@ -1127,7 +1127,7 @@ public static final [String](https://developer.android.com/reference/java/lang/S
 Required to be able to access the camera device.
 
 This will automatically enforce the
-[uses-feature](https://developer.android.com/guide/topics/manifest/uses-feature-element) manifest element for *all* camera features.
+[uses-feature](https://developer.android.com/guide/topics/manifest/uses-feature-element) manifest element for _all_ camera features.
 If you do not require all camera features or can properly operate if a camera
 is not available, then you must modify your manifest as appropriate in order to
 install on devices that don't support all camera features.
@@ -3724,7 +3724,7 @@ public static final [String](https://developer.android.com/reference/java/lang/S
 Allows an application to manage access to documents, usually as part
 of a document picker.
 
-This permission should *only* be requested by the platform
+This permission should _only_ be requested by the platform
 document management app. This permission cannot be granted to
 third-party apps.
 
@@ -4242,7 +4242,7 @@ public static final [String](https://developer.android.com/reference/java/lang/S
 Allows an application to read the user's call log.
 
 **Note:** If your app uses the
-`[READ_CONTACTS](https://developer.android.com/reference/android/Manifest.permission#READ_CONTACTS)` permission and *both* your [`minSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#min) and [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) values are set to 15 or lower, the system implicitly
+`[READ_CONTACTS](https://developer.android.com/reference/android/Manifest.permission#READ_CONTACTS)` permission and _both_ your [`minSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#min) and [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) values are set to 15 or lower, the system implicitly
 grants your app this permission. If you don't need this permission, be sure your [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) is 16 or higher.
 
 Protection level: dangerous
@@ -4320,11 +4320,11 @@ permissions](https://developer.android.com/training/data-storage/shared/media#st
 
 This permission is enforced starting in API level 19. Before API level 19, this
 permission is not enforced and all apps still have access to read from external storage.
-You can test your app with the permission enforced by enabling *Protect USB
-storage* under **Developer options** in the Settings app on a device running Android
+You can test your app with the permission enforced by enabling _Protect USB
+storage_ under **Developer options** in the Settings app on a device running Android
 4.1 or higher.
 
-Also starting in API level 19, this permission is *not* required to
+Also starting in API level 19, this permission is _not_ required to
 read or write files in your application-specific directories returned by
 `[Context.getExternalFilesDir(String)](https://developer.android.com/reference/android/content/Context#getExternalFilesDir(java.lang.String))` and
 `[Context.getExternalCacheDir()](https://developer.android.com/reference/android/content/Context#getExternalCacheDir())`.
@@ -4337,7 +4337,7 @@ shouldn't request this permission unless they need to access other apps' files i
 [scoped storage](https://developer.android.com/training/data-storage#scoped-storage) section of the
 developer documentation.
 
-If *both* your [`minSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#min) and [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) values are set to 3 or lower, the system implicitly
+If _both_ your [`minSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#min) and [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) values are set to 3 or lower, the system implicitly
 grants your app this permission. If you don't need this permission, be sure your [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) is 4 or higher.
 
 This is a soft restricted permission which cannot be held by an app it its
@@ -4549,7 +4549,7 @@ Allows read only access to phone state, including the current cellular network i
 the status of any ongoing calls, and a list of any `[PhoneAccount](https://developer.android.com/reference/android/telecom/PhoneAccount)`s
 registered on the device.
 
-**Note:** If *both* your [`minSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#min) and [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) values are set to 3 or lower, the system implicitly
+**Note:** If _both_ your [`minSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#min) and [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) values are set to 3 or lower, the system implicitly
 grants your app this permission. If you don't need this permission, be sure your [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) is 4 or higher.
 
 Protection level: dangerous
@@ -4934,7 +4934,7 @@ Protection level: normal
 
 **See also:**
 
-* `[REQUEST_COMPANION_RUN_IN_BACKGROUND](https://developer.android.com/reference/android/Manifest.permission#REQUEST_COMPANION_RUN_IN_BACKGROUND)`
+- `[REQUEST_COMPANION_RUN_IN_BACKGROUND](https://developer.android.com/reference/android/Manifest.permission#REQUEST_COMPANION_RUN_IN_BACKGROUND)`
 
 Constant Value:
 "android.permission.REQUEST_COMPANION_START_FOREGROUND_SERVICES_FROM_BACKGROUND"
@@ -5379,7 +5379,7 @@ public static final [String](https://developer.android.com/reference/java/lang/S
 ```
 
 Allows an application to start foreground services from the background at any time.
-*This permission is not for use by third-party applications*,
+_This permission is not for use by third-party applications_,
 with the only exception being if the app is the default SMS app.
 Otherwise, it's only usable by privileged apps, app verifier app, and apps with
 any of the EMERGENCY or SYSTEM GALLERY roles.
@@ -5600,7 +5600,7 @@ public static final [String](https://developer.android.com/reference/java/lang/S
 Allows apps to use exact alarms just like with `[SCHEDULE_EXACT_ALARM](https://developer.android.com/reference/android/Manifest.permission#SCHEDULE_EXACT_ALARM)` but without needing to request this
 permission from the user.
 
- **This is only intended for use by apps that rely on exact alarms for their core
+**This is only intended for use by apps that rely on exact alarms for their core
 functionality.** You should continue using `SCHEDULE_EXACT_ALARM` if your app needs
 exact alarms for a secondary feature that users may or may not use within your app.
 
@@ -5788,7 +5788,7 @@ public static final [String](https://developer.android.com/reference/java/lang/S
 Allows an application to write and read the user's call log data.
 
 **Note:** If your app uses the
-`[WRITE_CONTACTS](https://developer.android.com/reference/android/Manifest.permission#WRITE_CONTACTS)` permission and *both* your [`minSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#min) and [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) values are set to 15 or lower, the system implicitly
+`[WRITE_CONTACTS](https://developer.android.com/reference/android/Manifest.permission#WRITE_CONTACTS)` permission and _both_ your [`minSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#min) and [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) values are set to 15 or lower, the system implicitly
 grants your app this permission. If you don't need this permission, be sure your [`targetSdkVersion`](https://developer.android.com/guide/topics/manifest/uses-sdk-element#target) is 16 or higher.
 
 Protection level: dangerous
