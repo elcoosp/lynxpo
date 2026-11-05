@@ -86,7 +86,7 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1.336.0
         with:
           ruby-version: "3.2"
       - run: gem install cocoapods --no-document

@@ -173,23 +173,23 @@ importers:
   .:
     devDependencies:
       '@biomejs/biome':
-        specifier: ^2.6.4
-        version: 2.6.4
+        specifier: ^2.6.5
+        version: 2.6.5
       '@changesets/cli':
         specifier: ^3.0.3
         version: 3.0.3
       '@lynx-js/autolink-codegen':
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: 0.6.0
+        version: 0.6.0
       '@lynx-js/rspeedy':
         specifier: ^0.18.4
-        version: 0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.26))
+        version: 0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.26))
       '@rsbuild/core':
-        specifier: ^2.3.0
-        version: 2.3.0(core-js@3.41.0)
+        specifier: ^2.3.1
+        version: 2.3.1(core-js@3.41.0)
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@6.0.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@6.0.3)
       '@vitest/coverage-v8':
         specifier: ^5.1.0
         version: 5.1.0(vitest@5.1.0)
@@ -215,8 +215,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/appearance:
     devDependencies:
@@ -230,8 +230,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/apple-authentication:
     devDependencies:
@@ -245,8 +245,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/application:
     devDependencies:
@@ -260,8 +260,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/asset:
     devDependencies:
@@ -275,8 +275,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/audio:
     devDependencies:
@@ -290,8 +290,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/auth-session:
     devDependencies:
@@ -305,8 +305,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/background-fetch:
     devDependencies:
@@ -320,8 +320,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/background-task:
     devDependencies:
@@ -335,8 +335,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/battery:
     devDependencies:
@@ -350,8 +350,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/blob:
     devDependencies:
@@ -365,8 +365,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/brightness:
     devDependencies:
@@ -380,8 +380,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/calendar:
     devDependencies:
@@ -395,8 +395,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/camera:
     devDependencies:
@@ -410,8 +410,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/cellular:
     devDependencies:
@@ -425,8 +425,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/clipboard:
     devDependencies:
@@ -440,8 +440,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/constants:
     devDependencies:
@@ -455,8 +455,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/contacts:
     devDependencies:
@@ -470,8 +470,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/crypto:
     devDependencies:
@@ -485,8 +485,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/device:
     devDependencies:
@@ -500,8 +500,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/document-picker:
     devDependencies:
@@ -515,8 +515,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/env-info:
     devDependencies:
@@ -530,8 +530,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/file-system:
     devDependencies:
@@ -545,8 +545,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/font:
     devDependencies:
@@ -560,8 +560,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/haptics:
     devDependencies:
@@ -575,8 +575,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/health:
     devDependencies:
@@ -590,8 +590,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/image:
     devDependencies:
@@ -605,8 +605,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/image-manipulator:
     devDependencies:
@@ -620,8 +620,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/image-picker:
     devDependencies:
@@ -635,8 +635,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/intent-launcher:
     devDependencies:
@@ -650,8 +650,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/keep-awake:
     devDependencies:
@@ -665,8 +665,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/link-preview:
     devDependencies:
@@ -680,8 +680,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/linking:
     devDependencies:
@@ -695,8 +695,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/live-photo:
     devDependencies:
@@ -710,8 +710,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/local-authentication:
     devDependencies:
@@ -725,8 +725,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/localization:
     devDependencies:
@@ -740,8 +740,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/location:
     devDependencies:
@@ -755,8 +755,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/mail-composer:
     devDependencies:
@@ -770,8 +770,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/media-library:
     devDependencies:
@@ -785,8 +785,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/music-library:
     devDependencies:
@@ -800,8 +800,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/navigation-bar:
     devDependencies:
@@ -815,8 +815,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/network:
     devDependencies:
@@ -830,8 +830,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/network-addons:
     devDependencies:
@@ -845,8 +845,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/notifications:
     devDependencies:
@@ -860,8 +860,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/print:
     devDependencies:
@@ -875,8 +875,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/quick-actions:
     devDependencies:
@@ -890,8 +890,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/receive-sharing:
     devDependencies:
@@ -905,8 +905,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/screen-capture:
     devDependencies:
@@ -920,8 +920,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/screen-orientation:
     devDependencies:
@@ -935,8 +935,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/secure-store:
     devDependencies:
@@ -950,8 +950,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/sensors:
     devDependencies:
@@ -965,8 +965,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/sharing:
     devDependencies:
@@ -980,8 +980,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/sms:
     devDependencies:
@@ -995,8 +995,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/speech:
     devDependencies:
@@ -1010,8 +1010,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/splash-screen:
     devDependencies:
@@ -1025,8 +1025,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/sqlite:
     devDependencies:
@@ -1040,8 +1040,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/standard-web-crypto:
     devDependencies:
@@ -1055,8 +1055,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/status-bar:
     devDependencies:
@@ -1070,8 +1070,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/store-review:
     devDependencies:
@@ -1085,8 +1085,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/system-ui:
     devDependencies:
@@ -1100,8 +1100,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/task-manager:
     devDependencies:
@@ -1115,8 +1115,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/tracking-transparency:
     devDependencies:
@@ -1130,8 +1130,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/updates:
     devDependencies:
@@ -1145,8 +1145,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/video:
     devDependencies:
@@ -1160,8 +1160,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/video-thumbnails:
     devDependencies:
@@ -1175,8 +1175,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/modules/web-browser:
     devDependencies:
@@ -1190,8 +1190,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2
       '@rslib/core':
-        specifier: ^1.0.5
-        version: 1.0.5(core-js@3.41.0)(typescript@5.9.3)
+        specifier: ^1.0.6
+        version: 1.0.6(core-js@3.41.0)(typescript@5.9.3)
 
   packages/playground:
     dependencies:
@@ -1397,27 +1397,27 @@ importers:
         specifier: workspace:*
         version: link:../modules/web-browser
       '@rsbuild/core':
-        specifier: 2.3.0
-        version: 2.3.0(core-js@3.41.0)
+        specifier: 2.3.1
+        version: 2.3.1(core-js@3.41.0)
       glob:
         specifier: ^14.0.3
         version: 14.0.3
       unplugin-ast:
         specifier: ^0.19.2
-        version: 0.19.2(@rsbuild/core@2.3.0(core-js@3.41.0))(@rspack/core@2.3.0(@swc/helpers@0.5.23))(rolldown@1.2.16)(rollup@4.63.1)(vite@8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+        version: 0.19.2(@rsbuild/core@2.3.1(core-js@3.41.0))(@rspack/core@2.3.1(@swc/helpers@0.5.23))(rolldown@1.2.16)(rollup@4.63.1)(vite@8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
     devDependencies:
       '@babel/types':
         specifier: ^8.1.0
         version: 8.1.0
       '@lynx-js/qrcode-rsbuild-plugin':
         specifier: 0.7.3
-        version: 0.7.3(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.0(core-js@3.41.0))
+        version: 0.7.3(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.1(core-js@3.41.0))
       '@lynx-js/react-rsbuild-plugin':
         specifier: 0.22.1
-        version: 0.22.1(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.0(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+        version: 0.22.1(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.1(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
       '@lynx-js/rspeedy':
         specifier: 0.18.4
-        version: 0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+        version: 0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
       '@lynx-js/types':
         specifier: 4.4.2
         version: 4.4.2
@@ -1591,71 +1591,71 @@ packages:
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
 
-  '@biomejs/biome@2.6.4':
-    resolution: {integrity: sha512-8sKKwaNW4ot22awZ3lBjwWLHnUFXgXnrBPYS2gNlBAXRbDC++7kqjK2H7dR/FgCDtPvO1xfKpgEhJkGxAKYkxA==}
+  '@biomejs/biome@2.6.5':
+    resolution: {integrity: sha512-n0sp74QbSVEkWXlH659TKv4oJNylwAvDeZ8K8vt/PbcF1xneuNWe57z/G0Bxfh00cufhWXF6DiStLM8+jcLUpg==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-android-arm64@2.6.4':
-    resolution: {integrity: sha512-jwrwigP4tBcHxzuV8izioX/BOUhJL/4e2rNSOE5nCjBkVC018LQAQUGiH+CNkFYvLtQ1dcZo5/xXERmaAGc7JQ==}
+  '@biomejs/cli-android-arm64@2.6.5':
+    resolution: {integrity: sha512-fkLzc1WRU7wRIUNmAm7cxILb4dd6eESz/VycWvVFKVn6tXx0gFQKdUbPnwT42xys8AEvIJQpFGcK00kURwqorg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [android]
 
-  '@biomejs/cli-android-x64@2.6.4':
-    resolution: {integrity: sha512-HdGInPJ4nZFwHxzvEtcp2nmSBtUyJrurmtIK43upFckuS3+ZqVM05HtsxQWnqGsuy/pxckIAjyKWlEKRlBXUyA==}
+  '@biomejs/cli-android-x64@2.6.5':
+    resolution: {integrity: sha512-fkZ9dPnDAzAcaPtPCiwqtkub5C9FQK/oGCGaU9sq+DysTaq13pE9FxBIMcEZ3ydn8/FfcMdXi/DDzKDP+qyn2Q==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [android]
 
-  '@biomejs/cli-darwin-arm64@2.6.4':
-    resolution: {integrity: sha512-0VvcUz46wbg59Q4TZ59KkIjDJrxEyu4Eoe79+F4SChxoWe+W7AEyIp6F5r72C9+p6MsB6dIovnZt1D30lGM3XA==}
+  '@biomejs/cli-darwin-arm64@2.6.5':
+    resolution: {integrity: sha512-bKd0EOREgnVjeZm4s9knQ+WdPOkWS3JHB+eWGHlx+Pq66bqQA1/KybwU0O+zuyAyXiphSCBcrLruZt3YtnJoaQ==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.6.4':
-    resolution: {integrity: sha512-fxmvkF81srlS3DiMyfm+aG3J0eG+6/BjaxRyjy57KbLSafnq0PO+hHfVWmtH2ty0S7nm6yDXBRwySfFeaRJKRQ==}
+  '@biomejs/cli-darwin-x64@2.6.5':
+    resolution: {integrity: sha512-UkT9BECNOXSiW6SGddjyaRACy362Sc9n3vDaTFkccL0bC2gW7JzM16i4+JKPbEaDn1Sa+oETHV8KungnI/y40Q==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.6.4':
-    resolution: {integrity: sha512-31ZaH/MHqPX+O+evRwRrCHQ8W5/9adY+/eMytGGWZnRx1T41QsWIF09+/WujynLBhWZUxNGS5CtsWLwgOFTAyg==}
+  '@biomejs/cli-linux-arm64-musl@2.6.5':
+    resolution: {integrity: sha512-kfc3AePW1a0/d/gUpcIz95nf3Ce8YY2/xL0Fk3fLqAhKsotqUi6PN6BaVWss4p6ijWbiuacZ9NQ4NiQtpjbYpw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-arm64@2.6.4':
-    resolution: {integrity: sha512-6+bK1Y/evmIUiJr7auertuMbiaYVicJhqA1bZyL47lCMWugv8l0gFQCqvR/gN1vZMHYm+HwoTKgeMxdNFCoQTg==}
+  '@biomejs/cli-linux-arm64@2.6.5':
+    resolution: {integrity: sha512-H9cVMWBqW/lkFK9NHJdt0bpM2q7PacUDEjQoff9+m0dCV09H/jmBykfTCkbDthHf8+jCuWDJWiQFJ7bDkiGOcA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-linux-x64-musl@2.6.4':
-    resolution: {integrity: sha512-bomSa2XdQAGGj6Cwdm4M13qE+lN9+AOlW8KtI4hdyVyRRF/Z71qPAi95T4wtdZK0QpBbkTW8hgbZZCwPi4xzIw==}
+  '@biomejs/cli-linux-x64-musl@2.6.5':
+    resolution: {integrity: sha512-0mHVpLNt7/FugfZ2VPugUIEIiooWIyHGGJUqU9StxamBln9hz+maXRFIECU50jaf5/ZB93veGIViN5VKgw2AEA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-x64@2.6.4':
-    resolution: {integrity: sha512-tbFZMdL6dP/ws4edXxYG9WhvaVa1ZDzL4G5DzahnWW7Psib9H+VTdyU4XXVxpJk5j/nYZroSbvSNyYlpW3yCIw==}
+  '@biomejs/cli-linux-x64@2.6.5':
+    resolution: {integrity: sha512-e6/WMSN/+FhH+ZOoBevps/euxFQmv6BXqYNuTn1+ITR6O4XYFjHF5PeVSNZnjkgSYmvhcDkfepSX5lXczMijGA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-win32-arm64@2.6.4':
-    resolution: {integrity: sha512-eCsqt8Ma3eVap+oyJCDnJZH60SIU464B66n3y38EUTJdM1T/HfZol1FJC9vb+sHToX0ix8XzqPcwJnOzyAJz0g==}
+  '@biomejs/cli-win32-arm64@2.6.5':
+    resolution: {integrity: sha512-uBbfpdR/cH5up1iRJFGAPP97xKMzrgMs685CSrY7NM+Q4Unw7chY0o3JulEvJdmU6c6hGQxwqotMq7DDH0DzxA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.6.4':
-    resolution: {integrity: sha512-pYsMy5AThiHFOZAsngg8qN4PurM6nInKBhVX7sbj3eNpRQqo1Hb0MgCwPL7VqVMrmcEEMj9Ks3qbkallR65e8g==}
+  '@biomejs/cli-win32-x64@2.6.5':
+    resolution: {integrity: sha512-07LaCeN9vvmbAAMOMsUjMfL5UbsCDkvVeyMJIgwNRc0xYqhizBGkjVzx05LYEwCXl2AiHcdzqVPR4IOYAsI1QQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -1790,8 +1790,8 @@ packages:
   '@js-sdsl/ordered-map@4.4.2':
     resolution: {integrity: sha512-iUKgm52T8HOE/makSxjqoWhe95ZJA1/G1sYsGev2JDKUSS14KAgg1LHb+Ba+IPow0xflbnSkOsZcO08C7w1gYw==}
 
-  '@lynx-js/autolink-codegen@0.2.1':
-    resolution: {integrity: sha512-q8kYrjqm4iIhc/8IqVTnG8r2k+SXVyUlj6LkxDLiEiHbEVISYAIia1FUAt9f6LOvoIledTEb4sx4FeIeEEm2yw==}
+  '@lynx-js/autolink-codegen@0.6.0':
+    resolution: {integrity: sha512-z/w7df0F2IT6UDyp2WN1/KTWEmLBSFFb7EBjwQa23UYMKxWoN6gBzNENV72KAdF9RMdYzEnskr1Snx/DhETjEA==}
     engines: {node: ^20 || ^22 || ^24}
     hasBin: true
 
@@ -2473,8 +2473,8 @@ packages:
       core-js:
         optional: true
 
-  '@rsbuild/core@2.3.0':
-    resolution: {integrity: sha512-fT7GWVOV3Rk0P/1/XpZIEg4wv/9GRggQRXpEZkGAcQsTiljjgtxYmN4KOWMVXTb/0wtukKBGc/iKf/HV86n/Zg==}
+  '@rsbuild/core@2.3.1':
+    resolution: {integrity: sha512-dv5tL7djb8ex5z4sqnDmUbd5PnGNr/CXuFfiMD4RkUsF1JEZZkGH8lc+QW4fqYQIHM7RTvcMUakgvwVU/O9WMw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -2527,8 +2527,8 @@ packages:
       typescript:
         optional: true
 
-  '@rslib/core@1.0.5':
-    resolution: {integrity: sha512-8sAu++AGYtq0uaro9Nk/C5IqvvN79jaaEWbM5Uu/OgGgYdv72AcfILJKaYtueTaOl29RIl47XNLxxIEZ9BrpMQ==}
+  '@rslib/core@1.0.6':
+    resolution: {integrity: sha512-EWBYwtq4UuONBvu0PdyH7ERfiFQkBnwkwPL38MqHIf3lB0VhsiKkU6wtLdbVxrl9wwhpaodbnaSVccM5V/y7Jw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -2550,8 +2550,8 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
-  '@rspack/binding-darwin-arm64@2.3.0':
-    resolution: {integrity: sha512-raUm1V29xRm1fPaS2R2qK4Yw5PGo3xooK6Fz2rt74pjJ+UhEUT4ED/8A9Qyf/YW16aMUl58eS5prtth8+UaJSQ==}
+  '@rspack/binding-darwin-arm64@2.3.1':
+    resolution: {integrity: sha512-koLyL2r8PUcLD0StjuZ/n5XM6GJ0C8dzJN0IuIV9d7nQcibJxwjjSAWEPGVz6bm8WuzypvuVKNoa1+GGAHeMQA==}
     cpu: [arm64]
     os: [darwin]
 
@@ -2565,8 +2565,8 @@ packages:
     cpu: [x64]
     os: [darwin]
 
-  '@rspack/binding-darwin-x64@2.3.0':
-    resolution: {integrity: sha512-Mi7WUDMvYL14607lzOMkFYiu/NmXIeazVKJd/HmCsPu9H8aUpyf71RcbIY0otCfmpvjX2ZFJ5GrXM1VbYCAxKg==}
+  '@rspack/binding-darwin-x64@2.3.1':
+    resolution: {integrity: sha512-YK39JLiu1YC6+3BMxkP7e848pHD7e2T/0OSNogDi7whfiZNg95wa9Ncd7I5ppAf0nhmV+FNew/sCBIFp5h67Jw==}
     cpu: [x64]
     os: [darwin]
 
@@ -2582,8 +2582,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rspack/binding-linux-arm64-gnu@2.3.0':
-    resolution: {integrity: sha512-4qHSxhLkjz6Y2r8nW72IyW0sVC1TglNz5198YFEvokQ/O356mwVk3bCS/yz3IdwPu6v4sXylLDB8cEudRoeKwg==}
+  '@rspack/binding-linux-arm64-gnu@2.3.1':
+    resolution: {integrity: sha512-Q+RCA/KM2tn6m6R5U4lktXDs5cCRm3SyleQk86iqqUFX7wKzVRUvr5BTsreg6K9of3gpYmQ6+g1PGT5cwo0rLA==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
@@ -2600,8 +2600,8 @@ packages:
     os: [linux]
     libc: [musl]
 
-  '@rspack/binding-linux-arm64-musl@2.3.0':
-    resolution: {integrity: sha512-YKbmMCK7RS9YOUKYx2j6hretwv0mPHOQnD2UStDITMAnhsidn63teEyUt5404U53u+tEvyK8toQqqHFbtA/aZQ==}
+  '@rspack/binding-linux-arm64-musl@2.3.1':
+    resolution: {integrity: sha512-He+muVDON1fohGtdYamh3zHVwf6/E6fZu/+iEAkxjclE0P94bsCfYVcZW/a4/l1tJ2zvLZtB4jD7Qr6r4vG/WA==}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
@@ -2612,8 +2612,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rspack/binding-linux-ppc64-gnu@2.3.0':
-    resolution: {integrity: sha512-8hI1CiQTQiBxfFevf1jsFoP2PL4jv9Vc4oUG9Q4ryF+xBwqmKSOLgb0MTgiHz0lQ0jg4hbVcb5fR3ZgK0f3lDg==}
+  '@rspack/binding-linux-ppc64-gnu@2.3.1':
+    resolution: {integrity: sha512-blIZUgyPt4FcSHkZL6sJ2xbzc7ACgDeU49An4mXLSebwdgnlhTzxeSFnh2VeJDlGza8CUaZYB/zS/6oZ2kCDcw==}
     cpu: [ppc64]
     os: [linux]
     libc: [glibc]
@@ -2624,8 +2624,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rspack/binding-linux-riscv64-gnu@2.3.0':
-    resolution: {integrity: sha512-kzXFRjvfQkFd14/zyVG+xNnEurVZPQA1aKL/OcKeIW4niqU13RdIGMbGQ2M8SBfPBbL92ze//CZIiBlz8kZIbg==}
+  '@rspack/binding-linux-riscv64-gnu@2.3.1':
+    resolution: {integrity: sha512-3FtW2DUFmXxhBORUA3zSc+ot4d6R/1/U6z/48TDN4jeIYDUG9VqYBF6LUohX4vBY6IP0DCyXb2N9WayD/9QXoA==}
     cpu: [riscv64]
     os: [linux]
     libc: [glibc]
@@ -2636,8 +2636,8 @@ packages:
     os: [linux]
     libc: [musl]
 
-  '@rspack/binding-linux-riscv64-musl@2.3.0':
-    resolution: {integrity: sha512-ATJC0MwQmkC+wFyoUtpklemROUaW1IRpf7M6depLaiZXuVN8bx0IMFr/iCL1YBLf5+38NBAXsGwO3/bqYxmdQQ==}
+  '@rspack/binding-linux-riscv64-musl@2.3.1':
+    resolution: {integrity: sha512-+5qNgdNdXzp/K8f8BjgJ3m7tcbBKPENN7WPDfBcSHvWb5GF4+o/pbrX26c0+LEugo0bYUOAoitBNd94AwcNvpA==}
     cpu: [riscv64]
     os: [linux]
     libc: [musl]
@@ -2648,8 +2648,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rspack/binding-linux-s390x-gnu@2.3.0':
-    resolution: {integrity: sha512-MWGDa/JKwXNwJiZM/A7Iy4Js7IrEmWExjPefGDFhWmozGJ5BsKdnvD4q3Kb/YfQ+X++LJR5q1o9MkACpdOu/Bw==}
+  '@rspack/binding-linux-s390x-gnu@2.3.1':
+    resolution: {integrity: sha512-yNcg/y1+MV0wZ984CVU4d1HAYYwMcDPXoQO0xynU+K5YuBxPWALHOxuRRCKCcykBdL1GIEshAIewEFrsW/cmJg==}
     cpu: [s390x]
     os: [linux]
     libc: [glibc]
@@ -2666,8 +2666,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rspack/binding-linux-x64-gnu@2.3.0':
-    resolution: {integrity: sha512-XxyrjQXvIjxWIct9ceKUBZdeBbNfZ6OkyAKU62xKuyLCyKiwg7M9LhXvKKfvVyFkK7n10a6t/KeIV8+k+kREoQ==}
+  '@rspack/binding-linux-x64-gnu@2.3.1':
+    resolution: {integrity: sha512-ffclKBuH8wwimOBd6xGUxrBfVKKY5Ow4E7OFdHZeg4xffm2O8auGszmOgvFu1eoDoOYHaVJn+cEV6UD0KwZk8A==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
@@ -2684,8 +2684,8 @@ packages:
     os: [linux]
     libc: [musl]
 
-  '@rspack/binding-linux-x64-musl@2.3.0':
-    resolution: {integrity: sha512-XFY3Ayqpb/j9J9npTtOOa8woswCBDZxWfVUkirxxkvHTEk9eAP3/ABd4wxwRuGQuBFf91Emew/g0K/KpFbyH3Q==}
+  '@rspack/binding-linux-x64-musl@2.3.1':
+    resolution: {integrity: sha512-qcDwwuyxR7TMtrW+r5Y9RIW25boXd1Ip/9jz04jhdq/OiU/Am7rCP2X90CH8sWdzovIF9UNmsGjY4KklR0F2Mg==}
     cpu: [x64]
     os: [linux]
     libc: [musl]
@@ -2694,8 +2694,8 @@ packages:
     resolution: {integrity: sha512-+29JEBiUi2TMDOGYmT3Tm3JGk3f19+CbjxNEt1bVreR8axuZZj+wOSwB/sx85lKQkL5fuNPh0BhOZ7cdkDxQpA==}
     cpu: [wasm32]
 
-  '@rspack/binding-wasm32-wasi@2.3.0':
-    resolution: {integrity: sha512-d24u2ShgaRE2DipdiuVvZMZKjSse1LpLeHqs5wqm1q8S9MW6sjE2GwlIErXSKuNymSqf0YlaN/11jjxLb2x2qA==}
+  '@rspack/binding-wasm32-wasi@2.3.1':
+    resolution: {integrity: sha512-3dr6zjFaCK3A920ftCriSJkiRhEfhHtat7LtBdj6g0mcV5Rt+iealmli0vjeAvD0UdpE1u8EKWlfw82JLgFLSQ==}
     cpu: [wasm32]
 
   '@rspack/binding-win32-arm64-msvc@1.2.8':
@@ -2708,8 +2708,8 @@ packages:
     cpu: [arm64]
     os: [win32]
 
-  '@rspack/binding-win32-arm64-msvc@2.3.0':
-    resolution: {integrity: sha512-foalqSBgpsAPCOLd4zxALB7s06uu1YEa7p74rknv2OciF/kd9bGN4tPIpkTTgYPd2Q6KFpae/Vq8zxPSQFDHRA==}
+  '@rspack/binding-win32-arm64-msvc@2.3.1':
+    resolution: {integrity: sha512-AZbuLPylt1xvWssN93AsirbYs3WgfcrA8tMsqHmVJIHahLu9E+JPKZ3Gmsw6IYEZk3EfnV3ujQzeQ1/VfF0Vsw==}
     cpu: [arm64]
     os: [win32]
 
@@ -2723,8 +2723,8 @@ packages:
     cpu: [ia32]
     os: [win32]
 
-  '@rspack/binding-win32-ia32-msvc@2.3.0':
-    resolution: {integrity: sha512-RVoGgdW0GsWa0fsrqRYQ4JkCLViS/RGqd8gzqgMDmtdyrhHV/bvGiTPYIRYMJPWk9zBhaxA6RAAip3fjKdga8g==}
+  '@rspack/binding-win32-ia32-msvc@2.3.1':
+    resolution: {integrity: sha512-R5NVU68TePZcgRdYUzrQX9YFNxmcyXZEPwaPv40AAgsqNyacG3iRaYVmV79jt3rWYfa0QJaqvRLUchDe2SZ6zQ==}
     cpu: [ia32]
     os: [win32]
 
@@ -2738,8 +2738,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rspack/binding-win32-x64-msvc@2.3.0':
-    resolution: {integrity: sha512-gZyb4zPz8WfGbPLMscY7TX8Y1SDBvQdhHF/Gq1nzt3JEHqYFeZJrQHl0C8atH+PrDK5l7d+lY/qRwfuE+qeJ5A==}
+  '@rspack/binding-win32-x64-msvc@2.3.1':
+    resolution: {integrity: sha512-5T9DYjNPQpLbrNXjCssGd2B6xMQPlc3LxVOKHGUA1O0GV+88vBkTXAcryJ+Fo+yVEMPCzp4VvwBMGAVDpCjcSA==}
     cpu: [x64]
     os: [win32]
 
@@ -2749,8 +2749,8 @@ packages:
   '@rspack/binding@2.2.9':
     resolution: {integrity: sha512-Y8wDJoRo8n0KXDGq6J3KGVekkUQcOcUHSppMHoJv8JLbNBEsyaaKiDx4ljNTGEDtTON0CRbMEWbSiLRe+bJxOQ==}
 
-  '@rspack/binding@2.3.0':
-    resolution: {integrity: sha512-rh9S5xvGVs73gdqMDMYXi3SHUfCWIChlL7a8zaYF8+1HLtIgdMyxa100f1ifAKlr8VoyFUv3xrfGLBaoxwjU5g==}
+  '@rspack/binding@2.3.1':
+    resolution: {integrity: sha512-pfCJGBFNK2tnNnoDP6ZoTbOjxbKr1U2eGFDJ8bIuZQai4FBNhWQlKFmNup+X5K935XYRulZBomIBAL6GL6W2YQ==}
 
   '@rspack/core@1.2.8':
     resolution: {integrity: sha512-ppj3uQQtkhgrYDLrUqb33YbpNEZCpAudpfVuOHGsvUrAnu1PijbfJJymoA5ZvUhM+HNMvPI5D1ie97TXyb0UVg==}
@@ -2776,8 +2776,8 @@ packages:
       '@swc/helpers':
         optional: true
 
-  '@rspack/core@2.3.0':
-    resolution: {integrity: sha512-1zylQSMl3xo1f57ZqJMHAoVddRv1BSvpQQVIgWjP51AGhLyeHTAfEf0mphb0wb0bOUf5EujpvvO592X9GMf2qQ==}
+  '@rspack/core@2.3.1':
+    resolution: {integrity: sha512-9BWfaiEJLgLK9U53Q4WVruBZ19Mu/XWHXHEu0UFla4lUtH8Z+/ET2m044tiqbtyIgqQyG58fMrxHeVIAiXMXHg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@module-federation/runtime-tools': ^0.24.1 || ^2.0.0
@@ -4212,8 +4212,8 @@ packages:
       typescript:
         optional: true
 
-  rsbuild-plugin-dts@1.0.5:
-    resolution: {integrity: sha512-n7vHGdPxB3PWoDpLNP1fZ4WBmHEKqzKP0L++/HBDmSAznlah9mEHAXV1NEmGAaaJ3o4qLGYvEn/Z952Rni83ZQ==}
+  rsbuild-plugin-dts@1.0.6:
+    resolution: {integrity: sha512-KvSmhCfqZpNCF8F+xw40uFYZrp4SR264QvsjBLoXobMEuSVb/LffvfjAk/TqJ1LmWI9B7eGWeKMBOFIW5VIScQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@microsoft/api-extractor': ^7
@@ -4812,47 +4812,47 @@ snapshots:
 
   '@bcoe/v8-coverage@1.0.2': {}
 
-  '@biomejs/biome@2.6.4':
+  '@biomejs/biome@2.6.5':
     optionalDependencies:
-      '@biomejs/cli-android-arm64': 2.6.4
-      '@biomejs/cli-android-x64': 2.6.4
-      '@biomejs/cli-darwin-arm64': 2.6.4
-      '@biomejs/cli-darwin-x64': 2.6.4
-      '@biomejs/cli-linux-arm64': 2.6.4
-      '@biomejs/cli-linux-arm64-musl': 2.6.4
-      '@biomejs/cli-linux-x64': 2.6.4
-      '@biomejs/cli-linux-x64-musl': 2.6.4
-      '@biomejs/cli-win32-arm64': 2.6.4
-      '@biomejs/cli-win32-x64': 2.6.4
+      '@biomejs/cli-android-arm64': 2.6.5
+      '@biomejs/cli-android-x64': 2.6.5
+      '@biomejs/cli-darwin-arm64': 2.6.5
+      '@biomejs/cli-darwin-x64': 2.6.5
+      '@biomejs/cli-linux-arm64': 2.6.5
+      '@biomejs/cli-linux-arm64-musl': 2.6.5
+      '@biomejs/cli-linux-x64': 2.6.5
+      '@biomejs/cli-linux-x64-musl': 2.6.5
+      '@biomejs/cli-win32-arm64': 2.6.5
+      '@biomejs/cli-win32-x64': 2.6.5
 
-  '@biomejs/cli-android-arm64@2.6.4':
+  '@biomejs/cli-android-arm64@2.6.5':
     optional: true
 
-  '@biomejs/cli-android-x64@2.6.4':
+  '@biomejs/cli-android-x64@2.6.5':
     optional: true
 
-  '@biomejs/cli-darwin-arm64@2.6.4':
+  '@biomejs/cli-darwin-arm64@2.6.5':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.6.4':
+  '@biomejs/cli-darwin-x64@2.6.5':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.6.4':
+  '@biomejs/cli-linux-arm64-musl@2.6.5':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.6.4':
+  '@biomejs/cli-linux-arm64@2.6.5':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.6.4':
+  '@biomejs/cli-linux-x64-musl@2.6.5':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.6.4':
+  '@biomejs/cli-linux-x64@2.6.5':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.6.4':
+  '@biomejs/cli-win32-arm64@2.6.5':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.6.4':
+  '@biomejs/cli-win32-x64@2.6.5':
     optional: true
 
   '@changesets/apply-release-plan@8.1.1':
@@ -5061,7 +5061,7 @@ snapshots:
   '@js-sdsl/ordered-map@4.4.2':
     optional: true
 
-  '@lynx-js/autolink-codegen@0.2.1': {}
+  '@lynx-js/autolink-codegen@0.6.0': {}
 
   '@lynx-js/cache-events-webpack-plugin@0.2.2':
     dependencies:
@@ -5086,38 +5086,38 @@ snapshots:
     optionalDependencies:
       '@rsbuild/core': 2.2.9(core-js@3.41.0)
 
-  '@lynx-js/debug-metadata-rsbuild-plugin@0.2.3(@rsbuild/core@2.3.0(core-js@3.41.0))':
+  '@lynx-js/debug-metadata-rsbuild-plugin@0.2.3(@rsbuild/core@2.3.1(core-js@3.41.0))':
     dependencies:
       '@lynx-js/debug-metadata': 0.1.0
     optionalDependencies:
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
 
   '@lynx-js/debug-metadata@0.1.0': {}
 
   '@lynx-js/internal-preact@11.0.0-rc.1-20260903085447-f95471a': {}
 
-  '@lynx-js/qrcode-rsbuild-plugin@0.7.3(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.0(core-js@3.41.0))':
+  '@lynx-js/qrcode-rsbuild-plugin@0.7.3(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.1(core-js@3.41.0))':
     optionalDependencies:
-      '@lynx-js/rspeedy': 0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
+      '@lynx-js/rspeedy': 0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
 
-  '@lynx-js/react-alias-rsbuild-plugin@0.22.1(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.0(core-js@3.41.0))':
+  '@lynx-js/react-alias-rsbuild-plugin@0.22.1(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.1(core-js@3.41.0))':
     optionalDependencies:
       '@lynx-js/react': 0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0)
-      '@lynx-js/rspeedy': 0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
+      '@lynx-js/rspeedy': 0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
 
   '@lynx-js/react-refresh-webpack-plugin@0.4.6(@lynx-js/react-webpack-plugin@0.15.0(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/template-webpack-plugin@0.16.6(tslib@2.8.1)))':
     dependencies:
       '@lynx-js/react-webpack-plugin': 0.15.0(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/template-webpack-plugin@0.16.6(tslib@2.8.1))
 
-  '@lynx-js/react-rsbuild-plugin@0.22.1(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.0(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))':
+  '@lynx-js/react-rsbuild-plugin@0.22.1(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.1(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))':
     dependencies:
       '@lynx-js/css-extract-webpack-plugin': 0.11.1(@lynx-js/template-webpack-plugin@0.16.6(tslib@2.8.1))
-      '@lynx-js/react-alias-rsbuild-plugin': 0.22.1(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.0(core-js@3.41.0))
+      '@lynx-js/react-alias-rsbuild-plugin': 0.22.1(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)))(@rsbuild/core@2.3.1(core-js@3.41.0))
       '@lynx-js/react-refresh-webpack-plugin': 0.4.6(@lynx-js/react-webpack-plugin@0.15.0(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/template-webpack-plugin@0.16.6(tslib@2.8.1)))
       '@lynx-js/react-webpack-plugin': 0.15.0(@lynx-js/react@0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0))(@lynx-js/template-webpack-plugin@0.16.6(tslib@2.8.1))
-      '@lynx-js/rsbuild-plugin': 0.1.7(@rsbuild/core@2.3.0(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+      '@lynx-js/rsbuild-plugin': 0.1.7(@rsbuild/core@2.3.1(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
       '@lynx-js/runtime-config-webpack-plugin': 0.0.2
       '@lynx-js/runtime-wrapper-webpack-plugin': 0.2.6
       '@lynx-js/template-webpack-plugin': 0.16.6(tslib@2.8.1)
@@ -5126,8 +5126,8 @@ snapshots:
       tiny-invariant: 1.3.3
     optionalDependencies:
       '@lynx-js/react': 0.129.1(@lynx-js/types@4.4.2)(@types/react@19.3.0)
-      '@lynx-js/rspeedy': 0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
+      '@lynx-js/rspeedy': 0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
     transitivePeerDependencies:
       - '@lynx-js/animax'
       - '@lynx-js/lynx-core'
@@ -5208,19 +5208,19 @@ snapshots:
       - tslib
       - webpack
 
-  '@lynx-js/rsbuild-plugin@0.1.7(@rsbuild/core@2.3.0(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))':
+  '@lynx-js/rsbuild-plugin@0.1.7(@rsbuild/core@2.3.1(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))':
     dependencies:
       '@lynx-js/cache-events-webpack-plugin': 0.2.2
       '@lynx-js/chunk-loading-webpack-plugin': 0.4.3
-      '@lynx-js/debug-metadata-rsbuild-plugin': 0.2.3(@rsbuild/core@2.3.0(core-js@3.41.0))
+      '@lynx-js/debug-metadata-rsbuild-plugin': 0.2.3(@rsbuild/core@2.3.1(core-js@3.41.0))
       '@lynx-js/runtime-wrapper-webpack-plugin': 0.2.6
       '@lynx-js/template-webpack-plugin': 0.16.6(tslib@2.8.1)
       '@lynx-js/web-rsbuild-server-middleware': 0.26.6
       '@lynx-js/webpack-dev-transport': 0.4.1
       '@lynx-js/websocket': 0.0.4
-      '@rsbuild/plugin-css-minimizer': 2.0.1(@rsbuild/core@2.3.0(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+      '@rsbuild/plugin-css-minimizer': 2.0.1(@rsbuild/core@2.3.1(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
     optionalDependencies:
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
     transitivePeerDependencies:
       - '@lynx-js/animax'
       - '@lynx-js/lynx-core'
@@ -5233,11 +5233,11 @@ snapshots:
       - tslib
       - webpack
 
-  '@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.26))':
+  '@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.26))':
     dependencies:
       '@lynx-js/rsbuild-plugin': 0.1.7(@rsbuild/core@2.2.9(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.26))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.26))
       '@rsbuild/core': 2.2.9(core-js@3.41.0)
-      '@rsdoctor/core': 2.0.0(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)
+      '@rsdoctor/core': 2.0.0(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)
     optionalDependencies:
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -5256,11 +5256,11 @@ snapshots:
       - tslib
       - webpack
 
-  '@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))':
+  '@lynx-js/rspeedy@0.18.4(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)(core-js@3.41.0)(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(typescript@6.0.3)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))':
     dependencies:
       '@lynx-js/rsbuild-plugin': 0.1.7(@rsbuild/core@2.2.9(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(tslib@2.8.1)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
       '@rsbuild/core': 2.2.9(core-js@3.41.0)
-      '@rsdoctor/core': 2.0.0(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)
+      '@rsdoctor/core': 2.0.0(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)
     optionalDependencies:
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -5794,9 +5794,9 @@ snapshots:
     transitivePeerDependencies:
       - '@module-federation/runtime-tools'
 
-  '@rsbuild/core@2.3.0(core-js@3.41.0)':
+  '@rsbuild/core@2.3.1(core-js@3.41.0)':
     dependencies:
-      '@rspack/core': 2.3.0(@swc/helpers@0.5.23)
+      '@rspack/core': 2.3.1(@swc/helpers@0.5.23)
       '@swc/helpers': 0.5.23
     optionalDependencies:
       core-js: 3.41.0
@@ -5833,12 +5833,12 @@ snapshots:
       - lightningcss
       - webpack
 
-  '@rsbuild/plugin-css-minimizer@2.0.1(@rsbuild/core@2.3.0(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))':
+  '@rsbuild/plugin-css-minimizer@2.0.1(@rsbuild/core@2.3.1(core-js@3.41.0))(csso@5.0.5)(lightningcss@1.33.0)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))':
     dependencies:
       css-minimizer-webpack-plugin: 8.0.0(csso@5.0.5)(lightningcss@1.33.0)(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
       reduce-configs: 1.1.2
     optionalDependencies:
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
     transitivePeerDependencies:
       - '@parcel/css'
       - '@swc/css'
@@ -5850,19 +5850,19 @@ snapshots:
 
   '@rsdoctor/client@2.0.0': {}
 
-  '@rsdoctor/core@2.0.0(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)':
+  '@rsdoctor/core@2.0.0(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)':
     dependencies:
       '@rsdoctor/client': 2.0.0
-      '@rsdoctor/shared': 2.0.0(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)
+      '@rsdoctor/shared': 2.0.0(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)
       caniuse-lite: 1.0.30001820
       sirv: 3.0.2
       source-map: 0.8.0
     optionalDependencies:
-      '@rspack/core': 2.3.0(@swc/helpers@0.5.23)
+      '@rspack/core': 2.3.1(@swc/helpers@0.5.23)
     transitivePeerDependencies:
       - '@types/node'
 
-  '@rsdoctor/shared@2.0.0(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@types/node@24.13.3)':
+  '@rsdoctor/shared@2.0.0(@rspack/core@2.3.1(@swc/helpers@0.5.23))(@types/node@24.13.3)':
     dependencies:
       '@rspack/lite-tapable': 1.3.0
       '@types/estree': 1.0.5
@@ -5872,7 +5872,7 @@ snapshots:
       path-browserify: 1.0.1
       source-map: 0.8.0
     optionalDependencies:
-      '@rspack/core': 2.3.0(@swc/helpers@0.5.23)
+      '@rspack/core': 2.3.1(@swc/helpers@0.5.23)
 
   '@rslib/core@0.5.5(@rspack/tracing@1.3.5(supports-color@8.1.1))(typescript@5.9.3)':
     dependencies:
@@ -5884,20 +5884,20 @@ snapshots:
     transitivePeerDependencies:
       - '@rspack/tracing'
 
-  '@rslib/core@1.0.5(core-js@3.41.0)(typescript@5.9.3)':
+  '@rslib/core@1.0.6(core-js@3.41.0)(typescript@5.9.3)':
     dependencies:
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
-      rsbuild-plugin-dts: 1.0.5(@rsbuild/core@2.3.0(core-js@3.41.0))(typescript@5.9.3)
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
+      rsbuild-plugin-dts: 1.0.6(@rsbuild/core@2.3.1(core-js@3.41.0))(typescript@5.9.3)
     optionalDependencies:
       typescript: 5.9.3
     transitivePeerDependencies:
       - '@module-federation/runtime-tools'
       - core-js
 
-  '@rslib/core@1.0.5(core-js@3.41.0)(typescript@6.0.3)':
+  '@rslib/core@1.0.6(core-js@3.41.0)(typescript@6.0.3)':
     dependencies:
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
-      rsbuild-plugin-dts: 1.0.5(@rsbuild/core@2.3.0(core-js@3.41.0))(typescript@6.0.3)
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
+      rsbuild-plugin-dts: 1.0.6(@rsbuild/core@2.3.1(core-js@3.41.0))(typescript@6.0.3)
     optionalDependencies:
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -5910,7 +5910,7 @@ snapshots:
   '@rspack/binding-darwin-arm64@2.2.9':
     optional: true
 
-  '@rspack/binding-darwin-arm64@2.3.0':
+  '@rspack/binding-darwin-arm64@2.3.1':
     optional: true
 
   '@rspack/binding-darwin-x64@1.2.8':
@@ -5919,7 +5919,7 @@ snapshots:
   '@rspack/binding-darwin-x64@2.2.9':
     optional: true
 
-  '@rspack/binding-darwin-x64@2.3.0':
+  '@rspack/binding-darwin-x64@2.3.1':
     optional: true
 
   '@rspack/binding-linux-arm64-gnu@1.2.8':
@@ -5928,7 +5928,7 @@ snapshots:
   '@rspack/binding-linux-arm64-gnu@2.2.9':
     optional: true
 
-  '@rspack/binding-linux-arm64-gnu@2.3.0':
+  '@rspack/binding-linux-arm64-gnu@2.3.1':
     optional: true
 
   '@rspack/binding-linux-arm64-musl@1.2.8':
@@ -5937,31 +5937,31 @@ snapshots:
   '@rspack/binding-linux-arm64-musl@2.2.9':
     optional: true
 
-  '@rspack/binding-linux-arm64-musl@2.3.0':
+  '@rspack/binding-linux-arm64-musl@2.3.1':
     optional: true
 
   '@rspack/binding-linux-ppc64-gnu@2.2.9':
     optional: true
 
-  '@rspack/binding-linux-ppc64-gnu@2.3.0':
+  '@rspack/binding-linux-ppc64-gnu@2.3.1':
     optional: true
 
   '@rspack/binding-linux-riscv64-gnu@2.2.9':
     optional: true
 
-  '@rspack/binding-linux-riscv64-gnu@2.3.0':
+  '@rspack/binding-linux-riscv64-gnu@2.3.1':
     optional: true
 
   '@rspack/binding-linux-riscv64-musl@2.2.9':
     optional: true
 
-  '@rspack/binding-linux-riscv64-musl@2.3.0':
+  '@rspack/binding-linux-riscv64-musl@2.3.1':
     optional: true
 
   '@rspack/binding-linux-s390x-gnu@2.2.9':
     optional: true
 
-  '@rspack/binding-linux-s390x-gnu@2.3.0':
+  '@rspack/binding-linux-s390x-gnu@2.3.1':
     optional: true
 
   '@rspack/binding-linux-x64-gnu@1.2.8':
@@ -5970,7 +5970,7 @@ snapshots:
   '@rspack/binding-linux-x64-gnu@2.2.9':
     optional: true
 
-  '@rspack/binding-linux-x64-gnu@2.3.0':
+  '@rspack/binding-linux-x64-gnu@2.3.1':
     optional: true
 
   '@rspack/binding-linux-x64-musl@1.2.8':
@@ -5979,7 +5979,7 @@ snapshots:
   '@rspack/binding-linux-x64-musl@2.2.9':
     optional: true
 
-  '@rspack/binding-linux-x64-musl@2.3.0':
+  '@rspack/binding-linux-x64-musl@2.3.1':
     optional: true
 
   '@rspack/binding-wasm32-wasi@2.2.9':
@@ -5989,7 +5989,7 @@ snapshots:
       '@napi-rs/wasm-runtime': 1.1.6(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)
     optional: true
 
-  '@rspack/binding-wasm32-wasi@2.3.0':
+  '@rspack/binding-wasm32-wasi@2.3.1':
     dependencies:
       '@emnapi/core': 1.11.3
       '@emnapi/runtime': 1.11.3
@@ -6002,7 +6002,7 @@ snapshots:
   '@rspack/binding-win32-arm64-msvc@2.2.9':
     optional: true
 
-  '@rspack/binding-win32-arm64-msvc@2.3.0':
+  '@rspack/binding-win32-arm64-msvc@2.3.1':
     optional: true
 
   '@rspack/binding-win32-ia32-msvc@1.2.8':
@@ -6011,7 +6011,7 @@ snapshots:
   '@rspack/binding-win32-ia32-msvc@2.2.9':
     optional: true
 
-  '@rspack/binding-win32-ia32-msvc@2.3.0':
+  '@rspack/binding-win32-ia32-msvc@2.3.1':
     optional: true
 
   '@rspack/binding-win32-x64-msvc@1.2.8':
@@ -6020,7 +6020,7 @@ snapshots:
   '@rspack/binding-win32-x64-msvc@2.2.9':
     optional: true
 
-  '@rspack/binding-win32-x64-msvc@2.3.0':
+  '@rspack/binding-win32-x64-msvc@2.3.1':
     optional: true
 
   '@rspack/binding@1.2.8':
@@ -6052,22 +6052,22 @@ snapshots:
       '@rspack/binding-win32-ia32-msvc': 2.2.9
       '@rspack/binding-win32-x64-msvc': 2.2.9
 
-  '@rspack/binding@2.3.0':
+  '@rspack/binding@2.3.1':
     optionalDependencies:
-      '@rspack/binding-darwin-arm64': 2.3.0
-      '@rspack/binding-darwin-x64': 2.3.0
-      '@rspack/binding-linux-arm64-gnu': 2.3.0
-      '@rspack/binding-linux-arm64-musl': 2.3.0
-      '@rspack/binding-linux-ppc64-gnu': 2.3.0
-      '@rspack/binding-linux-riscv64-gnu': 2.3.0
-      '@rspack/binding-linux-riscv64-musl': 2.3.0
-      '@rspack/binding-linux-s390x-gnu': 2.3.0
-      '@rspack/binding-linux-x64-gnu': 2.3.0
-      '@rspack/binding-linux-x64-musl': 2.3.0
-      '@rspack/binding-wasm32-wasi': 2.3.0
-      '@rspack/binding-win32-arm64-msvc': 2.3.0
-      '@rspack/binding-win32-ia32-msvc': 2.3.0
-      '@rspack/binding-win32-x64-msvc': 2.3.0
+      '@rspack/binding-darwin-arm64': 2.3.1
+      '@rspack/binding-darwin-x64': 2.3.1
+      '@rspack/binding-linux-arm64-gnu': 2.3.1
+      '@rspack/binding-linux-arm64-musl': 2.3.1
+      '@rspack/binding-linux-ppc64-gnu': 2.3.1
+      '@rspack/binding-linux-riscv64-gnu': 2.3.1
+      '@rspack/binding-linux-riscv64-musl': 2.3.1
+      '@rspack/binding-linux-s390x-gnu': 2.3.1
+      '@rspack/binding-linux-x64-gnu': 2.3.1
+      '@rspack/binding-linux-x64-musl': 2.3.1
+      '@rspack/binding-wasm32-wasi': 2.3.1
+      '@rspack/binding-win32-arm64-msvc': 2.3.1
+      '@rspack/binding-win32-ia32-msvc': 2.3.1
+      '@rspack/binding-win32-x64-msvc': 2.3.1
 
   '@rspack/core@1.2.8(@rspack/tracing@1.3.5(supports-color@8.1.1))(@swc/helpers@0.5.23)':
     dependencies:
@@ -6085,9 +6085,9 @@ snapshots:
     optionalDependencies:
       '@swc/helpers': 0.5.23
 
-  '@rspack/core@2.3.0(@swc/helpers@0.5.23)':
+  '@rspack/core@2.3.1(@swc/helpers@0.5.23)':
     dependencies:
-      '@rspack/binding': 2.3.0
+      '@rspack/binding': 2.3.1
     optionalDependencies:
       '@swc/helpers': 0.5.23
 
@@ -7833,17 +7833,17 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  rsbuild-plugin-dts@1.0.5(@rsbuild/core@2.3.0(core-js@3.41.0))(typescript@5.9.3):
+  rsbuild-plugin-dts@1.0.6(@rsbuild/core@2.3.1(core-js@3.41.0))(typescript@5.9.3):
     dependencies:
       '@ast-grep/napi': 0.51.0
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
     optionalDependencies:
       typescript: 5.9.3
 
-  rsbuild-plugin-dts@1.0.5(@rsbuild/core@2.3.0(core-js@3.41.0))(typescript@6.0.3):
+  rsbuild-plugin-dts@1.0.6(@rsbuild/core@2.3.1(core-js@3.41.0))(typescript@6.0.3):
     dependencies:
       '@ast-grep/napi': 0.51.0
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
     optionalDependencies:
       typescript: 6.0.3
 
@@ -8156,12 +8156,12 @@ snapshots:
 
   unicorn-magic@0.1.0: {}
 
-  unplugin-ast@0.19.2(@rsbuild/core@2.3.0(core-js@3.41.0))(@rspack/core@2.3.0(@swc/helpers@0.5.23))(rolldown@1.2.16)(rollup@4.63.1)(vite@8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)):
+  unplugin-ast@0.19.2(@rsbuild/core@2.3.1(core-js@3.41.0))(@rspack/core@2.3.1(@swc/helpers@0.5.23))(rolldown@1.2.16)(rollup@4.63.1)(vite@8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)):
     dependencies:
       '@yuku-toolchain/types': 0.19.0
       magic-string-ast: 2.1.1
       rolldown-string: 0.3.1(rolldown@1.2.16)
-      unplugin: 3.7.0(@rsbuild/core@2.3.0(core-js@3.41.0))(@rspack/core@2.3.0(@swc/helpers@0.5.23))(rolldown@1.2.16)(rollup@4.63.1)(vite@8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
+      unplugin: 3.7.0(@rsbuild/core@2.3.1(core-js@3.41.0))(@rspack/core@2.3.1(@swc/helpers@0.5.23))(rolldown@1.2.16)(rollup@4.63.1)(vite@8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32))
       yuku-ast: 0.19.0
       yuku-codegen: 0.19.0
       yuku-parser: 0.19.0
@@ -8177,15 +8177,15 @@ snapshots:
       - vite
       - webpack
 
-  unplugin@3.7.0(@rsbuild/core@2.3.0(core-js@3.41.0))(@rspack/core@2.3.0(@swc/helpers@0.5.23))(rolldown@1.2.16)(rollup@4.63.1)(vite@8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)):
+  unplugin@3.7.0(@rsbuild/core@2.3.1(core-js@3.41.0))(@rspack/core@2.3.1(@swc/helpers@0.5.23))(rolldown@1.2.16)(rollup@4.63.1)(vite@8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.110.1(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(lightningcss@1.33.0)(postcss@8.5.32)):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       '@rolldown/pluginutils': 1.0.1
       picomatch: 4.0.7
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
-      '@rsbuild/core': 2.3.0(core-js@3.41.0)
-      '@rspack/core': 2.3.0(@swc/helpers@0.5.23)
+      '@rsbuild/core': 2.3.1(core-js@3.41.0)
+      '@rspack/core': 2.3.1(@swc/helpers@0.5.23)
       rolldown: 1.2.16
       rollup: 4.63.1
       vite: 8.3.5(@types/node@24.13.3)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)

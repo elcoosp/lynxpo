@@ -73,7 +73,7 @@
     "@lynxpo/mods-live-photo": "workspace:*",
     "@lynxpo/mods-network-addons": "workspace:*",
     "@lynxpo/mods-standard-web-crypto": "workspace:*",
-    "@rsbuild/core": "2.3.0",
+    "@rsbuild/core": "2.3.1",
     "glob": "^14.0.3",
     "unplugin-ast": "^0.19.2",
     "@lynxpo/mods-file-system": "workspace:*",

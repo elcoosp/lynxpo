@@ -19,6 +19,8 @@ minimumReleaseAgeExclude:
   - "@vitest/mocker@5.1.0"
   - "@vitest/spy@5.1.0"
   - vitest@5.1.0
+  - "@rslib/core@1.0.6"
+  - rsbuild-plugin-dts@1.0.6
 
 onlyBuiltDependencies:
   - "@biomejs/biome"
