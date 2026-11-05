@@ -22,7 +22,7 @@ export function useMailComposerInfo(): ModuleInfo {
       const v1 = getGetClients();
       setRows([
         { label: 'Available', value: v0 ? 'Yes' : 'No' },
-        { label: 'Clients', value: v1 && v1.length ? String(v1.length) : '0' },
+        { label: 'Clients', value: v1?.length ? String(v1.length) : '0' },
       ]);
       setError(null);
     } catch (err) {
