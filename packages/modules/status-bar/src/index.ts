@@ -1,6 +1,5 @@
 // Auto-generated from StatusBar.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { StatusBar } from './generated/StatusBar';
 
 export const getSetStyle = (style: string): void =>
   NativeModules.StatusBar?.setStyle?.(style);
