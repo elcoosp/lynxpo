@@ -46,7 +46,7 @@ export function useClipboardInfo(): ModuleInfo {
           label: 'Preview',
           value: text
             ? String(text).length > 24
-              ? String(text).slice(0, 24) + '…'
+              ? `${String(text).slice(0, 24)}…`
               : String(text)
             : '—',
         },
