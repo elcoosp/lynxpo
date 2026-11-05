@@ -27,7 +27,7 @@ function AddonCheck() {
       // instead of throwing a ReferenceError into the diagnostic banner.
       const exports =
         typeof __lynx_node_addon_exports__ !== 'undefined'
-          ? __lynx_node_addon_exports__['network']
+          ? __lynx_node_addon_exports__.network
           : undefined;
       const result = exports
         ? (exports.foo as () => unknown)()
