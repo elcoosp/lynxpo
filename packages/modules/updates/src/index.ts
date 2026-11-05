@@ -1,6 +1,5 @@
 // Auto-generated from UpdatesModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { NativeModules as INativeModules } from '@lynx-js/types';
 
 export const getGetNativeStateAsync = (): any =>
   NativeModules.UpdatesModule?.getNativeStateAsync?.();
