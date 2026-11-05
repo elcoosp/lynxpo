@@ -1,6 +1,5 @@
 // Auto-generated from ReceiveSharingModule.kt
 import { useEffect, useState } from '@lynx-js/react';
-import { NativeModules as INativeModules } from '@lynx-js/types';
 
 export const getGetInitialIntentAsync = (...args: any[]): Promise<any> =>
   NativeModules.ReceiveSharingModule?.getInitialIntentAsync?.(...args);
