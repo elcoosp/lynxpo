@@ -22,7 +22,7 @@ export function useNetworkInfo(): ModuleInfo {
       const v1 = getGetNetworkState();
       setRows([
         { label: 'IP address', value: v0 ?? '—' },
-        { label: 'Connected', value: v1 && v1.isConnected ? 'Yes' : 'No' },
+        { label: 'Connected', value: v1?.isConnected ? 'Yes' : 'No' },
         {
           label: 'Type',
           value: v1 ? (['Unknown', 'Wifi', 'Cellular'][v1.type] ?? '—') : '—',
