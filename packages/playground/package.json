@@ -4,10 +4,11 @@
   "type": "module",
   "scripts": {
     "build": "rspeedy build",
-    "check": "biome check --write",
+    "check": "biome check --error-on-warnings",
     "dev": "rspeedy dev",
     "fmt": "biome format --write",
-    "preview": "rspeedy preview"
+    "preview": "rspeedy preview",
+    "check:fix": "biome check --write --unsafe"
   },
   "dependencies": {
     "@lynx-js/react": "0.129.1",
@@ -82,7 +83,7 @@
     "@lynxpo/mods-updates": "workspace:*"
   },
   "devDependencies": {
-    "@babel/types": "^8.0.10",
+    "@babel/types": "^8.1.0",
     "@lynx-js/qrcode-rsbuild-plugin": "0.7.3",
     "@lynx-js/react-rsbuild-plugin": "0.22.1",
     "@lynx-js/rspeedy": "0.18.4",
