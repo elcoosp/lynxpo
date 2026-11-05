@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /** Remove the ktts plugin from every module rslib.config.ts. */
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const modulesDir = join(process.cwd(), 'packages/modules');
@@ -13,7 +13,10 @@ for (const name of readdirSync(modulesDir)) {
   const before = src;
 
   // Drop the import …
-  src = src.replace(/import \{ pluginKotlinToTS \} from '@lynxpo\/plugins-ktts';\n/, '');
+  src = src.replace(
+    /import \{ pluginKotlinToTS \} from '@lynxpo\/plugins-ktts';\n/,
+    '',
+  );
   // … and the whole plugins: [ pluginKotlinToTS({ … }) ] block (balanced braces).
   const start = src.indexOf('  plugins: [');
   if (start !== -1) {
