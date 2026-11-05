@@ -32,8 +32,8 @@ android {
 
 dependencies {
     implementation("org.lynxsdk.lynx:lynx:4.2.0")
-    implementation("androidx.annotation:annotation:1.9.1")
-    implementation("androidx.core:core:1.19.0")
+    implementation("androidx.annotation:annotation:1.11.0")
+    implementation("androidx.core:core:1.19.1")
     implementation("androidx.appcompat:appcompat:1.8.0")
     implementation("com.facebook.device.yearclass:yearclass:2.1.0")
 }
