@@ -8,5 +8,8 @@ export declare class LocalAuthenticationModule {
   isEnrolledAsync(): any;
   getEnrolledLevelAsync(): any;
   supportedAuthenticationTypesAsync(): any;
-  authenticateAsync(prompt: string, cb: function): void;
+  authenticateAsync(
+    prompt: string,
+    cb: (result: Record<string, any>) => void,
+  ): void;
 }
