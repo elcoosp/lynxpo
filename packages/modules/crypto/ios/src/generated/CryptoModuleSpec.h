@@ -9,6 +9,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString *)getRandomBytes:(double)byteCount;
 - (nullable NSString *)randomUUID;
 - (id)getRandomBytesAsync:(double)byteCount;
+- (nullable NSString *)digestString:(NSString *)algorithm data:(NSString *)data encoding:(NSString *)encoding;
+- (id)digestStringAsync:(NSString *)algorithm data:(NSString *)data encoding:(NSString *)encoding;
 
 @end
 
