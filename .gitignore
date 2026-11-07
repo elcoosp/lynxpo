@@ -17,3 +17,4 @@ dump.txt
 
 # Test coverage output
 coverage
+.turbo/
