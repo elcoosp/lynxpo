@@ -12,23 +12,23 @@ public abstract class ApplicationModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract String applicationName();
+  public abstract Object applicationName();
 
   @LynxMethod
-  public abstract String applicationId();
+  public abstract Object applicationId();
 
   @LynxMethod
-  public abstract String nativeApplicationVersion();
+  public abstract Object nativeApplicationVersion();
 
   @LynxMethod
-  public abstract String nativeBuildVersion();
+  public abstract Object nativeBuildVersion();
 
   @LynxMethod
-  public abstract String androidId();
+  public abstract Object androidId();
 
   @LynxMethod
-  public abstract double getInstallationTime();
+  public abstract Object getInstallationTime();
 
   @LynxMethod
-  public abstract double getLastUpdateTime();
+  public abstract Object getLastUpdateTime();
 }
