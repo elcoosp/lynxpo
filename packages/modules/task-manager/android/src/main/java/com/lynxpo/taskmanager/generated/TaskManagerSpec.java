@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableArray;
 
 public abstract class TaskManagerSpec extends LynxContextModule {
   public TaskManagerSpec(LynxContext context) {
@@ -16,7 +15,7 @@ public abstract class TaskManagerSpec extends LynxContextModule {
   public abstract boolean isTaskRegistered(String taskName);
 
   @LynxMethod
-  public abstract WritableArray getRegisteredTasks();
+  public abstract Object getRegisteredTasks();
 
   @LynxMethod
   public abstract void unregisterTaskAsync(String taskName);
