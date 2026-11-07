@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class BackgroundFetchSpec extends LynxContextModule {
   public BackgroundFetchSpec(LynxContext context) {
@@ -13,7 +12,7 @@ public abstract class BackgroundFetchSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableMap getStatus();
+  public abstract Object getStatus();
 
   @LynxMethod
   public abstract void registerTaskAsync(String taskName);
