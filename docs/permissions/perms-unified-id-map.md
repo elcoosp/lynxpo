@@ -111,5 +111,4 @@ Copy
 3. **Deprecation Handling**:
    - Map deprecated permissions (e.g., Android’s `WRITE_EXTERNAL_STORAGE`) to modern replacements.
 
-
 For a complete list of iOS keys, refer to Apple’s [**Privacy-Specific Keys**](https://developer.apple.com/documentation/bundleresources/information_property_list#Privacy-Specific_Keys). For Android, see the [**Manifest Permissions**](https://developer.android.com/reference/android/Manifest.permission) list.
