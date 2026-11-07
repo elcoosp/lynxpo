@@ -5,8 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableArray;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class CalendarSpec extends LynxContextModule {
   public CalendarSpec(LynxContext context) {
@@ -14,16 +12,16 @@ public abstract class CalendarSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableArray getCalendars();
+  public abstract Object getCalendars();
 
   @LynxMethod
-  public abstract WritableArray getEvents(String startDate, String endDate);
+  public abstract Object getEvents(String startDate, String endDate);
 
   @LynxMethod
-  public abstract WritableMap requestPermissions();
+  public abstract Object requestPermissions();
 
   @LynxMethod
-  public abstract WritableMap getPermissions();
+  public abstract Object getPermissions();
 
   @LynxMethod
   public abstract String createEvent(String title, String startDate, String endDate);
