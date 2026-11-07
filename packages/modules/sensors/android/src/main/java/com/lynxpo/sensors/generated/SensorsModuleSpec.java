@@ -5,9 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.JavaOnlyMap;
-
-import com.lynx.jsbridge.Promise;
 
 public abstract class SensorsModuleSpec extends LynxContextModule {
   public SensorsModuleSpec(LynxContext context) {
@@ -15,20 +12,20 @@ public abstract class SensorsModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract JavaOnlyMap getAccelerometer();
+  public abstract Object getAccelerometer();
 
   @LynxMethod
-  public abstract JavaOnlyMap getGyroscope();
+  public abstract Object getGyroscope();
 
   @LynxMethod
   public abstract boolean isAvailable();
 
   @LynxMethod
-  public abstract void getAccelerometerAsync(final Promise promise);
+  public abstract Object getAccelerometerAsync();
 
   @LynxMethod
-  public abstract void getGyroscopeAsync(final Promise promise);
+  public abstract Object getGyroscopeAsync();
 
   @LynxMethod
-  public abstract void isAvailableAsync(final Promise promise);
+  public abstract Object isAvailableAsync();
 }
