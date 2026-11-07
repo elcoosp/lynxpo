@@ -77,5 +77,4 @@ type UnifiedCategory =
 
 - **iOS Usage Descriptions**: [Apple Privacy Keys](https://developer.apple.com/documentation/bundleresources/information_property_list#Privacy-Specific_Keys)
 
-
 This mapping ensures your unified API can handle cross-platform permission logic while respecting platform-specific requirements.
