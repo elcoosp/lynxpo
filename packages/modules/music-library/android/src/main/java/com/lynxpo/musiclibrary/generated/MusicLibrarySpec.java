@@ -5,8 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableArray;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class MusicLibrarySpec extends LynxContextModule {
   public MusicLibrarySpec(LynxContext context) {
@@ -14,14 +12,14 @@ public abstract class MusicLibrarySpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableArray getAlbums();
+  public abstract Object getAlbums();
 
   @LynxMethod
-  public abstract WritableArray getSongs(String albumId);
+  public abstract Object getSongs(String albumId);
 
   @LynxMethod
-  public abstract WritableMap requestPermissions();
+  public abstract Object requestPermissions();
 
   @LynxMethod
-  public abstract WritableMap getPermissions();
+  public abstract Object getPermissions();
 }
