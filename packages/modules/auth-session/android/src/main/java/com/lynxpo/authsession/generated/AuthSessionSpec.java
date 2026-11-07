@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class AuthSessionSpec extends LynxContextModule {
   public AuthSessionSpec(LynxContext context) {
@@ -19,5 +18,5 @@ public abstract class AuthSessionSpec extends LynxContextModule {
   public abstract String redirectUriAsync();
 
   @LynxMethod
-  public abstract WritableMap providerInfoAsync();
+  public abstract Object providerInfoAsync();
 }
