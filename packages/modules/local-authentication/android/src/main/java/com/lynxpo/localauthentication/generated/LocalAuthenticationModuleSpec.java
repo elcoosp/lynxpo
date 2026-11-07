@@ -6,8 +6,6 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
-import com.lynx.jsbridge.Promise;
-
 public abstract class LocalAuthenticationModuleSpec extends LynxContextModule {
   public LocalAuthenticationModuleSpec(LynxContext context) {
     super(context);
@@ -26,17 +24,17 @@ public abstract class LocalAuthenticationModuleSpec extends LynxContextModule {
   public abstract @Nullable String supportedAuthenticationTypes();
 
   @LynxMethod
-  public abstract void hasHardwareAsync(final Promise promise);
+  public abstract Object hasHardwareAsync();
 
   @LynxMethod
-  public abstract void isEnrolledAsync(final Promise promise);
+  public abstract Object isEnrolledAsync();
 
   @LynxMethod
-  public abstract void getEnrolledLevelAsync(final Promise promise);
+  public abstract Object getEnrolledLevelAsync();
 
   @LynxMethod
-  public abstract void supportedAuthenticationTypesAsync(final Promise promise);
+  public abstract Object supportedAuthenticationTypesAsync();
 
   @LynxMethod
-  public abstract void authenticateAsync(final String prompt, final Object cb);
+  public abstract void authenticateAsync(String prompt, Object cb);
 }
