@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class AssetSpec extends LynxContextModule {
   public AssetSpec(LynxContext context) {
@@ -16,7 +15,7 @@ public abstract class AssetSpec extends LynxContextModule {
   public abstract boolean isAvailableAsync();
 
   @LynxMethod
-  public abstract WritableMap assetInfoAsync(String uri);
+  public abstract Object assetInfoAsync(String uri);
 
   @LynxMethod
   public abstract String localUriAsync(String uri);
