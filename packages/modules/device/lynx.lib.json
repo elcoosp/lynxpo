@@ -1,6 +1,5 @@
 {
-  "name": "@lynxpo/mods-device",
-  "version": "0.0.0",
+  "name": "com.lynxpo.device",
   "platforms": {
     "android": {
       "packageName": "com.lynxpo.device",
