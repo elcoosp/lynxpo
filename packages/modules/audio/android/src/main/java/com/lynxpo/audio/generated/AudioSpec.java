@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class AudioSpec extends LynxContextModule {
   public AudioSpec(LynxContext context) {
@@ -13,7 +12,7 @@ public abstract class AudioSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableMap getStatus();
+  public abstract Object getStatus();
 
   @LynxMethod
   public abstract void play();
@@ -22,8 +21,8 @@ public abstract class AudioSpec extends LynxContextModule {
   public abstract void pause();
 
   @LynxMethod
-  public abstract void setVolume(Double volume);
+  public abstract void setVolume(double volume);
 
   @LynxMethod
-  public abstract void setIsLooping(Boolean looping);
+  public abstract void setIsLooping(boolean looping);
 }
