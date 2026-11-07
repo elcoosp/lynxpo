@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class ReceiveSharingModuleSpec extends LynxContextModule {
   public ReceiveSharingModuleSpec(LynxContext context) {
@@ -13,8 +12,7 @@ public abstract class ReceiveSharingModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  @Nullable
-  public abstract WritableMap getInitialIntentAsync();
+  public abstract Object getInitialIntentAsync();
 
   @LynxMethod
   public abstract boolean hasIntentAsync();
