@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class ImagePickerModuleSpec extends LynxContextModule {
   public ImagePickerModuleSpec(LynxContext context) {
@@ -13,20 +12,20 @@ public abstract class ImagePickerModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableMap getCameraPermissions();
+  public abstract Object getCameraPermissions();
 
   @LynxMethod
-  public abstract WritableMap getMediaLibraryPermissions();
+  public abstract Object getMediaLibraryPermissions();
 
   @LynxMethod
-  public abstract void getCameraPermissionsAsync(final Object cb);
+  public abstract void getCameraPermissionsAsync(Object cb);
 
   @LynxMethod
-  public abstract void getMediaLibraryPermissionsAsync(final Object cb);
+  public abstract void getMediaLibraryPermissionsAsync(Object cb);
 
   @LynxMethod
-  public abstract void launchImageLibraryAsync(final Object cb);
+  public abstract void launchImageLibraryAsync(Object cb);
 
   @LynxMethod
-  public abstract void launchCameraAsync(final Object cb);
+  public abstract void launchCameraAsync(Object cb);
 }
