@@ -82,10 +82,14 @@ const unsupported = [];
 
 function sameContent(a, b, relative) {
   if (relative.endsWith('.ts')) {
-    // Checked-in specs are formatted by Biome; compare ignoring whitespace and
-    // the trailing commas Biome adds to wrapped declarations.
+    // Checked-in specs are formatted by Biome; compare ignoring whitespace,
+    // the trailing commas Biome adds to wrapped declarations, and the quote
+    // style Biome rewrites on generated string literals (double -> single).
     const normalize = (value) =>
-      value.replace(/\s+/g, '').replace(/,([)\]])/g, '$1');
+      value
+        .replace(/\s+/g, '')
+        .replace(/["']/g, '')
+        .replace(/,([)\]])/g, '$1');
     return (
       normalize(fs.readFileSync(a, 'utf8')) ===
       normalize(fs.readFileSync(b, 'utf8'))
