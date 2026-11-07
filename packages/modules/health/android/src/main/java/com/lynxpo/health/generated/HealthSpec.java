@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class HealthSpec extends LynxContextModule {
   public HealthSpec(LynxContext context) {
@@ -16,14 +15,14 @@ public abstract class HealthSpec extends LynxContextModule {
   public abstract boolean isAvailableAsync();
 
   @LynxMethod
-  public abstract WritableMap permissionsAsync();
+  public abstract Object permissionsAsync();
 
   @LynxMethod
-  public abstract WritableMap requestPermissionsAsync(String permissions);
+  public abstract Object requestPermissionsAsync(String permissions);
 
   @LynxMethod
-  public abstract WritableMap recordsAsync(String options);
+  public abstract Object recordsAsync(String options);
 
   @LynxMethod
-  public abstract WritableMap writeRecordsAsync(String records);
+  public abstract Object writeRecordsAsync(String records);
 }
