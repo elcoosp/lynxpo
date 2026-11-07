@@ -12,11 +12,11 @@ public abstract class HapticsModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract void impactAsync(int style);
+  public abstract Object impactAsync(double style);
 
   @LynxMethod
-  public abstract void notificationAsync(int type);
+  public abstract Object notificationAsync(double type);
 
   @LynxMethod
-  public abstract void selectionAsync();
+  public abstract Object selectionAsync();
 }
