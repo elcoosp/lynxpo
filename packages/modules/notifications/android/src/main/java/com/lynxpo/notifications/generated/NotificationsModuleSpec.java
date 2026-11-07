@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class NotificationsModuleSpec extends LynxContextModule {
   public NotificationsModuleSpec(LynxContext context) {
@@ -13,7 +12,7 @@ public abstract class NotificationsModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableMap permissionsAsync();
+  public abstract Object permissionsAsync();
 
   @LynxMethod
   public abstract void requestPermission();
@@ -22,8 +21,8 @@ public abstract class NotificationsModuleSpec extends LynxContextModule {
   public abstract boolean isDeviceRegisteredForRemoteMessages();
 
   @LynxMethod
-  public abstract int badgeCountAsync();
+  public abstract double badgeCountAsync();
 
   @LynxMethod
-  public abstract WritableMap devicePushTokenAsync();
+  public abstract Object devicePushTokenAsync();
 }
