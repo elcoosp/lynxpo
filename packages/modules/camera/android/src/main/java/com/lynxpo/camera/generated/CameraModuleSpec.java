@@ -5,8 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableArray;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class CameraModuleSpec extends LynxContextModule {
   public CameraModuleSpec(LynxContext context) {
@@ -14,19 +12,19 @@ public abstract class CameraModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableMap cameraPermissionsAsync();
+  public abstract Object cameraPermissionsAsync();
 
   @LynxMethod
   public abstract void requestCameraPermission();
 
   @LynxMethod
-  public abstract WritableMap microphonePermissionsAsync();
+  public abstract Object microphonePermissionsAsync();
 
   @LynxMethod
-  public abstract WritableArray availableCameraTypes();
+  public abstract Object availableCameraTypes();
 
   @LynxMethod
-  public abstract WritableArray availableVideoCodecs();
+  public abstract Object availableVideoCodecs();
 
   @LynxMethod
   public abstract boolean startCamera();
