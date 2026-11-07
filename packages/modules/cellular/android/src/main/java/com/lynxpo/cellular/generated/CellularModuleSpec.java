@@ -6,15 +6,13 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
-import com.lynx.jsbridge.Promise;
-
 public abstract class CellularModuleSpec extends LynxContextModule {
   public CellularModuleSpec(LynxContext context) {
     super(context);
   }
 
   @LynxMethod
-  public abstract int getCellularGeneration();
+  public abstract double getCellularGeneration();
 
   @LynxMethod
   public abstract @Nullable String getIsoCountryCode();
@@ -29,17 +27,17 @@ public abstract class CellularModuleSpec extends LynxContextModule {
   public abstract @Nullable String getMobileNetworkCode();
 
   @LynxMethod
-  public abstract void getCellularGenerationAsync(final Promise promise);
+  public abstract Object getCellularGenerationAsync();
 
   @LynxMethod
-  public abstract void getIsoCountryCodeAsync(final Promise promise);
+  public abstract Object getIsoCountryCodeAsync();
 
   @LynxMethod
-  public abstract void getCarrierNameAsync(final Promise promise);
+  public abstract Object getCarrierNameAsync();
 
   @LynxMethod
-  public abstract void getMobileCountryCodeAsync(final Promise promise);
+  public abstract Object getMobileCountryCodeAsync();
 
   @LynxMethod
-  public abstract void getMobileNetworkCodeAsync(final Promise promise);
+  public abstract Object getMobileNetworkCodeAsync();
 }
