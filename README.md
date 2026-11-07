@@ -1,200 +1,115 @@
 <div align="center">
-  <img src="docs/logo.png" alt="Lynxpo Logo" width="200"/>
+  <img src="https://cdn.jsdelivr.net/gh/elcoosp/lynxpo@main/docs/logo.png" alt="Lynxpo Logo" width="300"/>
   <p>
-    <strong>lynxpo</strong> — A pnpm + Turborepo monorepo that ports Expo / React‑Native native APIs into <a href="https://lynxjs.org">Lynx</a>, so they run inside <strong>LynxExplorer</strong> — not the iOS Simulator or the Android‑via‑ADB Expo path.<br/>
-    Each capability ships as a twin‑native module (Kotlin + Swift) wrapped by a React‑Lynx surface and exercised in a live playground.
+    <strong>Expo's native API surface for Lynx, as 66 twin-native modules you can autolink into any React-Lynx app.</strong><br/>
+    Every capability ships as a real native module — Kotlin on Android, Objective-C on iOS — wrapped by a typed React-Lynx facade and declared to hosts through a <code>lynx.lib.json</code> autolink manifest.
+    Built for Lynx developers who want Expo-style device APIs (camera, sqlite, secure-store, contacts, …) without leaving the Lynx toolchain.
+    All 66 modules are exercised on real hardware by the bundled playground, and CI builds, pack-audits and tests every one of them.
   </p>
   <p>
-    <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-6.0.3-3178C6?style=flat-square&logo=typescript" alt="TypeScript"/></a>
-    <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20.19-339933?style=flat-square&logo=node.js" alt="Node"/></a>
-    <a href="https://turbo.build"><img src="https://img.shields.io/badge/Turborepo-2.11.10-EF4444?style=flat-square&logo=turbo" alt="Turborepo"/></a>
-    <a href="https://biomejs.dev"><img src="https://img.shields.io/badge/Biome-2.6.4-60A5FA?style=flat-square" alt="Biome"/></a>
-    <a href="https://lynxjs.org"><img src="https://img.shields.io/badge/Lynx-Explorer-F7B500?style=flat-square" alt="Lynx"/></a>
-    <a href="./packages/modules"><img src="https://img.shields.io/badge/modules-66-8B5CF6?style=flat-square" alt="Modules"/></a>
-    <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-84C341?style=flat-square" alt="License"/></a>
-    <a href="https://github.com/elcoosp/lynxpo/tree/main"><img src="https://img.shields.io/badge/branch-main-2EA043?style=flat-square" alt="Branch"/></a>
+    <a href="https://github.com/elcoosp/lynxpo/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/elcoosp/lynxpo/ci.yml?style=flat-square&label=build" alt="Build status"/></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/elcoosp/lynxpo?style=flat-square" alt="License"/></a>
+    <a href="https://github.com/elcoosp/lynxpo/blob/main/package.json"><img src="https://img.shields.io/badge/node-%3E%3D20.19-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node"/></a>
+    <a href="https://github.com/elcoosp/lynxpo/tree/main/packages/modules"><img src="https://img.shields.io/badge/modules-66-8B5CF6?style=flat-square" alt="Modules"/></a>
+    <a href="https://github.com/elcoosp/lynxpo/tree/main/packages/modules"><img src="https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue?style=flat-square" alt="Platforms"/></a>
   </p>
 </div>
 
----
+[Quickstart](#quickstart) • [Why](#why-lynxpo) • [How it works](#how-it-works) • [Usage](#usage) • [Status](#status)
 
-# lynxpo
+## Quickstart
+
+Requires Node.js `>=20.19` and pnpm `12.16.1` (`corepack` picks it up from `packageManager`). A pre-built [LynxExplorer](https://lynxjs.org/guide/start/quick-start.html) is the fastest way to see results — no native toolchain needed.
+
+```bash
+pnpm install
+pnpm build
+pnpm --filter @lynxpo/playground dev
+```
+
+`pnpm build` compiles all 67 workspace projects (66 modules + playground) in about two minutes:
+
+```text
+Tasks:    67 successful, 67 total
+Time:     1m47.4s
+```
+
+`pnpm dev` starts the rspeedy dev server on port **3100**, prints a QR code, and serves a bundle per playground entry:
+
+```text
+Rspeedy v0.18.4 (Rsbuild v2.2.9, Rspack v2.2.9)
+
+  ➜  Lynx      http://192.168.1.10:3100/main.lynx.bundle
+  ➜  Lynx      http://192.168.1.10:3100/hostshowcase.lynx.bundle
+
+main
+  default: http://192.168.1.10:3100/main.lynx.bundle?fullscreen=true&enable_napi_addon=true
+```
+
+Scan the QR code with LynxExplorer (or paste the URL). The `?fullscreen=true&enable_napi_addon=true` schema is added automatically.
+
+> [!IMPORTANT]
+> `enable_napi_addon=true` makes the iOS launcher start the background Node-API runtime that loads the native modules. Without it, iOS renders every module value as `—`; Android enables the addon by default.
+
+<details>
+<summary>Install LynxExplorer (pre-built, no native toolchain)</summary>
+
+- **iOS Simulator**: download `LynxExplorer-arm64.app.tar.gz` from the [Lynx releases](https://github.com/lynx-family/lynx/releases), then `mkdir -p LynxExplorer-arm64.app && tar -zxf LynxExplorer-arm64.app.tar.gz -C LynxExplorer-arm64.app` and drag the `.app` into the Simulator.
+- **Android**: install the pre-built APK from the same release page.
+- **HarmonyOS**: `hdc install lynx_explorer-default-unsigned.hap`.
+
+Keep Explorer, pods and Maven artifacts on the same minor (4.2.0): bundles must match the host engine version.
+</details>
 
 ## Why lynxpo
 
-Lynx renders React-Lynx on a dual-threaded engine (UI thread + a JS/Lynx thread). Expo's native modules are built for the React-Native bridge, so they are not available to a Lynx app out of the box. lynxpo re-implements those surfaces as real native modules for Lynx — Kotlin on Android, Objective-C / Swift on iOS — and exposes them through a typed React-Lynx API. The result is a single `pnpm` workspace where an Expo-style API (`expo-camera`, `expo-sqlite`, `expo-secure-store`, …) maps to a `@lynxpo/mods-*` package you can drop into a Lynx app and verify live in LynxExplorer.
+Lynx renders React-Lynx on a dual-threaded engine, and Expo's native modules are built for the React-Native bridge — so neither is available to a Lynx app out of the box. lynxpo re-implements that API surface as real Lynx native modules: Kotlin on Android, Objective-C on iOS, one npm package per capability under `@lynxpo/mods-*`, and a live playground that exercises each one in LynxExplorer.
 
-> **Note:** Every module is a genuine port, not a stub. Where an Expo capability is iOS‑only (Sign in with Apple, Live Photos), the Android twin reports that honestly; where a backend needs a cloud project (Play Integrity tokens), the module says so rather than returning fake data.
+- **66 modules, Expo-shaped APIs** — `@lynxpo/mods-camera`, `@lynxpo/mods-sqlite`, `@lynxpo/mods-secure-store`, … covering device, media, storage, identity, communication and user-data surfaces (see [the full list](https://github.com/elcoosp/lynxpo/tree/main/packages/modules)).
+- **Twin-native, not stubs** — every module carries a Kotlin and an Objective-C implementation; iOS-only capabilities (Sign in with Apple, Live Photos) report honestly on Android instead of faking data.
+- **Autolink-ready** — hosts discover modules by scanning installed npm packages for `lynx.lib.json` (the official `cocoapods-lynx-library` gem and `org.lynxsdk.lynx.library-build` Gradle plugin); no install-time copy step.
+- **Typed React-Lynx facades** — each export comes as a `getX` / `useX` pair; async methods return `{ value, loading, error }` from the hook.
+- **Verified end to end** — 843 vitest tests cover registry↔facade contracts, packaging metadata, permission data and the built bundles; CI pack-audits every module with `npm pack --dry-run`.
+- **Official toolchain only** — `@lynx-js/rspeedy`, `@lynx-js/autolink-codegen`, rslib, Turborepo, Biome. No vendored engine tree.
 
-## Repository layout
-
-```
-lynxpo/
-├── packages/
-│   ├── modules/        # 66 native modules (mods-*) — twin Android + iOS, npm-publishable
-│   ├── playground/     # React-Lynx app that demos every module on device
-│   └── core/
-│       └── core-kt/    # Android Kotlin core — native, non-npm
-├── docs/
-│   └── permissions/    # frozen Android/Apple permission reference data
-├── pnpm-workspace.yaml
-├── turbo.json
-└── biome.json
-```
-
-### Modules (`packages/modules`)
-
-66 native modules under the `@lynxpo/mods-*` scope. Each is a real Expo-API port with Kotlin and Objective-C twins. Highlights, grouped by surface:
-
-- **Device & system** — device, battery, brightness, cellular, application, appearance, constants, font, screen-orientation, screen-capture, system-ui, status-bar, navigation-bar, keep-awake, haptics, sensors
-- **Media** — camera, image, image-picker, image-manipulator, video, video-thumbnails, audio, live-photo, media-library, music-library, speech, splash-screen
-- **Storage & data** — file-system, secure-store, sqlite, asset, blob, crypto, standard-web-crypto, network, network-addons
-- **Identity & platform** — apple-authentication, local-authentication, app-integrity, auth-session, tracking-transparency
-- **Communication & sharing** — linking, intent-launcher, sms, mail-composer, sharing, print, web-browser, store-review, notifications, quick-actions, receive-sharing, updates, link-preview
-- **User data** — contacts, calendar, health, location, document-picker, background-fetch, background-task, task-manager, env-info, localization
-- **Expo DOM** — the native `<lynxpo-dom>` LynxUI host view (added on the `v2` branch) that hosts a live WKWebView DOM surface inside Lynx
-
-### Native UI components
-
-`packages/playground` also ships a set of **custom LynxUI native views** that mirror Expo UI surfaces, registered on the host app:
+The playground also ships custom LynxUI native views that mirror Expo UI surfaces, registered in the in-repo host app:
 
 | Tag                 | Ported from          | Backing                                             |
 | ------------------- | -------------------- | --------------------------------------------------- |
 | `<linear-gradient>` | expo-linear-gradient | `CAGradientLayer`                                   |
 | `<blur-view>`       | expo-blur            | `UIVisualEffectView` (Core-Image gaussian fallback) |
 | `<symbols>`         | expo-symbols         | SF Symbols via `UIImage(systemName:)`               |
-| `<checkbox>`        | expo-checkbox        | drawn box + checkmark / system switch               |
 | `<mesh-gradient>`   | expo-mesh-gradient   | `MeshGradient` (iOS 18+) or static fallback         |
 | `<glass-effect>`    | expo-glass-effect    | `UIGlassEffect` (iOS 26) or thin material           |
-| `<image>`           | expo-image           | `UIImage` from base64 / remote / SF Symbol          |
 | `<video>`           | expo-video           | `AVPlayerLayer`                                     |
 | `<gl-view>`         | expo-gl              | Metal-backed `CAMetalLayer` (animated)              |
 | `<camera-view>`     | expo-camera          | `AVCaptureVideoPreviewLayer`                        |
-| `<ui-button>`       | expo-ui subset       | real `UIButton` with `press` event                  |
-| `<widget-card>`     | expo-widgets subset  | rounded card with tap dispatch                      |
 | `<lynxpo-dom>`      | expo-dom             | `WKWebView` DOM surface                             |
 
-### Toolchain
+…plus `<image>`, `<checkbox>`, `<ui-button>` and `<widget-card>`; all registered by [LynxpoHost](packages/playground/src/host/LynxpoHost).
 
-lynxpo uses the official Lynx toolchain only: `@lynx-js/rspeedy` (+ the
-`react-rsbuild-plugin` / `qrcode-rsbuild-plugin`), `@lynx-js/autolink-codegen`
-for library codegen, the Autolink host plugins (`org.lynxsdk.lynx.library-build`,
-`cocoapods-lynx-library` gem) for consumption, and pre-built LynxExplorer as
-the dev sandbox.
+## How it works
 
-TypeScript is pinned to `6.0.x`: Rspeedy `0.18` supports `5.1.6 - 6.0.x`, and
-TypeScript 7's native compiler no longer exposes the compiler API Rspeedy uses
-at build time.
+Each `packages/modules/<name>` is a twin-native package: a React-Lynx facade in `src/index.ts`, generated bindings in `src/generated/`, and the Kotlin + Objective-C twins under `android/` and `ios/`.
 
-### Playground (`packages/playground`)
-
-A React-Lynx app (`@lynxpo/playground`) that renders every module's API on a scrollable demo grid and as native LynxUI custom elements, so each port is verifiable on real hardware through LynxExplorer. It builds several entry points, each exercising a different slice of the surface:
-
-- `main` — the full showcase (`ModsShowcase` + `CameraShowcase`)
-- `hostshowcase` — the standalone-host dashboard, listing every module + method with on-device invocation
-- `hostdemo`, `hostmin`, `hostsingle`, `hostsync` — progressively smaller host verification apps used to isolate engine/bridge behavior
-
-## Getting started
-
-Prerequisites:
-
-- Node.js `>=20.19` (the root allows `>=18`; the playground build requires `20.19+`)
-- pnpm `12.16.1` (enforced via `packageManager`)
-- A pre-built [LynxExplorer](https://lynxjs.org/guide/start/quick-start.html) for live verification (no native toolchain required — see below)
-
-Install and build:
-
-```bash
-pnpm install
-pnpm build        # turbo run build — builds every module + playground
+```mermaid
+flowchart LR
+  subgraph module["@lynxpo/mods-*"]
+    F["src/index.ts\n(getX / useX facade)"] --> G["src/generated/*\n(autolink-codegen)"]
+    G --> K["android/ Kotlin twin"]
+    G --> O["ios/ Objective-C twin"]
+    L["lynx.lib.json"] --> A["autolink manifest"]
+  end
+  module -->|"npm install + autolink scan"| H["Host app\n(LynxpoHost)"]
+  H --> E["LynxExplorer\npre-built sandbox"]
+  P["playground bundles\n(main, hostshowcase, …)"] --> E
 ```
 
-Run the playground dev server (pinned to port **3100** so it never collides with the Metro/RN bundlers on 8081–8083 or the other vite/rsbuild servers on 3000/3001):
+TS bindings and native specs are generated by `@lynx-js/autolink-codegen` from `types/index.d.ts`; `pnpm check:codegen` verifies the checked-in files never drift from the generator. The playground builds six entry points (`main`, `hostshowcase`, `hostdemo`, `hostmin`, `hostsingle`, `hostsync`), each exercising a different slice of the surface — `hostshowcase` lists every module and method with on-device invocation.
 
-```bash
-pnpm --filter @lynxpo/playground dev
-```
+## Usage
 
-Scan the QR code printed in the terminal with LynxExplorer. The playground appends `?fullscreen=true&enable_napi_addon=true` to the URL:
-
-> **Important:** `fullscreen` opens the page full-screen, and `enable_napi_addon=true` spins up the iOS background runtime that loads the Node-API addon. Without it, iOS renders every module value as `—` while Android (which enables the addon by default) populates them.
-
-### Dev sandbox (no native toolchain required)
-
-1. `pnpm dev` — rspeedy prints a QR code and a bundle URL.
-2. Get LynxExplorer **pre-built** (official quick start):
-   - iOS Simulator: download `LynxExplorer-arm64.app.tar.gz` (or x86_64) from
-     the Lynx GitHub Releases, then
-     `mkdir -p LynxExplorer-arm64.app && tar -zxf LynxExplorer-arm64.app.tar.gz -C LynxExplorer-arm64.app`
-     and drag the `.app` into the Simulator.
-   - Android: install the pre-built APK from the same GitHub Release
-     (or the community Play Store build).
-   - HarmonyOS: `hdc install lynx_explorer-default-unsigned.hap`.
-3. Paste the bundle URL into Explorer ("Enter Card URL") — or scan the QR.
-   The playground's QR schema adds `?fullscreen=true&enable_napi_addon=true`,
-   which keeps working with the pre-built app (it is how the iOS launcher
-   spins up the background Node-API runtime).
-4. For in-repo host testing (registry + your modules): `pnpm host:ios` —
-   LynxpoHost is this repo's own, checkout-free host app.
-
-Version discipline: keep Explorer, pods, and Maven artifacts on the **same
-minor** (4.2.0) — bundles must match the host engine version (`engineVersion`);
-pinning one line in `Podfile` + `libs.versions.toml` + choosing the matching
-Explorer release is the whole rule.
-
-## Command mapping (former `lynxpo` CLI)
-
-The legacy `lynxpo` DX CLI has been removed in favour of the official Lynx
-tooling:
-
-| Was                    | Now                                                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `lynxpo perms`         | Data is frozen under `docs/permissions/`; no regeneration step exists                                                 |
-| `lynxpo types`         | `npx lynx-autolink-codegen` inside a module (reads `lynx.lib.json` + `types/`)                                        |
-| `lynxpo build`         | `pnpm build` (turbo → rslib/rspeedy)                                                                                  |
-| `lynxpo inject`        | Nothing — autolink reads `node_modules`                                                                               |
-| `lynxpo ios`/`android` | `pnpm dev` → scan the QR with pre-built LynxExplorer ([quick start](https://lynxjs.org/guide/start/quick-start.html)) |
-| `lynxpo doctor`        | Removed with the vendored engine tree                                                                                 |
-
-### Host app helpers
-
-- `pnpm host:bundle:copy` — copy the built `hostshowcase` bundle into LynxpoHost.
-- `pnpm host:ios` — copy the bundle and build/run LynxpoHost in the iOS Simulator.
-
-## Anatomy of a module
-
-Every `packages/modules/<name>` is a twin-native package:
-
-```
-mods-<name>/
-├── src/             # React-Lynx surface (index.ts) + generated bindings
-├── android/         # Kotlin native module (build.gradle, src/)
-├── ios/             # Objective-C native module (.podspec, src/)
-├── types/           # generated TS types
-├── dist/            # rslib build output (cjs/esm/d.ts)
-├── lynx.lib.json    # Lynx library manifest
-├── rslib.config.ts  # rslib build config
-└── package.json
-```
-
-Key conventions (from the real package manifests):
-
-- Built with **rslib** (`rslib build`), emitting CJS + ESM + `.d.ts` under `dist/` with `publishConfig.access: public`.
-- Native twins are discovered through **Lynx Autolink**: host plugins scan
-  installed npm packages for `lynx.lib.json`, so no install-time copy step is
-  needed.
-- TS bindings and native specs are generated by **`@lynx-js/autolink-codegen`**
-  from `types/index.d.ts` into `src/generated/` (the official TS-first flow).
-- Every module declares `@lynx-js/react` as a peer dependency (and
-  `@lynx-js/types` for development); many set `"lynx": { "mainThread": "true" }`
-  so the module runs on the UI thread.
-
-### A typical module's API surface
-
-Each module exposes a paired `getX` / `useX` accessor per native method. For
-async methods (`Promise` in Kotlin), the generated hook returns
-`{ value, loading, error }`; for sync getters it returns the raw value. This is
-why consumers consistently write:
+Every module exposes a paired `getX` / `useX` accessor per native method. For async methods the generated hook returns `{ value, loading, error }`; for sync getters it returns the raw value:
 
 ```tsx
 import { useCameraPermissionsAsync, getStartCamera } from '@lynxpo/mods-camera';
@@ -205,35 +120,48 @@ function Demo() {
 }
 ```
 
-## Quality & build pipeline
+Run it live with `pnpm --filter @lynxpo/playground dev` and open the bundle in LynxExplorer. See [`packages/playground/src/mods/`](packages/playground/src/mods) for one demo page per module.
 
-Root scripts (Turborepo-orchestrated):
-
-```bash
-pnpm build        # turbo run build
-pnpm check        # turbo run check   (biome check --write, topo order)
-pnpm lint         # turbo run lint
-pnpm fmt          # turbo run fmt     (biome format --write)
-pnpm test         # turbo run test
-pnpm test:cov     # turbo run test:cov
-pnpm test:watch   # turbo run test:watch (persistent)
-```
-
-Tooling: **Biome 2** for lint/format, **Turborepo 2** for task orchestration, **Rspeedy / Rsbuild** for the playground, **rslib** for module builds.
-
-## Adding a module
+### Adding a module
 
 1. Scaffold `packages/modules/<name>` with the twin-native layout above.
-2. Implement the Kotlin module (`android/`) and Objective-C module (`ios/`); describe the surface in `lynx.lib.json`.
-3. Run `npx lynx-autolink-codegen` to generate the TS bindings, then write the React-Lynx surface in `src/index.ts`.
-4. Add a demo entry to the playground so it is verifiable in LynxExplorer.
-5. Run `pnpm --filter @lynxpo/playground dev` to exercise it live; hosts pick up the twins through autolink (`lynx.lib.json`).
+2. Implement the Kotlin and Objective-C modules; describe the surface in `lynx.lib.json` and `types/index.d.ts`.
+3. Run `npx lynx-autolink-codegen` to generate the bindings, then write the facade in `src/index.ts`.
+4. Add a demo entry to the playground and a methods entry to [`packages/playground/src/mods-registry.ts`](packages/playground/src/mods-registry.ts) (the facade tests enforce both).
+5. Exercise it in LynxExplorer; hosts pick up the twins through autolink.
 
-> **Tip:** If the module needs a permission, add it to `playground/perms-doc/perms.json` and reference it via `NativeModules.NativePermissionsModule.requestPermission("<literal>")` — the `android-permissions` plugin detects the fully-qualified call during the build and injects the `<uses-permission>` entry into the generated `AndroidManifest.xml`.
+> [!TIP]
+> If the module needs a permission, add it to `packages/playground/perms-doc/perms.json` and reference it via `NativeModules.NativePermissionsModule.requestPermission("<literal>")` — the `android-permissions` build plugin detects the call and injects the `<uses-permission>` entry into the generated `AndroidManifest.xml`.
 
-## Links
+### Command mapping (former `lynxpo` CLI)
 
-- Repository: https://github.com/elcoosp/lynxpo
-- Lynx: https://lynxjs.org
-- LynxExplorer quick start: https://lynxjs.org/guide/start/quick-start.html
-- Expo modules (the surface being ported): https://docs.expo.dev/modules/
+The legacy `lynxpo` DX CLI has been removed in favour of the official Lynx tooling:
+
+| Was                    | Now                                                                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `lynxpo perms`         | Data is frozen under [`docs/permissions/`](docs/permissions/README.md); no regeneration step exists                     |
+| `lynxpo types`         | `npx lynx-autolink-codegen` inside a module (reads `lynx.lib.json` + `types/`)                                        |
+| `lynxpo build`         | `pnpm build` (turbo → rslib/rspeedy)                                                                                  |
+| `lynxpo inject`        | Nothing — autolink reads `node_modules`                                                                                |
+| `lynxpo ios`/`android` | `pnpm dev` → scan the QR with pre-built LynxExplorer ([quick start](https://lynxjs.org/guide/start/quick-start.html)) |
+| `lynxpo doctor`        | Removed with the vendored engine tree                                                                                  |
+
+For in-repo host testing: `pnpm host:ios` builds LynxpoHost with the freshly copied `hostshowcase` bundle (`pnpm host:bundle:copy`); `pnpm check:native:android` and `pnpm check:native:ios` run the native builds CI uses.
+
+## Status
+
+> [!NOTE]
+> Pre-1.0 and moving fast: modules are at `0.1.0`, npm publishing is wired through [changesets](.changeset/config.json) and runs on every `main` push, but no version has been published yet. CI builds and tests on Node 24 (Linux), Gradle/Java 21 (Android) and Xcode/CocoaPods (macOS, iOS 12+).
+
+Supported platform matrix comes straight from CI: Android (Gradle, Kotlin twins) and iOS (CocoaPods, Objective-C twins, iOS 12.0+ in every podspec). The Android core additionally exposes status-bar, clipboard, device and network utilities used by the twins.
+
+TypeScript is pinned to `6.0.x`: Rspeedy `0.18` supports `5.1.6 – 6.0.x`, and TypeScript 7's native compiler no longer exposes the compiler API Rspeedy uses at build time.
+
+Questions and issues: [open an issue](https://github.com/elcoosp/lynxpo/issues).
+
+## Learn more
+
+- [Playground](packages/playground) — the React-Lynx app that demos every module
+- [`docs/permissions/`](docs/permissions/README.md) — frozen Android/Apple permission reference data
+- [Lynx documentation](https://lynxjs.org) and the [LynxExplorer quick start](https://lynxjs.org/guide/start/quick-start.html)
+- [Expo modules](https://docs.expo.dev/modules/) — the API surface being ported
