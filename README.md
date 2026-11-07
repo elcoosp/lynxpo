@@ -15,7 +15,15 @@
   </p>
 </div>
 
-[Quickstart](#quickstart) • [Why](#why-lynxpo) • [How it works](#how-it-works) • [Usage](#usage) • [Status](#status)
+</div>
+
+<p align="center">
+  <a href="#quickstart">Quickstart</a> •
+  <a href="#why-lynxpo">Why</a> •
+  <a href="#how-it-works">How it works</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#status">Status</a>
+</p>
 
 ## Quickstart
 
@@ -139,12 +147,12 @@ The legacy `lynxpo` DX CLI has been removed in favour of the official Lynx tooli
 
 | Was                    | Now                                                                                                                   |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `lynxpo perms`         | Data is frozen under [`docs/permissions/`](docs/permissions/README.md); no regeneration step exists                     |
+| `lynxpo perms`         | Data is frozen under [`docs/permissions/`](docs/permissions/README.md); no regeneration step exists                   |
 | `lynxpo types`         | `npx lynx-autolink-codegen` inside a module (reads `lynx.lib.json` + `types/`)                                        |
 | `lynxpo build`         | `pnpm build` (turbo → rslib/rspeedy)                                                                                  |
-| `lynxpo inject`        | Nothing — autolink reads `node_modules`                                                                                |
+| `lynxpo inject`        | Nothing — autolink reads `node_modules`                                                                               |
 | `lynxpo ios`/`android` | `pnpm dev` → scan the QR with pre-built LynxExplorer ([quick start](https://lynxjs.org/guide/start/quick-start.html)) |
-| `lynxpo doctor`        | Removed with the vendored engine tree                                                                                  |
+| `lynxpo doctor`        | Removed with the vendored engine tree                                                                                 |
 
 For in-repo host testing: `pnpm host:ios` builds LynxpoHost with the freshly copied `hostshowcase` bundle (`pnpm host:bundle:copy`); `pnpm check:native:android` and `pnpm check:native:ios` run the native builds CI uses.
 
