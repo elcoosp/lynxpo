@@ -6,8 +6,6 @@ import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
 
-import com.lynx.jsbridge.Promise;
-
 public abstract class ClipboardModuleSpec extends LynxContextModule {
   public ClipboardModuleSpec(LynxContext context) {
     super(context);
@@ -20,11 +18,11 @@ public abstract class ClipboardModuleSpec extends LynxContextModule {
   public abstract boolean hasString();
 
   @LynxMethod
-  public abstract void getStringAsync(final Promise promise);
+  public abstract Object getStringAsync();
 
   @LynxMethod
-  public abstract void setStringAsync(String text, final Promise promise);
+  public abstract Object setStringAsync(String text);
 
   @LynxMethod
-  public abstract void hasStringAsync(final Promise promise);
+  public abstract Object hasStringAsync();
 }
