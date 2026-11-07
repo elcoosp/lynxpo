@@ -5,9 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
-
-import com.lynx.jsbridge.Promise;
 
 public abstract class NetworkModuleSpec extends LynxContextModule {
   public NetworkModuleSpec(LynxContext context) {
@@ -18,17 +15,17 @@ public abstract class NetworkModuleSpec extends LynxContextModule {
   public abstract @Nullable String getIpAddress();
 
   @LynxMethod
-  public abstract WritableMap getNetworkState();
+  public abstract Object getNetworkState();
 
   @LynxMethod
-  public abstract void getIpAddressAsync(final Promise promise);
+  public abstract Object getIpAddressAsync();
 
   @LynxMethod
-  public abstract void getNetworkStateAsync(final Promise promise);
+  public abstract Object getNetworkStateAsync();
 
   @LynxMethod
   public abstract void addListener(String eventName);
 
   @LynxMethod
-  public abstract void removeListeners(int count);
+  public abstract void removeListeners(double count);
 }
