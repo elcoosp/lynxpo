@@ -5,8 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableArray;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class QuickActionsModuleSpec extends LynxContextModule {
   public QuickActionsModuleSpec(LynxContext context) {
@@ -14,15 +12,14 @@ public abstract class QuickActionsModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableArray getShortcutItemsAsync();
+  public abstract Object getShortcutItemsAsync();
 
   @LynxMethod
-  public abstract void setShortcutItemsAsync(String items);
+  public abstract void setShortcutItemsAsync(Object items);
 
   @LynxMethod
   public abstract void clearShortcutItemsAsync();
 
   @LynxMethod
-  @Nullable
-  public abstract WritableMap initialActionAsync();
+  public abstract Object initialActionAsync();
 }
