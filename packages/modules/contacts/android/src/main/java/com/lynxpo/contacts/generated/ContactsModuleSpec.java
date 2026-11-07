@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import com.lynx.jsbridge.LynxContextModule;
 import com.lynx.jsbridge.LynxMethod;
 import com.lynx.tasm.behavior.LynxContext;
-import com.lynx.react.bridge.WritableMap;
 
 public abstract class ContactsModuleSpec extends LynxContextModule {
   public ContactsModuleSpec(LynxContext context) {
@@ -13,14 +12,14 @@ public abstract class ContactsModuleSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract WritableMap permissionsAsync();
+  public abstract Object permissionsAsync();
 
   @LynxMethod
   public abstract void requestPermission();
 
   @LynxMethod
-  public abstract int contactCount();
+  public abstract double contactCount();
 
   @LynxMethod
-  public abstract int containerCount();
+  public abstract double containerCount();
 }
