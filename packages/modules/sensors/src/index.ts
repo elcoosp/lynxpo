@@ -135,3 +135,42 @@ export const useGyroscopeAsync = () => {
 
   return { value, loading, error };
 };
+
+export const getIsAvailableAsync = (): Promise<boolean> =>
+  SensorsModule.isAvailableAsync();
+
+export const useIsAvailableAsync = () => {
+  const [value, setValue] = useState<boolean>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await getIsAvailableAsync();
+        if (isMounted) {
+          setValue(result);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  return { value, loading, error };
+};
