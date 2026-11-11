@@ -88,7 +88,7 @@ jobs:
           cache: pnpm
       - uses: ruby/setup-ruby@v1.336.0
         with:
-          ruby-version: "3.2"
+          ruby-version: "3.4"
       - run: gem install cocoapods --no-document
       - run: gem install cocoapods-lynx-library -v 4.2.0 --no-document
       - run: pnpm install --frozen-lockfile
