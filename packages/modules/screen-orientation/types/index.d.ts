@@ -3,12 +3,12 @@ export declare class ScreenOrientationModule {
   getOrientation(): number;
   getOrientationLock(): number;
   supportsOrientationLock(): boolean;
-  getOrientationAsync(): any;
-  getOrientationLockAsync(): any;
-  lockAsync(orientation: number): any;
-  unlockAsync(): any;
-  lockPlatformAsync(orientation: number): any;
-  supportsOrientationLockAsync(): any;
+  getOrientationAsync(): Promise<void>;
+  getOrientationLockAsync(): Promise<void>;
+  lockAsync(orientation: number): Promise<void>;
+  unlockAsync(): Promise<void>;
+  lockPlatformAsync(orientation: number): Promise<void>;
+  supportsOrientationLockAsync(): Promise<void>;
   addListener(eventName: string): void;
   removeListeners(count: number): void;
 }

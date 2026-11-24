@@ -65,15 +65,16 @@ public class ClipboardModule extends ClipboardModuleSpec {
   }
 
   @LynxMethod
-  public void getStringAsync(final Promise promise) {
-    try { promise.resolve(getString()); } catch (Exception e) { promise.reject("ERR_CLIPBOARD", e.getMessage()); }
+  public Object getStringAsync() {
+    return getString();
   }
   @LynxMethod
-  public void setStringAsync(String text, final Promise promise) {
-    try { setString(text); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_CLIPBOARD", e.getMessage()); }
+  public Object setStringAsync(String text) {
+    setString(text);
+    return null;
   }
   @LynxMethod
-  public void hasStringAsync(final Promise promise) {
-    try { promise.resolve(hasString()); } catch (Exception e) { promise.reject("ERR_CLIPBOARD", e.getMessage()); }
+  public Object hasStringAsync() {
+    return hasString();
   }
 }

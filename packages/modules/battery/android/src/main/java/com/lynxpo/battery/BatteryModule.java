@@ -50,25 +50,25 @@ public class BatteryModule extends BatteryModuleSpec {
   }
 
   @LynxMethod
-  public int getBatteryState() {
+  public double getBatteryState() {
     Intent batteryIntent =
         mContext.registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     if (batteryIntent == null) {
-      return 0; // UNKNOWN
+      return 0d; // UNKNOWN
     }
     int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
     int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
     switch (status) {
       case BatteryManager.BATTERY_STATUS_FULL:
-        return 3; // FULL
+        return 3d; // FULL
       case BatteryManager.BATTERY_STATUS_CHARGING:
-        return 2; // CHARGING
+        return 2d; // CHARGING
       case BatteryManager.BATTERY_STATUS_NOT_CHARGING:
-        return plugged != 0 ? 4 : 1; // NOT_CHARGING : UNPLUGGED
+        return plugged != 0 ? 4d : 1d; // NOT_CHARGING : UNPLUGGED
       case BatteryManager.BATTERY_STATUS_DISCHARGING:
-        return 1; // UNPLUGGED
+        return 1d; // UNPLUGGED
       default:
-        return 0; // UNKNOWN
+        return 0d; // UNKNOWN
     }
   }
 

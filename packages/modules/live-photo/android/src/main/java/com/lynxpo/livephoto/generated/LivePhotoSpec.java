@@ -12,10 +12,10 @@ public abstract class LivePhotoSpec extends LynxContextModule {
   }
 
   @LynxMethod
-  public abstract boolean isAvailableAsync();
+  public abstract Object isAvailableAsync();
 
   @LynxMethod
-  public abstract boolean isLivePhotoAsync(String path);
+  public abstract Object isLivePhotoAsync(String path);
 
   @LynxMethod
   public abstract Object saveLivePhotoAsync(String video, String photo);

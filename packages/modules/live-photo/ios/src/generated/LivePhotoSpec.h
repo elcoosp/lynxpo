@@ -6,8 +6,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol LivePhotoSpec <LynxModule>
 
-- (BOOL)isAvailableAsync;
-- (BOOL)isLivePhotoAsync:(NSString *)path;
+- (id)isAvailableAsync;
+- (id)isLivePhotoAsync:(NSString *)path;
 - (id)saveLivePhotoAsync:(NSString *)video photo:(NSString *)photo;
 
 @end

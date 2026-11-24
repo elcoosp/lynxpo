@@ -1,7 +1,7 @@
 /** @lynxmodule */
 export declare class QuickActionsModule {
-  getShortcutItemsAsync(): any;
-  setShortcutItemsAsync(items: any): void;
-  clearShortcutItemsAsync(): void;
-  initialActionAsync(): any;
+  getShortcutItemsAsync(): Promise<any>;
+  setShortcutItemsAsync(items: any): Promise<void>;
+  clearShortcutItemsAsync(): Promise<void>;
+  initialActionAsync(): Promise<any>;
 }

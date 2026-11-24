@@ -32,7 +32,7 @@ public class Sms extends SmsSpec {
   }
 
   @LynxMethod
-  public void sendSMS(ReadableArray addresses, String message) {
+  public void sendSMS(Object addresses, String message) {
   }
 
 }

@@ -57,7 +57,7 @@ export const useSupportsOrientationLock = () => {
 };
 
 export const getGetOrientationAsync = (): Promise<number> =>
-  ScreenOrientationModule.getOrientationAsync();
+  ScreenOrientationModule.getOrientationAsync() as unknown as Promise<number>;
 
 export const useGetOrientationAsync = () => {
   const [value, setValue] = useState<number>();
@@ -96,7 +96,7 @@ export const useGetOrientationAsync = () => {
 };
 
 export const getGetOrientationLockAsync = (): Promise<number> =>
-  ScreenOrientationModule.getOrientationLockAsync();
+  ScreenOrientationModule.getOrientationLockAsync() as unknown as Promise<number>;
 
 export const useGetOrientationLockAsync = () => {
   const [value, setValue] = useState<number>();
@@ -201,7 +201,7 @@ export const useLockPlatformAsync = (orientation: number) => {
 };
 
 export const getSupportsOrientationLockAsync = (): Promise<boolean> =>
-  ScreenOrientationModule.supportsOrientationLockAsync();
+  ScreenOrientationModule.supportsOrientationLockAsync() as unknown as Promise<boolean>;
 
 export const useSupportsOrientationLockAsync = () => {
   const [value, setValue] = useState<boolean>();

@@ -93,7 +93,7 @@ export const useGetMobileNetworkCode = () => {
 };
 
 export const getGetCellularGenerationAsync = (): Promise<number> =>
-  CellularModule.getCellularGenerationAsync();
+  CellularModule.getCellularGenerationAsync() as unknown as Promise<number>;
 
 export const useGetCellularGenerationAsync = () => {
   const [value, setValue] = useState<number>();
@@ -132,7 +132,7 @@ export const useGetCellularGenerationAsync = () => {
 };
 
 export const getGetIsoCountryCodeAsync = (): Promise<string> =>
-  CellularModule.getIsoCountryCodeAsync();
+  CellularModule.getIsoCountryCodeAsync() as unknown as Promise<string>;
 
 export const useGetIsoCountryCodeAsync = () => {
   const [value, setValue] = useState<string>();
@@ -171,7 +171,7 @@ export const useGetIsoCountryCodeAsync = () => {
 };
 
 export const getGetCarrierNameAsync = (): Promise<string> =>
-  CellularModule.getCarrierNameAsync();
+  CellularModule.getCarrierNameAsync() as unknown as Promise<string>;
 
 export const useGetCarrierNameAsync = () => {
   const [value, setValue] = useState<string>();
@@ -210,7 +210,7 @@ export const useGetCarrierNameAsync = () => {
 };
 
 export const getGetMobileCountryCodeAsync = (): Promise<string> =>
-  CellularModule.getMobileCountryCodeAsync();
+  CellularModule.getMobileCountryCodeAsync() as unknown as Promise<string>;
 
 export const useGetMobileCountryCodeAsync = () => {
   const [value, setValue] = useState<string>();
@@ -249,7 +249,7 @@ export const useGetMobileCountryCodeAsync = () => {
 };
 
 export const getGetMobileNetworkCodeAsync = (): Promise<string> =>
-  CellularModule.getMobileNetworkCodeAsync();
+  CellularModule.getMobileNetworkCodeAsync() as unknown as Promise<string>;
 
 export const useGetMobileNetworkCodeAsync = () => {
   const [value, setValue] = useState<string>();

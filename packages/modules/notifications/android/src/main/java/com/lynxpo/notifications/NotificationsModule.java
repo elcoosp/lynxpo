@@ -70,8 +70,8 @@ public class NotificationsModule extends NotificationsModuleSpec {
   }
 
   @LynxMethod
-  public int badgeCountAsync() {
-    return 0;
+  public double badgeCountAsync() {
+    return 0d;
   }
 
   @LynxMethod

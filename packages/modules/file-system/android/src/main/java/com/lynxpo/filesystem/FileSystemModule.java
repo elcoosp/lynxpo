@@ -48,12 +48,11 @@ public class FileSystemModule extends FileSystemModuleSpec {
   }
 
   @LynxMethod
-  public void writeAsStringAsync(
-      final String path, final String contents, final Promise promise) {
+  public Object writeAsStringAsync(
+      final String path, final String contents) {
     try {
       if (path == null || contents == null) {
-        promise.reject("ERR_FILE_SYSTEM", "path and contents are required");
-        return;
+        throw new RuntimeException("path and contents are required");
       }
       File file = resolve(path);
       File parent = file.getParentFile();
@@ -62,39 +61,35 @@ public class FileSystemModule extends FileSystemModuleSpec {
       }
       java.nio.file.Files.write(
           file.toPath(), contents.getBytes(StandardCharsets.UTF_8));
-      promise.resolve(null);
+      return null;
     } catch (Exception e) {
-      promise.reject("ERR_FILE_SYSTEM", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
   @LynxMethod
-  public void readAsStringAsync(final String path, final Promise promise) {
+  public Object readAsStringAsync(final String path) {
     try {
       if (path == null) {
-        promise.reject("ERR_FILE_SYSTEM", "path is required");
-        return;
+        throw new RuntimeException("path is required");
       }
       File file = resolve(path);
       if (!file.exists() || !file.isFile()) {
-        promise.reject("ERR_FILE_SYSTEM", "ENOENT: " + path);
-        return;
+        throw new RuntimeException("ENOENT: " + path);
       }
-      String contents = new String(
+      return new String(
           java.nio.file.Files.readAllBytes(file.toPath()),
           StandardCharsets.UTF_8);
-      promise.resolve(contents);
     } catch (Exception e) {
-      promise.reject("ERR_FILE_SYSTEM", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
   @LynxMethod
-  public void getInfoAsync(final String path, final Promise promise) {
+  public Object getInfoAsync(final String path) {
     try {
       if (path == null) {
-        promise.reject("ERR_FILE_SYSTEM", "path is required");
-        return;
+        throw new RuntimeException("path is required");
       }
       File file = resolve(path);
       JavaOnlyMap info = new JavaOnlyMap();
@@ -102,43 +97,40 @@ public class FileSystemModule extends FileSystemModuleSpec {
       info.putBoolean("isDirectory", file.isDirectory());
       info.putDouble("size", file.exists() ? (double) file.length() : 0.0);
       info.putString("uri", file.toURI().toString());
-      promise.resolve(info);
+      return info;
     } catch (Exception e) {
-      promise.reject("ERR_FILE_SYSTEM", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
   @LynxMethod
-  public void makeDirectoryAsync(final String path, final Promise promise) {
+  public Object makeDirectoryAsync(final String path) {
     try {
       if (path == null) {
-        promise.reject("ERR_FILE_SYSTEM", "path is required");
-        return;
+        throw new RuntimeException("path is required");
       }
       File dir = resolve(path);
-      boolean ok = dir.mkdirs();
-      promise.resolve(ok || dir.isDirectory());
+      dir.mkdirs();
+      return null;
     } catch (Exception e) {
-      promise.reject("ERR_FILE_SYSTEM", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
   @LynxMethod
-  public void deleteAsync(final String path, final Promise promise) {
+  public Object deleteAsync(final String path) {
     try {
       if (path == null) {
-        promise.reject("ERR_FILE_SYSTEM", "path is required");
-        return;
+        throw new RuntimeException("path is required");
       }
       File file = resolve(path);
       if (!file.exists()) {
-        promise.resolve(null);
-        return;
+        return null;
       }
-      boolean ok = deleteRecursive(file);
-      promise.resolve(ok);
+      deleteRecursive(file);
+      return null;
     } catch (Exception e) {
-      promise.reject("ERR_FILE_SYSTEM", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 

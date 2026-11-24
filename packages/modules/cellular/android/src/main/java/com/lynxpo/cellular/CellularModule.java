@@ -34,14 +34,14 @@ public class CellularModule extends CellularModuleSpec {
   }
 
   @LynxMethod
-  public int getCellularGeneration() {
+  public double getCellularGeneration() {
     TelephonyManager tm = telephonyManager();
     if (tm == null) {
-      return 0; // UNKNOWN
+      return 0d; // UNKNOWN
     }
     if (mContext.checkSelfPermission(Manifest.permission.READ_PHONE_STATE)
         != PackageManager.PERMISSION_GRANTED) {
-      return 0; // UNKNOWN without permission
+      return 0d; // UNKNOWN without permission
     }
     switch (tm.getDataNetworkType()) {
       case TelephonyManager.NETWORK_TYPE_GPRS:
@@ -49,7 +49,7 @@ public class CellularModule extends CellularModuleSpec {
       case TelephonyManager.NETWORK_TYPE_CDMA:
       case TelephonyManager.NETWORK_TYPE_1xRTT:
       case TelephonyManager.NETWORK_TYPE_IDEN:
-        return 1; // 2G
+        return 1d; // 2G
       case TelephonyManager.NETWORK_TYPE_UMTS:
       case TelephonyManager.NETWORK_TYPE_EVDO_0:
       case TelephonyManager.NETWORK_TYPE_EVDO_A:
@@ -59,13 +59,13 @@ public class CellularModule extends CellularModuleSpec {
       case TelephonyManager.NETWORK_TYPE_EVDO_B:
       case TelephonyManager.NETWORK_TYPE_EHRPD:
       case TelephonyManager.NETWORK_TYPE_HSPAP:
-        return 2; // 3G
+        return 2d; // 3G
       case TelephonyManager.NETWORK_TYPE_LTE:
-        return 3; // 4G
+        return 3d; // 4G
       case TelephonyManager.NETWORK_TYPE_NR:
-        return 4; // 5G
+        return 4d; // 5G
       default:
-        return 0; // UNKNOWN
+        return 0d; // UNKNOWN
     }
   }
 
@@ -104,23 +104,23 @@ public class CellularModule extends CellularModuleSpec {
   }
 
   @LynxMethod
-  public void getCellularGenerationAsync(final Promise promise) {
-    try { promise.resolve(getCellularGeneration()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getCellularGenerationAsync() {
+    return getCellularGeneration();
   }
   @LynxMethod
-  public void getIsoCountryCodeAsync(final Promise promise) {
-    try { promise.resolve(getIsoCountryCode()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getIsoCountryCodeAsync() {
+    return getIsoCountryCode();
   }
   @LynxMethod
-  public void getCarrierNameAsync(final Promise promise) {
-    try { promise.resolve(getCarrierName()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getCarrierNameAsync() {
+    return getCarrierName();
   }
   @LynxMethod
-  public void getMobileCountryCodeAsync(final Promise promise) {
-    try { promise.resolve(getMobileCountryCode()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getMobileCountryCodeAsync() {
+    return getMobileCountryCode();
   }
   @LynxMethod
-  public void getMobileNetworkCodeAsync(final Promise promise) {
-    try { promise.resolve(getMobileNetworkCode()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getMobileNetworkCodeAsync() {
+    return getMobileNetworkCode();
   }
 }

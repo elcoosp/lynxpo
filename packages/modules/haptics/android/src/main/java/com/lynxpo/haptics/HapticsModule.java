@@ -44,14 +44,15 @@ public class HapticsModule extends HapticsModuleSpec {
   }
 
   @LynxMethod
-  public void impactAsync(int style) {
+  public Object impactAsync(double style) {
     Vibrator vibrator = vibrator();
     if (vibrator == null) {
-      return;
+      return null;
     }
+    int s = (int) style;
     long duration;
     int amplitude;
-    switch (style) {
+    switch (s) {
       case IMPACT_LIGHT:
         duration = 20;
         amplitude = 60;
@@ -78,15 +79,17 @@ public class HapticsModule extends HapticsModuleSpec {
         break;
     }
     vibrate(vibrator, duration, amplitude);
+    return null;
   }
 
   @LynxMethod
-  public void notificationAsync(int type) {
+  public Object notificationAsync(double type) {
     Vibrator vibrator = vibrator();
     if (vibrator == null) {
-      return;
+      return null;
     }
-    switch (type) {
+    int t = (int) type;
+    switch (t) {
       case NOTIFICATION_SUCCESS:
         vibrate(vibrator, new long[] {0, 30, 60, 30}, -1);
         break;
@@ -100,15 +103,17 @@ public class HapticsModule extends HapticsModuleSpec {
         vibrate(vibrator, 30, 120);
         break;
     }
+    return null;
   }
 
   @LynxMethod
-  public void selectionAsync() {
+  public Object selectionAsync() {
     Vibrator vibrator = vibrator();
     if (vibrator == null) {
-      return;
+      return null;
     }
     vibrate(vibrator, 15, 40);
+    return null;
   }
 
   private Vibrator vibrator() {
@@ -133,11 +138,11 @@ public class HapticsModule extends HapticsModuleSpec {
   }
 
   @LynxMethod
-  public void impactAsync(int style, final Promise promise) {
+  public void impactAsync(double style, final Promise promise) {
     try { impactAsync(style); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
   }
   @LynxMethod
-  public void notificationAsync(int type, final Promise promise) {
+  public void notificationAsync(double type, final Promise promise) {
     try { notificationAsync(type); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
   }
   @LynxMethod

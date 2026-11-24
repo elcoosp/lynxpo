@@ -6,13 +6,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ApplicationModuleSpec <LynxModule>
 
-- (id)applicationName;
-- (id)applicationId;
-- (id)nativeApplicationVersion;
-- (id)nativeBuildVersion;
-- (id)androidId;
-- (id)getInstallationTime;
-- (id)getLastUpdateTime;
+- (NSString *)applicationName;
+- (NSString *)applicationId;
+- (NSString *)nativeApplicationVersion;
+- (NSString *)nativeBuildVersion;
+- (NSString *)androidId;
+- (double)getInstallationTime;
+- (double)getLastUpdateTime;
 
 @end
 

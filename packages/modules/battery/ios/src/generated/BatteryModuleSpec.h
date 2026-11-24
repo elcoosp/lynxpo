@@ -6,10 +6,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol BatteryModuleSpec <LynxModule>
 
-- (id)getBatteryLevel;
-- (id)getBatteryState;
-- (id)isLowPowerModeEnabled;
-- (id)isBatteryOptimizationEnabled;
+- (double)getBatteryLevel;
+- (double)getBatteryState;
+- (BOOL)isLowPowerModeEnabled;
+- (BOOL)isBatteryOptimizationEnabled;
 
 @end
 

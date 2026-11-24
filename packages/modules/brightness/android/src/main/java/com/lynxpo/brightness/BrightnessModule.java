@@ -30,7 +30,7 @@ public class BrightnessModule extends BrightnessModuleSpec {
   }
 
   @LynxMethod
-  public float getBrightness() {
+  public double getBrightness() {
     WindowManager.LayoutParams lp = currentAttributes();
     if (lp == null) {
       return getSystemBrightness();
@@ -42,30 +42,30 @@ public class BrightnessModule extends BrightnessModuleSpec {
   }
 
   @LynxMethod
-  public void setBrightness(float brightnessValue) {
+  public void setBrightness(double brightnessValue) {
     WindowManager.LayoutParams lp = currentAttributes();
     if (lp == null) {
       return;
     }
-    lp.screenBrightness = brightnessValue;
+    lp.screenBrightness = (float) brightnessValue;
     applyAttributes(lp);
   }
 
   @LynxMethod
-  public float getSystemBrightness() {
+  public double getSystemBrightness() {
     try {
       int mode = Settings.System.getInt(
           mContext.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE);
       if (mode == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
         float adj = Settings.System.getFloat(
             mContext.getContentResolver(), "screen_auto_brightness_adj");
-        return (adj + 1.0f) / 2;
+        return ((adj + 1.0f) / 2);
       }
       int brightness = Settings.System.getInt(
           mContext.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
-      return (brightness - 1) / 254f;
+      return (brightness - 1) / 254.0;
     } catch (Settings.SettingNotFoundException e) {
-      return 0.5f;
+      return 0.5;
     }
   }
 
@@ -77,13 +77,13 @@ public class BrightnessModule extends BrightnessModuleSpec {
   }
 
   @LynxMethod
-  public int getSystemBrightnessMode() {
+  public double getSystemBrightnessMode() {
     try {
       int mode = Settings.System.getInt(
           mContext.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE);
-      return mode == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC ? 1 : 2;
+      return mode == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC ? 1d : 2d;
     } catch (Settings.SettingNotFoundException e) {
-      return 0;
+      return 0d;
     }
   }
 
@@ -111,29 +111,30 @@ public class BrightnessModule extends BrightnessModuleSpec {
   }
 
   @LynxMethod
-  public void getBrightnessAsync(final Promise promise) {
-    try { promise.resolve(getBrightness()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getBrightnessAsync() {
+    return getBrightness();
   }
   @LynxMethod
-  public void setBrightnessAsync(double value, final Promise promise) {
-    try { setBrightness((float) value); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object setBrightnessAsync(double value) {
+    setBrightness(value);
+    return null;
   }
   @LynxMethod
-  public void getSystemBrightnessAsync(final Promise promise) {
-    try { promise.resolve(getSystemBrightness()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getSystemBrightnessAsync() {
+    return getSystemBrightness();
   }
   @LynxMethod
-  public void isUsingSystemBrightnessAsync(final Promise promise) {
-    try { promise.resolve(isUsingSystemBrightness()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object isUsingSystemBrightnessAsync() {
+    return isUsingSystemBrightness();
   }
   @LynxMethod
-  public void getSystemBrightnessModeAsync(final Promise promise) {
-    try { promise.resolve(getSystemBrightnessMode()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getSystemBrightnessModeAsync() {
+    return getSystemBrightnessMode();
   }
   @LynxMethod
   public void addListener(String eventName) { startBrightnessObserver(eventName); }
   @LynxMethod
-  public void removeListeners(int count) { stopBrightnessObserver(); }
+  public void removeListeners(double count) { stopBrightnessObserver(); }
 
   private android.database.ContentObserver mBrightnessObserver;
   private String mBrightnessEventName;

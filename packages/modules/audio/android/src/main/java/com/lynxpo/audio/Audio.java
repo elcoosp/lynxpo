@@ -46,11 +46,11 @@ public class Audio extends AudioSpec {
   }
 
   @LynxMethod
-  public void setVolume(Double volume) {
+  public void setVolume(double volume) {
   }
 
   @LynxMethod
-  public void setIsLooping(Boolean looping) {
+  public void setIsLooping(boolean looping) {
   }
 
 }

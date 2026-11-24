@@ -75,7 +75,7 @@ export const useGetSystemBrightnessMode = () => {
 };
 
 export const getGetBrightnessAsync = (): Promise<string> =>
-  BrightnessModule?.getBrightnessAsync?.();
+  BrightnessModule?.getBrightnessAsync?.() as unknown as Promise<string>;
 
 export const useGetBrightnessAsync = () => {
   const [value, setValue] = useState<string>();
@@ -136,7 +136,7 @@ export const useSetBrightnessAsync = (value: number) => {
 };
 
 export const getGetSystemBrightnessAsync = (): Promise<string> =>
-  BrightnessModule?.getSystemBrightnessAsync?.();
+  BrightnessModule?.getSystemBrightnessAsync?.() as unknown as Promise<string>;
 
 export const useGetSystemBrightnessAsync = () => {
   const [value, setValue] = useState<string>();
@@ -175,7 +175,7 @@ export const useGetSystemBrightnessAsync = () => {
 };
 
 export const getIsUsingSystemBrightnessAsync = (): Promise<boolean> =>
-  BrightnessModule?.isUsingSystemBrightnessAsync?.();
+  BrightnessModule?.isUsingSystemBrightnessAsync?.() as unknown as Promise<boolean>;
 
 export const useIsUsingSystemBrightnessAsync = () => {
   const [value, setValue] = useState<boolean>();
@@ -214,7 +214,7 @@ export const useIsUsingSystemBrightnessAsync = () => {
 };
 
 export const getGetSystemBrightnessModeAsync = (): Promise<number> =>
-  BrightnessModule?.getSystemBrightnessModeAsync?.();
+  BrightnessModule?.getSystemBrightnessModeAsync?.() as unknown as Promise<number>;
 
 export const useGetSystemBrightnessModeAsync = () => {
   const [value, setValue] = useState<number>();

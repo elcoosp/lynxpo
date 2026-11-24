@@ -2,15 +2,15 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { NotificationsModule } from './generated/NotificationsModule';
 
-export const getPermissionsAsync = (): Record<string, any> =>
-  NotificationsModule.permissionsAsync();
+export const getPermissionsAsync = (): Promise<Record<string, any>> =>
+  NotificationsModule.permissionsAsync() as Promise<Record<string, any>>;
 
 export const usePermissionsAsync = () => {
   const [value, setValue] = useState<Record<string, any>>();
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = getPermissionsAsync();
+    const fetchData = async () => {
+      const result = await getPermissionsAsync();
       setValue(result);
     };
 
@@ -74,15 +74,15 @@ export const useBadgeCountAsync = () => {
   return value;
 };
 
-export const getDevicePushTokenAsync = (): Record<string, string> =>
-  NotificationsModule.devicePushTokenAsync();
+export const getDevicePushTokenAsync = (): Promise<Record<string, string>> =>
+  NotificationsModule.devicePushTokenAsync() as Promise<Record<string, string>>;
 
 export const useDevicePushTokenAsync = () => {
   const [value, setValue] = useState<Record<string, string>>();
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = getDevicePushTokenAsync();
+    const fetchData = async () => {
+      const result = await getDevicePushTokenAsync();
       setValue(result);
     };
 

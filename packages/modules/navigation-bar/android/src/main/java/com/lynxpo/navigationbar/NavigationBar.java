@@ -34,7 +34,7 @@ public class NavigationBar extends NavigationBarSpec {
   }
 
   @LynxMethod
-  public void setVisibility(Boolean visible) {
+  public void setVisibility(boolean visible) {
   }
 
   @LynxMethod

@@ -1,6 +1,6 @@
 /** @lynxmodule */
 export declare class LivePhoto {
-  isAvailableAsync(): boolean;
-  isLivePhotoAsync(path: string): boolean;
-  saveLivePhotoAsync(video: string, photo: string): any;
+  isAvailableAsync(): Promise<boolean>;
+  isLivePhotoAsync(path: string): Promise<boolean>;
+  saveLivePhotoAsync(video: string, photo: string): Promise<boolean>;
 }

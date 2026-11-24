@@ -1,6 +1,6 @@
 /** @lynxmodule */
 export declare class StoreReviewModule {
   isAvailable(): boolean;
-  isAvailableAsync(): any;
-  requestReviewAsync(): any;
+  isAvailableAsync(): Promise<boolean>;
+  requestReviewAsync(): Promise<void>;
 }

@@ -50,15 +50,16 @@ public class QuickActionsModule extends QuickActionsModuleSpec {
   }
 
   @LynxMethod
-  public void setShortcutItemsAsync(String items) {
+  public Object setShortcutItemsAsync(Object items) {
+    String s = items == null ? "[]" : items.toString();
     ShortcutManager manager =
         (ShortcutManager) mContext.getSystemService(Context.SHORTCUT_SERVICE);
     if (manager == null) {
-      return;
+      return null;
     }
     List<ShortcutInfo> shortcuts = new ArrayList<>();
     try {
-      JSONArray array = new JSONArray(items == null ? "[]" : items);
+      JSONArray array = new JSONArray(s);
       for (int i = 0; i < array.length(); i++) {
         JSONObject item = array.getJSONObject(i);
         String type = item.optString("type", "shortcut-" + i);
@@ -70,19 +71,21 @@ public class QuickActionsModule extends QuickActionsModuleSpec {
             .build());
       }
     } catch (Exception ignored) {
-      return;
+      return null;
     }
     manager.setDynamicShortcuts(shortcuts);
+    return null;
   }
 
   @LynxMethod
-  public void clearShortcutItemsAsync() {
+  public Object clearShortcutItemsAsync() {
     ShortcutManager manager =
         (ShortcutManager) mContext.getSystemService(Context.SHORTCUT_SERVICE);
     if (manager != null) {
       manager.removeAllDynamicShortcuts();
     }
     prefs.edit().remove("initialAction").apply();
+    return null;
   }
 
   @LynxMethod

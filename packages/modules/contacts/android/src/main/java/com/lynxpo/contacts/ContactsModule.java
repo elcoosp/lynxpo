@@ -68,8 +68,8 @@ public class ContactsModule extends ContactsModuleSpec {
   private static final int CONTACTS_PERMISSION_REQUEST_CODE = 2004;
 
   @LynxMethod
-  public int contactCount() {
-    if (!hasPermission()) return 0;
+  public double contactCount() {
+    if (!hasPermission()) return 0d;
     int count = 0;
     try {
       Cursor c = mContext.getContentResolver().query(
@@ -87,8 +87,8 @@ public class ContactsModule extends ContactsModuleSpec {
   }
 
   @LynxMethod
-  public int containerCount() {
-    if (!hasPermission()) return 0;
+  public double containerCount() {
+    if (!hasPermission()) return 0d;
     int count = 0;
     try {
       Cursor c = mContext.getContentResolver().query(

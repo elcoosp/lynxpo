@@ -15,10 +15,10 @@ public abstract class QuickActionsModuleSpec extends LynxContextModule {
   public abstract Object getShortcutItemsAsync();
 
   @LynxMethod
-  public abstract void setShortcutItemsAsync(Object items);
+  public abstract Object setShortcutItemsAsync(Object items);
 
   @LynxMethod
-  public abstract void clearShortcutItemsAsync();
+  public abstract Object clearShortcutItemsAsync();
 
   @LynxMethod
   public abstract Object initialActionAsync();

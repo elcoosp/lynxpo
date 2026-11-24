@@ -45,11 +45,12 @@ public class CryptoModule extends CryptoModuleSpec {
   }
 
   @LynxMethod
-  public String getRandomBytes(int byteCount) {
-    if (byteCount <= 0 || byteCount > 1024) {
+  public String getRandomBytes(double byteCount) {
+    int count = (int) byteCount;
+    if (count <= 0 || count > 1024) {
       return null;
     }
-    byte[] bytes = new byte[byteCount];
+    byte[] bytes = new byte[count];
     new SecureRandom().nextBytes(bytes);
     return android.util.Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);
   }
@@ -60,32 +61,22 @@ public class CryptoModule extends CryptoModuleSpec {
   }
 
   @LynxMethod
-  public void digestStringAsync(final String algorithm, final String data, final String encoding,
-      final Promise promise) {
+  public String digestStringAsync(final String algorithm, final String data, final String encoding) {
     try {
       String result = digestString(algorithm, data, encoding);
       if (result != null) {
-        promise.resolve(result);
+        return result;
       } else {
-        promise.reject("ERR_CRYPTO", "Unsupported algorithm: " + algorithm);
+        return null;
       }
     } catch (Exception e) {
-      promise.reject("ERR_CRYPTO", e.getMessage());
+      return null;
     }
   }
 
   @LynxMethod
-  public void getRandomBytesAsync(final int byteCount, final Promise promise) {
-    try {
-      String result = getRandomBytes(byteCount);
-      if (result != null) {
-        promise.resolve(result);
-      } else {
-        promise.reject("ERR_CRYPTO", "byteCount must be in range 1..1024");
-      }
-    } catch (Exception e) {
-      promise.reject("ERR_CRYPTO", e.getMessage());
-    }
+  public String getRandomBytesAsync(final double byteCount) {
+    return getRandomBytes(byteCount);
   }
 
   private static String toJcaAlgorithm(String algorithm) throws NoSuchAlgorithmException {

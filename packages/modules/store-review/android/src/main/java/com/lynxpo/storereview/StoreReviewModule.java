@@ -64,11 +64,12 @@ public class StoreReviewModule extends StoreReviewModuleSpec {
   }
 
   @LynxMethod
-  public void isAvailableAsync(final Promise promise) {
-    try { promise.resolve(isAvailable()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object isAvailableAsync() {
+    return isAvailable();
   }
   @LynxMethod
-  public void requestReviewAsync(final Promise promise) {
-    try { requestReview(); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object requestReviewAsync() {
+    requestReview();
+    return null;
   }
 }

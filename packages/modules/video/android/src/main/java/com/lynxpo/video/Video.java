@@ -45,11 +45,11 @@ public class Video extends VideoSpec {
   }
 
   @LynxMethod
-  public void setVolume(Double volume) {
+  public void setVolume(double volume) {
   }
 
   @LynxMethod
-  public void setMuted(Boolean muted) {
+  public void setMuted(boolean muted) {
   }
 
 }

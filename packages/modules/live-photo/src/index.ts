@@ -2,14 +2,15 @@
 import { useEffect, useState } from '@lynx-js/react';
 import { LivePhoto } from './generated/LivePhoto';
 
-export const getIsAvailableAsync = (): boolean => LivePhoto.isAvailableAsync();
+export const getIsAvailableAsync = (): Promise<boolean> =>
+  LivePhoto.isAvailableAsync() as Promise<boolean>;
 
 export const useIsAvailableAsync = () => {
   const [value, setValue] = useState<boolean>();
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = getIsAvailableAsync();
+    const fetchData = async () => {
+      const result = await getIsAvailableAsync();
       setValue(result);
     };
 
@@ -19,15 +20,15 @@ export const useIsAvailableAsync = () => {
   return value;
 };
 
-export const getIsLivePhotoAsync = (path: string): boolean =>
-  NativeModules.LivePhoto?.isLivePhotoAsync?.(path);
+export const getIsLivePhotoAsync = (path: string): Promise<boolean> =>
+  NativeModules.LivePhoto?.isLivePhotoAsync?.(path) as Promise<boolean>;
 
 export const useIsLivePhotoAsync = (path: string) => {
   const [value, setValue] = useState<boolean>();
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = getIsLivePhotoAsync(path);
+    const fetchData = async () => {
+      const result = await getIsLivePhotoAsync(path);
       setValue(result);
     };
 
@@ -37,15 +38,18 @@ export const useIsLivePhotoAsync = (path: string) => {
   return value;
 };
 
-export const getSaveLivePhotoAsync = (video: string, photo: string): boolean =>
-  NativeModules.LivePhoto?.saveLivePhotoAsync?.(video, photo);
+export const getSaveLivePhotoAsync = (
+  video: string,
+  photo: string,
+): Promise<boolean> =>
+  NativeModules.LivePhoto?.saveLivePhotoAsync?.(video, photo) as Promise<boolean>;
 
 export const useSaveLivePhotoAsync = (video: string, photo: string) => {
   const [value, setValue] = useState<boolean>();
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = getSaveLivePhotoAsync(video, photo);
+    const fetchData = async () => {
+      const result = await getSaveLivePhotoAsync(video, photo);
       setValue(result);
     };
 

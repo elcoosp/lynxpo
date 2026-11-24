@@ -123,39 +123,23 @@ public class LocalAuthenticationModule extends LocalAuthenticationModuleSpec {
   }
 
   @LynxMethod
-  public void hasHardwareAsync(final Promise promise) {
-    try {
-      promise.resolve(hasHardware());
-    } catch (Exception e) {
-      promise.reject("ERR_LA", e.getMessage());
-    }
+  public Object hasHardwareAsync() {
+    return hasHardware();
   }
 
   @LynxMethod
-  public void isEnrolledAsync(final Promise promise) {
-    try {
-      promise.resolve(isEnrolled());
-    } catch (Exception e) {
-      promise.reject("ERR_LA", e.getMessage());
-    }
+  public Object isEnrolledAsync() {
+    return isEnrolled();
   }
 
   @LynxMethod
-  public void getEnrolledLevelAsync(final Promise promise) {
-    try {
-      promise.resolve(getEnrolledLevel());
-    } catch (Exception e) {
-      promise.reject("ERR_LA", e.getMessage());
-    }
+  public Object getEnrolledLevelAsync() {
+    return getEnrolledLevel();
   }
 
   @LynxMethod
-  public void supportedAuthenticationTypesAsync(final Promise promise) {
-    try {
-      promise.resolve(supportedAuthenticationTypes());
-    } catch (Exception e) {
-      promise.reject("ERR_LA", e.getMessage());
-    }
+  public Object supportedAuthenticationTypesAsync() {
+    return supportedAuthenticationTypes();
   }
 
   @Override

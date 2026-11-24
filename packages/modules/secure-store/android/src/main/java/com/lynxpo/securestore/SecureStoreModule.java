@@ -100,54 +100,45 @@ public class SecureStoreModule extends SecureStoreModuleSpec {
   }
 
   @LynxMethod
-  public void setItemAsync(
-      final String key, final String value, final Promise promise) {
+  public Object setItemAsync(final String key, final String value) {
     try {
       if (key == null || value == null) {
-        promise.reject("ERR_SECURE_STORE", "key and value are required");
-        return;
+        throw new RuntimeException("key and value are required");
       }
       resolvePrefs().edit().putString(key, value).apply();
-      promise.resolve(null);
+      return null;
     } catch (Exception e) {
-      promise.reject("ERR_SECURE_STORE", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
   @LynxMethod
-  public void getItemAsync(final String key, final Promise promise) {
+  public Object getItemAsync(final String key) {
     try {
       if (key == null) {
-        promise.reject("ERR_SECURE_STORE", "key is required");
-        return;
+        throw new RuntimeException("key is required");
       }
-      String value = resolvePrefs().getString(key, null);
-      promise.resolve(value);
+      return resolvePrefs().getString(key, null);
     } catch (Exception e) {
-      promise.reject("ERR_SECURE_STORE", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
   @LynxMethod
-  public void deleteItemAsync(final String key, final Promise promise) {
+  public Object deleteItemAsync(final String key) {
     try {
       if (key == null) {
-        promise.reject("ERR_SECURE_STORE", "key is required");
-        return;
+        throw new RuntimeException("key is required");
       }
       resolvePrefs().edit().remove(key).apply();
-      promise.resolve(null);
+      return null;
     } catch (Exception e) {
-      promise.reject("ERR_SECURE_STORE", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
   @LynxMethod
-  public void isAvailableAsync(final Promise promise) {
-    try {
-      promise.resolve(isAvailable());
-    } catch (Exception e) {
-      promise.reject("ERR_SECURE_STORE", e.getMessage());
-    }
+  public Object isAvailableAsync() {
+    return isAvailable();
   }
 }

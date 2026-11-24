@@ -26,22 +26,22 @@ export function useLivePhotoInfo(): ModuleInfo {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const refresh = useCallback(() => {
+  const refresh = useCallback(async () => {
     try {
       const rows: { label: string; value: string }[] = [];
-      const v_getIsAvailableAsync = getIsAvailableAsync();
+      const v_getIsAvailableAsync = await getIsAvailableAsync();
       rows.push({
         label: 'isAvailableAsync',
         value: v_getIsAvailableAsync ? 'Yes' : 'No',
       });
-      const v_getIsLivePhotoAsync = getIsLivePhotoAsync(
+      const v_getIsLivePhotoAsync = await getIsLivePhotoAsync(
         '/sdcard/DCIM/live.heic',
       );
       rows.push({
         label: 'isLivePhotoAsync',
         value: v_getIsLivePhotoAsync ? 'Yes' : 'No',
       });
-      const v_getSaveLivePhotoAsync = getSaveLivePhotoAsync(
+      const v_getSaveLivePhotoAsync = await getSaveLivePhotoAsync(
         '/a.mp4',
         '/b.heic',
       );
@@ -61,7 +61,7 @@ export function useLivePhotoInfo(): ModuleInfo {
   const actions: ModuleAction[] = [];
   const actSaveLivePhotoAsync = useCallback(() => {
     try {
-      getSaveLivePhotoAsync('/a.mp4', '/b.heic');
+      void getSaveLivePhotoAsync('/a.mp4', '/b.heic');
     } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
     } finally {
@@ -71,7 +71,7 @@ export function useLivePhotoInfo(): ModuleInfo {
   actions.push({ label: 'saveLivePhoto', onPress: actSaveLivePhotoAsync });
 
   useEffect(() => {
-    refresh();
+    void refresh();
   }, [refresh]);
 
   return { rows, loading, error, actions };

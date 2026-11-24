@@ -100,17 +100,17 @@ public class NetworkModule extends NetworkModuleSpec {
   }
 
   @LynxMethod
-  public void getIpAddressAsync(final Promise promise) {
-    try { promise.resolve(getIpAddress()); } catch (Exception e) { promise.reject("ERROR", e.getMessage()); }
+  public Object getIpAddressAsync() {
+    return getIpAddress();
   }
   @LynxMethod
-  public void getNetworkStateAsync(final Promise promise) {
-    try { promise.resolve(getNetworkState()); } catch (Exception e) { promise.reject("ERROR", e.getMessage()); }
+  public Object getNetworkStateAsync() {
+    return getNetworkState();
   }
   @LynxMethod
   public void addListener(String eventName) { startNetworkObserver(eventName); }
   @LynxMethod
-  public void removeListeners(int count) { stopNetworkObserver(); }
+  public void removeListeners(double count) { stopNetworkObserver(); }
 
   private android.net.ConnectivityManager.NetworkCallback mNetCallback;
   private String mNetEventName;

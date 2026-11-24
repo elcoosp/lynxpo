@@ -26,17 +26,17 @@ public class LivePhoto extends LivePhotoSpec {
   }
 
   @LynxMethod
-  public boolean isAvailableAsync() {
+  public Object isAvailableAsync() {
     return false;
   }
 
   @LynxMethod
-  public boolean isLivePhotoAsync(String path) {
+  public Object isLivePhotoAsync(String path) {
     return false;
   }
 
   @LynxMethod
-  public boolean saveLivePhotoAsync(String video, String photo) {
+  public Object saveLivePhotoAsync(String video, String photo) {
     return false;
   }
 }

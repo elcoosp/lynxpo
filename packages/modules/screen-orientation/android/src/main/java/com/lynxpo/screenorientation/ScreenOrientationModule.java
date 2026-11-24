@@ -30,10 +30,10 @@ public class ScreenOrientationModule extends ScreenOrientationModuleSpec {
   }
 
   @LynxMethod
-  public int getOrientation() {
+  public double getOrientation() {
     android.app.Activity activity = getActivity();
     if (activity == null) {
-      return 0; // UNKNOWN
+      return 0d; // UNKNOWN
     }
     int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
     int width = activity.getResources().getConfiguration().screenWidthDp;
@@ -41,55 +41,55 @@ public class ScreenOrientationModule extends ScreenOrientationModuleSpec {
     boolean isNaturalPortrait = height >= width;
     switch (rotation) {
       case android.view.Surface.ROTATION_0:
-        return isNaturalPortrait ? 1 : 4; // PORTRAIT_UP or LANDSCAPE_RIGHT
+        return isNaturalPortrait ? 1d : 4d; // PORTRAIT_UP or LANDSCAPE_RIGHT
       case android.view.Surface.ROTATION_90:
-        return isNaturalPortrait ? 3 : 1; // LANDSCAPE_LEFT or PORTRAIT_UP
+        return isNaturalPortrait ? 3d : 1d; // LANDSCAPE_LEFT or PORTRAIT_UP
       case android.view.Surface.ROTATION_180:
-        return isNaturalPortrait ? 2 : 3; // PORTRAIT_DOWN or LANDSCAPE_LEFT
+        return isNaturalPortrait ? 2d : 3d; // PORTRAIT_DOWN or LANDSCAPE_LEFT
       case android.view.Surface.ROTATION_270:
-        return isNaturalPortrait ? 4 : 2; // LANDSCAPE_RIGHT or PORTRAIT_DOWN
+        return isNaturalPortrait ? 4d : 2d; // LANDSCAPE_RIGHT or PORTRAIT_DOWN
       default:
-        return 0; // UNKNOWN
+        return 0d; // UNKNOWN
     }
   }
 
   @LynxMethod
-  public int getOrientationLock() {
+  public double getOrientationLock() {
     android.app.Activity activity = getActivity();
     if (activity == null) {
-      return 0; // UNKNOWN
+      return 0d; // UNKNOWN
     }
     int req = activity.getRequestedOrientation();
     switch (req) {
       case ActivityInfo.SCREEN_ORIENTATION_PORTRAIT:
-        return 1; // PORTRAIT_UP
+        return 1d; // PORTRAIT_UP
       case ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE:
-        return 3; // LANDSCAPE_LEFT
+        return 3d; // LANDSCAPE_LEFT
       case ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR:
-        return 7; // ALL
+        return 7d; // ALL
       case ActivityInfo.SCREEN_ORIENTATION_SENSOR:
-        return 8; // SENSOR
+        return 8d; // SENSOR
       default:
-        return 0; // UNKNOWN
+        return 0d; // UNKNOWN
     }
   }
 
   @LynxMethod
-  public void lock(int orientation) {
+  public void lock(double orientation) {
     android.app.Activity activity = getActivity();
     if (activity == null) {
       return;
     }
-    activity.setRequestedOrientation(mapOrientation(orientation));
+    activity.setRequestedOrientation(mapOrientation((int) orientation));
   }
 
   @LynxMethod
-  public void lockPlatform(int orientationLock) {
+  public void lockPlatform(double orientationLock) {
     android.app.Activity activity = getActivity();
     if (activity == null) {
       return;
     }
-    activity.setRequestedOrientation(mapOrientationLock(orientationLock));
+    activity.setRequestedOrientation(mapOrientationLock((int) orientationLock));
   }
 
   @LynxMethod
@@ -137,33 +137,36 @@ public class ScreenOrientationModule extends ScreenOrientationModuleSpec {
   }
 
   @LynxMethod
-  public void getOrientationAsync(final Promise promise) {
-    try { promise.resolve(getOrientation()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getOrientationAsync() {
+    return getOrientation();
   }
   @LynxMethod
-  public void getOrientationLockAsync(final Promise promise) {
-    try { promise.resolve(getOrientationLock()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object getOrientationLockAsync() {
+    return getOrientationLock();
   }
   @LynxMethod
-  public void lockAsync(int orientation, final Promise promise) {
-    try { lock(orientation); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object lockAsync(double orientation) {
+    lock(orientation);
+    return null;
   }
   @LynxMethod
-  public void unlockAsync(final Promise promise) {
-    try { lock(0 /* UNKNOWN/unspecified */); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object unlockAsync() {
+    lock(0d);
+    return null;
   }
   @LynxMethod
-  public void lockPlatformAsync(int orientation, final Promise promise) {
-    try { lockPlatform(orientation); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object lockPlatformAsync(double orientation) {
+    lockPlatform(orientation);
+    return null;
   }
   @LynxMethod
-  public void supportsOrientationLockAsync(int orientationLock, final Promise promise) {
-    try { promise.resolve(supportsOrientationLock()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object supportsOrientationLockAsync() {
+    return supportsOrientationLock();
   }
   @LynxMethod
   public void addListener(String eventName) { startOrientationObserver(eventName); }
   @LynxMethod
-  public void removeListeners(int count) { stopOrientationObserver(); }
+  public void removeListeners(double count) { stopOrientationObserver(); }
 
   private android.view.OrientationEventListener mOriListener;
   private String mOriEventName;

@@ -1,8 +1,8 @@
 /** @lynxmodule */
 export declare class SecureStoreModule {
   isAvailable(): boolean;
-  setItemAsync(key: string, value: string): any;
-  getItemAsync(key: string): any;
-  deleteItemAsync(key: string): any;
-  isAvailableAsync(): any;
+  setItemAsync(key: string, value: string): Promise<void>;
+  getItemAsync(key: string): Promise<any>;
+  deleteItemAsync(key: string): Promise<void>;
+  isAvailableAsync(): Promise<boolean>;
 }

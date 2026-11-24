@@ -70,30 +70,22 @@ public class MailComposerModule extends MailComposerModuleSpec {
   }
 
   @LynxMethod
-  public void isAvailableAsync(final Promise promise) {
-    try {
-      promise.resolve(isAvailable());
-    } catch (Exception e) {
-      promise.reject("ERROR", e.getMessage());
-    }
+  public Object isAvailableAsync() {
+    return isAvailable();
   }
 
   @LynxMethod
-  public void getClientsAsync(final Promise promise) {
-    try {
-      promise.resolve(getClients());
-    } catch (Exception e) {
-      promise.reject("ERROR", e.getMessage());
-    }
+  public Object getClientsAsync() {
+    return getClients();
   }
 
   @LynxMethod
-  public void composeAsync(String subject, String body, String recipients, final Promise promise) {
+  public Object composeAsync(String subject, String body, String recipients) {
     try {
       compose(subject, body, recipients);
-      promise.resolve(null);
+      return null;
     } catch (Exception e) {
-      promise.reject("ERROR", e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 }

@@ -120,29 +120,17 @@ public class SensorsModule extends SensorsModuleSpec {
   }
 
   @LynxMethod
-  public void getAccelerometerAsync(final Promise promise) {
-    try {
-      promise.resolve(getAccelerometer());
-    } catch (Exception e) {
-      promise.reject("ERR_SENSORS", e.getMessage());
-    }
+  public Object getAccelerometerAsync() {
+    return getAccelerometer();
   }
 
   @LynxMethod
-  public void getGyroscopeAsync(final Promise promise) {
-    try {
-      promise.resolve(getGyroscope());
-    } catch (Exception e) {
-      promise.reject("ERR_SENSORS", e.getMessage());
-    }
+  public Object getGyroscopeAsync() {
+    return getGyroscope();
   }
 
   @LynxMethod
-  public void isAvailableAsync(final Promise promise) {
-    try {
-      promise.resolve(isAvailable());
-    } catch (Exception e) {
-      promise.reject("ERR_SENSORS", e.getMessage());
-    }
+  public Object isAvailableAsync() {
+    return isAvailable();
   }
 }

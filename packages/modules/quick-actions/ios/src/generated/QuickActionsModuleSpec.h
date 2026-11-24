@@ -7,8 +7,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol QuickActionsModuleSpec <LynxModule>
 
 - (id)getShortcutItemsAsync;
-- (void)setShortcutItemsAsync:(id)items;
-- (void)clearShortcutItemsAsync;
+- (id)setShortcutItemsAsync:(id)items;
+- (id)clearShortcutItemsAsync;
 - (id)initialActionAsync;
 
 @end

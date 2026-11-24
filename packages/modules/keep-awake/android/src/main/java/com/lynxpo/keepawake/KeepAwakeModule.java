@@ -71,15 +71,17 @@ public class KeepAwakeModule extends KeepAwakeModuleSpec {
   }
 
   @LynxMethod
-  public void activateAsync(final Promise promise) {
-    try { activate(); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object activateAsync() {
+    activate();
+    return null;
   }
   @LynxMethod
-  public void deactivateAsync(final Promise promise) {
-    try { deactivate(); promise.resolve(null); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object deactivateAsync() {
+    deactivate();
+    return null;
   }
   @LynxMethod
-  public void isActivatedAsync(final Promise promise) {
-    try { promise.resolve(isActivated()); } catch (Exception e) { promise.reject("ERR_LYNX_MODULE", e.getMessage()); }
+  public Object isActivatedAsync() {
+    return isActivated();
   }
 }
