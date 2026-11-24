@@ -17,11 +17,11 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
+      - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm check:codegen
       - run: pnpm check:licenses
       - run: pnpm audit:deps
-      - run: pnpm build
       - run: pnpm test:cov
       - name: Pack audit
         run: |

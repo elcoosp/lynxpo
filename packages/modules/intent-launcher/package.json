@@ -30,10 +30,10 @@
     "check:fix": "biome check --write --unsafe"
   },
   "devDependencies": {
-    "@elcoosp-configs/rslib": "2.1",
-    "@rslib/core": "^1.0.6",
-    "@lynx-js/react": "^0.129.1",
-    "@lynx-js/types": "^4.4.2"
+    "@elcoosp-configs/rslib": "~2.1.0",
+    "@lynx-js/react": "^0.129.4",
+    "@lynx-js/types": "^4.4.2",
+    "@rslib/core": "^1.0.7"
   },
   "lynx": {
     "mainThread": "true"
