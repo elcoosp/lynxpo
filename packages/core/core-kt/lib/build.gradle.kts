@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
-    id("com.google.devtools.ksp") version "2.3.13"
+    id("com.google.devtools.ksp") version "2.3.14"
     kotlin("plugin.serialization") version "2.4.21"
 
     `maven-publish`
