@@ -78,7 +78,7 @@
     "@lynxpo/mods-video": "workspace:*",
     "@lynxpo/mods-video-thumbnails": "workspace:*",
     "@lynxpo/mods-web-browser": "workspace:*",
-    "@rsbuild/core": "2.3.3",
+    "@rsbuild/core": "2.3.5",
     "glob": "^14.0.6",
     "unplugin-ast": "^0.19.2"
   },
